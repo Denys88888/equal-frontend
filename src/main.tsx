@@ -1,10 +1,13 @@
 import { createRoot } from 'react-dom/client'
 import { HashRouter } from 'react-router'
+import { ToastProvider } from '@/components/ToastProvider'
 import './index.css'
 import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <HashRouter>
-    <App />
+    <ToastProvider>
+      <App />
+    </ToastProvider>
   </HashRouter>,
 )
