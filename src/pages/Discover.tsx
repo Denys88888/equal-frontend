@@ -1,14 +1,1015 @@
+import { useState, useCallback, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router';
+import { motion, AnimatePresence, useMotionValue, useTransform, type PanInfo } from 'framer-motion';
+import { X, Heart, Star, MapPin, SlidersHorizontal, Shield, Circle, Sparkles } from 'lucide-react';
+import confetti from 'canvas-confetti';
 import Layout from '@/components/Layout';
 
-export default function Discover() {
+// ── Types ──────────────────────────────────────────────
+
+interface Profile {
+  id: string;
+  name: string;
+  age: number;
+  distance: number;
+  compatibility: number;
+  bio: string;
+  photo: string;
+  photos: string[];
+  interests: string[];
+  verified: boolean;
+  activeNow: boolean;
+  isNew: boolean;
+  badges?: string[];
+}
+
+interface Filters {
+  maxDistance: number;
+  ageMin: number;
+  ageMax: number;
+  verifiedOnly: boolean;
+  onlineNow: boolean;
+  goals: string[];
+  interests: string[];
+}
+
+// ── Mock Data ──────────────────────────────────────────
+
+const MOCK_PROFILES: Profile[] = [
+  { id: '1', name: 'Sarah', age: 27, distance: 3, compatibility: 87, bio: 'Coffee lover • Hiking enthusiast • Looking for meaningful connections', photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=800&fit=crop&crop=face', photos: [], interests: ['Coffee', 'Hiking', 'Yoga'], verified: true, activeNow: true, isNew: false },
+  { id: '2', name: 'Emma', age: 25, distance: 5, compatibility: 92, bio: 'Artist and dreamer. Love sunset walks and deep conversations.', photo: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&h=800&fit=crop&crop=face', photos: [], interests: ['Art', 'Music', 'Travel'], verified: true, activeNow: false, isNew: true },
+  { id: '3', name: 'Liam', age: 29, distance: 8, compatibility: 78, bio: 'Software engineer by day, chef by night. Foodie adventures await!', photo: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=800&fit=crop&crop=face', photos: [], interests: ['Cooking', 'Tech', 'Gaming'], verified: true, activeNow: true, isNew: false },
+  { id: '4', name: 'Olivia', age: 24, distance: 2, compatibility: 95, bio: 'Yoga instructor • Dog mom • Plant collector', photo: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&h=800&fit=crop&crop=face', photos: [], interests: ['Yoga', 'Dogs', 'Plants'], verified: true, activeNow: true, isNew: false },
+  { id: '5', name: 'Noah', age: 28, distance: 12, compatibility: 71, bio: 'Musician • Traveler • Always chasing the next adventure', photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=800&fit=crop&crop=face', photos: [], interests: ['Music', 'Travel', 'Guitar'], verified: false, activeNow: false, isNew: true },
+  { id: '6', name: 'Ava', age: 26, distance: 4, compatibility: 84, bio: 'Bookworm • Tea enthusiast • Aspiring novelist', photo: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&h=800&fit=crop&crop=face', photos: [], interests: ['Reading', 'Writing', 'Tea'], verified: true, activeNow: false, isNew: false },
+  { id: '7', name: 'Ethan', age: 30, distance: 6, compatibility: 68, bio: 'Fitness coach • Health nut • Early riser', photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop&crop=face', photos: [], interests: ['Fitness', 'Running', 'Nutrition'], verified: true, activeNow: true, isNew: false },
+  { id: '8', name: 'Sophia', age: 23, distance: 1, compatibility: 90, bio: 'Photography • Film • Urban explorer', photo: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=600&h=800&fit=crop&crop=face', photos: [], interests: ['Photography', 'Film', 'Exploring'], verified: true, activeNow: true, isNew: true },
+  { id: '9', name: 'Mason', age: 31, distance: 15, compatibility: 65, bio: 'Entrepreneur • Crypto enthusiast • Pi Network believer', photo: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=800&fit=crop&crop=face', photos: [], interests: ['Crypto', 'Business', 'Tech'], verified: false, activeNow: false, isNew: false },
+  { id: '10', name: 'Isabella', age: 27, distance: 7, compatibility: 82, bio: 'Dancer • Cat lover • Midnight baker', photo: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&h=800&fit=crop&crop=face', photos: [], interests: ['Dancing', 'Cats', 'Baking'], verified: true, activeNow: false, isNew: false },
+  { id: '11', name: 'Lucas', age: 26, distance: 9, compatibility: 76, bio: 'Surfer • Environmentalist • Sunrise chaser', photo: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&h=800&fit=crop&crop=face', photos: [], interests: ['Surfing', 'Nature', 'Camping'], verified: true, activeNow: true, isNew: false },
+  { id: '12', name: 'Mia', age: 28, distance: 3, compatibility: 88, bio: 'Doctor • Marathon runner • Puzzle solver', photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=800&fit=crop&crop=face', photos: [], interests: ['Running', 'Puzzles', 'Medicine'], verified: true, activeNow: false, isNew: false },
+  { id: '13', name: 'Oliver', age: 29, distance: 11, compatibility: 73, bio: 'Architect • Minimalist • Coffee snob', photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=800&fit=crop&crop=face', photos: [], interests: ['Design', 'Architecture', 'Coffee'], verified: true, activeNow: false, isNew: true },
+  { id: '14', name: 'Charlotte', age: 25, distance: 4, compatibility: 91, bio: 'Vegan chef • Gardener • Sustainability advocate', photo: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600&h=800&fit=crop&crop=face', photos: [], interests: ['Cooking', 'Gardening', 'Vegan'], verified: true, activeNow: true, isNew: false },
+  { id: '15', name: 'James', age: 32, distance: 20, compatibility: 69, bio: 'Pilot • World traveler • Photography hobbyist', photo: 'https://images.unsplash.com/photo-1463453091185-61582044d556?w=600&h=800&fit=crop&crop=face', photos: [], interests: ['Flying', 'Travel', 'Photos'], verified: false, activeNow: false, isNew: false },
+  { id: '16', name: 'Amelia', age: 24, distance: 2, compatibility: 94, bio: 'Grad student • Cat mom • Board game enthusiast', photo: 'https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=600&h=800&fit=crop&crop=face', photos: [], interests: ['Games', 'Cats', 'Studying'], verified: true, activeNow: true, isNew: false },
+  { id: '17', name: 'Benjamin', age: 27, distance: 5, compatibility: 80, bio: 'Lawyer • Weekend hiker • Wine collector', photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=800&fit=crop&crop=face', photos: [], interests: ['Wine', 'Hiking', 'Law'], verified: true, activeNow: false, isNew: false },
+  { id: '18', name: 'Harper', age: 26, distance: 6, compatibility: 86, bio: 'UX Designer • Pottery • Indie music lover', photo: 'https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=600&h=800&fit=crop&crop=face', photos: [], interests: ['Design', 'Pottery', 'Music'], verified: true, activeNow: true, isNew: true },
+];
+
+const INTEREST_OPTIONS = ['Coffee', 'Hiking', 'Yoga', 'Art', 'Music', 'Travel', 'Cooking', 'Tech', 'Gaming', 'Reading', 'Fitness', 'Photography', 'Dancing', 'Surfing', 'Running', 'Design', 'Vegan', 'Wine', 'Film', 'Pets'];
+
+const GOAL_OPTIONS = ['Serious relationship', 'Casual dating', 'Interest-based connections', 'Not sure yet'];
+
+// ── Match Celebration ──────────────────────────────────
+
+function triggerMatchCelebration() {
+  const duration = 1200;
+  const end = Date.now() + duration;
+  const colors = ['#BB83C9', '#7DE0B3', '#7BC4E8', '#FFD700'];
+
+  const frame = () => {
+    confetti({
+      particleCount: 4,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0, y: 0.6 },
+      colors,
+      shapes: ['circle', 'star'],
+      scalar: 1.2,
+    });
+    confetti({
+      particleCount: 4,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1, y: 0.6 },
+      colors,
+      shapes: ['circle', 'star'],
+      scalar: 1.2,
+    });
+    confetti({
+      particleCount: 6,
+      spread: 100,
+      origin: { x: 0.5, y: 0.5 },
+      colors,
+      shapes: ['circle', 'star'],
+      scalar: 1.5,
+      ticks: 200,
+    });
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  };
+  frame();
+}
+
+// ── Filter Sheet ───────────────────────────────────────
+
+function FilterSheet({
+  filters,
+  onChange,
+  onApply,
+  onReset,
+  matchCount,
+}: {
+  filters: Filters;
+  onChange: (f: Filters) => void;
+  onApply: () => void;
+  onReset: () => void;
+  matchCount: number;
+}) {
   return (
-    <Layout title="Discover">
-      <div className="flex-1 flex flex-col items-center justify-center px-5">
-        <h1 className="text-2xl font-semibold text-[#232323]">Discover</h1>
-        <p className="mt-4 text-base text-center" style={{ color: 'rgba(35,35,35,0.6)' }}>
-          Swipe through profiles and find your match...
-        </p>
+    <div className="flex flex-col h-full">
+      {/* Handle */}
+      <div className="flex justify-center pt-3 pb-5">
+        <div className="w-10 h-1 rounded-full bg-[#E8E2D8]" />
       </div>
+
+      {/* Title */}
+      <h2 className="text-xl font-semibold text-[#232323] px-6 mb-6" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
+        Filter Matches
+      </h2>
+
+      <div className="flex-1 overflow-y-auto px-6 space-y-6 pb-4">
+        {/* Distance */}
+        <div>
+          <div className="flex justify-between mb-3">
+            <span className="text-sm font-medium text-[#232323]">Maximum distance</span>
+            <span className="text-sm font-medium text-[#BB83C9]">{filters.maxDistance} km</span>
+          </div>
+          <input
+            type="range"
+            min={1}
+            max={100}
+            value={filters.maxDistance}
+            onChange={(e) => onChange({ ...filters, maxDistance: Number(e.target.value) })}
+            className="w-full h-2 rounded-full appearance-none cursor-pointer"
+            style={{
+              background: `linear-gradient(to right, #BB83C9 0%, #BB83C9 ${filters.maxDistance}%, #E8E2D8 ${filters.maxDistance}%, #E8E2D8 100%)`,
+              accentColor: '#BB83C9',
+            }}
+          />
+          <div className="flex justify-between mt-1">
+            <span className="text-xs text-[#232323]" style={{ opacity: 0.35 }}>1 km</span>
+            <span className="text-xs text-[#232323]" style={{ opacity: 0.35 }}>100 km</span>
+          </div>
+        </div>
+
+        {/* Age Range */}
+        <div>
+          <div className="flex justify-between mb-3">
+            <span className="text-sm font-medium text-[#232323]">Age range</span>
+            <span className="text-sm font-medium text-[#BB83C9]">{filters.ageMin} – {filters.ageMax}</span>
+          </div>
+          <div className="flex gap-4 items-center">
+            <input
+              type="range"
+              min={18}
+              max={80}
+              value={filters.ageMin}
+              onChange={(e) => onChange({ ...filters, ageMin: Math.min(Number(e.target.value), filters.ageMax - 1) })}
+              className="flex-1 h-2 rounded-full appearance-none cursor-pointer"
+              style={{
+                background: `linear-gradient(to right, #E8E2D8 0%, #E8E2D8 ${((filters.ageMin - 18) / 62) * 100}%, #BB83C9 ${((filters.ageMin - 18) / 62) * 100}%, #BB83C9 ${((filters.ageMax - 18) / 62) * 100}%, #E8E2D8 ${((filters.ageMax - 18) / 62) * 100}%, #E8E2D8 100%)`,
+                accentColor: '#BB83C9',
+              }}
+            />
+          </div>
+          <div className="flex gap-4 items-center mt-2">
+            <input
+              type="range"
+              min={18}
+              max={80}
+              value={filters.ageMax}
+              onChange={(e) => onChange({ ...filters, ageMax: Math.max(Number(e.target.value), filters.ageMin + 1) })}
+              className="flex-1 h-2 rounded-full appearance-none cursor-pointer"
+              style={{
+                background: `linear-gradient(to right, #E8E2D8 0%, #E8E2D8 ${((filters.ageMin - 18) / 62) * 100}%, #BB83C9 ${((filters.ageMin - 18) / 62) * 100}%, #BB83C9 ${((filters.ageMax - 18) / 62) * 100}%, #E8E2D8 ${((filters.ageMax - 18) / 62) * 100}%, #E8E2D8 100%)`,
+                accentColor: '#BB83C9',
+              }}
+            />
+          </div>
+          <div className="flex justify-between mt-1">
+            <span className="text-xs text-[#232323]" style={{ opacity: 0.35 }}>18</span>
+            <span className="text-xs text-[#232323]" style={{ opacity: 0.35 }}>80</span>
+          </div>
+        </div>
+
+        {/* Goals */}
+        <div>
+          <span className="text-sm font-medium text-[#232323] block mb-3">Looking for</span>
+          <div className="space-y-2">
+            {GOAL_OPTIONS.map((goal) => (
+              <label key={goal} className="flex items-center gap-3 cursor-pointer">
+                <div
+                  className="w-5 h-5 rounded border-2 flex items-center justify-center transition-colors"
+                  style={{
+                    borderColor: filters.goals.includes(goal) ? '#BB83C9' : '#E8E2D8',
+                    backgroundColor: filters.goals.includes(goal) ? '#BB83C9' : 'transparent',
+                  }}
+                  onClick={() => {
+                    const newGoals = filters.goals.includes(goal)
+                      ? filters.goals.filter((g) => g !== goal)
+                      : [...filters.goals, goal];
+                    onChange({ ...filters, goals: newGoals });
+                  }}
+                >
+                  {filters.goals.includes(goal) && (
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <path d="M2.5 6L5 8.5L9.5 3.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  )}
+                </div>
+                <span className="text-sm text-[#232323]" style={{ opacity: 0.8 }}>{goal}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Interests */}
+        <div>
+          <span className="text-sm font-medium text-[#232323] block mb-3">Shared interests</span>
+          <div className="flex flex-wrap gap-2">
+            {INTEREST_OPTIONS.map((interest) => {
+              const selected = filters.interests.includes(interest);
+              return (
+                <button
+                  key={interest}
+                  onClick={() => {
+                    const newInterests = selected
+                      ? filters.interests.filter((i) => i !== interest)
+                      : filters.interests.length < 10
+                        ? [...filters.interests, interest]
+                        : filters.interests;
+                    onChange({ ...filters, interests: newInterests });
+                  }}
+                  className="px-3 py-1.5 rounded-full text-xs font-medium transition-all"
+                  style={{
+                    backgroundColor: selected ? '#BB83C9' : '#E8E2D8',
+                    color: selected ? '#fff' : '#232323',
+                    opacity: selected ? 1 : 0.7,
+                  }}
+                >
+                  {interest}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Toggles */}
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-medium text-[#232323]">Verified users only</span>
+            <button
+              onClick={() => onChange({ ...filters, verifiedOnly: !filters.verifiedOnly })}
+              className="w-12 h-7 rounded-full relative transition-colors"
+              style={{ backgroundColor: filters.verifiedOnly ? '#BB83C9' : '#E8E2D8' }}
+            >
+              <motion.div
+                animate={{ x: filters.verifiedOnly ? 20 : 2 }}
+                transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                className="w-6 h-6 rounded-full bg-white absolute top-0.5 shadow-sm"
+              />
+            </button>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-medium text-[#232323]">Online now</span>
+            <button
+              onClick={() => onChange({ ...filters, onlineNow: !filters.onlineNow })}
+              className="w-12 h-7 rounded-full relative transition-colors"
+              style={{ backgroundColor: filters.onlineNow ? '#BB83C9' : '#E8E2D8' }}
+            >
+              <motion.div
+                animate={{ x: filters.onlineNow ? 20 : 2 }}
+                transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                className="w-6 h-6 rounded-full bg-white absolute top-0.5 shadow-sm"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="flex items-center gap-3 px-6 py-4 border-t" style={{ borderColor: '#E8E2D8' }}>
+        <button
+          onClick={onReset}
+          className="flex-1 h-12 rounded-full flex items-center justify-center text-sm font-semibold text-[#BB83C9]"
+          style={{ border: '1.5px solid rgba(187,131,201,0.3)' }}
+        >
+          Reset all
+        </button>
+        <button
+          onClick={onApply}
+          className="flex-[2] h-12 rounded-full flex items-center justify-center text-sm font-semibold text-white"
+          style={{ backgroundColor: '#BB83C9', boxShadow: '0 4px 16px rgba(187,131,201,0.3)' }}
+        >
+          Apply ({matchCount} matches)
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ── Swipe Card Component ───────────────────────────────
+
+function SwipeCard({
+  profile,
+  index,
+  onSwipe,
+}: {
+  profile: Profile;
+  index: number;
+  onSwipe: (direction: 'left' | 'right' | 'up') => void;
+}) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotate = useTransform(x, [-200, 200], [-8, 8]);
+  const likeOpacity = useTransform(x, [40, 100], [0, 1]);
+  const nopeOpacity = useTransform(x, [-100, -40], [1, 0]);
+  const sparkOpacity = useTransform(y, [-100, -60], [1, 0]);
+
+  const handleDragEnd = (_: unknown, info: PanInfo) => {
+    if (info.offset.x > 100) {
+      onSwipe('right');
+    } else if (info.offset.x < -100) {
+      onSwipe('left');
+    } else if (info.offset.y < -80) {
+      onSwipe('up');
+    }
+  };
+
+  const isTop = index === 0;
+  const scale = isTop ? 1 : index === 1 ? 0.95 : 0.90;
+  const opacity = isTop ? 1 : index === 1 ? 0.6 : 0.3;
+  const yOffset = isTop ? 0 : index === 1 ? 8 : 16;
+
+  return (
+    <motion.div
+      style={{
+        x: isTop ? x : 0,
+        y: isTop ? y : yOffset,
+        rotate: isTop ? rotate : 0,
+        scale,
+        opacity,
+        zIndex: 20 - index,
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        touchAction: 'none',
+      }}
+      drag={isTop ? true : false}
+      dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+      dragElastic={0.7}
+      onDragEnd={isTop ? handleDragEnd : undefined}
+      animate={!isTop ? { scale, opacity, y: yOffset } : undefined}
+      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+    >
+      {/* Card */}
+      <div
+        className="w-full h-full rounded-3xl overflow-hidden relative"
+        style={{
+          boxShadow: '0 12px 40px rgba(0,0,0,0.15)',
+          aspectRatio: '3/4',
+        }}
+      >
+        {/* Photo */}
+        <img
+          src={profile.photo}
+          alt={profile.name}
+          className="w-full h-full object-cover"
+          draggable={false}
+        />
+
+        {/* Gradient Overlay */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(180deg, transparent 45%, rgba(35,35,35,0.88) 100%)',
+          }}
+        />
+
+        {/* Sparkle decoration */}
+        <div
+          className="absolute -top-5 -right-5 w-[100px] h-[100px] rounded-full"
+          style={{ backgroundColor: 'rgba(187,131,201,0.1)', filter: 'blur(20px)' }}
+        />
+
+        {/* Stamps */}
+        {isTop && (
+          <>
+            <motion.div
+              style={{ opacity: likeOpacity }}
+              className="absolute top-6 left-6 z-10"
+            >
+              <div
+                className="border-4 border-[#7DE0B3] rounded-lg px-4 py-2"
+                style={{ transform: 'rotate(-12deg)' }}
+              >
+                <span className="text-[#7DE0B3] text-5xl font-bold" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>LIKE</span>
+              </div>
+            </motion.div>
+            <motion.div
+              style={{ opacity: nopeOpacity }}
+              className="absolute top-6 right-6 z-10"
+            >
+              <div
+                className="border-4 border-[#E86A6A] rounded-lg px-4 py-2"
+                style={{ transform: 'rotate(12deg)' }}
+              >
+                <span className="text-[#E86A6A] text-5xl font-bold" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>NOPE</span>
+              </div>
+            </motion.div>
+            <motion.div
+              style={{ opacity: sparkOpacity }}
+              className="absolute top-1/2 left-1/2 z-10"
+            >
+              <div className="flex items-center gap-1" style={{ transform: 'translate(-50%, -50%)' }}>
+                <Star size={24} style={{ color: '#FFD700' }} />
+                <span
+                  className="text-4xl font-bold"
+                  style={{
+                    fontFamily: "'Outfit', system-ui, sans-serif",
+                    background: 'linear-gradient(135deg, #FFD700, #FFA500)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                  }}
+                >
+                  SPARK
+                </span>
+                <Star size={24} style={{ color: '#FFD700' }} />
+              </div>
+            </motion.div>
+          </>
+        )}
+
+        {/* Profile Info */}
+        <div className="absolute bottom-0 left-0 right-0 p-5">
+          {/* Badges row */}
+          <div className="flex items-center gap-1.5 mb-2">
+            {profile.verified && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold text-white" style={{ backgroundColor: '#7DE0B3' }}>
+                <Shield size={10} /> Verified
+              </span>
+            )}
+            {profile.activeNow && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold text-white" style={{ backgroundColor: '#5BC492' }}>
+                <Circle size={8} fill="white" /> Active
+              </span>
+            )}
+            {profile.isNew && (
+              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold text-white" style={{ backgroundColor: '#7BC4E8' }}>
+                New
+              </span>
+            )}
+          </div>
+
+          {/* Name + Age + Compatibility */}
+          <div className="flex items-start justify-between mb-1">
+            <h3 className="text-2xl font-semibold text-white" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.72px' }}>
+              {profile.name}, {profile.age}
+            </h3>
+            <span
+              className="px-3 py-1 rounded-full text-xs font-semibold"
+              style={{ backgroundColor: '#7DE0B3', color: '#232323' }}
+            >
+              {profile.compatibility}% Match
+            </span>
+          </div>
+
+          {/* Distance */}
+          <div className="flex items-center gap-1 mb-2">
+            <MapPin size={14} className="text-white" style={{ opacity: 0.8 }} />
+            <span className="text-xs font-medium text-white" style={{ opacity: 0.8 }}>
+              {profile.distance} km away
+            </span>
+          </div>
+
+          {/* Bio */}
+          <p className="text-sm text-white mb-3 line-clamp-2" style={{ opacity: 0.7 }}>
+            {profile.bio}
+          </p>
+
+          {/* Interests */}
+          <div className="flex flex-wrap gap-1.5">
+            {profile.interests.slice(0, 3).map((interest) => (
+              <span
+                key={interest}
+                className="px-2.5 py-0.5 rounded-full text-xs font-medium text-white"
+                style={{ backgroundColor: 'rgba(255,255,255,0.15)' }}
+              >
+                {interest}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+// ── Action Buttons ─────────────────────────────────────
+
+function ActionButtons({
+  onDislike,
+  onLike,
+  onSpark,
+  sparkCount,
+}: {
+  onDislike: () => void;
+  onLike: () => void;
+  onSpark: () => void;
+  sparkCount: number;
+}) {
+  return (
+    <div className="flex items-center justify-center gap-5">
+      {/* Dislike */}
+      <motion.button
+        whileTap={{ scale: 0.88 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+        onClick={onDislike}
+        className="w-14 h-14 rounded-full flex items-center justify-center"
+        style={{
+          backgroundColor: '#fff',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+        }}
+      >
+        <X size={24} strokeWidth={2.5} style={{ color: '#E86A6A' }} />
+      </motion.button>
+
+      {/* Like */}
+      <motion.button
+        whileTap={{ scale: 0.88 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+        onClick={onLike}
+        className="w-16 h-16 rounded-full flex items-center justify-center"
+        style={{
+          backgroundColor: '#fff',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.12)',
+        }}
+      >
+        <Heart size={28} strokeWidth={2.5} style={{ color: '#BB83C9' }} />
+      </motion.button>
+
+      {/* Spark */}
+      <motion.button
+        whileTap={{ scale: 0.88 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+        onClick={onSpark}
+        className="w-14 h-14 rounded-full flex items-center justify-center relative"
+        style={{
+          backgroundColor: '#fff',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+          opacity: sparkCount > 0 ? 1 : 0.5,
+        }}
+      >
+        <Star size={24} strokeWidth={2.5} style={{ color: '#7DE0B3' }} />
+        <span
+          className="absolute -top-1.5 -right-2 min-w-[18px] h-[18px] rounded-full flex items-center justify-center text-[10px] font-semibold text-white px-1"
+          style={{ backgroundColor: sparkCount > 0 ? '#7DE0B3' : '#E8E2D8' }}
+        >
+          {sparkCount}
+        </span>
+      </motion.button>
+    </div>
+  );
+}
+
+// ── Match Celebration Overlay ──────────────────────────
+
+function MatchOverlay({
+  matchProfile,
+  onDismiss,
+  onMessage,
+}: {
+  matchProfile: Profile;
+  onDismiss: () => void;
+  onMessage: () => void;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className="fixed inset-0 z-[300] flex flex-col items-center justify-center px-6"
+      style={{
+        background: 'radial-gradient(circle, rgba(187,131,201,0.4), rgba(125,224,179,0.3), rgba(247,244,238,0.4))',
+        backdropFilter: 'blur(8px)',
+      }}
+    >
+      {/* Photos */}
+      <div className="flex items-center justify-center mb-8">
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20, delay: 0.1 }}
+          className="w-24 h-24 rounded-full overflow-hidden border-[3px] border-[#BB83C9] -mr-4 z-10"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop&crop=face"
+            alt="You"
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20, delay: 0.2 }}
+          className="w-24 h-24 rounded-full overflow-hidden border-[3px] border-[#7DE0B3] -ml-4"
+        >
+          <img
+            src={matchProfile.photo}
+            alt={matchProfile.name}
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+      </div>
+
+      {/* Title */}
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0.3, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+        className="text-4xl font-bold text-[#232323] mb-2 text-center"
+        style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-1.08px' }}
+      >
+        It&apos;s a Match!
+      </motion.h2>
+
+      {/* Subtitle */}
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.5 }}
+        className="text-base text-center mb-10"
+        style={{ color: 'rgba(35,35,35,0.6)' }}
+      >
+        You and {matchProfile.name} liked each other
+      </motion.p>
+
+      {/* Buttons */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.6 }}
+        className="w-full max-w-[340px] space-y-3"
+      >
+        <button
+          onClick={onMessage}
+          className="w-full h-14 rounded-full text-base font-semibold text-white"
+          style={{ backgroundColor: '#BB83C9', boxShadow: '0 4px 16px rgba(187,131,201,0.3)' }}
+        >
+          Send a Message
+        </button>
+        <button
+          onClick={onDismiss}
+          className="w-full h-12 rounded-full text-base font-semibold text-[#232323]"
+          style={{ backgroundColor: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(12px)', border: '1.5px solid rgba(35,35,35,0.1)' }}
+        >
+          Keep Swiping
+        </button>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+// ── Empty State ────────────────────────────────────────
+
+function EmptyState({ onOpenFilters }: { onOpenFilters: () => void }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="flex-1 flex flex-col items-center justify-center px-10"
+      style={{
+        background: 'radial-gradient(circle at 30% 30%, rgba(187,131,201,0.35), transparent 60%), radial-gradient(circle at 70% 70%, rgba(125,224,179,0.3), transparent 60%)',
+      }}
+    >
+      <div className="w-40 h-40 mb-6 flex items-center justify-center">
+        <Sparkles size={80} style={{ color: '#BB83C9', opacity: 0.4 }} />
+      </div>
+      <h2 className="text-xl font-semibold text-[#232323] mb-2 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+        No one new around you
+      </h2>
+      <p className="text-sm text-center mb-6 max-w-[280px]" style={{ color: 'rgba(35,35,35,0.6)' }}>
+        Try expanding your filters or check back later — new people join every day.
+      </p>
+      <button
+        onClick={onOpenFilters}
+        className="w-full max-w-[280px] h-12 rounded-full text-sm font-semibold text-[#232323] mb-3"
+        style={{ backgroundColor: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(12px)', border: '1.5px solid rgba(35,35,35,0.1)' }}
+      >
+        Adjust Filters
+      </button>
+    </motion.div>
+  );
+}
+
+// ── Compatibility Card ─────────────────────────────────
+
+function CompatibilityCard({ profile, onLike }: { profile: Profile; onLike: () => void }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="flex items-center gap-4 p-4 rounded-2xl bg-white"
+      style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
+    >
+      <div className="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0">
+        <img src={profile.photo} alt={profile.name} className="w-full h-full object-cover" />
+      </div>
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center gap-2 mb-0.5">
+          <h3 className="text-lg font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+            {profile.name}, {profile.age}
+          </h3>
+        </div>
+        <span
+          className="inline-block px-2 py-0.5 rounded-full text-xs font-semibold mb-1.5"
+          style={{ backgroundColor: '#7DE0B3', color: '#232323' }}
+        >
+          {profile.compatibility}% Match
+        </span>
+        <div className="flex items-center gap-1 mb-1">
+          <MapPin size={12} style={{ color: 'rgba(35,35,35,0.4)' }} />
+          <span className="text-xs" style={{ color: 'rgba(35,35,35,0.4)' }}>{profile.distance} km</span>
+        </div>
+        <div className="flex flex-wrap gap-1">
+          {profile.interests.slice(0, 3).map((i) => (
+            <span key={i} className="px-2 py-0.5 rounded-full text-[10px] font-medium" style={{ backgroundColor: '#E8E2D8', color: '#232323' }}>{i}</span>
+          ))}
+        </div>
+      </div>
+      <motion.button
+        whileTap={{ scale: 0.88 }}
+        onClick={onLike}
+        className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
+        style={{ backgroundColor: '#fff', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}
+      >
+        <Heart size={22} strokeWidth={2.5} style={{ color: '#BB83C9' }} />
+      </motion.button>
+    </motion.div>
+  );
+}
+
+// ── Main Discover Component ────────────────────────────
+
+export default function Discover() {
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState<'discover' | 'compatibility'>('discover');
+  const [profiles, setProfiles] = useState<Profile[]>(MOCK_PROFILES);
+  const [filteredProfiles, setFilteredProfiles] = useState<Profile[]>(MOCK_PROFILES);
+  const [showFilters, setShowFilters] = useState(false);
+  const [matchProfile, setMatchProfile] = useState<Profile | null>(null);
+  const [sparkCount, setSparkCount] = useState(5);
+  const [filters, setFilters] = useState<Filters>({
+    maxDistance: 50,
+    ageMin: 22,
+    ageMax: 35,
+    verifiedOnly: false,
+    onlineNow: false,
+    goals: [],
+    interests: [],
+  });
+  const sheetRef = useRef<HTMLDivElement>(null);
+
+  // Apply filters
+  const applyFilters = useCallback(() => {
+    const filtered = MOCK_PROFILES.filter((p) => {
+      if (p.distance > filters.maxDistance) return false;
+      if (p.age < filters.ageMin || p.age > filters.ageMax) return false;
+      if (filters.verifiedOnly && !p.verified) return false;
+      if (filters.onlineNow && !p.activeNow) return false;
+      if (filters.interests.length > 0 && !filters.interests.some((i) => p.interests.includes(i))) return false;
+      return true;
+    });
+    setFilteredProfiles(filtered);
+    setProfiles(filtered);
+    setShowFilters(false);
+  }, [filters]);
+
+  const resetFilters = () => {
+    setFilters({
+      maxDistance: 50,
+      ageMin: 22,
+      ageMax: 35,
+      verifiedOnly: false,
+      onlineNow: false,
+      goals: [],
+      interests: [],
+    });
+    setFilteredProfiles(MOCK_PROFILES);
+    setProfiles(MOCK_PROFILES);
+  };
+
+  const handleSwipe = useCallback((direction: 'left' | 'right' | 'up') => {
+    if (profiles.length === 0) return;
+
+    const current = profiles[0];
+
+    if (direction === 'up') {
+      if (sparkCount > 0) {
+        setSparkCount((c) => c - 1);
+      } else {
+        return;
+      }
+    }
+
+    // Simulate mutual match on ~30% of right swipes
+    if (direction === 'right' && Math.random() < 0.3) {
+      setTimeout(() => {
+        triggerMatchCelebration();
+        setMatchProfile(current);
+      }, 400);
+    }
+
+    // Remove swiped profile
+    setProfiles((prev) => prev.slice(1));
+  }, [profiles, sparkCount]);
+
+  const handleLike = () => handleSwipe('right');
+  const handleDislike = () => handleSwipe('left');
+  const handleSpark = () => {
+    if (sparkCount > 0) handleSwipe('up');
+  };
+
+  // Dismiss bottom sheet on overlay tap
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (sheetRef.current && !sheetRef.current.contains(e.target as Node)) {
+        setShowFilters(false);
+      }
+    };
+    if (showFilters) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [showFilters]);
+
+  const visibleCards = profiles.slice(0, 3);
+  const highCompatProfiles = MOCK_PROFILES.filter((p) => p.compatibility > 80);
+  const filterMatchCount = filteredProfiles.length;
+
+  return (
+    <Layout hideNavbar hideFooter={false}>
+      {/* Tab Toggle */}
+      <div className="flex items-center justify-center gap-2 pt-3 pb-2 px-5">
+        <div
+          className="flex rounded-full p-1"
+          style={{ backgroundColor: '#E8E2D8' }}
+        >
+          <button
+            onClick={() => setActiveTab('discover')}
+            className="px-5 py-2 rounded-full text-sm font-semibold transition-all"
+            style={{
+              backgroundColor: activeTab === 'discover' ? '#BB83C9' : 'transparent',
+              color: activeTab === 'discover' ? '#fff' : '#232323',
+              opacity: activeTab === 'discover' ? 1 : 0.6,
+            }}
+          >
+            Discover
+          </button>
+          <button
+            onClick={() => setActiveTab('compatibility')}
+            className="px-5 py-2 rounded-full text-sm font-semibold transition-all"
+            style={{
+              backgroundColor: activeTab === 'compatibility' ? '#BB83C9' : 'transparent',
+              color: activeTab === 'compatibility' ? '#fff' : '#232323',
+              opacity: activeTab === 'compatibility' ? 1 : 0.6,
+            }}
+          >
+            Compatibility
+          </button>
+        </div>
+      </div>
+
+      {/* Filter FAB */}
+      {activeTab === 'discover' && (
+        <motion.button
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setShowFilters(true)}
+          className="absolute top-16 right-4 z-30 w-10 h-10 rounded-full flex items-center justify-center"
+          style={{ backgroundColor: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(12px)', boxShadow: '0 2px 12px rgba(0,0,0,0.08)' }}
+        >
+          <SlidersHorizontal size={18} className="text-[#232323]" strokeWidth={2} />
+        </motion.button>
+      )}
+
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col relative">
+        {activeTab === 'discover' ? (
+          <>
+            {/* Card Stack Area */}
+            <div className="flex-1 relative px-4 pb-4">
+              {profiles.length > 0 ? (
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <AnimatePresence>
+                    {visibleCards.map((profile, index) => (
+                      <SwipeCard
+                        key={profile.id}
+                        profile={profile}
+                        index={index}
+                        onSwipe={handleSwipe}
+                      />
+                    ))}
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <EmptyState onOpenFilters={() => setShowFilters(true)} />
+              )}
+            </div>
+
+            {/* Action Buttons */}
+            {profiles.length > 0 && (
+              <div className="pb-4 pt-2">
+                <ActionButtons
+                  onDislike={handleDislike}
+                  onLike={handleLike}
+                  onSpark={handleSpark}
+                  sparkCount={sparkCount}
+                />
+              </div>
+            )}
+          </>
+        ) : (
+          /* Compatibility Tab */
+          <div className="flex-1 px-5 pb-4 overflow-y-auto">
+            <p className="text-xs mb-4" style={{ color: 'rgba(35,35,35,0.4)' }}>
+              Refreshes daily • {highCompatProfiles.length} high-compatibility matches
+            </p>
+            <div className="space-y-3">
+              {highCompatProfiles.map((profile) => (
+                <CompatibilityCard
+                  key={profile.id}
+                  profile={profile}
+                  onLike={() => {
+                    setMatchProfile(profile);
+                    triggerMatchCelebration();
+                  }}
+                />
+              ))}
+            </div>
+            {highCompatProfiles.length === 0 && (
+              <div className="flex flex-col items-center justify-center py-16">
+                <p className="text-sm text-center" style={{ color: 'rgba(35,35,35,0.6)' }}>
+                  Check back tomorrow for new high-compatibility matches!
+                </p>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Filter Bottom Sheet */}
+      <AnimatePresence>
+        {showFilters && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[200]"
+          >
+            {/* Overlay */}
+            <div
+              className="absolute inset-0"
+              style={{ backgroundColor: 'rgba(35,35,35,0.4)', backdropFilter: 'blur(4px)' }}
+            />
+            {/* Sheet */}
+            <motion.div
+              ref={sheetRef}
+              initial={{ y: '100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '100%' }}
+              transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] as [number, number, number, number] }}
+              className="absolute bottom-0 left-0 right-0 rounded-t-3xl bg-white"
+              style={{ maxHeight: '85vh' }}
+            >
+              <FilterSheet
+                filters={filters}
+                onChange={setFilters}
+                onApply={applyFilters}
+                onReset={resetFilters}
+                matchCount={filterMatchCount}
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Match Celebration */}
+      <AnimatePresence>
+        {matchProfile && (
+          <MatchOverlay
+            matchProfile={matchProfile}
+            onDismiss={() => setMatchProfile(null)}
+            onMessage={() => {
+              setMatchProfile(null);
+              navigate(`/chat/${matchProfile.id}`);
+            }}
+          />
+        )}
+      </AnimatePresence>
     </Layout>
   );
 }
