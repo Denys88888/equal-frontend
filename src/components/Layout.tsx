@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { useLocation } from 'react-router';
+import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
@@ -43,9 +44,17 @@ export default function Layout({
           />
         )}
 
-        <main className="flex-1 flex flex-col">
-          {children}
-        </main>
+        <AnimatePresence mode="wait">
+          <motion.main
+            key={location.pathname}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0, transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] } }}
+            exit={{ opacity: 0, y: -10, transition: { duration: 0.2, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] } }}
+            className="flex-1 flex flex-col"
+          >
+            {children}
+          </motion.main>
+        </AnimatePresence>
 
         {!shouldHideFooter && <Footer />}
       </div>

@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router'
+import { Routes, Route, useLocation } from 'react-router'
 import Welcome from './pages/Welcome'
 import Onboarding from './pages/Onboarding'
 import Discover from './pages/Discover'
@@ -8,10 +8,12 @@ import Profile from './pages/Profile'
 import Clubs from './pages/Clubs'
 import Events from './pages/Events'
 import Settings from './pages/Settings'
+import Admin from './pages/Admin'
 
-export default function App() {
+function AnimatedRoutes() {
+  const location = useLocation()
   return (
-    <Routes>
+    <Routes location={location} key={location.pathname}>
       <Route path="/" element={<Welcome />} />
       <Route path="/onboarding" element={<Onboarding />} />
       <Route path="/discover" element={<Discover />} />
@@ -21,6 +23,11 @@ export default function App() {
       <Route path="/clubs" element={<Clubs />} />
       <Route path="/events" element={<Events />} />
       <Route path="/settings" element={<Settings />} />
+      <Route path="/admin" element={<Admin />} />
     </Routes>
   )
+}
+
+export default function App() {
+  return <AnimatedRoutes />
 }
