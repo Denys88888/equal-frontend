@@ -48,6 +48,31 @@ module.exports = {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        mauve: {
+          DEFAULT: "#BB83C9",
+          light: "#D4A8DE",
+          dark: "#9A63A8",
+        },
+        emerald: {
+          DEFAULT: "#7DE0B3",
+          light: "#A8EBCC",
+          dark: "#5BC492",
+        },
+        charcoal: {
+          DEFAULT: "#232323",
+          light: "#3A3A3A",
+        },
+        linen: {
+          DEFAULT: "#F7F4EE",
+          dark: "#E8E2D8",
+        },
+        error: "#E86A6A",
+        warning: "#F0B84A",
+        sky: "#7BC4E8",
+      },
+      fontFamily: {
+        outfit: ['Outfit', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
       },
       borderRadius: {
         xl: "calc(var(--radius) + 4px)",
@@ -58,6 +83,13 @@ module.exports = {
       },
       boxShadow: {
         xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        card: "0 2px 12px rgba(0,0,0,0.04)",
+        "card-elevated": "0 8px 32px rgba(0,0,0,0.08)",
+        "nav-elevated": "0 -4px 24px rgba(0,0,0,0.06)",
+        cta: "0 4px 16px rgba(187,131,201,0.3)",
+        "swipe-btn": "0 4px 20px rgba(0,0,0,0.12)",
+        "profile-card": "0 12px 40px rgba(0,0,0,0.15)",
+        modal: "0 20px 60px rgba(0,0,0,0.2)",
       },
       keyframes: {
         "accordion-down": {
@@ -72,11 +104,26 @@ module.exports = {
           "0%,70%,100%": { opacity: "1" },
           "20%,50%": { opacity: "0" },
         },
+        "logo-breathe": {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.03)" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-6px)" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "caret-blink": "caret-blink 1.25s ease-out infinite",
+        "logo-breathe": "logo-breathe 3s ease-in-out infinite",
+        float: "float 4s ease-in-out infinite",
+        shimmer: "shimmer 1.5s linear infinite",
       },
     },
   },
