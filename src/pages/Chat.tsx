@@ -21,8 +21,6 @@ import {
   Rose,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useToast } from '@/hooks/useToast';
-import ReportDialog from '@/components/ReportDialog';
 
 // ── Types ────────────────────────────────────────────────
 
@@ -798,11 +796,8 @@ export default function Chat() {
   const [showGiftSheet, setShowGiftSheet] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [reportDialogOpen, setReportDialogOpen] = useState(false);
   const [toast, setToast] = useState({ message: '', visible: false });
   const [showIcebreakers, setShowIcebreakers] = useState(conversation.messages.length < 5);
-
-  const { showToast: showGlobalToast } = useToast();
 
   const showToast = useCallback((message: string) => {
     setToast({ message, visible: true });
@@ -944,10 +939,7 @@ export default function Chat() {
     showToast('User blocked');
     setTimeout(() => navigate('/matches'), 1500);
   };
-  const handleReport = () => setReportDialogOpen(true);
-  const handleReportSubmit = (_reason: string, _description: string) => {
-    showGlobalToast('success', 'Report submitted. We\'ll review it shortly.');
-  };
+  const handleReport = () => showToast('Report submitted');
 
   const groupedMessages = useMemo(() => groupMessagesByDate(messages), [messages]);
   const hasText = inputText.trim().length > 0;
@@ -1194,14 +1186,6 @@ export default function Chat() {
           isOpen={showGiftSheet}
           onClose={() => setShowGiftSheet(false)}
           onSendGift={handleSendGift}
-        />
-
-        {/* ── Report Dialog ── */}
-        <ReportDialog
-          open={reportDialogOpen}
-          onOpenChange={setReportDialogOpen}
-          userName={conversation.matchName}
-          onSubmit={handleReportSubmit}
         />
 
         {/* ── Toast ── */}
