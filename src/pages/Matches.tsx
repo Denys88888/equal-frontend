@@ -1,8 +1,9 @@
 import { useState, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence, type PanInfo } from 'framer-motion';
-import { Search, SlidersHorizontal, Trash2, Circle } from 'lucide-react';
+import { Search, SlidersHorizontal, Trash2, Circle, Sparkles } from 'lucide-react';
 import Layout from '@/components/Layout';
+import { useToast } from '@/hooks/useToast';
 
 // ── Types ──────────────────────────────────────────────
 
@@ -457,6 +458,7 @@ function EmptyState() {
 
 export default function Matches() {
   const navigate = useNavigate();
+  const { showToast } = useToast();
   const [matches, setMatches] = useState<Match[]>(MOCK_MATCHES);
   const [searchQuery, setSearchQuery] = useState('');
   const [showSearch, setShowSearch] = useState(false);
@@ -474,6 +476,12 @@ export default function Matches() {
     setMatches((prev) => prev.filter((m) => m.id !== id));
   }, []);
 
+  const handleSimulateMatch = useCallback(() => {
+    const names = ['Ava', 'Mia', 'Isabella', 'Zoe', 'Luna', 'Chloe'];
+    const randomName = names[Math.floor(Math.random() * names.length)];
+    showToast('match', `It's a Match with ${randomName}! 🎉`);
+  }, [showToast]);
+
   const totalUnread = conversations.reduce((sum, m) => sum + m.unreadCount, 0);
 
   if (matches.length === 0) {
@@ -489,6 +497,15 @@ export default function Matches() {
       title="Matches"
       rightAction={
         <div className="flex items-center gap-2">
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            onClick={handleSimulateMatch}
+            className="w-10 h-10 rounded-full flex items-center justify-center"
+            style={{ backgroundColor: 'rgba(187,131,201,0.12)', backdropFilter: 'blur(12px)' }}
+            title="Simulate New Match"
+          >
+            <Sparkles size={20} style={{ color: '#BB83C9' }} strokeWidth={2} />
+          </motion.button>
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={() => setShowSearch(!showSearch)}
