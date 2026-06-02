@@ -1024,6 +1024,7 @@ export default function Chat() {
             <motion.button
               whileTap={{ scale: 0.9 }}
               transition={{ duration: 0.12 }}
+              onClick={() => navigate(`/video/${matchId}`)}
               className="w-10 h-10 rounded-full flex items-center justify-center"
             >
               <Video size={22} style={{ color: 'rgba(35,35,35,0.6)' }} strokeWidth={2} />
