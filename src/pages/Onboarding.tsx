@@ -11,13 +11,10 @@ import {
   Puzzle,
   Compass,
   MapPin,
-  Sparkles,
   PlayCircle,
   Info,
   Check,
 } from 'lucide-react';
-import { cn } from '@/lib/utils';
-
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
 /* ------------------------------------------------------------------ */
@@ -622,15 +619,6 @@ function StepPhotos({
     ...Array(emptySlots).fill(null),
   ];
 
-  const handleReorder = (newOrder: (PhotoItem | null)[]) => {
-    const cleaned = newOrder.filter((item): item is PhotoItem => item !== null);
-    // We need to update via setData indirectly — the parent handles updates
-    // So we use a workaround: update the photos array
-    // Since we can't call parent's update directly for reorder, we set via a ref hack
-    // Actually, let's just not use Reorder and instead use simple ordering
-    // Reorder works with state at this level
-  };
-
   return (
     <div className="flex flex-col gap-6">
       {/* Photo tips card */}
@@ -654,12 +642,8 @@ function StepPhotos({
       <Reorder.Group
         axis="y"
         values={gridItems}
-        onReorder={(newOrder) => {
-          const cleaned = newOrder.filter((item): item is PhotoItem => item !== null);
-          // We use a DOM event to communicate up since Reorder needs local state
-          // Actually, let's use a different approach: drag just within visual
-          // For simplicity, we'll make it a visual-only grid without reorder
-          // since the parent manages state tightly
+        onReorder={() => {
+          // Photo reordering would update state here
         }}
         className="grid grid-cols-3 gap-2"
         style={{ listStyle: 'none' }}
