@@ -1,0 +1,15 @@
+{
+  "name": "Equal - Dating on Pi Network",
+  "short_name": "Equal",
+  "description": "The first dating app on Pi Network where connections are earned, not bought.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F7F4EE",
+  "theme_color": "#BB83C9",
+  "orientation": "portrait",
+  "scope": "/",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
