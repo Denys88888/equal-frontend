@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion';
 import { Home, Search, Heart } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const easeOutExpo = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
 export default function NotFound() {
+  const { t } = useTranslation();
+
   const handleGoHome = () => {
     window.location.hash = '/';
     window.location.reload();
@@ -88,7 +91,7 @@ export default function NotFound() {
           className="text-xl font-bold text-[#232323] mb-3"
           style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
         >
-          Page not found
+          {t('common.error')}
         </motion.h2>
 
         {/* Description */}
@@ -157,7 +160,7 @@ export default function NotFound() {
           }}
         >
           <Home size={18} strokeWidth={2} />
-          Go Home
+          {t('common.home')}
         </motion.button>
 
         {/* Footer branding */}

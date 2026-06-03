@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { motion, AnimatePresence, type PanInfo } from 'framer-motion';
 import { Search, SlidersHorizontal, Trash2, Circle, Sparkles, ExternalLink, X, Utensils } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { useTranslation } from 'react-i18next';
 import Layout from '@/components/Layout';
 import PartnerOffers from '@/components/PartnerOffers';
 import SkeletonLoader from '@/components/SkeletonLoader';
@@ -420,6 +421,7 @@ function ConversationRow({
 
 function EmptyState() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <motion.div
@@ -442,17 +444,17 @@ function EmptyState() {
         </svg>
       </motion.div>
       <h2 className="text-xl font-semibold text-[#232323] mb-2 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-        No matches yet
+        {t('matches.noMatches')}
       </h2>
       <p className="text-sm text-center mb-8 max-w-[260px]" style={{ color: 'rgba(35,35,35,0.6)' }}>
-        Keep swiping! When someone likes you back, they&apos;ll appear here.
+        {t('matches.startSwiping')}
       </p>
       <button
         onClick={() => navigate('/discover')}
         className="w-full max-w-[280px] h-14 rounded-full text-base font-semibold text-white"
         style={{ backgroundColor: '#BB83C9', boxShadow: '0 4px 16px rgba(187,131,201,0.3)' }}
       >
-        Start Swiping
+        {t('matches.startSwiping')}
       </button>
     </motion.div>
   );
@@ -714,6 +716,7 @@ function MatchCelebration({
 
 export default function Matches() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { showToast } = useToast();
   const [matches, setMatches] = useState<Match[]>(MOCK_MATCHES);
   const [searchQuery, setSearchQuery] = useState('');
@@ -780,7 +783,7 @@ export default function Matches() {
 
   if (!isLoading && matches.length === 0) {
     return (
-      <Layout title="Matches">
+      <Layout title={t('matches.title')}>
         <EmptyState />
       </Layout>
     );
@@ -789,7 +792,7 @@ export default function Matches() {
   return (
     <>
       <Layout
-        title="Matches"
+        title={t('matches.title')}
         rightAction={
           <div className="flex items-center gap-2">
             <motion.button
@@ -865,7 +868,7 @@ export default function Matches() {
                 className="text-[11px] font-semibold uppercase tracking-widest mb-3 block"
                 style={{ color: 'rgba(35,35,35,0.4)', fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '0.44px' }}
               >
-                New Matches
+                {t('matches.newMatches')}
               </motion.span>
               <div
                 className="flex gap-4 overflow-x-auto pb-2 -mx-5 px-5"
@@ -897,7 +900,7 @@ export default function Matches() {
                     className="text-xl font-semibold text-[#232323]"
                     style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
                   >
-                    Messages
+                    {t('matches.messages')}
                   </h2>
                   <span className="text-xs" style={{ color: 'rgba(35,35,35,0.4)' }}>
                     ({conversations.length})

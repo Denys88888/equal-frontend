@@ -15,6 +15,7 @@ import {
   Info,
   Check,
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
 /* ------------------------------------------------------------------ */
@@ -162,6 +163,7 @@ const stepVariants = {
 
 export default function Onboarding() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [step, setStep] = useState(1);
   const [direction, setDirection] = useState(1);
   const [isCompleting, setIsCompleting] = useState(false);
@@ -327,7 +329,7 @@ export default function Onboarding() {
               width: canSkip ? 'auto' : 0,
             }}
           >
-            Skip
+            {t('onboarding.skip')}
           </button>
         </motion.header>
 
@@ -454,7 +456,7 @@ export default function Onboarding() {
                 cursor: stepValid ? 'pointer' : 'not-allowed',
               }}
             >
-              {isCompleting ? 'Welcome to Equal ✨' : step === 5 ? 'Finish' : 'Continue'}
+              {isCompleting ? 'Welcome to Equal ✨' : step === 5 ? t('onboarding.finish') : t('onboarding.next')}
             </motion.button>
           </div>
         </div>

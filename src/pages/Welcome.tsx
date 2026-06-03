@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 import { Shield, Lock, Heart } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const easeSmooth = [0.4, 0, 0.2, 1] as [number, number, number, number];
 const easeOutExpo = [0.16, 1, 0.3, 1] as [number, number, number, number];
@@ -111,6 +112,7 @@ function TrustFooter() {
 
 export default function Welcome() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
 
   const handlePiLogin = () => {
@@ -122,7 +124,7 @@ export default function Welcome() {
     }, 1500);
   };
 
-  const headlineWords = ['Where', 'affection', 'has', 'no', 'price'];
+  const headlineWords = t('welcome.slogan').split(' ');
 
   return (
     <div
@@ -220,7 +222,7 @@ export default function Welcome() {
             marginRight: 'auto',
           }}
         >
-          The first dating app on Pi Network where connections are earned, not bought. Every match is real. Every spark is genuine.
+          {t('welcome.subtitle')}
         </motion.p>
 
         {/* Pi Login CTA */}
@@ -252,7 +254,7 @@ export default function Welcome() {
             ) : (
               <>
                 <PiLogo />
-                <span>Continue with Pi Network</span>
+                <span>{t('welcome.piLogin')}</span>
               </>
             )}
           </motion.button>
@@ -272,7 +274,7 @@ export default function Welcome() {
               fontFamily: "'Outfit', system-ui, sans-serif",
             }}
           >
-            Use email instead
+            {t('welcome.emailLogin')}
           </button>
         </motion.div>
 

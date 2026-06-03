@@ -26,6 +26,7 @@ import {
   HelpCircle,
 } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
+import { useTranslation } from 'react-i18next';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Textarea } from '@/components/ui/textarea';
 import Layout from '@/components/Layout';
@@ -168,6 +169,7 @@ function TrustScoreBar({ score }: { score: number }) {
 /* ───────────────────── Spark Balance Card ───────────────────── */
 
 function SparkBalanceCard({ balance }: { balance: number }) {
+  const { t } = useTranslation();
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -183,7 +185,7 @@ function SparkBalanceCard({ balance }: { balance: number }) {
             <Zap size={22} className="text-[#7DE0B3]" strokeWidth={2} />
           </div>
           <h3 className="text-lg font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-            Your Sparks
+            {t('profile.sparks')}
           </h3>
         </div>
         <span className="text-xl font-bold text-[#7DE0B3]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
@@ -271,6 +273,7 @@ function PhotoLightbox({
 
 export default function Profile() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [isEditMode, setIsEditMode] = useState(false);
   const [bio, setBio] = useState(mockUser.bio);
   const [showBioEdit, setShowBioEdit] = useState(false);
@@ -379,7 +382,7 @@ export default function Profile() {
         >
           <div className="flex items-center justify-between mb-5">
             <h3 className="text-base font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              Trust Score
+              {t('profile.trustScore')}
             </h3>
             <button
               className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-semibold text-[#232323]"
@@ -436,7 +439,7 @@ export default function Profile() {
           <div className="mb-6">
             <div className="flex items-center justify-between mb-2">
               <h4 className="text-base font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                About
+                {t('profile.bio')}
               </h4>
               <motion.button
                 whileTap={{ scale: 0.9 }}
@@ -469,7 +472,7 @@ export default function Profile() {
           <div className="mb-6">
             <div className="flex items-center justify-between mb-3">
               <h4 className="text-base font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                Interests
+                {t('profile.interests')}
               </h4>
               <Pencil size={16} className="text-[#BB83C9] opacity-50" strokeWidth={2} />
             </div>
@@ -521,7 +524,7 @@ export default function Profile() {
               </span>
             </div>
             <button className="text-base font-semibold text-[#BB83C9]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              Edit
+              {t('profile.edit')}
             </button>
           </div>
           <div className="grid grid-cols-3 gap-2">
@@ -565,7 +568,7 @@ export default function Profile() {
         >
           <div className="px-5 mb-3">
             <h4 className="text-base font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              Achievements
+              {t('profile.badges')}
             </h4>
           </div>
           <div
@@ -623,7 +626,7 @@ export default function Profile() {
             <div className="flex items-center gap-3">
               <Settings size={22} className="text-[#232323] opacity-60" strokeWidth={2} />
               <span className="text-base font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                Settings
+                {t('profile.settings')}
               </span>
             </div>
             <ChevronRight size={20} className="text-[#232323] opacity-30" strokeWidth={2} />
@@ -639,7 +642,7 @@ export default function Profile() {
         <DialogContent className="rounded-[20px] max-w-[340px] bg-white border-0" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
           <DialogHeader>
             <DialogTitle className="text-xl font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              Edit Bio
+              {t('profile.edit')}
             </DialogTitle>
           </DialogHeader>
           <Textarea

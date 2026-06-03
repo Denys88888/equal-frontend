@@ -20,6 +20,7 @@ import {
   Sparkles,
   Rose,
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/useToast';
 import ReportDialog from '@/components/ReportDialog';
@@ -411,6 +412,7 @@ function DateDivider({ date }: { date: string }) {
 // ── IcebreakerChips ──────────────────────────────────────
 
 function IcebreakerChips({ chips, onSend }: { chips: string[]; onSend: (text: string) => void }) {
+  const { t } = useTranslation();
   return (
     <div className="px-4 mb-3">
       <motion.p
@@ -420,7 +422,7 @@ function IcebreakerChips({ chips, onSend }: { chips: string[]; onSend: (text: st
         className="text-xs font-medium mb-2"
         style={{ color: 'rgba(35,35,35,0.4)', fontFamily: "'Outfit', system-ui, sans-serif" }}
       >
-        Start the conversation
+        {t('chat.icebreakers')}
       </motion.p>
       <div className="flex gap-2 overflow-x-auto pb-1 snap-x snap-mandatory" style={{ scrollbarWidth: 'none' }}>
         {chips.map((chip, i) => (
@@ -468,6 +470,7 @@ function GiftBottomSheet({
   onClose: () => void;
   onSendGift: (giftType: string, giftName: string) => void;
 }) {
+  const { t } = useTranslation();
   const [selected, setSelected] = useState(0);
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -530,7 +533,7 @@ function GiftBottomSheet({
                       className="text-base font-semibold mt-2"
                       style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: '#232323' }}
                     >
-                      {gift.name}
+                      {gift.icon === 'coffee' ? t('chat.giftCoffee') : gift.name}
                     </span>
                     <div className="flex items-center gap-1 mt-1">
                       {gift.price !== 'Free' && (
@@ -589,7 +592,7 @@ function GiftBottomSheet({
                     Processing...
                   </div>
                 ) : (
-                  `Send ${GIFT_OPTIONS[selected].name}`
+                  `Send ${GIFT_OPTIONS[selected].icon === 'coffee' ? t('chat.giftCoffee') : GIFT_OPTIONS[selected].name}`
                 )}
               </motion.button>
             </div>
@@ -682,6 +685,7 @@ function ChatDropdownMenu({
   onBlock: () => void;
   onReport: () => void;
 }) {
+  const { t } = useTranslation();
   return (
     <AnimatePresence>
       {isOpen && (
@@ -729,7 +733,7 @@ function ChatDropdownMenu({
             >
               <UserX size={18} style={{ color: '#232323' }} />
               <span className="text-sm font-medium" style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: '#232323' }}>
-                Block User
+                {t('chat.block')}
               </span>
             </button>
             <div className="h-px" style={{ backgroundColor: '#E8E2D8' }} />
@@ -739,7 +743,7 @@ function ChatDropdownMenu({
             >
               <Flag size={18} style={{ color: '#E86A6A' }} />
               <span className="text-sm font-medium" style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: '#E86A6A' }}>
-                Report
+                {t('chat.report')}
               </span>
             </button>
           </motion.div>
@@ -790,6 +794,7 @@ function Toast({ message, isVisible, onClose }: { message: string; isVisible: bo
 export default function Chat() {
   const { matchId } = useParams<{ matchId: string }>();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -1209,7 +1214,7 @@ export default function Chat() {
                     handleSendMessage(inputText);
                   }
                 }}
-                placeholder="Type a message..."
+                placeholder={t('chat.typeMessage')}
                 rows={1}
                 className="w-full resize-none outline-none px-4 py-2.5 text-base"
                 style={{

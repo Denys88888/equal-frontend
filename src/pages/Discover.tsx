@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { motion, AnimatePresence, useMotionValue, useTransform, type PanInfo } from 'framer-motion';
 import { X, Heart, Star, MapPin, SlidersHorizontal, Shield, Circle, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { useTranslation } from 'react-i18next';
 import Layout from '@/components/Layout';
 import SkeletonLoader from '@/components/SkeletonLoader';
 import { discoverApi } from '@/api/discover';
@@ -110,6 +111,7 @@ function FilterSheet({
   onReset: () => void;
   matchCount: number;
 }) {
+  const { t } = useTranslation();
   return (
     <div className="flex flex-col h-full">
       {/* Handle */}
@@ -119,7 +121,7 @@ function FilterSheet({
 
       {/* Title */}
       <h2 className="text-xl font-semibold text-[#232323] px-6 mb-6" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
-        Filter Matches
+        {t('discover.filter')}
       </h2>
 
       <div className="flex-1 overflow-y-auto px-6 space-y-6 pb-4">
@@ -314,6 +316,7 @@ function SwipeCard({
   index: number;
   onSwipe: (direction: 'left' | 'right' | 'up') => void;
 }) {
+  const { t } = useTranslation();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotate = useTransform(x, [-200, 200], [-8, 8]);
@@ -398,7 +401,7 @@ function SwipeCard({
                 className="border-4 border-[#7DE0B3] rounded-lg px-4 py-2"
                 style={{ transform: 'rotate(-12deg)' }}
               >
-                <span className="text-[#7DE0B3] text-5xl font-bold" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>LIKE</span>
+                <span className="text-[#7DE0B3] text-5xl font-bold" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>{t('discover.like').toUpperCase()}</span>
               </div>
             </motion.div>
             <motion.div
@@ -409,7 +412,7 @@ function SwipeCard({
                 className="border-4 border-[#E86A6A] rounded-lg px-4 py-2"
                 style={{ transform: 'rotate(12deg)' }}
               >
-                <span className="text-[#E86A6A] text-5xl font-bold" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>NOPE</span>
+                <span className="text-[#E86A6A] text-5xl font-bold" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>{t('discover.dislike').toUpperCase()}</span>
               </div>
             </motion.div>
             <motion.div
@@ -427,7 +430,7 @@ function SwipeCard({
                     WebkitTextFillColor: 'transparent',
                   }}
                 >
-                  SPARK
+                  {t('discover.spark').toUpperCase()}
                 </span>
                 <Star size={24} style={{ color: '#FFD700' }} />
               </div>
@@ -465,7 +468,7 @@ function SwipeCard({
               className="px-3 py-1 rounded-full text-xs font-semibold"
               style={{ backgroundColor: '#7DE0B3', color: '#232323' }}
             >
-              {profile.compatibility}% Match
+              {t('discover.matchPercent', { percent: profile.compatibility })}
             </span>
           </div>
 
@@ -473,7 +476,7 @@ function SwipeCard({
           <div className="flex items-center gap-1 mb-2">
             <MapPin size={14} className="text-white" style={{ opacity: 0.8 }} />
             <span className="text-xs font-medium text-white" style={{ opacity: 0.8 }}>
-              {profile.distance} km away
+              {t('discover.kmAway', { distance: profile.distance })}
             </span>
           </div>
 
@@ -702,6 +705,7 @@ function EmptyState({ onOpenFilters }: { onOpenFilters: () => void }) {
 // ── Compatibility Card ─────────────────────────────────
 
 function CompatibilityCard({ profile, onLike }: { profile: Profile; onLike: () => void }) {
+  const { t } = useTranslation();
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
@@ -722,11 +726,11 @@ function CompatibilityCard({ profile, onLike }: { profile: Profile; onLike: () =
           className="inline-block px-2 py-0.5 rounded-full text-xs font-semibold mb-1.5"
           style={{ backgroundColor: '#7DE0B3', color: '#232323' }}
         >
-          {profile.compatibility}% Match
+          {t('discover.matchPercent', { percent: profile.compatibility })}
         </span>
         <div className="flex items-center gap-1 mb-1">
           <MapPin size={12} style={{ color: 'rgba(35,35,35,0.4)' }} />
-          <span className="text-xs" style={{ color: 'rgba(35,35,35,0.4)' }}>{profile.distance} km</span>
+          <span className="text-xs" style={{ color: 'rgba(35,35,35,0.4)' }}>{t('discover.kmAway', { distance: profile.distance })}</span>
         </div>
         <div className="flex flex-wrap gap-1">
           {profile.interests.slice(0, 3).map((i) => (
@@ -750,6 +754,7 @@ function CompatibilityCard({ profile, onLike }: { profile: Profile; onLike: () =
 
 export default function Discover() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<'discover' | 'compatibility'>('discover');
   const [profiles, setProfiles] = useState<Profile[]>(MOCK_PROFILES);
   const [filteredProfiles, setFilteredProfiles] = useState<Profile[]>(MOCK_PROFILES);
@@ -766,7 +771,7 @@ export default function Discover() {
     interests: [],
   });
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [_error, _setError] = useState<string | null>(null);
   const sheetRef = useRef<HTMLDivElement>(null);
 
   // Fetch profiles from API on mount
@@ -897,7 +902,7 @@ export default function Discover() {
               opacity: activeTab === 'discover' ? 1 : 0.6,
             }}
           >
-            Discover
+            {t('nav.discover')}
           </button>
           <button
             onClick={() => setActiveTab('compatibility')}
@@ -908,7 +913,7 @@ export default function Discover() {
               opacity: activeTab === 'compatibility' ? 1 : 0.6,
             }}
           >
-            Compatibility
+            {t('discover.compatibility')}
           </button>
         </div>
       </div>
