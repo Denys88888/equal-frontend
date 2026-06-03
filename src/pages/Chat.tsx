@@ -23,6 +23,9 @@ import {
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/useToast';
 import ReportDialog from '@/components/ReportDialog';
+import SkeletonLoader from '@/components/SkeletonLoader';
+import { messagesApi } from '@/api/messages';
+import type { Message as ApiMessage } from '@/api/types';
 
 // ── Types ────────────────────────────────────────────────
 
@@ -801,6 +804,54 @@ export default function Chat() {
   const [reportDialogOpen, setReportDialogOpen] = useState(false);
   const [toast, setToast] = useState({ message: '', visible: false });
   const [showIcebreakers, setShowIcebreakers] = useState(conversation.messages.length < 5);
+  const [isLoading, setIsLoading] = useState(true);
+  const [matchInfo, setMatchInfo] = useState({
+    matchName: conversation.matchName,
+    matchAvatar: conversation.matchAvatar,
+    isOnline: conversation.isOnline,
+    isVerified: conversation.isVerified,
+    sharedInterests: conversation.sharedInterests,
+    icebreakers: conversation.icebreakers,
+  });
+
+  // Load messages from API on mount
+  useEffect(() => {
+    if (!matchId) {
+      setIsLoading(false);
+      return;
+    }
+    let cancelled = false;
+    setIsLoading(true);
+    messagesApi.getMessages(matchId)
+      .then(data => {
+        if (cancelled) return;
+        if (data.messages.length > 0) {
+          // Convert API message timestamps from string to Date
+          const converted: Message[] = data.messages.map((m: ApiMessage) => ({
+            ...m,
+            timestamp: new Date(m.timestamp),
+          }));
+          setMessages(converted);
+          setShowIcebreakers(converted.length < 5);
+        }
+        setMatchInfo({
+          matchName: data.matchName || conversation.matchName,
+          matchAvatar: data.matchAvatar || conversation.matchAvatar,
+          isOnline: data.isOnline ?? conversation.isOnline,
+          isVerified: data.isVerified ?? conversation.isVerified,
+          sharedInterests: data.sharedInterests?.length ? data.sharedInterests : conversation.sharedInterests,
+          icebreakers: data.icebreakers?.length ? data.icebreakers : conversation.icebreakers,
+        });
+        setIsLoading(false);
+      })
+      .catch(err => {
+        if (cancelled) return;
+        console.log('Messages API not available, using mock data', err);
+        setMessages(conversation.messages);
+        setIsLoading(false);
+      });
+    return () => { cancelled = true; };
+  }, [matchId]);
 
   const { showToast: showGlobalToast } = useToast();
 
@@ -854,17 +905,9 @@ export default function Chat() {
     }
   }, [messages.length]);
 
-  const handleSendMessage = useCallback((text: string) => {
+  const handleSendMessage = useCallback(async (text: string) => {
     if (!text.trim()) return;
-    const newMsg: Message = {
-      id: `msg-${Date.now()}`,
-      type: 'text',
-      content: text.trim(),
-      sender: 'me',
-      timestamp: new Date(),
-      read: false,
-    };
-    setMessages((prev) => [...prev, newMsg]);
+    const trimmed = text.trim();
     setInputText('');
     setShowIcebreakers(false);
 
@@ -872,14 +915,40 @@ export default function Chat() {
     if (textareaRef.current) {
       textareaRef.current.style.height = '40px';
     }
-  }, []);
+
+    // Try API first, fallback to local
+    try {
+      if (matchId) {
+        const msg = await messagesApi.sendMessage(matchId, trimmed, 'text');
+        const converted: Message = {
+          ...msg,
+          timestamp: new Date(msg.timestamp),
+        };
+        setMessages((prev) => [...prev, converted]);
+        return;
+      }
+    } catch {
+      console.log('Send message API failed, using local fallback');
+    }
+
+    // Local fallback
+    const newMsg: Message = {
+      id: `msg-${Date.now()}`,
+      type: 'text',
+      content: trimmed,
+      sender: 'me',
+      timestamp: new Date(),
+      read: false,
+    };
+    setMessages((prev) => [...prev, newMsg]);
+  }, [matchId]);
 
   const handleSendGift = useCallback(
     (giftType: string, giftName: string) => {
       const giftMsg: Message = {
         id: `gift-${Date.now()}`,
         type: 'gift',
-        content: `You sent ${conversation.matchName} a ${giftName.toLowerCase()} ${giftType === 'coffee' ? '\u2615' : giftType === 'rose' ? '\ud83c\udf39' : giftType === 'song' ? '\ud83c\udfb5' : '\u2728'}`,
+        content: `You sent ${matchInfo.matchName} a ${giftName.toLowerCase()} ${giftType === 'coffee' ? '\u2615' : giftType === 'rose' ? '\ud83c\udf39' : giftType === 'song' ? '\ud83c\udfb5' : '\u2728'}`,
         sender: 'me',
         timestamp: new Date(),
         giftType: giftType as 'coffee' | 'rose' | 'song' | 'spark',
@@ -888,7 +957,7 @@ export default function Chat() {
       setMessages((prev) => [...prev, giftMsg]);
       showToast(`${giftName} sent!`);
     },
-    [conversation.matchName, showToast]
+    [matchInfo.matchName, showToast]
   );
 
   const handleAutoResize = useCallback(() => {
@@ -985,15 +1054,15 @@ export default function Chat() {
             >
               <div className="relative flex-shrink-0">
                 <img
-                  src={conversation.matchAvatar}
-                  alt={conversation.matchName}
+                  src={matchInfo.matchAvatar}
+                  alt={matchInfo.matchName}
                   className="w-10 h-10 rounded-full object-cover"
-                  style={{ border: conversation.isOnline ? '2px solid #BB83C9' : '2px solid transparent' }}
+                  style={{ border: matchInfo.isOnline ? '2px solid #BB83C9' : '2px solid transparent' }}
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${conversation.matchName}&background=BB83C9&color=fff`;
+                    (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${matchInfo.matchName}&background=BB83C9&color=fff`;
                   }}
                 />
-                {conversation.isOnline && (
+                {matchInfo.isOnline && (
                   <div
                     className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-[#7DE0B3] border-2 border-white"
                   />
@@ -1004,16 +1073,16 @@ export default function Chat() {
                   className="text-base font-semibold truncate"
                   style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: '#232323', letterSpacing: '-0.32px', lineHeight: 1.3 }}
                 >
-                  {conversation.matchName}
+                  {matchInfo.matchName}
                 </p>
                 <p
                   className="text-xs truncate"
                   style={{
                     fontFamily: "'Outfit', system-ui, sans-serif",
-                    color: conversation.isOnline ? '#7DE0B3' : 'rgba(35,35,35,0.4)',
+                    color: matchInfo.isOnline ? '#7DE0B3' : 'rgba(35,35,35,0.4)',
                   }}
                 >
-                  {conversation.isOnline ? 'Active now' : conversation.lastSeen || 'Offline'}
+                  {matchInfo.isOnline ? 'Active now' : conversation.lastSeen || 'Offline'}
                 </p>
               </div>
             </motion.button>
@@ -1062,16 +1131,25 @@ export default function Chat() {
         >
           <RecordingOverlay isRecording={isRecording} onCancel={handleRecordingCancel} />
 
-          {groupedMessages.map((group) => (
-            <div key={group.date}>
-              <DateDivider date={group.date} />
-              {group.items.map((msg) => (
-                <div key={msg.id} className="px-4">
-                  <ChatBubble message={msg} />
-                </div>
-              ))}
+          {isLoading ? (
+            <div className="px-6 py-8 space-y-4">
+              <div className="flex justify-start"><SkeletonLoader variant="text" className="w-[60%]" /></div>
+              <div className="flex justify-end"><SkeletonLoader variant="text" className="w-[50%]" /></div>
+              <div className="flex justify-start"><SkeletonLoader variant="text" className="w-[70%]" /></div>
+              <div className="flex justify-end"><SkeletonLoader variant="text" className="w-[45%]" /></div>
             </div>
-          ))}
+          ) : (
+            groupedMessages.map((group) => (
+              <div key={group.date}>
+                <DateDivider date={group.date} />
+                {group.items.map((msg) => (
+                  <div key={msg.id} className="px-4">
+                    <ChatBubble message={msg} />
+                  </div>
+                ))}
+              </div>
+            ))
+          )}
 
           {isTyping && (
             <div className="px-4">
@@ -1084,14 +1162,14 @@ export default function Chat() {
 
         {/* ── Icebreakers ── */}
         <AnimatePresence>
-          {showIcebreakers && messages.length < 5 && (
+          {!isLoading && showIcebreakers && messages.length < 5 && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.3 }}
             >
-              <IcebreakerChips chips={conversation.icebreakers} onSend={handleIcebreakerSend} />
+              <IcebreakerChips chips={matchInfo.icebreakers} onSend={handleIcebreakerSend} />
             </motion.div>
           )}
         </AnimatePresence>
@@ -1201,7 +1279,7 @@ export default function Chat() {
         <ReportDialog
           open={reportDialogOpen}
           onOpenChange={setReportDialogOpen}
-          userName={conversation.matchName}
+          userName={matchInfo.matchName}
           onSubmit={handleReportSubmit}
         />
 
