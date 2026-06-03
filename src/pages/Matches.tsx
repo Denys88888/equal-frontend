@@ -5,6 +5,8 @@ import { Search, SlidersHorizontal, Trash2, Circle, Sparkles, ExternalLink, X, U
 import confetti from 'canvas-confetti';
 import Layout from '@/components/Layout';
 import PartnerOffers from '@/components/PartnerOffers';
+import SkeletonLoader from '@/components/SkeletonLoader';
+import { matchesApi } from '@/api/matches';
 import { useToast } from '@/hooks/useToast';
 
 // ── Types ──────────────────────────────────────────────
@@ -718,6 +720,27 @@ export default function Matches() {
   const [showSearch, setShowSearch] = useState(false);
   const [showOffers, setShowOffers] = useState(true);
   const [celebrationMatch, setCelebrationMatch] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Fetch matches from API on mount
+  useEffect(() => {
+    let cancelled = false;
+    matchesApi.getMatches()
+      .then(data => {
+        if (cancelled) return;
+        if (data.length > 0) {
+          setMatches(data);
+        }
+        setIsLoading(false);
+      })
+      .catch(err => {
+        if (cancelled) return;
+        console.log('API not available, using mock data', err);
+        setMatches(MOCK_MATCHES);
+        setIsLoading(false);
+      });
+    return () => { cancelled = true; };
+  }, []);
 
   const newMatches = matches.filter((m) => m.isNew);
   const conversations = matches.filter((m) => m.hasConversation);
@@ -730,6 +753,12 @@ export default function Matches() {
 
   const handleDelete = useCallback((id: string) => {
     setMatches((prev) => prev.filter((m) => m.id !== id));
+    // Also call API to delete
+    try {
+      matchesApi.deleteMatch(id);
+    } catch {
+      console.log('Delete API call failed');
+    }
   }, []);
 
   const handleSimulateMatch = useCallback(() => {
@@ -749,7 +778,7 @@ export default function Matches() {
 
   const totalUnread = conversations.reduce((sum, m) => sum + m.unreadCount, 0);
 
-  if (matches.length === 0) {
+  if (!isLoading && matches.length === 0) {
     return (
       <Layout title="Matches">
         <EmptyState />
@@ -886,7 +915,11 @@ export default function Matches() {
 
               {/* Conversation List */}
               <div className="flex-1 overflow-y-auto">
-                {filteredConversations.length > 0 ? (
+                {isLoading ? (
+                  <div className="px-5 py-6">
+                    <SkeletonLoader variant="list" count={5} />
+                  </div>
+                ) : filteredConversations.length > 0 ? (
                   filteredConversations.map((match, index) => (
                     <ConversationRow
                       key={match.id}

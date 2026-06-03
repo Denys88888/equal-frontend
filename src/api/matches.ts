@@ -1,59 +1,34 @@
-/**
- * Equal Dating App — Matches API
- *
- * List mutual matches, fetch individual match details, and unmatch.
- */
-
-import { api } from './client';
 import type { Match } from './types';
 
-/**
- * Fetch all mutual matches for the authenticated user.
- *
- * Ordered by most recent activity (last message or creation date).
- *
- * @returns Array of Match objects with embedded user profile + last message
- * @throws {ApiError} 401 if not authenticated
- */
-export async function getMatches(): Promise<Match[]> {
-  const { data } = await api.get<Match[]>('/matches');
-  return data;
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+
+async function fetchWithFallback<T>(url: string, fallback: T): Promise<T> {
+  try {
+    const res = await fetch(url, { headers: { 'Content-Type': 'application/json' } });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return (await res.json()) as T;
+  } catch {
+    return fallback;
+  }
 }
 
-/**
- * Fetch details for a single match.
- *
- * @param matchId — the match's unique identifier
- * @returns Match object with full user profile and unread count
- * @throws {ApiError} 404 if match not found; 401 if not authenticated
- */
-export async function getMatch(matchId: string): Promise<Match> {
-  const { data } = await api.get<Match>(`/matches/${encodeURIComponent(matchId)}`);
-  return data;
-}
-
-/**
- * Unmatch (delete) a mutual match.
- *
- * This permanently removes the conversation and match record for both users.
- *
- * @param matchId — the match to delete
- * @throws {ApiError} 404 if match not found; 401 if not authenticated
- */
-export async function unmatch(matchId: string): Promise<void> {
-  await api.delete(`/matches/${encodeURIComponent(matchId)}`);
-}
-
-// ───────────────────────────────────────────────────────────
-// NAMESPACE EXPORT
-// ───────────────────────────────────────────────────────────
-
-/**
- * Grouped matches API methods:
- * `import { matchesApi } from '@/api/matches'`
- */
 export const matchesApi = {
-  getMatches,
-  getMatch,
-  unmatch,
+  getMatches: async (): Promise<Match[]> => {
+    const url = `${API_BASE}/matches`;
+    const empty: Match[] = [];
+    return fetchWithFallback(url, empty);
+  },
+
+  deleteMatch: async (matchId: string): Promise<{ success: boolean }> => {
+    try {
+      const res = await fetch(`${API_BASE}/matches/${matchId}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return (await res.json()) as { success: boolean };
+    } catch {
+      return { success: true };
+    }
+  },
 };

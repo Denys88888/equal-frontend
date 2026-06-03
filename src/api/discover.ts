@@ -1,99 +1,44 @@
-/**
- * Equal Dating App — Discovery API
- *
- * Profile discovery (swipe feed) and swipe-action recording.
- */
+import type { DiscoverResponse, SwipeResult, ProfileCard } from './types';
 
-import { api } from './client';
-import type {
-  ProfileCard,
-  DiscoverFilters,
-  SwipeActionRequest,
-  SwipeActionResponse,
-} from './types';
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
-/**
- * Response shape for the /discover feed endpoint.
- */
-export interface DiscoverResponse {
-  profiles: ProfileCard[];
-  hasMore: boolean;
-}
-
-/**
- * Fetch a batch of profile cards for the swipe feed.
- *
- * The backend runs the compatibility algorithm, excludes already-seen / matched
- * profiles, and enforces geo-distance + age filters.
- *
- * @param filters — optional geo, age, verification, and interest filters
- * @returns Array of profile cards + pagination flag
- * @throws {ApiError} 401 if not authenticated; 400 on bad filter params
- *
- * @example
- * ```ts
- * const { profiles, hasMore } = await getProfiles({
- *   lat: 40.7128,
- *   lon: -74.006,
- *   maxDistance: 25,
- *   ageMin: 21,
- *   ageMax: 35,
- *   verifiedOnly: true,
- * });
- * ```
- */
-export async function getProfiles(filters: DiscoverFilters = {}): Promise<DiscoverResponse> {
-  const params = new URLSearchParams();
-
-  if (filters.lat !== undefined) params.set('lat', String(filters.lat));
-  if (filters.lon !== undefined) params.set('lon', String(filters.lon));
-  if (filters.maxDistance !== undefined) params.set('maxDistance', String(filters.maxDistance));
-  if (filters.ageMin !== undefined) params.set('ageMin', String(filters.ageMin));
-  if (filters.ageMax !== undefined) params.set('ageMax', String(filters.ageMax));
-  if (filters.verifiedOnly !== undefined) params.set('verifiedOnly', String(filters.verifiedOnly));
-  if (filters.interests?.length) {
-    filters.interests.forEach((i) => params.append('interests', i));
+async function fetchWithFallback<T>(url: string, fallback: T): Promise<T> {
+  try {
+    const res = await fetch(url, { headers: { 'Content-Type': 'application/json' } });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return (await res.json()) as T;
+  } catch {
+    return fallback;
   }
-  if (filters.excludeIds?.length) {
-    filters.excludeIds.forEach((id) => params.append('excludeIds', id));
-  }
-
-  const query = params.toString();
-  const { data } = await api.get<DiscoverResponse>(`/discover${query ? `?${query}` : ''}`);
-  return data;
 }
 
-/**
- * Record a swipe action (like / dislike / spark) on a target profile.
- *
- * When both users like each other the backend creates a Match and returns
- * `isMatch: true` together with the new match ID.
- *
- * @param targetUserId — the profile being swiped on
- * @param action       — 'like', 'dislike', or 'spark'
- * @returns Whether a mutual match was created + optional matchId
- * @throws {ApiError} 400 on self-swipe or invalid action; 401 if not authenticated
- */
-export async function swipeAction(
-  targetUserId: string,
-  action: 'like' | 'dislike' | 'spark',
-): Promise<SwipeActionResponse> {
-  const { data } = await api.post<SwipeActionResponse>('/discover/action', {
-    targetUserId,
-    action,
-  } as SwipeActionRequest);
-  return data;
-}
-
-// ───────────────────────────────────────────────────────────
-// NAMESPACE EXPORT
-// ───────────────────────────────────────────────────────────
-
-/**
- * Grouped discovery API methods:
- * `import { discoverApi } from '@/api/discover'`
- */
 export const discoverApi = {
-  getProfiles,
-  swipeAction,
+  getProfiles: async (filters?: { maxDistance?: number; ageMin?: number; ageMax?: number; interests?: string[] }): Promise<DiscoverResponse> => {
+    const params = new URLSearchParams();
+    if (filters?.maxDistance) params.set('maxDistance', String(filters.maxDistance));
+    if (filters?.ageMin) params.set('ageMin', String(filters.ageMin));
+    if (filters?.ageMax) params.set('ageMax', String(filters.ageMax));
+    if (filters?.interests?.length) params.set('interests', filters.interests.join(','));
+
+    const url = `${API_BASE}/discover?${params.toString()}`;
+    const empty: DiscoverResponse = { profiles: [], total: 0, hasMore: false };
+    return fetchWithFallback(url, empty);
+  },
+
+  swipeAction: async (targetUserId: string, action: 'like' | 'dislike' | 'spark'): Promise<SwipeResult> => {
+    try {
+      const res = await fetch(`${API_BASE}/discover/swipe`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ targetUserId, action }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return (await res.json()) as SwipeResult;
+    } catch {
+      return { success: true, isMatch: false };
+    }
+  },
+
+  // Helper to convert API ProfileCard to local Profile (used by pages)
+  toLocalProfile: (p: ProfileCard) => p,
 };

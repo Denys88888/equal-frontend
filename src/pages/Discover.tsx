@@ -4,6 +4,9 @@ import { motion, AnimatePresence, useMotionValue, useTransform, type PanInfo } f
 import { X, Heart, Star, MapPin, SlidersHorizontal, Shield, Circle, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import Layout from '@/components/Layout';
+import SkeletonLoader from '@/components/SkeletonLoader';
+import { discoverApi } from '@/api/discover';
+import type { ProfileCard } from '@/api/types';
 
 // ── Types ──────────────────────────────────────────────
 
@@ -762,7 +765,32 @@ export default function Discover() {
     goals: [],
     interests: [],
   });
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const sheetRef = useRef<HTMLDivElement>(null);
+
+  // Fetch profiles from API on mount
+  useEffect(() => {
+    let cancelled = false;
+    discoverApi.getProfiles({ maxDistance: 50 })
+      .then(data => {
+        if (cancelled) return;
+        if (data.profiles.length > 0) {
+          const mapped = data.profiles.map((p: ProfileCard) => ({ ...p }));
+          setProfiles(mapped);
+          setFilteredProfiles(mapped);
+        }
+        setIsLoading(false);
+      })
+      .catch(err => {
+        if (cancelled) return;
+        console.log('API not available, using mock data', err);
+        setProfiles(MOCK_PROFILES);
+        setFilteredProfiles(MOCK_PROFILES);
+        setIsLoading(false);
+      });
+    return () => { cancelled = true; };
+  }, []);
 
   // Apply filters
   const applyFilters = useCallback(() => {
@@ -793,7 +821,7 @@ export default function Discover() {
     setProfiles(MOCK_PROFILES);
   };
 
-  const handleSwipe = useCallback((direction: 'left' | 'right' | 'up') => {
+  const handleSwipe = useCallback(async (direction: 'left' | 'right' | 'up') => {
     if (profiles.length === 0) return;
 
     const current = profiles[0];
@@ -806,15 +834,26 @@ export default function Discover() {
       }
     }
 
-    // Simulate mutual match on ~30% of right swipes
-    if (direction === 'right' && Math.random() < 0.3) {
-      setTimeout(() => {
+    // Call swipe API with fallback
+    const action = direction === 'right' ? 'like' : direction === 'left' ? 'dislike' : 'spark';
+    try {
+      const result = await discoverApi.swipeAction(current.id, action);
+      if (result.isMatch) {
         triggerMatchCelebration();
         setMatchProfile(current);
-      }, 400);
+      }
+    } catch {
+      console.log('Swipe API call failed, continuing locally');
+      // Simulate mutual match on ~30% of right swipes as fallback
+      if (direction === 'right' && Math.random() < 0.3) {
+        setTimeout(() => {
+          triggerMatchCelebration();
+          setMatchProfile(current);
+        }, 400);
+      }
     }
 
-    // Remove swiped profile
+    // Always remove swiped profile
     setProfiles((prev) => prev.slice(1));
   }, [profiles, sparkCount]);
 
@@ -892,7 +931,16 @@ export default function Discover() {
           <>
             {/* Card Stack Area */}
             <div className="flex-1 relative px-4 pb-4">
-              {profiles.length > 0 ? (
+              {isLoading ? (
+                <div className="w-full h-full flex items-center justify-center">
+                  <div className="w-full max-w-sm">
+                    <SkeletonLoader variant="card" />
+                    <div className="mt-4 px-2">
+                      <SkeletonLoader variant="text" />
+                    </div>
+                  </div>
+                </div>
+              ) : profiles.length > 0 ? (
                 <div className="relative w-full h-full flex items-center justify-center">
                   <AnimatePresence>
                     {visibleCards.map((profile, index) => (
@@ -911,7 +959,7 @@ export default function Discover() {
             </div>
 
             {/* Action Buttons */}
-            {profiles.length > 0 && (
+            {!isLoading && profiles.length > 0 && (
               <div className="pb-4 pt-2">
                 <ActionButtons
                   onDislike={handleDislike}
