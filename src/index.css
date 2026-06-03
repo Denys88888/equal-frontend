@@ -48,6 +48,50 @@
     --sky: #7BC4E8;
   }
 
+  .dark {
+    --background: 240 25% 14%;
+    --foreground: 0 0% 88%;
+    --card: 222 41% 17%;
+    --card-foreground: 0 0% 88%;
+    --popover: 222 41% 17%;
+    --popover-foreground: 0 0% 88%;
+    --primary: 288 36% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 155 62% 69%;
+    --secondary-foreground: 0 0% 14%;
+    --muted: 240 15% 22%;
+    --muted-foreground: 0 0% 88%;
+    --accent: 288 36% 65%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 66%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 15% 22%;
+    --input: 240 15% 22%;
+    --ring: 288 36% 65%;
+    --sidebar-background: 240 25% 14%;
+    --sidebar-foreground: 0 0% 88%;
+    --sidebar-primary: 288 36% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 15% 22%;
+    --sidebar-accent-foreground: 0 0% 88%;
+    --sidebar-border: 240 15% 22%;
+    --sidebar-ring: 288 36% 65%;
+
+    --mauve: #BB83C9;
+    --mauve-light: #D4A8DE;
+    --mauve-dark: #9A63A8;
+    --emerald: #7DE0B3;
+    --emerald-light: #A8EBCC;
+    --emerald-dark: #5BC492;
+    --charcoal: #E0E0E0;
+    --charcoal-light: #A0A0B0;
+    --linen: #1a1a2e;
+    --linen-dark: #16213e;
+    --error: #E86A6A;
+    --warning: #F0B84A;
+    --sky: #7BC4E8;
+  }
+
   * {
     @apply border-border;
     -ms-overflow-style: none;

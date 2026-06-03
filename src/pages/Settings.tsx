@@ -21,7 +21,9 @@ import {
   Heart,
   Code,
   AlertTriangle,
+  Palette,
 } from 'lucide-react';
+import ThemeToggle from '@/components/ThemeToggle';
 import { Switch } from '@/components/ui/switch';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Separator } from '@/components/ui/separator';
@@ -308,6 +310,41 @@ export default function Settings() {
             checked={notifClubs}
             onCheckedChange={setNotifClubs}
           />
+        </div>
+
+        {/* ───────── Appearance ───────── */}
+        <SectionLabel text="Appearance" />
+        <div className="space-y-2">
+          <div
+            className="w-full flex items-center justify-between px-5 py-4 rounded-[16px] bg-white"
+            style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
+          >
+            <div className="flex items-center gap-3 min-w-0">
+              <Palette
+                size={20}
+                style={{ color: '#BB83C9' }}
+                strokeWidth={2}
+                className="flex-shrink-0"
+              />
+              <div className="min-w-0">
+                <span
+                  className="text-base font-semibold text-[#232323] block"
+                  style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
+                >
+                  Dark Mode
+                </span>
+                <span
+                  className="text-xs text-[#232323] opacity-45 block mt-0.5"
+                  style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.5 }}
+                >
+                  Toggle between light and dark theme
+                </span>
+              </div>
+            </div>
+            <div className="flex-shrink-0 ml-3">
+              <ThemeToggle />
+            </div>
+          </div>
         </div>
 
         {/* ───────── Pi Wallet ───────── */}

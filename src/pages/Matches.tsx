@@ -466,7 +466,8 @@ function MatchCelebration({
   onClose: () => void;
 }) {
   const [showOffer, setShowOffer] = useState(false);
-  const navigate = useNavigate();
+  const _navigate = useNavigate();
+  void _navigate;
 
   useEffect(() => {
     // Launch confetti burst

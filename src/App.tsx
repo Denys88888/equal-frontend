@@ -10,6 +10,8 @@ import Clubs from './pages/Clubs'
 import Events from './pages/Events'
 import Settings from './pages/Settings'
 import Admin from './pages/Admin'
+import NotFound from './pages/NotFound'
+import ErrorBoundary from './components/ErrorBoundary'
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -26,10 +28,15 @@ function AnimatedRoutes() {
       <Route path="/events" element={<Events />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/admin" element={<Admin />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   )
 }
 
 export default function App() {
-  return <AnimatedRoutes />
+  return (
+    <ErrorBoundary>
+      <AnimatedRoutes />
+    </ErrorBoundary>
+  )
 }
