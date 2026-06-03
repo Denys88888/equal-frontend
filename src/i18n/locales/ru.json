@@ -1,0 +1,82 @@
+{
+  "welcome": {
+    "slogan": "Ваши чувства бесценны",
+    "subtitle": "Первое приложение для знакомств на Pi Network, где связи заслуживаются, а не покупаются.",
+    "piLogin": "Войти через Pi",
+    "emailLogin": "Использовать email",
+    "trust": "Бесплатно. Навсегда. Без скрытых платежей."
+  },
+  "nav": {
+    "discover": "Поиск",
+    "matches": "Мэтчи",
+    "clubs": "Клубы",
+    "events": "События",
+    "profile": "Профиль"
+  },
+  "discover": {
+    "like": "Нравится",
+    "dislike": "Пропустить",
+    "spark": "Искра",
+    "filter": "Фильтр",
+    "compatibility": "Совместимость",
+    "kmAway": "{{distance}} км от вас",
+    "matchPercent": "{{percent}}% совпадение"
+  },
+  "matches": {
+    "title": "Мэтчи",
+    "newMatches": "Новые мэтчи",
+    "messages": "Сообщения",
+    "noMatches": "Пока нет мэтчей",
+    "startSwiping": "Начните свайпать, чтобы найти пару!"
+  },
+  "chat": {
+    "typeMessage": "Напишите сообщение...",
+    "send": "Отправить",
+    "icebreakers": "Ледоколы",
+    "giftCoffee": "Подарить кофе (1π)",
+    "block": "Заблокировать",
+    "report": "Пожаловаться"
+  },
+  "profile": {
+    "edit": "Редактировать",
+    "trustScore": "Рейтинг доверия",
+    "sparks": "Искры",
+    "badges": "Бейджи",
+    "bio": "О себе",
+    "interests": "Интересы",
+    "settings": "Настройки"
+  },
+  "settings": {
+    "title": "Настройки",
+    "appearance": "Внешний вид",
+    "darkMode": "Тёмная тема",
+    "language": "Язык",
+    "privacy": "Приватность",
+    "ghostMode": "Режим призрака",
+    "verifiedOnly": "Только верифицированные",
+    "blockedUsers": "Заблокированные",
+    "notifications": "Уведомления",
+    "piWallet": "Pi Кошелёк",
+    "donate": "Поддержать Equal",
+    "deleteAccount": "Удалить аккаунт",
+    "logout": "Выйти"
+  },
+  "onboarding": {
+    "next": "Далее",
+    "skip": "Пропустить",
+    "finish": "Начать",
+    "step1": "Давайте познакомимся",
+    "step2": "Добавьте фото",
+    "step3": "Расскажите о себе",
+    "step4": "Ваши интересы",
+    "step5": "Что вы ищете?"
+  },
+  "common": {
+    "cancel": "Отмена",
+    "save": "Сохранить",
+    "done": "Готово",
+    "loading": "Загрузка...",
+    "error": "Что-то пошло не так",
+    "retry": "Повторить"
+  }
+}

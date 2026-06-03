@@ -17,6 +17,7 @@ import {
   Flag,
   Info,
   LogOut,
+  Globe,
   Trash2,
   Heart,
   Code,
@@ -24,6 +25,7 @@ import {
   Palette,
 } from 'lucide-react';
 import ThemeToggle from '@/components/ThemeToggle';
+import LanguageSelector from '@/components/LanguageSelector';
 import { Switch } from '@/components/ui/switch';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Separator } from '@/components/ui/separator';
@@ -343,6 +345,41 @@ export default function Settings() {
             </div>
             <div className="flex-shrink-0 ml-3">
               <ThemeToggle />
+            </div>
+          </div>
+        </div>
+
+        {/* ───────── Language ───────── */}
+        <SectionLabel text="Language" />
+        <div className="space-y-2">
+          <div
+            className="w-full flex items-center justify-between px-5 py-4 rounded-[16px] bg-white"
+            style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
+          >
+            <div className="flex items-center gap-3 min-w-0">
+              <Globe
+                size={20}
+                style={{ color: '#7BC4E8' }}
+                strokeWidth={2}
+                className="flex-shrink-0"
+              />
+              <div className="min-w-0">
+                <span
+                  className="text-base font-semibold text-[#232323] block"
+                  style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
+                >
+                  Language
+                </span>
+                <span
+                  className="text-xs text-[#232323] opacity-45 block mt-0.5"
+                  style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.5 }}
+                >
+                  Choose your preferred language
+                </span>
+              </div>
+            </div>
+            <div className="flex-shrink-0 ml-3">
+              <LanguageSelector />
             </div>
           </div>
         </div>

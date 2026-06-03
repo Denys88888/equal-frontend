@@ -1,0 +1,82 @@
+{
+  "welcome": {
+    "slogan": "Your affection has no price",
+    "subtitle": "The first dating app on Pi Network where connections are earned, not bought.",
+    "piLogin": "Login with Pi",
+    "emailLogin": "Use email instead",
+    "trust": "Free. Forever. No hidden fees."
+  },
+  "nav": {
+    "discover": "Discover",
+    "matches": "Matches",
+    "clubs": "Clubs",
+    "events": "Events",
+    "profile": "Profile"
+  },
+  "discover": {
+    "like": "Like",
+    "dislike": "Pass",
+    "spark": "Spark",
+    "filter": "Filter",
+    "compatibility": "Compatibility",
+    "kmAway": "{{distance}} km away",
+    "matchPercent": "{{percent}}% Match"
+  },
+  "matches": {
+    "title": "Matches",
+    "newMatches": "New Matches",
+    "messages": "Messages",
+    "noMatches": "No matches yet",
+    "startSwiping": "Start swiping to find your match!"
+  },
+  "chat": {
+    "typeMessage": "Type a message...",
+    "send": "Send",
+    "icebreakers": "Icebreakers",
+    "giftCoffee": "Gift Coffee (1π)",
+    "block": "Block",
+    "report": "Report"
+  },
+  "profile": {
+    "edit": "Edit Profile",
+    "trustScore": "Trust Score",
+    "sparks": "Sparks",
+    "badges": "Badges",
+    "bio": "Bio",
+    "interests": "Interests",
+    "settings": "Settings"
+  },
+  "settings": {
+    "title": "Settings",
+    "appearance": "Appearance",
+    "darkMode": "Dark Mode",
+    "language": "Language",
+    "privacy": "Privacy",
+    "ghostMode": "Ghost Mode",
+    "verifiedOnly": "Verified Only",
+    "blockedUsers": "Blocked Users",
+    "notifications": "Notifications",
+    "piWallet": "Pi Wallet",
+    "donate": "Support Equal",
+    "deleteAccount": "Delete Account",
+    "logout": "Log Out"
+  },
+  "onboarding": {
+    "next": "Next",
+    "skip": "Skip",
+    "finish": "Get Started",
+    "step1": "Let's get to know you",
+    "step2": "Add your photos",
+    "step3": "Tell us about yourself",
+    "step4": "Your interests",
+    "step5": "What are you looking for?"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "save": "Save",
+    "done": "Done",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Retry"
+  }
+}

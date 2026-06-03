@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import { HashRouter } from 'react-router'
 import { ToastProvider } from '@/components/ToastProvider'
+import '@/i18n/config';
 import './index.css'
 import App from './App.tsx'
 
