@@ -22,9 +22,20 @@
     <script type="module" src="/src/main.tsx"></script>
     <script src="https://sdk.minepi.com/pi-sdk.js"></script>
     <script>
-      // DEV MODE: always sandbox:true for testing outside Pi Browser
+      // Auto-detect: sandbox:true for dev browsers, sandbox:false for Pi Browser
+      var isPiBrowser = /PiBrowser/.test(navigator.userAgent) || /Pi Browser/.test(navigator.userAgent);
+      var isSandboxDomain = window.location.hostname.indexOf('sandbox') !== -1;
+      var sandboxMode = isPiBrowser ? false : true;
+      console.log('[PI INIT] isPiBrowser=' + isPiBrowser + ', sandbox=' + sandboxMode);
       if (typeof Pi !== 'undefined') {
-        Pi.init({ version: "2.0", sandbox: true });
+        try {
+          Pi.init({ version: "2.0", sandbox: sandboxMode });
+          console.log('[PI INIT] ✅ Pi.init succeeded, sandbox=' + sandboxMode);
+        } catch (e) {
+          console.error('[PI INIT] ❌ Pi.init failed:', e);
+        }
+      } else {
+        console.error('[PI INIT] ❌ Pi SDK not loaded');
       }
     </script>
   </body>

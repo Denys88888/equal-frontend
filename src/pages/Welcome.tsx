@@ -139,20 +139,27 @@ export default function Welcome() {
       }
 
       console.log('[PI AUTH] Calling Pi.authenticate...');
+      console.log('[PI AUTH] isPiBrowser: ' + (/PiBrowser/.test(navigator.userAgent)));
+      console.log('[PI AUTH] sandbox mode from init, retrying if needed');
 
-      // Timeout safeguard: if Pi.authenticate doesn't resolve within 10s, show error
+      // Timeout safeguard: if Pi.authenticate doesn't resolve within 15s
       const timeoutId = setTimeout(() => {
-        console.error('[PI AUTH] ⏱️ Pi.authenticate TIMEOUT after 10s');
-        setError('Authentication timed out. Please try again in Pi Browser.');
-        setIsLoading(false);
-      }, 10000);
+        console.error('[PI AUTH] ⏱️ Pi.authenticate TIMEOUT after 15s');
+      }, 15000);
 
-      const authResult = await window.Pi.authenticate(
-        ['username', 'payments'],
-        (payment) => {
-          console.log('Incomplete payment found:', payment);
-        }
-      );
+      let authResult;
+      try {
+        // Try 1: with current sandbox mode (auto-detected)
+        authResult = await window.Pi.authenticate(
+          ['username', 'payments'],
+          (payment) => {
+            console.log('Incomplete payment found:', payment);
+          }
+        );
+      } catch (firstErr: unknown) {
+        console.warn('[PI AUTH] First attempt failed:', firstErr);
+        throw firstErr;
+      }
 
       clearTimeout(timeoutId);
       console.log('[PI AUTH] ✅ Pi.authenticate succeeded:', authResult);
