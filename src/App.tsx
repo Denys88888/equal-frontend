@@ -10,6 +10,7 @@ const Chat = lazy(() => import('./pages/Chat'))
 const VideoCall = lazy(() => import('./pages/VideoCall'))
 const Profile = lazy(() => import('./pages/Profile'))
 const Settings = lazy(() => import('./pages/Settings'))
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
 const Clubs = lazy(() => import('./pages/Clubs'))
 const Events = lazy(() => import('./pages/Events'))
 const Admin = lazy(() => import('./pages/Admin'))
@@ -35,6 +36,7 @@ function AnimatedRoutes() {
       <Route path="/clubs" element={<Clubs />} />
       <Route path="/events" element={<Events />} />
       <Route path="/settings" element={<Settings />} />
+      <Route path="/privacy" element={<PrivacyPolicy />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

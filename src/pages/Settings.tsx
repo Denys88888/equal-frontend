@@ -16,6 +16,7 @@ import {
   HelpCircle,
   Flag,
   Info,
+  FileText,
   LogOut,
   Globe,
   Trash2,
@@ -425,6 +426,7 @@ export default function Settings() {
           <SettingRow icon={HelpCircle} iconColor="#7BC4E8" label="Help Center" onClick={() => {}} />
           <SettingRow icon={Flag} iconColor="#F0B84A" label="Report a Problem" onClick={() => {}} />
           <SettingRow icon={Info} iconColor="rgba(35,35,35,0.4)" label="About Equal" detail="v1.0.0" onClick={() => setShowAbout(true)} />
+          <SettingRow icon={FileText} iconColor="#BB83C9" label="Privacy Policy" onClick={() => navigate('/privacy')} />
         </div>
 
         {/* ───────── Developer Donation ───────── */}
