@@ -173,8 +173,11 @@ export default function Welcome() {
 
       clearTimeout(timeoutId);
       console.log('[PI AUTH] ✅ Pi.authenticate succeeded:', JSON.stringify(authResult));
+      console.log('[PI AUTH] accessToken:', authResult.accessToken ? 'present (len=' + authResult.accessToken.length + ')' : 'MISSING!');
+      console.log('[PI AUTH] Calling backend loginWithPi...');
 
-      await loginWithPi(authResult.accessToken, ['username', 'payments']);
+      await loginWithPi(authResult.accessToken, ['username']);
+      console.log('[PI AUTH] ✅ Backend login successful!');
       navigate('/onboarding');
     } catch (err: unknown) {
       console.error('[PI AUTH] ❌ Pi.authenticate failed:', err);
