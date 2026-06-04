@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { Routes, Route, useLocation } from 'react-router'
 import ErrorBoundary from './components/ErrorBoundary'
+import CookieConsent from './components/CookieConsent'
 
 const Welcome = lazy(() => import('./pages/Welcome'))
 const Onboarding = lazy(() => import('./pages/Onboarding'))
@@ -11,6 +12,7 @@ const VideoCall = lazy(() => import('./pages/VideoCall'))
 const Profile = lazy(() => import('./pages/Profile'))
 const Settings = lazy(() => import('./pages/Settings'))
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
+const TermsOfService = lazy(() => import('./pages/TermsOfService'))
 const Clubs = lazy(() => import('./pages/Clubs'))
 const Events = lazy(() => import('./pages/Events'))
 const Admin = lazy(() => import('./pages/Admin'))
@@ -37,6 +39,7 @@ function AnimatedRoutes() {
       <Route path="/events" element={<Events />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/privacy" element={<PrivacyPolicy />} />
+      <Route path="/terms" element={<TermsOfService />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
@@ -48,6 +51,7 @@ export default function App() {
     <ErrorBoundary>
       <Suspense fallback={<PageSpinner />}>
         <AnimatedRoutes />
+        <CookieConsent />
       </Suspense>
     </ErrorBoundary>
   )

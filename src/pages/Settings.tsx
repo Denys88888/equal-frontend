@@ -24,6 +24,7 @@ import {
   Code,
   AlertTriangle,
   Palette,
+  Cookie,
 } from 'lucide-react';
 import ThemeToggle from '@/components/ThemeToggle';
 import LanguageSelector from '@/components/LanguageSelector';
@@ -427,6 +428,8 @@ export default function Settings() {
           <SettingRow icon={Flag} iconColor="#F0B84A" label="Report a Problem" onClick={() => {}} />
           <SettingRow icon={Info} iconColor="rgba(35,35,35,0.4)" label="About Equal" detail="v1.0.0" onClick={() => setShowAbout(true)} />
           <SettingRow icon={FileText} iconColor="#BB83C9" label="Privacy Policy" onClick={() => navigate('/privacy')} />
+          <SettingRow icon={FileText} iconColor="#BB83C9" label="Terms of Service" onClick={() => navigate('/terms')} />
+          <SettingRow icon={Cookie} iconColor="#F0B84A" label="Cookie Preferences" onClick={() => { localStorage.removeItem('equal-cookie-consent'); window.location.reload(); }} />
         </div>
 
         {/* ───────── Developer Donation ───────── */}
