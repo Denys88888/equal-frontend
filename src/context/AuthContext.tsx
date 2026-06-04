@@ -1,7 +1,7 @@
 /**
  * Equal Dating App — Authentication Context
  *
- * Provides global auth state: user profile, login/logout/update helpers,
+ * Provides global auth state: user profile, Pi login/logout/update helpers,
  * and automatic profile hydration when a stored JWT token exists.
  *
  * Wrap your app tree with `<AuthProvider>` in main.tsx (see integration notes below).
@@ -38,26 +38,11 @@ export interface AuthState {
 
 export interface AuthActions {
   /**
-   * Log in via Pi Network.
+   * Log in via Pi Network — the ONLY authentication method.
    * @param accessToken — token from `Pi.authenticate()`
    * @param scopes      — granted scopes
    */
   loginWithPi: (accessToken: string, scopes: string[]) => Promise<void>;
-
-  /**
-   * Log in with email & password.
-   * @param email    — registered email
-   * @param password — user's password
-   */
-  loginWithEmail: (email: string, password: string) => Promise<void>;
-
-  /**
-   * Register a new email account.
-   * @param email    — email address
-   * @param password — password (min 6 chars)
-   * @param name     — optional display name
-   */
-  registerWithEmail: (email: string, password: string, name?: string) => Promise<void>;
 
   /** Clear auth state and redirect to welcome screen */
   logout: () => void;
@@ -138,7 +123,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
           authType: 'pi', // best guess — backend doesn't expose authType on /me
         });
       })
-      .catch((err) => {
+      .catch((err: { status?: number }) => {
         // If the token expired or is invalid, clear everything
         if (err?.status === 401 || err?.status === 403) {
           localStorage.removeItem(TOKEN_KEY);
@@ -150,7 +135,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       });
   }, []);
 
-  // ─-- Internal: persist token and hydrate profile ─────────
+  // ── Internal: persist token and hydrate profile ─────────
 
   const handleAuthResponse = useCallback(
     async (response: { token: string; user: User }): Promise<void> => {
@@ -184,42 +169,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
     [handleAuthResponse],
   );
 
-  const loginWithEmail = useCallback(
-    async (email: string, password: string): Promise<void> => {
-      setIsLoading(true);
-      setError(null);
-      try {
-        const response = await authApi.emailLogin(email, password);
-        await handleAuthResponse(response);
-      } catch (err: unknown) {
-        const message = err instanceof Error ? err.message : 'Login failed';
-        setError(message);
-        throw err;
-      } finally {
-        setIsLoading(false);
-      }
-    },
-    [handleAuthResponse],
-  );
-
-  const registerWithEmail = useCallback(
-    async (email: string, password: string, name?: string): Promise<void> => {
-      setIsLoading(true);
-      setError(null);
-      try {
-        const response = await authApi.emailRegister(email, password, name);
-        await handleAuthResponse(response);
-      } catch (err: unknown) {
-        const message = err instanceof Error ? err.message : 'Registration failed';
-        setError(message);
-        throw err;
-      } finally {
-        setIsLoading(false);
-      }
-    },
-    [handleAuthResponse],
-  );
-
   const logout = useCallback((): void => {
     localStorage.removeItem(TOKEN_KEY);
     localStorage.removeItem(REFRESH_TOKEN_KEY);
@@ -244,7 +193,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const updateProfile = useCallback(
     async (patch: Partial<UserProfile>): Promise<void> => {
       // Optimistic local update
-      setProfile((prev) => (prev ? { ...prev, ...patch } : prev));
+      setProfile((prev: UserProfile | null) => (prev ? { ...prev, ...patch } : prev));
       try {
         const updated = await usersApi.updateMe(patch);
         setProfile(updated);
@@ -276,8 +225,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
     isAuthenticated,
     error,
     loginWithPi,
-    loginWithEmail,
-    registerWithEmail,
     logout,
     refreshProfile,
     updateProfile,

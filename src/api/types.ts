@@ -1,5 +1,66 @@
 // ── API Types ──────────────────────────────────────────
 
+// ── User & Auth ────────────────────────────────────────
+
+export interface User {
+  id: string;
+  username: string;
+  authType: 'pi';
+}
+
+export interface UserProfile {
+  id: string;
+  username: string;
+  name: string;
+  bio: string;
+  birthDate: string;
+  city: string;
+  goals: string;
+  interests: string[];
+  photos: Photo[];
+  trustScore: number;
+  verified: boolean;
+  isPremium: boolean;
+  sparks: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Photo {
+  id: string;
+  url: string;
+  isMain: boolean;
+  order: number;
+  createdAt: string;
+}
+
+// ── Auth ───────────────────────────────────────────────
+
+export interface AuthPiRequest {
+  accessToken: string;
+  scopes: string[];
+}
+
+export interface AuthResponse {
+  token: string;
+  user: User;
+}
+
+export interface TokenRefreshResponse {
+  token: string;
+}
+
+// ── Verification ───────────────────────────────────────
+
+export interface VerificationSelfieResponse {
+  status: 'pending' | 'approved' | 'rejected';
+  message?: string;
+}
+
+export type VerificationGesture = 'blink' | 'smile' | 'turn_left' | 'turn_right';
+
+// ── Discover ───────────────────────────────────────────
+
 export interface ProfileCard {
   id: string;
   name: string;
@@ -27,6 +88,8 @@ export interface SwipeResult {
   isMatch: boolean;
   matchId?: string;
 }
+
+// ── Matches & Messages ─────────────────────────────────
 
 export interface Match {
   id: string;
@@ -72,3 +135,115 @@ export interface SendMessageRequest {
 }
 
 export interface SendMessageResponse extends Message {}
+
+// ── Clubs ──────────────────────────────────────────────
+
+export interface Club {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  icon?: string;
+  memberCount: number;
+  postCount: number;
+  isJoined: boolean;
+  createdAt: string;
+}
+
+export interface ClubPost {
+  id: string;
+  authorId: string;
+  authorName: string;
+  authorPhoto?: string;
+  content: string;
+  photo?: string;
+  likes: number;
+  likedByMe: boolean;
+  createdAt: string;
+}
+
+export interface CreateClubRequest {
+  name: string;
+  description: string;
+  category: string;
+  icon?: string;
+}
+
+export interface CreatePostRequest {
+  content: string;
+  photo?: string;
+}
+
+// ── Events ─────────────────────────────────────────────
+
+export interface Event {
+  id: string;
+  title: string;
+  description: string;
+  city: string;
+  category: string;
+  date: string;
+  time?: string;
+  location?: string;
+  hostId: string;
+  hostName: string;
+  attendeeCount: number;
+  maxAttendees?: number;
+  isAttending: boolean;
+  photo?: string;
+  createdAt: string;
+}
+
+export interface RsvpRequest {
+  status: 'going' | 'interested' | 'not_going';
+}
+
+// ── Payments ───────────────────────────────────────────
+
+export interface DonationResponse {
+  paymentId: string;
+  piUrl: string;
+}
+
+// ── Admin ──────────────────────────────────────────────
+
+export interface AdminStats {
+  dailyActiveUsers: number;
+  totalUsers: number;
+  newMatchesToday: number;
+  reportsPending: number;
+  sparkPurchasesToday: number;
+}
+
+export interface UserAdmin {
+  id: string;
+  username: string;
+  name: string;
+  trustScore: number;
+  verified: boolean;
+  createdAt: string;
+  role: 'user' | 'moderator' | 'admin';
+  isBanned: boolean;
+}
+
+export interface Report {
+  id: string;
+  reporterId: string;
+  reporterName: string;
+  targetId: string;
+  targetName: string;
+  reason: string;
+  status: 'pending' | 'resolved';
+  createdAt: string;
+  resolvedAt?: string;
+  action?: 'warn' | 'ban' | 'none';
+}
+
+export interface AdjustTrustRequest {
+  score: number;
+  reason: string;
+}
+
+export interface AwardBadgeRequest {
+  badge: string;
+}

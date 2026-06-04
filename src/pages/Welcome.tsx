@@ -3,10 +3,13 @@ import { useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 import { Shield, Lock, Heart } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from '@/context/AuthContext';
 
 const easeSmooth = [0.4, 0, 0.2, 1] as [number, number, number, number];
 const easeOutExpo = [0.16, 1, 0.3, 1] as [number, number, number, number];
 const easeSpring = [0.34, 1.56, 0.64, 1] as [number, number, number, number];
+
+// Pi SDK types are declared globally in src/types/pi-sdk.d.ts
 
 function EqualLogo() {
   return (
@@ -113,26 +116,53 @@ function TrustFooter() {
 export default function Welcome() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { loginWithPi } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handlePiLogin = () => {
+  const handlePiLogin = async () => {
     setIsLoading(true);
-    // Simulate Pi authentication delay
-    setTimeout(() => {
-      setIsLoading(false);
+    setError(null);
+
+    try {
+      // Initialize Pi SDK if not already
+      if (window.Pi) {
+        window.Pi.init({ version: '2.0', sandbox: import.meta.env.DEV });
+      }
+
+      if (!window.Pi) {
+        // Pi Browser not detected — show error or use mock for dev
+        if (import.meta.env.DEV) {
+          // Development fallback: mock login
+          await loginWithPi('dev-mock-token', ['username', 'payments']);
+          navigate('/onboarding');
+          return;
+        }
+        throw new Error('Please open this app in Pi Browser');
+      }
+
+      const authResult = await window.Pi.authenticate(
+        ['username', 'payments'],
+        (payment) => {
+          console.log('Incomplete payment found:', payment);
+        }
+      );
+
+      await loginWithPi(authResult.accessToken, ['username', 'payments']);
       navigate('/onboarding');
-    }, 1500);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'Pi authentication failed';
+      setError(msg);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const headlineWords = t('welcome.slogan').split(' ');
 
   return (
-    <div
-      className="min-h-[100dvh] w-full flex justify-center"
-      style={{ backgroundColor: '#F7F4EE' }}
-    >
-      <div
-        className="w-full max-w-[430px] relative flex flex-col justify-between"
+    <div className="min-h-[100dvh] w-full flex justify-center" style={{ backgroundColor: '#F7F4EE' }}>
+      <div className="w-full max-w-[430px] relative flex flex-col justify-between"
         style={{
           minHeight: '100dvh',
           paddingTop: 'calc(48px + env(safe-area-inset-top))',
@@ -144,9 +174,7 @@ export default function Welcome() {
         }}
       >
         {/* Logo */}
-        <div className="flex justify-center">
-          <EqualLogo />
-        </div>
+        <div className="flex justify-center"><EqualLogo /></div>
 
         {/* Hero Illustration */}
         <motion.div
@@ -155,136 +183,60 @@ export default function Welcome() {
           transition={{ duration: 0.7, ease: easeOutExpo, delay: 0.4 }}
           className="flex justify-center mt-6 relative"
         >
-          {/* Soft blurred halo behind illustration */}
-          <div
-            className="absolute rounded-full"
-            style={{
-              width: 200,
-              height: 200,
-              backgroundColor: 'rgba(187, 131, 201, 0.08)',
-              filter: 'blur(40px)',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-            }}
-          />
-          <motion.img
-            src="/hero-couple.png"
-            alt="Two people forming a heart"
-            className="relative z-10 animate-float"
-            style={{
-              width: 280,
-              height: 350,
-              objectFit: 'contain',
-            }}
-          />
+          <div className="absolute rounded-full" style={{ width: 200, height: 200, backgroundColor: 'rgba(187, 131, 201, 0.08)', filter: 'blur(40px)', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} />
+          <motion.img src="/hero-couple.png" alt="Two people forming a heart" className="relative z-10 animate-float" style={{ width: 280, height: 350, objectFit: 'contain' }} />
         </motion.div>
 
         {/* Headline */}
         <div className="px-5 mt-8 flex flex-wrap justify-center gap-x-2 gap-y-0">
           {headlineWords.map((word, i) => (
-            <motion.span
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                ease: easeOutExpo,
-                delay: 0.7 + i * 0.08,
-              }}
+            <motion.span key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: easeOutExpo, delay: 0.7 + i * 0.08 }}
               className="text-4xl font-bold text-[#232323] text-center"
-              style={{
-                fontFamily: "'Outfit', system-ui, sans-serif",
-                fontSize: 36,
-                lineHeight: 1.05,
-                letterSpacing: '-1.08px',
-              }}
-            >
+              style={{ fontFamily: "'Outfit', system-ui, sans-serif", fontSize: 36, lineHeight: 1.05, letterSpacing: '-1.08px' }}>
               {word}
             </motion.span>
           ))}
         </div>
 
         {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
+        <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: easeSmooth, delay: 0.9 }}
           className="text-center mt-4 px-8"
-          style={{
-            color: 'rgba(35, 35, 35, 0.65)',
-            fontFamily: "'Outfit', system-ui, sans-serif",
-            fontSize: 16,
-            lineHeight: 1.6,
-            letterSpacing: '-0.32px',
-            maxWidth: 360,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-          }}
-        >
+          style={{ color: 'rgba(35, 35, 35, 0.65)', fontFamily: "'Outfit', system-ui, sans-serif", fontSize: 16, lineHeight: 1.6, letterSpacing: '-0.32px', maxWidth: 360, marginLeft: 'auto', marginRight: 'auto' }}>
           {t('welcome.subtitle')}
         </motion.p>
 
-        {/* Pi Login CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: easeSpring, delay: 1.1 }}
-          className="px-5 mt-10"
-        >
+        {/* Pi Login CTA — ONLY login method */}
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: easeSpring, delay: 1.1 }} className="px-5 mt-10">
           <motion.button
-            whileTap={{ scale: 0.97 }}
-            transition={{ duration: 0.08 }}
-            onClick={handlePiLogin}
-            disabled={isLoading}
+            whileTap={{ scale: 0.97 }} transition={{ duration: 0.08 }}
+            onClick={handlePiLogin} disabled={isLoading}
             className="w-full rounded-full flex items-center justify-center gap-2 text-white font-semibold text-base relative"
-            style={{
-              height: 56,
-              backgroundColor: isLoading ? '#D4A8DE' : '#BB83C9',
-              boxShadow: '0 4px 16px rgba(187,131,201,0.3)',
-              fontFamily: "'Outfit', system-ui, sans-serif",
-            }}
+            style={{ height: 56, backgroundColor: isLoading ? '#D4A8DE' : '#BB83C9', boxShadow: '0 4px 16px rgba(187,131,201,0.3)', fontFamily: "'Outfit', system-ui, sans-serif" }}
           >
             {isLoading ? (
-              <motion.div
-                className="w-6 h-6 rounded-full border-2 border-white border-t-transparent"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 0.8, repeat: Infinity, ease: 'linear' }}
-              />
+              <motion.div className="w-6 h-6 rounded-full border-2 border-white border-t-transparent" animate={{ rotate: 360 }} transition={{ duration: 0.8, repeat: Infinity, ease: 'linear' }} />
             ) : (
-              <>
-                <PiLogo />
-                <span>{t('welcome.piLogin')}</span>
-              </>
+              <><PiLogo /><span>{t('welcome.piLogin')}</span></>
             )}
           </motion.button>
         </motion.div>
 
-        {/* Secondary Login */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 1.3 }}
-          className="flex justify-center mt-4"
-        >
-          <button
-            className="text-base font-semibold"
-            style={{
-              color: 'rgba(35, 35, 35, 0.5)',
-              fontFamily: "'Outfit', system-ui, sans-serif",
-            }}
-          >
-            {t('welcome.emailLogin')}
-          </button>
-        </motion.div>
+        {/* Error message */}
+        {error && (
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+            className="text-center mt-3 px-5 text-sm" style={{ color: '#E74C3C', fontFamily: "'Outfit', system-ui, sans-serif" }}>
+            {error}
+          </motion.p>
+        )}
 
-        {/* Spacer to push footer down */}
+        {/* Spacer */}
         <div className="flex-1 min-h-[24px]" />
 
         {/* Trust Footer */}
-        <div className="mt-6">
-          <TrustFooter />
-        </div>
+        <div className="mt-6"><TrustFooter /></div>
       </div>
     </div>
   );
