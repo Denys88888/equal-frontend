@@ -25,11 +25,16 @@ import type {
  * @throws {ApiError} 401 if Pi token is invalid; 403 if incomplete payment found
  */
 export async function piAuth(accessToken: string, scopes: string[]): Promise<AuthResponse> {
-  const { data } = await api.post<AuthResponse>('/auth/pi', {
-    accessToken,
-    scopes,
-  } as AuthPiRequest);
-  return data;
+  const body = { accessToken, scopes } as AuthPiRequest;
+  console.log('[API AUTH] POST /auth/pi, body keys:', Object.keys(body), 'token len:', accessToken?.length);
+  try {
+    const { data } = await api.post<AuthResponse>('/auth/pi', body);
+    console.log('[API AUTH] Success!');
+    return data;
+  } catch (err: any) {
+    console.error('[API AUTH] Failed:', err.status, err.message);
+    throw err;
+  }
 }
 
 /**
