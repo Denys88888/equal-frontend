@@ -6,8 +6,14 @@
 <meta name="description" content="Equal - The first dating app on Pi Network. Your affection has no price.">
 <meta name="theme-color" content="#BB83C9">
 <title>Equal - Dating on Pi Network</title>
-<!-- Pi SDK - REQUIRED -->
+<!-- Pi SDK - REQUIRED in all pages -->
 <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+<!-- Initialize: sandbox=true for sandbox.minepi.com, sandbox=false (or omit) for production -->
+<script>
+  // Auto-detect: sandbox if URL contains 'sandbox' or localhost
+  var isSandbox = /sandbox|localhost|127\.0\.0\.1/.test(window.location.hostname);
+  Pi.init({ version: "2.0", sandbox: isSandbox });
+</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Outfit',system-ui,sans-serif;background:#F7F4EE;color:#232323;min-height:100vh;display:flex;flex-direction:column;align-items:center}
@@ -69,9 +75,12 @@ body{font-family:'Outfit',system-ui,sans-serif;background:#F7F4EE;color:#232323;
   
   <p class="subtitle">The first dating app on Pi Network where connections are earned, not bought.</p>
   
-  <button class="pi-btn" id="piLoginBtn" onclick="handlePiLogin()" disabled>
+  <button class="pi-btn" id="piLoginBtn" onclick="handlePiLogin()">
     <div class="spinner" id="spinner"></div>
-    <span class="btn-text" id="btnText">Loading Pi SDK...</span>
+    <span class="btn-text" id="btnText">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+      Login with Pi
+    </span>
   </button>
   
   <div id="errorMsg" class="error" style="display:none"></div>
@@ -85,121 +94,116 @@ body{font-family:'Outfit',system-ui,sans-serif;background:#F7F4EE;color:#232323;
   <div class="footer">Equal Dating App © 2026</div>
 </div>
 
-<script type="module">
-// Step 1: Initialize Pi SDK (REQUIRED before any Pi calls)
-const API_BASE = 'https://equal-backend.onrender.com/v1';
+<script>
+// Backend API base URL
+var API_BASE = 'https://equal-backend.onrender.com/v1';
 
-async function initPi() {
-  try {
-    // Pi.init is REQUIRED - Pi Browser does not auto-inject window.Pi
-    await window.Pi.init({ 
-      version: "2.0",
-      sandbox: false // production URL
-    });
-    
-    showStatus('Pi SDK ready');
-    enableButton('Login with Pi');
-  } catch (err) {
-    console.error('Pi.init error:', err);
-    showStatus('Pi SDK init failed - please use Pi Browser');
-    enableButton('Login with Pi');
-  }
-}
-
-// Initialize on page load
-initPi();
-
-// Step 2: Authenticate user
-async function handlePiLogin() {
-  const btn = document.getElementById('piLoginBtn');
-  const errorDiv = document.getElementById('errorMsg');
+function handlePiLogin() {
+  var btn = document.getElementById('piLoginBtn');
+  var errorDiv = document.getElementById('errorMsg');
+  var statusDiv = document.getElementById('piStatus');
   
   setLoading(true);
   errorDiv.style.display = 'none';
+  statusDiv.style.display = 'none';
   
-  try {
-    // Pi.authenticate returns { user, accessToken }
-    const auth = await window.Pi.authenticate(
-      ['payments', 'username'], // scopes
-      onIncompletePaymentFound  // callback
-    );
+  // Check if Pi SDK is available
+  if (typeof Pi === 'undefined') {
+    showError('Pi SDK not loaded. Please open in Pi Browser.');
+    setLoading(false);
+    return;
+  }
+  
+  statusDiv.textContent = 'Authenticating...';
+  statusDiv.style.display = 'block';
+  
+  // Pi.authenticate per docs: Pi.authenticate(scopes, onIncompletePaymentFound)
+  Pi.authenticate(
+    ['username', 'payments'], // scopes
+    function onIncompletePaymentFound(payment) {
+      // Handle incomplete payment
+      console.log('Incomplete payment:', payment);
+      fetch(API_BASE + '/payments/incomplete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ paymentId: payment.identifier })
+      });
+    }
+  )
+  .then(function(auth) {
+    // auth = { accessToken, user: { uid, username } }
+    statusDiv.textContent = 'Welcome, ' + (auth.user ? auth.user.username : 'Pioneer') + '! Verifying...';
+    statusDiv.style.display = 'block';
     
-    showStatus('Authenticated! Verifying...');
-    
-    // Step 3: Send accessToken to backend for verification
-    // Backend must call GET https://api.minepi.com/v2/me with Bearer token
-    const res = await fetch(`${API_BASE}/auth/pi`, {
+    // Send accessToken to backend for verification
+    // Backend calls GET https://api.minepi.com/v2/me with Bearer token
+    return fetch(API_BASE + '/auth/pi', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         accessToken: auth.accessToken,
-        scopes: ['payments', 'username']
+        scopes: ['username', 'payments']
       })
     });
-    
+  })
+  .then(function(res) {
     if (!res.ok) throw new Error('Server verification failed');
-    
-    const data = await res.json();
-    showStatus('Welcome, ' + (auth.user?.username || 'Pioneer') + '!');
-    
-    // Store token
-    localStorage.setItem('equal_token', data.access_token);
-    
-  } catch (err) {
+    return res.json();
+  })
+  .then(function(data) {
+    // Store JWT token
+    if (data.access_token) {
+      localStorage.setItem('equal_token', data.access_token);
+    }
+    statusDiv.textContent = 'Authentication successful!';
+  })
+  .catch(function(err) {
     console.error('Auth error:', err);
-    showError(err.message || 'Authentication failed');
-  } finally {
+    showError(err.message || 'Authentication failed. Please try again.');
+    statusDiv.style.display = 'none';
+  })
+  .finally(function() {
     setLoading(false);
-  }
-}
-
-// Handle incomplete payments from authenticate
-function onIncompletePaymentFound(payment) {
-  console.log('Incomplete payment:', payment);
-  fetch(`${API_BASE}/payments/incomplete`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ paymentId: payment.identifier })
   });
 }
 
-// Step 4: Create payment (Double-Check)
-async function createDoubleCheckPayment(matchId) {
-  window.Pi.createPayment(
+// Create Double-Check payment
+function createDoubleCheckPayment(matchId) {
+  Pi.createPayment(
     {
       amount: 1.0,
       memo: "Double-Check Match",
-      metadata: { matchId }
+      metadata: { matchId: matchId }
     },
     {
-      onReadyForServerApproval: async (paymentId) => {
-        // Phase I: Backend approves via Platform API
-        const res = await fetch(`${API_BASE}/payments/${paymentId}/approve`, {
+      onReadyForServerApproval: function(paymentId) {
+        // Phase I: Backend approves
+        fetch(API_BASE + '/payments/' + paymentId + '/approve', {
           method: 'POST',
-          headers: { 
+          headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + localStorage.getItem('equal_token')
           }
         });
-        if (!res.ok) throw new Error('Approval failed');
       },
-      onReadyForServerCompletion: async (paymentId, txid) => {
-        // Phase III: Backend completes via Platform API
-        const res = await fetch(`${API_BASE}/payments/${paymentId}/complete`, {
+      onReadyForServerCompletion: function(paymentId, txid) {
+        // Phase III: Backend completes
+        fetch(API_BASE + '/payments/' + paymentId + '/complete', {
           method: 'POST',
-          headers: { 
+          headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + localStorage.getItem('equal_token')
           },
-          body: JSON.stringify({ txid })
+          body: JSON.stringify({ txid: txid })
+        })
+        .then(function() {
+          showStatus('Payment successful!');
         });
-        if (!res.ok) throw new Error('Completion failed');
-        showStatus('Payment successful!');
       },
-      onCancel: (paymentId) => {
+      onCancel: function(paymentId) {
         showStatus('Payment cancelled');
       },
-      onError: (error, payment) => {
+      onError: function(error, payment) {
         showError('Payment error: ' + error.message);
       }
     }
@@ -207,34 +211,24 @@ async function createDoubleCheckPayment(matchId) {
 }
 
 // UI helpers
-function showStatus(msg) {
-  const el = document.getElementById('piStatus');
-  el.textContent = msg;
-  el.style.display = 'block';
-}
-
 function showError(msg) {
-  const el = document.getElementById('errorMsg');
+  var el = document.getElementById('errorMsg');
   el.textContent = msg;
   el.style.display = 'block';
 }
 
-function enableButton(text) {
-  const btn = document.getElementById('piLoginBtn');
-  const btnText = document.getElementById('btnText');
-  btn.disabled = false;
-  btnText.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>${text}`;
+function showStatus(msg) {
+  var el = document.getElementById('piStatus');
+  el.textContent = msg;
+  el.style.display = 'block';
 }
 
 function setLoading(loading) {
-  const btn = document.getElementById('piLoginBtn');
+  var btn = document.getElementById('piLoginBtn');
   if (loading) btn.classList.add('loading');
   else btn.classList.remove('loading');
   btn.disabled = loading;
 }
-
-// Expose to global for onclick
-window.handlePiLogin = handlePiLogin;
 </script>
 </body>
 </html>
