@@ -14,6 +14,7 @@ import {
   useEffect,
   useCallback,
   useRef,
+  type ReactNode,
 } from 'react';
 import { TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/api/client';
 import { authApi, usersApi } from '@/api';
@@ -83,7 +84,7 @@ export function useAuth(): AuthState & AuthActions {
 // ───────────────────────────────────────────────────────────
 
 export interface AuthProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 // ───────────────────────────────────────────────────────────
@@ -120,7 +121,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         setUser({
           id: profileData.id,
           username: profileData.username,
-          authType: 'pi', // best guess — backend doesn't expose authType on /me
+          name: profileData.name,
         });
       })
       .catch((err: { status?: number }) => {
@@ -138,8 +139,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
   // ── Internal: persist token and hydrate profile ─────────
 
   const handleAuthResponse = useCallback(
-    async (response: { token: string; user: User }): Promise<void> => {
-      localStorage.setItem(TOKEN_KEY, response.token);
+    async (response: { access_token: string; user: User }): Promise<void> => {
+      localStorage.setItem(TOKEN_KEY, response.access_token);
       setUser(response.user);
 
       // Immediately fetch full profile

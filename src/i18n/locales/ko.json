@@ -4,12 +4,12 @@
     "subtitle": "Pi Network 최초의 데이팅 앱. 이어주는 건 돈이 아니라 인연이에요.",
     "piLogin": "Pi로 로그인",
     "emailLogin": "이메일로 로그인",
-    "trust": "평생 물.추가 비용 없어요."
+    "trust": "묾. 영원히. 숨겨진 비용 없이."
   },
   "nav": {
     "discover": "둘러보기",
     "matches": "매칭",
-    "clubs": "클 ub",
+    "clubs": "모임",
     "events": "이벤트",
     "profile": "프로필"
   },
@@ -31,7 +31,7 @@
   },
   "chat": {
     "typeMessage": "메시지를 입력하세요...",
-    "send": "볂다",
+    "send": "전송",
     "icebreakers": "대화 주제",
     "giftCoffee": "커피 선물하기 (1π)",
     "block": "차단",
@@ -63,7 +63,7 @@
   },
   "onboarding": {
     "next": "다음",
-    "skip": "걄기",
+    "skip": "넘기기",
     "finish": "시작하기",
     "step1": "당신에 대해 알려주세요",
     "step2": "사진을 추가하세요",

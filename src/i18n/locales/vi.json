@@ -27,7 +27,7 @@
     "newMatches": "Ghép đôi mới",
     "messages": "Tin nhắn",
     "noMatches": "Chưa có ai ghép đôi",
-    "startSwiping": "Vuốt để tìm ngườii phù hợp nhé!"
+    "startSwiping": "Vuốt để tìm người phù hợp nhé!"
   },
   "chat": {
     "typeMessage": "Nhập tin nhắn...",
@@ -53,8 +53,8 @@
     "language": "Ngôn ngữ",
     "privacy": "Riêng tư",
     "ghostMode": "Chế độ ẩn",
-    "verifiedOnly": "Chỉ ngườii đã xác minh",
-    "blockedUsers": "Ngườii bị chặn",
+    "verifiedOnly": "Chỉ người đã xác minh",
+    "blockedUsers": "Người bị chặn",
     "notifications": "Thông báo",
     "piWallet": "Ví Pi",
     "donate": "Ủng hộ Equal",

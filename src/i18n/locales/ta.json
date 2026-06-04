@@ -52,11 +52,11 @@
     "darkMode": "இருள் பயன்முறை",
     "language": "மொழி",
     "privacy": "தனியுரிமை",
-    "ghostMode": "கhost பயன்முறை",
+    "ghostMode": "மறைந்த பயன்முறை",
     "verifiedOnly": "சரிபார்க்கப்பட்டவர்கள் மட்டும்",
     "blockedUsers": "தடுக்கப்பட்ட பயனர்கள்",
     "notifications": "அறிவிப்புகள்",
-    "piWallet": "Pi Wallet",
+    "piWallet": "பை வாலட்",
     "donate": "Equal-ஐ ஆதரி",
     "deleteAccount": "கணக்கை நீக்கு",
     "logout": "வெளியேறு"

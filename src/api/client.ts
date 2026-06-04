@@ -353,7 +353,7 @@ class ApiClient {
  * Example:
  * ```ts
  * import { api } from '@/api/client';
- * const { data } = await api.get<UserProfile>('/me');
+ * const { data } = await api.get<UserProfile>('/users/me');
  * ```
  */
 export const api = new ApiClient(API_BASE_URL);

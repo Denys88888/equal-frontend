@@ -5,7 +5,7 @@
 export interface User {
   id: string;
   username: string;
-  authType: 'pi';
+  name: string;
 }
 
 export interface UserProfile {
@@ -15,13 +15,12 @@ export interface UserProfile {
   bio: string;
   birthDate: string;
   city: string;
-  goals: string;
+  goals: string[];
   interests: string[];
   photos: Photo[];
   trustScore: number;
   verified: boolean;
-  isPremium: boolean;
-  sparks: number;
+  sparkBalance: number;
   createdAt: string;
   updatedAt: string;
 }
@@ -42,8 +41,12 @@ export interface AuthPiRequest {
 }
 
 export interface AuthResponse {
-  token: string;
-  user: User;
+  access_token: string;
+  user: {
+    id: string;
+    username: string;
+    name: string;
+  };
 }
 
 export interface TokenRefreshResponse {
@@ -108,13 +111,10 @@ export interface Match {
 
 export interface Message {
   id: string;
-  type: 'text' | 'voice' | 'gift' | 'image';
+  type: 'TEXT' | 'VOICE' | 'GIFT' | 'SYSTEM';
   content: string;
   sender: 'me' | 'them';
   timestamp: string;
-  duration?: string;
-  giftType?: 'coffee' | 'rose' | 'song' | 'spark';
-  giftPrice?: string;
   read?: boolean;
 }
 
@@ -131,7 +131,7 @@ export interface MessagesResponse {
 
 export interface SendMessageRequest {
   content: string;
-  type: 'text' | 'voice' | 'gift' | 'image';
+  type: 'TEXT' | 'VOICE' | 'GIFT' | 'SYSTEM';
 }
 
 export interface SendMessageResponse extends Message {}

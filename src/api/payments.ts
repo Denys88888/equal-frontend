@@ -1,12 +1,28 @@
 /**
  * Equal Dating App — Payments API
  *
- * Pi Network payment lifecycle: approve, complete, and donate.
+ * Pi Network payment lifecycle: create, approve, complete.
  * All flows go through the backend which proxies the Pi Platform API.
  */
 
 import { api } from './client';
 import type { DonationResponse } from './types';
+
+/**
+ * Create a new payment.
+ *
+ * @param amount — payment amount in Pi
+ * @param memo   — optional memo shown to the user in the Pi payment UI
+ * @returns Payment ID + Pi Browser URL for confirmation
+ * @throws {ApiError} 400 if amount <= 0
+ */
+export async function createPayment(amount: number, memo?: string): Promise<DonationResponse> {
+  const { data } = await api.post<DonationResponse>('/payments', {
+    amount,
+    memo,
+  });
+  return data;
+}
 
 /**
  * Approve an incomplete Pi payment.
@@ -18,7 +34,7 @@ import type { DonationResponse } from './types';
  * @throws {ApiError} 404 if payment not found; 409 if already approved
  */
 export async function approvePayment(paymentId: string): Promise<void> {
-  await api.post<void>(`/pi/payments/${encodeURIComponent(paymentId)}/approve`, {});
+  await api.post<void>(`/payments/${encodeURIComponent(paymentId)}/approve`, {});
 }
 
 /**
@@ -31,36 +47,28 @@ export async function approvePayment(paymentId: string): Promise<void> {
  * @throws {ApiError} 404 if payment not found; 400 if txid is invalid
  */
 export async function completePayment(paymentId: string, txid: string): Promise<void> {
-  await api.post<void>(`/pi/payments/${encodeURIComponent(paymentId)}/complete`, { txid });
+  await api.post<void>(`/payments/${encodeURIComponent(paymentId)}/complete`, { txid });
 }
 
 /**
- * Initiate a donation (in-app purchase / spark recharge).
+ * Fetch payment history for the authenticated user.
  *
- * The backend creates a Pi payment object and returns the deep-link URL
- * for the user to confirm in the Pi Browser.
- *
- * @param amount — donation amount in Pi
- * @param memo   — optional memo shown to the user in the Pi payment UI
- * @returns Payment ID + Pi Browser URL for confirmation
- * @throws {ApiError} 400 if amount <= 0
+ * @returns List of payment records
+ * @throws {ApiError} 401 if not authenticated
  */
-export async function donate(amount: number, memo?: string): Promise<DonationResponse> {
-  const { data } = await api.post<DonationResponse>('/payments/donate', {
-    amount,
-    memo,
-  });
+export async function getPaymentHistory(): Promise<unknown[]> {
+  const { data } = await api.get<unknown[]>('/payments/history');
   return data;
 }
 
 /**
- * Fetch the current spark balance for the authenticated user.
+ * Fetch incomplete (pending) payments for the authenticated user.
  *
- * @returns Spark balance object
+ * @returns List of incomplete payment records
  * @throws {ApiError} 401 if not authenticated
  */
-export async function getSparkBalance(): Promise<{ balance: number }> {
-  const { data } = await api.get<{ balance: number }>('/sparks/balance');
+export async function getIncompletePayments(): Promise<unknown[]> {
+  const { data } = await api.get<unknown[]>('/payments/incomplete');
   return data;
 }
 
@@ -73,8 +81,9 @@ export async function getSparkBalance(): Promise<{ balance: number }> {
  * `import { paymentsApi } from '@/api/payments'`
  */
 export const paymentsApi = {
+  create: createPayment,
   approve: approvePayment,
   complete: completePayment,
-  donate,
-  getSparkBalance,
+  getHistory: getPaymentHistory,
+  getIncomplete: getIncompletePayments,
 };

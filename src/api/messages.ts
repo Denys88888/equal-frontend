@@ -28,7 +28,7 @@ export const messagesApi = {
     return fetchWithFallback(url, empty);
   },
 
-  sendMessage: async (matchId: string, content: string, type: 'text' | 'voice' | 'gift' | 'image' = 'text'): Promise<SendMessageResponse> => {
+  sendMessage: async (matchId: string, content: string, type: 'TEXT' | 'VOICE' | 'GIFT' | 'SYSTEM' = 'TEXT'): Promise<SendMessageResponse> => {
     const res = await fetch(`${API_BASE}/matches/${matchId}/messages`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

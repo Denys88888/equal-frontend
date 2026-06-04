@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   X,
@@ -20,7 +20,7 @@ interface Offer {
   title: string;
   description: string;
   gradient: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
   // Inline details instead of external URL
   details: {
     address: string;

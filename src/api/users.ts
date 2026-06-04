@@ -19,7 +19,7 @@ import type {
  * @throws {ApiError} 401 if not authenticated
  */
 export async function getMe(): Promise<UserProfile> {
-  const { data } = await api.get<UserProfile>('/me');
+  const { data } = await api.get<UserProfile>('/users/me');
   return data;
 }
 
@@ -33,7 +33,7 @@ export async function getMe(): Promise<UserProfile> {
  * @throws {ApiError} 400 on validation failure; 401 if not authenticated
  */
 export async function updateMe(patch: Partial<UserProfile>): Promise<UserProfile> {
-  const { data } = await api.patch<UserProfile>('/me', patch);
+  const { data } = await api.patch<UserProfile>('/users/me', patch);
   return data;
 }
 
@@ -52,7 +52,7 @@ export async function uploadPhoto(file: File, isMain: boolean = false): Promise<
   form.append('photo', file);
   form.append('isMain', String(isMain));
 
-  const { data } = await api.postForm<Photo>('/me/photos', form);
+  const { data } = await api.postForm<Photo>('/users/me/photos', form);
   return data;
 }
 
@@ -63,7 +63,7 @@ export async function uploadPhoto(file: File, isMain: boolean = false): Promise<
  * @throws {ApiError} 404 if photo not found or does not belong to user
  */
 export async function deletePhoto(photoId: string): Promise<void> {
-  await api.delete(`/me/photos?photoId=${encodeURIComponent(photoId)}`);
+  await api.delete(`/users/me/photos?photoId=${encodeURIComponent(photoId)}`);
 }
 
 /**
@@ -75,7 +75,7 @@ export async function deletePhoto(photoId: string): Promise<void> {
  * @throws {ApiError} 400 if any ID is invalid or missing
  */
 export async function reorderPhotos(photoIds: string[]): Promise<void> {
-  await api.post('/me/photos/reorder', { photoIds });
+  await api.post('/users/me/photos/reorder', { photoIds });
 }
 
 /**
