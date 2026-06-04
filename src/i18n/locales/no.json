@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "Din kjærlighet er uvurderlig",
+    "subtitle": "Den første datingappen på Pi Network der forbindelser fortjenes, ikke kjøpes.",
+    "piLogin": "Logg inn med Pi",
+    "emailLogin": "Bruk email",
+    "trust": "Gratis. For alltid. Ingen skjulte gebyrer."
+  },
+  "nav": {
+    "discover": "Oppdag",
+    "matches": "Matcher",
+    "clubs": "Klubber",
+    "events": "Arrangementer",
+    "profile": "Profil"
+  },
+  "discover": {
+    "like": "Lik",
+    "dislike": "Hopp over",
+    "spark": "Gnist",
+    "filter": "Filter",
+    "compatibility": "Kompatibilitet",
+    "kmAway": "{{distance}} km unna",
+    "matchPercent": "{{percent}}% match"
+  },
+  "matches": {
+    "title": "Matcher",
+    "newMatches": "Nye matcher",
+    "messages": "Meldinger",
+    "noMatches": "Ingen matcher ennå",
+    "startSwiping": "Begynn å sveipe for å finne din match!"
+  },
+  "chat": {
+    "typeMessage": "Skriv en melding...",
+    "send": "Send",
+    "icebreakers": "Isbrytere",
+    "giftCoffee": "Gi kaffe (1π)",
+    "block": "Blokker",
+    "report": "Rapporter"
+  },
+  "profile": {
+    "edit": "Rediger profil",
+    "trustScore": "Tillitspoeng",
+    "sparks": "Gnister",
+    "badges": "Merker",
+    "bio": "Bio",
+    "interests": "Interesser",
+    "settings": "Innstillinger"
+  },
+  "settings": {
+    "title": "Innstillinger",
+    "appearance": "Utseende",
+    "darkMode": "Mørk modus",
+    "language": "Språk",
+    "privacy": "Personvern",
+    "ghostMode": "Spøkelsesmodus",
+    "verifiedOnly": "Kun verifiserte",
+    "blockedUsers": "Blokkerte brukere",
+    "notifications": "Varsler",
+    "piWallet": "Pi-lommebok",
+    "donate": "Støtt Equal",
+    "deleteAccount": "Slett konto",
+    "logout": "Logg ut"
+  },
+  "onboarding": {
+    "next": "Neste",
+    "skip": "Hopp over",
+    "finish": "Kom i gang",
+    "step1": "La oss bli kjent med deg",
+    "step2": "Legg til bildene dine",
+    "step3": "Fortell oss om deg selv",
+    "step4": "Dine interesser",
+    "step5": "Hva ser du etter?"
+  },
+  "common": {
+    "cancel": "Avbryt",
+    "save": "Lagre",
+    "done": "Ferdig",
+    "loading": "Laster...",
+    "error": "Noe gikk galt",
+    "retry": "Prøv igjen",
+    "home": "Hjem"
+  }
+}

@@ -27,6 +27,16 @@ import pl from './locales/pl.json';
 import fa from './locales/fa.json';
 import bn from './locales/bn.json';
 import ta from './locales/ta.json';
+import el from './locales/el.json';
+import cs from './locales/cs.json';
+import hu from './locales/hu.json';
+import ro from './locales/ro.json';
+import hr from './locales/hr.json';
+import sv from './locales/sv.json';
+import no from './locales/no.json';
+import da from './locales/da.json';
+import fi from './locales/fi.json';
+import he from './locales/he.json';
 
 const resources = {
   en: { translation: en },
@@ -54,6 +64,16 @@ const resources = {
   fa: { translation: fa },
   bn: { translation: bn },
   ta: { translation: ta },
+  el: { translation: el },
+  cs: { translation: cs },
+  hu: { translation: hu },
+  ro: { translation: ro },
+  hr: { translation: hr },
+  sv: { translation: sv },
+  no: { translation: no },
+  da: { translation: da },
+  fi: { translation: fi },
+  he: { translation: he },
 };
 
 i18n

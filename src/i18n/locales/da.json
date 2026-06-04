@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "Din kærlighed er uvurderlig",
+    "subtitle": "Den første datingapp på Pi Network, hvor forbindelser fortjenes, ikke købes.",
+    "piLogin": "Log ind med Pi",
+    "emailLogin": "Brug email",
+    "trust": "Gratis. For evigt. Ingen skjulte gebyrer."
+  },
+  "nav": {
+    "discover": "Opdag",
+    "matches": "Matches",
+    "clubs": "Klubber",
+    "events": "Begivenheder",
+    "profile": "Profil"
+  },
+  "discover": {
+    "like": "Synes om",
+    "dislike": "Spring over",
+    "spark": "Gnist",
+    "filter": "Filter",
+    "compatibility": "Kompatibilitet",
+    "kmAway": "{{distance}} km væk",
+    "matchPercent": "{{percent}}% match"
+  },
+  "matches": {
+    "title": "Matches",
+    "newMatches": "Nye matches",
+    "messages": "Beskeder",
+    "noMatches": "Ingen matches endnu",
+    "startSwiping": "Begynd at swipe for at finde dit match!"
+  },
+  "chat": {
+    "typeMessage": "Skriv en besked...",
+    "send": "Send",
+    "icebreakers": "Isbrydere",
+    "giftCoffee": "Giv en kaffe (1π)",
+    "block": "Bloker",
+    "report": "Anmeld"
+  },
+  "profile": {
+    "edit": "Rediger profil",
+    "trustScore": "Tillidsscore",
+    "sparks": "Gnister",
+    "badges": "Badges",
+    "bio": "Bio",
+    "interests": "Interesser",
+    "settings": "Indstillinger"
+  },
+  "settings": {
+    "title": "Indstillinger",
+    "appearance": "Udseende",
+    "darkMode": "Mørk tilstand",
+    "language": "Sprog",
+    "privacy": "Privatliv",
+    "ghostMode": "Spøgelsestilstand",
+    "verifiedOnly": "Kun verificerede",
+    "blockedUsers": "Blokerede brugere",
+    "notifications": "Notifikationer",
+    "piWallet": "Pi-tegnebog",
+    "donate": "Støt Equal",
+    "deleteAccount": "Slet konto",
+    "logout": "Log ud"
+  },
+  "onboarding": {
+    "next": "Næste",
+    "skip": "Spring over",
+    "finish": "Kom i gang",
+    "step1": "Lad os lære dig at kende",
+    "step2": "Tilføj dine billeder",
+    "step3": "Fortæl os om dig selv",
+    "step4": "Dine interesser",
+    "step5": "Hvad leder du efter?"
+  },
+  "common": {
+    "cancel": "Annuller",
+    "save": "Gem",
+    "done": "Færdig",
+    "loading": "Indlæser...",
+    "error": "Noget gik galt",
+    "retry": "Prøv igen",
+    "home": "Hjem"
+  }
+}

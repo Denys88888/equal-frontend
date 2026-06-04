@@ -18,7 +18,11 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: undefined,
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router'],
+          ui: ['framer-motion', 'lucide-react'],
+          i18n: ['i18next', 'react-i18next', 'i18next-browser-languagedetector'],
+        },
       },
     },
   },

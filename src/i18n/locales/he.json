@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "האהבה שלך היא חסרת מחיר",
+    "subtitle": "אפליקציית הדייטינג הראשונה ברשת פאי שבה חיבורים נרכשים, לא נקנים.",
+    "piLogin": "התחברות עם פאי",
+    "emailLogin": "השתמש באימייל",
+    "trust": "חינם. לנצח. ללא עמלות נסתרות."
+  },
+  "nav": {
+    "discover": "גלה",
+    "matches": "התאמות",
+    "clubs": "מועדונים",
+    "events": "אירועים",
+    "profile": "פרופיל"
+  },
+  "discover": {
+    "like": "אהבתי",
+    "dislike": "דלג",
+    "spark": "ניצוץ",
+    "filter": "סינון",
+    "compatibility": "תאימות",
+    "kmAway": "{{distance}} ק\"מ ממך",
+    "matchPercent": "{{percent}}% התאמה"
+  },
+  "matches": {
+    "title": "התאמות",
+    "newMatches": "התאמות חדשות",
+    "messages": "הודעות",
+    "noMatches": "אין עדיין התאמות",
+    "startSwiping": "התחל לגלול כדי למצוא את ההתאמה שלך!"
+  },
+  "chat": {
+    "typeMessage": "כתוב הודעה...",
+    "send": "שלח",
+    "icebreakers": "פותחי שיח",
+    "giftCoffee": "קפה במתנה (1π)",
+    "block": "חסום",
+    "report": "דווח"
+  },
+  "profile": {
+    "edit": "ערוך פרופיל",
+    "trustScore": "ציון אמון",
+    "sparks": "ניצוצות",
+    "badges": "תגים",
+    "bio": "ביוגרפיה",
+    "interests": "תחומי עניין",
+    "settings": "הגדרות"
+  },
+  "settings": {
+    "title": "הגדרות",
+    "appearance": "מראה",
+    "darkMode": "מצב כהה",
+    "language": "שפה",
+    "privacy": "פרטיות",
+    "ghostMode": "מצב רוח",
+    "verifiedOnly": "מאומתים בלבד",
+    "blockedUsers": "משתמשים חסומים",
+    "notifications": "התראות",
+    "piWallet": "ארנק פאי",
+    "donate": "תמוך ב-Equal",
+    "deleteAccount": "מחק חשבון",
+    "logout": "התנתק"
+  },
+  "onboarding": {
+    "next": "הבא",
+    "skip": "דלג",
+    "finish": "בואו נתחיל",
+    "step1": "בואו נכיר אותך",
+    "step2": "הוסף את התמונות שלך",
+    "step3": "ספר לנו על עצמך",
+    "step4": "תחומי העניין שלך",
+    "step5": "מה אתה מחפש?"
+  },
+  "common": {
+    "cancel": "ביטול",
+    "save": "שמור",
+    "done": "סיום",
+    "loading": "טוען...",
+    "error": "משהו השתבש",
+    "retry": "נסה שוב",
+    "home": "בית"
+  }
+}

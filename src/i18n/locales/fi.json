@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "Rakkaudellasi ei ole hintaa",
+    "subtitle": "Ensimmäinen Pi Networkin treffisovellus, jossa yhteydet ansaitaan, ei osteta.",
+    "piLogin": "Kirjaudu Pi:llä",
+    "emailLogin": "Käytä sähköpostia",
+    "trust": "Ilmainen. Ikuisesti. Ei piilomaksuja."
+  },
+  "nav": {
+    "discover": "Löydä",
+    "matches": "Osumat",
+    "clubs": "Kerhot",
+    "events": "Tapahtumat",
+    "profile": "Profiili"
+  },
+  "discover": {
+    "like": "Tykkää",
+    "dislike": "Ohita",
+    "spark": "Kipinä",
+    "filter": "Suodatin",
+    "compatibility": "Yhteensopivuus",
+    "kmAway": "{{distance}} km päässä",
+    "matchPercent": "{{percent}}% osuma"
+  },
+  "matches": {
+    "title": "Osumat",
+    "newMatches": "Uudet osumat",
+    "messages": "Viestit",
+    "noMatches": "Ei osumia vielä",
+    "startSwiping": "Aloita pyyhkäisemällä löytääksesi matchin!"
+  },
+  "chat": {
+    "typeMessage": "Kirjoita viesti...",
+    "send": "Lähetä",
+    "icebreakers": "Jäänrikkojat",
+    "giftCoffee": "Lahjoita kahvi (1π)",
+    "block": "Estä",
+    "report": "Ilmoita"
+  },
+  "profile": {
+    "edit": "Muokkaa profiilia",
+    "trustScore": "Luottamuspisteet",
+    "sparks": "Kipinät",
+    "badges": "Merkit",
+    "bio": "Esittely",
+    "interests": "Kiinnostuksen kohteet",
+    "settings": "Asetukset"
+  },
+  "settings": {
+    "title": "Asetukset",
+    "appearance": "Ulkoasu",
+    "darkMode": "Tumma tila",
+    "language": "Kieli",
+    "privacy": "Yksityisyys",
+    "ghostMode": "Haamutila",
+    "verifiedOnly": "Vain vahvistetut",
+    "blockedUsers": "Estetyt käyttäjät",
+    "notifications": "Ilmoitukset",
+    "piWallet": "Pi-lompakko",
+    "donate": "Tue Equalia",
+    "deleteAccount": "Poista tili",
+    "logout": "Kirjaudu ulos"
+  },
+  "onboarding": {
+    "next": "Seuraava",
+    "skip": "Ohita",
+    "finish": "Aloitetaan",
+    "step1": "Tutustutaan sinuun",
+    "step2": "Lisää valokuvasi",
+    "step3": "Kerro itsestäsi",
+    "step4": "Kiinnostuksen kohteesi",
+    "step5": "Mitä etsit?"
+  },
+  "common": {
+    "cancel": "Peruuta",
+    "save": "Tallenna",
+    "done": "Valmis",
+    "loading": "Ladataan...",
+    "error": "Jotain meni pieleen",
+    "retry": "Yritä uudelleen",
+    "home": "Koti"
+  }
+}

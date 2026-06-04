@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "A szerelmednek nincs ára",
+    "subtitle": "Az első társkereső alkalmazás a Pi Networkön, ahol a kapcsolatokat ki kell érdemelni, nem megvenni.",
+    "piLogin": "Bejelentkezés Pi-vel",
+    "emailLogin": "Email használata",
+    "trust": "Ingyenes. Örökké. Nincsenek rejtett díjak."
+  },
+  "nav": {
+    "discover": "Felfedezés",
+    "matches": "Egyezések",
+    "clubs": "Klubok",
+    "events": "Események",
+    "profile": "Profil"
+  },
+  "discover": {
+    "like": "Tetszik",
+    "dislike": "Kihagyás",
+    "spark": "Szikra",
+    "filter": "Szűrő",
+    "compatibility": "Kompatibilitás",
+    "kmAway": "{{distance}} km-re",
+    "matchPercent": "{{percent}}% egyezés"
+  },
+  "matches": {
+    "title": "Egyezések",
+    "newMatches": "Új egyezések",
+    "messages": "Üzenetek",
+    "noMatches": "Még nincs egyezés",
+    "startSwiping": "Kezdj el pörgatni, hogy megtaláld a párod!"
+  },
+  "chat": {
+    "typeMessage": "Írj egy üzenetet...",
+    "send": "Küldés",
+    "icebreakers": "Jégtörők",
+    "giftCoffee": "Kávé ajándékba (1π)",
+    "block": "Letiltás",
+    "report": "Jelentés"
+  },
+  "profile": {
+    "edit": "Profil szerkesztése",
+    "trustScore": "Bizalmi pontszám",
+    "sparks": "Szikrák",
+    "badges": "Jelvények",
+    "bio": "Bemutatkozás",
+    "interests": "Érdeklődési körök",
+    "settings": "Beállítások"
+  },
+  "settings": {
+    "title": "Beállítások",
+    "appearance": "Megjelenés",
+    "darkMode": "Sötét mód",
+    "language": "Nyelv",
+    "privacy": "Adatvédelem",
+    "ghostMode": "Szellem mód",
+    "verifiedOnly": "Csak ellenőrzött",
+    "blockedUsers": "Letiltott felhasználók",
+    "notifications": "Értesítések",
+    "piWallet": "Pi pénztárca",
+    "donate": "Támogasd az Equal-t",
+    "deleteAccount": "Fiók törlése",
+    "logout": "Kijelentkezés"
+  },
+  "onboarding": {
+    "next": "Következő",
+    "skip": "Kihagyás",
+    "finish": "Kezdjük el",
+    "step1": "Ismerjünk meg téged",
+    "step2": "Tölts fel fényképeket",
+    "step3": "Mesélj magadról",
+    "step4": "Az érdeklődési köröd",
+    "step5": "Mit keresel?"
+  },
+  "common": {
+    "cancel": "Mégse",
+    "save": "Mentés",
+    "done": "Kész",
+    "loading": "Betöltés...",
+    "error": "Valami hiba történt",
+    "retry": "Újrapróbálás",
+    "home": "Kezdőlap"
+  }
+}

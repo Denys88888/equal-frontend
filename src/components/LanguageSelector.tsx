@@ -34,6 +34,16 @@ const languages = [
   { code: 'fa', label: 'فارسی', flag: '\u{1F1EE}\u{1F1F7}' },
   { code: 'bn', label: 'বাংলা', flag: '\u{1F1E7}\u{1F1E9}' },
   { code: 'ta', label: 'தமிழ்', flag: '\u{1F1EE}\u{1F1F9}' },
+  { code: 'el', label: 'Ελληνικά', flag: '\u{1F1EC}\u{1F1F7}' },
+  { code: 'cs', label: 'Čeština', flag: '\u{1F1E8}\u{1F1FF}' },
+  { code: 'hu', label: 'Magyar', flag: '\u{1F1ED}\u{1F1FA}' },
+  { code: 'ro', label: 'Română', flag: '\u{1F1F7}\u{1F1F4}' },
+  { code: 'hr', label: 'Hrvatski', flag: '\u{1F1ED}\u{1F1F7}' },
+  { code: 'sv', label: 'Svenska', flag: '\u{1F1F8}\u{1F1EA}' },
+  { code: 'no', label: 'Norsk', flag: '\u{1F1F3}\u{1F1F4}' },
+  { code: 'da', label: 'Dansk', flag: '\u{1F1E9}\u{1F1F0}' },
+  { code: 'fi', label: 'Suomi', flag: '\u{1F1EB}\u{1F1EE}' },
+  { code: 'he', label: 'עברית', flag: '\u{1F1EE}\u{1F1F1}' },
 ];
 
 export default function LanguageSelector() {

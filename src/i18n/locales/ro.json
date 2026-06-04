@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "Afecțiunea ta nu are preț",
+    "subtitle": "Prima aplicație de dating din Pi Network unde conexiunile se câștigă, nu se cumpără.",
+    "piLogin": "Conectare cu Pi",
+    "emailLogin": "Folosește email",
+    "trust": "Gratuit. Pentru totdeauna. Fără taxe ascunse."
+  },
+  "nav": {
+    "discover": "Descoperă",
+    "matches": "Potriviri",
+    "clubs": "Cluburi",
+    "events": "Evenimente",
+    "profile": "Profil"
+  },
+  "discover": {
+    "like": "Îmi place",
+    "dislike": "Treci",
+    "spark": "Scânteie",
+    "filter": "Filtru",
+    "compatibility": "Compatibilitate",
+    "kmAway": "{{distance}} km distanță",
+    "matchPercent": "{{percent}}% potrivire"
+  },
+  "matches": {
+    "title": "Potriviri",
+    "newMatches": "Potriviri noi",
+    "messages": "Mesaje",
+    "noMatches": "Nicio potrivire încă",
+    "startSwiping": "Începe să glisezi pentru a-ți găsi perechea!"
+  },
+  "chat": {
+    "typeMessage": "Scrie un mesaj...",
+    "send": "Trimite",
+    "icebreakers": "Spargere de gheață",
+    "giftCoffee": "Oferă o cafea (1π)",
+    "block": "Blochează",
+    "report": "Raportează"
+  },
+  "profile": {
+    "edit": "Editează profilul",
+    "trustScore": "Scor de încredere",
+    "sparks": "Scântei",
+    "badges": "Insigne",
+    "bio": "Bio",
+    "interests": "Interese",
+    "settings": "Setări"
+  },
+  "settings": {
+    "title": "Setări",
+    "appearance": "Aspect",
+    "darkMode": "Mod Întunecat",
+    "language": "Limbă",
+    "privacy": "Confidențialitate",
+    "ghostMode": "Mod Fantomă",
+    "verifiedOnly": "Doar Verificați",
+    "blockedUsers": "Utilizatori Blocați",
+    "notifications": "Notificări",
+    "piWallet": "Portofel Pi",
+    "donate": "Susține Equal",
+    "deleteAccount": "Șterge Contul",
+    "logout": "Deconectare"
+  },
+  "onboarding": {
+    "next": "Următorul",
+    "skip": "Sari peste",
+    "finish": "Să începem",
+    "step1": "Hai să te cunoaștem",
+    "step2": "Adaugă fotografiile tale",
+    "step3": "Spune-ne despre tine",
+    "step4": "Interesele tale",
+    "step5": "Ce cauți?"
+  },
+  "common": {
+    "cancel": "Anulează",
+    "save": "Salvează",
+    "done": "Gata",
+    "loading": "Se încarcă...",
+    "error": "Ceva nu a mers bine",
+    "retry": "Încearcă din nou",
+    "home": "Acasă"
+  }
+}

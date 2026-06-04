@@ -1,17 +1,25 @@
+import { lazy, Suspense } from 'react'
 import { Routes, Route, useLocation } from 'react-router'
-import Welcome from './pages/Welcome'
-import Onboarding from './pages/Onboarding'
-import Discover from './pages/Discover'
-import Matches from './pages/Matches'
-import Chat from './pages/Chat'
-import VideoCall from './pages/VideoCall'
-import Profile from './pages/Profile'
-import Clubs from './pages/Clubs'
-import Events from './pages/Events'
-import Settings from './pages/Settings'
-import Admin from './pages/Admin'
-import NotFound from './pages/NotFound'
 import ErrorBoundary from './components/ErrorBoundary'
+
+const Welcome = lazy(() => import('./pages/Welcome'))
+const Onboarding = lazy(() => import('./pages/Onboarding'))
+const Discover = lazy(() => import('./pages/Discover'))
+const Matches = lazy(() => import('./pages/Matches'))
+const Chat = lazy(() => import('./pages/Chat'))
+const VideoCall = lazy(() => import('./pages/VideoCall'))
+const Profile = lazy(() => import('./pages/Profile'))
+const Settings = lazy(() => import('./pages/Settings'))
+const Clubs = lazy(() => import('./pages/Clubs'))
+const Events = lazy(() => import('./pages/Events'))
+const Admin = lazy(() => import('./pages/Admin'))
+const NotFound = lazy(() => import('./pages/NotFound'))
+
+const PageSpinner = () => (
+  <div className="flex items-center justify-center min-h-screen">
+    <div className="w-8 h-8 border-2 border-[#BB83C9] border-t-transparent rounded-full animate-spin" />
+  </div>
+)
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -36,7 +44,9 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <ErrorBoundary>
-      <AnimatedRoutes />
+      <Suspense fallback={<PageSpinner />}>
+        <AnimatedRoutes />
+      </Suspense>
     </ErrorBoundary>
   )
 }

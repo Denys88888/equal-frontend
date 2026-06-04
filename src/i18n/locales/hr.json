@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "Tvoja ljubav ne može se platiti",
+    "subtitle": "Prva aplikacija za upoznavanje na Pi Networku gdje se veze zaslužuju, ne kupuju.",
+    "piLogin": "Prijava s Pi",
+    "emailLogin": "Koristi email",
+    "trust": "Besplatno. Zauvijek. Bez skrivenih troškova."
+  },
+  "nav": {
+    "discover": "Otkrij",
+    "matches": "Spojevi",
+    "clubs": "Klubovi",
+    "events": "Događaji",
+    "profile": "Profil"
+  },
+  "discover": {
+    "like": "Sviđa mi se",
+    "dislike": "Preskoči",
+    "spark": "Iskra",
+    "filter": "Filtar",
+    "compatibility": "Kompatibilnost",
+    "kmAway": "{{distance}} km udaljen",
+    "matchPercent": "{{percent}}% podudaranje"
+  },
+  "matches": {
+    "title": "Spojevi",
+    "newMatches": "Novi spojevi",
+    "messages": "Poruke",
+    "noMatches": "Još nema spojeva",
+    "startSwiping": "Započni pretraživanje da pronađeš svog spoja!"
+  },
+  "chat": {
+    "typeMessage": "Napiši poruku...",
+    "send": "Pošalji",
+    "icebreakers": "Lomljenje leda",
+    "giftCoffee": "Pokloni kavu (1π)",
+    "block": "Blokiraj",
+    "report": "Prijavi"
+  },
+  "profile": {
+    "edit": "Uredi profil",
+    "trustScore": "Rezultat povjerenja",
+    "sparks": "Iskre",
+    "badges": "Značke",
+    "bio": "Biografija",
+    "interests": "Interesi",
+    "settings": "Postavke"
+  },
+  "settings": {
+    "title": "Postavke",
+    "appearance": "Izgled",
+    "darkMode": "Tamni način",
+    "language": "Jezik",
+    "privacy": "Privatnost",
+    "ghostMode": "Način duha",
+    "verifiedOnly": "Samo verificirani",
+    "blockedUsers": "Blokirani korisnici",
+    "notifications": "Obavijesti",
+    "piWallet": "Pi novčanik",
+    "donate": "Podrži Equal",
+    "deleteAccount": "Izbriši račun",
+    "logout": "Odjava"
+  },
+  "onboarding": {
+    "next": "Dalje",
+    "skip": "Preskoči",
+    "finish": "Započni",
+    "step1": "Upoznajmo te",
+    "step2": "Dodaj svoje fotografije",
+    "step3": "Reci nam nešto o sebi",
+    "step4": "Tvoji interesi",
+    "step5": "Što tražiš?"
+  },
+  "common": {
+    "cancel": "Odustani",
+    "save": "Spremi",
+    "done": "Gotovo",
+    "loading": "Učitavanje...",
+    "error": "Nešto je pošlo po zlu",
+    "retry": "Pokušaj ponovno",
+    "home": "Početna"
+  }
+}

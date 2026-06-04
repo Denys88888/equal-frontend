@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "Din kärlek är ovärderlig",
+    "subtitle": "Den första dejtingappen på Pi Network där kontakter förtjänas, inte köps.",
+    "piLogin": "Logga in med Pi",
+    "emailLogin": "Använd email",
+    "trust": "Gratis. För alltid. Inga dolda avgifter."
+  },
+  "nav": {
+    "discover": "Upptäck",
+    "matches": "Matchningar",
+    "clubs": "Klubbar",
+    "events": "Event",
+    "profile": "Profil"
+  },
+  "discover": {
+    "like": "Gilla",
+    "dislike": "Hoppa över",
+    "spark": "Gnista",
+    "filter": "Filter",
+    "compatibility": "Kompatibilitet",
+    "kmAway": "{{distance}} km bort",
+    "matchPercent": "{{percent}}% matchning"
+  },
+  "matches": {
+    "title": "Matchningar",
+    "newMatches": "Nya matchningar",
+    "messages": "Meddelanden",
+    "noMatches": "Inga matchningar än",
+    "startSwiping": "Börja svepa för att hitta din match!"
+  },
+  "chat": {
+    "typeMessage": "Skriv ett meddelande...",
+    "send": "Skicka",
+    "icebreakers": "Isbrytare",
+    "giftCoffee": "Bjud på kaffe (1π)",
+    "block": "Blockera",
+    "report": "Rapportera"
+  },
+  "profile": {
+    "edit": "Redigera profil",
+    "trustScore": "Förtroendepoäng",
+    "sparks": "Gnistor",
+    "badges": "Märken",
+    "bio": "Bio",
+    "interests": "Intressen",
+    "settings": "Inställningar"
+  },
+  "settings": {
+    "title": "Inställningar",
+    "appearance": "Utseende",
+    "darkMode": "Mörkt läge",
+    "language": "Språk",
+    "privacy": "Integritet",
+    "ghostMode": "Spökläge",
+    "verifiedOnly": "Endast verifierade",
+    "blockedUsers": "Blockerade användare",
+    "notifications": "Aviseringar",
+    "piWallet": "Pi-plånbok",
+    "donate": "Stöd Equal",
+    "deleteAccount": "Ta bort konto",
+    "logout": "Logga ut"
+  },
+  "onboarding": {
+    "next": "Nästa",
+    "skip": "Hoppa över",
+    "finish": "Kom igång",
+    "step1": "Låt oss lära känna dig",
+    "step2": "Lägg till dina foton",
+    "step3": "Berätta om dig själv",
+    "step4": "Dina intressen",
+    "step5": "Vad letar du efter?"
+  },
+  "common": {
+    "cancel": "Avbryt",
+    "save": "Spara",
+    "done": "Klar",
+    "loading": "Laddar...",
+    "error": "Något gick fel",
+    "retry": "Försök igen",
+    "home": "Hem"
+  }
+}

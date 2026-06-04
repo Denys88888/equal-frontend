@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "Tvoje náklonnost je k nezaplacení",
+    "subtitle": "První seznamovací aplikace na Pi Network, kde se vztahy získávají, nekupují.",
+    "piLogin": "Přihlásit přes Pi",
+    "emailLogin": "Použít email",
+    "trust": "Zdarma. Navždy. Žádné skryté poplatky."
+  },
+  "nav": {
+    "discover": "Objevovat",
+    "matches": "Shody",
+    "clubs": "Kluby",
+    "events": "Akce",
+    "profile": "Profil"
+  },
+  "discover": {
+    "like": "Líbí se",
+    "dislike": "Přeskočit",
+    "spark": "Jiskra",
+    "filter": "Filtr",
+    "compatibility": "Kompatibilita",
+    "kmAway": "{{distance}} km daleko",
+    "matchPercent": "{{percent}}% shoda"
+  },
+  "matches": {
+    "title": "Shody",
+    "newMatches": "Nové shody",
+    "messages": "Zprávy",
+    "noMatches": "Zatím žádné shody",
+    "startSwiping": "Začni procházet a najdi svou shodu!"
+  },
+  "chat": {
+    "typeMessage": "Napiš zprávu...",
+    "send": "Odeslat",
+    "icebreakers": "Zahájení konverzace",
+    "giftCoffee": "Dát kávu (1π)",
+    "block": "Zablokovat",
+    "report": "Nahlásit"
+  },
+  "profile": {
+    "edit": "Upravit profil",
+    "trustScore": "Skóre důvěry",
+    "sparks": "Jiskry",
+    "badges": "Odznaky",
+    "bio": "Bio",
+    "interests": "Zájmy",
+    "settings": "Nastavení"
+  },
+  "settings": {
+    "title": "Nastavení",
+    "appearance": "Vzhled",
+    "darkMode": "Tmavý režim",
+    "language": "Jazyk",
+    "privacy": "Soukromí",
+    "ghostMode": "Režim ducha",
+    "verifiedOnly": "Pouze ověření",
+    "blockedUsers": "Blokovaní uživatelé",
+    "notifications": "Oznámení",
+    "piWallet": "Pi peněženka",
+    "donate": "Podpořit Equal",
+    "deleteAccount": "Smazat účet",
+    "logout": "Odhlásit se"
+  },
+  "onboarding": {
+    "next": "Další",
+    "skip": "Přeskočit",
+    "finish": "Začít",
+    "step1": "Pojďme tě poznat",
+    "step2": "Přidej své fotky",
+    "step3": "Řekni nám o sobě",
+    "step4": "Tvé zájmy",
+    "step5": "Co hledáš?"
+  },
+  "common": {
+    "cancel": "Zrušit",
+    "save": "Uložit",
+    "done": "Hotovo",
+    "loading": "Načítání...",
+    "error": "Něco se pokazilo",
+    "retry": "Zkusit znovu",
+    "home": "Domů"
+  }
+}
