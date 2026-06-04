@@ -1,31 +1,200 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="description" content="Equal — The first dating app on Pi Network. Your affection has no price. Free forever.">
-    <meta name="theme-color" content="#BB83C9" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#232323" media="(prefers-color-scheme: dark)" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="Equal" />
-    <title>Equal - Dating on Pi Network</title>
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="image" href="/hero-couple.png">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script src="https://sdk.minepi.com/pi-sdk.js"></script>
-    <script>
-      // Initialize Pi SDK for Testnet
-      if (typeof Pi !== 'undefined') {
-        Pi.init({ version: "2.0", sandbox: true });
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="Equal — The first dating app on Pi Network. Your affection has no price. Free forever.">
+<meta name="theme-color" content="#BB83C9">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://sdk.minepi.com https://api.minepi.com; script-src 'self' 'unsafe-inline' https://sdk.minepi.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.minepi.com https://equal-backend.onrender.com;">
+<title>Equal - Dating on Pi Network</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',system-ui,sans-serif;background:#F7F4EE;color:#232323;min-height:100vh;display:flex;flex-direction:column;align-items:center}
+.container{width:100%;max-width:430px;min-height:100dvh;padding-top:calc(48px + env(safe-area-inset-top));padding-bottom:80px;position:relative;background:radial-gradient(circle at 30% 30%,rgba(187,131,201,.35),transparent 60%),radial-gradient(circle at 70% 70%,rgba(125,224,179,.3),transparent 60%),#F7F4EE}
+.logo{display:flex;align-items:center;gap:12px;justify-content:center;margin-top:20px}
+.logo-icon{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,#BB83C9,#7DE0B3);display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;font-weight:700}
+.logo-text{font-size:22px;font-weight:700;color:#232323}
+.hero{display:flex;justify-content:center;margin-top:40px;position:relative}
+.hero-bg{position:absolute;width:200px;height:200px;border-radius:50%;background:rgba(187,131,201,.08);filter:blur(40px);top:50%;left:50%;transform:translate(-50%,-50%)}
+.hero-img{width:280px;height:350px;object-fit:contain;position:relative;z-index:1;animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+.headline{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:32px;padding:0 20px}
+.headline span{font-size:36px;font-weight:700;color:#232323;line-height:1.05;letter-spacing:-1px}
+.subtitle{text-align:center;margin-top:16px;padding:0 32px;font-size:16px;line-height:1.6;color:rgba(35,35,35,.65);max-width:360px}
+.pi-btn{width:calc(100% - 40px);max-width:350px;height:56px;border-radius:28px;border:none;background:#BB83C9;color:#fff;font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin:32px auto 0;box-shadow:0 4px 16px rgba(187,131,201,.3);transition:transform .1s}
+.pi-btn:active{transform:scale(.97)}
+.pi-btn:disabled{opacity:.6;cursor:wait}
+.pi-btn svg{width:20px;height:20px}
+.error{color:#E74C3C;text-align:center;margin-top:12px;font-size:14px;padding:0 20px}
+.notice{background:rgba(187,131,201,.1);border-radius:12px;padding:12px 16px;margin:16px 20px 0;font-size:13px;color:rgba(35,35,35,.7);text-align:center}
+.trust{display:flex;align-items:center;gap:6px;justify-content:center;margin-top:16px}
+.trust svg{width:16px;height:16px;color:#7DE0B3}
+.trust span{font-size:13px;color:rgba(35,35,35,.5)}
+.footer{position:absolute;bottom:20px;left:0;right:0;text-align:center;font-size:12px;color:rgba(35,35,35,.4)}
+.spinner{width:20px;height:20px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin 1s linear infinite;display:none}
+.pi-btn.loading .spinner{display:block}
+.pi-btn.loading .btn-text{display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cookie{position:fixed;bottom:0;left:0;right:0;z-index:50;padding:12px 16px;background:#fff;border-top:1px solid rgba(0,0,0,.06);display:flex;align-items:center;gap:12px;justify-content:center;flex-wrap:wrap;font-size:13px}
+.cookie button{padding:6px 16px;border-radius:16px;border:none;font-size:13px;cursor:pointer;font-family:inherit;font-weight:600}
+.cookie .accept{background:#BB83C9;color:#fff}
+.cookie .decline{background:rgba(232,226,216,.5);color:#232323}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <div class="logo">
+    <div class="logo-icon">E</div>
+    <div class="logo-text">Equal</div>
+  </div>
+  
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <svg class="hero-img" viewBox="0 0 280 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="140" cy="120" r="80" fill="url(#g1)" opacity="0.3"/>
+      <circle cx="100" cy="140" r="60" fill="#BB83C9" opacity="0.8"/>
+      <circle cx="180" cy="140" r="60" fill="#7DE0B3" opacity="0.8"/>
+      <path d="M140 200 Q140 250 100 280" stroke="#BB83C9" stroke-width="3" fill="none" opacity="0.5"/>
+      <path d="M140 200 Q140 250 180 280" stroke="#7DE0B3" stroke-width="3" fill="none" opacity="0.5"/>
+      <circle cx="100" cy="280" r="25" fill="url(#g2)"/>
+      <circle cx="180" cy="280" r="25" fill="url(#g2)"/>
+      <defs>
+        <linearGradient id="g1" x1="60" y1="40" x2="220" y2="200">
+          <stop offset="0%" stop-color="#BB83C9"/>
+          <stop offset="100%" stop-color="#7DE0B3"/>
+        </linearGradient>
+        <linearGradient id="g2" x1="0" y1="0" x2="50" y2="50">
+          <stop offset="0%" stop-color="#BB83C9"/>
+          <stop offset="100%" stop-color="#7DE0B3"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+  
+  <div class="headline">
+    <span>Your</span>
+    <span>affection</span>
+    <span>has</span>
+    <span>no</span>
+    <span>price</span>
+  </div>
+  
+  <p class="subtitle">The first dating app on Pi Network where connections are earned, not bought.</p>
+  
+  <button class="pi-btn" id="piLoginBtn" onclick="handlePiLogin()">
+    <div class="spinner"></div>
+    <span class="btn-text">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+      Login with Pi
+    </span>
+  </button>
+  
+  <div id="errorMsg" class="error" style="display:none"></div>
+  <div id="piNotice" class="notice" style="display:none">Pi SDK loaded successfully. Click the button to authenticate.</div>
+  
+  <div class="trust">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:#7DE0B3"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <span>Free. Forever. No hidden fees.</span>
+  </div>
+  
+  <div class="footer">Equal Dating App © 2026</div>
+</div>
+
+<div class="cookie" id="cookieBanner">
+  <span>We use cookies for authentication and analytics.</span>
+  <button class="accept" onclick="acceptCookies()">Accept All</button>
+  <button class="decline" onclick="declineCookies()">Essential Only</button>
+</div>
+
+<script>
+// Pi SDK loader - works in Pi Browser (native) and regular browsers (script)
+function loadPiSDK() {
+  return new Promise(function(resolve) {
+    // If Pi is already available (Pi Browser native), use it
+    if (typeof window.Pi !== 'undefined') {
+      console.log('Pi SDK already available (native)');
+      resolve(true);
+      return;
+    }
+    // Otherwise try to load from CDN
+    var script = document.createElement('script');
+    script.src = 'https://sdk.minepi.com/pi-sdk.js';
+    script.onload = function() {
+      console.log('Pi SDK loaded from CDN');
+      if (typeof window.Pi !== 'undefined') {
+        var isSandbox = window.location.hostname.indexOf('sandbox') !== -1;
+        window.Pi.init({ version: "2.0", sandbox: isSandbox });
       }
-    </script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+      resolve(true);
+    };
+    script.onerror = function() {
+      console.log('Pi SDK failed to load - running in fallback mode');
+      resolve(false);
+    };
+    document.head.appendChild(script);
+  });
+}
+
+// Initialize on page load
+loadPiSDK().then(function(loaded) {
+  if (loaded && typeof window.Pi !== 'undefined') {
+    document.getElementById('piNotice').style.display = 'block';
+  }
+});
+
+function handlePiLogin() {
+  var btn = document.getElementById('piLoginBtn');
+  var errorDiv = document.getElementById('errorMsg');
+  var notice = document.getElementById('piNotice');
+  
+  btn.classList.add('loading');
+  btn.disabled = true;
+  errorDiv.style.display = 'none';
+  
+  if (typeof window.Pi === 'undefined') {
+    showError('Pi SDK not available. Please open this app in Pi Browser.');
+    btn.classList.remove('loading');
+    btn.disabled = false;
+    return;
+  }
+  
+  window.Pi.authenticate(['username', 'payments'], function(payment) {
+    console.log('Incomplete payment found:', payment);
+  }).then(function(auth) {
+    console.log('Pi auth success:', auth);
+    alert('Authentication successful! Welcome, ' + auth.user.username);
+    btn.classList.remove('loading');
+    btn.disabled = false;
+  }).catch(function(err) {
+    console.error('Pi auth error:', err);
+    showError(err.message || 'Authentication failed. Try again.');
+    btn.classList.remove('loading');
+    btn.disabled = false;
+  });
+}
+
+function showError(msg) {
+  var errorDiv = document.getElementById('errorMsg');
+  errorDiv.textContent = msg;
+  errorDiv.style.display = 'block';
+}
+
+// Cookie consent
+function acceptCookies() {
+  localStorage.setItem('cookie-consent', 'accepted');
+  document.getElementById('cookieBanner').style.display = 'none';
+}
+
+function declineCookies() {
+  localStorage.setItem('cookie-consent', 'declined');
+  document.getElementById('cookieBanner').style.display = 'none';
+}
+
+// Check existing consent
+if (localStorage.getItem('cookie-consent')) {
+  document.getElementById('cookieBanner').style.display = 'none';
+}
+</script>
+</body>
 </html>
