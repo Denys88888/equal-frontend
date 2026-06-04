@@ -149,20 +149,30 @@ export default function Welcome() {
 
       let authResult;
       try {
-        // Try 1: with current sandbox mode (auto-detected)
+        // Try 1: minimal scope
+        console.log('[PI AUTH] Trying with scope [username]...');
         authResult = await window.Pi.authenticate(
-          ['username', 'payments'],
-          (payment) => {
-            console.log('Incomplete payment found:', payment);
-          }
+          ['username'],
+          (payment) => { console.log('Incomplete payment:', payment); }
         );
       } catch (firstErr: unknown) {
-        console.warn('[PI AUTH] First attempt failed:', firstErr);
-        throw firstErr;
+        console.warn('[PI AUTH] Scope [username] failed:', firstErr);
+        try {
+          // Try 2: with payments scope
+          console.log('[PI AUTH] Retrying with scope [username, payments]...');
+          authResult = await window.Pi.authenticate(
+            ['username', 'payments'],
+            (payment) => { console.log('Incomplete payment:', payment); }
+          );
+        } catch (secondErr: unknown) {
+          console.warn('[PI AUTH] Scope [username, payments] also failed:', secondErr);
+          clearTimeout(timeoutId);
+          throw secondErr;
+        }
       }
 
       clearTimeout(timeoutId);
-      console.log('[PI AUTH] ✅ Pi.authenticate succeeded:', authResult);
+      console.log('[PI AUTH] ✅ Pi.authenticate succeeded:', JSON.stringify(authResult));
 
       await loginWithPi(authResult.accessToken, ['username', 'payments']);
       navigate('/onboarding');
