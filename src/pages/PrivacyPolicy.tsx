@@ -1,10 +1,8 @@
-import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Shield } from 'lucide-react';
 
 export default function PrivacyPolicy() {
-  const { t } = useTranslation();
   const navigate = useNavigate();
 
   return (
