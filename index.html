@@ -110,7 +110,7 @@ body{font-family:'Outfit',system-ui,sans-serif;background:#F7F4EE;color:#232323;
 </div>
 
 <!-- Debug Console -->
-<div class="debug-console collapsed" id="debugConsole">
+<div class="debug-console" id="debugConsole">
   <div class="debug-header" onclick="toggleConsole()">
     <span class="debug-title">🐛 Debug Console</span>
     <button class="debug-toggle" id="consoleToggle">⬆</button>
@@ -211,14 +211,35 @@ function handlePiLogin() {
   
   log('info', 'Pi object found. Calling Pi.authenticate()...');
   
-  Pi.authenticate(
+  log('info', 'Calling Pi.authenticate with scopes: ["username","payments"]');
+  
+  var authPromise = Pi.authenticate(
     ['username', 'payments'],
     function(payment) {
-      log('info', 'onIncompletePaymentFound: ' + JSON.stringify(payment));
+      log('info', 'onIncompletePaymentFound callback: ' + JSON.stringify(payment));
     }
-  )
+  );
+  
+  log('info', 'Pi.authenticate returned: ' + typeof authPromise);
+  
+  // Add timeout in case authenticate hangs
+  var timeoutId = setTimeout(function() {
+    log('error', '❌ Pi.authenticate TIMEOUT after 30s - no response');
+    log('error', 'This usually means:');
+    log('error', '  1. Not in Pi Browser');
+    log('error', '  2. Pi Browser SDK issue');
+    log('error', '  3. Network blocking');
+    btn.classList.remove('loading');
+    btn.disabled = false;
+    showError('Auth timeout - check console for details');
+  }, 30000);
+  
+  authPromise
   .then(function(auth) {
-    log('info', '✅ Auth success! User: ' + (auth.user ? auth.user.username : 'unknown'));
+    clearTimeout(timeoutId);
+    log('info', '✅ .then() called - Auth success!');
+    log('info', 'User: ' + (auth.user ? auth.user.username : 'unknown'));
+    log('info', 'accessToken length: ' + (auth.accessToken ? auth.accessToken.length : 0));
     statusDiv.textContent = 'Welcome! Verifying...';
     statusDiv.style.display = 'block';
     
@@ -239,11 +260,16 @@ function handlePiLogin() {
     statusDiv.textContent = 'Success!';
   })
   .catch(function(err) {
-    log('error', '❌ Auth failed: ' + err.message);
+    clearTimeout(timeoutId);
+    log('error', '❌ .catch() called - Error: ' + err.message);
+    log('error', 'Error type: ' + (err.type || 'unknown'));
+    log('error', 'Error stack: ' + (err.stack || 'no stack'));
     showError(err.message);
     statusDiv.style.display = 'none';
   })
   .finally(function() {
+    clearTimeout(timeoutId);
+    log('info', '.finally() called - cleaning up');
     btn.classList.remove('loading');
     btn.disabled = false;
   });
