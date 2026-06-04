@@ -6,13 +6,17 @@
 <meta name="description" content="Equal - The first dating app on Pi Network. Your affection has no price.">
 <meta name="theme-color" content="#BB83C9">
 <title>Equal - Dating on Pi Network</title>
-<!-- Pi SDK - REQUIRED in all pages -->
 <script src="https://sdk.minepi.com/pi-sdk.js"></script>
-<!-- Initialize: sandbox=true for sandbox.minepi.com, sandbox=false (or omit) for production -->
 <script>
-  // Auto-detect: sandbox if URL contains 'sandbox' or localhost
   var isSandbox = /sandbox|localhost|127\.0\.0\.1/.test(window.location.hostname);
-  Pi.init({ version: "2.0", sandbox: isSandbox });
+  try {
+    Pi.init({ version: "2.0", sandbox: isSandbox });
+    window._piInitSuccess = true;
+    window._piInitError = null;
+  } catch (e) {
+    window._piInitSuccess = false;
+    window._piInitError = e.message;
+  }
 </script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -42,6 +46,17 @@ body{font-family:'Outfit',system-ui,sans-serif;background:#F7F4EE;color:#232323;
 .pi-btn.loading .spinner{display:block}
 .pi-btn.loading .btn-text{display:none}
 @keyframes spin{to{transform:rotate(360deg)}}
+/* Debug Console */
+.debug-console{position:fixed;bottom:0;left:0;right:0;background:#1a1a2e;color:#00ff88;font-family:'Courier New',monospace;font-size:12px;z-index:9999;max-height:200px;transition:transform .3s;border-top:2px solid #333}
+.debug-console.collapsed{transform:translateY(calc(100% - 36px))}
+.debug-header{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#16213e;cursor:pointer}
+.debug-title{font-weight:700;color:#fff;font-size:13px}
+.debug-toggle{background:none;border:none;color:#fff;font-size:16px;cursor:pointer}
+.debug-body{padding:8px 12px;overflow-y:auto;max-height:160px}
+.debug-line{margin:2px 0;padding:2px 0;border-bottom:1px solid #333}
+.debug-line.error{color:#ff4444}
+.debug-line.warn{color:#ffaa00}
+.debug-line.info{color:#00ccff}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -94,8 +109,84 @@ body{font-family:'Outfit',system-ui,sans-serif;background:#F7F4EE;color:#232323;
   <div class="footer">Equal Dating App © 2026</div>
 </div>
 
+<!-- Debug Console -->
+<div class="debug-console collapsed" id="debugConsole">
+  <div class="debug-header" onclick="toggleConsole()">
+    <span class="debug-title">🐛 Debug Console</span>
+    <button class="debug-toggle" id="consoleToggle">⬆</button>
+  </div>
+  <div class="debug-body" id="debugBody">
+    <div class="debug-line">Loading...</div>
+  </div>
+</div>
+
 <script>
-// Backend API base URL
+// === DEBUG CONSOLE ===
+var debugLines = [];
+function log(type, msg) {
+  var line = { type: type, msg: msg, time: new Date().toLocaleTimeString() };
+  debugLines.push(line);
+  var body = document.getElementById('debugBody');
+  var div = document.createElement('div');
+  div.className = 'debug-line ' + type;
+  div.textContent = '[' + line.time + '] [' + type.toUpperCase() + '] ' + msg;
+  body.appendChild(div);
+  body.scrollTop = body.scrollHeight;
+}
+
+function toggleConsole() {
+  var el = document.getElementById('debugConsole');
+  var btn = document.getElementById('consoleToggle');
+  if (el.classList.contains('collapsed')) {
+    el.classList.remove('collapsed');
+    btn.textContent = '⬇';
+  } else {
+    el.classList.add('collapsed');
+    btn.textContent = '⬆';
+  }
+}
+
+// Override console
+var origLog = console.log;
+var origError = console.error;
+var origWarn = console.warn;
+console.log = function() { var msg = Array.from(arguments).join(' '); log('info', msg); origLog.apply(console, arguments); };
+console.error = function() { var msg = Array.from(arguments).join(' '); log('error', msg); origError.apply(console, arguments); };
+console.warn = function() { var msg = Array.from(arguments).join(' '); log('warn', msg); origWarn.apply(console, arguments); };
+
+// Capture window errors
+window.onerror = function(msg, url, line) {
+  log('error', 'JS Error: ' + msg + ' (line ' + line + ')');
+  return false;
+};
+window.onunhandledrejection = function(e) {
+  log('error', 'Unhandled Promise: ' + e.reason);
+};
+
+// === PI SDK CHECKS ===
+log('info', 'Page loaded. Hostname: ' + window.location.hostname);
+log('info', 'isSandbox: ' + /sandbox|localhost|127\.0\.0\.1/.test(window.location.hostname));
+
+// Check if Pi SDK script loaded
+setTimeout(function() {
+  if (typeof Pi === 'undefined') {
+    log('error', '❌ Pi SDK NOT loaded! typeof Pi = undefined');
+    log('error', 'Script may be blocked by CSP or network');
+  } else {
+    log('info', '✅ Pi SDK script loaded. typeof Pi = ' + typeof Pi);
+    log('info', 'Pi.init exists: ' + (typeof Pi.init === 'function'));
+    log('info', 'Pi.authenticate exists: ' + (typeof Pi.authenticate === 'function'));
+    
+    // Check if init succeeded
+    if (window._piInitSuccess) {
+      log('info', '✅ Pi.init() succeeded');
+    } else {
+      log('error', '❌ Pi.init() failed: ' + (window._piInitError || 'unknown error'));
+    }
+  }
+}, 1000);
+
+// === AUTH ===
 var API_BASE = 'https://equal-backend.onrender.com/v1';
 
 function handlePiLogin() {
@@ -103,131 +194,65 @@ function handlePiLogin() {
   var errorDiv = document.getElementById('errorMsg');
   var statusDiv = document.getElementById('piStatus');
   
-  setLoading(true);
+  btn.classList.add('loading');
+  btn.disabled = true;
   errorDiv.style.display = 'none';
   statusDiv.style.display = 'none';
   
-  // Check if Pi SDK is available
+  log('info', 'handlePiLogin() called');
+  
   if (typeof Pi === 'undefined') {
-    showError('Pi SDK not loaded. Please open in Pi Browser.');
-    setLoading(false);
+    log('error', '❌ Pi object is undefined!');
+    showError('Pi SDK not loaded. Check console.');
+    btn.classList.remove('loading');
+    btn.disabled = false;
     return;
   }
   
-  statusDiv.textContent = 'Authenticating...';
-  statusDiv.style.display = 'block';
+  log('info', 'Pi object found. Calling Pi.authenticate()...');
   
-  // Pi.authenticate per docs: Pi.authenticate(scopes, onIncompletePaymentFound)
   Pi.authenticate(
-    ['username', 'payments'], // scopes
-    function onIncompletePaymentFound(payment) {
-      // Handle incomplete payment
-      console.log('Incomplete payment:', payment);
-      fetch(API_BASE + '/payments/incomplete', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ paymentId: payment.identifier })
-      });
+    ['username', 'payments'],
+    function(payment) {
+      log('info', 'onIncompletePaymentFound: ' + JSON.stringify(payment));
     }
   )
   .then(function(auth) {
-    // auth = { accessToken, user: { uid, username } }
-    statusDiv.textContent = 'Welcome, ' + (auth.user ? auth.user.username : 'Pioneer') + '! Verifying...';
+    log('info', '✅ Auth success! User: ' + (auth.user ? auth.user.username : 'unknown'));
+    statusDiv.textContent = 'Welcome! Verifying...';
     statusDiv.style.display = 'block';
     
-    // Send accessToken to backend for verification
-    // Backend calls GET https://api.minepi.com/v2/me with Bearer token
     return fetch(API_BASE + '/auth/pi', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        accessToken: auth.accessToken,
-        scopes: ['username', 'payments']
-      })
+      body: JSON.stringify({ accessToken: auth.accessToken })
     });
   })
   .then(function(res) {
-    if (!res.ok) throw new Error('Server verification failed');
+    log('info', 'Server response: ' + res.status);
+    if (!res.ok) throw new Error('Server error: ' + res.status);
     return res.json();
   })
   .then(function(data) {
-    // Store JWT token
-    if (data.access_token) {
-      localStorage.setItem('equal_token', data.access_token);
-    }
-    statusDiv.textContent = 'Authentication successful!';
+    log('info', '✅ Server verification complete');
+    if (data.access_token) localStorage.setItem('equal_token', data.access_token);
+    statusDiv.textContent = 'Success!';
   })
   .catch(function(err) {
-    console.error('Auth error:', err);
-    showError(err.message || 'Authentication failed. Please try again.');
+    log('error', '❌ Auth failed: ' + err.message);
+    showError(err.message);
     statusDiv.style.display = 'none';
   })
   .finally(function() {
-    setLoading(false);
+    btn.classList.remove('loading');
+    btn.disabled = false;
   });
 }
 
-// Create Double-Check payment
-function createDoubleCheckPayment(matchId) {
-  Pi.createPayment(
-    {
-      amount: 1.0,
-      memo: "Double-Check Match",
-      metadata: { matchId: matchId }
-    },
-    {
-      onReadyForServerApproval: function(paymentId) {
-        // Phase I: Backend approves
-        fetch(API_BASE + '/payments/' + paymentId + '/approve', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('equal_token')
-          }
-        });
-      },
-      onReadyForServerCompletion: function(paymentId, txid) {
-        // Phase III: Backend completes
-        fetch(API_BASE + '/payments/' + paymentId + '/complete', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('equal_token')
-          },
-          body: JSON.stringify({ txid: txid })
-        })
-        .then(function() {
-          showStatus('Payment successful!');
-        });
-      },
-      onCancel: function(paymentId) {
-        showStatus('Payment cancelled');
-      },
-      onError: function(error, payment) {
-        showError('Payment error: ' + error.message);
-      }
-    }
-  );
-}
-
-// UI helpers
 function showError(msg) {
   var el = document.getElementById('errorMsg');
   el.textContent = msg;
   el.style.display = 'block';
-}
-
-function showStatus(msg) {
-  var el = document.getElementById('piStatus');
-  el.textContent = msg;
-  el.style.display = 'block';
-}
-
-function setLoading(loading) {
-  var btn = document.getElementById('piLoginBtn');
-  if (loading) btn.classList.add('loading');
-  else btn.classList.remove('loading');
-  btn.disabled = loading;
 }
 </script>
 </body>
