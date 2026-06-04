@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: equal-app
+    runtime: static
+    plan: starter
+    branch: master
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
