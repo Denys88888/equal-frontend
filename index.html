@@ -8,9 +8,8 @@
 <title>Equal - Dating on Pi Network</title>
 <script src="https://sdk.minepi.com/pi-sdk.js"></script>
 <script>
-  var isSandbox = /sandbox|localhost|127\.0\.0\.1/.test(window.location.hostname);
   try {
-    Pi.init({ version: "2.0", sandbox: isSandbox });
+    Pi.init({ version: "2.0", sandbox: true });
     window._piInitSuccess = true;
     window._piInitError = null;
   } catch (e) {
@@ -165,7 +164,7 @@ window.onunhandledrejection = function(e) {
 
 // === PI SDK CHECKS ===
 log('info', 'Page loaded. Hostname: ' + window.location.hostname);
-log('info', 'isSandbox: ' + /sandbox|localhost|127\.0\.0\.1/.test(window.location.hostname));
+log('info', 'sandbox: true (dev mode)');
 
 // Check if Pi SDK script loaded
 setTimeout(function() {
