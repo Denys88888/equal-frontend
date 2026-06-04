@@ -20,7 +20,7 @@
     "filter": "Filtrele",
     "compatibility": "Uyumluluk",
     "kmAway": "{{distance}} km uzakta",
-    "matchPercent": "%%{{percent}} Uyum"
+    "matchPercent": "%{{percent}} Uyum"
   },
   "matches": {
     "title": "Eşleşmeler",

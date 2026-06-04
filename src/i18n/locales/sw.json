@@ -20,7 +20,7 @@
     "filter": "Chuja",
     "compatibility": "Ulinganifu",
     "kmAway": "{{distance}} km mbali",
-    "matchPercent": "Linganifu la %%{{percent}}"
+    "matchPercent": "Linganifu la %{{percent}}"
   },
   "matches": {
     "title": "Linganifu",
