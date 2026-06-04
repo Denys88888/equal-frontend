@@ -27,26 +27,26 @@
   </head>
   <body>
     <div id="root"></div>
-    <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+    <script src="https://sdk.minepi.com/pi-sdk.js?v=2"></script>
     <script>
-      // Pi Browser = NO sandbox key at all. Other browsers = sandbox:true
-      var isPiBrowser = /PiBrowser/.test(navigator.userAgent) || /Pi Browser/.test(navigator.userAgent);
-      console.log('[PI INIT] UA=' + navigator.userAgent.substring(0, 50));
-      console.log('[PI INIT] isPiBrowser=' + isPiBrowser);
+      // Equal Pi SDK Init — v2
+      var _isPiBrowser = /PiBrowser/i.test(navigator.userAgent);
+      var _ua = navigator.userAgent;
+      console.log('[PI] UA=' + _ua.substring(0,60));
+      console.log('[PI] isPiBrowser=' + _isPiBrowser);
       if (typeof Pi !== 'undefined') {
         try {
-          var initConfig = { version: "2.0" };
-          if (!isPiBrowser) {
-            initConfig.sandbox = true;
-          }
-          console.log('[PI INIT] config=' + JSON.stringify(initConfig));
-          Pi.init(initConfig);
-          console.log('[PI INIT] ✅ Pi.init done');
-        } catch (e) {
-          console.error('[PI INIT] ❌ Pi.init failed:', e.message || e);
+          var cfg = { version: "2.0" };
+          if (!_isPiBrowser) cfg.sandbox = true;
+          console.log('[PI] init cfg=' + JSON.stringify(cfg));
+          Pi.init(cfg);
+          console.log('[PI] init OK');
+        } catch(e) {
+          console.error('[PI] init ERR:', e.message||e);
+          try { Pi.init({version:"2.0",sandbox:true}); } catch(e2) {}
         }
       } else {
-        console.error('[PI INIT] ❌ Pi SDK not loaded');
+        console.error('[PI] SDK NOT LOADED');
       }
     </script>
   </body>
