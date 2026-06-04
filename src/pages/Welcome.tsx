@@ -125,11 +125,6 @@ export default function Welcome() {
     setError(null);
 
     try {
-      // Initialize Pi SDK if not already
-      if (window.Pi) {
-        window.Pi.init({ version: '2.0', sandbox: import.meta.env.DEV });
-      }
-
       if (!window.Pi) {
         // Pi Browser not detected — show error or use mock for dev
         if (import.meta.env.DEV) {
