@@ -126,15 +126,26 @@ export default function Welcome() {
 
     try {
       if (!window.Pi) {
+        console.log('[PI AUTH] window.Pi not found');
         // Pi Browser not detected — show error or use mock for dev
         if (import.meta.env.DEV) {
           // Development fallback: mock login
+          console.log('[PI AUTH] DEV mode — using mock login');
           await loginWithPi('dev-mock-token', ['username', 'payments']);
           navigate('/onboarding');
           return;
         }
         throw new Error('Please open this app in Pi Browser');
       }
+
+      console.log('[PI AUTH] Calling Pi.authenticate...');
+
+      // Timeout safeguard: if Pi.authenticate doesn't resolve within 10s, show error
+      const timeoutId = setTimeout(() => {
+        console.error('[PI AUTH] ⏱️ Pi.authenticate TIMEOUT after 10s');
+        setError('Authentication timed out. Please try again in Pi Browser.');
+        setIsLoading(false);
+      }, 10000);
 
       const authResult = await window.Pi.authenticate(
         ['username', 'payments'],
@@ -143,9 +154,13 @@ export default function Welcome() {
         }
       );
 
+      clearTimeout(timeoutId);
+      console.log('[PI AUTH] ✅ Pi.authenticate succeeded:', authResult);
+
       await loginWithPi(authResult.accessToken, ['username', 'payments']);
       navigate('/onboarding');
     } catch (err: unknown) {
+      console.error('[PI AUTH] ❌ Pi.authenticate failed:', err);
       const msg = err instanceof Error ? err.message : 'Pi authentication failed';
       setError(msg);
     } finally {
