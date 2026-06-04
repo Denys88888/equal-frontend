@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "Sevginin bir fiyatı yok",
+    "subtitle": "Pi Network'ün ilk flört uygulaması: bağlantılar satın alınmaz, kazanılır.",
+    "piLogin": "Pi ile Giriş Yap",
+    "emailLogin": "E-posta ile devam et",
+    "trust": "Tamamen ücretsiz. Sonsuza dek. Gizli ücret yok."
+  },
+  "nav": {
+    "discover": "Keşfet",
+    "matches": "Eşleşmeler",
+    "clubs": "Kulüpler",
+    "events": "Etkinlikler",
+    "profile": "Profil"
+  },
+  "discover": {
+    "like": "Beğen",
+    "dislike": "Geç",
+    "spark": "Kıvılcım",
+    "filter": "Filtrele",
+    "compatibility": "Uyumluluk",
+    "kmAway": "{{distance}} km uzakta",
+    "matchPercent": "%%{{percent}} Uyum"
+  },
+  "matches": {
+    "title": "Eşleşmeler",
+    "newMatches": "Yeni Eşleşmeler",
+    "messages": "Mesajlar",
+    "noMatches": "Henüz eşleşme yok",
+    "startSwiping": "Eşleşme bulmak için kaydırmaya başla!"
+  },
+  "chat": {
+    "typeMessage": "Bir mesaj yaz...",
+    "send": "Gönder",
+    "icebreakers": "Sohbet Açıcıları",
+    "giftCoffee": "Kahve Ismarla (1π)",
+    "block": "Engelle",
+    "report": "Bildir"
+  },
+  "profile": {
+    "edit": "Profili Düzenle",
+    "trustScore": "Güven Skoru",
+    "sparks": "Kıvılcımlar",
+    "badges": "Rozetler",
+    "bio": "Biyografi",
+    "interests": "İlgi Alanları",
+    "settings": "Ayarlar"
+  },
+  "settings": {
+    "title": "Ayarlar",
+    "appearance": "Görünüm",
+    "darkMode": "Karanlık Mod",
+    "language": "Dil",
+    "privacy": "Gizlilik",
+    "ghostMode": "Hayalet Modu",
+    "verifiedOnly": "Sadece Onaylılar",
+    "blockedUsers": "Engellenen Kullanıcılar",
+    "notifications": "Bildirimler",
+    "piWallet": "Pi Cüzdanı",
+    "donate": "Equal'ı Destekle",
+    "deleteAccount": "Hesabı Sil",
+    "logout": "Çıkış Yap"
+  },
+  "onboarding": {
+    "next": "İleri",
+    "skip": "Atla",
+    "finish": "Başlayalım",
+    "step1": "Hadi seni tanıyalım",
+    "step2": "Fotoğraflarını ekle",
+    "step3": "Bize kendinden bahset",
+    "step4": "İlgi alanların",
+    "step5": "Ne arıyorsun?"
+  },
+  "common": {
+    "cancel": "İptal",
+    "save": "Kaydet",
+    "done": "Tamam",
+    "loading": "Yükleniyor...",
+    "error": "Bir şeyler ters gitti",
+    "retry": "Tekrar Dene",
+    "home": "Ana Sayfa"
+  }
+}

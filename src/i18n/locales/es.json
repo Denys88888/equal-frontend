@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "Tu afecto no tiene precio",
+    "subtitle": "La primera app de citas en Pi Network donde las conexiones se ganan, no se compran.",
+    "piLogin": "Iniciar sesión con Pi",
+    "emailLogin": "Usar correo electrónico",
+    "trust": "Gratis. Para siempre. Sin cargos ocultos."
+  },
+  "nav": {
+    "discover": "Descubrir",
+    "matches": "Matches",
+    "clubs": "Clubs",
+    "events": "Eventos",
+    "profile": "Perfil"
+  },
+  "discover": {
+    "like": "Me gusta",
+    "dislike": "Saltar",
+    "spark": "Spark",
+    "filter": "Filtrar",
+    "compatibility": "Compatibilidad",
+    "kmAway": "A {{distance}} km",
+    "matchPercent": "{{percent}}% de compatibilidad"
+  },
+  "matches": {
+    "title": "Matches",
+    "newMatches": "Nuevos Matches",
+    "messages": "Mensajes",
+    "noMatches": "Aún no tienes matches",
+    "startSwiping": "¡Empieza a deslizar para encontrar a tu persona!"
+  },
+  "chat": {
+    "typeMessage": "Escribe un mensaje...",
+    "send": "Enviar",
+    "icebreakers": "Rompehielos",
+    "giftCoffee": "Invitar un café (1π)",
+    "block": "Bloquear",
+    "report": "Reportar"
+  },
+  "profile": {
+    "edit": "Editar Perfil",
+    "trustScore": "Puntaje de Confianza",
+    "sparks": "Sparks",
+    "badges": "Insignias",
+    "bio": "Bio",
+    "interests": "Intereses",
+    "settings": "Configuración"
+  },
+  "settings": {
+    "title": "Configuración",
+    "appearance": "Apariencia",
+    "darkMode": "Modo Oscuro",
+    "language": "Idioma",
+    "privacy": "Privacidad",
+    "ghostMode": "Modo Fantasma",
+    "verifiedOnly": "Solo Verificados",
+    "blockedUsers": "Usuarios Bloqueados",
+    "notifications": "Notificaciones",
+    "piWallet": "Billetera Pi",
+    "donate": "Apoyar a Equal",
+    "deleteAccount": "Eliminar Cuenta",
+    "logout": "Cerrar Sesión"
+  },
+  "onboarding": {
+    "next": "Siguiente",
+    "skip": "Omitir",
+    "finish": "Comenzar",
+    "step1": "Conozcámonos",
+    "step2": "Añade tus fotos",
+    "step3": "Cuéntanos sobre ti",
+    "step4": "Tus intereses",
+    "step5": "¿Qué buscas?"
+  },
+  "common": {
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "done": "Listo",
+    "loading": "Cargando...",
+    "error": "Algo salió mal",
+    "retry": "Reintentar",
+    "home": "Inicio"
+  }
+}

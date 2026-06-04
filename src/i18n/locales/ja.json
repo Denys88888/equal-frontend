@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "あなたの愛に値段はない",
+    "subtitle": "Pi Network初の出会い系アプリ。出会いは買うものじゃなく、紡ぐもの。",
+    "piLogin": "Piでログイン",
+    "emailLogin": "メールでログイン",
+    "trust": "完全無料。いつまでも。追加料金なし。"
+  },
+  "nav": {
+    "discover": "さがす",
+    "matches": "マッチ",
+    "clubs": "クラブ",
+    "events": "イベント",
+    "profile": "プロフィール"
+  },
+  "discover": {
+    "like": "いいね",
+    "dislike": "スキップ",
+    "spark": "スパーク",
+    "filter": "絞り込み",
+    "compatibility": "相性",
+    "kmAway": "{{distance}} km先",
+    "matchPercent": "{{percent}}% マッチ"
+  },
+  "matches": {
+    "title": "マッチ一覧",
+    "newMatches": "新しいマッチ",
+    "messages": "メッセージ",
+    "noMatches": "まだマッチしていません",
+    "startSwiping": "スワイプして運命の相手を見つけよう！"
+  },
+  "chat": {
+    "typeMessage": "メッセージを入力...",
+    "send": "送信",
+    "icebreakers": "話題のヒント",
+    "giftCoffee": "コーヒーを贈る (1π)",
+    "block": "ブロック",
+    "report": "通報"
+  },
+  "profile": {
+    "edit": "プロフィールを編集",
+    "trustScore": "トラストスコア",
+    "sparks": "スパーク",
+    "badges": "バッジ",
+    "bio": "自己紹介",
+    "interests": "興味・関心",
+    "settings": "設定"
+  },
+  "settings": {
+    "title": "設定",
+    "appearance": "表示",
+    "darkMode": "ダークモード",
+    "language": "言語",
+    "privacy": "プライバシー",
+    "ghostMode": "ゴーストモード",
+    "verifiedOnly": "認証ユーザー限定",
+    "blockedUsers": "ブロックしたユーザー",
+    "notifications": "通知",
+    "piWallet": "Piウォレット",
+    "donate": "Equalを応援する",
+    "deleteAccount": "アカウントを削除",
+    "logout": "ログアウト"
+  },
+  "onboarding": {
+    "next": "次へ",
+    "skip": "スキップ",
+    "finish": "はじめる",
+    "step1": "あなたについて教えてください",
+    "step2": "写真を追加しましょう",
+    "step3": "自己紹介を書いてみよう",
+    "step4": "あなたの興味・関心",
+    "step5": "どんな相手を探していますか？"
+  },
+  "common": {
+    "cancel": "キャンセル",
+    "save": "保存",
+    "done": "完了",
+    "loading": "読み込み中...",
+    "error": "エラーが発生しました",
+    "retry": "再試行",
+    "home": "ホーム"
+  }
+}

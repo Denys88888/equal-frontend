@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "Ang pagmamahal mo ay walang presyo",
+    "subtitle": "Ang unang dating app sa Pi Network kung saan ang koneksyon ay kikitain, hindi bibilhin.",
+    "piLogin": "Mag-login gamit ang Pi",
+    "emailLogin": "Gumamit ng email",
+    "trust": "Libre. Magpakailanman. Walang tagong bayad."
+  },
+  "nav": {
+    "discover": "Tuklasin",
+    "matches": "Mga Pares",
+    "clubs": "Mga Klub",
+    "events": "Mga Kaganapan",
+    "profile": "Profile"
+  },
+  "discover": {
+    "like": "Gusto",
+    "dislike": "Laktawan",
+    "spark": "Silay",
+    "filter": "Salain",
+    "compatibility": "Pagkakapareho",
+    "kmAway": "{{distance}} km ang layo",
+    "matchPercent": "{{percent}}% na Pagkakapareho"
+  },
+  "matches": {
+    "title": "Mga Pares",
+    "newMatches": "Mga Bagong Pares",
+    "messages": "Mga Mensahe",
+    "noMatches": "Wala pang pareha",
+    "startSwiping": "Mag-swipe nang mahanap mo ang iyong kapareha!"
+  },
+  "chat": {
+    "typeMessage": "Magsulat ng mensahe...",
+    "send": "Ipadala",
+    "icebreakers": "Mga Icebreaker",
+    "giftCoffee": "Iregalo ang Kape (1π)",
+    "block": "I-block",
+    "report": "I-report"
+  },
+  "profile": {
+    "edit": "I-edit ang Profile",
+    "trustScore": "Trust Score",
+    "sparks": "Mga Silay",
+    "badges": "Mga Badge",
+    "bio": "Bio",
+    "interests": "Mga Interes",
+    "settings": "Mga Setting"
+  },
+  "settings": {
+    "title": "Mga Setting",
+    "appearance": "Itsura",
+    "darkMode": "Dark Mode",
+    "language": "Wika",
+    "privacy": "Pagkapribado",
+    "ghostMode": "Ghost Mode",
+    "verifiedOnly": "Verified Lang",
+    "blockedUsers": "Naka-block na User",
+    "notifications": "Mga Abiso",
+    "piWallet": "Pi Wallet",
+    "donate": "Suportahan ang Equal",
+    "deleteAccount": "Burahin ang Account",
+    "logout": "Mag-log Out"
+  },
+  "onboarding": {
+    "next": "Susunod",
+    "skip": "Laktawan",
+    "finish": "Simulan",
+    "step1": "Tara, makilala ka namin",
+    "step2": "Magdagdag ng mga larawan",
+    "step3": "Magkuwento tungkol sa iyo",
+    "step4": "Iyong mga interes",
+    "step5": "Ano ang hinahanap mo?"
+  },
+  "common": {
+    "cancel": "Kanselahin",
+    "save": "I-save",
+    "done": "Tapos na",
+    "loading": "Naglo-load...",
+    "error": "May naging problema",
+    "retry": "Subukan Muli",
+    "home": "Home"
+  }
+}

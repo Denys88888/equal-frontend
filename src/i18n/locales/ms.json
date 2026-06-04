@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "Kasih sayangmu tidak ternilai",
+    "subtitle": "Aplikasi teman janji pertama di Pi Network di mana hubungan dijalin, bukan dibeli.",
+    "piLogin": "Log Masuk dengan Pi",
+    "emailLogin": "Guna e-mel sebaliknya",
+    "trust": "Percuma. Selamanya. Tiada yuran tersembunyi."
+  },
+  "nav": {
+    "discover": "Terokai",
+    "matches": "Padanan",
+    "clubs": "Kelab",
+    "events": "Acara",
+    "profile": "Profil"
+  },
+  "discover": {
+    "like": "Suka",
+    "dislike": "Langkau",
+    "spark": "Percikan",
+    "filter": "Tapis",
+    "compatibility": "Keserasian",
+    "kmAway": "{{distance}} km jauhnya",
+    "matchPercent": "{{percent}}% Padanan"
+  },
+  "matches": {
+    "title": "Padanan",
+    "newMatches": "Padanan Baharu",
+    "messages": "Mesej",
+    "noMatches": "Tiada padanan lagi",
+    "startSwiping": "Mula lencong untuk cari padanan anda!"
+  },
+  "chat": {
+    "typeMessage": "Taip mesej...",
+    "send": "Hantar",
+    "icebreakers": "Pembuka Topik",
+    "giftCoffee": "Jemput Minum Kopi (1π)",
+    "block": "Sekat",
+    "report": "Laporkan"
+  },
+  "profile": {
+    "edit": "Edit Profil",
+    "trustScore": "Skor Kepercayaan",
+    "sparks": "Percikan",
+    "badges": "Lencana",
+    "bio": "Bio",
+    "interests": "Minat",
+    "settings": "Tetapan"
+  },
+  "settings": {
+    "title": "Tetapan",
+    "appearance": "Penampilan",
+    "darkMode": "Mod Gelap",
+    "language": "Bahasa",
+    "privacy": "Privasi",
+    "ghostMode": "Mod Hantu",
+    "verifiedOnly": "Sahih Sahaja",
+    "blockedUsers": "Pengguna Disekat",
+    "notifications": "Pemberitahuan",
+    "piWallet": "Dompet Pi",
+    "donate": "Sokong Equal",
+    "deleteAccount": "Padam Akaun",
+    "logout": "Log Keluar"
+  },
+  "onboarding": {
+    "next": "Seterusnya",
+    "skip": "Langkau",
+    "finish": "Mula",
+    "step1": "Jom kenal anda",
+    "step2": "Tambah gambar anda",
+    "step3": "Ceritakan tentang diri anda",
+    "step4": "Minat anda",
+    "step5": "Apa yang anda cari?"
+  },
+  "common": {
+    "cancel": "Batal",
+    "save": "Simpan",
+    "done": "Selesai",
+    "loading": "Memuatkan...",
+    "error": "Sesuatu tidak kena",
+    "retry": "Cuba Semula",
+    "home": "Laman Utama"
+  }
+}

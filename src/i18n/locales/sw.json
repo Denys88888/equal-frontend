@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "Upendo wako hauwezi kupimwa",
+    "subtitle": "Programu ya kwanza ya kimapenzi kwenye Mtandao wa Pi ambapo uhusiano unajengwa, siununwa.",
+    "piLogin": "Weka Jiwe na Pi",
+    "emailLogin": "Tumia barua pepe",
+    "trust": "Bila malipo. Milele. Hakuna ada zilizofichwa."
+  },
+  "nav": {
+    "discover": "Gundua",
+    "matches": "Linganifu",
+    "clubs": "Vilabu",
+    "events": "Matukio",
+    "profile": "Wasifu"
+  },
+  "discover": {
+    "like": "Penda",
+    "dislike": "Ruka",
+    "spark": "Kiwango",
+    "filter": "Chuja",
+    "compatibility": "Ulinganifu",
+    "kmAway": "{{distance}} km mbali",
+    "matchPercent": "Linganifu la %%{{percent}}"
+  },
+  "matches": {
+    "title": "Linganifu",
+    "newMatches": "Linganifu Jipya",
+    "messages": "Ujumbe",
+    "noMatches": "Hakuna linganifu bado",
+    "startSwiping": "Anza kuchunguza ili kumpata mwenza wako!"
+  },
+  "chat": {
+    "typeMessage": "Andika ujumbe...",
+    "send": "Tuma",
+    "icebreakers": "Vichocheo vya Mazungumzo",
+    "giftCoffee": "Sahau Kahawa (1π)",
+    "block": "Zuia",
+    "report": "Ripoti"
+  },
+  "profile": {
+    "edit": "Hariri Wasifu",
+    "trustScore": "Alama ya Imani",
+    "sparks": "Viwanga",
+    "badges": "Baje",
+    "bio": "Wasifu",
+    "interests": "Masuala ya Kibinafsi",
+    "settings": "Mipangilio"
+  },
+  "settings": {
+    "title": "Mipangilio",
+    "appearance": "Mwonekano",
+    "darkMode": "Hali ya Giza",
+    "language": "Lugha",
+    "privacy": "Faragha",
+    "ghostMode": "Hali ya Kificho",
+    "verifiedOnly": "Waliothibitishwa Pekee",
+    "blockedUsers": "Watumiaji Waliozuiwa",
+    "notifications": "Taarifa",
+    "piWallet": "Mkoba wa Pi",
+    "donate": "Saidia Equal",
+    "deleteAccount": "Futa Akaunti",
+    "logout": "Ondoka"
+  },
+  "onboarding": {
+    "next": "Inayofuata",
+    "skip": "Ruka",
+    "finish": "Anza",
+    "step1": "Hebu tukujue",
+    "step2": "Ongeza picha zako",
+    "step3": "Tuambie kuhusu wewe",
+    "step4": "Mambo unayopenda",
+    "step5": "Unatafuta nini?"
+  },
+  "common": {
+    "cancel": "Ghairi",
+    "save": "Hifadhi",
+    "done": "Tayari",
+    "loading": "Inapakia...",
+    "error": "Hitilafu imetokea",
+    "retry": "Jaribu Tena",
+    "home": "Nyumbani"
+  }
+}

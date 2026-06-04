@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "Seu afeto não tem preço",
+    "subtitle": "O primeiro app de relacionamentos da Pi Network onde conexões são conquistadas, não compradas.",
+    "piLogin": "Entrar com Pi",
+    "emailLogin": "Usar e-mail",
+    "trust": "Grátis. Para sempre. Sem taxas escondidas."
+  },
+  "nav": {
+    "discover": "Descobrir",
+    "matches": "Matches",
+    "clubs": "Clubes",
+    "events": "Eventos",
+    "profile": "Perfil"
+  },
+  "discover": {
+    "like": "Curtir",
+    "dislike": "Pular",
+    "spark": "Spark",
+    "filter": "Filtro",
+    "compatibility": "Compatibilidade",
+    "kmAway": "A {{distance}} km de distância",
+    "matchPercent": "{{percent}}% de match"
+  },
+  "matches": {
+    "title": "Matches",
+    "newMatches": "Novos Matches",
+    "messages": "Mensagens",
+    "noMatches": "Ainda não tem matches",
+    "startSwiping": "Comece a deslizar para encontrar seu match!"
+  },
+  "chat": {
+    "typeMessage": "Digite uma mensagem...",
+    "send": "Enviar",
+    "icebreakers": "Quebra-gelos",
+    "giftCoffee": "Presentear um café (1π)",
+    "block": "Bloquear",
+    "report": "Denunciar"
+  },
+  "profile": {
+    "edit": "Editar Perfil",
+    "trustScore": "Trust Score",
+    "sparks": "Sparks",
+    "badges": "Emblemas",
+    "bio": "Bio",
+    "interests": "Interesses",
+    "settings": "Configurações"
+  },
+  "settings": {
+    "title": "Configurações",
+    "appearance": "Aparência",
+    "darkMode": "Modo escuro",
+    "language": "Idioma",
+    "privacy": "Privacidade",
+    "ghostMode": "Modo fantasma",
+    "verifiedOnly": "Apenas verificados",
+    "blockedUsers": "Usuários bloqueados",
+    "notifications": "Notificações",
+    "piWallet": "Pi Wallet",
+    "donate": "Apoiar o Equal",
+    "deleteAccount": "Excluir conta",
+    "logout": "Sair"
+  },
+  "onboarding": {
+    "next": "Próximo",
+    "skip": "Pular",
+    "finish": "Começar",
+    "step1": "Vamos nos conhecer",
+    "step2": "Adicione suas fotos",
+    "step3": "Conte sobre você",
+    "step4": "Seus interesses",
+    "step5": "O que você procura?"
+  },
+  "common": {
+    "cancel": "Cancelar",
+    "save": "Salvar",
+    "done": "Pronto",
+    "loading": "Carregando...",
+    "error": "Algo deu errado",
+    "retry": "Tentar de novo",
+    "home": "Início"
+  }
+}

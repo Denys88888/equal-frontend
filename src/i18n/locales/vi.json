@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "Tình cảm của bạn vô giá",
+    "subtitle": "Ứng dụng hẹn hò đầu tiên trên Pi Network, nơi kết nối đến từ cảm xúc, không phải tiền bạc.",
+    "piLogin": "Đăng nhập bằng Pi",
+    "emailLogin": "Dùng email thay thế",
+    "trust": "Miễn phí. Mãi mãi. Không phí ẩn."
+  },
+  "nav": {
+    "discover": "Khám phá",
+    "matches": "Ghép đôi",
+    "clubs": "Câu lạc bộ",
+    "events": "Sự kiện",
+    "profile": "Hồ sơ"
+  },
+  "discover": {
+    "like": "Thích",
+    "dislike": "Bỏ qua",
+    "spark": "Tia lửa",
+    "filter": "Bộ lọc",
+    "compatibility": "Độ tương hợp",
+    "kmAway": "Cách {{distance}} km",
+    "matchPercent": "{{percent}}% Phù hợp"
+  },
+  "matches": {
+    "title": "Ghép đôi",
+    "newMatches": "Ghép đôi mới",
+    "messages": "Tin nhắn",
+    "noMatches": "Chưa có ai ghép đôi",
+    "startSwiping": "Vuốt để tìm ngườii phù hợp nhé!"
+  },
+  "chat": {
+    "typeMessage": "Nhập tin nhắn...",
+    "send": "Gửi",
+    "icebreakers": "Chủ đề mở đầu",
+    "giftCoffee": "Tặng cà phê (1π)",
+    "block": "Chặn",
+    "report": "Báo cáo"
+  },
+  "profile": {
+    "edit": "Chỉnh sửa hồ sơ",
+    "trustScore": "Điểm tin cậy",
+    "sparks": "Tia lửa",
+    "badges": "Huy hiệu",
+    "bio": "Giới thiệu",
+    "interests": "Sở thích",
+    "settings": "Cài đặt"
+  },
+  "settings": {
+    "title": "Cài đặt",
+    "appearance": "Giao diện",
+    "darkMode": "Chế độ tối",
+    "language": "Ngôn ngữ",
+    "privacy": "Riêng tư",
+    "ghostMode": "Chế độ ẩn",
+    "verifiedOnly": "Chỉ ngườii đã xác minh",
+    "blockedUsers": "Ngườii bị chặn",
+    "notifications": "Thông báo",
+    "piWallet": "Ví Pi",
+    "donate": "Ủng hộ Equal",
+    "deleteAccount": "Xóa tài khoản",
+    "logout": "Đăng xuất"
+  },
+  "onboarding": {
+    "next": "Tiếp theo",
+    "skip": "Bỏ qua",
+    "finish": "Bắt đầu",
+    "step1": "Hãy cho chúng tôi biết về bạn",
+    "step2": "Thêm ảnh của bạn",
+    "step3": "Giới thiệu bản thân",
+    "step4": "Sở thích của bạn",
+    "step5": "Bạn đang tìm kiếm điều gì?"
+  },
+  "common": {
+    "cancel": "Hủy",
+    "save": "Lưu",
+    "done": "Xong",
+    "loading": "Đang tải...",
+    "error": "Có lỗi xảy ra",
+    "retry": "Thử lại",
+    "home": "Trang chủ"
+  }
+}

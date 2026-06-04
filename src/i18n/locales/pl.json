@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "Twoje uczucie jest bezcenne",
+    "subtitle": "Pierwsza aplikacja randkowa w sieci Pi, gdzie relacje się zdobywa, a nie kupuje.",
+    "piLogin": "Zaloguj przez Pi",
+    "emailLogin": "Użyj e-maila",
+    "trust": "Darmowa. Na zawsze. Bez ukrytych opłat."
+  },
+  "nav": {
+    "discover": "Odkrywaj",
+    "matches": "Pary",
+    "clubs": "Kluby",
+    "events": "Wydarzenia",
+    "profile": "Profil"
+  },
+  "discover": {
+    "like": "Lubię",
+    "dislike": "Pomiń",
+    "spark": "Iskra",
+    "filter": "Filtruj",
+    "compatibility": "Dopasowanie",
+    "kmAway": "{{distance}} km stąd",
+    "matchPercent": "{{percent}}% zgodności"
+  },
+  "matches": {
+    "title": "Pary",
+    "newMatches": "Nowe pary",
+    "messages": "Wiadomości",
+    "noMatches": "Jeszcze nie masz par",
+    "startSwiping": "Zacznij przeglądać, aby znaleźć idealne dopasowanie!"
+  },
+  "chat": {
+    "typeMessage": "Napisz wiadomość...",
+    "send": "Wyślij",
+    "icebreakers": "Tematy do rozmowy",
+    "giftCoffee": "Przyjacielskie spotkanie (1π)",
+    "block": "Zablokuj",
+    "report": "Zgłoś"
+  },
+  "profile": {
+    "edit": "Edytuj profil",
+    "trustScore": "Wynik zaufania",
+    "sparks": "Iskry",
+    "badges": "Odznaki",
+    "bio": "Opis",
+    "interests": "Zainteresowania",
+    "settings": "Ustawienia"
+  },
+  "settings": {
+    "title": "Ustawienia",
+    "appearance": "Wygląd",
+    "darkMode": "Tryb ciemny",
+    "language": "Język",
+    "privacy": "Prywatność",
+    "ghostMode": "Tryb niewidzialny",
+    "verifiedOnly": "Tylko zweryfikowani",
+    "blockedUsers": "Zablokowani użytkownicy",
+    "notifications": "Powiadomienia",
+    "piWallet": "Portfel Pi",
+    "donate": "Wesprzyj Equal",
+    "deleteAccount": "Usuń konto",
+    "logout": "Wyloguj się"
+  },
+  "onboarding": {
+    "next": "Dalej",
+    "skip": "Pomiń",
+    "finish": "Zaczynamy",
+    "step1": "Poznajmy się",
+    "step2": "Dodaj swoje zdjęcia",
+    "step3": "Opowiedz nam o sobie",
+    "step4": "Twoje zainteresowania",
+    "step5": "Czego szukasz?"
+  },
+  "common": {
+    "cancel": "Anuluj",
+    "save": "Zapisz",
+    "done": "Gotowe",
+    "loading": "Ładowanie...",
+    "error": "Coś poszło nie tak",
+    "retry": "Spróbuj ponownie",
+    "home": "Strona główna"
+  }
+}

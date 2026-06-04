@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "عشق تو بی‌قیمت است",
+    "subtitle": "اولین اپلیکیشن دوستیابی در شبکه پی که در آن ارتباطات به دست می‌آیند، نه خریده می‌شوند.",
+    "piLogin": "ورود با پی",
+    "emailLogin": "ورود با ایمیل",
+    "trust": "رایگان. برای همیشه. بدون هزینه پنهان."
+  },
+  "nav": {
+    "discover": "اکتشاف",
+    "matches": "مسابقات",
+    "clubs": "باشگاه‌ها",
+    "events": "رویدادها",
+    "profile": "پروفایل"
+  },
+  "discover": {
+    "like": "پسندیدن",
+    "dislike": "رد کردن",
+    "spark": "جرقه",
+    "filter": "فیلتر",
+    "compatibility": "سازگاری",
+    "kmAway": "{{distance}} کیلومتر فاصله",
+    "matchPercent": "{{percent}}% سازگاری"
+  },
+  "matches": {
+    "title": "مسابقات",
+    "newMatches": "مسابقات جدید",
+    "messages": "پیام‌ها",
+    "noMatches": "هنوز مسابقه‌ای وجود ندارد",
+    "startSwiping": "برای یافتن مسابقه خود، شروع به سوایپ کنید!"
+  },
+  "chat": {
+    "typeMessage": "پیام بنویسید...",
+    "send": "ارسال",
+    "icebreakers": "شکننده یخ‌ها",
+    "giftCoffee": "هدایای قهوه (1π)",
+    "block": "مسدود کردن",
+    "report": "گزارش"
+  },
+  "profile": {
+    "edit": "ویرایش پروفایل",
+    "trustScore": "امتیاز اعتماد",
+    "sparks": "جرقه‌ها",
+    "badges": "نشان‌ها",
+    "bio": "بیوگرافی",
+    "interests": "علایق",
+    "settings": "تنظیمات"
+  },
+  "settings": {
+    "title": "تنظیمات",
+    "appearance": "ظاهر",
+    "darkMode": "حالت تاریک",
+    "language": "زبان",
+    "privacy": "حریم خصوصی",
+    "ghostMode": "حالت شبح",
+    "verifiedOnly": "تأیید شده‌ها",
+    "blockedUsers": "کاربران مسدود شده",
+    "notifications": "اطلاعیه‌ها",
+    "piWallet": "کیف پول پی",
+    "donate": "حمایت از Equal",
+    "deleteAccount": "حذف حساب کاربری",
+    "logout": "خروج از حساب"
+  },
+  "onboarding": {
+    "next": "بعدی",
+    "skip": "رد کردن",
+    "finish": "شروع کنید",
+    "step1": "بیایید شما را بشناسیم",
+    "step2": "عکس‌های خود را اضافه کنید",
+    "step3": "درباره خودتان بگویید",
+    "step4": "علایق شما",
+    "step5": "به دنبال چه هستید؟"
+  },
+  "common": {
+    "cancel": "لغو",
+    "save": "ذخیره",
+    "done": "انجام شد",
+    "loading": "در حال بارگذاری...",
+    "error": "مشکلی پیش آمد",
+    "retry": "تلاش مجدد",
+    "home": "خانه"
+  }
+}

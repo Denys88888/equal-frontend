@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "Il tuo affetto non ha prezzo",
+    "subtitle": "La prima app di incontri su Pi Network dove le connessioni si meritano, non si comprano.",
+    "piLogin": "Accedi con Pi",
+    "emailLogin": "Usa l'email",
+    "trust": "Gratis. Per sempre. Nessun costo nascosto."
+  },
+  "nav": {
+    "discover": "Scopri",
+    "matches": "Match",
+    "clubs": "Club",
+    "events": "Eventi",
+    "profile": "Profilo"
+  },
+  "discover": {
+    "like": "Mi piace",
+    "dislike": "Salta",
+    "spark": "Spark",
+    "filter": "Filtro",
+    "compatibility": "Compatibilità",
+    "kmAway": "A {{distance}} km di distanza",
+    "matchPercent": "Match al {{percent}}%"
+  },
+  "matches": {
+    "title": "Match",
+    "newMatches": "Nuovi Match",
+    "messages": "Messaggi",
+    "noMatches": "Ancora nessun match",
+    "startSwiping": "Inizia a scorrere per trovare il tuo match!"
+  },
+  "chat": {
+    "typeMessage": "Scrivi un messaggio...",
+    "send": "Invia",
+    "icebreakers": "Rompighiaccio",
+    "giftCoffee": "Regala un caffè (1π)",
+    "block": "Blocca",
+    "report": "Segnala"
+  },
+  "profile": {
+    "edit": "Modifica Profilo",
+    "trustScore": "Trust Score",
+    "sparks": "Sparks",
+    "badges": "Badge",
+    "bio": "Bio",
+    "interests": "Interessi",
+    "settings": "Impostazioni"
+  },
+  "settings": {
+    "title": "Impostazioni",
+    "appearance": "Aspetto",
+    "darkMode": "Modalità scura",
+    "language": "Lingua",
+    "privacy": "Privacy",
+    "ghostMode": "Modalità fantasma",
+    "verifiedOnly": "Solo verificati",
+    "blockedUsers": "Utenti bloccati",
+    "notifications": "Notifiche",
+    "piWallet": "Pi Wallet",
+    "donate": "Supporta Equal",
+    "deleteAccount": "Elimina account",
+    "logout": "Esci"
+  },
+  "onboarding": {
+    "next": "Avanti",
+    "skip": "Salta",
+    "finish": "Inizia",
+    "step1": "Facciamo conoscenza",
+    "step2": "Aggiungi le tue foto",
+    "step3": "Raccontaci di te",
+    "step4": "I tuoi interessi",
+    "step5": "Cosa cerchi?"
+  },
+  "common": {
+    "cancel": "Annulla",
+    "save": "Salva",
+    "done": "Fatto",
+    "loading": "Caricamento...",
+    "error": "Qualcosa è andato storto",
+    "retry": "Riprova",
+    "home": "Home"
+  }
+}

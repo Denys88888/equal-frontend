@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "তোমার ভালোবাসার দাম নেই",
+    "subtitle": "Pi Network-এ প্রথম ডেটিং অ্যাপ, যেখানে সংযোগ অর্জন করা হয়, কেনা হয় না।",
+    "piLogin": "Pi দিয়ে লগইন করুন",
+    "emailLogin": "ইমেইল ব্যবহার করুন",
+    "trust": "চিরকালের জন্য ফ্রি। কোনো লুকানো ফি নেই।"
+  },
+  "nav": {
+    "discover": "আবিষ্কার",
+    "matches": "ম্যাচ",
+    "clubs": "ক্লাব",
+    "events": "ইভেন্ট",
+    "profile": "প্রোফাইল"
+  },
+  "discover": {
+    "like": "পছন্দ",
+    "dislike": "পাস",
+    "spark": "স্পার্ক",
+    "filter": "ফিল্টার",
+    "compatibility": "সামঞ্জস্য",
+    "kmAway": "{{distance}} কিমি দূরে",
+    "matchPercent": "{{percent}}% ম্যাচ"
+  },
+  "matches": {
+    "title": "ম্যাচ",
+    "newMatches": "নতুন ম্যাচ",
+    "messages": "বার্তা",
+    "noMatches": "এখনো কোনো ম্যাচ নেই",
+    "startSwiping": "তোমার ম্যাচ খুঁজতে সোয়াইপ করা শুরু করো!"
+  },
+  "chat": {
+    "typeMessage": "বার্তা লিখো...",
+    "send": "পাঠাও",
+    "icebreakers": "আইসব্রেকার",
+    "giftCoffee": "কফি উপহার দাও (1π)",
+    "block": "ব্লক",
+    "report": "রিপোর্ট"
+  },
+  "profile": {
+    "edit": "প্রোফাইল এডিট করো",
+    "trustScore": "ট্রাস্ট স্কোর",
+    "sparks": "স্পার্কস",
+    "badges": "ব্যাজ",
+    "bio": "বায়ো",
+    "interests": "আগ্রহ",
+    "settings": "সেটিংস"
+  },
+  "settings": {
+    "title": "সেটিংস",
+    "appearance": "অ্যাপের রূপ",
+    "darkMode": "ডার্ক মোড",
+    "language": "ভাষা",
+    "privacy": "গোপনীয়তা",
+    "ghostMode": "ঘোস্ট মোড",
+    "verifiedOnly": "শুধু ভেরিফাইড",
+    "blockedUsers": "ব্লকড ইউজার",
+    "notifications": "নোটিফিকেশন",
+    "piWallet": "Pi ওয়ালেট",
+    "donate": "Equal কে সাপোর্ট করো",
+    "deleteAccount": "অ্যাকাউন্ট ডিলিট করো",
+    "logout": "লগ আউট"
+  },
+  "onboarding": {
+    "next": "পরবর্তী",
+    "skip": "এড়িয়ে যাও",
+    "finish": "শুরু করো",
+    "step1": "চলো তোমাকে জানি",
+    "step2": "তোমার ছবি যোগ করো",
+    "step3": "নিজের সম্পর্কে বলো",
+    "step4": "তোমার আগ্রহ",
+    "step5": "তুমি কী খুঁজছো?"
+  },
+  "common": {
+    "cancel": "ক্যান্সেল",
+    "save": "সেভ",
+    "done": "ডন",
+    "loading": "লোড হচ্ছে...",
+    "error": "কিছু একটা ভুল হয়েছে",
+    "retry": "আবার চেষ্টা করো",
+    "home": "হোম"
+  }
+}

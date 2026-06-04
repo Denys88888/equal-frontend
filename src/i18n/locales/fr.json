@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "Ton affection n'a pas de prix",
+    "subtitle": "La première appli de rencontres sur Pi Network où les connexions se méritent, ne s'achètent pas.",
+    "piLogin": "Se connecter avec Pi",
+    "emailLogin": "Utiliser un email",
+    "trust": "Gratuit. Pour toujours. Sans frais cachés."
+  },
+  "nav": {
+    "discover": "Découvrir",
+    "matches": "Matches",
+    "clubs": "Clubs",
+    "events": "Événements",
+    "profile": "Profil"
+  },
+  "discover": {
+    "like": "J'aime",
+    "dislike": "Passer",
+    "spark": "Spark",
+    "filter": "Filtrer",
+    "compatibility": "Compatibilité",
+    "kmAway": "À {{distance}} km",
+    "matchPercent": "{{percent}}% de compatibilité"
+  },
+  "matches": {
+    "title": "Matches",
+    "newMatches": "Nouveaux Matches",
+    "messages": "Messages",
+    "noMatches": "Pas encore de matches",
+    "startSwiping": "Commence à swiper pour trouver ta perle !"
+  },
+  "chat": {
+    "typeMessage": "Écris un message...",
+    "send": "Envoyer",
+    "icebreakers": "Brise-glace",
+    "giftCoffee": "Offrir un café (1π)",
+    "block": "Bloquer",
+    "report": "Signaler"
+  },
+  "profile": {
+    "edit": "Modifier le Profil",
+    "trustScore": "Score de Confiance",
+    "sparks": "Sparks",
+    "badges": "Badges",
+    "bio": "Bio",
+    "interests": "Centres d'intérêt",
+    "settings": "Paramètres"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "appearance": "Apparence",
+    "darkMode": "Mode Sombre",
+    "language": "Langue",
+    "privacy": "Confidentialité",
+    "ghostMode": "Mode Fantôme",
+    "verifiedOnly": "Vérifiés uniquement",
+    "blockedUsers": "Utilisateurs Bloqués",
+    "notifications": "Notifications",
+    "piWallet": "Portefeuille Pi",
+    "donate": "Soutenir Equal",
+    "deleteAccount": "Supprimer le Compte",
+    "logout": "Se Déconnecter"
+  },
+  "onboarding": {
+    "next": "Suivant",
+    "skip": "Passer",
+    "finish": "C'est parti",
+    "step1": "Faisons connaissance",
+    "step2": "Ajoute tes photos",
+    "step3": "Parle-nous de toi",
+    "step4": "Tes centres d'intérêt",
+    "step5": "Tu recherches quoi ?"
+  },
+  "common": {
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "done": "Terminé",
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "retry": "Réessayer",
+    "home": "Accueil"
+  }
+}

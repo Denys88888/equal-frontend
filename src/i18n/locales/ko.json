@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "당신의 사랑에는 가격이 없어요",
+    "subtitle": "Pi Network 최초의 데이팅 앱. 이어주는 건 돈이 아니라 인연이에요.",
+    "piLogin": "Pi로 로그인",
+    "emailLogin": "이메일로 로그인",
+    "trust": "평생 물.추가 비용 없어요."
+  },
+  "nav": {
+    "discover": "둘러보기",
+    "matches": "매칭",
+    "clubs": "클 ub",
+    "events": "이벤트",
+    "profile": "프로필"
+  },
+  "discover": {
+    "like": "좋아요",
+    "dislike": "넘기기",
+    "spark": "스파크",
+    "filter": "필터",
+    "compatibility": "궁합",
+    "kmAway": "{{distance}} km 거리",
+    "matchPercent": "{{percent}}% 매치"
+  },
+  "matches": {
+    "title": "매칭",
+    "newMatches": "새로운 매칭",
+    "messages": "메시지",
+    "noMatches": "아직 매칭이 없어요",
+    "startSwiping": "스와이프해서 인연을 찾아보세요!"
+  },
+  "chat": {
+    "typeMessage": "메시지를 입력하세요...",
+    "send": "볂다",
+    "icebreakers": "대화 주제",
+    "giftCoffee": "커피 선물하기 (1π)",
+    "block": "차단",
+    "report": "신고"
+  },
+  "profile": {
+    "edit": "프로필 수정",
+    "trustScore": "신뢰 점수",
+    "sparks": "스파크",
+    "badges": "배지",
+    "bio": "자기소개",
+    "interests": "관심사",
+    "settings": "설정"
+  },
+  "settings": {
+    "title": "설정",
+    "appearance": "화면 설정",
+    "darkMode": "다크 모드",
+    "language": "언어",
+    "privacy": "개인정보",
+    "ghostMode": "고스트 모드",
+    "verifiedOnly": "인증된 사용자만",
+    "blockedUsers": "차단한 사용자",
+    "notifications": "알림",
+    "piWallet": "Pi 지갑",
+    "donate": "Equal 응원하기",
+    "deleteAccount": "계정 삭제",
+    "logout": "로그아웃"
+  },
+  "onboarding": {
+    "next": "다음",
+    "skip": "걄기",
+    "finish": "시작하기",
+    "step1": "당신에 대해 알려주세요",
+    "step2": "사진을 추가하세요",
+    "step3": "자기소개를 해주세요",
+    "step4": "당신의 관심사",
+    "step5": "어떤 상대를 찾고 있나요?"
+  },
+  "common": {
+    "cancel": "취소",
+    "save": "저장",
+    "done": "완료",
+    "loading": "로딩 중...",
+    "error": "문제가 발생했어요",
+    "retry": "다시 시도",
+    "home": "홈"
+  }
+}

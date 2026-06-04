@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "Kasih sayangmu tak ternilai",
+    "subtitle": "Aplikasi kencan pertama di Pi Network di mana koneksi didapatkan, bukan dibeli.",
+    "piLogin": "Masuk dengan Pi",
+    "emailLogin": "Gunakan email",
+    "trust": "Gratis. Selamanya. Tanpa biaya tersembunyi."
+  },
+  "nav": {
+    "discover": "Jelajahi",
+    "matches": "Kecocokan",
+    "clubs": "Klub",
+    "events": "Acara",
+    "profile": "Profil"
+  },
+  "discover": {
+    "like": "Suka",
+    "dislike": "Lewati",
+    "spark": "Spark",
+    "filter": "Filter",
+    "compatibility": "Kecocokan",
+    "kmAway": "{{distance}} km jauhnya",
+    "matchPercent": "{{percent}}% Cocok"
+  },
+  "matches": {
+    "title": "Kecocokan",
+    "newMatches": "Kecocokan Baru",
+    "messages": "Pesan",
+    "noMatches": "Belum ada kecocokan",
+    "startSwiping": "Mulai geser untuk temukan kecocokanmu!"
+  },
+  "chat": {
+    "typeMessage": "Ketik pesan...",
+    "send": "Kirim",
+    "icebreakers": "Pembuka Percakapan",
+    "giftCoffee": "Hadiahkan Kopi (1π)",
+    "block": "Blokir",
+    "report": "Laporkan"
+  },
+  "profile": {
+    "edit": "Edit Profil",
+    "trustScore": "Skor Kepercayaan",
+    "sparks": "Spark",
+    "badges": "Lencana",
+    "bio": "Bio",
+    "interests": "Minat",
+    "settings": "Pengaturan"
+  },
+  "settings": {
+    "title": "Pengaturan",
+    "appearance": "Tampilan",
+    "darkMode": "Mode Gelap",
+    "language": "Bahasa",
+    "privacy": "Privasi",
+    "ghostMode": "Mode Hantu",
+    "verifiedOnly": "Hanya Terverifikasi",
+    "blockedUsers": "Pengguna Terblokir",
+    "notifications": "Notifikasi",
+    "piWallet": "Dompet Pi",
+    "donate": "Dukung Equal",
+    "deleteAccount": "Hapus Akun",
+    "logout": "Keluar"
+  },
+  "onboarding": {
+    "next": "Lanjut",
+    "skip": "Lewati",
+    "finish": "Mulai",
+    "step1": "Mari kenalan",
+    "step2": "Tambahkan fotomu",
+    "step3": "Ceritakan tentang dirimu",
+    "step4": "Minatmu",
+    "step5": "Apa yang sedang kamu cari?"
+  },
+  "common": {
+    "cancel": "Batal",
+    "save": "Simpan",
+    "done": "Selesai",
+    "loading": "Memuat...",
+    "error": "Terjadi kesalahan",
+    "retry": "Coba Lagi",
+    "home": "Beranda"
+  }
+}

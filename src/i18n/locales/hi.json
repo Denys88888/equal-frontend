@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "तुम्हारा प्यार अनमोल है",
+    "subtitle": "Pi Network पर पहला डेटिंग ऐप जहाँ कनेक्शन कमाए जाते हैं, खरीदे नहीं।",
+    "piLogin": "Pi से लॉगिन करें",
+    "emailLogin": "बदले में ईमेल का उपयोग करें",
+    "trust": "हमेशा के लिए मुफ्त। कोई छुपी फीस नहीं।"
+  },
+  "nav": {
+    "discover": "खोजें",
+    "matches": "मैच",
+    "clubs": "क्लब",
+    "events": "इवेंट्स",
+    "profile": "प्रोफाइल"
+  },
+  "discover": {
+    "like": "पसंद",
+    "dislike": "पास",
+    "spark": "स्पार्क",
+    "filter": "फ़िल्टर",
+    "compatibility": "अनुकूलता",
+    "kmAway": "{{distance}} किमी दूर",
+    "matchPercent": "{{percent}}% मैच"
+  },
+  "matches": {
+    "title": "मैच",
+    "newMatches": "नए मैच",
+    "messages": "मैसेज",
+    "noMatches": "अभी तक कोई मैच नहीं",
+    "startSwiping": "अपना मैच खोजने के लिए स्वाइप करना शुरू करें!"
+  },
+  "chat": {
+    "typeMessage": "मैसेज लिखें...",
+    "send": "भेजें",
+    "icebreakers": "बातचीत शुरू करें",
+    "giftCoffee": "कॉफी भेजें (1π)",
+    "block": "ब्लॉक",
+    "report": "रिपोर्ट"
+  },
+  "profile": {
+    "edit": "प्रोफाइल एडिट करें",
+    "trustScore": "ट्रस्ट स्कोर",
+    "sparks": "स्पार्क्स",
+    "badges": "बैज",
+    "bio": "बायो",
+    "interests": "इंटरेस्ट",
+    "settings": "सेटिंग्स"
+  },
+  "settings": {
+    "title": "सेटिंग्स",
+    "appearance": "ऐप का रूप",
+    "darkMode": "डार्क मोड",
+    "language": "भाषा",
+    "privacy": "प्राइवेसी",
+    "ghostMode": "घोस्ट मोड",
+    "verifiedOnly": "सिर्फ वेरिफाइड",
+    "blockedUsers": "ब्लॉक्ड यूजर्स",
+    "notifications": "नोटिफिकेशन",
+    "piWallet": "Pi वॉलेट",
+    "donate": "Equal को सपोर्ट करें",
+    "deleteAccount": "अकाउंट डिलीट करें",
+    "logout": "लॉग आउट"
+  },
+  "onboarding": {
+    "next": "आगे",
+    "skip": "स्किप",
+    "finish": "शुरू करें",
+    "step1": "आपसे मिलकर अच्छा लगा",
+    "step2": "अपनी फोटोज जोड़ें",
+    "step3": "अपने बारे में बताएं",
+    "step4": "आपकी पसंद",
+    "step5": "आप क्या ढूंढ रहे हैं?"
+  },
+  "common": {
+    "cancel": "कैंसिल",
+    "save": "सेव",
+    "done": "डन",
+    "loading": "लोड हो रहा है...",
+    "error": "कुछ गड़बड़ हुई",
+    "retry": "फिर से कोशिश करें",
+    "home": "होम"
+  }
+}

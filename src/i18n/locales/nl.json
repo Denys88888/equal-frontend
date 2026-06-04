@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "Jouw genegenheid is onbetaalbaar",
+    "subtitle": "De eerste datingapp op Pi Network waar connecties verdiend worden, niet gekocht.",
+    "piLogin": "Inloggen met Pi",
+    "emailLogin": "E-mail gebruiken",
+    "trust": "Gratis. Voor altijd. Geen verborgen kosten."
+  },
+  "nav": {
+    "discover": "Ontdekken",
+    "matches": "Matches",
+    "clubs": "Clubs",
+    "events": "Events",
+    "profile": "Profiel"
+  },
+  "discover": {
+    "like": "Like",
+    "dislike": "Overslaan",
+    "spark": "Spark",
+    "filter": "Filter",
+    "compatibility": "Compatibiliteit",
+    "kmAway": "{{distance}} km verderop",
+    "matchPercent": "{{percent}}% match"
+  },
+  "matches": {
+    "title": "Matches",
+    "newMatches": "Nieuwe matches",
+    "messages": "Berichten",
+    "noMatches": "Nog geen matches",
+    "startSwiping": "Begin met swipen en vind jouw match!"
+  },
+  "chat": {
+    "typeMessage": "Typ een bericht...",
+    "send": "Verstuur",
+    "icebreakers": "IJsbrekers",
+    "giftCoffee": "Koffie trakteren (1π)",
+    "block": "Blokkeren",
+    "report": "Rapporteren"
+  },
+  "profile": {
+    "edit": "Profiel bewerken",
+    "trustScore": "Trust Score",
+    "sparks": "Sparks",
+    "badges": "Badges",
+    "bio": "Bio",
+    "interests": "Interesses",
+    "settings": "Instellingen"
+  },
+  "settings": {
+    "title": "Instellingen",
+    "appearance": "Weergave",
+    "darkMode": "Donkere modus",
+    "language": "Taal",
+    "privacy": "Privacy",
+    "ghostMode": "Ghostmodus",
+    "verifiedOnly": "Alleen geverifieerd",
+    "blockedUsers": "Geblokkeerde gebruikers",
+    "notifications": "Meldingen",
+    "piWallet": "Pi Wallet",
+    "donate": "Equal steunen",
+    "deleteAccount": "Account verwijderen",
+    "logout": "Uitloggen"
+  },
+  "onboarding": {
+    "next": "Volgende",
+    "skip": "Overslaan",
+    "finish": "Aan de slag",
+    "step1": "Laten we je leren kennen",
+    "step2": "Voeg je foto's toe",
+    "step3": "Vertel ons over jezelf",
+    "step4": "Jouw interesses",
+    "step5": "Wat zoek je?"
+  },
+  "common": {
+    "cancel": "Annuleren",
+    "save": "Opslaan",
+    "done": "Klaar",
+    "loading": "Laden...",
+    "error": "Er is iets misgegaan",
+    "retry": "Opnieuw proberen",
+    "home": "Home"
+  }
+}

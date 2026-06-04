@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "你的感情无价",
+    "subtitle": "Pi Network 上首款交友应用，在这里缘分靠真心，不靠金钱。",
+    "piLogin": "使用 Pi 登录",
+    "emailLogin": "使用邮箱登录",
+    "trust": "永久免费。无任何隐藏费用。"
+  },
+  "nav": {
+    "discover": "发现",
+    "matches": "配对",
+    "clubs": "俱乐部",
+    "events": "活动",
+    "profile": "我的"
+  },
+  "discover": {
+    "like": "喜欢",
+    "dislike": "跳过",
+    "spark": "心动",
+    "filter": "筛选",
+    "compatibility": "契合度",
+    "kmAway": "距离 {{distance}} 公里",
+    "matchPercent": "匹配度 {{percent}}%"
+  },
+  "matches": {
+    "title": "配对",
+    "newMatches": "新配对",
+    "messages": "消息",
+    "noMatches": "还没有配对",
+    "startSwiping": "滑动卡片，遇见那个TA！"
+  },
+  "chat": {
+    "typeMessage": "输入消息...",
+    "send": "发送",
+    "icebreakers": "破冰话题",
+    "giftCoffee": "请TA喝咖啡 (1π)",
+    "block": "拉黑",
+    "report": "举报"
+  },
+  "profile": {
+    "edit": "编辑资料",
+    "trustScore": "信任分",
+    "sparks": "心动数",
+    "badges": "徽章",
+    "bio": "个人简介",
+    "interests": "兴趣爱好",
+    "settings": "设置"
+  },
+  "settings": {
+    "title": "设置",
+    "appearance": "外观",
+    "darkMode": "深色模式",
+    "language": "语言",
+    "privacy": "隐私",
+    "ghostMode": "隐身模式",
+    "verifiedOnly": "仅看认证用户",
+    "blockedUsers": "已拉黑用户",
+    "notifications": "通知",
+    "piWallet": "Pi 钱包",
+    "donate": "支持 Equal",
+    "deleteAccount": "注销账号",
+    "logout": "退出登录"
+  },
+  "onboarding": {
+    "next": "下一步",
+    "skip": "跳过",
+    "finish": "开始使用",
+    "step1": "让我们认识一下",
+    "step2": "上传你的照片",
+    "step3": "介绍一下你自己",
+    "step4": "你的兴趣爱好",
+    "step5": "你在寻找什么？"
+  },
+  "common": {
+    "cancel": "取消",
+    "save": "保存",
+    "done": "完成",
+    "loading": "加载中...",
+    "error": "出了点问题",
+    "retry": "重试",
+    "home": "首页"
+  }
+}

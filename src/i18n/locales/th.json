@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "ความรักของคุณไม่มีราคา",
+    "subtitle": "แอปหาคู่แรกบน Pi Network ที่การเชื่อมต่อเกิดจากหัวใจ ไม่ใช่เงินทอง",
+    "piLogin": "เข้าสู่ระบบด้วย Pi",
+    "emailLogin": "ใช้อีเมลแทน",
+    "trust": "ฟรีตลอดชีพ ไม่มีค่าใช้จ่ายแอบแฝง"
+  },
+  "nav": {
+    "discover": "ค้นหา",
+    "matches": "คู่ที่ตรงกัน",
+    "clubs": "ชมรม",
+    "events": "กิจกรรม",
+    "profile": "โปรไฟล์"
+  },
+  "discover": {
+    "like": "ถูกใจ",
+    "dislike": "ข้าม",
+    "spark": "ประกายไฟ",
+    "filter": "ตัวกรอง",
+    "compatibility": "ความเข้ากัน",
+    "kmAway": "ห่าง {{distance}} กม.",
+    "matchPercent": "ตรงกัน {{percent}}%"
+  },
+  "matches": {
+    "title": "คู่ที่ตรงกัน",
+    "newMatches": "คู่ใหม่",
+    "messages": "ข้อความ",
+    "noMatches": "ยังไม่มีคู่ที่ตรงกัน",
+    "startSwiping": "ปัดหาคู่ที่ใช่ของคุณเลย!"
+  },
+  "chat": {
+    "typeMessage": "พิมพ์ข้อความ...",
+    "send": "ส่ง",
+    "icebreakers": "ประโยคเริ่มต้น",
+    "giftCoffee": "ส่งกาแฟให้ (1π)",
+    "block": "บล็อก",
+    "report": "รายงาน"
+  },
+  "profile": {
+    "edit": "แก้ไขโปรไฟล์",
+    "trustScore": "คะแนนความน่าเชื่อถือ",
+    "sparks": "ประกายไฟ",
+    "badges": "ตรา",
+    "bio": "แนะนำตัว",
+    "interests": "ความสนใจ",
+    "settings": "การตั้งค่า"
+  },
+  "settings": {
+    "title": "การตั้งค่า",
+    "appearance": "หน้าตา",
+    "darkMode": "โหมดมืด",
+    "language": "ภาษา",
+    "privacy": "ความเป็นส่วนตัว",
+    "ghostMode": "โหมดล่องหน",
+    "verifiedOnly": "เฉพาะผู้ที่ยืนยันแล้ว",
+    "blockedUsers": "ผู้ใช้ที่บล็อก",
+    "notifications": "การแจ้งเตือน",
+    "piWallet": "กระเป๋าเงิน Pi",
+    "donate": "สนับสนุน Equal",
+    "deleteAccount": "ลบบัญชี",
+    "logout": "ออกจากระบบ"
+  },
+  "onboarding": {
+    "next": "ถัดไป",
+    "skip": "ข้าม",
+    "finish": "เริ่มเลย",
+    "step1": "มารู้จักคุณกัน",
+    "step2": "เพิ่มรูปภาพของคุณ",
+    "step3": "เล่าให้เรารู้จักตัวคุณ",
+    "step4": "ความสนใจของคุณ",
+    "step5": "คุณกำลังมองหาอะไร?"
+  },
+  "common": {
+    "cancel": "ยกเลิก",
+    "save": "บันทึก",
+    "done": "เสร็จสิ้น",
+    "loading": "กำลังโหลด...",
+    "error": "เกิดข้อผิดพลาด",
+    "retry": "ลองใหม่",
+    "home": "หน้าแรก"
+  }
+}

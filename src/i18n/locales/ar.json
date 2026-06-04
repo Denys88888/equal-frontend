@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "حبك لا يُقدَّر بثمن",
+    "subtitle": "أول تطبيق تعارف على شبكة بي حيث تُكسب العلاقات، لا تُشترى.",
+    "piLogin": "تسجيل الدخول باستخدام Pi",
+    "emailLogin": "استخدم البريد الإلكتروني بدلاً من ذلك",
+    "trust": "مجاني. للأبد. بدون رسوم خفية."
+  },
+  "nav": {
+    "discover": "استكشاف",
+    "matches": "التطابقات",
+    "clubs": "النوادي",
+    "events": "الفعاليات",
+    "profile": "الملف الشخصي"
+  },
+  "discover": {
+    "like": "إعجاب",
+    "dislike": "تخطي",
+    "spark": "شرارة",
+    "filter": "تصفية",
+    "compatibility": "التوافق",
+    "kmAway": "{{distance}} كم منك",
+    "matchPercent": "{{percent}}% تطابق"
+  },
+  "matches": {
+    "title": "التطابقات",
+    "newMatches": "تطابقات جديدة",
+    "messages": "الرسائل",
+    "noMatches": "لا توجد تطابقات بعد",
+    "startSwiping": "ابدأ التمرير لتجد شريكك!"
+  },
+  "chat": {
+    "typeMessage": "اكتب رسالة...",
+    "send": "إرسال",
+    "icebreakers": "كلمات البداية",
+    "giftCoffee": "أرسل قهوة (1π)",
+    "block": "حظر",
+    "report": "إبلاغ"
+  },
+  "profile": {
+    "edit": "تعديل الملف الشخصي",
+    "trustScore": "نقطة الثقة",
+    "sparks": "الشرارات",
+    "badges": "الشارات",
+    "bio": "نبذة",
+    "interests": "الاهتمامات",
+    "settings": "الإعدادات"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "appearance": "المظهر",
+    "darkMode": "الوضع الداكن",
+    "language": "اللغة",
+    "privacy": "الخصوصية",
+    "ghostMode": "وضع التخفي",
+    "verifiedOnly": "الموثقون فقط",
+    "blockedUsers": "المستخدمون المحظورون",
+    "notifications": "الإشعارات",
+    "piWallet": "محفظة Pi",
+    "donate": "ادعم Equal",
+    "deleteAccount": "حذف الحساب",
+    "logout": "تسجيل الخروج"
+  },
+  "onboarding": {
+    "next": "التالي",
+    "skip": "تخطي",
+    "finish": "لنبدأ",
+    "step1": "دعنا نتعرف عليك",
+    "step2": "أضف صورك",
+    "step3": "أخبرنا عن نفسك",
+    "step4": "اهتماماتك",
+    "step5": "ما الذي تبحث عنه؟"
+  },
+  "common": {
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "done": "تم",
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ ما",
+    "retry": "إعادة المحاولة",
+    "home": "الرئيسية"
+  }
+}

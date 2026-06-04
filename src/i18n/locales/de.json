@@ -1,0 +1,83 @@
+{
+  "welcome": {
+    "slogan": "Deine Zuneigung hat keinen Preis",
+    "subtitle": "Die erste Dating-App im Pi Network, in der Verbindungen verdient werden – nicht gekauft.",
+    "piLogin": "Mit Pi anmelden",
+    "emailLogin": "Stattdessen E-Mail nutzen",
+    "trust": "Kostenlos. Für immer. Keine versteckten Kosten."
+  },
+  "nav": {
+    "discover": "Entdecken",
+    "matches": "Matches",
+    "clubs": "Clubs",
+    "events": "Events",
+    "profile": "Profil"
+  },
+  "discover": {
+    "like": "Like",
+    "dislike": "Weiter",
+    "spark": "Spark",
+    "filter": "Filter",
+    "compatibility": "Kompatibilität",
+    "kmAway": "{{distance}} km entfernt",
+    "matchPercent": "{{percent}}% Match"
+  },
+  "matches": {
+    "title": "Matches",
+    "newMatches": "Neue Matches",
+    "messages": "Nachrichten",
+    "noMatches": "Noch keine Matches",
+    "startSwiping": "Fang an zu swipen und finde dein Match!"
+  },
+  "chat": {
+    "typeMessage": "Nachricht schreiben...",
+    "send": "Senden",
+    "icebreakers": "Eisbrecher",
+    "giftCoffee": "Kaffee schenken (1π)",
+    "block": "Blockieren",
+    "report": "Melden"
+  },
+  "profile": {
+    "edit": "Profil bearbeiten",
+    "trustScore": "Trust Score",
+    "sparks": "Sparks",
+    "badges": "Abzeichen",
+    "bio": "Bio",
+    "interests": "Interessen",
+    "settings": "Einstellungen"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "appearance": "Erscheinungsbild",
+    "darkMode": "Dunkelmodus",
+    "language": "Sprache",
+    "privacy": "Datenschutz",
+    "ghostMode": "Ghost-Modus",
+    "verifiedOnly": "Nur verifizierte",
+    "blockedUsers": "Blockierte Nutzer",
+    "notifications": "Benachrichtigungen",
+    "piWallet": "Pi Wallet",
+    "donate": "Equal unterstützen",
+    "deleteAccount": "Konto löschen",
+    "logout": "Abmelden"
+  },
+  "onboarding": {
+    "next": "Weiter",
+    "skip": "Überspringen",
+    "finish": "Los geht's",
+    "step1": "Lernen wir dich kennen",
+    "step2": "Füg deine Fotos hinzu",
+    "step3": "Erzähl uns von dir",
+    "step4": "Deine Interessen",
+    "step5": "Was suchst du?"
+  },
+  "common": {
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "done": "Fertig",
+    "loading": "Lädt...",
+    "error": "Etwas ist schiefgelaufen",
+    "retry": "Erneut versuchen",
+    "home": "Startseite"
+  }
+}
