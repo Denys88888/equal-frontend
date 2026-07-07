@@ -761,7 +761,7 @@ function StepPhotos({
       {/* Onboarding illustration */}
       <div className="flex justify-center mt-2">
         <img
-          src="/onboarding-photo.png"
+          src="./onboarding-photo.png"
           alt="Photo tips"
           className="w-40 h-40 object-contain rounded-2xl"
           style={{ opacity: 0.8 }}

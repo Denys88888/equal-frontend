@@ -564,7 +564,7 @@ function GiftBottomSheet({
               </div>
 
               <div className="flex items-center gap-2 mb-4">
-                <img src="/pi-logo.svg" alt="Pi" className="w-4 h-4" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+                <img src="./pi-logo.svg" alt="Pi" className="w-4 h-4" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
                 <span className="text-sm" style={{ color: 'rgba(35,35,35,0.6)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
                   Your balance: 12.5 Pi
                 </span>

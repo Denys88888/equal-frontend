@@ -330,7 +330,7 @@ export default function VideoCall() {
             </div>
           ) : (
             <img
-              src="/avatar-ethan.jpg"
+              src="./avatar-ethan.jpg"
               alt="You"
               className="w-full h-full object-cover"
               onError={(e) => {

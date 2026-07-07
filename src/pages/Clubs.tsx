@@ -910,7 +910,7 @@ export default function Clubs() {
               >
                 {myClubs.length === 0 ? (
                   <div className="flex flex-col items-center justify-center py-16">
-                    <img src="/empty-clubs.png" alt="" className="w-40 h-40 mb-4 object-contain" />
+                    <img src="./empty-clubs.png" alt="" className="w-40 h-40 mb-4 object-contain" />
                     <h2 className="text-xl font-semibold text-[#232323]">No clubs yet</h2>
                     <p className="text-sm mt-2 text-center max-w-[280px]" style={{ color: 'rgba(35,35,35,0.6)' }}>
                       Discover and join clubs to connect with people who share your interests.

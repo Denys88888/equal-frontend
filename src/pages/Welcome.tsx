@@ -179,7 +179,7 @@ export default function Welcome() {
           className="flex justify-center mt-6 relative"
         >
           <div className="absolute rounded-full" style={{ width: 200, height: 200, backgroundColor: 'rgba(187, 131, 201, 0.08)', filter: 'blur(40px)', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} />
-          <motion.img src="/hero-couple.png" alt="Two people forming a heart" className="relative z-10 animate-float" style={{ width: 280, height: 350, objectFit: 'contain' }} />
+          <motion.img src="./hero-couple.png" alt="Two people forming a heart" className="relative z-10 animate-float" style={{ width: 280, height: 350, objectFit: 'contain' }} />
         </motion.div>
 
         {/* Headline */}

@@ -555,7 +555,7 @@ function EventDetailSheet({
             <div className="mt-5 p-4 rounded-2xl border" style={{ borderColor: '#E8E2D8' }}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <img src="/pi-logo.svg" alt="Pi" className="w-6 h-6" />
+                  <img src="./pi-logo.svg" alt="Pi" className="w-6 h-6" />
                   <span className="text-xl font-bold text-[#232323]">{event.price} Pi</span>
                 </div>
                 <button
@@ -696,7 +696,7 @@ function EventDetailSheet({
                 className="w-full"
               >
                 <div className="flex items-center justify-center gap-3 mb-6">
-                  <img src="/pi-logo.svg" alt="Pi" className="w-10 h-10" />
+                  <img src="./pi-logo.svg" alt="Pi" className="w-10 h-10" />
                   <span className="text-3xl font-bold text-[#232323]">{event.price} Pi</span>
                 </div>
                 <div className="p-4 rounded-2xl mb-4" style={{ backgroundColor: 'rgba(232,226,216,0.3)' }}>
@@ -894,7 +894,7 @@ export default function Events() {
 
                 {filteredEvents.length === 0 && (
                   <div className="flex flex-col items-center justify-center py-16">
-                    <img src="/empty-events.png" alt="" className="w-40 h-40 mb-4 object-contain" />
+                    <img src="./empty-events.png" alt="" className="w-40 h-40 mb-4 object-contain" />
                     <h2 className="text-xl font-semibold text-[#232323]">No events found</h2>
                     <p className="text-sm mt-2 text-center" style={{ color: 'rgba(35,35,35,0.6)' }}>
                       Try a different category or check back later.

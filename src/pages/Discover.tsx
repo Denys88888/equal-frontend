@@ -602,7 +602,7 @@ function MatchOverlay({
           className="w-24 h-24 rounded-full overflow-hidden border-[3px] border-[#BB83C9] -mr-4 z-10"
         >
           <img
-            src="/avatar-ethan.jpg"
+            src="./avatar-ethan.jpg"
             alt="You"
             className="w-full h-full object-cover"
           />
