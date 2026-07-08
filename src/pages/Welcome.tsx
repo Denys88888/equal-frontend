@@ -125,7 +125,7 @@ export default function Welcome() {
 
   // Ping backend on mount to wake it up from Render free-tier sleep
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL?.replace('/v1', '') ?? ''}/health`).catch(() => {});
+    fetch(`${import.meta.env.VITE_API_URL ?? 'https://equal-backend.onrender.com/v1'}/health`).catch(() => {});
   }, []);
 
   // Auto-redirect returning users who already have a valid token
