@@ -78,5 +78,30 @@
     "error": "Algo deu errado",
     "retry": "Tentar de novo",
     "home": "Início"
+  },
+  "clubs": {
+    "title": "Clubes",
+    "myClubs": "Meus clubes",
+    "discover": "Descobrir",
+    "noClubs": "Sem clubes ainda",
+    "noClubsDesc": "Descubra e junte-se a clubes para se conectar com pessoas que compartilham seus interesses.",
+    "create": "Criar clube",
+    "clubName": "Nome do clube",
+    "clubDesc": "Sobre o que é este clube?",
+    "members": "{{count}} membros",
+    "join": "Entrar",
+    "joined": "Membro"
+  },
+  "events": {
+    "title": "Eventos",
+    "upcoming": "Próximos",
+    "interested": "Interessado",
+    "past": "Passados",
+    "upcomingEvents": "Próximos eventos",
+    "interestedEvents": "Interessado",
+    "pastEvents": "Eventos passados",
+    "nearYou": "{{count}} eventos perto de você esta semana",
+    "going": "Vou",
+    "attend": "Participar"
   }
 }

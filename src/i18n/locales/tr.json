@@ -78,5 +78,30 @@
     "error": "Bir şeyler ters gitti",
     "retry": "Tekrar Dene",
     "home": "Ana Sayfa"
+  },
+  "clubs": {
+    "title": "Kulüpler",
+    "myClubs": "Kulüplerim",
+    "discover": "Keşfet",
+    "noClubs": "Henüz kulüp yok",
+    "noClubsDesc": "Ortak ilgi alanlarınız olan kişilerle bağlantı kurmak için kulüpleri keşfedin ve katılın.",
+    "create": "Kulüp oluştur",
+    "clubName": "Kulüp adı",
+    "clubDesc": "Bu kulüp ne hakkında?",
+    "members": "{{count}} üye",
+    "join": "Katıl",
+    "joined": "Üyesin"
+  },
+  "events": {
+    "title": "Etkinlikler",
+    "upcoming": "Yaklaşan",
+    "interested": "İlgileniyor",
+    "past": "Geçmiş",
+    "upcomingEvents": "Yaklaşan etkinlikler",
+    "interestedEvents": "İlgileniyor",
+    "pastEvents": "Geçmiş etkinlikler",
+    "nearYou": "Bu hafta yakınınızda {{count}} etkinlik",
+    "going": "Katılıyorum",
+    "attend": "Katıl"
   }
 }

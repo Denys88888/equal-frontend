@@ -78,5 +78,30 @@
     "error": "문제가 발생했어요",
     "retry": "다시 시도",
     "home": "홈"
+  },
+  "clubs": {
+    "title": "클럽",
+    "myClubs": "내 클럽",
+    "discover": "탐색",
+    "noClubs": "아직 클럽 없음",
+    "noClubsDesc": "클럽을 발견하고 가입하여 관심사가 같은 사람들과 연결하세요.",
+    "create": "클럽 만들기",
+    "clubName": "클럽 이름",
+    "clubDesc": "이 클럽은 무엇에 관한 것인가요?",
+    "members": "{{count}}명 멤버",
+    "join": "가입",
+    "joined": "가입됨"
+  },
+  "events": {
+    "title": "이벤트",
+    "upcoming": "예정",
+    "interested": "관심",
+    "past": "지난",
+    "upcomingEvents": "예정 이벤트",
+    "interestedEvents": "관심 이벤트",
+    "pastEvents": "지난 이벤트",
+    "nearYou": "이번 주 근처 {{count}}개 이벤트",
+    "going": "참가",
+    "attend": "참석"
   }
 }

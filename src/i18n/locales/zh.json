@@ -78,5 +78,30 @@
     "error": "出了点问题",
     "retry": "重试",
     "home": "首页"
+  },
+  "clubs": {
+    "title": "俱乐部",
+    "myClubs": "我的俱乐部",
+    "discover": "发现",
+    "noClubs": "还没有俱乐部",
+    "noClubsDesc": "发现并加入俱乐部，与志同道合的人建立联系。",
+    "create": "创建俱乐部",
+    "clubName": "俱乐部名称",
+    "clubDesc": "这个俱乐部是关于什么的？",
+    "members": "{{count}} 名成员",
+    "join": "加入",
+    "joined": "已加入"
+  },
+  "events": {
+    "title": "活动",
+    "upcoming": "即将到来",
+    "interested": "感兴趣",
+    "past": "过去",
+    "upcomingEvents": "即将到来的活动",
+    "interestedEvents": "感兴趣",
+    "pastEvents": "过去的活动",
+    "nearYou": "本周附近{{count}}个活动",
+    "going": "参加",
+    "attend": "报名"
   }
 }

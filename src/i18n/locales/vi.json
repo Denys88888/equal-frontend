@@ -78,5 +78,30 @@
     "error": "Có lỗi xảy ra",
     "retry": "Thử lại",
     "home": "Trang chủ"
+  },
+  "clubs": {
+    "title": "Clubs",
+    "myClubs": "My Clubs",
+    "discover": "Discover",
+    "noClubs": "No clubs yet",
+    "noClubsDesc": "Discover and join clubs to connect with people who share your interests.",
+    "create": "Create Club",
+    "clubName": "Club name",
+    "clubDesc": "What is this club about?",
+    "members": "{{count}} members",
+    "join": "Join",
+    "joined": "Joined"
+  },
+  "events": {
+    "title": "Events",
+    "upcoming": "Upcoming",
+    "interested": "Interested",
+    "past": "Past",
+    "upcomingEvents": "Upcoming Events",
+    "interestedEvents": "Interested",
+    "pastEvents": "Past Events",
+    "nearYou": "{{count}} events near you this week",
+    "going": "Going",
+    "attend": "Attend"
   }
 }

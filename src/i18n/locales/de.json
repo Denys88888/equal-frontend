@@ -78,5 +78,30 @@
     "error": "Etwas ist schiefgelaufen",
     "retry": "Erneut versuchen",
     "home": "Startseite"
+  },
+  "clubs": {
+    "title": "Clubs",
+    "myClubs": "Meine Clubs",
+    "discover": "Entdecken",
+    "noClubs": "Noch keine Clubs",
+    "noClubsDesc": "Entdecke und tritt Clubs bei, um dich mit Gleichgesinnten zu verbinden.",
+    "create": "Club erstellen",
+    "clubName": "Club-Name",
+    "clubDesc": "Worum geht es in diesem Club?",
+    "members": "{{count}} Mitglieder",
+    "join": "Beitreten",
+    "joined": "Mitglied"
+  },
+  "events": {
+    "title": "Events",
+    "upcoming": "Bevorstehend",
+    "interested": "Interessiert",
+    "past": "Vergangen",
+    "upcomingEvents": "Bevorstehende Events",
+    "interestedEvents": "Interessiert",
+    "pastEvents": "Vergangene Events",
+    "nearYou": "{{count}} Events in deiner Nähe diese Woche",
+    "going": "Dabei",
+    "attend": "Teilnehmen"
   }
 }

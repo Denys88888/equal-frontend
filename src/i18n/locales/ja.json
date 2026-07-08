@@ -78,5 +78,30 @@
     "error": "エラーが発生しました",
     "retry": "再試行",
     "home": "ホーム"
+  },
+  "clubs": {
+    "title": "クラブ",
+    "myClubs": "マイクラブ",
+    "discover": "探す",
+    "noClubs": "クラブなし",
+    "noClubsDesc": "クラブを見つけて参加し、共通の興味を持つ人々と繋がりましょう。",
+    "create": "クラブ作成",
+    "clubName": "クラブ名",
+    "clubDesc": "このクラブについて",
+    "members": "{{count}}人のメンバー",
+    "join": "参加",
+    "joined": "参加中"
+  },
+  "events": {
+    "title": "イベント",
+    "upcoming": "予定",
+    "interested": "興味あり",
+    "past": "過去",
+    "upcomingEvents": "予定のイベント",
+    "interestedEvents": "興味あり",
+    "pastEvents": "過去のイベント",
+    "nearYou": "今週近くの{{count}}件のイベント",
+    "going": "参加予定",
+    "attend": "参加する"
   }
 }

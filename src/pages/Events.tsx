@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { getEvents } from '@/api/events';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -761,6 +762,7 @@ function EventDetailSheet({
 /* ------------------------------------------------------------------ */
 
 export default function Events() {
+  const { t } = useTranslation();
   const [activeCategory, setActiveCategory] = useState('All');
   const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null);
   const [goingEvents, setGoingEvents] = useState<Set<string>>(new Set());
@@ -816,10 +818,10 @@ export default function Events() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                {activeTab === 'upcoming' ? 'Upcoming Events' : activeTab === 'interested' ? 'Interested' : 'Past Events'}
+                {activeTab === 'upcoming' ? t('events.upcomingEvents') : activeTab === 'interested' ? t('events.interestedEvents') : t('events.pastEvents')}
               </h1>
               <p className="text-sm mt-1" style={{ color: 'rgba(35,35,35,0.6)' }}>
-                {filteredEvents.length} events near you this week
+                {t('events.nearYou', { count: filteredEvents.length })}
               </p>
             </div>
           </div>
@@ -837,7 +839,7 @@ export default function Events() {
                   boxShadow: activeTab === tab ? '0 1px 4px rgba(0,0,0,0.06)' : 'none',
                 }}
               >
-                {tab}
+                {t(`events.${tab}`)}
               </button>
             ))}
           </div>

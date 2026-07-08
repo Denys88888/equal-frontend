@@ -78,5 +78,30 @@
     "error": "कुछ गड़बड़ हुई",
     "retry": "फिर से कोशिश करें",
     "home": "होम"
+  },
+  "clubs": {
+    "title": "क्लब",
+    "myClubs": "मेरे क्लब",
+    "discover": "खोजें",
+    "noClubs": "अभी कोई क्लब नहीं",
+    "noClubsDesc": "क्लब खोजें और जुड़ें, समान रुचि वाले लोगों से जुड़ें।",
+    "create": "क्लब बनाएं",
+    "clubName": "क्लब का नाम",
+    "clubDesc": "यह क्लब किस बारे में है?",
+    "members": "{{count}} सदस्य",
+    "join": "जुड़ें",
+    "joined": "जुड़े हैं"
+  },
+  "events": {
+    "title": "कार्यक्रम",
+    "upcoming": "आगामी",
+    "interested": "रुचि",
+    "past": "पिछले",
+    "upcomingEvents": "आगामी कार्यक्रम",
+    "interestedEvents": "रुचि",
+    "pastEvents": "पिछले कार्यक्रम",
+    "nearYou": "इस सप्ताह आपके पास {{count}} कार्यक्रम",
+    "going": "जा रहे हैं",
+    "attend": "भाग लें"
   }
 }

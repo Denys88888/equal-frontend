@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { getClubs } from '@/api/clubs';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -818,6 +819,7 @@ function ClubDetail({
 /* ------------------------------------------------------------------ */
 
 export default function Clubs() {
+  const { t } = useTranslation();
   const [mainTab, setMainTab] = useState<'myclubs' | 'discover'>('myclubs');
   const [clubs, setClubs] = useState(initialClubs);
 
@@ -907,7 +909,7 @@ export default function Clubs() {
             className="pb-2.5 text-sm font-semibold relative"
             style={{ color: mainTab === 'myclubs' ? '#232323' : 'rgba(35,35,35,0.4)' }}
           >
-            My Clubs
+            {t('clubs.myClubs')}
             {mainTab === 'myclubs' && (
               <motion.div layoutId="main-tab-indicator" className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full bg-[#BB83C9]" />
             )}
@@ -917,7 +919,7 @@ export default function Clubs() {
             className="pb-2.5 text-sm font-semibold relative"
             style={{ color: mainTab === 'discover' ? '#232323' : 'rgba(35,35,35,0.4)' }}
           >
-            Discover
+            {t('clubs.discover')}
             {mainTab === 'discover' && (
               <motion.div layoutId="main-tab-indicator" className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full bg-[#BB83C9]" />
             )}
@@ -939,9 +941,9 @@ export default function Clubs() {
                 {myClubs.length === 0 ? (
                   <div className="flex flex-col items-center justify-center py-16">
                     <img src="./empty-clubs.png" alt="" className="w-40 h-40 mb-4 object-contain" />
-                    <h2 className="text-xl font-semibold text-[#232323]">No clubs yet</h2>
+                    <h2 className="text-xl font-semibold text-[#232323]">{t('clubs.noClubs')}</h2>
                     <p className="text-sm mt-2 text-center max-w-[280px]" style={{ color: 'rgba(35,35,35,0.6)' }}>
-                      Discover and join clubs to connect with people who share your interests.
+                      {t('clubs.noClubsDesc')}
                     </p>
                     <button
                       onClick={() => setMainTab('discover')}
@@ -1040,14 +1042,14 @@ export default function Clubs() {
                 type="text"
                 value={createName}
                 onChange={(e) => setCreateName(e.target.value)}
-                placeholder="Club name"
+                placeholder={t('clubs.clubName')}
                 className="w-full rounded-xl px-4 py-3 text-base outline-none border-2 border-transparent focus:border-[#BB83C9] transition-colors"
                 style={{ backgroundColor: 'rgba(232,226,216,0.3)', color: '#232323' }}
               />
               <textarea
                 value={createDesc}
                 onChange={(e) => setCreateDesc(e.target.value)}
-                placeholder="What is this club about?"
+                placeholder={t('clubs.clubDesc')}
                 className="w-full rounded-xl px-4 py-3 text-base outline-none border-2 border-transparent focus:border-[#BB83C9] transition-colors resize-none"
                 style={{ backgroundColor: 'rgba(232,226,216,0.3)', minHeight: 80, color: '#232323' }}
                 maxLength={200}
@@ -1076,7 +1078,7 @@ export default function Clubs() {
                 className="w-full py-3.5 rounded-full text-base font-semibold text-white disabled:opacity-40 mt-2"
                 style={{ backgroundColor: '#BB83C9', boxShadow: '0 4px 16px rgba(187,131,201,0.3)' }}
               >
-                Create Club
+                {t('clubs.create')}
               </button>
             </div>
           </DialogContent>
