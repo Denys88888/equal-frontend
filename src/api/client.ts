@@ -294,7 +294,19 @@ class ApiClient {
     const isJson = contentType.includes('application/json');
 
     if (response.status !== 204) {
-      body = isJson ? await response.json() : await response.text() as unknown as T;
+      const raw = isJson ? await response.json() : await response.text();
+      // Unwrap backend ResponseInterceptor envelope: { success, data, timestamp }
+      if (
+        raw &&
+        typeof raw === 'object' &&
+        'success' in raw &&
+        'data' in raw &&
+        'timestamp' in raw
+      ) {
+        body = (raw as { success: boolean; data: T; timestamp: string }).data;
+      } else {
+        body = raw as T;
+      }
     }
 
     if (!response.ok) {

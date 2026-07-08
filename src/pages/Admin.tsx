@@ -202,12 +202,12 @@ function Toast({ message, visible }: { message: string; visible: boolean; }) {
 // ── Stats Cards ────────────────────────────────────────
 
 function StatsCards() {
-  const [apiStats, setApiStats] = useState<{ totalUsers?: number; activeToday?: number; newMatches?: number; pendingReports?: number } | null>(null);
+  const [apiStats, setApiStats] = useState<{ totalUsers?: number; activeToday?: number; totalMatches?: number; pendingReports?: number } | null>(null);
   useEffect(() => { getAdminStats().then(setApiStats).catch(() => {}); }, []);
   const stats = [
     { label: 'Total Users', value: apiStats?.totalUsers?.toLocaleString() ?? '…', icon: Users, color: '#BB83C9', bg: 'rgba(187,131,201,0.12)' },
     { label: 'Active Today', value: apiStats?.activeToday?.toLocaleString() ?? '…', icon: Activity, color: '#7DE0B3', bg: 'rgba(125,224,179,0.15)' },
-    { label: 'New Matches', value: apiStats?.newMatches?.toLocaleString() ?? '…', icon: Heart, color: '#E86A6A', bg: 'rgba(232,106,106,0.12)' },
+    { label: 'Total Matches', value: apiStats?.totalMatches?.toLocaleString() ?? '…', icon: Heart, color: '#E86A6A', bg: 'rgba(232,106,106,0.12)' },
     { label: 'Pending Reports', value: apiStats?.pendingReports?.toLocaleString() ?? '…', icon: AlertTriangle, color: '#F0B84A', bg: 'rgba(240,184,74,0.15)' },
   ];
 
