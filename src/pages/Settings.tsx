@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import { TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/api/client';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -195,6 +196,7 @@ function SectionLabel({ text, danger }: { text: string; danger?: boolean }) {
 
 export default function Settings() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   /* ── State ── */
   const [ghostMode, setGhostMode] = useState(false);
@@ -241,7 +243,7 @@ export default function Settings() {
   const donationOptions = ['0.1', '0.5', '1', '5'];
 
   return (
-    <Layout title="Settings" showBack hideFooter>
+    <Layout title={t('settings.title')} showBack hideFooter>
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -258,11 +260,11 @@ export default function Settings() {
         </div>
 
         {/* ───────── Privacy ───────── */}
-        <SectionLabel text="Privacy" />
+        <SectionLabel text={t('settings.privacy')} />
         <div className="space-y-2">
           <ToggleRow
             icon={Ghost}
-            label="Ghost Mode"
+            label={t('settings.ghostMode')}
             description="Hide your profile from discovery. Your existing matches and chats remain active."
             checked={ghostMode}
             onCheckedChange={setGhostMode}
@@ -278,14 +280,14 @@ export default function Settings() {
           <SettingRow
             icon={Slash}
             iconColor="rgba(232,106,106,0.6)"
-            label="Blocked Users"
+            label={t('settings.blockedUsers')}
             detail={`${blockedUsers.length} blocked`}
             onClick={() => setShowBlockedUsers(true)}
           />
         </div>
 
         {/* ───────── Notifications ───────── */}
-        <SectionLabel text="Notifications" />
+        <SectionLabel text={t('settings.notifications')} />
         <div className="space-y-2">
           <ToggleRow
             icon={Bell}
@@ -318,7 +320,7 @@ export default function Settings() {
         </div>
 
         {/* ───────── Appearance ───────── */}
-        <SectionLabel text="Appearance" />
+        <SectionLabel text={t('settings.appearance')} />
         <div className="space-y-2">
           <div
             className="w-full flex items-center justify-between px-5 py-4 rounded-[16px] bg-white"
@@ -336,7 +338,7 @@ export default function Settings() {
                   className="text-base font-semibold text-[#232323] block"
                   style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
                 >
-                  Dark Mode
+                  {t('settings.darkMode')}
                 </span>
                 <span
                   className="text-xs text-[#232323] opacity-45 block mt-0.5"
@@ -353,7 +355,7 @@ export default function Settings() {
         </div>
 
         {/* ───────── Language ───────── */}
-        <SectionLabel text="Language" />
+        <SectionLabel text={t('settings.language')} />
         <div className="space-y-2">
           <div
             className="w-full flex items-center justify-between px-5 py-4 rounded-[16px] bg-white"
@@ -371,13 +373,13 @@ export default function Settings() {
                   className="text-base font-semibold text-[#232323] block"
                   style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
                 >
-                  Language
+                  {t('settings.language')}
                 </span>
                 <span
                   className="text-xs text-[#232323] opacity-45 block mt-0.5"
                   style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.5 }}
                 >
-                  Choose your preferred language
+                  {t('settings.language')}
                 </span>
               </div>
             </div>
@@ -388,7 +390,7 @@ export default function Settings() {
         </div>
 
         {/* ───────── Pi Wallet ───────── */}
-        <SectionLabel text="Pi Wallet" />
+        <SectionLabel text={t('settings.piWallet')} />
         <div className="space-y-2">
           <SettingRow
             icon={PiIcon}
@@ -456,7 +458,7 @@ export default function Settings() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                  Support Equal
+                  {t('settings.donate')}
                 </h3>
                 <p className="text-xs text-[#232323] opacity-45" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                   Voluntary developer donation
@@ -480,7 +482,7 @@ export default function Settings() {
             <div className="flex items-center gap-3">
               <LogOut size={20} className="text-[#E86A6A]" strokeWidth={2} />
               <span className="text-base font-semibold text-[#E86A6A]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                Log Out
+                {t('settings.logout')}
               </span>
             </div>
           </motion.button>
@@ -493,7 +495,7 @@ export default function Settings() {
             <div className="flex items-center gap-3">
               <Trash2 size={20} className="text-[#E86A6A]" strokeWidth={2} />
               <span className="text-base font-semibold text-[#E86A6A]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                Delete Account
+                {t('settings.deleteAccount')}
               </span>
             </div>
           </motion.button>
