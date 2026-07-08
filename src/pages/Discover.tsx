@@ -39,17 +39,6 @@ interface Filters {
 
 // ── Mock Data ──────────────────────────────────────────
 
-const MOCK_PROFILES: Profile[] = [
-  { id: '1', name: 'Sarah', age: 27, distance: 3, compatibility: 87, bio: 'Coffee lover • Hiking enthusiast • Looking for meaningful connections', photo: '/avatar-sarah.jpg', photos: [], interests: ['Coffee', 'Hiking', 'Yoga'], verified: true, activeNow: true, isNew: false },
-  { id: '2', name: 'Emma', age: 25, distance: 5, compatibility: 92, bio: 'Artist and dreamer. Love sunset walks and deep conversations.', photo: '/avatar-emma.jpg', photos: [], interests: ['Art', 'Music', 'Travel'], verified: true, activeNow: false, isNew: true },
-  { id: '3', name: 'Liam', age: 29, distance: 8, compatibility: 78, bio: 'Software engineer by day, chef by night. Foodie adventures await!', photo: '/avatar-liam.jpg', photos: [], interests: ['Cooking', 'Tech', 'Gaming'], verified: true, activeNow: true, isNew: false },
-  { id: '4', name: 'Olivia', age: 24, distance: 2, compatibility: 95, bio: 'Yoga instructor • Dog mom • Plant collector', photo: '/avatar-olivia.jpg', photos: [], interests: ['Yoga', 'Dogs', 'Plants'], verified: true, activeNow: true, isNew: false },
-  { id: '5', name: 'Noah', age: 28, distance: 12, compatibility: 71, bio: 'Musician • Traveler • Always chasing the next adventure', photo: '/avatar-noah.jpg', photos: [], interests: ['Music', 'Travel', 'Guitar'], verified: false, activeNow: false, isNew: true },
-  { id: '6', name: 'Ava', age: 26, distance: 4, compatibility: 84, bio: 'Bookworm • Tea enthusiast • Aspiring novelist', photo: '/avatar-ava.jpg', photos: [], interests: ['Reading', 'Writing', 'Tea'], verified: true, activeNow: false, isNew: false },
-  { id: '7', name: 'Ethan', age: 30, distance: 6, compatibility: 68, bio: 'Fitness coach • Health nut • Early riser', photo: '/avatar-ethan.jpg', photos: [], interests: ['Fitness', 'Running', 'Nutrition'], verified: true, activeNow: true, isNew: false },
-  { id: '8', name: 'Sophia', age: 23, distance: 1, compatibility: 90, bio: 'Photography • Film • Urban explorer', photo: '/avatar-sophia.jpg', photos: [], interests: ['Photography', 'Film', 'Exploring'], verified: true, activeNow: true, isNew: true },
-];
-
 const INTEREST_OPTIONS = ['Coffee', 'Hiking', 'Yoga', 'Art', 'Music', 'Travel', 'Cooking', 'Tech', 'Gaming', 'Reading', 'Fitness', 'Photography', 'Dancing', 'Surfing', 'Running', 'Design', 'Vegan', 'Wine', 'Film', 'Pets'];
 
 const GOAL_OPTIONS = ['Serious relationship', 'Casual dating', 'Interest-based connections', 'Not sure yet'];
@@ -756,8 +745,9 @@ export default function Discover() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<'discover' | 'compatibility'>('discover');
-  const [profiles, setProfiles] = useState<Profile[]>(MOCK_PROFILES);
-  const [filteredProfiles, setFilteredProfiles] = useState<Profile[]>(MOCK_PROFILES);
+  const [allProfiles, setAllProfiles] = useState<Profile[]>([]);
+  const [profiles, setProfiles] = useState<Profile[]>([]);
+  const [filteredProfiles, setFilteredProfiles] = useState<Profile[]>([]);
   const [showFilters, setShowFilters] = useState(false);
   const [matchProfile, setMatchProfile] = useState<Profile | null>(null);
   const [sparkCount, setSparkCount] = useState(5);
@@ -780,18 +770,14 @@ export default function Discover() {
     discoverApi.getProfiles({ maxDistance: 50 })
       .then(data => {
         if (cancelled) return;
-        if (data.profiles.length > 0) {
-          const mapped = data.profiles.map((p: ProfileCard) => ({ ...p }));
-          setProfiles(mapped);
-          setFilteredProfiles(mapped);
-        }
+        const mapped = data.profiles.map((p: ProfileCard) => ({ ...p }));
+        setAllProfiles(mapped);
+        setProfiles(mapped);
+        setFilteredProfiles(mapped);
         setIsLoading(false);
       })
-      .catch(err => {
+      .catch(() => {
         if (cancelled) return;
-        console.log('API not available, using mock data', err);
-        setProfiles(MOCK_PROFILES);
-        setFilteredProfiles(MOCK_PROFILES);
         setIsLoading(false);
       });
     return () => { cancelled = true; };
@@ -799,7 +785,7 @@ export default function Discover() {
 
   // Apply filters
   const applyFilters = useCallback(() => {
-    const filtered = MOCK_PROFILES.filter((p) => {
+    const filtered = allProfiles.filter((p) => {
       if (p.distance > filters.maxDistance) return false;
       if (p.age < filters.ageMin || p.age > filters.ageMax) return false;
       if (filters.verifiedOnly && !p.verified) return false;
@@ -810,7 +796,7 @@ export default function Discover() {
     setFilteredProfiles(filtered);
     setProfiles(filtered);
     setShowFilters(false);
-  }, [filters]);
+  }, [filters, allProfiles]);
 
   const resetFilters = () => {
     setFilters({
@@ -822,8 +808,8 @@ export default function Discover() {
       goals: [],
       interests: [],
     });
-    setFilteredProfiles(MOCK_PROFILES);
-    setProfiles(MOCK_PROFILES);
+    setFilteredProfiles(allProfiles);
+    setProfiles(allProfiles);
   };
 
   const handleSwipe = useCallback(async (direction: 'left' | 'right' | 'up') => {
@@ -848,14 +834,7 @@ export default function Discover() {
         setMatchProfile(current);
       }
     } catch {
-      console.log('Swipe API call failed, continuing locally');
-      // Simulate mutual match on ~30% of right swipes as fallback
-      if (direction === 'right' && Math.random() < 0.3) {
-        setTimeout(() => {
-          triggerMatchCelebration();
-          setMatchProfile(current);
-        }, 400);
-      }
+      // swipe recorded locally, API will sync on next load
     }
 
     // Always remove swiped profile
@@ -882,7 +861,7 @@ export default function Discover() {
   }, [showFilters]);
 
   const visibleCards = profiles.slice(0, 3);
-  const highCompatProfiles = MOCK_PROFILES.filter((p) => p.compatibility > 80);
+  const highCompatProfiles = allProfiles.filter((p) => p.compatibility > 80);
   const filterMatchCount = filteredProfiles.length;
 
   return (

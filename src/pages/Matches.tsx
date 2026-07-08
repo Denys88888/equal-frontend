@@ -27,143 +27,6 @@ interface Match {
   hasConversation: boolean;
 }
 
-// ── Mock Data ──────────────────────────────────────────
-
-const MOCK_MATCHES: Match[] = [
-  {
-    id: 'm1',
-    name: 'Sarah',
-    photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face',
-    compatibility: 87,
-    isNew: true,
-    sparkUsed: false,
-    isOnline: true,
-    lastMessage: '',
-    lastMessageTime: '',
-    unreadCount: 0,
-    hasConversation: false,
-  },
-  {
-    id: 'm2',
-    name: 'Emma',
-    photo: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&h=200&fit=crop&crop=face',
-    compatibility: 92,
-    isNew: true,
-    sparkUsed: true,
-    isOnline: false,
-    lastMessage: '',
-    lastMessageTime: '',
-    unreadCount: 0,
-    hasConversation: false,
-  },
-  {
-    id: 'm3',
-    name: 'Liam',
-    photo: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=face',
-    compatibility: 78,
-    isNew: false,
-    sparkUsed: false,
-    isOnline: true,
-    lastMessage: 'Hey! How\'s your day going? 😊',
-    lastMessageTime: '2m',
-    unreadCount: 2,
-    hasConversation: true,
-  },
-  {
-    id: 'm4',
-    name: 'Olivia',
-    photo: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=face',
-    compatibility: 95,
-    isNew: false,
-    sparkUsed: false,
-    isOnline: true,
-    lastMessage: 'I love that coffee shop too! We should go together sometime ☕',
-    lastMessageTime: '1h',
-    unreadCount: 1,
-    hasConversation: true,
-  },
-  {
-    id: 'm5',
-    name: 'Noah',
-    photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face',
-    compatibility: 71,
-    isNew: false,
-    sparkUsed: false,
-    isOnline: false,
-    lastMessage: 'Just sent you a photo from my trip!',
-    lastMessageTime: '3h',
-    unreadCount: 0,
-    hasConversation: true,
-  },
-  {
-    id: 'm6',
-    name: 'Ava',
-    photo: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&h=200&fit=crop&crop=face',
-    compatibility: 84,
-    isNew: false,
-    sparkUsed: false,
-    isOnline: false,
-    lastMessage: 'That book recommendation was amazing, thank you! 📚',
-    lastMessageTime: '1d',
-    unreadCount: 0,
-    hasConversation: true,
-  },
-  {
-    id: 'm7',
-    name: 'Sophia',
-    photo: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=200&h=200&fit=crop&crop=face',
-    compatibility: 90,
-    isNew: false,
-    sparkUsed: true,
-    isOnline: true,
-    lastMessage: '',
-    lastMessageTime: '',
-    unreadCount: 0,
-    isTyping: false,
-    hasConversation: false,
-  },
-  {
-    id: 'm8',
-    name: 'Ethan',
-    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face',
-    compatibility: 80,
-    isNew: false,
-    sparkUsed: false,
-    isOnline: false,
-    lastMessage: 'Are you free this weekend? There\'s a great hiking trail I want to check out',
-    lastMessageTime: '2d',
-    unreadCount: 0,
-    hasConversation: true,
-  },
-  {
-    id: 'm9',
-    name: 'Mia',
-    photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&crop=face',
-    compatibility: 88,
-    isNew: false,
-    sparkUsed: false,
-    isOnline: true,
-    isTyping: true,
-    lastMessage: 'Haha that\'s hilarious! 😂',
-    lastMessageTime: 'Now',
-    unreadCount: 0,
-    hasConversation: true,
-  },
-  {
-    id: 'm10',
-    name: 'Charlotte',
-    photo: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=200&h=200&fit=crop&crop=face',
-    compatibility: 91,
-    isNew: true,
-    sparkUsed: false,
-    isOnline: false,
-    lastMessage: '',
-    lastMessageTime: '',
-    unreadCount: 0,
-    hasConversation: false,
-  },
-];
-
 // ── Typing Indicator ───────────────────────────────────
 
 function TypingIndicator() {
@@ -718,7 +581,7 @@ export default function Matches() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { showToast } = useToast();
-  const [matches, setMatches] = useState<Match[]>(MOCK_MATCHES);
+  const [matches, setMatches] = useState<Match[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [showSearch, setShowSearch] = useState(false);
   const [showOffers, setShowOffers] = useState(true);
@@ -736,10 +599,8 @@ export default function Matches() {
         }
         setIsLoading(false);
       })
-      .catch(err => {
+      .catch(() => {
         if (cancelled) return;
-        console.log('API not available, using mock data', err);
-        setMatches(MOCK_MATCHES);
         setIsLoading(false);
       });
     return () => { cancelled = true; };

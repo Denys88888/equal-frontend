@@ -16,6 +16,7 @@ import {
   Check,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { updateMe } from '@/api/users';
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
 /* ------------------------------------------------------------------ */
@@ -244,11 +245,21 @@ export default function Onboarding() {
   };
 
   /* ---- completion ---- */
-  const handleComplete = () => {
+  const handleComplete = async () => {
     setIsCompleting(true);
-    setTimeout(() => {
-      navigate('/discover');
-    }, 1200);
+    try {
+      await updateMe({
+        name: data.name || undefined,
+        birthDate: data.dob || undefined,
+        city: data.city || undefined,
+        bio: data.bio || data.bioPrompt || undefined,
+        interests: data.interests.length > 0 ? data.interests : undefined,
+        goals: data.goal ? [data.goal] : undefined,
+      } as Parameters<typeof updateMe>[0]);
+    } catch {
+      // non-critical — user can update profile later
+    }
+    setTimeout(() => navigate('/discover'), 1200);
   };
 
   /* ---- validation ---- */

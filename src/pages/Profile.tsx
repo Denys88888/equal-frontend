@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
+import { getMe, updateMe } from '@/api/users';
 import {
   Pencil,
   MapPin,
@@ -31,9 +32,9 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Textarea } from '@/components/ui/textarea';
 import Layout from '@/components/Layout';
 
-/* ───────────────────── Mock User Data ───────────────────── */
+/* ───────────────────── Fallback User Data ───────────────────── */
 
-const mockUser = {
+const FALLBACK_USER = {
   name: 'Sarah',
   age: 26,
   location: 'San Francisco, CA',
@@ -274,22 +275,47 @@ function PhotoLightbox({
 export default function Profile() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const [user, setUser] = useState<typeof FALLBACK_USER>(FALLBACK_USER);
   const [isEditMode, setIsEditMode] = useState(false);
-  const [bio, setBio] = useState(mockUser.bio);
+  const [bio, setBio] = useState('');
   const [showBioEdit, setShowBioEdit] = useState(false);
-  const [editBioText, setEditBioText] = useState(mockUser.bio);
+  const [editBioText, setEditBioText] = useState('');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [showBadgeDetail, setShowBadgeDetail] = useState<string | null>(null);
 
-  const trustZone = mockUser.trustScore <= 40 ? 'Building Trust' : mockUser.trustScore <= 75 ? 'Getting There' : 'Highly Trusted';
-  const trustZoneColor = mockUser.trustScore <= 40 ? '#E86A6A' : mockUser.trustScore <= 75 ? '#F0B84A' : '#7DE0B3';
+  useEffect(() => {
+    getMe().then((d) => {
+      const mapped = {
+        ...FALLBACK_USER,
+        name: d.name,
+        age: d.birthDate
+          ? Math.floor((Date.now() - new Date(d.birthDate).getTime()) / 31536000000)
+          : FALLBACK_USER.age,
+        bio: d.bio || '',
+        location: d.city || '',
+        photos: d.photos?.map((p) => p.url) || [],
+        interests: d.interests || [],
+        goals: Array.isArray(d.goals) ? (d.goals[0] ?? FALLBACK_USER.goals) : ((d.goals as string) || FALLBACK_USER.goals),
+        trustScore: d.trustScore ?? FALLBACK_USER.trustScore,
+        sparkBalance: d.sparkBalance ?? FALLBACK_USER.sparkBalance,
+        verified: d.verified ?? FALLBACK_USER.verified,
+      };
+      setUser(mapped);
+      setBio(mapped.bio);
+      setEditBioText(mapped.bio);
+    }).catch(() => {});
+  }, []);
 
-  const goalInfo = goalConfig[mockUser.goals] || goalConfig['Not sure yet'];
+  const trustZone = user.trustScore <= 40 ? 'Building Trust' : user.trustScore <= 75 ? 'Getting There' : 'Highly Trusted';
+  const trustZoneColor = user.trustScore <= 40 ? '#E86A6A' : user.trustScore <= 75 ? '#F0B84A' : '#7DE0B3';
+
+  const goalInfo = goalConfig[user.goals] || goalConfig['Not sure yet'];
   const GoalIcon = goalInfo.icon;
 
-  const handleSaveBio = () => {
+  const handleSaveBio = async () => {
     setBio(editBioText);
     setShowBioEdit(false);
+    try { await updateMe({ bio: editBioText }); } catch { /* non-critical */ }
   };
 
   const badges = [
@@ -323,8 +349,8 @@ export default function Profile() {
         {/* ─────────────── Hero Section ─────────────── */}
         <div className="relative w-full" style={{ height: '45vh', maxHeight: 400 }}>
           <img
-            src={mockUser.photos[0]}
-            alt={`${mockUser.name}'s profile`}
+            src={user.photos[0]}
+            alt={`${user.name}'s profile`}
             className="w-full h-full object-cover"
           />
           {/* Gradient overlay */}
@@ -347,9 +373,9 @@ export default function Profile() {
           <div className="absolute bottom-0 left-0 right-0 p-5">
             <div className="flex items-center gap-2 mb-1">
               <h1 className="text-[28px] font-bold text-white tracking-tight" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.15 }}>
-                {mockUser.name}, {mockUser.age}
+                {user.name}, {user.age}
               </h1>
-              {mockUser.verified && (
+              {user.verified && (
                 <div className="w-5 h-5 rounded-full bg-[#7DE0B3] flex items-center justify-center">
                   <Check size={12} className="text-white" strokeWidth={3} />
                 </div>
@@ -358,12 +384,12 @@ export default function Profile() {
             <div className="flex items-center gap-1.5">
               <MapPin size={14} className="text-white opacity-80" strokeWidth={2} />
               <span className="text-sm text-white opacity-80 font-medium" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                {mockUser.location}
+                {user.location}
               </span>
             </div>
             <div className="flex items-center gap-2 mt-2">
               <span className="text-xs text-white opacity-50" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                {mockUser.distance}
+                {user.distance}
               </span>
               <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#7DE0B3] text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                 87% Match
@@ -395,14 +421,14 @@ export default function Profile() {
 
           {/* Score Circle */}
           <div className="flex flex-col items-center mb-4 relative">
-            <TrustScoreCircle score={mockUser.trustScore} />
+            <TrustScoreCircle score={user.trustScore} />
             <p className="mt-2 text-base font-semibold" style={{ color: trustZoneColor, fontFamily: "'Outfit', system-ui, sans-serif" }}>
               {trustZone}
             </p>
           </div>
 
           {/* Score Progress Bar */}
-          <TrustScoreBar score={mockUser.trustScore} />
+          <TrustScoreBar score={user.trustScore} />
 
           {/* Score Breakdown */}
           <div className="grid grid-cols-3 gap-3 mt-5">
@@ -477,7 +503,7 @@ export default function Profile() {
               <Pencil size={16} className="text-[#BB83C9] opacity-50" strokeWidth={2} />
             </div>
             <div className="flex flex-wrap gap-2">
-              {mockUser.interests.map((interest) => (
+              {user.interests.map((interest) => (
                 <span
                   key={interest}
                   className="inline-flex items-center px-3.5 py-1.5 rounded-full text-sm text-[#232323]"
@@ -500,7 +526,7 @@ export default function Profile() {
             >
               <GoalIcon size={20} style={{ color: goalInfo.color }} strokeWidth={2} />
               <span className="text-sm font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                {mockUser.goals}
+                {user.goals}
               </span>
             </div>
           </div>
@@ -520,7 +546,7 @@ export default function Profile() {
                 Photos
               </h4>
               <span className="text-xs text-[#232323] opacity-40" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                {mockUser.photos.length}/9
+                {user.photos.length}/9
               </span>
             </div>
             <button className="text-base font-semibold text-[#BB83C9]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
@@ -528,7 +554,7 @@ export default function Profile() {
             </button>
           </div>
           <div className="grid grid-cols-3 gap-2">
-            {mockUser.photos.map((photo, index) => (
+            {user.photos.map((photo, index) => (
               <motion.button
                 key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -547,7 +573,7 @@ export default function Profile() {
                 )}
               </motion.button>
             ))}
-            {mockUser.photos.length < 9 && (
+            {user.photos.length < 9 && (
               <motion.button
                 whileTap={{ scale: 0.95 }}
                 className="aspect-square rounded-xl border-2 border-dashed border-[#E8E2D8] flex items-center justify-center"
@@ -606,7 +632,7 @@ export default function Profile() {
         </motion.div>
 
         {/* ─────────────── Spark Balance ─────────────── */}
-        <SparkBalanceCard balance={mockUser.sparkBalance} />
+        <SparkBalanceCard balance={user.sparkBalance} />
 
         {/* ─────────────── Settings Link ─────────────── */}
         <motion.div
@@ -716,7 +742,7 @@ export default function Profile() {
       <AnimatePresence>
         {lightboxIndex !== null && (
           <PhotoLightbox
-            photos={mockUser.photos}
+            photos={user.photos}
             initialIndex={lightboxIndex}
             onClose={() => setLightboxIndex(null)}
           />
