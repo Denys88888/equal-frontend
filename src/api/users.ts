@@ -19,7 +19,21 @@ import type {
  * @throws {ApiError} 401 if not authenticated
  */
 export async function getMe(): Promise<UserProfile> {
-  const { data } = await api.get<UserProfile>('/users/me');
+  const { data } = await api.get<UserProfile & { profile?: Partial<UserProfile> }>('/users/me');
+  // Normalize: some backend versions nest profile fields under .profile
+  const nested = (data as unknown as { profile?: Partial<UserProfile> }).profile;
+  if (nested && typeof nested === 'object') {
+    return {
+      ...data,
+      bio: data.bio ?? nested.bio ?? '',
+      birthDate: data.birthDate ?? nested.birthDate ?? '',
+      city: data.city ?? nested.city ?? '',
+      goals: data.goals ?? nested.goals ?? [],
+      interests: data.interests ?? nested.interests ?? [],
+      photos: data.photos ?? nested.photos ?? [],
+      trustScore: data.trustScore ?? nested.trustScore ?? 50,
+    } as UserProfile;
+  }
   return data;
 }
 
@@ -33,8 +47,30 @@ export async function getMe(): Promise<UserProfile> {
  * @throws {ApiError} 400 on validation failure; 401 if not authenticated
  */
 export async function updateMe(patch: Partial<UserProfile>): Promise<UserProfile> {
-  const { data } = await api.patch<UserProfile>('/users/me', patch);
-  return data;
+  // Split into user-level vs profile-level fields to support both backend versions:
+  // - deployed main branch: /users/me only takes name/avatar; /profiles/me takes bio/city/etc.
+  // - local master branch: /users/me accepts all fields
+  const { name, avatar, bio, birthDate, city, interests, goals } = patch as Record<string, unknown>;
+
+  const userPatch: Record<string, unknown> = {};
+  if (name !== undefined) userPatch.name = name;
+  if (avatar !== undefined) userPatch.avatar = avatar;
+
+  const profilePatch: Record<string, unknown> = {};
+  if (bio !== undefined) profilePatch.bio = bio;
+  if (birthDate !== undefined) profilePatch.birthDate = birthDate;
+  if (city !== undefined) profilePatch.city = city;
+  if (interests !== undefined) profilePatch.interests = interests;
+  if (goals !== undefined) profilePatch.goals = goals;
+
+  await Promise.all([
+    Object.keys(userPatch).length > 0 ? api.patch('/users/me', userPatch) : Promise.resolve(),
+    Object.keys(profilePatch).length > 0
+      ? api.put('/profiles/me', profilePatch).catch(() => api.patch('/users/me', profilePatch))
+      : Promise.resolve(),
+  ]);
+
+  return getMe();
 }
 
 /**
