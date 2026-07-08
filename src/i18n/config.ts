@@ -83,11 +83,13 @@ i18n
     resources,
     fallbackLng: 'en',
     lng: undefined,
+    load: 'languageOnly',
     interpolation: { escapeValue: false },
     detection: {
       order: ['localStorage', 'navigator'],
       caches: ['localStorage'],
       lookupLocalStorage: 'i18nextLng',
+      convertDetectedLanguage: (lng: string) => lng.split('-')[0],
     },
   });
 
