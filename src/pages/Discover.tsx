@@ -1026,10 +1026,12 @@ export default function Discover() {
         {matchProfile && (
           <MatchOverlay
             matchProfile={matchProfile}
-            onDismiss={() => setMatchProfile(null)}
+            onDismiss={() => { setMatchProfile(null); setMatchId(null); }}
             onMessage={() => {
+              const id = matchId ?? matchProfile.id;
               setMatchProfile(null);
-              navigate(`/chat/${matchId ?? matchProfile.id}`);
+              setMatchId(null);
+              navigate(`/chat/${id}`);
             }}
           />
         )}
