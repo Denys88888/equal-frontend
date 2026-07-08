@@ -750,6 +750,7 @@ export default function Discover() {
   const [filteredProfiles, setFilteredProfiles] = useState<Profile[]>([]);
   const [showFilters, setShowFilters] = useState(false);
   const [matchProfile, setMatchProfile] = useState<Profile | null>(null);
+  const [matchId, setMatchId] = useState<string | null>(null);
   const [sparkCount, setSparkCount] = useState(5);
   const [filters, setFilters] = useState<Filters>({
     maxDistance: 50,
@@ -832,6 +833,7 @@ export default function Discover() {
       if (result.isMatch) {
         triggerMatchCelebration();
         setMatchProfile(current);
+        setMatchId(result.matchId ?? current.id);
       }
     } catch {
       // swipe recorded locally, API will sync on next load
@@ -1027,7 +1029,7 @@ export default function Discover() {
             onDismiss={() => setMatchProfile(null)}
             onMessage={() => {
               setMatchProfile(null);
-              navigate(`/chat/${matchProfile.id}`);
+              navigate(`/chat/${matchId ?? matchProfile.id}`);
             }}
           />
         )}
