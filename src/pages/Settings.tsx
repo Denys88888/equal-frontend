@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/api/client';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ChevronRight,
@@ -575,7 +576,7 @@ export default function Settings() {
             </motion.button>
             <motion.button
               whileTap={{ scale: 0.97 }}
-              onClick={() => { setShowLogoutConfirm(false); navigate('/'); }}
+              onClick={() => { setShowLogoutConfirm(false); localStorage.removeItem(TOKEN_KEY); localStorage.removeItem(REFRESH_TOKEN_KEY); navigate('/'); }}
               className="flex-1 h-12 rounded-full bg-[#E86A6A] text-white text-base font-semibold"
               style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
             >
