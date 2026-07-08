@@ -6,12 +6,16 @@ import '@/i18n/config';
 import './index.css'
 import App from './App.tsx'
 
-// Initialize Pi SDK before rendering
-if (typeof window !== 'undefined' && window.Pi) {
-  window.Pi.init({
-    version: '2.0',
-    sandbox: import.meta.env.VITE_PI_SANDBOX === 'true',
-  });
+// Initialize Pi SDK — call immediately if already loaded, otherwise wait for load
+function initPiSdk() {
+  if (window.Pi) {
+    window.Pi.init({ version: '2.0', sandbox: import.meta.env.VITE_PI_SANDBOX === 'true' });
+  }
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initPiSdk);
+} else {
+  initPiSdk();
 }
 
 createRoot(document.getElementById('root')!).render(

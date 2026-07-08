@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 import { Shield, Lock, Heart } from 'lucide-react';
@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/context/AuthContext';
 import { getMe } from '@/api/users';
 import { paymentsApi } from '@/api/payments';
+import { TOKEN_KEY } from '@/api/client';
 
 const easeSmooth = [0.4, 0, 0.2, 1] as [number, number, number, number];
 const easeOutExpo = [0.16, 1, 0.3, 1] as [number, number, number, number];
@@ -122,6 +123,23 @@ export default function Welcome() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Auto-redirect returning users who already have a valid token
+  useEffect(() => {
+    const token = localStorage.getItem(TOKEN_KEY);
+    if (!token) return;
+    setIsLoading(true);
+    getMe()
+      .then((profile) => {
+        const hasProfile = !!(profile.bio || (profile.interests && profile.interests.length > 0));
+        navigate(hasProfile ? '/discover' : '/onboarding', { replace: true });
+      })
+      .catch(() => {
+        // Token expired/invalid — clear it and show login
+        localStorage.removeItem(TOKEN_KEY);
+        setIsLoading(false);
+      });
+  }, [navigate]);
+
   const handlePiLogin = async () => {
     setIsLoading(true);
     setError(null);
@@ -136,12 +154,18 @@ export default function Welcome() {
         throw new Error('Please open this app in Pi Browser');
       }
 
-      const authResult = await window.Pi.authenticate(
-        ['username', 'payments'],
-        async (payment: unknown) => {
-          try { await paymentsApi.approve((payment as { identifier: string }).identifier); } catch { /* best effort */ }
-        }
-      );
+      // Race Pi.authenticate() against a 45-second timeout
+      const authResult = await Promise.race([
+        window.Pi.authenticate(
+          ['username', 'payments'],
+          async (payment: unknown) => {
+            try { await paymentsApi.approve((payment as { identifier: string }).identifier); } catch { /* best effort */ }
+          }
+        ),
+        new Promise<never>((_, reject) =>
+          setTimeout(() => reject(new Error('Pi authentication timed out. Please try again.')), 45000)
+        ),
+      ]);
 
       await loginWithPi(authResult.accessToken, ['username', 'payments']);
 
