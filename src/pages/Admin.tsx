@@ -25,6 +25,7 @@ import {
   ChevronDown,
 } from 'lucide-react';
 import Layout from '@/components/Layout';
+import { getAdminStats, getAdminUsers, getPendingReports } from '@/api/admin';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import {
@@ -201,11 +202,13 @@ function Toast({ message, visible }: { message: string; visible: boolean; }) {
 // ── Stats Cards ────────────────────────────────────────
 
 function StatsCards() {
+  const [apiStats, setApiStats] = useState<{ totalUsers?: number; activeToday?: number; newMatches?: number; pendingReports?: number } | null>(null);
+  useEffect(() => { getAdminStats().then(setApiStats).catch(() => {}); }, []);
   const stats = [
-    { label: 'Total Users', value: '1,247', icon: Users, color: '#BB83C9', bg: 'rgba(187,131,201,0.12)' },
-    { label: 'Active Today', value: '328', icon: Activity, color: '#7DE0B3', bg: 'rgba(125,224,179,0.15)' },
-    { label: 'New Matches', value: '89', icon: Heart, color: '#E86A6A', bg: 'rgba(232,106,106,0.12)' },
-    { label: 'Pending Reports', value: '12', icon: AlertTriangle, color: '#F0B84A', bg: 'rgba(240,184,74,0.15)' },
+    { label: 'Total Users', value: apiStats?.totalUsers?.toLocaleString() ?? '…', icon: Users, color: '#BB83C9', bg: 'rgba(187,131,201,0.12)' },
+    { label: 'Active Today', value: apiStats?.activeToday?.toLocaleString() ?? '…', icon: Activity, color: '#7DE0B3', bg: 'rgba(125,224,179,0.15)' },
+    { label: 'New Matches', value: apiStats?.newMatches?.toLocaleString() ?? '…', icon: Heart, color: '#E86A6A', bg: 'rgba(232,106,106,0.12)' },
+    { label: 'Pending Reports', value: apiStats?.pendingReports?.toLocaleString() ?? '…', icon: AlertTriangle, color: '#F0B84A', bg: 'rgba(240,184,74,0.15)' },
   ];
 
   return (
@@ -248,6 +251,11 @@ function StatsCards() {
 function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) {
   const [filter, setFilter] = useState<'All' | 'Pending' | 'Resolved'>('All');
   const [reports, setReports] = useState<Report[]>(MOCK_REPORTS);
+  useEffect(() => {
+    getPendingReports().then((data) => {
+      if (data && data.length > 0) setReports(data as unknown as Report[]);
+    }).catch(() => {});
+  }, []);
 
   const filtered = reports.filter((r) => {
     if (filter === 'All') return true;
@@ -387,6 +395,11 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
   const [search, setSearch] = useState('');
   const [selectedUser, setSelectedUser] = useState<AppUser | null>(null);
   const [users, setUsers] = useState<AppUser[]>(MOCK_USERS);
+  useEffect(() => {
+    getAdminUsers().then((data) => {
+      if (data && data.length > 0) setUsers(data as unknown as AppUser[]);
+    }).catch(() => {});
+  }, []);
 
   const filtered = users.filter((u) =>
     u.name.toLowerCase().includes(search.toLowerCase())
@@ -811,7 +824,9 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
     setTrustUser('');
   };
 
-  const userNames = MOCK_USERS.map((u) => u.name);
+  const [adminUsers, setAdminUsers] = useState(MOCK_USERS);
+  useEffect(() => { getAdminUsers().then((d) => { if (d?.length) setAdminUsers(d as unknown as AppUser[]); }).catch(() => {}); }, []);
+  const userNames = adminUsers.map((u) => u.name);
 
   return (
     <div className="space-y-4">
