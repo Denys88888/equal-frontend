@@ -123,6 +123,11 @@ export default function Welcome() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Ping backend on mount to wake it up from Render free-tier sleep
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL?.replace('/v1', '') ?? ''}/health`).catch(() => {});
+  }, []);
+
   // Auto-redirect returning users who already have a valid token
   useEffect(() => {
     const token = localStorage.getItem(TOKEN_KEY);
