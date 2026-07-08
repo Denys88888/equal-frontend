@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { Shield, Lock, Heart } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/context/AuthContext';
+import { getMe } from '@/api/users';
+import { paymentsApi } from '@/api/payments';
 
 const easeSmooth = [0.4, 0, 0.2, 1] as [number, number, number, number];
 const easeOutExpo = [0.16, 1, 0.3, 1] as [number, number, number, number];
@@ -126,11 +128,9 @@ export default function Welcome() {
 
     try {
       if (!window.Pi) {
-        // Pi Browser not detected — show error or use mock for dev
         if (import.meta.env.DEV) {
-          // Development fallback: mock login
           await loginWithPi('dev-mock-token', ['username', 'payments']);
-          navigate('/onboarding');
+          navigate('/discover');
           return;
         }
         throw new Error('Please open this app in Pi Browser');
@@ -138,13 +138,21 @@ export default function Welcome() {
 
       const authResult = await window.Pi.authenticate(
         ['username', 'payments'],
-        (payment) => {
-          console.log('Incomplete payment found:', payment);
+        async (payment: unknown) => {
+          try { await paymentsApi.approve((payment as { identifier: string }).identifier); } catch { /* best effort */ }
         }
       );
 
       await loginWithPi(authResult.accessToken, ['username', 'payments']);
-      navigate('/onboarding');
+
+      // Route returning users to discover, new users to onboarding
+      try {
+        const profile = await getMe();
+        const hasProfile = !!(profile.bio || (profile.interests && profile.interests.length > 0));
+        navigate(hasProfile ? '/discover' : '/onboarding');
+      } catch {
+        navigate('/onboarding');
+      }
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Pi authentication failed';
       setError(msg);

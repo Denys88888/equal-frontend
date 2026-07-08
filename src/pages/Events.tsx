@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { getEvents } from '@/api/events';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Calendar,
@@ -765,16 +766,23 @@ export default function Events() {
   const [goingEvents, setGoingEvents] = useState<Set<string>>(new Set());
   const [interestedEvents, setInterestedEvents] = useState<Set<string>>(new Set());
   const [activeTab, setActiveTab] = useState<'upcoming' | 'interested' | 'past'>('upcoming');
+  const [allEvents, setAllEvents] = useState<EventItem[]>(MOCK_EVENTS);
 
-  const featuredEvent = MOCK_EVENTS.find((e) => e.featured) || MOCK_EVENTS[0];
+  useEffect(() => {
+    getEvents().then((data) => {
+      if (data && data.length > 0) setAllEvents(data as unknown as EventItem[]);
+    }).catch(() => {});
+  }, []);
 
-  const filteredEvents = MOCK_EVENTS.filter((e) => {
+  const featuredEvent = allEvents.find((e) => e.featured) || allEvents[0];
+
+  const filteredEvents = allEvents.filter((e) => {
     if (activeCategory === 'All') return true;
     return e.category === activeCategory;
   });
 
-  const interestedEventsList = MOCK_EVENTS.filter((e) => interestedEvents.has(e.id));
-  const pastEventsList = MOCK_EVENTS.filter((_, i) => i < 3);
+  const interestedEventsList = allEvents.filter((e) => interestedEvents.has(e.id));
+  const pastEventsList = allEvents.filter((_, i) => i < 3);
 
   const toggleGoing = (eventId: string) => {
     setGoingEvents((prev) => {

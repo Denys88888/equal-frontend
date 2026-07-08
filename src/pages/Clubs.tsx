@@ -1,4 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
+import { getClubs } from '@/api/clubs';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Plus,
@@ -819,6 +820,33 @@ function ClubDetail({
 export default function Clubs() {
   const [mainTab, setMainTab] = useState<'myclubs' | 'discover'>('myclubs');
   const [clubs, setClubs] = useState(initialClubs);
+
+  const mergeApiClubs = useCallback((apiClubs: Awaited<ReturnType<typeof getClubs>>) => {
+    if (!apiClubs || apiClubs.length === 0) return;
+    setClubs((prev) => {
+      const existingIds = new Set(prev.map((c) => c.id));
+      const newClubs = apiClubs
+        .filter((c) => !existingIds.has(c.id))
+        .map((c) => ({
+          id: c.id,
+          name: c.name,
+          description: c.description ?? '',
+          category: c.category ?? 'Other',
+          icon: c.icon ?? '🌟',
+          gradient: 'from-purple-400 to-pink-400',
+          memberCount: (c as unknown as { memberCount?: number }).memberCount ?? 0,
+          joined: (c as unknown as { isJoined?: boolean }).isJoined ?? false,
+          members: [],
+          posts: [],
+          chat: [],
+        } as Club));
+      return newClubs.length > 0 ? [...prev, ...newClubs] : prev;
+    });
+  }, []);
+
+  useEffect(() => {
+    getClubs().then(mergeApiClubs).catch(() => {});
+  }, [mergeApiClubs]);
   const [selectedClub, setSelectedClub] = useState<Club | null>(null);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [createName, setCreateName] = useState('');

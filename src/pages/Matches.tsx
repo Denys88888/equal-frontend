@@ -621,7 +621,6 @@ export default function Matches() {
     try {
       matchesApi.deleteMatch(id);
     } catch {
-      console.log('Delete API call failed');
     }
   }, []);
 

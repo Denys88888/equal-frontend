@@ -849,9 +849,8 @@ export default function Chat() {
         });
         setIsLoading(false);
       })
-      .catch(err => {
+      .catch(() => {
         if (cancelled) return;
-        console.log('Messages API not available, using mock data', err);
         setMessages(conversation.messages);
         setIsLoading(false);
       });
@@ -933,7 +932,6 @@ export default function Chat() {
         return;
       }
     } catch {
-      console.log('Send message API failed, using local fallback');
     }
 
     // Local fallback
