@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import { TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/api/client';
+import { api } from '@/api/client';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ChevronRight,
@@ -226,11 +227,15 @@ export default function Settings() {
     if (deleteStep < 3) {
       setDeleteStep(deleteStep + 1);
     } else {
-      // Final deletion action
-      setShowDeleteFlow(false);
-      setDeleteStep(1);
-      setDeleteConfirmText('');
-      navigate('/');
+      // Final deletion — call backend then clear local state
+      api.delete('/users/me').catch(() => {}).finally(() => {
+        localStorage.removeItem(TOKEN_KEY);
+        localStorage.removeItem(REFRESH_TOKEN_KEY);
+        setShowDeleteFlow(false);
+        setDeleteStep(1);
+        setDeleteConfirmText('');
+        navigate('/');
+      });
     }
   };
 
