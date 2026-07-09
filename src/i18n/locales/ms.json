@@ -58,7 +58,8 @@
     "piWallet": "Dompet Pi",
     "donate": "Sokong Equal",
     "deleteAccount": "Padam Akaun",
-    "logout": "Log Keluar"
+    "logout": "Log Keluar",
+    "paymentHistory": "Payment History"
   },
   "onboarding": {
     "next": "Seterusnya",

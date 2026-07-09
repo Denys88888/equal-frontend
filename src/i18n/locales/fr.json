@@ -58,7 +58,8 @@
     "piWallet": "Portefeuille Pi",
     "donate": "Soutenir Equal",
     "deleteAccount": "Supprimer le Compte",
-    "logout": "Se Déconnecter"
+    "logout": "Se Déconnecter",
+    "paymentHistory": "Historique des paiements"
   },
   "onboarding": {
     "next": "Suivant",

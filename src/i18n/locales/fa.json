@@ -58,7 +58,8 @@
     "piWallet": "کیف پول پی",
     "donate": "حمایت از Equal",
     "deleteAccount": "حذف حساب کاربری",
-    "logout": "خروج از حساب"
+    "logout": "خروج از حساب",
+    "paymentHistory": "Payment History"
   },
   "onboarding": {
     "next": "بعدی",

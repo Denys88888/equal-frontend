@@ -841,7 +841,7 @@ export default function Chat() {
           setMessages(converted);
           setShowIcebreakers(converted.length < 5);
         }
-        if ((data as { partnerId?: string }).partnerId) setPartnerId((data as { partnerId: string }).partnerId);
+        if (data.partnerId) setPartnerId(data.partnerId);
         setMatchInfo({
           matchName: data.matchName || conversation.matchName,
           matchAvatar: data.matchAvatar || conversation.matchAvatar,

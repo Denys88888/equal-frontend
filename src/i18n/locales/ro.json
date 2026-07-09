@@ -58,7 +58,8 @@
     "piWallet": "Portofel Pi",
     "donate": "Susține Equal",
     "deleteAccount": "Șterge Contul",
-    "logout": "Deconectare"
+    "logout": "Deconectare",
+    "paymentHistory": "Payment History"
   },
   "onboarding": {
     "next": "Următorul",

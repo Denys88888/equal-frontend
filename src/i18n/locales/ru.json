@@ -58,7 +58,8 @@
     "piWallet": "Pi Кошелёк",
     "donate": "Поддержать Equal",
     "deleteAccount": "Удалить аккаунт",
-    "logout": "Выйти"
+    "logout": "Выйти",
+    "paymentHistory": "История платежей"
   },
   "onboarding": {
     "next": "Далее",

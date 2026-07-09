@@ -58,7 +58,8 @@
     "piWallet": "Pi-lommebok",
     "donate": "Støtt Equal",
     "deleteAccount": "Slett konto",
-    "logout": "Logg ut"
+    "logout": "Logg ut",
+    "paymentHistory": "Payment History"
   },
   "onboarding": {
     "next": "Neste",

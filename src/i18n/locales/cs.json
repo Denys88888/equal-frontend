@@ -58,7 +58,8 @@
     "piWallet": "Pi peněženka",
     "donate": "Podpořit Equal",
     "deleteAccount": "Smazat účet",
-    "logout": "Odhlásit se"
+    "logout": "Odhlásit se",
+    "paymentHistory": "Payment History"
   },
   "onboarding": {
     "next": "Další",

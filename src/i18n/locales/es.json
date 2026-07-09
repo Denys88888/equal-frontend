@@ -58,7 +58,8 @@
     "piWallet": "Billetera Pi",
     "donate": "Apoyar a Equal",
     "deleteAccount": "Eliminar Cuenta",
-    "logout": "Cerrar Sesión"
+    "logout": "Cerrar Sesión",
+    "paymentHistory": "Historial de pagos"
   },
   "onboarding": {
     "next": "Siguiente",

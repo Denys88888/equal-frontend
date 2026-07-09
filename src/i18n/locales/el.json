@@ -58,7 +58,8 @@
     "piWallet": "Πορτοφόλι Pi",
     "donate": "Υποστήριξε το Equal",
     "deleteAccount": "Διαγραφή Λογαριασμού",
-    "logout": "Αποσύνδεση"
+    "logout": "Αποσύνδεση",
+    "paymentHistory": "Payment History"
   },
   "onboarding": {
     "next": "Επόμενο",

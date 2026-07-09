@@ -58,7 +58,8 @@
     "piWallet": "محفظة Pi",
     "donate": "ادعم Equal",
     "deleteAccount": "حذف الحساب",
-    "logout": "تسجيل الخروج"
+    "logout": "تسجيل الخروج",
+    "paymentHistory": "سجل المدفوعات"
   },
   "onboarding": {
     "next": "التالي",

@@ -58,7 +58,8 @@
     "piWallet": "Pi Wallet",
     "donate": "Equal steunen",
     "deleteAccount": "Account verwijderen",
-    "logout": "Uitloggen"
+    "logout": "Uitloggen",
+    "paymentHistory": "Payment History"
   },
   "onboarding": {
     "next": "Volgende",

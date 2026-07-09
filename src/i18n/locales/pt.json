@@ -58,7 +58,8 @@
     "piWallet": "Pi Wallet",
     "donate": "Apoiar o Equal",
     "deleteAccount": "Excluir conta",
-    "logout": "Sair"
+    "logout": "Sair",
+    "paymentHistory": "Histórico de pagamentos"
   },
   "onboarding": {
     "next": "Próximo",

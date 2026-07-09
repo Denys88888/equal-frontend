@@ -58,7 +58,8 @@
     "piWallet": "Pi-tegnebog",
     "donate": "Støt Equal",
     "deleteAccount": "Slet konto",
-    "logout": "Log ud"
+    "logout": "Log ud",
+    "paymentHistory": "Payment History"
   },
   "onboarding": {
     "next": "Næste",

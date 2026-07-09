@@ -58,7 +58,8 @@
     "piWallet": "Pi pénztárca",
     "donate": "Támogasd az Equal-t",
     "deleteAccount": "Fiók törlése",
-    "logout": "Kijelentkezés"
+    "logout": "Kijelentkezés",
+    "paymentHistory": "Payment History"
   },
   "onboarding": {
     "next": "Következő",

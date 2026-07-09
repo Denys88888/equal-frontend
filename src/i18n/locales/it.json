@@ -58,7 +58,8 @@
     "piWallet": "Pi Wallet",
     "donate": "Supporta Equal",
     "deleteAccount": "Elimina account",
-    "logout": "Esci"
+    "logout": "Esci",
+    "paymentHistory": "Cronologia pagamenti"
   },
   "onboarding": {
     "next": "Avanti",

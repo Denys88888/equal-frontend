@@ -58,7 +58,8 @@
     "piWallet": "Pi 钱包",
     "donate": "支持 Equal",
     "deleteAccount": "注销账号",
-    "logout": "退出登录"
+    "logout": "退出登录",
+    "paymentHistory": "支付记录"
   },
   "onboarding": {
     "next": "下一步",

@@ -58,7 +58,8 @@
     "piWallet": "Pi वॉलेट",
     "donate": "Equal को सपोर्ट करें",
     "deleteAccount": "अकाउंट डिलीट करें",
-    "logout": "लॉग आउट"
+    "logout": "लॉग आउट",
+    "paymentHistory": "भुगतान इतिहास"
   },
   "onboarding": {
     "next": "आगे",

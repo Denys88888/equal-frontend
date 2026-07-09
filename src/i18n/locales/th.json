@@ -58,7 +58,8 @@
     "piWallet": "กระเป๋าเงิน Pi",
     "donate": "สนับสนุน Equal",
     "deleteAccount": "ลบบัญชี",
-    "logout": "ออกจากระบบ"
+    "logout": "ออกจากระบบ",
+    "paymentHistory": "Payment History"
   },
   "onboarding": {
     "next": "ถัดไป",

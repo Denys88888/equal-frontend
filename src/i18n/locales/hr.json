@@ -58,7 +58,8 @@
     "piWallet": "Pi novčanik",
     "donate": "Podrži Equal",
     "deleteAccount": "Izbriši račun",
-    "logout": "Odjava"
+    "logout": "Odjava",
+    "paymentHistory": "Payment History"
   },
   "onboarding": {
     "next": "Dalje",

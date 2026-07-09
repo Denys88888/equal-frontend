@@ -58,7 +58,8 @@
     "piWallet": "Pi Wallet",
     "donate": "Suportahan ang Equal",
     "deleteAccount": "Burahin ang Account",
-    "logout": "Mag-log Out"
+    "logout": "Mag-log Out",
+    "paymentHistory": "Payment History"
   },
   "onboarding": {
     "next": "Susunod",

@@ -58,7 +58,8 @@
     "piWallet": "பை வாலட்",
     "donate": "Equal-ஐ ஆதரி",
     "deleteAccount": "கணக்கை நீக்கு",
-    "logout": "வெளியேறு"
+    "logout": "வெளியேறு",
+    "paymentHistory": "Payment History"
   },
   "onboarding": {
     "next": "அடுத்து",

@@ -58,7 +58,8 @@
     "piWallet": "Pi Cüzdanı",
     "donate": "Equal'ı Destekle",
     "deleteAccount": "Hesabı Sil",
-    "logout": "Çıkış Yap"
+    "logout": "Çıkış Yap",
+    "paymentHistory": "Ödeme Geçmişi"
   },
   "onboarding": {
     "next": "İleri",

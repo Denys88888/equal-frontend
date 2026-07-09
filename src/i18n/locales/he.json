@@ -58,7 +58,8 @@
     "piWallet": "ארנק פאי",
     "donate": "תמוך ב-Equal",
     "deleteAccount": "מחק חשבון",
-    "logout": "התנתק"
+    "logout": "התנתק",
+    "paymentHistory": "Payment History"
   },
   "onboarding": {
     "next": "הבא",

@@ -58,7 +58,8 @@
     "piWallet": "Dompet Pi",
     "donate": "Dukung Equal",
     "deleteAccount": "Hapus Akun",
-    "logout": "Keluar"
+    "logout": "Keluar",
+    "paymentHistory": "Payment History"
   },
   "onboarding": {
     "next": "Lanjut",

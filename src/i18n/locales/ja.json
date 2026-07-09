@@ -58,7 +58,8 @@
     "piWallet": "Piウォレット",
     "donate": "Equalを応援する",
     "deleteAccount": "アカウントを削除",
-    "logout": "ログアウト"
+    "logout": "ログアウト",
+    "paymentHistory": "支払い履歴"
   },
   "onboarding": {
     "next": "次へ",

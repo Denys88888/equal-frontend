@@ -58,7 +58,8 @@
     "piWallet": "Ví Pi",
     "donate": "Ủng hộ Equal",
     "deleteAccount": "Xóa tài khoản",
-    "logout": "Đăng xuất"
+    "logout": "Đăng xuất",
+    "paymentHistory": "Payment History"
   },
   "onboarding": {
     "next": "Tiếp theo",

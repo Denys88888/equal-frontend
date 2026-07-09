@@ -58,7 +58,8 @@
     "piWallet": "Pi-lompakko",
     "donate": "Tue Equalia",
     "deleteAccount": "Poista tili",
-    "logout": "Kirjaudu ulos"
+    "logout": "Kirjaudu ulos",
+    "paymentHistory": "Payment History"
   },
   "onboarding": {
     "next": "Seuraava",

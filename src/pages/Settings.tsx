@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import { TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/api/client';
 import { api } from '@/api/client';
+import { getPaymentHistory } from '@/api/payments';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ChevronRight,
@@ -28,6 +29,7 @@ import {
   AlertTriangle,
   Palette,
   Cookie,
+  Receipt,
 } from 'lucide-react';
 import ThemeToggle from '@/components/ThemeToggle';
 import LanguageSelector from '@/components/LanguageSelector';
@@ -207,6 +209,14 @@ export default function Settings() {
   const [notifEvents, setNotifEvents] = useState(true);
   const [notifClubs, setNotifClubs] = useState(true);
   const [walletConnected, setWalletConnected] = useState(true);
+  const [paymentHistory, setPaymentHistory] = useState<{ id: string; amount: number; memo: string; status: string; createdAt: string }[]>([]);
+  const [showPaymentHistory, setShowPaymentHistory] = useState(false);
+
+  useEffect(() => {
+    getPaymentHistory().then((data) => {
+      if (Array.isArray(data)) setPaymentHistory(data as typeof paymentHistory);
+    }).catch(() => {});
+  }, []);
 
   const [showBlockedUsers, setShowBlockedUsers] = useState(false);
   const [blockedUsers, setBlockedUsers] = useState(blockedUsersData);
@@ -412,20 +422,15 @@ export default function Settings() {
             onClick={() => setWalletConnected(!walletConnected)}
           />
           {walletConnected && (
-            <div
-              className="w-full flex items-center justify-between px-5 py-4 rounded-[16px] bg-white"
-              style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
-            >
-              <div className="flex items-center gap-3">
-                <PiIcon size={20} />
-                <span className="text-base font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                  Balance
-                </span>
-              </div>
-              <span className="text-xs text-[#232323] opacity-60" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                3.14 Pi
-              </span>
-            </div>
+            <>
+              <SettingRow
+                icon={Receipt}
+                iconColor="#7BC4E8"
+                label={t('settings.paymentHistory')}
+                detail={paymentHistory.length > 0 ? `${paymentHistory.length}` : ''}
+                onClick={() => setShowPaymentHistory(true)}
+              />
+            </>
           )}
         </div>
 
@@ -773,6 +778,41 @@ export default function Settings() {
             </span>
             Donate {donationAmount} Pi
           </motion.button>
+        </DialogContent>
+      </Dialog>
+
+      {/* ── Payment History Dialog ── */}
+      <Dialog open={showPaymentHistory} onOpenChange={setShowPaymentHistory}>
+        <DialogContent className="rounded-[20px] max-w-[340px] bg-white border-0" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
+          <DialogHeader>
+            <DialogTitle className="text-lg font-bold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              {t('settings.paymentHistory')}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-2 max-h-[360px] overflow-y-auto pr-1">
+            {paymentHistory.length === 0 ? (
+              <p className="text-sm text-[#232323] opacity-40 text-center py-8" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                No payments yet
+              </p>
+            ) : (
+              paymentHistory.map((p) => (
+                <div key={p.id} className="flex items-center justify-between px-4 py-3 rounded-[14px] bg-[#F6F3EE]">
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-[#232323] truncate" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>{p.memo}</p>
+                    <p className="text-xs text-[#232323] opacity-40 mt-0.5" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                      {new Date(p.createdAt).toLocaleDateString()}
+                    </p>
+                  </div>
+                  <div className="flex flex-col items-end ml-3 flex-shrink-0">
+                    <span className="text-sm font-bold text-[#BB83C9]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>{p.amount} π</span>
+                    <span className={`text-xs font-semibold mt-0.5 ${p.status === 'COMPLETED' ? 'text-[#7DE0B3]' : 'text-[#F0B84A]'}`} style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                      {p.status}
+                    </span>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
         </DialogContent>
       </Dialog>
 

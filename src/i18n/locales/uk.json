@@ -58,7 +58,8 @@
     "piWallet": "Pi-гаманець",
     "donate": "Підтримати Equal",
     "deleteAccount": "Видалити акаунт",
-    "logout": "Вийти"
+    "logout": "Вийти",
+    "paymentHistory": "Історія платежів"
   },
   "onboarding": {
     "next": "Далі",

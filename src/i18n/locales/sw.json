@@ -58,7 +58,8 @@
     "piWallet": "Mkoba wa Pi",
     "donate": "Saidia Equal",
     "deleteAccount": "Futa Akaunti",
-    "logout": "Ondoka"
+    "logout": "Ondoka",
+    "paymentHistory": "Payment History"
   },
   "onboarding": {
     "next": "Inayofuata",

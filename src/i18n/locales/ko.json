@@ -58,7 +58,8 @@
     "piWallet": "Pi 지갑",
     "donate": "Equal 응원하기",
     "deleteAccount": "계정 삭제",
-    "logout": "로그아웃"
+    "logout": "로그아웃",
+    "paymentHistory": "결제 내역"
   },
   "onboarding": {
     "next": "다음",

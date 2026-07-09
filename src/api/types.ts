@@ -121,6 +121,7 @@ export interface Message {
 export interface MessagesResponse {
   messages: Message[];
   hasMore: boolean;
+  partnerId?: string;
   matchName: string;
   matchAvatar: string;
   isOnline: boolean;
