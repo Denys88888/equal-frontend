@@ -28,6 +28,8 @@ import SkeletonLoader from '@/components/SkeletonLoader';
 import { messagesApi } from '@/api/messages';
 import { api } from '@/api/client';
 import type { Message as ApiMessage } from '@/api/types';
+import { useSocket, type IncomingMessage } from '@/hooks/useSocket';
+import { useAuth } from '@/context/AuthContext';
 
 // ── Types ────────────────────────────────────────────────
 
@@ -796,6 +798,7 @@ export default function Chat() {
   const { matchId } = useParams<{ matchId: string }>();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { user } = useAuth();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -804,6 +807,7 @@ export default function Chat() {
   const [messages, setMessages] = useState<Message[]>(conversation.messages);
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const typingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [showGiftSheet, setShowGiftSheet] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -820,6 +824,25 @@ export default function Chat() {
     sharedInterests: conversation.sharedInterests,
     icebreakers: conversation.icebreakers,
   });
+
+  // Real-time socket — receive messages from partner
+  const { sendTypingStart, sendTypingStop } = useSocket(
+    matchId,
+    useCallback((msg: IncomingMessage) => {
+      if (!partnerId || msg.senderId !== partnerId) return;
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: `ws-${Date.now()}`,
+          type: 'TEXT' as const,
+          content: msg.content,
+          sender: 'them' as const,
+          timestamp: new Date(msg.createdAt),
+          read: false,
+        },
+      ]);
+    }, [partnerId]),
+  );
 
   // Load messages from API on mount
   useEffect(() => {
@@ -1210,6 +1233,11 @@ export default function Chat() {
                 onChange={(e) => {
                   setInputText(e.target.value);
                   handleAutoResize();
+                  if (user?.id) {
+                    sendTypingStart(user.id);
+                    if (typingTimerRef.current) clearTimeout(typingTimerRef.current);
+                    typingTimerRef.current = setTimeout(() => sendTypingStop(user.id!), 2000);
+                  }
                 }}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && !e.shiftKey) {
