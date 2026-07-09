@@ -467,7 +467,7 @@ export default function Onboarding() {
                 cursor: stepValid ? 'pointer' : 'not-allowed',
               }}
             >
-              {isCompleting ? 'Welcome to Equal ✨' : step === 5 ? t('onboarding.finish') : t('onboarding.next')}
+              {isCompleting ? t('onboarding.welcome') : step === 5 ? t('onboarding.finish') : t('onboarding.next')}
             </motion.button>
           </div>
         </div>
