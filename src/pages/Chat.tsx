@@ -26,6 +26,7 @@ import { useToast } from '@/hooks/useToast';
 import ReportDialog from '@/components/ReportDialog';
 import SkeletonLoader from '@/components/SkeletonLoader';
 import { messagesApi } from '@/api/messages';
+import { api } from '@/api/client';
 import type { Message as ApiMessage } from '@/api/types';
 
 // ── Types ────────────────────────────────────────────────
@@ -810,6 +811,7 @@ export default function Chat() {
   const [toast, setToast] = useState({ message: '', visible: false });
   const [showIcebreakers, setShowIcebreakers] = useState(conversation.messages.length < 5);
   const [isLoading, setIsLoading] = useState(true);
+  const [partnerId, setPartnerId] = useState<string | null>(null);
   const [matchInfo, setMatchInfo] = useState({
     matchName: conversation.matchName,
     matchAvatar: conversation.matchAvatar,
@@ -839,6 +841,7 @@ export default function Chat() {
           setMessages(converted);
           setShowIcebreakers(converted.length < 5);
         }
+        if ((data as { partnerId?: string }).partnerId) setPartnerId((data as { partnerId: string }).partnerId);
         setMatchInfo({
           matchName: data.matchName || conversation.matchName,
           matchAvatar: data.matchAvatar || conversation.matchAvatar,
@@ -1013,11 +1016,13 @@ export default function Chat() {
   const handleViewProfile = () => navigate(`/profile`);
   const handleMute = () => showToast('Notifications muted');
   const handleBlock = () => {
+    if (partnerId) api.post(`/users/${partnerId}/block`, {}).catch(() => {});
     showToast('User blocked');
     setTimeout(() => navigate('/matches'), 1500);
   };
   const handleReport = () => setReportDialogOpen(true);
-  const handleReportSubmit = (_reason: string, _description: string) => {
+  const handleReportSubmit = (reason: string, description: string) => {
+    if (partnerId) api.post(`/users/${partnerId}/report`, { reason, description }).catch(() => {});
     showGlobalToast('success', 'Report submitted. We\'ll review it shortly.');
   };
 
