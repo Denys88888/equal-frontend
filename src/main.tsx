@@ -1,3 +1,5 @@
+import { initSentry } from '@/lib/sentry';
+initSentry();
 import { createRoot } from 'react-dom/client'
 import { HashRouter } from 'react-router'
 import { ToastProvider } from '@/components/ToastProvider'
