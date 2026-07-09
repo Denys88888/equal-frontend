@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import { TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/api/client';
 import { api } from '@/api/client';
 import { getPaymentHistory } from '@/api/payments';
+import { getMe } from '@/api/users';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ChevronRight,
@@ -209,6 +210,15 @@ export default function Settings() {
   const [notifEvents, setNotifEvents] = useState(true);
   const [notifClubs, setNotifClubs] = useState(true);
   const [walletConnected, setWalletConnected] = useState(true);
+  const [trustScore, setTrustScore] = useState<number | null>(null);
+  const [photoCount, setPhotoCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    getMe().then((d) => {
+      if (d.trustScore != null) setTrustScore(d.trustScore);
+      if (d.photos) setPhotoCount(d.photos.length);
+    }).catch(() => {});
+  }, []);
   const [paymentHistory, setPaymentHistory] = useState<{ id: string; amount: number; memo: string; status: string; createdAt: string }[]>([]);
   const [showPaymentHistory, setShowPaymentHistory] = useState(false);
 
@@ -270,8 +280,8 @@ export default function Settings() {
         <SectionLabel text="Profile" />
         <div className="space-y-2">
           <SettingRow icon={User} iconColor="#BB83C9" label="Edit Profile" onClick={() => navigate('/profile')} />
-          <SettingRow icon={Camera} iconColor="#7BC4E8" label="Photos" detail={`5/9`} onClick={() => {}} />
-          <SettingRow icon={Shield} iconColor="#7DE0B3" label="Trust Score" detail="82/100" onClick={() => {}} />
+          <SettingRow icon={Camera} iconColor="#7BC4E8" label="Photos" detail={photoCount != null ? `${photoCount}/9` : ''} onClick={() => navigate('/profile')} />
+          <SettingRow icon={Shield} iconColor="#7DE0B3" label="Trust Score" detail={trustScore != null ? `${trustScore}/100` : ''} onClick={() => {}} />
         </div>
 
         {/* ───────── Privacy ───────── */}
