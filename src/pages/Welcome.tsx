@@ -164,7 +164,19 @@ export default function Welcome() {
         window.Pi.authenticate(
           ['username', 'payments'],
           async (payment: unknown) => {
-            try { await paymentsApi.approve((payment as { identifier: string }).identifier); } catch { /* best effort */ }
+            // Per Pi docs: if transaction already submitted → complete, else → approve
+            const p = payment as {
+              identifier: string;
+              transaction: { txid: string } | null;
+              status: { developer_approved: boolean };
+            };
+            try {
+              if (p.transaction?.txid && p.status.developer_approved) {
+                await paymentsApi.complete(p.identifier, p.transaction.txid);
+              } else {
+                await paymentsApi.approve(p.identifier);
+              }
+            } catch { /* best effort */ }
           }
         ),
         new Promise<never>((_, reject) =>

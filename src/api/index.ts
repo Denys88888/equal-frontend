@@ -24,3 +24,4 @@ export { clubsApi } from './clubs';
 export { eventsApi } from './events';
 export { paymentsApi } from './payments';
 export { adminApi } from './admin';
+export { sparksApi } from './sparks';

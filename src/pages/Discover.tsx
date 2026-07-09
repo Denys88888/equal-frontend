@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import Layout from '@/components/Layout';
 import SkeletonLoader from '@/components/SkeletonLoader';
 import { discoverApi } from '@/api/discover';
+import { sparksApi } from '@/api/sparks';
 import type { ProfileCard } from '@/api/types';
 
 // ── Types ──────────────────────────────────────────────
@@ -751,7 +752,7 @@ export default function Discover() {
   const [showFilters, setShowFilters] = useState(false);
   const [matchProfile, setMatchProfile] = useState<Profile | null>(null);
   const [matchId, setMatchId] = useState<string | null>(null);
-  const [sparkCount, setSparkCount] = useState(5);
+  const [sparkCount, setSparkCount] = useState(0);
   const [filters, setFilters] = useState<Filters>({
     maxDistance: 50,
     ageMin: 22,
@@ -765,22 +766,24 @@ export default function Discover() {
   const [_error, _setError] = useState<string | null>(null);
   const sheetRef = useRef<HTMLDivElement>(null);
 
-  // Fetch profiles from API on mount
+  // Fetch profiles and sparks balance on mount
   useEffect(() => {
     let cancelled = false;
-    discoverApi.getProfiles({ maxDistance: 50 })
-      .then(data => {
-        if (cancelled) return;
-        const mapped = data.profiles.map((p: ProfileCard) => ({ ...p }));
-        setAllProfiles(mapped);
-        setProfiles(mapped);
-        setFilteredProfiles(mapped);
-        setIsLoading(false);
-      })
-      .catch(() => {
-        if (cancelled) return;
-        setIsLoading(false);
-      });
+    Promise.all([
+      discoverApi.getProfiles({ maxDistance: 50 }),
+      sparksApi.getBalance(),
+    ]).then(([data, sparks]) => {
+      if (cancelled) return;
+      const mapped = data.profiles.map((p: ProfileCard) => ({ ...p }));
+      setAllProfiles(mapped);
+      setProfiles(mapped);
+      setFilteredProfiles(mapped);
+      setSparkCount(sparks.balance);
+      setIsLoading(false);
+    }).catch(() => {
+      if (cancelled) return;
+      setIsLoading(false);
+    });
     return () => { cancelled = true; };
   }, []);
 
@@ -821,6 +824,7 @@ export default function Discover() {
     if (direction === 'up') {
       if (sparkCount > 0) {
         setSparkCount((c) => c - 1);
+        sparksApi.spend(1).then(r => setSparkCount(r.newBalance)).catch(() => {});
       } else {
         return;
       }
