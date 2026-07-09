@@ -16,7 +16,7 @@ import {
   Check,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { updateMe } from '@/api/users';
+import { updateMe, uploadPhoto } from '@/api/users';
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
 /* ------------------------------------------------------------------ */
@@ -29,6 +29,7 @@ interface PersonalityAnswer {
 interface PhotoItem {
   id: string;
   url: string;
+  file?: File;
 }
 
 interface ProfileData {
@@ -218,7 +219,7 @@ export default function Onboarding() {
     const file = e.target.files?.[0];
     if (!file || activePhotoSlot === null) return;
     const url = URL.createObjectURL(file);
-    const newPhoto: PhotoItem = { id: `photo-${Date.now()}`, url };
+    const newPhoto: PhotoItem = { id: `photo-${Date.now()}`, url, file };
 
     setData((prev) => {
       const photos = [...prev.photos];
@@ -256,6 +257,16 @@ export default function Onboarding() {
         interests: data.interests.length > 0 ? data.interests : undefined,
         goals: data.goal ? [data.goal] : undefined,
       } as Parameters<typeof updateMe>[0]);
+
+      // Upload photos collected during onboarding
+      const photosWithFile = data.photos.filter((p) => p?.file);
+      for (let i = 0; i < photosWithFile.length; i++) {
+        try {
+          await uploadPhoto(photosWithFile[i].file!, i === 0);
+        } catch {
+          // non-critical
+        }
+      }
     } catch {
       // non-critical — user can update profile later
     }
