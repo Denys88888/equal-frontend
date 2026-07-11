@@ -95,6 +95,14 @@ export async function resolveReport(
  * Grouped admin API methods:
  * `import { adminApi } from '@/api/admin'`
  */
+export async function banUser(userId: string): Promise<void> {
+  await api.post<void>(`/admin/users/${encodeURIComponent(userId)}/ban`, {});
+}
+
+export async function unbanUser(userId: string): Promise<void> {
+  await api.post<void>(`/admin/users/${encodeURIComponent(userId)}/unban`, {});
+}
+
 export const adminApi = {
   getStats: getAdminStats,
   getUsers: getAdminUsers,
@@ -102,4 +110,6 @@ export const adminApi = {
   awardBadge,
   getPendingReports,
   resolveReport,
+  banUser,
+  unbanUser,
 };
