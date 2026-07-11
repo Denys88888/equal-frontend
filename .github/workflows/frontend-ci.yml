@@ -27,6 +27,9 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          VITE_API_URL: https://equal-backend.onrender.com/v1
+          VITE_WS_URL: wss://equal-backend.onrender.com
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4

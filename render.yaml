@@ -9,6 +9,10 @@ services:
     envVars:
       - key: NODE_VERSION
         value: 20
+      - key: VITE_API_URL
+        value: https://equal-backend.onrender.com/v1
+      - key: VITE_WS_URL
+        value: wss://equal-backend.onrender.com
     routes:
       - type: rewrite
         source: /*
