@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router';
+import { useAuth } from '@/context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ShieldCheck,
@@ -932,9 +933,17 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
 
 export default function Admin() {
   const navigate = useNavigate();
+  const { user, isLoading } = useAuth();
   const [toastMessage, setToastMessage] = useState('');
   const [toastVisible, setToastVisible] = useState(false);
   const toastTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Guard: only authenticated ADMINs may view this page
+  useEffect(() => {
+    if (!isLoading && (!user || (user as { role?: string }).role !== 'ADMIN')) {
+      navigate('/', { replace: true });
+    }
+  }, [user, isLoading, navigate]);
 
   const showToast = useCallback((message: string) => {
     setToastMessage(message);
