@@ -30,6 +30,7 @@ import { api } from '@/api/client';
 import type { Message as ApiMessage } from '@/api/types';
 import { useSocket, type IncomingMessage } from '@/hooks/useSocket';
 import { useAuth } from '@/context/AuthContext';
+import { usePiPayment } from '@/hooks/usePiPayment';
 
 // ── Types ────────────────────────────────────────────────
 
@@ -468,23 +469,27 @@ function GiftBottomSheet({
   isOpen,
   onClose,
   onSendGift,
+  matchName,
 }: {
   isOpen: boolean;
   onClose: () => void;
   onSendGift: (giftType: string, giftName: string) => void;
+  matchName: string;
 }) {
   const { t } = useTranslation();
   const [selected, setSelected] = useState(0);
-  const [isProcessing, setIsProcessing] = useState(false);
+  const { initiatePayment, isProcessing } = usePiPayment();
 
-  const handleSend = () => {
-    setIsProcessing(true);
-    setTimeout(() => {
-      setIsProcessing(false);
-      onSendGift(GIFT_OPTIONS[selected].icon, GIFT_OPTIONS[selected].name);
-      onClose();
-      setSelected(0);
-    }, 1500);
+  const handleSend = async () => {
+    const gift = GIFT_OPTIONS[selected];
+    const price = parseFloat(gift.price);
+    if (!isNaN(price) && price > 0) {
+      const result = await initiatePayment(price, `Gift: ${gift.name} to ${matchName}`, { gift: gift.icon });
+      if (!result.success) return;
+    }
+    onSendGift(gift.icon, gift.name);
+    onClose();
+    setSelected(0);
   };
 
   return (
@@ -1309,6 +1314,7 @@ export default function Chat() {
           isOpen={showGiftSheet}
           onClose={() => setShowGiftSheet(false)}
           onSendGift={handleSendGift}
+          matchName={matchInfo.matchName}
         />
 
         {/* ── Report Dialog ── */}
