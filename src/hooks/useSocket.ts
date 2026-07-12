@@ -11,49 +11,88 @@ export interface IncomingMessage {
   createdAt: string;
 }
 
+export interface MatchNewEvent {
+  matchId: string;
+  withUserId: string;
+}
+
+// Singleton socket shared across the app so all hooks share one connection
+let _socket: Socket | null = null;
+function getSocket(): Socket {
+  if (!_socket || !_socket.connected) {
+    const token = localStorage.getItem(TOKEN_KEY);
+    _socket = io(BACKEND_URL, { auth: { token }, transports: ['websocket'] });
+  }
+  return _socket;
+}
+
+/** Used in Chat screen — joins a match room and listens for messages/typing */
 export function useSocket(
   matchId: string | undefined,
   onMessage: (msg: IncomingMessage) => void,
   onTypingStart?: (userId: string) => void,
   onTypingStop?: (userId: string) => void,
 ) {
-  const socketRef = useRef<Socket | null>(null);
   const onMessageRef = useRef(onMessage);
   onMessageRef.current = onMessage;
 
   useEffect(() => {
     if (!matchId) return;
-    const token = localStorage.getItem(TOKEN_KEY);
-    const socket = io(BACKEND_URL, {
-      auth: { token },
-      transports: ['websocket'],
-    });
-    socketRef.current = socket;
+    const socket = getSocket();
 
-    socket.on('connect', () => {
-      socket.emit('join:match', matchId);
-    });
+    const onConnect = () => socket.emit('join:match', matchId);
+    if (socket.connected) socket.emit('join:match', matchId);
+    else socket.on('connect', onConnect);
 
-    socket.on('message:new', (msg: IncomingMessage) => {
-      onMessageRef.current(msg);
-    });
+    const onMsg = (msg: IncomingMessage) => onMessageRef.current(msg);
+    socket.on('message:new', onMsg);
 
-    if (onTypingStart) socket.on('typing:start', ({ userId }: { userId: string }) => onTypingStart(userId));
-    if (onTypingStop) socket.on('typing:stop', ({ userId }: { userId: string }) => onTypingStop(userId));
+    const onTStart = ({ userId }: { userId: string }) => onTypingStart?.(userId);
+    const onTStop = ({ userId }: { userId: string }) => onTypingStop?.(userId);
+    socket.on('typing:start', onTStart);
+    socket.on('typing:stop', onTStop);
 
     return () => {
-      socket.disconnect();
-      socketRef.current = null;
+      socket.off('connect', onConnect);
+      socket.off('message:new', onMsg);
+      socket.off('typing:start', onTStart);
+      socket.off('typing:stop', onTStop);
     };
   }, [matchId]);
 
   const sendTypingStart = useCallback((userId: string) => {
-    socketRef.current?.emit('typing:start', { matchId, userId });
+    getSocket().emit('typing:start', { matchId, userId });
   }, [matchId]);
 
   const sendTypingStop = useCallback((userId: string) => {
-    socketRef.current?.emit('typing:stop', { matchId, userId });
+    getSocket().emit('typing:stop', { matchId, userId });
   }, [matchId]);
 
   return { sendTypingStart, sendTypingStop };
+}
+
+/** Used app-wide (e.g. AuthProvider) — joins user room and listens for match:new */
+export function useUserSocket(
+  userId: string | undefined,
+  onMatchNew?: (event: MatchNewEvent) => void,
+) {
+  const onMatchRef = useRef(onMatchNew);
+  onMatchRef.current = onMatchNew;
+
+  useEffect(() => {
+    if (!userId) return;
+    const socket = getSocket();
+
+    const onConnect = () => socket.emit('join:user', userId);
+    if (socket.connected) socket.emit('join:user', userId);
+    else socket.on('connect', onConnect);
+
+    const onMatch = (event: MatchNewEvent) => onMatchRef.current?.(event);
+    socket.on('match:new', onMatch);
+
+    return () => {
+      socket.off('connect', onConnect);
+      socket.off('match:new', onMatch);
+    };
+  }, [userId]);
 }

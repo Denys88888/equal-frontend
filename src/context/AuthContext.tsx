@@ -19,6 +19,7 @@ import {
 import { TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/api/client';
 import { authApi, usersApi } from '@/api';
 import type { User, UserProfile } from '@/api/types';
+import { useUserSocket } from '@/hooks/useSocket';
 
 // ───────────────────────────────────────────────────────────
 // AUTH STATE SHAPE
@@ -232,6 +233,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setToken,
     clearError,
   };
+
+  // Subscribe to user-level socket room for real-time match notifications
+  useUserSocket(user?.id);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
