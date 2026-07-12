@@ -643,13 +643,15 @@ function StepPhotos({
   onPhotoAdd,
   onPhotoRemove,
   onVideoAdd,
+  videoInputRef,
+  onVideoFileChange,
 }: {
   data: ProfileData;
   update: <K extends keyof ProfileData>(key: K, value: ProfileData[K]) => void;
   onPhotoAdd: (slotIndex: number) => void;
   onPhotoRemove: (index: number) => void;
   onVideoAdd: () => void;
-  videoInputRef: React.RefObject<HTMLInputElement>;
+  videoInputRef: React.RefObject<HTMLInputElement | null>;
   onVideoFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
   const photos = data.photos;
