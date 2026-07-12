@@ -847,6 +847,8 @@ export default function Chat() {
         },
       ]);
     }, [partnerId]),
+    useCallback(() => setIsTyping(true), []),
+    useCallback(() => setIsTyping(false), []),
   );
 
   // Load messages from API on mount
@@ -907,38 +909,7 @@ export default function Chat() {
     scrollToBottom();
   }, [messages, isTyping, scrollToBottom]);
 
-  // Simulate typing indicator occasionally
-  useEffect(() => {
-    if (messages.length === 0) return;
-    const lastMsg = messages[messages.length - 1];
-    if (lastMsg.sender === 'me') {
-      const timer = setTimeout(() => {
-        setIsTyping(true);
-        const replyTimer = setTimeout(() => {
-          setIsTyping(false);
-          // Auto-reply with contextual message
-          const replies = [
-            'That\'s really interesting! Tell me more 😊',
-            'Haha totally agree!',
-            'I was just thinking the same thing!',
-            'Wow, I didn\'t know that!',
-            'Haha you\'re so funny! 😂',
-          ];
-          const reply: Message = {
-            id: `auto-${Date.now()}`,
-            type: 'TEXT',
-            content: replies[Math.floor(Math.random() * replies.length)],
-            sender: 'them',
-            timestamp: new Date(),
-            read: false,
-          };
-          setMessages((prev) => [...prev, reply]);
-        }, 3000);
-        return () => clearTimeout(replyTimer);
-      }, 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [messages.length]);
+  // isTyping is controlled by real socket typing events (see useSocket hook)
 
   const handleSendMessage = useCallback(async (text: string) => {
     if (!text.trim()) return;

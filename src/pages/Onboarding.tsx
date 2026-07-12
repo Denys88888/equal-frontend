@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence, Reorder } from 'framer-motion';
 import {
@@ -238,12 +238,24 @@ export default function Onboarding() {
     });
   };
 
+  const videoInputRef = useRef<HTMLInputElement>(null);
   const handleVideoAdd = () => {
-    setData((prev) => ({
-      ...prev,
-      videoIntro: prev.videoIntro ? null : 'mock-video-url',
-    }));
+    if (data.videoIntro) {
+      setData((prev) => ({ ...prev, videoIntro: null }));
+    } else {
+      videoInputRef.current?.click();
+    }
   };
+  const handleVideoFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const url = URL.createObjectURL(file);
+    setData((prev) => ({ ...prev, videoIntro: url }));
+  };
+  // Revoke object URL on unmount
+  useEffect(() => {
+    return () => { if (data.videoIntro?.startsWith('blob:')) URL.revokeObjectURL(data.videoIntro); };
+  }, [data.videoIntro]);
 
   /* ---- completion ---- */
   const handleComplete = async () => {
@@ -418,6 +430,8 @@ export default function Onboarding() {
                       onPhotoAdd={handlePhotoAdd}
                       onPhotoRemove={handlePhotoRemove}
                       onVideoAdd={handleVideoAdd}
+                      videoInputRef={videoInputRef}
+                      onVideoFileChange={handleVideoFileChange}
                     />
                   )}
                   {step === 3 && (
@@ -635,6 +649,8 @@ function StepPhotos({
   onPhotoAdd: (slotIndex: number) => void;
   onPhotoRemove: (index: number) => void;
   onVideoAdd: () => void;
+  videoInputRef: React.RefObject<HTMLInputElement>;
+  onVideoFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
   const photos = data.photos;
   const emptySlots = Math.max(0, 9 - photos.length);
@@ -760,6 +776,16 @@ function StepPhotos({
         )}
       </motion.button>
 
+      {/* Hidden video file input */}
+      <input
+        ref={videoInputRef}
+        type="file"
+        accept="video/*"
+        capture="user"
+        style={{ display: 'none' }}
+        onChange={onVideoFileChange}
+      />
+
       {data.videoIntro && (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -767,9 +793,12 @@ function StepPhotos({
           className="relative rounded-xl overflow-hidden"
           style={{ backgroundColor: '#232323', aspectRatio: '16/9' }}
         >
-          <div className="absolute inset-0 flex items-center justify-center">
-            <PlayCircle size={48} className="text-white" strokeWidth={1.5} />
-          </div>
+          <video
+            src={data.videoIntro}
+            controls
+            playsInline
+            className="w-full h-full object-cover"
+          />
           <button
             onClick={onVideoAdd}
             className="absolute top-2 right-2 w-6 h-6 rounded-full flex items-center justify-center"
