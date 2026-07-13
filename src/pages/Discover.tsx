@@ -240,7 +240,7 @@ function FilterSheet({
                     opacity: selected ? 1 : 0.7,
                   }}
                 >
-                  {interest}
+                  {t(`discover.fint_${interest.toLowerCase()}`, { defaultValue: interest })}
                 </button>
               );
             })}
