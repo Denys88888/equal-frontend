@@ -6,7 +6,9 @@
     "trust": "Бесплатно. Навсегда. Без скрытых платежей.",
     "trustVerified": "Проверенное сообщество",
     "trustZero": "Без платежей за связи",
-    "trustPioneers": "60M+ пионеров"
+    "trustPioneers": "60M+ пионеров",
+    "errPiBrowser": "Открой приложение в Pi Browser",
+    "errAuthFailed": "Ошибка авторизации Pi"
   },
   "nav": {
     "discover": "Поиск",

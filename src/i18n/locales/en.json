@@ -6,7 +6,9 @@
     "trust": "Free. Forever. No hidden fees.",
     "trustVerified": "Verified Community",
     "trustZero": "Zero Payments",
-    "trustPioneers": "60M+ Pioneers"
+    "trustPioneers": "60M+ Pioneers",
+    "errPiBrowser": "Please open this app in Pi Browser",
+    "errAuthFailed": "Pi authentication failed"
   },
   "nav": {
     "discover": "Discover",

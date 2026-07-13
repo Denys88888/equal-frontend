@@ -133,7 +133,7 @@ export default function Welcome() {
           navigate('/discover');
           return;
         }
-        throw new Error('Please open this app in Pi Browser');
+        throw new Error(t('welcome.errPiBrowser'));
       }
 
       // Race Pi.authenticate() against a 45-second timeout
@@ -172,7 +172,7 @@ export default function Welcome() {
         navigate('/onboarding');
       }
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'Pi authentication failed';
+      const msg = err instanceof Error ? err.message : t('welcome.errAuthFailed');
       setError(msg);
     } finally {
       setIsLoading(false);
