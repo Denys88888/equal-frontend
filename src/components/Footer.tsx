@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router';
 import { Compass, Heart, Users, Calendar, User } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 interface NavItem {
   label: string;
@@ -11,16 +12,17 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: 'Discover', icon: Compass, path: '/discover' },
-  { label: 'Matches', icon: Heart, path: '/matches' },
-  { label: 'Clubs', icon: Users, path: '/clubs' },
-  { label: 'Events', icon: Calendar, path: '/events' },
-  { label: 'Profile', icon: User, path: '/profile' },
+  { label: 'nav.discover', icon: Compass, path: '/discover' },
+  { label: 'nav.matches', icon: Heart, path: '/matches' },
+  { label: 'nav.clubs', icon: Users, path: '/clubs' },
+  { label: 'nav.events', icon: Calendar, path: '/events' },
+  { label: 'nav.profile', icon: User, path: '/profile' },
 ];
 
 export default function Footer() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation();
   const [tapIndex, setTapIndex] = useState<number | null>(null);
 
   const handleTap = (index: number, path: string) => {
@@ -84,7 +86,7 @@ export default function Footer() {
                   transition: 'color 0.2s ease',
                 }}
               >
-                {item.label}
+                {t(item.label)}
               </span>
               {isActive && (
                 <motion.div
