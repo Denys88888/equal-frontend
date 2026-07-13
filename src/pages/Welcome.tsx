@@ -17,48 +17,23 @@ const easeSpring = [0.34, 1.56, 0.64, 1] as [number, number, number, number];
 
 function EqualLogo() {
   return (
-    <motion.svg
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, ease: easeSmooth, delay: 0.2 }}
-      width="140"
-      height="56"
-      viewBox="0 0 200 80"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="animate-logo-breathe"
+      className="animate-logo-breathe flex items-end select-none"
+      style={{ fontFamily: "'Outfit', system-ui, sans-serif", fontWeight: 700, fontSize: 44, lineHeight: 1, color: '#BB83C9', letterSpacing: '-1.5px' }}
+      aria-label="Equal"
     >
-      {/* E */}
-      <path
-        d="M16 56V24h28v6H24v8h18v6H24v12h-8z"
-        fill="#BB83C9"
-      />
-      {/* q */}
-      <path
-        d="M58 56V24h16c8 0 14 6 14 14s-6 14-14 14H66v4h-8zm8-10h8c4 0 8-4 8-8s-4-8-8-8h-8v16z"
-        fill="#BB83C9"
-      />
-      {/* u — with heart-shaped counter */}
-      <path
-        d="M98 24h8v18c0 8-4 14-12 14s-12-6-12-14V24h8v18c0 4 2 8 6 8s6-4 6-8V24z"
-        fill="#BB83C9"
-      />
-      {/* Heart shape inside the "u" counter */}
-      <path
-        d="M94 36c0-2.2 1.8-4 4-4 .8 0 1.6.3 2.2.8l-.2.2c.6-.5 1.4-.8 2.2-.8 2.2 0 4 1.8 4 4 0 3-3.4 5.8-5.4 7.4l-.8.6-.8-.6c-2-1.6-5.4-4.4-5.4-7.4z"
-        fill="#7DE0B3"
-      />
-      {/* a */}
-      <path
-        d="M118 56V24h8l12 32h-8l-2.5-7H118v7h-8zm4.5-13h6l-3-9-3 9z"
-        fill="#BB83C9"
-      />
-      {/* l */}
-      <path
-        d="M146 24h8v32h-8z"
-        fill="#BB83C9"
-      />
-    </motion.svg>
+      <span>Eq</span>
+      <span className="relative inline-block">
+        u
+        <svg width="14" height="13" viewBox="0 0 14 13" className="absolute" style={{ top: -7, left: '50%', transform: 'translateX(-50%)' }} aria-hidden="true">
+          <path d="M7 12.2 5.8 11C2.8 8.6 0.5 6.6 0.5 4.2 0.5 2.2 2 0.8 3.9 0.8c1.2 0 2.4.6 3.1 1.5C7.7 1.4 8.9.8 10.1.8 12 .8 13.5 2.2 13.5 4.2c0 2.4-2.3 4.4-5.3 6.8L7 12.2z" fill="#7DE0B3" />
+        </svg>
+      </span>
+      <span>al</span>
+    </motion.div>
   );
 }
 

@@ -33,7 +33,7 @@ const languages = [
   { code: 'pl', label: 'Polski', flag: '\u{1F1F5}\u{1F1F1}' },
   { code: 'fa', label: 'فارسی', flag: '\u{1F1EE}\u{1F1F7}' },
   { code: 'bn', label: 'বাংলা', flag: '\u{1F1E7}\u{1F1E9}' },
-  { code: 'ta', label: 'தமிழ்', flag: '\u{1F1EE}\u{1F1F9}' },
+  { code: 'ta', label: 'தமிழ்', flag: '\u{1F1EE}\u{1F1F3}' },
   { code: 'el', label: 'Ελληνικά', flag: '\u{1F1EC}\u{1F1F7}' },
   { code: 'cs', label: 'Čeština', flag: '\u{1F1E8}\u{1F1FF}' },
   { code: 'hu', label: 'Magyar', flag: '\u{1F1ED}\u{1F1FA}' },
