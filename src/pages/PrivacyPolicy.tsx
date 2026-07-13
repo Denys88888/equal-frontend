@@ -1,9 +1,28 @@
 import { useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Shield } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+
+interface Section {
+  h: string;
+  p: string;
+  items?: string[];
+  marker?: string;
+  markerColor?: string;
+}
+
+const SECTIONS: Section[] = [
+  { h: 'legal.p1h', p: 'legal.p1p', items: ['legal.p1i1', 'legal.p1i2', 'legal.p1i3'], marker: '•', markerColor: '#BB83C9' },
+  { h: 'legal.p2h', p: 'legal.p2p', items: ['legal.p2i1', 'legal.p2i2', 'legal.p2i3', 'legal.p2i4', 'legal.p2i5'], marker: '✓', markerColor: '#7DE0B3' },
+  { h: 'legal.p3h', p: 'legal.p3p', items: ['legal.p3i1', 'legal.p3i2', 'legal.p3i3', 'legal.p3i4'], marker: '•', markerColor: '#BB83C9' },
+  { h: 'legal.p4h', p: 'legal.p4p' },
+  { h: 'legal.p5h', p: 'legal.p5p' },
+  { h: 'legal.p6h', p: 'legal.p6p' },
+];
 
 export default function PrivacyPolicy() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <div className="min-h-[100dvh] w-full flex justify-center" style={{ backgroundColor: '#F7F4EE' }}>
@@ -22,13 +41,12 @@ export default function PrivacyPolicy() {
             className="text-xl font-bold text-[#232323]"
             style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
           >
-            Privacy Policy
+            {t('legal.privacyTitle')}
           </h1>
         </div>
 
         {/* Content */}
         <div className="px-5 pb-8 space-y-6">
-          {/* Shield icon */}
           <div className="flex justify-center py-4">
             <div
               className="w-16 h-16 rounded-2xl flex items-center justify-center"
@@ -38,117 +56,30 @@ export default function PrivacyPolicy() {
             </div>
           </div>
 
-          <section>
-            <h2 className="text-lg font-semibold text-[#232323] mb-2" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              1. Information We Collect
-            </h2>
-            <p className="text-sm leading-relaxed" style={{ color: 'rgba(35,35,35,0.7)', fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.6 }}>
-              Equal collects only the minimum information necessary to provide our dating service:
-            </p>
-            <ul className="mt-2 space-y-1 text-sm" style={{ color: 'rgba(35,35,35,0.7)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              <li className="flex items-start gap-2">
-                <span style={{ color: '#BB83C9' }}>•</span>
-                <span>Pi Network username and UID (via Pi authentication)</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span style={{ color: '#BB83C9' }}>•</span>
-                <span>Profile information you voluntarily provide (bio, photos, interests, city)</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span style={{ color: '#BB83C9' }}>•</span>
-                <span>App usage data (swipes, matches, messages)</span>
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-semibold text-[#232323] mb-2" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              2. Information We Do NOT Collect
-            </h2>
-            <p className="text-sm leading-relaxed" style={{ color: 'rgba(35,35,35,0.7)', fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.6 }}>
-              Equal is committed to privacy-first design. We do NOT collect:
-            </p>
-            <ul className="mt-2 space-y-1 text-sm" style={{ color: 'rgba(35,35,35,0.7)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              <li className="flex items-start gap-2">
-                <span style={{ color: '#7DE0B3' }}>✓</span>
-                <span>Email addresses</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span style={{ color: '#7DE0B3' }}>✓</span>
-                <span>Phone numbers</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span style={{ color: '#7DE0B3' }}>✓</span>
-                <span>Passwords</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span style={{ color: '#7DE0B3' }}>✓</span>
-                <span>Payment information (all payments go through Pi Network)</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span style={{ color: '#7DE0B3' }}>✓</span>
-                <span>Precise GPS location (only city-level)</span>
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-semibold text-[#232323] mb-2" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              3. How We Use Your Information
-            </h2>
-            <p className="text-sm leading-relaxed" style={{ color: 'rgba(35,35,35,0.7)', fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.6 }}>
-              Your information is used solely to:
-            </p>
-            <ul className="mt-2 space-y-1 text-sm" style={{ color: 'rgba(35,35,35,0.7)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              <li className="flex items-start gap-2">
-                <span style={{ color: '#BB83C9' }}>•</span>
-                <span>Authenticate you via Pi Network</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span style={{ color: '#BB83C9' }}>•</span>
-                <span>Show your profile to potential matches</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span style={{ color: '#BB83C9' }}>•</span>
-                <span>Enable messaging between matched users</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span style={{ color: '#BB83C9' }}>•</span>
-                <span>Calculate compatibility scores</span>
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-semibold text-[#232323] mb-2" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              4. Data Storage & Security
-            </h2>
-            <p className="text-sm leading-relaxed" style={{ color: 'rgba(35,35,35,0.7)', fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.6 }}>
-              All data is stored securely using industry-standard encryption. We use PostgreSQL with SSL connections and never store passwords or payment details. Messages are encrypted in transit and at rest.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-semibold text-[#232323] mb-2" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              5. Your Rights
-            </h2>
-            <p className="text-sm leading-relaxed" style={{ color: 'rgba(35,35,35,0.7)', fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.6 }}>
-              You can delete your account and all associated data at any time through the Settings page. This action is irreversible and removes all your profile information, photos, messages, and matches from our servers.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-semibold text-[#232323] mb-2" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              6. Contact
-            </h2>
-            <p className="text-sm leading-relaxed" style={{ color: 'rgba(35,35,35,0.7)', fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.6 }}>
-              For privacy-related questions, contact us through the Pi Network community channels or the Report feature in the app.
-            </p>
-          </section>
+          {SECTIONS.map((s) => (
+            <section key={s.h}>
+              <h2 className="text-lg font-semibold text-[#232323] mb-2" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                {t(s.h)}
+              </h2>
+              <p className="text-sm leading-relaxed" style={{ color: 'rgba(35,35,35,0.7)', fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.6 }}>
+                {t(s.p)}
+              </p>
+              {s.items && (
+                <ul className="mt-2 space-y-1 text-sm" style={{ color: 'rgba(35,35,35,0.7)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                  {s.items.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span style={{ color: s.markerColor }}>{s.marker}</span>
+                      <span>{t(item)}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
+          ))}
 
           <div className="pt-4 pb-2 text-center">
             <p className="text-xs" style={{ color: 'rgba(35,35,35,0.4)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              Last updated: June 2026
+              {t('legal.lastUpdated')}
             </p>
           </div>
         </div>

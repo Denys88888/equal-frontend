@@ -34,7 +34,7 @@ describe('AuthContext', () => {
     expect(result.current.user).toBeNull();
     expect(result.current.profile).toBeNull();
     expect(result.current.isAuthenticated).toBe(false);
-    expect(result.current.isLoading).toBe(true);
+    expect(result.current.isLoading).toBe(false); // no stored token -> hydration finishes immediately
     expect(typeof result.current.loginWithPi).toBe('function');
     expect(typeof result.current.logout).toBe('function');
     expect(typeof result.current.refreshProfile).toBe('function');

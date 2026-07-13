@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { useAuth } from '@/context/AuthContext';
@@ -102,10 +103,10 @@ interface AppEvent {
 // ── Mock Data ──────────────────────────────────────────
 
 const REASON_CONFIG: Record<string, { label: string; color: string; icon: typeof Flag }> = {
-  spam: { label: 'Spam', color: '#F0B84A', icon: MessageSquare },
-  harassment: { label: 'Harassment', color: '#E86A6A', icon: AlertTriangle },
-  'fake profile': { label: 'Fake Profile', color: '#BB83C9', icon: UserX },
-  'inappropriate content': { label: 'Inappropriate', color: '#E86A6A', icon: Flag },
+  spam: { label: 'admin.reasonSpam', color: '#F0B84A', icon: MessageSquare },
+  harassment: { label: 'admin.reasonHarassment', color: '#E86A6A', icon: AlertTriangle },
+  'fake profile': { label: 'admin.reasonFake', color: '#BB83C9', icon: UserX },
+  'inappropriate content': { label: 'admin.reasonInappropriate', color: '#E86A6A', icon: Flag },
 };
 
 const STATUS_CONFIG: Record<string, { color: string; bg: string }> = {
@@ -203,13 +204,14 @@ function Toast({ message, visible }: { message: string; visible: boolean; }) {
 // ── Stats Cards ────────────────────────────────────────
 
 function StatsCards() {
+  const { t } = useTranslation();
   const [apiStats, setApiStats] = useState<{ totalUsers?: number; activeToday?: number; totalMatches?: number; pendingReports?: number } | null>(null);
   useEffect(() => { getAdminStats().then(setApiStats).catch(() => {}); }, []);
   const stats = [
-    { label: 'Total Users', value: apiStats?.totalUsers?.toLocaleString() ?? '…', icon: Users, color: '#BB83C9', bg: 'rgba(187,131,201,0.12)' },
-    { label: 'Active Today', value: apiStats?.activeToday?.toLocaleString() ?? '…', icon: Activity, color: '#7DE0B3', bg: 'rgba(125,224,179,0.15)' },
-    { label: 'Total Matches', value: apiStats?.totalMatches?.toLocaleString() ?? '…', icon: Heart, color: '#E86A6A', bg: 'rgba(232,106,106,0.12)' },
-    { label: 'Pending Reports', value: apiStats?.pendingReports?.toLocaleString() ?? '…', icon: AlertTriangle, color: '#F0B84A', bg: 'rgba(240,184,74,0.15)' },
+    { label: 'admin.totalUsers', value: apiStats?.totalUsers?.toLocaleString() ?? '…', icon: Users, color: '#BB83C9', bg: 'rgba(187,131,201,0.12)' },
+    { label: 'admin.activeToday', value: apiStats?.activeToday?.toLocaleString() ?? '…', icon: Activity, color: '#7DE0B3', bg: 'rgba(125,224,179,0.15)' },
+    { label: 'admin.totalMatches', value: apiStats?.totalMatches?.toLocaleString() ?? '…', icon: Heart, color: '#E86A6A', bg: 'rgba(232,106,106,0.12)' },
+    { label: 'admin.pendingReports', value: apiStats?.pendingReports?.toLocaleString() ?? '…', icon: AlertTriangle, color: '#F0B84A', bg: 'rgba(240,184,74,0.15)' },
   ];
 
   return (
@@ -237,7 +239,7 @@ function StatsCards() {
                 {s.value}
               </p>
               <p className="text-xs font-medium text-[#232323] opacity-50 mt-0.5" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                {s.label}
+                {t(s.label)}
               </p>
             </div>
           </motion.div>
@@ -250,6 +252,7 @@ function StatsCards() {
 // ── Reports Moderation ─────────────────────────────────
 
 function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) {
+  const { t } = useTranslation();
   const [filter, setFilter] = useState<'All' | 'Pending' | 'Resolved'>('All');
   const [reports, setReports] = useState<Report[]>(MOCK_REPORTS);
   useEffect(() => {
@@ -282,7 +285,7 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
-          Reports Moderation
+          {t('admin.reportsModeration')}
         </h2>
         <span className="text-xs font-medium px-2.5 py-1 rounded-full" style={{ backgroundColor: 'rgba(232,106,106,0.12)', color: '#E86A6A' }}>
           {reports.filter((r) => r.status === 'Pending').length} pending
@@ -291,9 +294,9 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
 
       <Tabs value={filter} onValueChange={(v) => setFilter(v as 'All' | 'Pending' | 'Resolved')}>
         <TabsList className="w-full bg-[#E8E2D8] rounded-xl p-1">
-          <TabsTrigger value="All" className="flex-1 rounded-lg text-xs font-medium data-[state=active]:bg-white data-[state=active]:text-[#232323] data-[state=active]:shadow-sm text-[#232323]/50">All</TabsTrigger>
-          <TabsTrigger value="Pending" className="flex-1 rounded-lg text-xs font-medium data-[state=active]:bg-white data-[state=active]:text-[#232323] data-[state=active]:shadow-sm text-[#232323]/50">Pending</TabsTrigger>
-          <TabsTrigger value="Resolved" className="flex-1 rounded-lg text-xs font-medium data-[state=active]:bg-white data-[state=active]:text-[#232323] data-[state=active]:shadow-sm text-[#232323]/50">Resolved</TabsTrigger>
+          <TabsTrigger value="All" className="flex-1 rounded-lg text-xs font-medium data-[state=active]:bg-white data-[state=active]:text-[#232323] data-[state=active]:shadow-sm text-[#232323]/50">{t('admin.all')}</TabsTrigger>
+          <TabsTrigger value="Pending" className="flex-1 rounded-lg text-xs font-medium data-[state=active]:bg-white data-[state=active]:text-[#232323] data-[state=active]:shadow-sm text-[#232323]/50">{t('admin.pending')}</TabsTrigger>
+          <TabsTrigger value="Resolved" className="flex-1 rounded-lg text-xs font-medium data-[state=active]:bg-white data-[state=active]:text-[#232323] data-[state=active]:shadow-sm text-[#232323]/50">{t('admin.resolved')}</TabsTrigger>
         </TabsList>
 
         <TabsContent value={filter} className="mt-3 space-y-2">
@@ -323,7 +326,7 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
                         <div className="flex items-center gap-2 mt-0.5">
                           <span className="flex items-center gap-1 text-xs" style={{ color: reasonCfg.color }}>
                             <ReasonIcon size={12} />
-                            {reasonCfg.label}
+                            {t(reasonCfg.label)}
                           </span>
                           <span
                             className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
@@ -342,7 +345,7 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
                         <p className="text-sm text-[#232323]/70">{report.details}</p>
                       </div>
                       <div className="flex items-center gap-2 text-xs text-[#232323]/40">
-                        <span>Reported by</span>
+                        <span>{t('admin.reportedBy')}</span>
                         <Avatar className="w-5 h-5">
                           <AvatarImage src={report.reporter.avatar} />
                           <AvatarFallback>{report.reporter.name[0]}</AvatarFallback>
@@ -357,7 +360,7 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
                             onClick={(e) => { e.stopPropagation(); handleWarn(report.id); }}
                           >
                             <AlertOctagon size={14} className="mr-1" />
-                            Warn
+                            {t('admin.warn')}
                           </Button>
                           <Button
                             size="sm"
@@ -365,7 +368,7 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
                             onClick={(e) => { e.stopPropagation(); handleBan(report.id); }}
                           >
                             <Ban size={14} className="mr-1" />
-                            Ban
+                            {t('admin.ban')}
                           </Button>
                           <Button
                             size="sm"
@@ -374,7 +377,7 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
                             onClick={(e) => { e.stopPropagation(); handleDismiss(report.id); }}
                           >
                             <X size={14} className="mr-1" />
-                            Dismiss
+                            {t('admin.dismiss')}
                           </Button>
                         </div>
                       )}
@@ -393,6 +396,7 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
 // ── User Management ────────────────────────────────────
 
 function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
+  const { t } = useTranslation();
   const [search, setSearch] = useState('');
   const [selectedUser, setSelectedUser] = useState<AppUser | null>(null);
   const [users, setUsers] = useState<AppUser[]>(MOCK_USERS);
@@ -421,11 +425,11 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'Active':
-        return <Badge className="bg-[rgba(125,224,179,0.15)] text-[#5BC492] hover:bg-[rgba(125,224,179,0.15)] text-[10px]">Active</Badge>;
+        return <Badge className="bg-[rgba(125,224,179,0.15)] text-[#5BC492] hover:bg-[rgba(125,224,179,0.15)] text-[10px]">{t('admin.active')}</Badge>;
       case 'Banned':
-        return <Badge className="bg-[rgba(232,106,106,0.15)] text-[#E86A6A] hover:bg-[rgba(232,106,106,0.15)] text-[10px]">Banned</Badge>;
+        return <Badge className="bg-[rgba(232,106,106,0.15)] text-[#E86A6A] hover:bg-[rgba(232,106,106,0.15)] text-[10px]">{t('admin.banned')}</Badge>;
       case 'Reported':
-        return <Badge className="bg-[rgba(240,184,74,0.15)] text-[#F0B84A] hover:bg-[rgba(240,184,74,0.15)] text-[10px]">Reported</Badge>;
+        return <Badge className="bg-[rgba(240,184,74,0.15)] text-[#F0B84A] hover:bg-[rgba(240,184,74,0.15)] text-[10px]">{t('admin.reported')}</Badge>;
       default:
         return null;
     }
@@ -435,7 +439,7 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
-          User Management
+          {t('admin.userManagement')}
         </h2>
         <span className="text-xs font-medium text-[#232323]/40">{users.length} users</span>
       </div>
@@ -443,7 +447,7 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
       <div className="relative">
         <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#232323]/30" />
         <Input
-          placeholder="Search users..."
+          placeholder={t('admin.searchUsers')}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="pl-9 h-11 rounded-xl border-0 bg-white text-sm text-[#232323] placeholder:text-[#232323]/30 focus-visible:ring-[#BB83C9]/20"
@@ -520,12 +524,12 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
               <Separator className="bg-[#E8E2D8]" />
 
               <div>
-                <h4 className="text-sm font-semibold text-[#232323] mb-2">Bio</h4>
+                <h4 className="text-sm font-semibold text-[#232323] mb-2">{t('admin.bio')}</h4>
                 <p className="text-sm text-[#232323]/60">{selectedUser.bio}</p>
               </div>
 
               <div>
-                <h4 className="text-sm font-semibold text-[#232323] mb-2">Trust Score History</h4>
+                <h4 className="text-sm font-semibold text-[#232323] mb-2">{t('admin.trustHistory')}</h4>
                 <div className="w-full h-2 rounded-full overflow-hidden" style={{ backgroundColor: '#E8E2D8' }}>
                   <motion.div
                     initial={{ width: 0 }}
@@ -544,7 +548,7 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
 
               {selectedUser.badges.length > 0 && (
                 <div>
-                  <h4 className="text-sm font-semibold text-[#232323] mb-2">Badges</h4>
+                  <h4 className="text-sm font-semibold text-[#232323] mb-2">{t('admin.badges')}</h4>
                   <div className="flex flex-wrap gap-1.5">
                     {selectedUser.badges.map((badge) => (
                       <span
@@ -562,11 +566,11 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
               <div className="grid grid-cols-2 gap-3 text-center">
                 <div className="rounded-xl p-3" style={{ backgroundColor: '#F7F4EE' }}>
                   <p className="text-lg font-semibold text-[#232323]">{selectedUser.matches}</p>
-                  <p className="text-[10px] text-[#232323]/40">Matches</p>
+                  <p className="text-[10px] text-[#232323]/40">{t('admin.matches')}</p>
                 </div>
                 <div className="rounded-xl p-3" style={{ backgroundColor: '#F7F4EE' }}>
                   <p className="text-lg font-semibold text-[#232323]">{selectedUser.badges.length}</p>
-                  <p className="text-[10px] text-[#232323]/40">Badges</p>
+                  <p className="text-[10px] text-[#232323]/40">{t('admin.badges')}</p>
                 </div>
               </div>
 
@@ -576,7 +580,7 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
                   onClick={() => { showToast('Viewing profile...'); setSelectedUser(null); }}
                 >
                   <Eye size={16} className="mr-2" />
-                  View Profile
+                  {t('admin.viewProfile')}
                 </Button>
                 {selectedUser.status !== 'Banned' && (
                   <Button
@@ -584,7 +588,7 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
                     onClick={() => handleBanUser(selectedUser.id)}
                   >
                     <Ban size={16} className="mr-2" />
-                    Ban User
+                    {t('admin.banUser')}
                   </Button>
                 )}
               </DialogFooter>
@@ -599,6 +603,7 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
 // ── Club Management ────────────────────────────────────
 
 function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
+  const { t } = useTranslation();
   const [clubs, setClubs] = useState<Club[]>(MOCK_CLUBS);
 
   const handleApprove = (id: string) => {
@@ -618,7 +623,7 @@ function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
-          Club Management
+          {t('admin.clubManagement')}
         </h2>
         <span className="text-xs font-medium text-[#232323]/40">{clubs.length} clubs</span>
       </div>
@@ -640,9 +645,9 @@ function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
                 <p className="text-xs text-[#232323]/40 mt-0.5">{club.category} &middot; by {club.createdBy}</p>
               </div>
               {club.status === 'Pending Review' ? (
-                <Badge className="bg-[rgba(240,184,74,0.15)] text-[#F0B84A] hover:bg-[rgba(240,184,74,0.15)] text-[10px]">Pending</Badge>
+                <Badge className="bg-[rgba(240,184,74,0.15)] text-[#F0B84A] hover:bg-[rgba(240,184,74,0.15)] text-[10px]">{t('admin.pending')}</Badge>
               ) : (
-                <Badge className="bg-[rgba(125,224,179,0.15)] text-[#5BC492] hover:bg-[rgba(125,224,179,0.15)] text-[10px]">Active</Badge>
+                <Badge className="bg-[rgba(125,224,179,0.15)] text-[#5BC492] hover:bg-[rgba(125,224,179,0.15)] text-[10px]">{t('admin.active')}</Badge>
               )}
             </div>
 
@@ -665,7 +670,7 @@ function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
                   onClick={() => handleApprove(club.id)}
                 >
                   <Check size={14} className="mr-1" />
-                  Approve
+                  {t('admin.approve')}
                 </Button>
                 <Button
                   size="sm"
@@ -674,7 +679,7 @@ function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
                   onClick={() => handleReject(club.id)}
                 >
                   <X size={14} className="mr-1" />
-                  Reject
+                  {t('admin.reject')}
                 </Button>
               </div>
             ) : (
@@ -685,7 +690,7 @@ function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
                 onClick={() => handleDelete(club.id)}
               >
                 <Trash2 size={14} className="mr-1" />
-                Delete Club
+                {t('admin.deleteClub')}
               </Button>
             )}
           </motion.div>
@@ -698,6 +703,7 @@ function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
 // ── Event Management ───────────────────────────────────
 
 function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
+  const { t } = useTranslation();
   const [events, setEvents] = useState<AppEvent[]>(MOCK_EVENTS);
 
   const handleDelete = (id: string) => {
@@ -722,7 +728,7 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
-          Event Management
+          {t('admin.eventManagement')}
         </h2>
         <span className="text-xs font-medium text-[#232323]/40">{events.length} events</span>
       </div>
@@ -793,7 +799,7 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
                   onClick={() => handleDelete(evt.id)}
                 >
                   <Trash2 size={14} className="mr-1" />
-                  Delete
+                  {t('admin.delete')}
                 </Button>
               </div>
             </motion.div>
@@ -807,6 +813,7 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
 // ── Manual Actions ─────────────────────────────────────
 
 function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
+  const { t } = useTranslation();
   const [awardUser, setAwardUser] = useState('');
   const [awardBadge, setAwardBadge] = useState('');
   const [trustUser, setTrustUser] = useState('');
@@ -832,19 +839,19 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
-        Manual Actions
+        {t('admin.manualActions')}
       </h2>
 
       <div className="p-5 rounded-2xl space-y-4" style={{ backgroundColor: '#FFFFFF', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
         <h3 className="text-sm font-semibold text-[#232323] flex items-center gap-2">
           <Award size={16} className="text-[#BB83C9]" />
-          Award Badge
+          {t('admin.awardBadge')}
         </h3>
 
         <div className="space-y-3">
           <Select value={awardUser} onValueChange={setAwardUser}>
             <SelectTrigger className="w-full h-11 rounded-xl border-[#E8E2D8] text-sm text-[#232323]">
-              <SelectValue placeholder="Select user" />
+              <SelectValue placeholder={t('admin.selectUser')} />
             </SelectTrigger>
             <SelectContent>
               {userNames.map((name) => (
@@ -855,7 +862,7 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
 
           <Select value={awardBadge} onValueChange={setAwardBadge}>
             <SelectTrigger className="w-full h-11 rounded-xl border-[#E8E2D8] text-sm text-[#232323]">
-              <SelectValue placeholder="Select badge" />
+              <SelectValue placeholder={t('admin.selectBadge')} />
             </SelectTrigger>
             <SelectContent>
               {BADGE_OPTIONS.map((badge) => (
@@ -869,7 +876,7 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
             onClick={handleAwardBadge}
             disabled={!awardUser || !awardBadge}
           >
-            Award Badge
+            {t('admin.awardBadge')}
           </Button>
         </div>
       </div>
@@ -877,13 +884,13 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
       <div className="p-5 rounded-2xl space-y-4" style={{ backgroundColor: '#FFFFFF', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
         <h3 className="text-sm font-semibold text-[#232323] flex items-center gap-2">
           <Activity size={16} className="text-[#7DE0B3]" />
-          Adjust Trust Score
+          {t('admin.adjustTrust')}
         </h3>
 
         <div className="space-y-3">
           <Select value={trustUser} onValueChange={setTrustUser}>
             <SelectTrigger className="w-full h-11 rounded-xl border-[#E8E2D8] text-sm text-[#232323]">
-              <SelectValue placeholder="Select user" />
+              <SelectValue placeholder={t('admin.selectUser')} />
             </SelectTrigger>
             <SelectContent>
               {userNames.map((name) => (
@@ -894,7 +901,7 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
 
           <div>
             <div className="flex justify-between text-xs text-[#232323]/50 mb-2">
-              <span>Trust Score</span>
+              <span>{t('admin.trustScore')}</span>
               <span className="font-semibold text-[#BB83C9]">{trustScoreValue}</span>
             </div>
             <input
@@ -921,7 +928,7 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
             onClick={handleAdjustTrust}
             disabled={!trustUser}
           >
-            Adjust Trust Score
+            {t('admin.adjustTrust')}
           </Button>
         </div>
       </div>
@@ -932,6 +939,7 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
 // ── Main Admin Page ────────────────────────────────────
 
 export default function Admin() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { user, isLoading } = useAuth();
   const [toastMessage, setToastMessage] = useState('');
@@ -961,7 +969,7 @@ export default function Admin() {
   const rightAction = (
     <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full" style={{ backgroundColor: 'rgba(187,131,201,0.12)' }}>
       <ShieldCheck size={16} style={{ color: '#BB83C9' }} />
-      <span className="text-xs font-semibold" style={{ color: '#BB83C9' }}>Admin</span>
+      <span className="text-xs font-semibold" style={{ color: '#BB83C9' }}>{t('admin.badge')}</span>
     </div>
   );
 
@@ -981,9 +989,9 @@ export default function Admin() {
             className="text-2xl font-semibold text-[#232323]"
             style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.72px' }}
           >
-            Admin Panel
+            {t('admin.panel')}
           </h1>
-          <p className="text-sm text-[#232323]/40 mt-1">Manage users, reports, clubs & events</p>
+          <p className="text-sm text-[#232323]/40 mt-1">{t('admin.subtitle')}</p>
         </motion.div>
 
         {/* Stats Cards */}

@@ -38,9 +38,9 @@ const OFFERS: Offer[] = [
   {
     id: 'offer-1',
     category: 'restaurant',
-    title: '20% off at Le Petit Bistro',
+    title: 'offers.o1t',
     description:
-      'Perfect for your first date. Romantic atmosphere and candlelight dinner.',
+      'offers.o1d',
     gradient: 'linear-gradient(135deg, #BB83C9 0%, #D4A8DE 60%, #7DE0B3 100%)',
     icon: <Utensils size={20} strokeWidth={1.5} />,
     details: {
@@ -49,15 +49,15 @@ const OFFERS: Offer[] = [
       phone: '+33 1 42 00 00 00',
       discountCode: 'EQUAL20',
       description:
-        'Show this code to your waiter to get 20% off your total bill. Valid for couples on their first visit. Includes a complimentary dessert!',
+        'offers.o1full',
     },
   },
   {
     id: 'offer-2',
     category: 'activity',
-    title: 'Escape Room for Two \u2014 15% off',
+    title: 'offers.o2t',
     description:
-      'Test your teamwork and have fun! Includes complimentary photos.',
+      'offers.o2d',
     gradient: 'linear-gradient(135deg, #7DE0B3 0%, #A8EBCC 50%, #BB83C9 100%)',
     icon: <Puzzle size={20} strokeWidth={1.5} />,
     details: {
@@ -66,15 +66,15 @@ const OFFERS: Offer[] = [
       phone: '+1 555 0123',
       discountCode: 'EQUALESCAPE',
       description:
-        'Book any "Couples Challenge" room and use code EQUALESCAPE at checkout for 15% off. Includes free polaroid photo of your team!',
+        'offers.o2full',
     },
   },
   {
     id: 'offer-3',
     category: 'event',
-    title: 'Wine Tasting Evening',
+    title: 'offers.o3t',
     description:
-      'Join other Equal couples for an evening of fine wines and conversation.',
+      'offers.o3d',
     gradient: 'linear-gradient(135deg, #BB83C9 0%, #7BC4E8 50%, #7DE0B3 100%)',
     icon: <Wine size={20} strokeWidth={1.5} />,
     details: {
@@ -83,7 +83,7 @@ const OFFERS: Offer[] = [
       phone: '+1 555 0456',
       discountCode: 'EQUALWINE',
       description:
-        'Reserve your spot with code EQUALWINE for buy-one-get-one-free tickets. Meet 5+ wine varieties matched with artisan cheeses. Dress code: smart casual.',
+        'offers.o3full',
     },
   },
 ];
@@ -165,7 +165,7 @@ function OfferCard({
             letterSpacing: '-0.54px',
           }}
         >
-          {offer.title}
+          {t(offer.title)}
         </h3>
         <p
           className="text-sm leading-relaxed"
@@ -177,7 +177,7 @@ function OfferCard({
             color: 'rgba(35,35,35,0.65)',
           }}
         >
-          {offer.description}
+          {t(offer.description)}
         </p>
 
         {/* Expandable Details (INLINE — no external redirect) */}
@@ -225,7 +225,7 @@ function OfferCard({
                     lineHeight: 1.5,
                   }}
                 >
-                  {offer.details.description}
+                  {t(offer.details.description)}
                 </p>
                 {/* Address */}
                 <div className="flex items-start gap-2">
