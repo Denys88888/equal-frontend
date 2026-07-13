@@ -317,14 +317,15 @@ export default function Onboarding() {
         <main className="flex-1 flex flex-col overflow-y-auto">
           <div className="flex-1 flex flex-col px-5 pt-6 pb-28">
             {/* Title */}
-            <AnimatePresence mode="wait" custom={direction}>
+            {/* AnimatePresence removed: its exit phase hangs in Pi Browser
+                (mode="wait" then never mounts the next step). Keyed remount
+                with enter-only animation is reliable. */}
               <motion.div
                 key={`title-${step}`}
                 custom={direction}
                 variants={stepVariants}
                 initial="enter"
                 animate="center"
-                exit="exit"
                 transition={{ duration: 0.35, ease: easeOutExpo }}
               >
                 <h1
@@ -340,7 +341,6 @@ export default function Onboarding() {
                   {t(STEP_SUBTITLES[step - 1])}
                 </p>
               </motion.div>
-            </AnimatePresence>
 
             {/* Step Content */}
             <div className="mt-6 flex-1">
@@ -352,14 +352,12 @@ export default function Onboarding() {
                 onChange={handleFileChange}
               />
 
-              <AnimatePresence mode="wait" custom={direction}>
                 <motion.div
                   key={`step-${step}`}
                   custom={direction}
                   variants={stepVariants}
                   initial="enter"
                   animate="center"
-                  exit="exit"
                   transition={{ duration: 0.35, ease: easeOutExpo }}
                   className="flex flex-col gap-6"
                 >
@@ -399,7 +397,6 @@ export default function Onboarding() {
                     />
                   )}
                 </motion.div>
-              </AnimatePresence>
             </div>
           </div>
         </main>
@@ -479,13 +476,12 @@ function StepPersonality({
   return (
     <div className="flex flex-col gap-6">
       {/* Question card */}
-      <AnimatePresence mode="wait">
+      <div>
         {!isComplete ? (
           <motion.div
             key={`q-${currentQIndex}`}
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -40 }}
             transition={{ duration: 0.35, ease: easeOutExpo }}
             className="flex flex-col gap-4"
           >
@@ -551,7 +547,7 @@ function StepPersonality({
             </p>
           </motion.div>
         )}
-      </AnimatePresence>
+      </div>
 
       {/* Dots */}
       <div className="flex items-center justify-center gap-2">
