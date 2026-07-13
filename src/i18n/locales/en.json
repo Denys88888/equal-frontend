@@ -62,7 +62,8 @@
     "sayHello": "Say Hello",
     "photoPrefix": "Photo",
     "voicePrefix": "Voice",
-    "giftPrefix": "Gift"
+    "giftPrefix": "Gift",
+    "goDiscover": "Go to Discover"
   },
   "chat": {
     "typeMessage": "Type a message...",
@@ -271,7 +272,8 @@
     "greatConnections": "Yes, great connections!",
     "itWasOkay": "It was okay",
     "submitFeedback": "Submit Feedback",
-    "thanksFeedback": "Thanks for your feedback! Your Trust Score appreciates it."
+    "thanksFeedback": "Thanks for your feedback! Your Trust Score appreciates it.",
+    "peopleGoing": "{{count}} going"
   },
   "video": {
     "connecting": "Connecting...",

@@ -367,7 +367,7 @@ function FeaturedEventCard({
           color: isGoing ? '#232323' : '#fff',
         }}
       >
-        {isGoing ? 'Going ✓' : 'RSVP'}
+        {isGoing ? `${t('events.going')} ✓` : 'RSVP'}
       </div>
 
       {/* Event Info */}
@@ -389,7 +389,7 @@ function FeaturedEventCard({
             ))}
           </div>
           <span className="text-xs ml-2" style={{ color: 'rgba(255,255,255,0.8)' }}>
-            +{event.attendees.length + 12} going
+            +{t('events.peopleGoing', { count: event.attendees.length + 12 })}
           </span>
         </div>
       </div>
@@ -524,7 +524,7 @@ function EventDetailSheet({
           <div className="mt-5">
             <div className="flex items-center justify-between">
               <h4 className="text-base font-semibold text-[#232323]">
-                {event.attendees.length + 12} people going
+                {t('events.peopleGoing', { count: event.attendees.length + 12 })}
               </h4>
               <button className="text-sm font-semibold text-[#BB83C9]">{t('events.seeAll')}</button>
             </div>
@@ -605,7 +605,7 @@ function EventDetailSheet({
                 boxShadow: isGoing ? 'none' : '0 4px 16px rgba(187,131,201,0.3)',
               }}
             >
-              {isGoing ? 'Going ✓' : event.price > 0 ? 'RSVP + Buy Ticket' : "I'm Going"}
+              {isGoing ? `${t('events.going')} ✓` : event.price > 0 ? t('events.buyTicket') : t('events.attend')}
             </button>
             <button
               onClick={onToggleInterested}
@@ -774,7 +774,29 @@ export default function Events() {
 
   useEffect(() => {
     getEvents().then((data) => {
-      if (data && data.length > 0) setAllEvents(data as unknown as EventItem[]);
+      if (!data || data.length === 0) return;
+      // Backend events lack UI-only fields (attendees, day/month, image…) — fill safe defaults
+      setAllEvents((data as unknown as Partial<EventItem>[]).map((e, i) => {
+        const parsed = e.date ? new Date(e.date) : null;
+        const valid = parsed && !isNaN(parsed.getTime()) ? parsed : null;
+        return {
+          id: e.id ?? `srv-${i}`,
+          title: e.title ?? '',
+          description: e.description ?? '',
+          date: valid ? valid.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' }) : (e.date ?? ''),
+          day: e.day ?? (valid ? String(valid.getDate()) : ''),
+          month: e.month ?? (valid ? valid.toLocaleString(undefined, { month: 'short' }).toUpperCase() : ''),
+          time: e.time ?? (valid ? valid.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' }) : ''),
+          location: e.location ?? '',
+          venue: e.venue ?? e.location ?? '',
+          category: e.category ?? 'Social Mixers',
+          price: e.price ?? 0,
+          image: e.image ?? '/event-featured.jpg',
+          attendees: e.attendees ?? [],
+          maxAttendees: e.maxAttendees ?? 50,
+          featured: e.featured,
+        } as EventItem;
+      }));
     }).catch(() => {});
   }, []);
 
@@ -813,7 +835,7 @@ export default function Events() {
   };
 
   return (
-    <Layout title="Events">
+    <Layout title={t('events.title')}>
       <div className="relative flex-1 flex flex-col overflow-hidden">
         {/* Events Header with Tabs */}
         <div className="px-5 pt-5 pb-3">

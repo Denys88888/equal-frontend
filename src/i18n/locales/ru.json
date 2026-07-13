@@ -62,7 +62,8 @@
     "sayHello": "Поздороваться",
     "photoPrefix": "Фото",
     "voicePrefix": "Голосовое",
-    "giftPrefix": "Подарок"
+    "giftPrefix": "Подарок",
+    "goDiscover": "Перейти к поиску"
   },
   "chat": {
     "typeMessage": "Напишите сообщение...",
@@ -271,7 +272,8 @@
     "greatConnections": "Да, отличные знакомства!",
     "itWasOkay": "Нормально",
     "submitFeedback": "Отправить отзыв",
-    "thanksFeedback": "Спасибо за отзыв! Твой Trust Score это оценит."
+    "thanksFeedback": "Спасибо за отзыв! Твой Trust Score это оценит.",
+    "peopleGoing": "Идут: {{count}}"
   },
   "video": {
     "connecting": "Соединение...",

@@ -318,7 +318,7 @@ function EmptyState() {
         className="w-full max-w-[280px] h-14 rounded-full text-base font-semibold text-white"
         style={{ backgroundColor: '#BB83C9', boxShadow: '0 4px 16px rgba(187,131,201,0.3)' }}
       >
-        {t('matches.startSwiping')}
+        {t('matches.goDiscover')}
       </button>
     </motion.div>
   );
