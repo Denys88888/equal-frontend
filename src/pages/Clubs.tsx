@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getClubs } from '@/api/clubs';
+import { getClubs, joinClub, leaveClub, createPost } from '@/api/clubs';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Plus,
@@ -529,13 +529,14 @@ function ClubDetail({
   };
 
   const handleCreatePost = () => {
-    if (!newPostText.trim()) return;
+    const text = newPostText.trim();
+    if (!text) return;
     const post: Post = {
       id: `p-${Date.now()}`,
       authorId: 'me',
       authorName: 'You',
       authorAvatar: 'YO',
-      content: newPostText.trim(),
+      content: text,
       likes: 0,
       comments: 0,
       liked: false,
@@ -544,11 +545,18 @@ function ClubDetail({
     setPosts((prev) => [post, ...prev]);
     setNewPostText('');
     setShowCreatePost(false);
+    createPost(club.id, { content: text }).catch(() => {});
   };
 
   const toggleJoin = () => {
-    setJoined(!joined);
-    onUpdateClub({ ...club, joined: !joined, memberCount: joined ? club.memberCount - 1 : club.memberCount + 1 });
+    const newJoined = !joined;
+    setJoined(newJoined);
+    onUpdateClub({ ...club, joined: newJoined, memberCount: newJoined ? club.memberCount + 1 : club.memberCount - 1 });
+    (newJoined ? joinClub(club.id) : leaveClub(club.id)).catch(() => {
+      // revert on error
+      setJoined(!newJoined);
+      onUpdateClub({ ...club, joined: !newJoined, memberCount: !newJoined ? club.memberCount + 1 : club.memberCount - 1 });
+    });
   };
 
   useEffect(() => {
@@ -862,6 +870,11 @@ export default function Clubs() {
     setClubs((prev) =>
       prev.map((c) => (c.id === clubId ? { ...c, joined: true, memberCount: c.memberCount + 1 } : c))
     );
+    joinClub(clubId).catch(() => {
+      setClubs((prev) =>
+        prev.map((c) => (c.id === clubId ? { ...c, joined: false, memberCount: c.memberCount - 1 } : c))
+      );
+    });
   };
 
   const handleUpdateClub = (updated: Club) => {

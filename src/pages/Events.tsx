@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getEvents } from '@/api/events';
+import { getEvents, rsvp } from '@/api/events';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Calendar,
@@ -814,11 +814,9 @@ export default function Events() {
   const toggleGoing = (eventId: string) => {
     setGoingEvents((prev) => {
       const next = new Set(prev);
-      if (next.has(eventId)) {
-        next.delete(eventId);
-      } else {
-        next.add(eventId);
-      }
+      const wasGoing = next.has(eventId);
+      if (wasGoing) { next.delete(eventId); } else { next.add(eventId); }
+      rsvp(eventId, wasGoing ? 'not_going' : 'going').catch(() => {});
       return next;
     });
   };
@@ -826,11 +824,9 @@ export default function Events() {
   const toggleInterested = (eventId: string) => {
     setInterestedEvents((prev) => {
       const next = new Set(prev);
-      if (next.has(eventId)) {
-        next.delete(eventId);
-      } else {
-        next.add(eventId);
-      }
+      const wasInterested = next.has(eventId);
+      if (wasInterested) { next.delete(eventId); } else { next.add(eventId); }
+      rsvp(eventId, wasInterested ? 'not_going' : 'interested').catch(() => {});
       return next;
     });
   };
