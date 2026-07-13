@@ -115,7 +115,9 @@
     "giftSongDesc": "Поделись песней",
     "giftSpark": "Искра",
     "giftSparkDesc": "Отправь заработанную искру",
-    "free": "Бесплатно"
+    "free": "Бесплатно",
+    "mutedNotifs": "Уведомления отключены",
+    "userBlocked": "Пользователь заблокирован"
   },
   "profile": {
     "edit": "Редактировать",
@@ -328,7 +330,8 @@
     "cat_outdoor": "На природе",
     "cat_workshops": "Мастер-классы",
     "cat_parties": "Вечеринки",
-    "cat_wellness": "Wellness"
+    "cat_wellness": "Wellness",
+    "free": "Бесплатно"
   },
   "video": {
     "connecting": "Соединение...",
@@ -510,7 +513,18 @@
     "reasonSpam": "Спам",
     "reasonHarassment": "Домогательства",
     "reasonFake": "Фейковый профиль",
-    "reasonInappropriate": "Неприемлемое"
+    "reasonInappropriate": "Неприемлемое",
+    "warnedSuccess": "Предупреждение отправлено",
+    "bannedSuccess": "Пользователь заблокирован",
+    "reportDismissed": "Жалоба отклонена",
+    "viewingProfile": "Просмотр профиля…",
+    "clubApproved": "Клуб одобрен",
+    "clubRejected": "Клуб отклонён",
+    "clubDeleted": "Клуб удалён",
+    "eventDeleted": "Событие удалено",
+    "editModeOpened": "Режим редактирования",
+    "eventFeatured": "Событие выделено",
+    "eventUnfeatured": "Выделение снято"
   },
   "legal": {
     "termsTitle": "Условия использования",

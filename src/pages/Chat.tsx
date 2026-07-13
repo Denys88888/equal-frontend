@@ -1015,10 +1015,10 @@ export default function Chat() {
 
   // Dropdown actions
   const handleViewProfile = () => navigate(`/profile`);
-  const handleMute = () => showToast('Notifications muted');
+  const handleMute = () => showToast(t('chat.mutedNotifs'));
   const handleBlock = () => {
     if (partnerId) api.post(`/users/${partnerId}/block`, {}).catch(() => {});
-    showToast('User blocked');
+    showToast(t('chat.userBlocked'));
     setTimeout(() => navigate('/matches'), 1500);
   };
   const handleReport = () => setReportDialogOpen(true);

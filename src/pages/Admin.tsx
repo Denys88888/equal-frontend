@@ -270,15 +270,15 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
 
   const handleWarn = (id: string) => {
     setReports((prev) => prev.map((r) => (r.id === id ? { ...r, status: 'Resolved' as const } : r)));
-    showToast('User warned successfully');
+    showToast(t('admin.warnedSuccess'));
   };
   const handleBan = (id: string) => {
     setReports((prev) => prev.map((r) => (r.id === id ? { ...r, status: 'Resolved' as const } : r)));
-    showToast('User banned successfully');
+    showToast(t('admin.bannedSuccess'));
   };
   const handleDismiss = (id: string) => {
     setReports((prev) => prev.map((r) => (r.id === id ? { ...r, status: 'Resolved' as const } : r)));
-    showToast('Report dismissed');
+    showToast(t('admin.reportDismissed'));
   };
 
   return (
@@ -412,7 +412,7 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
 
   const handleBanUser = (userId: string) => {
     setUsers((prev) => prev.map((u) => (u.id === userId ? { ...u, status: 'Banned' as const } : u)));
-    showToast('User banned successfully');
+    showToast(t('admin.bannedSuccess'));
     setSelectedUser(null);
   };
 
@@ -577,7 +577,7 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
               <DialogFooter className="flex-col gap-2 sm:flex-col">
                 <Button
                   className="w-full h-11 rounded-full font-semibold bg-[#BB83C9] text-white hover:bg-[#9A63A8]"
-                  onClick={() => { showToast('Viewing profile...'); setSelectedUser(null); }}
+                  onClick={() => { showToast(t('admin.viewingProfile')); setSelectedUser(null); }}
                 >
                   <Eye size={16} className="mr-2" />
                   {t('admin.viewProfile')}
@@ -608,15 +608,15 @@ function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
 
   const handleApprove = (id: string) => {
     setClubs((prev) => prev.map((c) => (c.id === id ? { ...c, status: 'Active' as const } : c)));
-    showToast('Club approved');
+    showToast(t('admin.clubApproved'));
   };
   const handleReject = (id: string) => {
     setClubs((prev) => prev.filter((c) => c.id !== id));
-    showToast('Club rejected and removed');
+    showToast(t('admin.clubRejected'));
   };
   const handleDelete = (id: string) => {
     setClubs((prev) => prev.filter((c) => c.id !== id));
-    showToast('Club deleted');
+    showToast(t('admin.clubDeleted'));
   };
 
   return (
@@ -708,11 +708,11 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
 
   const handleDelete = (id: string) => {
     setEvents((prev) => prev.filter((e) => e.id !== id));
-    showToast('Event deleted');
+    showToast(t('admin.eventDeleted'));
   };
   const handleFeature = (id: string) => {
     setEvents((prev) => prev.map((e) => (e.id === id ? { ...e, featured: !e.featured } : e)));
-    showToast(events.find((e) => e.id === id)?.featured ? 'Event unfeatured' : 'Event featured');
+    showToast(events.find((e) => e.id === id)?.featured ? t('admin.eventUnfeatured') : t('admin.eventFeatured'));
   };
 
   const getEventStatusColor = (status: string) => {
@@ -778,7 +778,7 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
                   size="sm"
                   variant="outline"
                   className="flex-1 h-8 rounded-full text-xs font-semibold border-[#E8E2D8] text-[#232323]/60 hover:bg-[#F7F4EE]"
-                  onClick={() => showToast('Edit mode opened')}
+                  onClick={() => showToast(t('admin.editModeOpened'))}
                 >
                   <Edit3 size={14} className="mr-1" />
                   Edit

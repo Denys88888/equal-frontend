@@ -115,7 +115,9 @@
     "giftSongDesc": "Share a song recommendation",
     "giftSpark": "Spark",
     "giftSparkDesc": "Send your earned Spark",
-    "free": "Free"
+    "free": "Free",
+    "mutedNotifs": "Notifications muted",
+    "userBlocked": "User blocked"
   },
   "profile": {
     "edit": "Edit Profile",
@@ -328,7 +330,8 @@
     "cat_outdoor": "Outdoor",
     "cat_workshops": "Workshops",
     "cat_parties": "Parties",
-    "cat_wellness": "Wellness"
+    "cat_wellness": "Wellness",
+    "free": "Free"
   },
   "video": {
     "connecting": "Connecting...",
@@ -510,7 +513,18 @@
     "reasonSpam": "Spam",
     "reasonHarassment": "Harassment",
     "reasonFake": "Fake Profile",
-    "reasonInappropriate": "Inappropriate"
+    "reasonInappropriate": "Inappropriate",
+    "warnedSuccess": "User warned",
+    "bannedSuccess": "User banned",
+    "reportDismissed": "Report dismissed",
+    "viewingProfile": "Viewing profile…",
+    "clubApproved": "Club approved",
+    "clubRejected": "Club rejected",
+    "clubDeleted": "Club deleted",
+    "eventDeleted": "Event deleted",
+    "editModeOpened": "Edit mode",
+    "eventFeatured": "Event featured",
+    "eventUnfeatured": "Event unfeatured"
   },
   "legal": {
     "termsTitle": "Terms of Service",
