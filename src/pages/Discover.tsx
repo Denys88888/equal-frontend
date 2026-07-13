@@ -972,7 +972,7 @@ export default function Discover() {
           /* Compatibility Tab */
           <div className="flex-1 px-5 pb-4 overflow-y-auto">
             <p className="text-xs mb-4" style={{ color: 'rgba(35,35,35,0.4)' }}>
-              Refreshes daily • {highCompatProfiles.length} high-compatibility matches
+              {t('discover.compatRefresh', { count: highCompatProfiles.length })}
             </p>
             <div className="space-y-3">
               {highCompatProfiles.map((profile) => (
@@ -989,7 +989,7 @@ export default function Discover() {
             {highCompatProfiles.length === 0 && (
               <div className="flex flex-col items-center justify-center py-16">
                 <p className="text-sm text-center" style={{ color: 'rgba(35,35,35,0.6)' }}>
-                  Check back tomorrow for new high-compatibility matches!
+                  {t('discover.compatEmpty')}
                 </p>
               </div>
             )}

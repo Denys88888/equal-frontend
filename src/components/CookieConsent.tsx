@@ -36,7 +36,8 @@ export default function CookieConsent() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-          className="fixed bottom-0 left-0 right-0 z-50 flex justify-center px-4 pb-4"
+          className="fixed bottom-0 left-0 right-0 z-50 flex justify-center px-4"
+          style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 16px)' }}
         >
           <div className="w-full max-w-[400px] rounded-2xl p-4 shadow-lg" style={{ backgroundColor: '#FFFFFF', boxShadow: '0 -4px 24px rgba(0,0,0,0.1)' }}>
             <div className="flex items-start gap-3">

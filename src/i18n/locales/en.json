@@ -21,6 +21,8 @@
     "spark": "Spark",
     "filter": "Filter",
     "compatibility": "Compatibility",
+    "compatRefresh": "Refreshes daily • {{count}} high-compatibility matches",
+    "compatEmpty": "Check back tomorrow for new high-compatibility matches!",
     "kmAway": "{{distance}} km away",
     "matchPercent": "{{percent}}% Match",
     "maxDistance": "Maximum distance",

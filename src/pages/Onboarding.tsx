@@ -418,7 +418,7 @@ export default function Onboarding() {
         {/* ====== Continue Button ====== */}
         <div
           className="fixed bottom-0 left-0 right-0 z-50 flex justify-center"
-          style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+          style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 16px)' }}
         >
           <div className="w-full max-w-[430px] px-5 py-4" style={{ backgroundColor: '#F7F4EE' }}>
             <motion.button
