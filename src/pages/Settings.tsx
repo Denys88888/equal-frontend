@@ -421,7 +421,6 @@ export default function Settings() {
             icon={PiIcon}
             iconColor="#BB83C9"
             label={t('settings.piWallet')}
-            detail={walletConnected ? t('settings2.walletConnected') : t('settings2.walletConnect')}
             rightElement={
               walletConnected ? (
                 <span className="text-xs font-semibold text-[#7DE0B3]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>{t('settings2.walletConnected')}</span>
@@ -450,7 +449,7 @@ export default function Settings() {
           <SettingRow icon={HelpCircle} iconColor="#7BC4E8" label={t('settings2.helpCenter')} onClick={() => {}} />
           <SettingRow icon={Flag} iconColor="#F0B84A" label={t('settings2.reportProblem')} onClick={() => {}} />
           <SettingRow icon={Info} iconColor="rgba(35,35,35,0.4)" label={t('settings2.aboutEqual')} detail="v1.0.0" onClick={() => setShowAbout(true)} />
-          <SettingRow icon={FileText} iconColor="#BB83C9" label={t('common.privacyPolicy')} onClick={() => navigate('/privacy')} />
+          <SettingRow icon={FileText} iconColor="#BB83C9" label={t('settings2.privacyPolicy')} onClick={() => navigate('/privacy')} />
           <SettingRow icon={FileText} iconColor="#BB83C9" label={t('settings2.termsOfService')} onClick={() => navigate('/terms')} />
           <SettingRow icon={Cookie} iconColor="#F0B84A" label={t('settings2.cookiePrefs')} onClick={() => { localStorage.removeItem('equal-cookie-consent'); window.location.reload(); }} />
         </div>
