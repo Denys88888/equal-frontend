@@ -125,7 +125,7 @@ function FilterSheet({
         <div>
           <div className="flex justify-between mb-3">
             <span className="text-sm font-medium text-[#232323]">{t('discover.maxDistance')}</span>
-            <span className="text-sm font-medium text-[#BB83C9]">{filters.maxDistance} km</span>
+            <span className="text-sm font-medium text-[#BB83C9]">{t('discover.km', { d: filters.maxDistance })}</span>
           </div>
           <input
             type="range"
@@ -140,8 +140,8 @@ function FilterSheet({
             }}
           />
           <div className="flex justify-between mt-1">
-            <span className="text-xs text-[#232323]" style={{ opacity: 0.35 }}>1 km</span>
-            <span className="text-xs text-[#232323]" style={{ opacity: 0.35 }}>100 km</span>
+            <span className="text-xs text-[#232323]" style={{ opacity: 0.35 }}>{t('discover.km', { d: 1 })}</span>
+            <span className="text-xs text-[#232323]" style={{ opacity: 0.35 }}>{t('discover.km', { d: 100 })}</span>
           </div>
         </div>
 

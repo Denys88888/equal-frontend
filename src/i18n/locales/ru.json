@@ -63,7 +63,8 @@
     "fint_vegan": "Веганство",
     "fint_wine": "Вино",
     "fint_film": "Кино",
-    "fint_pets": "Питомцы"
+    "fint_pets": "Питомцы",
+    "km": "{{d}} км"
   },
   "matches": {
     "title": "Мэтчи",

@@ -63,7 +63,8 @@
     "fint_vegan": "Vegan",
     "fint_wine": "Wine",
     "fint_film": "Film",
-    "fint_pets": "Pets"
+    "fint_pets": "Pets",
+    "km": "{{d}} km"
   },
   "matches": {
     "title": "Matches",
