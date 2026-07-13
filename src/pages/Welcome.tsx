@@ -157,7 +157,7 @@ export default function Welcome() {
           }
         ),
         new Promise<never>((_, reject) =>
-          setTimeout(() => reject(new Error('Pi authentication timed out. Please try again.')), 45000)
+          setTimeout(() => reject(new Error(t('welcome.errTimeout'))), 45000)
         ),
       ]);
 

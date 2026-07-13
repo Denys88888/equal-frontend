@@ -8,7 +8,8 @@
     "trustZero": "Без платежей за связи",
     "trustPioneers": "60M+ пионеров",
     "errPiBrowser": "Открой приложение в Pi Browser",
-    "errAuthFailed": "Ошибка авторизации Pi"
+    "errAuthFailed": "Ошибка авторизации Pi",
+    "errTimeout": "Время ожидания истекло. Попробуй ещё раз."
   },
   "nav": {
     "discover": "Поиск",

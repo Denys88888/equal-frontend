@@ -8,7 +8,8 @@
     "trustZero": "Zero Payments",
     "trustPioneers": "60M+ Pioneers",
     "errPiBrowser": "Please open this app in Pi Browser",
-    "errAuthFailed": "Pi authentication failed"
+    "errAuthFailed": "Pi authentication failed",
+    "errTimeout": "Pi authentication timed out. Please try again."
   },
   "nav": {
     "discover": "Discover",
