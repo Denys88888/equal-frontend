@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 import { Shield, Lock, Heart } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import LanguageSelector from '@/components/LanguageSelector';
 import { useAuth } from '@/context/AuthContext';
 import { getMe } from '@/api/users';
 import { paymentsApi } from '@/api/payments';
@@ -81,10 +82,11 @@ function PiLogo() {
 }
 
 function TrustFooter() {
+  const { t } = useTranslation();
   const items = [
-    { icon: Shield, text: 'Verified Community' },
-    { icon: Lock, text: 'Zero Payments' },
-    { icon: Heart, text: '60M+ Pioneers' },
+    { icon: Shield, text: 'welcome.trustVerified' },
+    { icon: Lock, text: 'welcome.trustZero' },
+    { icon: Heart, text: 'welcome.trustPioneers' },
   ];
 
   return (
@@ -107,7 +109,7 @@ function TrustFooter() {
                 fontFamily: "'Outfit', system-ui, sans-serif",
               }}
             >
-              {item.text}
+              {t(item.text)}
             </span>
           </div>
         );
@@ -217,6 +219,11 @@ export default function Welcome() {
           `,
         }}
       >
+        {/* Language selector — pick your language before filling the profile */}
+        <div className="absolute right-4" style={{ top: 'calc(12px + env(safe-area-inset-top))', zIndex: 20 }}>
+          <LanguageSelector />
+        </div>
+
         {/* Logo */}
         <div className="flex justify-center"><EqualLogo /></div>
 

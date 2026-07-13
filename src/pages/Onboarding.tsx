@@ -53,88 +53,34 @@ interface ProfileData {
 const TOTAL_STEPS = 5;
 
 const QUESTIONS = [
-  {
-    q: 'At a party, you are...',
-    options: ['Center of the dance floor', 'Deep conversation at the bar'],
-  },
-  {
-    q: 'Your perfect weekend...',
-    options: ['Outdoor adventure', 'Cozy day indoors'],
-  },
-  {
-    q: 'First date preference...',
-    options: ['Coffee and a walk', 'Dinner and drinks'],
-  },
-  {
-    q: 'You express affection by...',
-    options: ['Quality time together', 'Thoughtful gestures'],
-  },
-  {
-    q: 'In a relationship, you value...',
-    options: ['Shared excitement', 'Deep emotional connection'],
-  },
+  { q: 'onboarding.q1', options: ['onboarding.q1a', 'onboarding.q1b'] },
+  { q: 'onboarding.q2', options: ['onboarding.q2a', 'onboarding.q2b'] },
+  { q: 'onboarding.q3', options: ['onboarding.q3a', 'onboarding.q3b'] },
+  { q: 'onboarding.q4', options: ['onboarding.q4a', 'onboarding.q4b'] },
+  { q: 'onboarding.q5', options: ['onboarding.q5a', 'onboarding.q5b'] },
 ];
 
-const BIO_PROMPTS = [
-  'My perfect weekend is...',
-  "I'm looking for someone who...",
-  'You should know that I...',
-  'The best way to win me over is...',
-];
+const BIO_PROMPTS = ['onboarding.p1', 'onboarding.p2', 'onboarding.p3', 'onboarding.p4'];
 
+// Stored values stay English (backend matching); labels are translated at render
 const INTERESTS = [
   'Sports', 'Movies', 'Tech', 'Travel', 'Cooking', 'Music',
   'Reading', 'Gaming', 'Fitness', 'Art', 'Photography', 'Hiking',
   'Dancing', 'Yoga', 'Podcasts', 'Startups', 'Crypto', 'Philosophy',
   'Foodie', 'Wine',
 ];
+const interestKey = (interest: string) => `onboarding.int_${interest.toLowerCase()}`;
 
 const GOALS = [
-  {
-    id: 'serious',
-    label: 'Serious relationship',
-    desc: 'Looking for long-term love',
-    icon: Heart,
-    color: '#BB83C9',
-  },
-  {
-    id: 'casual',
-    label: 'Casual dating',
-    desc: 'Keeping things light and fun',
-    icon: Coffee,
-    color: '#7BC4E8',
-  },
-  {
-    id: 'interest',
-    label: 'Interest-based connections',
-    desc: 'Meet people who share your passions',
-    icon: Puzzle,
-    color: '#7DE0B3',
-  },
-  {
-    id: 'notsure',
-    label: 'Not sure yet',
-    desc: 'Open to seeing what happens',
-    icon: Compass,
-    color: '#F0B84A',
-  },
+  { id: 'serious', label: 'onboarding.goalSerious', desc: 'onboarding.goalSeriousDesc', icon: Heart, color: '#BB83C9' },
+  { id: 'casual', label: 'onboarding.goalCasual', desc: 'onboarding.goalCasualDesc', icon: Coffee, color: '#7BC4E8' },
+  { id: 'interest', label: 'onboarding.goalInterest', desc: 'onboarding.goalInterestDesc', icon: Puzzle, color: '#7DE0B3' },
+  { id: 'notsure', label: 'onboarding.goalNotsure', desc: 'onboarding.goalNotsureDesc', icon: Compass, color: '#F0B84A' },
 ];
 
-const STEP_TITLES = [
-  "Let's get to know you",
-  'Show your best self',
-  'The basics',
-  'What makes you, you',
-  'What are you looking for?',
-];
+const STEP_TITLES = ['onboarding.title1', 'onboarding.title2', 'onboarding.title3', 'onboarding.title4', 'onboarding.title5'];
 
-const STEP_SUBTITLES = [
-  'Pick what feels most like you. There are no wrong answers.',
-  'Add 1–9 photos. The first one is your main profile picture.',
-  'Tell us a little about yourself.',
-  'Craft your story and pick your passions.',
-  'Be honest — it helps us find the right people for you.',
-];
+const STEP_SUBTITLES = ['onboarding.sub1', 'onboarding.sub2', 'onboarding.sub3', 'onboarding.sub4', 'onboarding.sub5'];
 
 /* ------------------------------------------------------------------ */
 /*  Animation helpers                                                  */
@@ -385,13 +331,13 @@ export default function Onboarding() {
                   className="text-[28px] font-semibold text-[#232323] leading-tight tracking-tight"
                   style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.84px' }}
                 >
-                  {STEP_TITLES[step - 1]}
+                  {t(STEP_TITLES[step - 1])}
                 </h1>
                 <p
                   className="mt-2 text-base"
                   style={{ color: 'rgba(35, 35, 35, 0.6)', fontFamily: "'Outfit', system-ui, sans-serif" }}
                 >
-                  {STEP_SUBTITLES[step - 1]}
+                  {t(STEP_SUBTITLES[step - 1])}
                 </p>
               </motion.div>
             </AnimatePresence>
@@ -512,6 +458,7 @@ function StepPersonality({
   data: ProfileData;
   update: <K extends keyof ProfileData>(key: K, value: ProfileData[K]) => void;
 }) {
+  const { t } = useTranslation();
   const currentQIndex = data.personalityAnswers.length;
   const currentQ = QUESTIONS[currentQIndex] ?? QUESTIONS[QUESTIONS.length - 1];
   const isComplete = data.personalityAnswers.length === QUESTIONS.length;
@@ -554,7 +501,7 @@ function StepPersonality({
                 className="text-lg font-semibold text-[#232323] mb-4"
                 style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.54px' }}
               >
-                {currentQ.q}
+                {t(currentQ.q)}
               </p>
 
               {/* Options */}
@@ -576,7 +523,7 @@ function StepPersonality({
                         opacity: currentAnswer && !isSelected ? 0.5 : 1,
                       }}
                     >
-                      {opt}
+                      {t(opt)}
                     </motion.button>
                   );
                 })}
@@ -600,7 +547,7 @@ function StepPersonality({
               className="text-xl font-semibold text-[#232323]"
               style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
             >
-              All answered!
+              {t('onboarding.allAnswered')}
             </p>
           </motion.div>
         )}
@@ -654,6 +601,7 @@ function StepPhotos({
   videoInputRef: React.RefObject<HTMLInputElement | null>;
   onVideoFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
+  const { t } = useTranslation();
   const photos = data.photos;
   const emptySlots = Math.max(0, 9 - photos.length);
   const gridItems: (PhotoItem | null)[] = [
@@ -676,7 +624,7 @@ function StepPhotos({
           className="text-sm font-medium"
           style={{ color: '#5BC492', fontFamily: "'Outfit', system-ui, sans-serif" }}
         >
-          Natural lighting and genuine smiles get the most matches.
+          {t('onboarding.photoTip')}
         </p>
       </motion.div>
 
@@ -716,7 +664,7 @@ function StepPhotos({
                       letterSpacing: '0.44px',
                     }}
                   >
-                    Main
+                    {t('onboarding.main')}
                   </span>
                 )}
                 <button
@@ -743,7 +691,7 @@ function StepPhotos({
                   className="text-xs font-medium"
                   style={{ color: 'rgba(35,35,35,0.3)', fontFamily: "'Outfit', system-ui, sans-serif" }}
                 >
-                  Add
+                  {t('onboarding.add')}
                 </span>
               </motion.button>
             )}
@@ -768,12 +716,12 @@ function StepPhotos({
         {data.videoIntro ? (
           <>
             <X size={20} strokeWidth={2} />
-            Remove video intro
+            {t('onboarding.removeVideo')}
           </>
         ) : (
           <>
             <PlayCircle size={20} strokeWidth={2} />
-            Add a 10-second video intro (optional)
+            {t('onboarding.addVideo')}
           </>
         )}
       </motion.button>
@@ -835,6 +783,7 @@ function StepBasics({
   data: ProfileData;
   update: <K extends keyof ProfileData>(key: K, value: ProfileData[K]) => void;
 }) {
+  const { t } = useTranslation();
   const [nameError, setNameError] = useState('');
   const [dobError, setDobError] = useState('');
 
@@ -854,7 +803,7 @@ function StepBasics({
 
   const handleNameBlur = () => {
     if (data.name.trim().length < 2) {
-      setNameError('Name must be at least 2 characters');
+      setNameError(t('onboarding.nameError'));
     }
   };
 
@@ -862,7 +811,7 @@ function StepBasics({
     if (data.dob) {
       const birthDate = new Date(data.dob);
       const age = Math.floor((Date.now() - birthDate.getTime()) / 31557600000);
-      if (age < 18) setDobError('You must be at least 18 years old.');
+      if (age < 18) setDobError(t('onboarding.dobError'));
     }
   };
 
@@ -874,14 +823,14 @@ function StepBasics({
           className="text-sm font-semibold text-[#232323]"
           style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '0.44px' }}
         >
-          YOUR NAME
+          {t('onboarding.yourName')}
         </label>
         <input
           type="text"
           value={data.name}
           onChange={(e) => handleNameChange(e.target.value)}
           onBlur={handleNameBlur}
-          placeholder="What should people call you?"
+          placeholder={t('onboarding.namePlaceholder')}
           className="w-full h-[52px] rounded-xl px-4 text-base outline-none transition-all"
           style={{
             fontFamily: "'Outfit', system-ui, sans-serif",
@@ -903,7 +852,7 @@ function StepBasics({
           className="text-sm font-semibold text-[#232323]"
           style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '0.44px' }}
         >
-          DATE OF BIRTH
+          {t('onboarding.dob')}
         </label>
         <input
           type="date"
@@ -932,7 +881,7 @@ function StepBasics({
           className="text-sm font-semibold text-[#232323]"
           style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '0.44px' }}
         >
-          YOUR CITY
+          {t('onboarding.yourCity')}
         </label>
         <div className="relative">
           <MapPin
@@ -944,7 +893,7 @@ function StepBasics({
             type="text"
             value={data.city}
             onChange={(e) => update('city', e.target.value)}
-            placeholder="Where are you based?"
+            placeholder={t('onboarding.cityPlaceholder')}
             className="w-full h-[52px] rounded-xl pl-11 pr-4 text-base outline-none transition-all"
             style={{
               fontFamily: "'Outfit', system-ui, sans-serif",
@@ -970,6 +919,7 @@ function StepBioInterests({
   data: ProfileData;
   update: <K extends keyof ProfileData>(key: K, value: ProfileData[K]) => void;
 }) {
+  const { t } = useTranslation();
   const [showCustomInput, setShowCustomInput] = useState(false);
   const [customValue, setCustomValue] = useState('');
 
@@ -1004,7 +954,7 @@ function StepBioInterests({
           className="text-sm font-semibold text-[#232323]"
           style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '0.44px' }}
         >
-          BIO PROMPT
+          {t('onboarding.bioPrompt')}
         </p>
         <div className="flex gap-2 overflow-x-auto pb-1 -mx-5 px-5">
           {BIO_PROMPTS.map((prompt) => (
@@ -1018,7 +968,7 @@ function StepBioInterests({
                 color: data.bioPrompt === prompt ? '#FFFFFF' : '#232323',
               }}
             >
-              {prompt}
+              {t(prompt)}
             </button>
           ))}
         </div>
@@ -1030,7 +980,7 @@ function StepBioInterests({
           className="text-sm font-semibold text-[#232323]"
           style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '0.44px' }}
         >
-          YOUR BIO
+          {t('onboarding.yourBio')}
         </label>
         <div className="relative">
           <textarea
@@ -1038,7 +988,7 @@ function StepBioInterests({
             onChange={(e) => {
               if (e.target.value.length <= 500) update('bio', e.target.value);
             }}
-            placeholder="Tell people what you're about..."
+            placeholder={t('onboarding.bioPlaceholder')}
             className="w-full min-h-[120px] rounded-2xl p-4 text-base outline-none resize-none transition-all"
             style={{
               fontFamily: "'Outfit', system-ui, sans-serif",
@@ -1055,7 +1005,7 @@ function StepBioInterests({
           </span>
         </div>
         <p className="text-xs font-medium" style={{ color: '#5BC492' }}>
-          Adding a bio increases your matches by 3×
+          {t('onboarding.bioBoost')}
         </p>
       </div>
 
@@ -1066,10 +1016,10 @@ function StepBioInterests({
             className="text-sm font-semibold text-[#232323]"
             style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '0.44px' }}
           >
-            YOUR INTERESTS
+            {t('onboarding.yourInterests')}
           </p>
           <p className="mt-1 text-sm" style={{ color: 'rgba(35,35,35,0.6)' }}>
-            Pick at least 3. These power your matches.
+            {t('onboarding.pick3')}
           </p>
         </div>
 
@@ -1090,7 +1040,7 @@ function StepBioInterests({
                   transform: isSelected ? 'scale(1.05)' : 'scale(1)',
                 }}
               >
-                {interest}
+                {t(interestKey(interest), { defaultValue: interest })}
               </motion.button>
             );
           })}
@@ -1107,7 +1057,7 @@ function StepBioInterests({
                 value={customValue}
                 onChange={(e) => setCustomValue(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && addCustomInterest()}
-                placeholder="Your interest..."
+                placeholder={t('onboarding.yourInterest')}
                 autoFocus
                 className="h-9 px-3 rounded-full text-xs font-medium outline-none"
                 style={{
@@ -1139,14 +1089,14 @@ function StepBioInterests({
               }}
             >
               <Plus size={14} strokeWidth={2} />
-              Add your own
+              {t('onboarding.addYourOwn')}
             </motion.button>
           )}
         </div>
 
         {data.interests.length > 0 && data.interests.length < 3 && (
           <p className="text-xs font-medium" style={{ color: '#F0B84A' }}>
-            Select at least {3 - data.interests.length} more
+            {t('onboarding.selectMore', { count: 3 - data.interests.length })}
           </p>
         )}
       </div>
@@ -1165,6 +1115,7 @@ function StepGoals({
   data: ProfileData;
   update: <K extends keyof ProfileData>(key: K, value: ProfileData[K]) => void;
 }) {
+  const { t } = useTranslation();
   return (
     <div
       className="flex flex-col items-center justify-center flex-1 gap-6"
@@ -1178,7 +1129,7 @@ function StepGoals({
     >
       <div className="text-center mb-2">
         <p className="text-base" style={{ color: 'rgba(35,35,35,0.6)' }}>
-          Be honest — it helps us find the right people for you.
+          {t('onboarding.sub5')}
         </p>
       </div>
 
@@ -1224,13 +1175,13 @@ function StepGoals({
                 className="text-lg font-semibold text-[#232323] text-center"
                 style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.54px' }}
               >
-                {goal.label}
+                {t(goal.label)}
               </p>
               <p
                 className="text-xs text-center"
                 style={{ color: 'rgba(35,35,35,0.5)' }}
               >
-                {goal.desc}
+                {t(goal.desc)}
               </p>
             </motion.button>
           );

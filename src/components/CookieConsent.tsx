@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Cookie, X } from 'lucide-react';
@@ -6,6 +7,7 @@ import { useNavigate } from 'react-router';
 const CONSENT_KEY = 'equal-cookie-consent';
 
 export default function CookieConsent() {
+  const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
 
@@ -43,24 +45,24 @@ export default function CookieConsent() {
               </div>
               <div className="flex-1">
                 <p className="text-sm font-semibold text-[#232323] mb-1" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                  Cookie Preferences
+                  {t('common.cookieTitle')}
                 </p>
                 <p className="text-xs leading-relaxed mb-3" style={{ color: 'rgba(35,35,35,0.65)', fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.5 }}>
-                  We use essential cookies for authentication and optional cookies for analytics. See our{' '}
-                  <button onClick={() => { setVisible(false); navigate('/privacy'); }} className="underline font-medium" style={{ color: '#BB83C9' }}>Privacy Policy</button>.
+                  {t('common.cookieText')}{' '}
+                  <button onClick={() => { setVisible(false); navigate('/privacy'); }} className="underline font-medium" style={{ color: '#BB83C9' }}>{t('common.privacyPolicy')}</button>.
                 </p>
                 <div className="flex gap-2">
                   <motion.button whileTap={{ scale: 0.95 }}
                     onClick={accept}
                     className="flex-1 h-9 rounded-full text-sm font-semibold text-white"
                     style={{ backgroundColor: '#BB83C9', fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                    Accept All
+                    {t('common.cookieAccept')}
                   </motion.button>
                   <motion.button whileTap={{ scale: 0.95 }}
                     onClick={decline}
                     className="h-9 px-4 rounded-full text-sm font-semibold"
                     style={{ backgroundColor: 'rgba(232,226,216,0.5)', color: '#232323', fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                    Essential Only
+                    {t('common.cookieEssential')}
                   </motion.button>
                 </div>
               </div>
