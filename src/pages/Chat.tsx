@@ -955,14 +955,14 @@ export default function Chat() {
       const giftMsg: Message = {
         id: `gift-${Date.now()}`,
         type: 'GIFT',
-        content: `You sent ${matchInfo.matchName} a ${giftName.toLowerCase()} ${giftType === 'coffee' ? '\u2615' : giftType === 'rose' ? '\ud83c\udf39' : giftType === 'song' ? '\ud83c\udfb5' : '\u2728'}`,
+        content: t('chat.giftMsgContent', { partner: matchInfo.matchName, gift: `${giftName.toLowerCase()} ${giftType === 'coffee' ? '\u2615' : giftType === 'rose' ? '\ud83c\udf39' : giftType === 'song' ? '\ud83c\udfb5' : '\u2728'}` }),
         sender: 'me',
         timestamp: new Date(),
         giftType: giftType as 'coffee' | 'rose' | 'song' | 'spark',
         read: false,
       };
       setMessages((prev) => [...prev, giftMsg]);
-      showToast(`${giftName} sent!`);
+      showToast(t('chat.giftSent', { name: giftName }));
     },
     [matchInfo.matchName, showToast]
   );

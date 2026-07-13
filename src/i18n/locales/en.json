@@ -117,7 +117,9 @@
     "giftSparkDesc": "Send your earned Spark",
     "free": "Free",
     "mutedNotifs": "Notifications muted",
-    "userBlocked": "User blocked"
+    "userBlocked": "User blocked",
+    "giftSent": "{{name}} sent!",
+    "giftMsgContent": "You sent {{partner}} a {{gift}}"
   },
   "profile": {
     "edit": "Edit Profile",
