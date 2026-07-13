@@ -369,7 +369,11 @@
     "badgeProfile": "Профиль на 100%",
     "badgeProfileDesc": "Заполни профиль полностью",
     "badgeTrust": "Надёжный",
-    "badgeTrustDesc": "Достигни Trust Score выше 80"
+    "badgeTrustDesc": "Достигни Trust Score выше 80",
+    "title": "Профиль",
+    "trustLow": "Доверие растёт",
+    "trustMid": "На верном пути",
+    "trustHigh": "Высокое доверие"
   },
   "admin": {
     "panel": "Админ-панель",

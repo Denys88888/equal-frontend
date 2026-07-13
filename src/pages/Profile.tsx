@@ -306,7 +306,7 @@ export default function Profile() {
     }).catch(() => {});
   }, []);
 
-  const trustZone = user.trustScore <= 40 ? 'Building Trust' : user.trustScore <= 75 ? 'Getting There' : 'Highly Trusted';
+  const trustZone = user.trustScore <= 40 ? t('profile2.trustLow') : user.trustScore <= 75 ? t('profile2.trustMid') : t('profile2.trustHigh');
   const trustZoneColor = user.trustScore <= 40 ? '#E86A6A' : user.trustScore <= 75 ? '#F0B84A' : '#7DE0B3';
 
   const goalInfo = goalConfig[user.goals] || goalConfig['Not sure yet'];
@@ -331,7 +331,7 @@ export default function Profile() {
 
   return (
     <Layout
-      title="Profile"
+      title={t('profile2.title')}
       rightAction={
         <motion.button
           whileTap={{ scale: 0.9 }}
@@ -348,11 +348,22 @@ export default function Profile() {
 
         {/* ─────────────── Hero Section ─────────────── */}
         <div className="relative w-full" style={{ height: '45vh', maxHeight: 400 }}>
-          <img
-            src={user.photos[0]}
-            alt={`${user.name}'s profile`}
-            className="w-full h-full object-cover"
-          />
+          {user.photos[0] ? (
+            <img
+              src={user.photos[0]}
+              alt={`${user.name}'s profile`}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div
+              className="w-full h-full flex items-center justify-center"
+              style={{ background: 'linear-gradient(135deg, #BB83C9 0%, #7DE0B3 100%)' }}
+            >
+              <span className="text-white font-bold" style={{ fontSize: 96, fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                {(user.name || '?').charAt(0).toUpperCase()}
+              </span>
+            </div>
+          )}
           {/* Gradient overlay */}
           <div
             className="absolute inset-0"
@@ -385,14 +396,6 @@ export default function Profile() {
               <MapPin size={14} className="text-white opacity-80" strokeWidth={2} />
               <span className="text-sm text-white opacity-80 font-medium" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                 {user.location}
-              </span>
-            </div>
-            <div className="flex items-center gap-2 mt-2">
-              <span className="text-xs text-white opacity-50" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                {user.distance}
-              </span>
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#7DE0B3] text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                87% Match
               </span>
             </div>
           </div>

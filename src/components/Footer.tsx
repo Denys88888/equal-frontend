@@ -37,8 +37,8 @@ export default function Footer() {
         backdropFilter: 'blur(16px)',
         borderTop: '1px solid rgba(0,0,0,0.04)',
         boxShadow: '0 -4px 24px rgba(0,0,0,0.06)',
-        paddingBottom: 'env(safe-area-inset-bottom)',
-        height: 'calc(72px + env(safe-area-inset-bottom))',
+        paddingBottom: 'max(env(safe-area-inset-bottom), 10px)',
+        height: 'calc(72px + max(env(safe-area-inset-bottom), 10px))',
       }}
     >
       <div className="max-w-[430px] mx-auto h-[72px] flex items-center justify-around px-2">

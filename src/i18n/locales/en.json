@@ -369,7 +369,11 @@
     "badgeProfile": "Profile Pro",
     "badgeProfileDesc": "Complete 100% of your profile",
     "badgeTrust": "Trust Builder",
-    "badgeTrustDesc": "Reach a Trust Score above 80"
+    "badgeTrustDesc": "Reach a Trust Score above 80",
+    "title": "Profile",
+    "trustLow": "Building Trust",
+    "trustMid": "Getting There",
+    "trustHigh": "Highly Trusted"
   },
   "admin": {
     "panel": "Admin Panel",
