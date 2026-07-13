@@ -277,11 +277,11 @@ export default function Settings() {
       >
 
         {/* ───────── Profile ───────── */}
-        <SectionLabel text="Profile" />
+        <SectionLabel text={t('settings2.profileSection')} />
         <div className="space-y-2">
-          <SettingRow icon={User} iconColor="#BB83C9" label="Edit Profile" onClick={() => navigate('/profile')} />
-          <SettingRow icon={Camera} iconColor="#7BC4E8" label="Photos" detail={photoCount != null ? `${photoCount}/9` : ''} onClick={() => navigate('/profile')} />
-          <SettingRow icon={Shield} iconColor="#7DE0B3" label="Trust Score" detail={trustScore != null ? `${trustScore}/100` : ''} onClick={() => {}} />
+          <SettingRow icon={User} iconColor="#BB83C9" label={t('settings2.editProfile')} onClick={() => navigate('/profile')} />
+          <SettingRow icon={Camera} iconColor="#7BC4E8" label={t('settings2.photos')} detail={photoCount != null ? `${photoCount}/9` : ''} onClick={() => navigate('/profile')} />
+          <SettingRow icon={Shield} iconColor="#7DE0B3" label={t('settings2.trustScore')} detail={trustScore != null ? `${trustScore}/100` : ''} onClick={() => {}} />
         </div>
 
         {/* ───────── Privacy ───────── */}
@@ -290,15 +290,15 @@ export default function Settings() {
           <ToggleRow
             icon={Ghost}
             label={t('settings.ghostMode')}
-            description="Hide your profile from discovery. Your existing matches and chats remain active."
+            description={t('settings2.ghostDesc')}
             checked={ghostMode}
             onCheckedChange={setGhostMode}
           />
           <ToggleRow
             icon={ShieldCheck}
             iconColor="#7DE0B3"
-            label="Verified matches only"
-            description="Only show profiles that have completed verification"
+            label={t('settings.verifiedOnly')}
+            description={t('settings2.verifiedOnlyDesc')}
             checked={verifiedOnly}
             onCheckedChange={setVerifiedOnly}
           />
@@ -306,7 +306,7 @@ export default function Settings() {
             icon={Slash}
             iconColor="rgba(232,106,106,0.6)"
             label={t('settings.blockedUsers')}
-            detail={`${blockedUsers.length} blocked`}
+            detail={t('settings2.blockedCount', { count: blockedUsers.length })}
             onClick={() => setShowBlockedUsers(true)}
           />
         </div>
@@ -316,29 +316,29 @@ export default function Settings() {
         <div className="space-y-2">
           <ToggleRow
             icon={Bell}
-            label="New matches"
-            description="When someone likes you back"
+            label={t('settings2.notifMatches')}
+            description={t('settings2.notifMatchesDesc')}
             checked={notifMatches}
             onCheckedChange={setNotifMatches}
           />
           <ToggleRow
             icon={MessageSquare}
-            label="Messages"
-            description="New chat messages"
+            label={t('settings2.notifMessages')}
+            description={t('settings2.notifMessagesDesc')}
             checked={notifMessages}
             onCheckedChange={setNotifMessages}
           />
           <ToggleRow
             icon={Calendar}
-            label="Events"
-            description="Upcoming events and reminders"
+            label={t('settings2.notifEvents')}
+            description={t('settings2.notifEventsDesc')}
             checked={notifEvents}
             onCheckedChange={setNotifEvents}
           />
           <ToggleRow
             icon={Users}
-            label="Clubs"
-            description="New posts and activity in your clubs"
+            label={t('settings2.notifClubs')}
+            description={t('settings2.notifClubsDesc')}
             checked={notifClubs}
             onCheckedChange={setNotifClubs}
           />
@@ -404,7 +404,7 @@ export default function Settings() {
                   className="text-xs text-[#232323] opacity-45 block mt-0.5"
                   style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.5 }}
                 >
-                  {t('settings.language')}
+                  {t('settings2.languageDesc')}
                 </span>
               </div>
             </div>
@@ -420,13 +420,13 @@ export default function Settings() {
           <SettingRow
             icon={PiIcon}
             iconColor="#BB83C9"
-            label="Pi Wallet"
-            detail={walletConnected ? 'Connected ✓' : 'Connect'}
+            label={t('settings.piWallet')}
+            detail={walletConnected ? t('settings2.walletConnected') : t('settings2.walletConnect')}
             rightElement={
               walletConnected ? (
-                <span className="text-xs font-semibold text-[#7DE0B3]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>Connected ✓</span>
+                <span className="text-xs font-semibold text-[#7DE0B3]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>{t('settings2.walletConnected')}</span>
               ) : (
-                <span className="text-xs font-semibold text-[#BB83C9]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>Connect</span>
+                <span className="text-xs font-semibold text-[#BB83C9]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>{t('settings2.walletConnect')}</span>
               )
             }
             onClick={() => setWalletConnected(!walletConnected)}
@@ -445,14 +445,14 @@ export default function Settings() {
         </div>
 
         {/* ───────── Support ───────── */}
-        <SectionLabel text="Support" />
+        <SectionLabel text={t('settings2.support')} />
         <div className="space-y-2">
-          <SettingRow icon={HelpCircle} iconColor="#7BC4E8" label="Help Center" onClick={() => {}} />
-          <SettingRow icon={Flag} iconColor="#F0B84A" label="Report a Problem" onClick={() => {}} />
-          <SettingRow icon={Info} iconColor="rgba(35,35,35,0.4)" label="About Equal" detail="v1.0.0" onClick={() => setShowAbout(true)} />
-          <SettingRow icon={FileText} iconColor="#BB83C9" label="Privacy Policy" onClick={() => navigate('/privacy')} />
-          <SettingRow icon={FileText} iconColor="#BB83C9" label="Terms of Service" onClick={() => navigate('/terms')} />
-          <SettingRow icon={Cookie} iconColor="#F0B84A" label="Cookie Preferences" onClick={() => { localStorage.removeItem('equal-cookie-consent'); window.location.reload(); }} />
+          <SettingRow icon={HelpCircle} iconColor="#7BC4E8" label={t('settings2.helpCenter')} onClick={() => {}} />
+          <SettingRow icon={Flag} iconColor="#F0B84A" label={t('settings2.reportProblem')} onClick={() => {}} />
+          <SettingRow icon={Info} iconColor="rgba(35,35,35,0.4)" label={t('settings2.aboutEqual')} detail="v1.0.0" onClick={() => setShowAbout(true)} />
+          <SettingRow icon={FileText} iconColor="#BB83C9" label={t('common.privacyPolicy')} onClick={() => navigate('/privacy')} />
+          <SettingRow icon={FileText} iconColor="#BB83C9" label={t('settings2.termsOfService')} onClick={() => navigate('/terms')} />
+          <SettingRow icon={Cookie} iconColor="#F0B84A" label={t('settings2.cookiePrefs')} onClick={() => { localStorage.removeItem('equal-cookie-consent'); window.location.reload(); }} />
         </div>
 
         {/* ───────── Developer Donation ───────── */}
@@ -492,7 +492,7 @@ export default function Settings() {
         </motion.div>
 
         {/* ───────── Danger Zone ───────── */}
-        <SectionLabel text="Danger Zone" danger />
+        <SectionLabel text={t('settings2.dangerZone')} danger />
         <div className="space-y-2">
           <motion.button
             whileTap={{ scale: 0.98 }}
@@ -665,7 +665,7 @@ export default function Settings() {
                   {t('settings2.typeToConfirm')}
                 </h3>
                 <p className="mt-3 text-sm text-[#232323] opacity-60 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}>
-                  Type <span className="font-bold text-[#E86A6A]">DELETE</span> to confirm you want to permanently delete your account.
+                  {t('settings2.deleteHintPre')} <span className="font-bold text-[#E86A6A]">DELETE</span> {t('settings2.deleteHintPost')}
                 </p>
                 <Input
                   value={deleteConfirmText}
