@@ -307,7 +307,7 @@ function EventListCard({
             {t(`events.cat_${event.category.toLowerCase()}`, { defaultValue: event.category })}
           </span>
           <span className="text-sm font-semibold" style={{ color: event.price === 0 ? '#5BC492' : '#BB83C9' }}>
-            {event.price === 0 ? 'Free' : `${event.price} Pi`}
+            {event.price === 0 ? t('events.free') : `${event.price} Pi`}
           </span>
         </div>
       </div>

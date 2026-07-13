@@ -743,9 +743,9 @@ export default function Profile() {
                     color: badge.earned ? '#5BC492' : '#F0B84A',
                   }}>
                     {badge.earned ? (
-                      <><CheckCircle2 size={12} strokeWidth={2} /> Earned</>
+                      <><CheckCircle2 size={12} strokeWidth={2} /> {t('profile2.earned')}</>
                     ) : (
-                      <><Lock size={12} strokeWidth={2} /> Locked</>
+                      <><Lock size={12} strokeWidth={2} /> {t('profile2.locked')}</>
                     )}
                   </div>
                 </div>

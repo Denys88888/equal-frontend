@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bell, Check } from 'lucide-react';
 import { useNotifications } from '@/hooks/useNotifications';
 
 export default function NotificationBell() {
+  const { t } = useTranslation();
   const { notifications, unreadCount, markAsRead, markAllAsRead } = useNotifications();
   const [open, setOpen] = useState(false);
 
@@ -42,12 +44,12 @@ export default function NotificationBell() {
             >
               <div className="flex items-center justify-between px-4 py-3 border-b" style={{ borderColor: 'rgba(0,0,0,0.06)' }}>
                 <span className="text-sm font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                  Notifications
+                  {t('notifications.title')}
                 </span>
                 {unreadCount > 0 && (
                   <motion.button whileTap={{ scale: 0.9 }} onClick={markAllAsRead}
                     className="flex items-center gap-1 text-xs font-medium" style={{ color: '#BB83C9', fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                    <Check size={14} /> Mark all read
+                    <Check size={14} /> {t('notifications.markAllRead')}
                   </motion.button>
                 )}
               </div>
@@ -56,7 +58,7 @@ export default function NotificationBell() {
                 {recentNotifications.length === 0 ? (
                   <div className="px-4 py-8 text-center">
                     <p className="text-sm" style={{ color: 'rgba(35,35,35,0.4)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                      No notifications yet
+                      {t('notifications.empty')}
                     </p>
                   </div>
                 ) : (

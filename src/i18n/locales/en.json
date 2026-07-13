@@ -64,7 +64,10 @@
     "fint_wine": "Wine",
     "fint_film": "Film",
     "fint_pets": "Pets",
-    "km": "{{d}} km"
+    "km": "{{d}} km",
+    "verified": "Verified",
+    "activeNow": "Active",
+    "newUser": "New"
   },
   "matches": {
     "title": "Matches",
@@ -455,7 +458,9 @@
     "title": "Profile",
     "trustLow": "Building Trust",
     "trustMid": "Getting There",
-    "trustHigh": "Highly Trusted"
+    "trustHigh": "Highly Trusted",
+    "earned": "Earned",
+    "locked": "Locked"
   },
   "admin": {
     "panel": "Admin Panel",
@@ -551,5 +556,10 @@
     "p5p": "You can delete your account and all associated data at any time through the Settings page. This action is irreversible and removes all your profile information, photos, messages, and matches from our servers.",
     "p6h": "6. Contact",
     "p6p": "For privacy-related questions, contact us through the Pi Network community channels or the Report feature in the app."
+  },
+  "notifications": {
+    "title": "Notifications",
+    "markAllRead": "Mark all read",
+    "empty": "No notifications yet"
   }
 }

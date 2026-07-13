@@ -440,17 +440,17 @@ function SwipeCard({
           <div className="flex items-center gap-1.5 mb-2">
             {profile.verified && (
               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold text-white" style={{ backgroundColor: '#7DE0B3' }}>
-                <Shield size={10} /> Verified
+                <Shield size={10} /> {t('discover.verified')}
               </span>
             )}
             {profile.activeNow && (
               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold text-white" style={{ backgroundColor: '#5BC492' }}>
-                <Circle size={8} fill="white" /> Active
+                <Circle size={8} fill="white" /> {t('discover.activeNow')}
               </span>
             )}
             {profile.isNew && (
               <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold text-white" style={{ backgroundColor: '#7BC4E8' }}>
-                New
+                {t('discover.newUser')}
               </span>
             )}
           </div>
