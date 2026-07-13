@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import {
   Dialog,
@@ -31,6 +32,7 @@ export default function ReportDialog({
   userName,
   onSubmit,
 }: ReportDialogProps) {
+  const { t } = useTranslation();
   const [selectedReason, setSelectedReason] = useState<string>('');
   const [description, setDescription] = useState('');
 
@@ -80,7 +82,7 @@ export default function ReportDialog({
               color: 'rgba(35,35,35,0.6)',
             }}
           >
-            Help us keep our community safe. Your report will be reviewed.
+            {t('report.subtitle')}
           </DialogDescription>
         </DialogHeader>
 
@@ -142,7 +144,7 @@ export default function ReportDialog({
                 setDescription(e.target.value);
               }
             }}
-            placeholder="Tell us more about the issue..."
+            placeholder={t('report.detailsPlaceholder')}
             className="rounded-xl border-0 resize-none text-sm"
             style={{
               backgroundColor: 'rgba(232,226,216,0.4)',
@@ -170,7 +172,7 @@ export default function ReportDialog({
             fontFamily: "'Outfit', system-ui, sans-serif",
           }}
         >
-          Submit Report
+          {t('report.submit')}
         </button>
       </DialogContent>
     </Dialog>

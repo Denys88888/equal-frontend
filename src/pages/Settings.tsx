@@ -369,7 +369,7 @@ export default function Settings() {
                   className="text-xs text-[#232323] opacity-45 block mt-0.5"
                   style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.5 }}
                 >
-                  Toggle between light and dark theme
+                  {t('settings2.themeToggle')}
                 </span>
               </div>
             </div>
@@ -481,12 +481,12 @@ export default function Settings() {
                   {t('settings.donate')}
                 </h3>
                 <p className="text-xs text-[#232323] opacity-45" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                  Voluntary developer donation
+                  {t('settings2.donation')}
                 </p>
               </div>
             </div>
             <p className="text-sm text-[#232323] opacity-60" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}>
-              Equal is free because we believe love has no price. If you'd like to support our team, you can make a voluntary donation.
+              {t('settings2.supportText')}
             </p>
           </motion.button>
         </motion.div>
@@ -536,7 +536,7 @@ export default function Settings() {
           </div>
           <DialogHeader className="px-6 pb-3">
             <DialogTitle className="text-xl font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              Blocked Users
+              {t('settings2.blockedUsers')}
             </DialogTitle>
           </DialogHeader>
           <div className="px-6 pb-6 overflow-y-auto">
@@ -544,10 +544,10 @@ export default function Settings() {
               <div className="flex flex-col items-center py-10 text-center">
                 <Shield size={48} className="text-[#E8E2D8] mb-3" strokeWidth={1.5} />
                 <p className="text-base font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                  No blocked users
+                  {t('settings2.noBlocked')}
                 </p>
                 <p className="mt-1 text-sm text-[#232323] opacity-50" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                  When you block someone, they'll appear here.
+                  {t('settings2.blockedHint')}
                 </p>
               </div>
             ) : (
@@ -566,7 +566,7 @@ export default function Settings() {
                       className="px-4 py-2 rounded-full text-sm font-semibold text-[#BB83C9]"
                       style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
                     >
-                      Unblock
+                      {t('settings2.unblock')}
                     </motion.button>
                   </div>
                 ))}
@@ -581,11 +581,11 @@ export default function Settings() {
         <DialogContent className="rounded-[20px] max-w-[320px] bg-white border-0" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
           <DialogHeader>
             <DialogTitle className="text-xl font-semibold text-[#232323] text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              Log Out?
+              {t('settings2.logoutTitle')}
             </DialogTitle>
           </DialogHeader>
           <p className="text-sm text-[#232323] opacity-60 text-center mt-1" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-            Are you sure you want to log out?
+            {t('settings2.logoutConfirm')}
           </p>
           <div className="flex gap-3 mt-5">
             <motion.button
@@ -594,7 +594,7 @@ export default function Settings() {
               className="flex-1 h-12 rounded-full border border-[rgba(35,35,35,0.1)] bg-[rgba(255,255,255,0.72)] text-base font-semibold text-[#232323]"
               style={{ backdropFilter: 'blur(12px)', fontFamily: "'Outfit', system-ui, sans-serif" }}
             >
-              Cancel
+              {t('settings2.cancel')}
             </motion.button>
             <motion.button
               whileTap={{ scale: 0.97 }}
@@ -602,7 +602,7 @@ export default function Settings() {
               className="flex-1 h-12 rounded-full bg-[#E86A6A] text-white text-base font-semibold"
               style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
             >
-              Log Out
+              {t('settings2.logout')}
             </motion.button>
           </div>
         </DialogContent>
@@ -625,11 +625,11 @@ export default function Settings() {
                     <AlertTriangle size={28} className="text-[#E86A6A]" strokeWidth={2} />
                   </div>
                   <h3 className="text-xl font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                    Delete Account?
+                    {t('settings2.deleteTitle')}
                   </h3>
                   <div className="mt-4 space-y-2 text-sm text-[#232323] opacity-60 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.6 }}>
-                    <p>This action is permanent and cannot be undone.</p>
-                    <p>Your matches, messages, and all profile data will be permanently deleted.</p>
+                    <p>{t('settings2.deletePermanent')}</p>
+                    <p>{t('settings2.deleteData')}</p>
                   </div>
                 </div>
                 <div className="flex gap-3 mt-6">
@@ -639,7 +639,7 @@ export default function Settings() {
                     className="flex-1 h-12 rounded-full border border-[rgba(35,35,35,0.1)] bg-[rgba(255,255,255,0.72)] text-base font-semibold text-[#232323]"
                     style={{ backdropFilter: 'blur(12px)', fontFamily: "'Outfit', system-ui, sans-serif" }}
                   >
-                    Cancel
+                    {t('settings2.cancel')}
                   </motion.button>
                   <motion.button
                     whileTap={{ scale: 0.97 }}
@@ -647,7 +647,7 @@ export default function Settings() {
                     className="flex-1 h-12 rounded-full bg-[#E86A6A] text-white text-base font-semibold"
                     style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
                   >
-                    Continue
+                    {t('settings2.continue')}
                   </motion.button>
                 </div>
               </motion.div>
@@ -662,7 +662,7 @@ export default function Settings() {
                 transition={{ duration: 0.25, ease: easeSmooth }}
               >
                 <h3 className="text-xl font-semibold text-[#232323] text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                  Type to Confirm
+                  {t('settings2.typeToConfirm')}
                 </h3>
                 <p className="mt-3 text-sm text-[#232323] opacity-60 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}>
                   Type <span className="font-bold text-[#E86A6A]">DELETE</span> to confirm you want to permanently delete your account.
@@ -670,7 +670,7 @@ export default function Settings() {
                 <Input
                   value={deleteConfirmText}
                   onChange={(e) => setDeleteConfirmText(e.target.value)}
-                  placeholder="Type DELETE"
+                  placeholder={t('settings2.typeDelete')}
                   className="mt-4 h-[52px] rounded-xl border-[1.5px] border-transparent bg-[rgba(232,226,216,0.4)] text-base text-center text-[#232323] placeholder:text-[#232323] placeholder:opacity-35 focus:border-[#E86A6A] focus:ring-[3px] focus:ring-[rgba(232,106,106,0.15)] uppercase font-semibold"
                   style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
                 />
@@ -685,7 +685,7 @@ export default function Settings() {
                     boxShadow: deleteConfirmText === 'DELETE' ? '0 4px 16px rgba(232,106,106,0.3)' : 'none',
                   }}
                 >
-                  Continue
+                  {t('settings2.continue')}
                 </motion.button>
               </motion.div>
             )}
@@ -703,10 +703,10 @@ export default function Settings() {
                     <Trash2 size={28} className="text-[#E86A6A]" strokeWidth={2} />
                   </div>
                   <h3 className="text-xl font-semibold text-[#232323] text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                    Final Confirmation
+                    {t('settings2.finalConfirm')}
                   </h3>
                   <p className="mt-3 text-sm text-[#232323] opacity-60 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}>
-                    This is your last chance. Your account will be permanently deleted.
+                    {t('settings2.lastChance')}
                   </p>
                 </div>
                 <motion.button
@@ -715,7 +715,7 @@ export default function Settings() {
                   className="w-full mt-5 h-14 rounded-full bg-[#E86A6A] text-white text-base font-semibold"
                   style={{ boxShadow: '0 4px 16px rgba(232,106,106,0.3)', fontFamily: "'Outfit', system-ui, sans-serif" }}
                 >
-                  Delete My Account
+                  {t('settings2.deleteMyAccount')}
                 </motion.button>
                 <motion.button
                   whileTap={{ scale: 0.97 }}
@@ -723,7 +723,7 @@ export default function Settings() {
                   className="w-full mt-2 h-12 rounded-full text-base font-semibold text-[#232323] opacity-60"
                   style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
                 >
-                  Cancel
+                  {t('settings2.cancel')}
                 </motion.button>
               </motion.div>
             )}
@@ -736,7 +736,7 @@ export default function Settings() {
         <DialogContent className="rounded-[20px] max-w-[340px] bg-white border-0" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
           <DialogHeader>
             <DialogTitle className="text-xl font-semibold text-[#232323] text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              Support Equal
+              {t('settings2.supportEqual')}
             </DialogTitle>
           </DialogHeader>
           <div className="flex flex-col items-center py-2">
@@ -744,7 +744,7 @@ export default function Settings() {
               <Heart size={28} className="text-[#BB83C9]" strokeWidth={2} />
             </div>
             <p className="text-sm text-[#232323] opacity-60 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}>
-              Equal is free because we believe love has no price. If you'd like to support our team, you can make a voluntary Pi donation.
+              {t('settings2.supportText')}
             </p>
           </div>
           {/* Amount Selector */}
@@ -771,7 +771,7 @@ export default function Settings() {
             <Input
               type="number"
               step="0.01"
-              placeholder="Custom amount"
+              placeholder={t('settings2.customAmount')}
               value={donationAmount}
               onChange={(e) => setDonationAmount(e.target.value)}
               className="h-[52px] rounded-xl border-[1.5px] border-[#E8E2D8] bg-[rgba(232,226,216,0.4)] text-base text-center text-[#232323] placeholder:text-[#232323] placeholder:opacity-35 focus:border-[#BB83C9] focus:ring-[3px] focus:ring-[rgba(187,131,201,0.15)]"
@@ -802,7 +802,7 @@ export default function Settings() {
           <div className="space-y-2 max-h-[360px] overflow-y-auto pr-1">
             {paymentHistory.length === 0 ? (
               <p className="text-sm text-[#232323] opacity-40 text-center py-8" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                No payments yet
+                {t('settings2.noPayments')}
               </p>
             ) : (
               paymentHistory.map((p) => (
@@ -837,15 +837,15 @@ export default function Settings() {
               Equal
             </h3>
             <p className="text-sm text-[#232323] opacity-40 mt-1" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              Version 1.0.0
+              {t('settings2.version')}
             </p>
             <Separator className="w-full my-4 bg-[#E8E2D8]" />
             <p className="text-sm text-[#232323] opacity-60 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.6 }}>
-              A decentralized dating dApp powered by the Pi Network. Built with love for the Pi community.
+              {t('settings2.about')}
             </p>
             <div className="mt-3 flex items-center gap-1.5 text-xs text-[#232323] opacity-40" style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}>
               <Code size={12} strokeWidth={2} />
-              <span>Built by the Equal team</span>
+              <span>{t('settings2.builtBy')}</span>
             </div>
           </div>
         </DialogContent>

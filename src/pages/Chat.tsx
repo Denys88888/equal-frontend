@@ -21,6 +21,7 @@ import {
   Rose,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/useToast';
 import ReportDialog from '@/components/ReportDialog';
@@ -70,8 +71,8 @@ function formatDateDivider(date: Date): string {
   const d = new Date(date);
   const isToday = d.toDateString() === now.toDateString();
   const isYesterday = new Date(now.getTime() - 86400000).toDateString() === d.toDateString();
-  if (isToday) return 'Today';
-  if (isYesterday) return 'Yesterday';
+  if (isToday) return i18next.t('chat.today');
+  if (isYesterday) return i18next.t('chat.yesterday');
   return d.toLocaleDateString([], { weekday: 'long', month: 'short', day: 'numeric' });
 }
 
@@ -459,10 +460,10 @@ function IcebreakerChips({ chips, onSend }: { chips: string[]; onSend: (text: st
 // ── GiftBottomSheet ──────────────────────────────────────
 
 const GIFT_OPTIONS = [
-  { name: 'Coffee', icon: 'coffee', price: '1', description: 'Buy them a virtual coffee' },
-  { name: 'Rose', icon: 'rose', price: '2', description: 'A classic romantic gesture' },
-  { name: 'Song', icon: 'song', price: '1.5', description: 'Share a song recommendation' },
-  { name: 'Spark', icon: 'spark', price: 'Free', description: 'Send your earned Spark' },
+  { name: 'Coffee', nameKey: 'chat.giftCoffee', icon: 'coffee', price: '1', description: 'chat.giftCoffeeDesc' },
+  { name: 'Rose', nameKey: 'chat.giftRose', icon: 'rose', price: '2', description: 'chat.giftRoseDesc' },
+  { name: 'Song', nameKey: 'chat.giftSong', icon: 'song', price: '1.5', description: 'chat.giftSongDesc' },
+  { name: 'Spark', nameKey: 'chat.giftSpark', icon: 'spark', price: 'Free', description: 'chat.giftSparkDesc' },
 ];
 
 function GiftBottomSheet({
@@ -521,7 +522,7 @@ function GiftBottomSheet({
                 className="text-xl font-semibold mb-5"
                 style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: '#232323', letterSpacing: '-0.6px' }}
               >
-                Send a Gift
+                {t('chat.sendAGift')}
               </h3>
 
               <div className="grid grid-cols-2 gap-3 mb-5">
@@ -541,7 +542,7 @@ function GiftBottomSheet({
                       className="text-base font-semibold mt-2"
                       style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: '#232323' }}
                     >
-                      {gift.icon === 'coffee' ? t('chat.giftCoffee') : gift.name}
+                      {t(gift.nameKey, { defaultValue: gift.name })}
                     </span>
                     <div className="flex items-center gap-1 mt-1">
                       {gift.price !== 'Free' && (
@@ -557,7 +558,7 @@ function GiftBottomSheet({
                           className="text-xs font-medium"
                           style={{ color: '#7DE0B3', fontFamily: "'Outfit', system-ui, sans-serif" }}
                         >
-                          Free
+                          {t('chat.free')}
                         </span>
                       )}
                     </div>
@@ -565,7 +566,7 @@ function GiftBottomSheet({
                       className="text-xs mt-1 text-center"
                       style={{ color: 'rgba(35,35,35,0.5)', fontFamily: "'Outfit', system-ui, sans-serif" }}
                     >
-                      {gift.description}
+                      {t(gift.description)}
                     </span>
                   </motion.button>
                 ))}
@@ -597,7 +598,7 @@ function GiftBottomSheet({
                       animate={{ rotate: 360 }}
                       transition={{ duration: 0.8, repeat: Infinity, ease: 'linear' }}
                     />
-                    Processing...
+                    {t('chat.processing')}
                   </div>
                 ) : (
                   `Send ${GIFT_OPTIONS[selected].icon === 'coffee' ? t('chat.giftCoffee') : GIFT_OPTIONS[selected].name}`
@@ -614,6 +615,7 @@ function GiftBottomSheet({
 // ── RecordingOverlay ─────────────────────────────────────
 
 function RecordingOverlay({ isRecording, onCancel }: { isRecording: boolean; onCancel: () => void }) {
+  const { t } = useTranslation();
   const [elapsed, setElapsed] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -656,7 +658,7 @@ function RecordingOverlay({ isRecording, onCancel }: { isRecording: boolean; onC
             className="text-xl font-semibold text-white mb-1"
             style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
           >
-            Recording...
+            {t('chat.recording')}
           </h3>
           <p
             className="text-white text-opacity-80"
@@ -668,7 +670,7 @@ function RecordingOverlay({ isRecording, onCancel }: { isRecording: boolean; onC
             className="text-sm mt-3 text-white text-opacity-50"
             style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
           >
-            Tap anywhere to cancel
+            {t('chat.tapToCancel')}
           </p>
         </motion.div>
       )}
@@ -723,7 +725,7 @@ function ChatDropdownMenu({
             >
               <User size={18} style={{ color: '#232323' }} />
               <span className="text-sm font-medium" style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: '#232323' }}>
-                View Profile
+                {t('chat.viewProfile')}
               </span>
             </button>
             <button
@@ -732,7 +734,7 @@ function ChatDropdownMenu({
             >
               <BellOff size={18} style={{ color: '#232323' }} />
               <span className="text-sm font-medium" style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: '#232323' }}>
-                Mute Notifications
+                {t('chat.muteNotifications')}
               </span>
             </button>
             <button
@@ -1089,7 +1091,7 @@ export default function Chat() {
                     color: matchInfo.isOnline ? '#7DE0B3' : 'rgba(35,35,35,0.4)',
                   }}
                 >
-                  {matchInfo.isOnline ? 'Active now' : conversation.lastSeen || 'Offline'}
+                  {matchInfo.isOnline ? t('chat.activeNow') : conversation.lastSeen || t('chat.offline')}
                 </p>
               </div>
             </motion.button>

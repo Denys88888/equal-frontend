@@ -43,6 +43,12 @@ interface Filters {
 const INTEREST_OPTIONS = ['Coffee', 'Hiking', 'Yoga', 'Art', 'Music', 'Travel', 'Cooking', 'Tech', 'Gaming', 'Reading', 'Fitness', 'Photography', 'Dancing', 'Surfing', 'Running', 'Design', 'Vegan', 'Wine', 'Film', 'Pets'];
 
 const GOAL_OPTIONS = ['Serious relationship', 'Casual dating', 'Interest-based connections', 'Not sure yet'];
+const GOAL_KEYS: Record<string, string> = {
+  'Serious relationship': 'discover.goalSerious',
+  'Casual dating': 'discover.goalCasual',
+  'Interest-based connections': 'discover.goalInterest',
+  'Not sure yet': 'discover.goalNotsure',
+};
 
 // ── Match Celebration ──────────────────────────────────
 
@@ -118,7 +124,7 @@ function FilterSheet({
         {/* Distance */}
         <div>
           <div className="flex justify-between mb-3">
-            <span className="text-sm font-medium text-[#232323]">Maximum distance</span>
+            <span className="text-sm font-medium text-[#232323]">{t('discover.maxDistance')}</span>
             <span className="text-sm font-medium text-[#BB83C9]">{filters.maxDistance} km</span>
           </div>
           <input
@@ -142,7 +148,7 @@ function FilterSheet({
         {/* Age Range */}
         <div>
           <div className="flex justify-between mb-3">
-            <span className="text-sm font-medium text-[#232323]">Age range</span>
+            <span className="text-sm font-medium text-[#232323]">{t('discover.ageRange')}</span>
             <span className="text-sm font-medium text-[#BB83C9]">{filters.ageMin} – {filters.ageMax}</span>
           </div>
           <div className="flex gap-4 items-center">
@@ -181,7 +187,7 @@ function FilterSheet({
 
         {/* Goals */}
         <div>
-          <span className="text-sm font-medium text-[#232323] block mb-3">Looking for</span>
+          <span className="text-sm font-medium text-[#232323] block mb-3">{t('discover.lookingFor')}</span>
           <div className="space-y-2">
             {GOAL_OPTIONS.map((goal) => (
               <label key={goal} className="flex items-center gap-3 cursor-pointer">
@@ -204,7 +210,7 @@ function FilterSheet({
                     </svg>
                   )}
                 </div>
-                <span className="text-sm text-[#232323]" style={{ opacity: 0.8 }}>{goal}</span>
+                <span className="text-sm text-[#232323]" style={{ opacity: 0.8 }}>{t(GOAL_KEYS[goal] ?? '', { defaultValue: goal })}</span>
               </label>
             ))}
           </div>
@@ -212,7 +218,7 @@ function FilterSheet({
 
         {/* Interests */}
         <div>
-          <span className="text-sm font-medium text-[#232323] block mb-3">Shared interests</span>
+          <span className="text-sm font-medium text-[#232323] block mb-3">{t('discover.sharedInterests')}</span>
           <div className="flex flex-wrap gap-2">
             {INTEREST_OPTIONS.map((interest) => {
               const selected = filters.interests.includes(interest);
@@ -244,7 +250,7 @@ function FilterSheet({
         {/* Toggles */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-[#232323]">Verified users only</span>
+            <span className="text-sm font-medium text-[#232323]">{t('discover.verifiedOnly')}</span>
             <button
               onClick={() => onChange({ ...filters, verifiedOnly: !filters.verifiedOnly })}
               className="w-12 h-7 rounded-full relative transition-colors"
@@ -258,7 +264,7 @@ function FilterSheet({
             </button>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-[#232323]">Online now</span>
+            <span className="text-sm font-medium text-[#232323]">{t('discover.onlineNow')}</span>
             <button
               onClick={() => onChange({ ...filters, onlineNow: !filters.onlineNow })}
               className="w-12 h-7 rounded-full relative transition-colors"
@@ -281,14 +287,14 @@ function FilterSheet({
           className="flex-1 h-12 rounded-full flex items-center justify-center text-sm font-semibold text-[#BB83C9]"
           style={{ border: '1.5px solid rgba(187,131,201,0.3)' }}
         >
-          Reset all
+          {t('discover.resetAll')}
         </button>
         <button
           onClick={onApply}
           className="flex-[2] h-12 rounded-full flex items-center justify-center text-sm font-semibold text-white"
           style={{ backgroundColor: '#BB83C9', boxShadow: '0 4px 16px rgba(187,131,201,0.3)' }}
         >
-          Apply ({matchCount} matches)
+          {t('discover.applyMatches', { count: matchCount })}
         </button>
       </div>
     </div>
@@ -571,6 +577,7 @@ function MatchOverlay({
   onDismiss: () => void;
   onMessage: () => void;
 }) {
+  const { t } = useTranslation();
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -619,7 +626,7 @@ function MatchOverlay({
         className="text-4xl font-bold text-[#232323] mb-2 text-center"
         style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-1.08px' }}
       >
-        It&apos;s a Match!
+        {t('discover.itsAMatch')}
       </motion.h2>
 
       {/* Subtitle */}
@@ -630,7 +637,7 @@ function MatchOverlay({
         className="text-base text-center mb-10"
         style={{ color: 'rgba(35,35,35,0.6)' }}
       >
-        You and {matchProfile.name} liked each other
+        {t('discover.likedEachOther', { name: matchProfile.name })}
       </motion.p>
 
       {/* Buttons */}
@@ -645,14 +652,14 @@ function MatchOverlay({
           className="w-full h-14 rounded-full text-base font-semibold text-white"
           style={{ backgroundColor: '#BB83C9', boxShadow: '0 4px 16px rgba(187,131,201,0.3)' }}
         >
-          Send a Message
+          {t('discover.sendMessage')}
         </button>
         <button
           onClick={onDismiss}
           className="w-full h-12 rounded-full text-base font-semibold text-[#232323]"
           style={{ backgroundColor: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(12px)', border: '1.5px solid rgba(35,35,35,0.1)' }}
         >
-          Keep Swiping
+          {t('discover.keepSwiping')}
         </button>
       </motion.div>
     </motion.div>
@@ -662,6 +669,7 @@ function MatchOverlay({
 // ── Empty State ────────────────────────────────────────
 
 function EmptyState({ onOpenFilters }: { onOpenFilters: () => void }) {
+  const { t } = useTranslation();
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -676,17 +684,17 @@ function EmptyState({ onOpenFilters }: { onOpenFilters: () => void }) {
         <Sparkles size={80} style={{ color: '#BB83C9', opacity: 0.4 }} />
       </div>
       <h2 className="text-xl font-semibold text-[#232323] mb-2 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-        No one new around you
+        {t('discover.noOneNew')}
       </h2>
       <p className="text-sm text-center mb-6 max-w-[280px]" style={{ color: 'rgba(35,35,35,0.6)' }}>
-        Try expanding your filters or check back later — new people join every day.
+        {t('discover.tryExpanding')}
       </p>
       <button
         onClick={onOpenFilters}
         className="w-full max-w-[280px] h-12 rounded-full text-sm font-semibold text-[#232323] mb-3"
         style={{ backgroundColor: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(12px)', border: '1.5px solid rgba(35,35,35,0.1)' }}
       >
-        Adjust Filters
+        {t('discover.adjustFilters')}
       </button>
     </motion.div>
   );

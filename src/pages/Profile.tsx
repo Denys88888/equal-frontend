@@ -198,15 +198,15 @@ function SparkBalanceCard({ balance }: { balance: number }) {
       </p>
       <div className="mt-4 space-y-2">
         {[
-          { text: 'Verify your identity', amount: '+5 Sparks', done: true },
-          { text: 'Complete your profile', amount: '+3 Sparks', done: true },
-          { text: 'Join a club', amount: '+1 Spark/day', done: false },
-          { text: 'Invite a friend', amount: '+10 Sparks', done: false },
+          { text: 'profile2.taskVerify', amount: '+5 Sparks', done: true },
+          { text: 'profile2.taskComplete', amount: '+3 Sparks', done: true },
+          { text: 'profile2.taskClub', amount: '+1 Spark/day', done: false },
+          { text: 'profile2.taskInvite', amount: '+10 Sparks', done: false },
         ].map((item) => (
           <div key={item.text} className="flex items-center justify-between text-sm">
             <span className={item.done ? 'text-[#7DE0B3]' : 'text-[#232323]'} style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
               {item.done ? <Check size={14} className="inline mr-1" /> : <span className="inline mr-1 opacity-30">○</span>}
-              {item.text}
+              {t(item.text)}
             </span>
             <span className={item.done ? 'text-[#7DE0B3] font-medium' : 'text-[#232323] opacity-40'} style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
               {item.amount}
@@ -319,14 +319,14 @@ export default function Profile() {
   };
 
   const badges = [
-    { id: 'verified', name: 'Verified Identity', icon: Shield, color: '#7DE0B3', earned: true, desc: 'Complete selfie verification to earn this badge' },
-    { id: 'party', name: 'Life of the Party', icon: Sparkles, color: '#7BC4E8', earned: true, desc: 'Join 3+ clubs to earn this badge' },
-    { id: 'pro', name: 'Dating Pro', icon: Trophy, color: '#BB83C9', earned: true, desc: 'Complete 3 real meetups with positive feedback' },
-    { id: 'spark', name: 'Spark Giver', icon: Zap, color: '#FFD700', earned: false, desc: 'Send 10 Sparks to earn this badge' },
-    { id: 'chatty', name: 'Conversationalist', icon: MessageCircle, color: '#7DE0B3', earned: false, desc: 'Send 50 messages to earn this badge' },
-    { id: 'event', name: 'Event Goer', icon: Calendar, color: '#F0B84A', earned: false, desc: 'Attend 2 events to earn this badge' },
-    { id: 'profile', name: 'Profile Pro', icon: Award, color: '#7BC4E8', earned: true, desc: 'Complete 100% of your profile' },
-    { id: 'trust', name: 'Trust Builder', icon: Heart, color: '#BB83C9', earned: true, desc: 'Reach a Trust Score above 80' },
+    { id: 'verified', name: 'profile2.badgeVerified', icon: Shield, color: '#7DE0B3', earned: true, desc: 'profile2.badgeVerifiedDesc' },
+    { id: 'party', name: 'profile2.badgeParty', icon: Sparkles, color: '#7BC4E8', earned: true, desc: 'profile2.badgePartyDesc' },
+    { id: 'pro', name: 'profile2.badgePro', icon: Trophy, color: '#BB83C9', earned: true, desc: 'profile2.badgeProDesc' },
+    { id: 'spark', name: 'profile2.badgeSpark', icon: Zap, color: '#FFD700', earned: false, desc: 'profile2.badgeSparkDesc' },
+    { id: 'chatty', name: 'profile2.badgeChatty', icon: MessageCircle, color: '#7DE0B3', earned: false, desc: 'profile2.badgeChattyDesc' },
+    { id: 'event', name: 'profile2.badgeEvent', icon: Calendar, color: '#F0B84A', earned: false, desc: 'profile2.badgeEventDesc' },
+    { id: 'profile', name: 'profile2.badgeProfile', icon: Award, color: '#7BC4E8', earned: true, desc: 'profile2.badgeProfileDesc' },
+    { id: 'trust', name: 'profile2.badgeTrust', icon: Heart, color: '#BB83C9', earned: true, desc: 'profile2.badgeTrustDesc' },
   ];
 
   return (
@@ -433,20 +433,20 @@ export default function Profile() {
           {/* Score Breakdown */}
           <div className="grid grid-cols-3 gap-3 mt-5">
             {[
-              { icon: Shield, label: 'Verification', score: '+30', desc: 'Verify to earn', color: '#BB83C9' },
-              { icon: Flame, label: 'Activity', score: '+32', desc: 'Stay active', color: '#F0B84A' },
-              { icon: ThumbsUp, label: 'Feedback', score: '+20', desc: 'Get positive reviews', color: '#7DE0B3' },
+              { icon: Shield, label: 'profile2.scoreVerification', score: '+30', desc: 'profile2.scoreVerificationDesc', color: '#BB83C9' },
+              { icon: Flame, label: 'profile2.scoreActivity', score: '+32', desc: 'profile2.scoreActivityDesc', color: '#F0B84A' },
+              { icon: ThumbsUp, label: 'profile2.scoreFeedback', score: '+20', desc: 'profile2.scoreFeedbackDesc', color: '#7DE0B3' },
             ].map((item) => (
               <div key={item.label} className="flex flex-col items-center text-center">
                 <item.icon size={20} style={{ color: item.color }} strokeWidth={2} />
                 <span className="mt-1.5 text-xs font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                  {item.label}
+                  {t(item.label)}
                 </span>
                 <span className="text-xs font-bold" style={{ color: item.color, fontFamily: "'Outfit', system-ui, sans-serif" }}>
                   {item.score}
                 </span>
                 <span className="text-[10px] text-[#232323] opacity-40" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                  {item.desc}
+                  {t(item.desc)}
                 </span>
               </div>
             ))}
@@ -481,14 +481,14 @@ export default function Profile() {
             ) : (
               <div className="text-center py-4">
                 <p className="text-base text-[#232323] opacity-35" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                  Add a bio to help people get to know you
+                  {t('profile2.addBioHint')}
                 </p>
                 <button
                   onClick={() => { setEditBioText(''); setShowBioEdit(true); }}
                   className="mt-2 text-base font-semibold text-[#BB83C9]"
                   style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
                 >
-                  Add Bio
+                  {t('profile2.addBio')}
                 </button>
               </div>
             )}
@@ -518,7 +518,7 @@ export default function Profile() {
           {/* Dating Goals */}
           <div className="mb-2">
             <h4 className="text-base font-semibold text-[#232323] mb-3" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              Looking for
+              {t('profile2.lookingFor')}
             </h4>
             <div
               className="inline-flex items-center gap-2.5 px-4 py-3 rounded-[16px] bg-white border-2"
@@ -543,7 +543,7 @@ export default function Profile() {
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
               <h4 className="text-base font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                Photos
+                {t('profile2.photos')}
               </h4>
               <span className="text-xs text-[#232323] opacity-40" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                 {user.photos.length}/9
@@ -623,7 +623,7 @@ export default function Profile() {
                     )}
                   </div>
                   <span className="mt-2 text-xs font-semibold text-[#232323] text-center leading-tight" style={{ fontFamily: "'Outfit', system-ui, sans-serif", display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
-                    {badge.name}
+                    {t(badge.name)}
                   </span>
                 </motion.button>
               );
@@ -674,7 +674,7 @@ export default function Profile() {
           <Textarea
             value={editBioText}
             onChange={(e) => setEditBioText(e.target.value)}
-            placeholder="Tell people about yourself..."
+            placeholder={t('profile2.bioPlaceholder')}
             className="mt-2 min-h-[120px] rounded-xl border-[1.5px] border-transparent bg-[rgba(232,226,216,0.4)] text-base text-[#232323] placeholder:text-[#232323] placeholder:opacity-35 focus:border-[#BB83C3] focus:ring-[3px] focus:ring-[rgba(187,131,201,0.15)] resize-none"
             style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
           />
@@ -685,7 +685,7 @@ export default function Profile() {
               className="flex-1 h-12 rounded-full border border-[rgba(35,35,35,0.1)] bg-[rgba(255,255,255,0.72)] text-base font-semibold text-[#232323]"
               style={{ backdropFilter: 'blur(12px)', fontFamily: "'Outfit', system-ui, sans-serif" }}
             >
-              Cancel
+              {t('profile2.cancel')}
             </motion.button>
             <motion.button
               whileTap={{ scale: 0.97 }}
@@ -716,10 +716,10 @@ export default function Profile() {
                     <Icon size={32} style={{ color: badge.earned ? badge.color : '#999' }} strokeWidth={2} />
                   </div>
                   <h3 className="text-lg font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                    {badge.name}
+                    {t(badge.name)}
                   </h3>
                   <p className="mt-2 text-sm text-[#232323] opacity-60" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                    {badge.desc}
+                    {t(badge.desc)}
                   </p>
                   <div className="mt-3 inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold" style={{
                     backgroundColor: badge.earned ? 'rgba(125,224,179,0.15)' : 'rgba(240,184,74,0.15)',

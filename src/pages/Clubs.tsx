@@ -496,6 +496,7 @@ function ClubDetail({
   onBack: () => void;
   onUpdateClub: (updated: Club) => void;
 }) {
+  const { t } = useTranslation();
   const [detailTab, setDetailTab] = useState<'feed' | 'chat' | 'members'>('feed');
   const [newPostText, setNewPostText] = useState('');
   const [chatInput, setChatInput] = useState('');
@@ -707,7 +708,7 @@ function ClubDetail({
                   value={chatInput}
                   onChange={(e) => setChatInput(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
-                  placeholder="Type a message..."
+                  placeholder={t('clubs.typeMessage')}
                   className="flex-1 rounded-full px-4 py-2.5 text-sm outline-none"
                   style={{ backgroundColor: 'rgba(232,226,216,0.4)', color: '#232323' }}
                 />
@@ -782,14 +783,14 @@ function ClubDetail({
         <SheetContent side="bottom" className="rounded-t-[24px] p-6 max-h-[80vh]" style={{ backgroundColor: '#fff' }}>
           <SheetHeader>
             <SheetTitle className="text-xl font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              New Post
+              {t('clubs.newPost')}
             </SheetTitle>
           </SheetHeader>
           <div className="mt-4">
             <textarea
               value={newPostText}
               onChange={(e) => setNewPostText(e.target.value)}
-              placeholder="Share something with the club..."
+              placeholder={t('clubs.sharePost')}
               className="w-full rounded-xl p-4 text-base outline-none resize-none"
               style={{ backgroundColor: 'rgba(232,226,216,0.3)', minHeight: 100, color: '#232323' }}
             />
@@ -950,7 +951,7 @@ export default function Clubs() {
                       className="mt-4 px-6 py-3 rounded-full text-sm font-semibold text-white"
                       style={{ backgroundColor: '#BB83C9' }}
                     >
-                      Explore Clubs
+                      {t('clubs.exploreClubs')}
                     </button>
                   </div>
                 ) : (
@@ -986,7 +987,7 @@ export default function Clubs() {
                         <h4 className="text-base font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                           {category}
                         </h4>
-                        <button className="text-sm font-semibold text-[#BB83C9]">See all</button>
+                        <button className="text-sm font-semibold text-[#BB83C9]">{t('clubs.seeAll')}</button>
                       </div>
                       <div className="flex gap-3 px-5 overflow-x-auto pb-2">
                         {catClubs.map((club) => (
@@ -1010,7 +1011,7 @@ export default function Clubs() {
                   style={{ borderColor: '#BB83C9', backgroundColor: '#FFFFFF' }}
                 >
                   <Plus size={32} className="text-[#BB83C9]" />
-                  <span className="text-base font-semibold text-[#232323]">Create your own club</span>
+                  <span className="text-base font-semibold text-[#232323]">{t('clubs.createYourOwn')}</span>
                   <span className="text-xs" style={{ color: 'rgba(35,35,35,0.4)' }}>It&apos;s free!</span>
                 </motion.button>
               </motion.div>
@@ -1034,7 +1035,7 @@ export default function Clubs() {
           <DialogContent className="rounded-[20px] max-w-[340px] p-6 border-0" style={{ backgroundColor: '#FFFFFF' }}>
             <DialogHeader>
               <DialogTitle className="text-xl font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                Create a Club
+                {t('clubs.createClub')}
               </DialogTitle>
             </DialogHeader>
             <div className="flex flex-col gap-4 mt-2">

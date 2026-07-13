@@ -340,6 +340,7 @@ function FeaturedEventCard({
   onToggleGoing: () => void;
   onClick: () => void;
 }) {
+  const { t } = useTranslation();
   return (
     <motion.button
       whileTap={{ scale: 0.98 }}
@@ -353,7 +354,7 @@ function FeaturedEventCard({
 
       {/* Featured Badge */}
       <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#BB83C9] text-white text-xs font-semibold">
-        Featured
+        {t('events.featured')}
       </div>
 
       {/* RSVP Button */}
@@ -417,6 +418,7 @@ function EventDetailSheet({
   onToggleGoing: () => void;
   onToggleInterested: () => void;
 }) {
+  const { t } = useTranslation();
   const [showPayment, setShowPayment] = useState(false);
   const [paymentStep, setPaymentStep] = useState<'initial' | 'processing' | 'success'>('initial');
   const [feedback, setFeedback] = useState<'great' | 'okay' | 'missed' | null>(null);
@@ -514,7 +516,7 @@ function EventDetailSheet({
                 <p className="text-sm font-semibold text-[#232323]">{event.venue}</p>
                 <p className="text-xs" style={{ color: 'rgba(35,35,35,0.5)' }}>{event.location}</p>
               </div>
-              <span className="text-sm font-semibold text-[#BB83C9]">Get directions</span>
+              <span className="text-sm font-semibold text-[#BB83C9]">{t('events.getDirections')}</span>
             </div>
           </div>
 
@@ -524,7 +526,7 @@ function EventDetailSheet({
               <h4 className="text-base font-semibold text-[#232323]">
                 {event.attendees.length + 12} people going
               </h4>
-              <button className="text-sm font-semibold text-[#BB83C9]">See all</button>
+              <button className="text-sm font-semibold text-[#BB83C9]">{t('events.seeAll')}</button>
             </div>
             <div className="flex items-center mt-3">
               <div className="flex -space-x-2.5">
@@ -545,7 +547,7 @@ function EventDetailSheet({
           <div className="mt-4 flex items-center gap-3 p-3 rounded-2xl" style={{ backgroundColor: 'rgba(232,226,216,0.3)' }}>
             <AttendeeAvatar initials="EQ" size={40} />
             <div>
-              <p className="text-sm font-semibold text-[#232323]">Equal Events Team</p>
+              <p className="text-sm font-semibold text-[#232323]">{t('events.organizer')}</p>
               <span className="text-[11px] px-2 py-0.5 rounded-full font-semibold" style={{ backgroundColor: 'rgba(187,131,201,0.15)', color: '#9A63A8' }}>
                 Host
               </span>
@@ -565,7 +567,7 @@ function EventDetailSheet({
                   className="px-6 py-3 rounded-full text-sm font-semibold text-white"
                   style={{ backgroundColor: '#BB83C9', boxShadow: '0 4px 16px rgba(187,131,201,0.3)' }}
                 >
-                  Buy Ticket
+                  {t('events.buyTicket')}
                 </button>
               </div>
             </div>
@@ -621,7 +623,7 @@ function EventDetailSheet({
           {/* Post-Event Feedback */}
           {isGoing && (
             <div className="mt-5 p-4 rounded-2xl" style={{ backgroundColor: 'rgba(232,226,216,0.3)' }}>
-              <h4 className="text-base font-semibold text-[#232323]">How was the event?</h4>
+              <h4 className="text-base font-semibold text-[#232323]">{t('events.howWasEvent')}</h4>
               <p className="text-sm mt-1" style={{ color: 'rgba(35,35,35,0.6)' }}>Your feedback helps our community</p>
               {!feedbackSubmitted ? (
                 <>
@@ -634,7 +636,7 @@ function EventDetailSheet({
                         borderColor: feedback === 'great' ? '#7DE0B3' : 'transparent',
                       }}
                     >
-                      Yes, great connections!
+                      {t('events.greatConnections')}
                     </button>
                     <button
                       onClick={() => setFeedback('okay')}
@@ -644,7 +646,7 @@ function EventDetailSheet({
                         borderColor: feedback === 'okay' ? '#F0B84A' : 'transparent',
                       }}
                     >
-                      It was okay
+                      {t('events.itWasOkay')}
                     </button>
                     <button
                       onClick={() => setFeedback('missed')}
@@ -665,7 +667,7 @@ function EventDetailSheet({
                       className="w-full mt-3 py-3 rounded-full text-sm font-semibold text-white"
                       style={{ backgroundColor: '#BB83C9' }}
                     >
-                      Submit Feedback
+                      {t('events.submitFeedback')}
                     </motion.button>
                   )}
                 </>
@@ -676,7 +678,7 @@ function EventDetailSheet({
                   className="text-sm mt-2 font-medium"
                   style={{ color: '#5BC492' }}
                 >
-                  Thanks for your feedback! Your Trust Score appreciates it.
+                  {t('events.thanksFeedback')}
                 </motion.p>
               )}
             </div>
@@ -688,7 +690,7 @@ function EventDetailSheet({
       <Sheet open={showPayment} onOpenChange={(open) => !open && setShowPayment(false)}>
         <SheetContent side="bottom" className="rounded-t-[24px] p-6" style={{ backgroundColor: '#fff' }}>
           <SheetHeader>
-            <SheetTitle className="text-xl font-semibold text-[#232323]">Complete Payment</SheetTitle>
+            <SheetTitle className="text-xl font-semibold text-[#232323]">{t('events.completePayment')}</SheetTitle>
           </SheetHeader>
           <div className="mt-6 flex flex-col items-center">
             {paymentStep === 'initial' && (
@@ -720,7 +722,7 @@ function EventDetailSheet({
                   className="w-full py-4 rounded-full text-base font-semibold text-white"
                   style={{ backgroundColor: '#BB83C9', boxShadow: '0 4px 16px rgba(187,131,201,0.3)' }}
                 >
-                  Pay with Pi
+                  {t('events.payWithPi')}
                 </button>
               </motion.div>
             )}
@@ -731,7 +733,7 @@ function EventDetailSheet({
                 className="flex flex-col items-center py-8"
               >
                 <div className="w-12 h-12 border-3 border-[#BB83C9] border-t-transparent rounded-full animate-spin" />
-                <p className="mt-4 text-base font-medium text-[#232323]">Processing payment...</p>
+                <p className="mt-4 text-base font-medium text-[#232323]">{t('events.processingPayment')}</p>
               </motion.div>
             )}
             {paymentStep === 'success' && (
@@ -744,9 +746,9 @@ function EventDetailSheet({
                 <div className="w-16 h-16 rounded-full bg-[#7DE0B3] flex items-center justify-center mb-4">
                   <Check size={32} className="text-[#232323]" strokeWidth={2.5} />
                 </div>
-                <h3 className="text-xl font-bold text-[#232323]">Payment Successful!</h3>
+                <h3 className="text-xl font-bold text-[#232323]">{t('events.paymentSuccess')}</h3>
                 <p className="text-sm mt-2 text-center" style={{ color: 'rgba(35,35,35,0.6)' }}>
-                  Your ticket is confirmed. See you there!
+                  {t('events.ticketConfirmed')}
                 </p>
               </motion.div>
             )}
@@ -905,9 +907,9 @@ export default function Events() {
                 {filteredEvents.length === 0 && (
                   <div className="flex flex-col items-center justify-center py-16">
                     <img src="./empty-events.png" alt="" className="w-40 h-40 mb-4 object-contain" />
-                    <h2 className="text-xl font-semibold text-[#232323]">No events found</h2>
+                    <h2 className="text-xl font-semibold text-[#232323]">{t('events.noEvents')}</h2>
                     <p className="text-sm mt-2 text-center" style={{ color: 'rgba(35,35,35,0.6)' }}>
-                      Try a different category or check back later.
+                      {t('events.tryCategory')}
                     </p>
                   </div>
                 )}
@@ -925,7 +927,7 @@ export default function Events() {
                 {interestedEventsList.length === 0 ? (
                   <div className="flex flex-col items-center justify-center py-16">
                     <Star size={48} style={{ color: 'rgba(35,35,35,0.15)' }} />
-                    <h2 className="text-xl font-semibold text-[#232323] mt-4">No saved events</h2>
+                    <h2 className="text-xl font-semibold text-[#232323] mt-4">{t('events.noSaved')}</h2>
                     <p className="text-sm mt-2 text-center max-w-[260px]" style={{ color: 'rgba(35,35,35,0.6)' }}>
                       Tap the star icon on events you&apos;re interested in to save them here.
                     </p>
@@ -934,7 +936,7 @@ export default function Events() {
                       className="mt-4 px-6 py-3 rounded-full text-sm font-semibold text-white"
                       style={{ backgroundColor: '#BB83C9' }}
                     >
-                      Browse Events
+                      {t('events.browseEvents')}
                     </button>
                   </div>
                 ) : (
@@ -981,7 +983,7 @@ export default function Events() {
                 ))}
                 {goingEvents.size > 0 && !feedbackSubmitted() && (
                   <div className="mt-2 p-4 rounded-2xl bg-[#F0B84A15] border border-[#F0B84A40]">
-                    <p className="text-sm font-semibold text-[#232323]">Leave feedback for past events</p>
+                    <p className="text-sm font-semibold text-[#232323]">{t('events.leaveFeedback')}</p>
                     <p className="text-xs mt-1" style={{ color: 'rgba(35,35,35,0.6)' }}>Your feedback helps improve our community</p>
                   </div>
                 )}

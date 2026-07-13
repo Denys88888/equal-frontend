@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useState, type ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -98,6 +99,7 @@ function OfferCard({
   index: number;
   onDismiss?: () => void;
 }) {
+  const { t } = useTranslation();
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -147,7 +149,7 @@ function OfferCard({
             className="text-[10px] font-semibold text-white uppercase tracking-wide"
             style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
           >
-            Partner
+            {t('offers.partner')}
           </span>
         </div>
       </div>
@@ -188,7 +190,7 @@ function OfferCard({
             fontFamily: "'Outfit', system-ui, sans-serif",
           }}
         >
-          {expanded ? 'Hide Details' : 'View Details'}
+          {expanded ? t('offers.hideDetails') : t('offers.viewDetails')}
           {expanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </motion.button>
 
@@ -205,7 +207,7 @@ function OfferCard({
                 {/* Discount Code */}
                 <div className="bg-[#BB83C9]/10 rounded-xl p-3 text-center">
                   <span className="text-[10px] font-semibold uppercase tracking-wider text-[#BB83C9]">
-                    Discount Code
+                    {t('offers.discountCode')}
                   </span>
                   <p
                     className="text-xl font-bold text-[#232323] mt-1 tracking-[2px]"
@@ -295,7 +297,7 @@ function OfferCard({
               border: 'none',
             }}
           >
-            Not interested
+            {t('offers.notInterested')}
           </motion.button>
         )}
       </div>
@@ -310,6 +312,7 @@ interface PartnerOffersProps {
 }
 
 export default function PartnerOffers({ onDismiss }: PartnerOffersProps) {
+  const { t } = useTranslation();
   const [dismissedCardIds, setDismissedCardIds] = useState<string[]>([]);
   const handleCardDismiss = (id: string) =>
     setDismissedCardIds((prev) => [...prev, id]);
@@ -327,7 +330,7 @@ export default function PartnerOffers({ onDismiss }: PartnerOffersProps) {
             letterSpacing: '0.44px',
           }}
         >
-          Partner Offers
+          {t('offers.partnerOffers')}
         </span>
         {onDismiss && (
           <motion.button

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -18,6 +19,7 @@ function formatTimer(s: number) {
 }
 
 export default function VideoCall() {
+  const { t } = useTranslation();
   const { matchId } = useParams<{ matchId: string }>();
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -176,11 +178,11 @@ export default function VideoCall() {
     setIsCameraOff(c => !c);
   };
 
-  const statusText = callState === 'connecting' ? 'Connecting...'
-    : callState === 'ringing' ? 'Ringing...'
-    : callState === 'connected' ? 'In call'
+  const statusText = callState === 'connecting' ? t('video.connecting')
+    : callState === 'ringing' ? t('video.ringing')
+    : callState === 'connected' ? t('video.inCall')
     : callState === 'error' ? errorMsg
-    : 'Call ended';
+    : t('video.callEnded');
 
   return (
     <div className="min-h-[100dvh] w-full flex justify-center" style={{ backgroundColor: '#000' }}>
@@ -276,7 +278,7 @@ export default function VideoCall() {
                   <PhoneOff size={32} className="text-white" />
                 </div>
                 <h3 className="text-2xl font-semibold text-white" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                  {callState === 'error' ? 'Call failed' : 'Call ended'}
+                  {callState === 'error' ? t('video.callFailed') : t('video.callEnded')}
                 </h3>
                 {callState === 'ended' && (
                   <p className="text-sm" style={{ color: 'rgba(255,255,255,0.6)', fontFamily: "ui-monospace, monospace" }}>
@@ -291,7 +293,7 @@ export default function VideoCall() {
                 <motion.button whileTap={{ scale: 0.97 }} onClick={() => navigate(`/chat/${matchId}`)}
                   className="mt-4 px-8 py-3 rounded-full text-base font-semibold"
                   style={{ backgroundColor: '#BB83C9', color: '#FFF', fontFamily: "'Outfit', sans-serif", boxShadow: '0 4px 16px rgba(187,131,201,0.4)' }}>
-                  Back to chat
+                  {t('video.backToChat')}
                 </motion.button>
               </motion.div>
             </motion.div>

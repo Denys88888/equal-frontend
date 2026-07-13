@@ -130,6 +130,7 @@ function ConversationRow({
   index: number;
   onDelete: (id: string) => void;
 }) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [isDeleting, setIsDeleting] = useState(false);
   const x = useRef(0);
@@ -201,7 +202,7 @@ function ConversationRow({
               className="flex items-center gap-2 text-white font-semibold text-sm"
             >
               <Trash2 size={18} />
-              Delete
+              {t('matches.delete')}
             </button>
           </motion.div>
         )}
@@ -332,6 +333,7 @@ function MatchCelebration({
   matchName: string;
   onClose: () => void;
 }) {
+  const { t } = useTranslation();
   const [showOffer, setShowOffer] = useState(false);
   const _navigate = useNavigate();
   void _navigate;
@@ -458,7 +460,7 @@ function MatchCelebration({
             fontFamily: "'Outfit', system-ui, sans-serif",
           }}
         >
-          Send a Message
+          {t('matches.sendMessage')}
         </motion.button>
       </motion.div>
 
@@ -508,7 +510,7 @@ function MatchCelebration({
                   className="text-[10px] font-semibold text-white uppercase tracking-wide"
                   style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
                 >
-                  Celebrate your match!
+                  {t('matches.celebrate')}
                 </span>
               </div>
 
@@ -533,7 +535,7 @@ function MatchCelebration({
                   color: 'rgba(35,35,35,0.65)',
                 }}
               >
-                Perfect for your first date. Romantic atmosphere and candlelight dinner.
+                {t('matches.restaurantOffer')}
               </p>
 
               {/* Buttons */}
@@ -548,7 +550,7 @@ function MatchCelebration({
                     boxShadow: '0 4px 16px rgba(187,131,201,0.3)',
                   }}
                 >
-                  Book Now
+                  {t('matches.bookNow')}
                   <ExternalLink size={14} strokeWidth={2} />
                 </motion.button>
 
@@ -564,7 +566,7 @@ function MatchCelebration({
                     border: 'none',
                   }}
                 >
-                  Maybe later
+                  {t('matches.maybeLater')}
                 </motion.button>
               </div>
             </div>
@@ -702,7 +704,7 @@ export default function Matches() {
                     <Search size={18} style={{ color: 'rgba(35,35,35,0.35)' }} />
                     <input
                       type="text"
-                      placeholder="Search matches..."
+                      placeholder={t('matches.searchPlaceholder')}
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       className="flex-1 bg-transparent text-base text-[#232323] placeholder:text-[rgba(35,35,35,0.35)] outline-none"
@@ -810,14 +812,14 @@ export default function Matches() {
               style={{ boxShadow: '0 -4px 24px rgba(0,0,0,0.04)' }}
             >
               <p className="text-sm text-center mb-4" style={{ color: 'rgba(35,35,35,0.5)' }}>
-                Start a conversation with one of your new matches!
+                {t('matches.startConvo')}
               </p>
               <button
                 onClick={() => navigate(`/chat/${newMatches[0].id}`)}
                 className="h-12 px-8 rounded-full text-sm font-semibold text-white"
                 style={{ backgroundColor: '#BB83C9', boxShadow: '0 4px 16px rgba(187,131,201,0.3)' }}
               >
-                Say Hello
+                {t('matches.sayHello')}
               </button>
             </div>
           )}
