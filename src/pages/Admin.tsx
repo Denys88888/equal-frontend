@@ -821,14 +821,14 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
 
   const handleAwardBadge = () => {
     if (!awardUser || !awardBadge) return;
-    showToast(`Awarded "${awardBadge}" to ${awardUser}`);
+    showToast(t('admin.badgeAwarded', { badge: awardBadge, user: awardUser }));
     setAwardUser('');
     setAwardBadge('');
   };
 
   const handleAdjustTrust = () => {
     if (!trustUser) return;
-    showToast(`Trust score adjusted to ${trustScoreValue} for ${trustUser}`);
+    showToast(t('admin.trustAdjusted', { score: trustScoreValue, user: trustUser }));
     setTrustUser('');
   };
 

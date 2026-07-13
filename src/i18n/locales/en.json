@@ -529,7 +529,9 @@
     "eventDeleted": "Event deleted",
     "editModeOpened": "Edit mode",
     "eventFeatured": "Event featured",
-    "eventUnfeatured": "Event unfeatured"
+    "eventUnfeatured": "Event unfeatured",
+    "badgeAwarded": "Awarded \"{{badge}}\" to {{user}}",
+    "trustAdjusted": "Trust score set to {{score}} for {{user}}"
   },
   "legal": {
     "termsTitle": "Terms of Service",

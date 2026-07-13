@@ -529,7 +529,9 @@
     "eventDeleted": "Событие удалено",
     "editModeOpened": "Режим редактирования",
     "eventFeatured": "Событие выделено",
-    "eventUnfeatured": "Выделение снято"
+    "eventUnfeatured": "Выделение снято",
+    "badgeAwarded": "Бейдж \"{{badge}}\" присвоен {{user}}",
+    "trustAdjusted": "Траст-счёт {{score}} установлен для {{user}}"
   },
   "legal": {
     "termsTitle": "Условия использования",
