@@ -589,7 +589,7 @@ function ClubDetail({
           {club.name}
         </h1>
         <p className="text-sm mt-1" style={{ color: 'rgba(35,35,35,0.5)' }}>
-          {club.memberCount} members &bull; {posts.length} posts
+          {t('clubs.membersPosts', { members: club.memberCount, posts: posts.length })}
         </p>
         <button
           onClick={toggleJoin}
@@ -600,7 +600,7 @@ function ClubDetail({
             border: joined ? '1.5px solid #BB83C9' : 'none',
           }}
         >
-          {joined ? 'Leave' : 'Join Club'}
+          {joined ? t('clubs.leave') : t('clubs.joinClub')}
         </button>
       </div>
 
@@ -615,7 +615,7 @@ function ClubDetail({
               color: detailTab === tab ? '#232323' : 'rgba(35,35,35,0.4)',
             }}
           >
-            {tab}
+            {t(`clubs.tab_${tab}`)}
             {detailTab === tab && (
               <motion.div
                 layoutId="club-tab-indicator"
@@ -648,7 +648,7 @@ function ClubDetail({
               ))}
               {posts.length === 0 && (
                 <div className="flex flex-col items-center justify-center py-16">
-                  <p className="text-sm" style={{ color: 'rgba(35,35,35,0.5)' }}>No posts yet. Be the first!</p>
+                  <p className="text-sm" style={{ color: 'rgba(35,35,35,0.5)' }}>{t('clubs.noPosts')}</p>
                 </div>
               )}
             </motion.div>
@@ -748,14 +748,14 @@ function ClubDetail({
                         color: member.role === 'admin' ? '#9A63A8' : member.role === 'moderator' ? '#5AA8D0' : 'rgba(35,35,35,0.4)',
                       }}
                     >
-                      {member.role}
+                      {t(`clubs.role_${member.role}`, { defaultValue: member.role })}
                     </span>
                   </div>
                   <button
                     className="px-3 py-1.5 rounded-full text-xs font-semibold text-white"
                     style={{ backgroundColor: '#BB83C9' }}
                   >
-                    Meet
+                    {t('clubs.meet')}
                   </button>
                 </div>
               ))}
@@ -797,7 +797,7 @@ function ClubDetail({
             <div className="flex items-center justify-between mt-4">
               <button className="flex items-center gap-2 px-4 py-2 rounded-full" style={{ backgroundColor: 'rgba(232,226,216,0.4)' }}>
                 <Camera size={18} style={{ color: 'rgba(35,35,35,0.4)' }} />
-                <span className="text-xs font-medium" style={{ color: 'rgba(35,35,35,0.4)' }}>Photo</span>
+                <span className="text-xs font-medium" style={{ color: 'rgba(35,35,35,0.4)' }}>{t('clubs.photo')}</span>
               </button>
               <button
                 onClick={handleCreatePost}
@@ -805,7 +805,7 @@ function ClubDetail({
                 className="px-6 py-3 rounded-full text-sm font-semibold text-white disabled:opacity-40"
                 style={{ backgroundColor: '#BB83C9' }}
               >
-                Post
+                {t('clubs.post')}
               </button>
             </div>
           </div>
@@ -1012,7 +1012,7 @@ export default function Clubs() {
                 >
                   <Plus size={32} className="text-[#BB83C9]" />
                   <span className="text-base font-semibold text-[#232323]">{t('clubs.createYourOwn')}</span>
-                  <span className="text-xs" style={{ color: 'rgba(35,35,35,0.4)' }}>It&apos;s free!</span>
+                  <span className="text-xs" style={{ color: 'rgba(35,35,35,0.4)' }}>{t('clubs.itsFree')}</span>
                 </motion.button>
               </motion.div>
             )}

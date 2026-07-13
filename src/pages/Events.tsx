@@ -262,6 +262,7 @@ function EventListCard({
   onClick: () => void;
   isGoing: boolean;
 }) {
+  const { t } = useTranslation();
   const catColor = categoryColors[event.category] || '#BB83C9';
 
   return (
@@ -303,7 +304,7 @@ function EventListCard({
             className="text-[11px] px-2 py-0.5 rounded-full font-semibold"
             style={{ backgroundColor: `${catColor}20`, color: catColor }}
           >
-            {event.category}
+            {t(`events.cat_${event.category.toLowerCase()}`, { defaultValue: event.category })}
           </span>
           <span className="text-sm font-semibold" style={{ color: event.price === 0 ? '#5BC492' : '#BB83C9' }}>
             {event.price === 0 ? 'Free' : `${event.price} Pi`}
@@ -475,7 +476,7 @@ function EventDetailSheet({
               className="text-[11px] px-2.5 py-1 rounded-full font-semibold uppercase"
               style={{ backgroundColor: `${catColor}25`, color: catColor }}
             >
-              {event.category}
+              {t(`events.cat_${event.category.toLowerCase()}`, { defaultValue: event.category })}
             </span>
           </div>
         </div>
@@ -549,7 +550,7 @@ function EventDetailSheet({
             <div>
               <p className="text-sm font-semibold text-[#232323]">{t('events.organizer')}</p>
               <span className="text-[11px] px-2 py-0.5 rounded-full font-semibold" style={{ backgroundColor: 'rgba(187,131,201,0.15)', color: '#9A63A8' }}>
-                Host
+                {t('events.host')}
               </span>
             </div>
           </div>
@@ -581,8 +582,8 @@ function EventDetailSheet({
               className="mt-5 p-4 rounded-2xl border-2 border-dashed"
               style={{ backgroundColor: 'rgba(125,224,179,0.15)', borderColor: '#7DE0B3' }}
             >
-              <p className="text-sm font-semibold text-[#232323]">🎉 You&apos;re going!</p>
-              <p className="text-xs mt-1" style={{ color: 'rgba(35,35,35,0.6)' }}>Show this at the door</p>
+              <p className="text-sm font-semibold text-[#232323]">{t('events.youreGoing')}</p>
+              <p className="text-xs mt-1" style={{ color: 'rgba(35,35,35,0.6)' }}>{t('events.showAtDoor')}</p>
               <div className="mt-3 p-3 bg-white rounded-xl flex items-center justify-center gap-2">
                 <div className="grid grid-cols-5 gap-1">
                   {Array.from({ length: 25 }).map((_, i) => (
@@ -616,7 +617,7 @@ function EventDetailSheet({
               }}
             >
               <Star size={16} fill={isInterested ? '#F0B84A' : 'none'} />
-              {isInterested ? 'Interested' : 'Save'}
+              {isInterested ? t('events.interested') : t('events.save')}
             </button>
           </div>
 
@@ -624,7 +625,7 @@ function EventDetailSheet({
           {isGoing && (
             <div className="mt-5 p-4 rounded-2xl" style={{ backgroundColor: 'rgba(232,226,216,0.3)' }}>
               <h4 className="text-base font-semibold text-[#232323]">{t('events.howWasEvent')}</h4>
-              <p className="text-sm mt-1" style={{ color: 'rgba(35,35,35,0.6)' }}>Your feedback helps our community</p>
+              <p className="text-sm mt-1" style={{ color: 'rgba(35,35,35,0.6)' }}>{t('events.feedbackHelps')}</p>
               {!feedbackSubmitted ? (
                 <>
                   <div className="flex flex-col gap-2 mt-3">
@@ -656,7 +657,7 @@ function EventDetailSheet({
                         borderColor: feedback === 'missed' ? '#E86A6A' : 'transparent',
                       }}
                     >
-                      Couldn&apos;t make it
+                      {t('events.missedIt')}
                     </button>
                   </div>
                   {feedback && (
@@ -705,15 +706,15 @@ function EventDetailSheet({
                 </div>
                 <div className="p-4 rounded-2xl mb-4" style={{ backgroundColor: 'rgba(232,226,216,0.3)' }}>
                   <div className="flex justify-between text-sm mb-2">
-                    <span style={{ color: 'rgba(35,35,35,0.6)' }}>Ticket</span>
+                    <span style={{ color: 'rgba(35,35,35,0.6)' }}>{t('events.ticket')}</span>
                     <span className="font-medium text-[#232323]">{event.title}</span>
                   </div>
                   <div className="flex justify-between text-sm mb-2">
-                    <span style={{ color: 'rgba(35,35,35,0.6)' }}>Date</span>
+                    <span style={{ color: 'rgba(35,35,35,0.6)' }}>{t('events.date')}</span>
                     <span className="font-medium text-[#232323]">{event.date}</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span style={{ color: 'rgba(35,35,35,0.6)' }}>Total</span>
+                    <span style={{ color: 'rgba(35,35,35,0.6)' }}>{t('events.total')}</span>
                     <span className="font-bold text-[#232323]">{event.price} Pi</span>
                   </div>
                 </div>
