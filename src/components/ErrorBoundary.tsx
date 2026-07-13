@@ -1,6 +1,7 @@
 import { Component, type ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { AlertTriangle, Home, RotateCw, ChevronDown, ChevronUp } from 'lucide-react';
+import i18n from '@/i18n';
 
 const easeOutExpo = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
@@ -73,7 +74,7 @@ export default class ErrorBoundary extends Component<Props, State> {
               className="text-2xl font-bold text-[#232323] mb-2"
               style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
             >
-              Something went wrong
+              {i18n.t('error.title')}
             </motion.h1>
 
             {/* Subtitle */}
@@ -84,7 +85,7 @@ export default class ErrorBoundary extends Component<Props, State> {
               className="text-sm text-[#232323] opacity-50 mb-8 max-w-[280px]"
               style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}
             >
-              We&apos;re sorry, but an unexpected error occurred. You can try reloading the app or go back home.
+              {i18n.t('error.subtitle')}
             </motion.p>
 
             {/* Error Details - Collapsible */}
@@ -100,7 +101,7 @@ export default class ErrorBoundary extends Component<Props, State> {
                   className="w-full flex items-center justify-center gap-1.5 py-2 text-xs font-medium text-[#BB83C9] opacity-70 hover:opacity-100 transition-opacity"
                   style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
                 >
-                  Error details
+                  {i18n.t('error.details')}
                   {this.state.showDetails ? (
                     <ChevronUp size={14} strokeWidth={2} />
                   ) : (
@@ -146,7 +147,7 @@ export default class ErrorBoundary extends Component<Props, State> {
                 }}
               >
                 <RotateCw size={18} strokeWidth={2} />
-                Reload App
+                {i18n.t('error.reload')}
               </motion.button>
 
               <motion.button
@@ -159,7 +160,7 @@ export default class ErrorBoundary extends Component<Props, State> {
                 }}
               >
                 <Home size={18} strokeWidth={2} />
-                Go Home
+                {i18n.t('error.goHome')}
               </motion.button>
             </motion.div>
 

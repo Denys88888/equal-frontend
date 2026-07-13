@@ -577,5 +577,12 @@
     "title": "Notifications",
     "markAllRead": "Mark all read",
     "empty": "No notifications yet"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "subtitle": "We're sorry, but an unexpected error occurred. You can try reloading the app or go back home.",
+    "details": "Error details",
+    "reload": "Reload App",
+    "goHome": "Go Home"
   }
 }
