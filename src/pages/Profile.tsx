@@ -309,7 +309,21 @@ export default function Profile() {
   const trustZone = user.trustScore <= 40 ? t('profile2.trustLow') : user.trustScore <= 75 ? t('profile2.trustMid') : t('profile2.trustHigh');
   const trustZoneColor = user.trustScore <= 40 ? '#E86A6A' : user.trustScore <= 75 ? '#F0B84A' : '#7DE0B3';
 
-  const goalInfo = goalConfig[user.goals] || goalConfig['Not sure yet'];
+  // Onboarding stores goal ids (serious/casual/interest/notsure); older data may hold full labels
+  const GOAL_ID_TO_LABEL: Record<string, string> = {
+    serious: 'Serious relationship',
+    casual: 'Casual dating',
+    interest: 'Interest-based connections',
+    notsure: 'Not sure yet',
+  };
+  const goalLabel = GOAL_ID_TO_LABEL[user.goals] ?? user.goals;
+  const GOAL_LABEL_TO_KEY: Record<string, string> = {
+    'Serious relationship': 'onboarding.goalSerious',
+    'Casual dating': 'onboarding.goalCasual',
+    'Interest-based connections': 'onboarding.goalInterest',
+    'Not sure yet': 'onboarding.goalNotsure',
+  };
+  const goalInfo = goalConfig[goalLabel] || goalConfig['Not sure yet'];
   const GoalIcon = goalInfo.icon;
 
   const handleSaveBio = async () => {
@@ -512,7 +526,7 @@ export default function Profile() {
                   className="inline-flex items-center px-3.5 py-1.5 rounded-full text-sm text-[#232323]"
                   style={{ backgroundColor: '#E8E2D8', fontFamily: "'Outfit', system-ui, sans-serif" }}
                 >
-                  {interest}
+                  {t(`onboarding.int_${interest.toLowerCase()}`, { defaultValue: interest })}
                 </span>
               ))}
             </div>
@@ -529,7 +543,7 @@ export default function Profile() {
             >
               <GoalIcon size={20} style={{ color: goalInfo.color }} strokeWidth={2} />
               <span className="text-sm font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                {user.goals}
+                {t(GOAL_LABEL_TO_KEY[goalLabel] ?? '', { defaultValue: goalLabel })}
               </span>
             </div>
           </div>
