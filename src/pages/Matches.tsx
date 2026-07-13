@@ -1,14 +1,13 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence, type PanInfo } from 'framer-motion';
-import { Search, SlidersHorizontal, Trash2, Circle, Sparkles, ExternalLink, X, Utensils } from 'lucide-react';
+import { Search, Trash2, Circle, Sparkles, ExternalLink, X, Utensils } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useTranslation } from 'react-i18next';
 import Layout from '@/components/Layout';
 import PartnerOffers from '@/components/PartnerOffers';
 import SkeletonLoader from '@/components/SkeletonLoader';
 import { matchesApi } from '@/api/matches';
-import { useToast } from '@/hooks/useToast';
 
 // ── Types ──────────────────────────────────────────────
 
@@ -582,7 +581,6 @@ function MatchCelebration({
 export default function Matches() {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { showToast } = useToast();
   const [matches, setMatches] = useState<Match[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [showSearch, setShowSearch] = useState(false);
