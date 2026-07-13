@@ -626,13 +626,6 @@ export default function Matches() {
     }
   }, []);
 
-  const handleSimulateMatch = useCallback(() => {
-    const names = ['Ava', 'Mia', 'Isabella', 'Zoe', 'Luna', 'Chloe'];
-    const randomName = names[Math.floor(Math.random() * names.length)];
-    setCelebrationMatch(randomName);
-    showToast('match', `It's a Match with ${randomName}! 🎉`);
-  }, [showToast]);
-
   const handleCloseCelebration = useCallback(() => {
     setCelebrationMatch(null);
   }, []);
@@ -659,28 +652,11 @@ export default function Matches() {
           <div className="flex items-center gap-2">
             <motion.button
               whileTap={{ scale: 0.9 }}
-              onClick={handleSimulateMatch}
-              className="w-10 h-10 rounded-full flex items-center justify-center"
-              style={{ backgroundColor: 'rgba(187,131,201,0.12)', backdropFilter: 'blur(12px)' }}
-              title="Simulate New Match"
-            >
-              <Sparkles size={20} style={{ color: '#BB83C9' }} strokeWidth={2} />
-            </motion.button>
-            <motion.button
-              whileTap={{ scale: 0.9 }}
               onClick={() => setShowSearch(!showSearch)}
               className="w-10 h-10 rounded-full flex items-center justify-center"
               style={{ backgroundColor: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(12px)' }}
             >
               <Search size={20} className="text-[#232323]" strokeWidth={2} />
-            </motion.button>
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={() => {}}
-              className="w-10 h-10 rounded-full flex items-center justify-center"
-              style={{ backgroundColor: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(12px)' }}
-            >
-              <SlidersHorizontal size={18} className="text-[#232323]" strokeWidth={2} />
             </motion.button>
           </div>
         }

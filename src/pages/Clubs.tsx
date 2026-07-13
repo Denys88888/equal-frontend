@@ -891,7 +891,7 @@ export default function Clubs() {
 
   return (
     <Layout
-      title="Clubs"
+      title={t('nav.clubs')}
       rightAction={
         <motion.button
           whileTap={{ scale: 0.9 }}
