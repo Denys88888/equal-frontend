@@ -285,7 +285,17 @@
     "membersPosts": "Участников: {{members}} • Постов: {{posts}}",
     "photo": "Фото",
     "post": "Опубликовать",
-    "itsFree": "Это бесплатно!"
+    "itsFree": "Это бесплатно!",
+    "club_cat_sports": "Спорт",
+    "club_cat_movies": "Кино",
+    "club_cat_tech": "Технологии",
+    "club_cat_travel": "Путешествия",
+    "club_cat_cooking": "Кулинария",
+    "club_cat_music": "Музыка",
+    "club_cat_reading": "Книги",
+    "club_cat_fitness": "Фитнес",
+    "club_cat_art": "Искусство",
+    "club_cat_gaming": "Игры"
   },
   "events": {
     "title": "События",

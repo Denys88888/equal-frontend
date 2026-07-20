@@ -285,7 +285,17 @@
     "membersPosts": "{{members}} members • {{posts}} posts",
     "photo": "Photo",
     "post": "Post",
-    "itsFree": "It's free!"
+    "itsFree": "It's free!",
+    "club_cat_sports": "Sports",
+    "club_cat_movies": "Movies",
+    "club_cat_tech": "Tech",
+    "club_cat_travel": "Travel",
+    "club_cat_cooking": "Cooking",
+    "club_cat_music": "Music",
+    "club_cat_reading": "Reading",
+    "club_cat_fitness": "Fitness",
+    "club_cat_art": "Art",
+    "club_cat_gaming": "Gaming"
   },
   "events": {
     "title": "Events",

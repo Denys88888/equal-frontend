@@ -336,6 +336,7 @@ function AvatarCircle({ initials, size = 36, online }: { initials: string; size?
 /* ------------------------------------------------------------------ */
 
 function MyClubCard({ club, onClick }: { club: Club; onClick: () => void }) {
+  const { t } = useTranslation();
   return (
     <motion.button
       whileTap={{ scale: 0.98 }}
@@ -355,7 +356,7 @@ function MyClubCard({ club, onClick }: { club: Club; onClick: () => void }) {
           {club.name}
         </h3>
         <p className="text-xs uppercase tracking-wider" style={{ color: 'rgba(35,35,35,0.4)' }}>
-          {club.category}
+          {t(`clubs.club_cat_${club.category.toLowerCase()}`, { defaultValue: club.category })}
         </p>
         <p className="text-sm truncate" style={{ color: 'rgba(35,35,35,0.6)' }}>
           {club.latestPostPreview}
