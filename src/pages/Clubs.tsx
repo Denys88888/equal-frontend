@@ -418,6 +418,7 @@ function DiscoverClubCard({ club, onClick, onJoin }: { club: Club; onClick: () =
 /* ------------------------------------------------------------------ */
 
 function PostCard({ post, onLike, onMeet }: { post: Post; onLike: () => void; onMeet: () => void }) {
+  const { t } = useTranslation();
   const [animating, setAnimating] = useState(false);
 
   const handleLike = () => {
@@ -441,7 +442,7 @@ function PostCard({ post, onLike, onMeet }: { post: Post; onLike: () => void; on
               className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-white"
               style={{ backgroundColor: '#BB83C9' }}
             >
-              Meet
+              {t('clubs.meet')}
             </button>
           </div>
           <span className="text-xs" style={{ color: 'rgba(35,35,35,0.3)', fontFamily: "'JetBrains Mono', monospace" }}>
