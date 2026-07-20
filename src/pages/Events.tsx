@@ -368,7 +368,7 @@ function FeaturedEventCard({
           color: isGoing ? '#232323' : '#fff',
         }}
       >
-        {isGoing ? `${t('events.going')} ✓` : 'RSVP'}
+        {isGoing ? `${t('events.going')} ✓` : t('events.rsvp')}
       </div>
 
       {/* Event Info */}
@@ -880,7 +880,7 @@ export default function Events() {
                   color: activeCategory === cat ? '#fff' : '#232323',
                 }}
               >
-                {cat}
+                {t(`events.cat_${cat.toLowerCase()}`, { defaultValue: cat })}
               </motion.button>
             ))}
           </div>
