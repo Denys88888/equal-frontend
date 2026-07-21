@@ -322,7 +322,7 @@ function ChatBubble({ message }: { message: Message }) {
             <button
               onClick={() => setIsPlaying(!isPlaying)}
               className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
-              style={{ backgroundColor: isSent ? '#fff' : '#BB83C9' }}
+              style={{ backgroundColor: isSent ? 'var(--card-bg)' : '#BB83C9' }}
             >
               {isPlaying ? (
                 <Pause size={14} style={{ color: isSent ? '#BB83C9' : '#fff' }} />
@@ -440,7 +440,7 @@ function IcebreakerChips({ chips, onSend }: { chips: string[]; onSend: (text: st
             onClick={() => onSend(chip)}
             className="flex-shrink-0 snap-start px-4 py-3 rounded-full text-sm text-left"
             style={{
-              backgroundColor: '#fff',
+              backgroundColor: 'var(--card-bg)',
               color: 'var(--charcoal)',
               fontFamily: "'Outfit', system-ui, sans-serif",
               fontSize: 14,
@@ -512,7 +512,7 @@ function GiftBottomSheet({
             exit={{ y: '100%' }}
             transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] as [number, number, number, number] }}
             className="fixed bottom-0 left-0 right-0 z-[200] w-full max-w-[430px] mx-auto rounded-t-3xl"
-            style={{ backgroundColor: '#fff', maxHeight: '60vh' }}
+            style={{ backgroundColor: 'var(--card-bg)', maxHeight: '60vh' }}
           >
             <div className="flex justify-center pt-3 pb-2">
               <div className="w-10 h-1 rounded-full" style={{ backgroundColor: 'var(--linen-dark)' }} />
@@ -533,7 +533,7 @@ function GiftBottomSheet({
                     onClick={() => setSelected(i)}
                     className="flex flex-col items-center p-4 rounded-2xl transition-colors"
                     style={{
-                      backgroundColor: selected === i ? 'rgba(187,131,201,0.06)' : '#fff',
+                      backgroundColor: selected === i ? 'rgba(187,131,201,0.06)' : 'var(--card-bg)',
                       border: selected === i ? '1.5px solid #BB83C9' : '1.5px solid #E8E2D8',
                     }}
                   >
@@ -714,7 +714,7 @@ function ChatDropdownMenu({
             transition={{ duration: 0.15 }}
             className="absolute top-14 right-3 z-[201] rounded-2xl overflow-hidden shadow-xl"
             style={{
-              backgroundColor: '#fff',
+              backgroundColor: 'var(--card-bg)',
               boxShadow: '0 12px 40px rgba(0,0,0,0.15)',
               minWidth: 200,
             }}
@@ -1187,7 +1187,7 @@ export default function Chat() {
         <div
           className="flex-shrink-0 z-40"
           style={{
-            backgroundColor: '#fff',
+            backgroundColor: 'var(--card-bg)',
             borderTop: '1px solid rgba(var(--linen-rgb), 0.5)',
             paddingBottom: 'env(safe-area-inset-bottom)',
           }}

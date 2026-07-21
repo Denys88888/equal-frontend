@@ -458,7 +458,7 @@ function EventDetailSheet({
 
   return (
     <Sheet open={isOpen} onOpenChange={(open) => !open && handleClose()}>
-      <SheetContent side="bottom" className="rounded-t-[24px] p-0 max-h-[90vh] overflow-y-auto" style={{ backgroundColor: '#fff' }}>
+      <SheetContent side="bottom" className="rounded-t-[24px] p-0 max-h-[90vh] overflow-y-auto" style={{ backgroundColor: 'var(--card-bg)' }}>
         {/* Hero Image */}
         <div className="relative w-full h-[200px] flex-shrink-0">
           <img src={event.image} alt="" className="w-full h-full object-cover rounded-t-[24px]" />
@@ -633,7 +633,7 @@ function EventDetailSheet({
                       onClick={() => setFeedback('great')}
                       className="p-3 rounded-xl text-sm text-left transition-all border-2"
                       style={{
-                        backgroundColor: feedback === 'great' ? 'rgba(125,224,179,0.2)' : '#fff',
+                        backgroundColor: feedback === 'great' ? 'rgba(125,224,179,0.2)' : 'var(--card-bg)',
                         borderColor: feedback === 'great' ? '#7DE0B3' : 'transparent',
                       }}
                     >
@@ -643,7 +643,7 @@ function EventDetailSheet({
                       onClick={() => setFeedback('okay')}
                       className="p-3 rounded-xl text-sm text-left transition-all border-2"
                       style={{
-                        backgroundColor: feedback === 'okay' ? 'rgba(240,184,74,0.15)' : '#fff',
+                        backgroundColor: feedback === 'okay' ? 'rgba(240,184,74,0.15)' : 'var(--card-bg)',
                         borderColor: feedback === 'okay' ? '#F0B84A' : 'transparent',
                       }}
                     >
@@ -653,7 +653,7 @@ function EventDetailSheet({
                       onClick={() => setFeedback('missed')}
                       className="p-3 rounded-xl text-sm text-left transition-all border-2"
                       style={{
-                        backgroundColor: feedback === 'missed' ? 'rgba(232,106,106,0.1)' : '#fff',
+                        backgroundColor: feedback === 'missed' ? 'rgba(232,106,106,0.1)' : 'var(--card-bg)',
                         borderColor: feedback === 'missed' ? '#E86A6A' : 'transparent',
                       }}
                     >
@@ -689,7 +689,7 @@ function EventDetailSheet({
 
       {/* Payment Flow Sheet */}
       <Sheet open={showPayment} onOpenChange={(open) => !open && setShowPayment(false)}>
-        <SheetContent side="bottom" className="rounded-t-[24px] p-6" style={{ backgroundColor: '#fff' }}>
+        <SheetContent side="bottom" className="rounded-t-[24px] p-6" style={{ backgroundColor: 'var(--card-bg)' }}>
           <SheetHeader>
             <SheetTitle className="text-xl font-semibold text-[var(--charcoal)]">{t('events.completePayment')}</SheetTitle>
           </SheetHeader>
@@ -855,7 +855,7 @@ export default function Events() {
                 onClick={() => setActiveTab(tab)}
                 className="flex-1 py-2 rounded-lg text-xs font-semibold capitalize transition-all"
                 style={{
-                  backgroundColor: activeTab === tab ? '#fff' : 'transparent',
+                  backgroundColor: activeTab === tab ? 'var(--card-bg)' : 'transparent',
                   color: activeTab === tab ? 'var(--charcoal)' : 'rgba(var(--charcoal-rgb), 0.5)',
                   boxShadow: activeTab === tab ? '0 1px 4px rgba(0,0,0,0.06)' : 'none',
                 }}

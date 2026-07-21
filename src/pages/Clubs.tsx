@@ -790,7 +790,7 @@ function ClubDetail({
 
       {/* Create Post Bottom Sheet */}
       <Sheet open={showCreatePost} onOpenChange={setShowCreatePost}>
-        <SheetContent side="bottom" className="rounded-t-[24px] p-6 max-h-[80vh]" style={{ backgroundColor: '#fff' }}>
+        <SheetContent side="bottom" className="rounded-t-[24px] p-6 max-h-[80vh]" style={{ backgroundColor: 'var(--card-bg)' }}>
           <SheetHeader>
             <SheetTitle className="text-xl font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
               {t('clubs.newPost')}

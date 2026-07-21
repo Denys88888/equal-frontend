@@ -521,7 +521,7 @@ function ActionButtons({
         onClick={onDislike}
         className="w-14 h-14 rounded-full flex items-center justify-center"
         style={{
-          backgroundColor: '#fff',
+          backgroundColor: 'var(--card-bg)',
           boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
         }}
       >
@@ -535,7 +535,7 @@ function ActionButtons({
         onClick={onLike}
         className="w-16 h-16 rounded-full flex items-center justify-center"
         style={{
-          backgroundColor: '#fff',
+          backgroundColor: 'var(--card-bg)',
           boxShadow: '0 4px 20px rgba(0,0,0,0.12)',
         }}
       >
@@ -549,7 +549,7 @@ function ActionButtons({
         onClick={onSpark}
         className="w-14 h-14 rounded-full flex items-center justify-center relative"
         style={{
-          backgroundColor: '#fff',
+          backgroundColor: 'var(--card-bg)',
           boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
           opacity: sparkCount > 0 ? 1 : 0.5,
         }}
@@ -740,7 +740,7 @@ function CompatibilityCard({ profile, onLike }: { profile: Profile; onLike: () =
         whileTap={{ scale: 0.88 }}
         onClick={onLike}
         className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
-        style={{ backgroundColor: '#fff', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}
+        style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}
       >
         <Heart size={22} strokeWidth={2.5} style={{ color: '#BB83C9' }} />
       </motion.button>
