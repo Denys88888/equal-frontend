@@ -678,7 +678,7 @@ function StepPhotos({
                 onClick={() => onPhotoAdd(index)}
                 className="w-full h-full flex flex-col items-center justify-center gap-1 rounded-xl"
                 style={{
-                  border: '2px dashed #E8E2D8',
+                  border: '2px dashed var(--linen-dark)',
                   backgroundColor: 'rgba(var(--linen-rgb), 0.2)',
                 }}
               >
@@ -1150,7 +1150,7 @@ function StepGoals({
               style={{
                 backgroundColor: 'var(--card-bg)',
                 border: isSelected ? `2px solid ${goal.color}` : '2px solid transparent',
-                background: isSelected ? `rgba(${hexToRgb(goal.color)}, 0.06)` : '#FFFFFF',
+                background: isSelected ? `rgba(${hexToRgb(goal.color)}, 0.06)` : 'var(--card-bg)',
                 boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
               }}
             >

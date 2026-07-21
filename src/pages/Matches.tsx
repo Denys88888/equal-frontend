@@ -729,7 +729,7 @@ export default function Matches() {
               {/* Messages Header */}
               <div
                 className="flex items-center justify-between px-5 py-4 flex-shrink-0"
-                style={{ borderBottom: '1px solid #E8E2D8' }}
+                style={{ borderBottom: '1px solid var(--linen-dark)' }}
               >
                 <div className="flex items-center gap-2">
                   <h2

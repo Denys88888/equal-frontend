@@ -70,7 +70,7 @@ export default function NotificationBell() {
                       className="w-full text-left px-4 py-3 border-b flex items-start gap-3"
                       style={{
                         borderColor: 'rgba(0,0,0,0.04)',
-                        backgroundColor: n.read ? '#FFFFFF' : 'rgba(187,131,201,0.06)',
+                        backgroundColor: n.read ? 'var(--card-bg)' : 'rgba(187,131,201,0.06)',
                       }}
                     >
                       <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0" style={{ backgroundColor: n.read ? 'transparent' : '#BB83C9' }} />

@@ -135,7 +135,7 @@ function FilterSheet({
             onChange={(e) => onChange({ ...filters, maxDistance: Number(e.target.value) })}
             className="w-full h-2 rounded-full appearance-none cursor-pointer"
             style={{
-              background: `linear-gradient(to right, #BB83C9 0%, #BB83C9 ${filters.maxDistance}%, #E8E2D8 ${filters.maxDistance}%, #E8E2D8 100%)`,
+              background: `linear-gradient(to right, #BB83C9 0%, #BB83C9 ${filters.maxDistance}%, var(--linen-dark) ${filters.maxDistance}%, var(--linen-dark) 100%)`,
               accentColor: '#BB83C9',
             }}
           />
@@ -160,7 +160,7 @@ function FilterSheet({
               onChange={(e) => onChange({ ...filters, ageMin: Math.min(Number(e.target.value), filters.ageMax - 1) })}
               className="flex-1 h-2 rounded-full appearance-none cursor-pointer"
               style={{
-                background: `linear-gradient(to right, #E8E2D8 0%, #E8E2D8 ${((filters.ageMin - 18) / 62) * 100}%, #BB83C9 ${((filters.ageMin - 18) / 62) * 100}%, #BB83C9 ${((filters.ageMax - 18) / 62) * 100}%, #E8E2D8 ${((filters.ageMax - 18) / 62) * 100}%, #E8E2D8 100%)`,
+                background: `linear-gradient(to right, var(--linen-dark) 0%, var(--linen-dark) ${((filters.ageMin - 18) / 62) * 100}%, #BB83C9 ${((filters.ageMin - 18) / 62) * 100}%, #BB83C9 ${((filters.ageMax - 18) / 62) * 100}%, var(--linen-dark) ${((filters.ageMax - 18) / 62) * 100}%, var(--linen-dark) 100%)`,
                 accentColor: '#BB83C9',
               }}
             />
@@ -174,7 +174,7 @@ function FilterSheet({
               onChange={(e) => onChange({ ...filters, ageMax: Math.max(Number(e.target.value), filters.ageMin + 1) })}
               className="flex-1 h-2 rounded-full appearance-none cursor-pointer"
               style={{
-                background: `linear-gradient(to right, #E8E2D8 0%, #E8E2D8 ${((filters.ageMin - 18) / 62) * 100}%, #BB83C9 ${((filters.ageMin - 18) / 62) * 100}%, #BB83C9 ${((filters.ageMax - 18) / 62) * 100}%, #E8E2D8 ${((filters.ageMax - 18) / 62) * 100}%, #E8E2D8 100%)`,
+                background: `linear-gradient(to right, var(--linen-dark) 0%, var(--linen-dark) ${((filters.ageMin - 18) / 62) * 100}%, #BB83C9 ${((filters.ageMin - 18) / 62) * 100}%, #BB83C9 ${((filters.ageMax - 18) / 62) * 100}%, var(--linen-dark) ${((filters.ageMax - 18) / 62) * 100}%, var(--linen-dark) 100%)`,
                 accentColor: '#BB83C9',
               }}
             />

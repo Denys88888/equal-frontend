@@ -144,7 +144,7 @@ function ToggleRow({
       className="w-full flex items-start justify-between px-5 py-4 rounded-[16px] bg-white dark:bg-[#22293B]"
       style={{
         boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
-        backgroundColor: checked ? 'rgba(187,131,201,0.05)' : '#FFFFFF',
+        backgroundColor: checked ? 'rgba(187,131,201,0.05)' : 'var(--card-bg)',
       }}
     >
       <div className="flex items-start gap-3 min-w-0 flex-1">
@@ -756,7 +756,7 @@ export default function Settings() {
                 className="px-4 py-2.5 rounded-full text-sm font-semibold border transition-colors"
                 style={{
                   borderColor: donationAmount === amount ? '#BB83C9' : 'var(--linen-dark)',
-                  backgroundColor: donationAmount === amount ? 'rgba(187,131,201,0.1)' : '#FFFFFF',
+                  backgroundColor: donationAmount === amount ? 'rgba(187,131,201,0.1)' : 'var(--card-bg)',
                   color: donationAmount === amount ? '#BB83C9' : 'var(--charcoal)',
                   fontFamily: "'Outfit', system-ui, sans-serif",
                 }}

@@ -534,7 +534,7 @@ function GiftBottomSheet({
                     className="flex flex-col items-center p-4 rounded-2xl transition-colors"
                     style={{
                       backgroundColor: selected === i ? 'rgba(187,131,201,0.06)' : 'var(--card-bg)',
-                      border: selected === i ? '1.5px solid #BB83C9' : '1.5px solid #E8E2D8',
+                      border: selected === i ? '1.5px solid #BB83C9' : '1.5px solid var(--linen-dark)',
                     }}
                   >
                     <GiftIconComponent type={gift.icon} size={36} />
