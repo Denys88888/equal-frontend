@@ -111,7 +111,7 @@ function OfferCard({
         delay: index * 0.08,
         ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
       }}
-      className="flex-shrink-0 rounded-2xl overflow-hidden bg-white"
+      className="flex-shrink-0 rounded-2xl overflow-hidden bg-white dark:bg-[#22293B]"
       style={{
         width: 280,
         boxShadow:
@@ -157,7 +157,7 @@ function OfferCard({
       {/* Content */}
       <div className="p-4 flex flex-col gap-2">
         <h3
-          className="text-lg font-semibold text-[#232323] leading-tight"
+          className="text-lg font-semibold text-[var(--charcoal)] leading-tight"
           style={{
             fontFamily: "'Outfit', system-ui, sans-serif",
             fontSize: 18,
@@ -174,7 +174,7 @@ function OfferCard({
             fontSize: 14,
             lineHeight: 1.55,
             letterSpacing: '-0.28px',
-            color: 'rgba(35,35,35,0.65)',
+            color: 'rgba(var(--charcoal-rgb), 0.65)',
           }}
         >
           {t(offer.description)}
@@ -184,7 +184,7 @@ function OfferCard({
         <motion.button
           whileTap={{ scale: 0.97 }}
           onClick={() => setExpanded(!expanded)}
-          className="mt-1 w-full h-10 rounded-full flex items-center justify-center gap-1.5 text-sm font-semibold text-[#232323]"
+          className="mt-1 w-full h-10 rounded-full flex items-center justify-center gap-1.5 text-sm font-semibold text-[var(--charcoal)]"
           style={{
             backgroundColor: 'rgba(187,131,201,0.12)',
             fontFamily: "'Outfit', system-ui, sans-serif",
@@ -210,7 +210,7 @@ function OfferCard({
                     {t('offers.discountCode')}
                   </span>
                   <p
-                    className="text-xl font-bold text-[#232323] mt-1 tracking-[2px]"
+                    className="text-xl font-bold text-[var(--charcoal)] mt-1 tracking-[2px]"
                     style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
                   >
                     {offer.details.discountCode}
@@ -220,7 +220,7 @@ function OfferCard({
                 <p
                   className="text-sm"
                   style={{
-                    color: 'rgba(35,35,35,0.75)',
+                    color: 'rgba(var(--charcoal-rgb), 0.75)',
                     fontFamily: "'Outfit', system-ui, sans-serif",
                     lineHeight: 1.5,
                   }}
@@ -237,7 +237,7 @@ function OfferCard({
                   <span
                     className="text-xs"
                     style={{
-                      color: 'rgba(35,35,35,0.6)',
+                      color: 'rgba(var(--charcoal-rgb), 0.6)',
                       fontFamily: "'Outfit', system-ui, sans-serif",
                     }}
                   >
@@ -254,7 +254,7 @@ function OfferCard({
                   <span
                     className="text-xs"
                     style={{
-                      color: 'rgba(35,35,35,0.6)',
+                      color: 'rgba(var(--charcoal-rgb), 0.6)',
                       fontFamily: "'Outfit', system-ui, sans-serif",
                     }}
                   >
@@ -271,7 +271,7 @@ function OfferCard({
                   <span
                     className="text-xs"
                     style={{
-                      color: 'rgba(35,35,35,0.6)',
+                      color: 'rgba(var(--charcoal-rgb), 0.6)',
                       fontFamily: "'Outfit', system-ui, sans-serif",
                     }}
                   >
@@ -325,7 +325,7 @@ export default function PartnerOffers({ onDismiss }: PartnerOffersProps) {
         <span
           className="text-[11px] font-semibold uppercase tracking-widest"
           style={{
-            color: 'rgba(35,35,35,0.4)',
+            color: 'rgba(var(--charcoal-rgb), 0.4)',
             fontFamily: "'Outfit', system-ui, sans-serif",
             letterSpacing: '0.44px',
           }}
@@ -337,9 +337,9 @@ export default function PartnerOffers({ onDismiss }: PartnerOffersProps) {
             whileTap={{ scale: 0.88 }}
             onClick={onDismiss}
             className="w-7 h-7 rounded-full flex items-center justify-center"
-            style={{ backgroundColor: 'rgba(232,226,216,0.5)' }}
+            style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.5)' }}
           >
-            <X size={14} className="text-[#232323]" strokeWidth={2} />
+            <X size={14} className="text-[var(--charcoal)]" strokeWidth={2} />
           </motion.button>
         )}
       </div>

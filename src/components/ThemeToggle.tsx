@@ -18,7 +18,7 @@ export default function ThemeToggle({ size = 20, className = '' }: ThemeTogglePr
       onClick={toggle}
       className={`relative flex items-center justify-center w-10 h-10 rounded-full transition-colors ${className}`}
       style={{
-        backgroundColor: isDark ? 'rgba(187,131,201,0.15)' : 'rgba(35,35,35,0.05)',
+        backgroundColor: isDark ? 'rgba(187,131,201,0.15)' : 'rgba(var(--charcoal-rgb), 0.05)',
       }}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}

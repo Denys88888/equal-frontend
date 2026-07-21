@@ -323,7 +323,7 @@ function AvatarCircle({ initials, size = 36, online }: { initials: string; size?
           style={{
             width: size * 0.3,
             height: size * 0.3,
-            backgroundColor: online ? '#5BC492' : '#E8E2D8',
+            backgroundColor: online ? '#5BC492' : 'var(--linen-dark)',
           }}
         />
       )}
@@ -343,7 +343,7 @@ function MyClubCard({ club, onClick }: { club: Club; onClick: () => void }) {
       transition={{ duration: 0.1 }}
       onClick={onClick}
       className="w-full rounded-[20px] p-4 flex items-center gap-3 text-left"
-      style={{ backgroundColor: '#FFFFFF', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
+      style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
     >
       <div
         className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0"
@@ -352,13 +352,13 @@ function MyClubCard({ club, onClick }: { club: Club; onClick: () => void }) {
         {categoryIcons[club.icon] || <Users size={24} color="#fff" />}
       </div>
       <div className="flex-1 min-w-0">
-        <h3 className="text-lg font-semibold text-[#232323] truncate" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+        <h3 className="text-lg font-semibold text-[var(--charcoal)] truncate" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
           {club.name}
         </h3>
-        <p className="text-xs uppercase tracking-wider" style={{ color: 'rgba(35,35,35,0.4)' }}>
+        <p className="text-xs uppercase tracking-wider" style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }}>
           {t(`clubs.club_cat_${club.category.toLowerCase()}`, { defaultValue: club.category })}
         </p>
-        <p className="text-sm truncate" style={{ color: 'rgba(35,35,35,0.6)' }}>
+        <p className="text-sm truncate" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>
           {club.latestPostPreview}
         </p>
       </div>
@@ -368,7 +368,7 @@ function MyClubCard({ club, onClick }: { club: Club; onClick: () => void }) {
             {club.unread}
           </span>
         )}
-        <span className="text-[11px]" style={{ color: 'rgba(35,35,35,0.3)', fontFamily: "'JetBrains Mono', monospace" }}>
+        <span className="text-[11px]" style={{ color: 'rgba(var(--charcoal-rgb), 0.3)', fontFamily: "'JetBrains Mono', monospace" }}>
           {club.lastActivity}
         </span>
       </div>
@@ -387,7 +387,7 @@ function DiscoverClubCard({ club, onClick, onJoin }: { club: Club; onClick: () =
       transition={{ duration: 0.1 }}
       onClick={onClick}
       className="flex-shrink-0 rounded-[20px] p-4 flex flex-col items-center text-center gap-2"
-      style={{ width: 140, height: 170, backgroundColor: '#FFFFFF', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
+      style={{ width: 140, height: 170, backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
     >
       <div
         className="w-12 h-12 rounded-full flex items-center justify-center"
@@ -395,10 +395,10 @@ function DiscoverClubCard({ club, onClick, onJoin }: { club: Club; onClick: () =
       >
         {categoryIcons[club.icon] || <Users size={20} color="#fff" />}
       </div>
-      <p className="text-sm font-semibold text-[#232323] line-clamp-2 leading-tight" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+      <p className="text-sm font-semibold text-[var(--charcoal)] line-clamp-2 leading-tight" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
         {club.name}
       </p>
-      <p className="text-[11px]" style={{ color: 'rgba(35,35,35,0.4)' }}>
+      <p className="text-[11px]" style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }}>
         {club.memberCount} members
       </p>
       <div
@@ -430,13 +430,13 @@ function PostCard({ post, onLike, onMeet }: { post: Post; onLike: () => void; on
   return (
     <div
       className="rounded-[20px] p-4"
-      style={{ backgroundColor: '#FFFFFF', boxShadow: '0 1px 8px rgba(0,0,0,0.03)' }}
+      style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 1px 8px rgba(0,0,0,0.03)' }}
     >
       <div className="flex items-center gap-3 mb-3">
         <AvatarCircle initials={post.authorAvatar} size={36} />
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
-            <span className="text-sm font-semibold text-[#232323]">{post.authorName}</span>
+            <span className="text-sm font-semibold text-[var(--charcoal)]">{post.authorName}</span>
             <button
               onClick={onMeet}
               className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-white"
@@ -445,13 +445,13 @@ function PostCard({ post, onLike, onMeet }: { post: Post; onLike: () => void; on
               {t('clubs.meet')}
             </button>
           </div>
-          <span className="text-xs" style={{ color: 'rgba(35,35,35,0.3)', fontFamily: "'JetBrains Mono', monospace" }}>
+          <span className="text-xs" style={{ color: 'rgba(var(--charcoal-rgb), 0.3)', fontFamily: "'JetBrains Mono', monospace" }}>
             {post.timestamp}
           </span>
         </div>
       </div>
 
-      <p className="text-base text-[#232323] leading-relaxed mb-3">{post.content}</p>
+      <p className="text-base text-[var(--charcoal)] leading-relaxed mb-3">{post.content}</p>
 
       {post.image && (
         <img src={post.image} alt="" className="w-full rounded-xl mb-3 object-cover max-h-[300px]" />
@@ -466,19 +466,19 @@ function PostCard({ post, onLike, onMeet }: { post: Post; onLike: () => void; on
             <Heart
               size={20}
               strokeWidth={2}
-              className={post.liked ? 'text-[#E86A6A]' : 'text-[#232323]'}
+              className={post.liked ? 'text-[#E86A6A]' : 'text-[var(--charcoal)]'}
               fill={post.liked ? '#E86A6A' : 'none'}
               style={{ opacity: post.liked ? 1 : 0.4 }}
             />
           </motion.div>
-          <span className="text-sm" style={{ color: 'rgba(35,35,35,0.5)' }}>{post.likes}</span>
+          <span className="text-sm" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>{post.likes}</span>
         </button>
         <button className="flex items-center gap-1.5">
-          <MessageCircle size={20} strokeWidth={2} style={{ color: 'rgba(35,35,35,0.4)' }} />
-          <span className="text-sm" style={{ color: 'rgba(35,35,35,0.5)' }}>{post.comments}</span>
+          <MessageCircle size={20} strokeWidth={2} style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }} />
+          <span className="text-sm" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>{post.comments}</span>
         </button>
         <button className="flex items-center gap-1.5">
-          <Share2 size={20} strokeWidth={2} style={{ color: 'rgba(35,35,35,0.4)' }} />
+          <Share2 size={20} strokeWidth={2} style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }} />
         </button>
       </div>
     </div>
@@ -572,7 +572,7 @@ function ClubDetail({
       exit={{ opacity: 0, x: 20 }}
       transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
       className="absolute inset-0 z-10 flex flex-col"
-      style={{ backgroundColor: '#F7F4EE' }}
+      style={{ backgroundColor: 'var(--linen)' }}
     >
       {/* Club Header */}
       <div className="relative" style={{ background: club.gradient, height: 120 }}>
@@ -580,14 +580,14 @@ function ClubDetail({
           whileTap={{ scale: 0.9 }}
           onClick={onBack}
           className="absolute top-3 left-4 z-10 w-10 h-10 rounded-full flex items-center justify-center"
-          style={{ backgroundColor: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(12px)' }}
+          style={{ backgroundColor: 'rgba(var(--card-rgb), 0.72)', backdropFilter: 'blur(12px)' }}
         >
-          <ChevronLeft size={24} className="text-[#232323]" strokeWidth={2} />
+          <ChevronLeft size={24} className="text-[var(--charcoal)]" strokeWidth={2} />
         </motion.button>
         <div className="absolute -bottom-8 left-1/2 -translate-x-1/2">
           <div
             className="w-16 h-16 rounded-full flex items-center justify-center border-4"
-            style={{ background: club.gradient, borderColor: '#F7F4EE' }}
+            style={{ background: club.gradient, borderColor: 'var(--linen)' }}
           >
             {categoryIcons[club.icon] || <Users size={28} color="#fff" />}
           </div>
@@ -595,10 +595,10 @@ function ClubDetail({
       </div>
 
       <div className="pt-10 pb-3 px-5 text-center">
-        <h1 className="text-2xl font-bold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+        <h1 className="text-2xl font-bold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
           {club.name}
         </h1>
-        <p className="text-sm mt-1" style={{ color: 'rgba(35,35,35,0.5)' }}>
+        <p className="text-sm mt-1" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>
           {t('clubs.membersPosts', { members: club.memberCount, posts: posts.length })}
         </p>
         <button
@@ -615,14 +615,14 @@ function ClubDetail({
       </div>
 
       {/* Detail Tabs */}
-      <div className="px-5 flex gap-6 border-b" style={{ borderColor: '#E8E2D8' }}>
+      <div className="px-5 flex gap-6 border-b" style={{ borderColor: 'var(--linen-dark)' }}>
         {(['feed', 'chat', 'members'] as const).map((tab) => (
           <button
             key={tab}
             onClick={() => setDetailTab(tab)}
             className="pb-2.5 text-sm font-semibold capitalize relative"
             style={{
-              color: detailTab === tab ? '#232323' : 'rgba(35,35,35,0.4)',
+              color: detailTab === tab ? 'var(--charcoal)' : 'rgba(var(--charcoal-rgb), 0.4)',
             }}
           >
             {t(`clubs.tab_${tab}`)}
@@ -658,7 +658,7 @@ function ClubDetail({
               ))}
               {posts.length === 0 && (
                 <div className="flex flex-col items-center justify-center py-16">
-                  <p className="text-sm" style={{ color: 'rgba(35,35,35,0.5)' }}>{t('clubs.noPosts')}</p>
+                  <p className="text-sm" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>{t('clubs.noPosts')}</p>
                 </div>
               )}
             </motion.div>
@@ -674,11 +674,11 @@ function ClubDetail({
             >
               {/* Online members */}
               {club.members.filter((m) => m.online).length > 0 && (
-                <div className="px-4 py-3 flex gap-2 overflow-x-auto border-b" style={{ borderColor: '#E8E2D8' }}>
+                <div className="px-4 py-3 flex gap-2 overflow-x-auto border-b" style={{ borderColor: 'var(--linen-dark)' }}>
                   {club.members.filter((m) => m.online).map((m) => (
                     <div key={m.id} className="flex flex-col items-center gap-1 flex-shrink-0">
                       <AvatarCircle initials={m.avatar} size={40} online />
-                      <span className="text-[10px] font-medium" style={{ color: 'rgba(35,35,35,0.5)' }}>{m.name.split(' ')[0]}</span>
+                      <span className="text-[10px] font-medium" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>{m.name.split(' ')[0]}</span>
                     </div>
                   ))}
                 </div>
@@ -690,19 +690,19 @@ function ClubDetail({
                     {msg.authorId !== 'me' && <AvatarCircle initials={msg.authorAvatar} size={28} />}
                     <div className={`max-w-[75%] ${msg.authorId === 'me' ? 'items-end' : ''}`}>
                       {msg.authorId !== 'me' && (
-                        <span className="text-[11px] font-medium ml-1" style={{ color: 'rgba(35,35,35,0.5)' }}>{msg.authorName}</span>
+                        <span className="text-[11px] font-medium ml-1" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>{msg.authorName}</span>
                       )}
                       <div
                         className="rounded-[18px] px-4 py-2.5 text-sm leading-relaxed"
                         style={{
-                          backgroundColor: msg.authorId === 'me' ? '#BB83C9' : 'rgba(232,226,216,0.6)',
-                          color: msg.authorId === 'me' ? '#fff' : '#232323',
+                          backgroundColor: msg.authorId === 'me' ? '#BB83C9' : 'rgba(var(--linen-rgb), 0.6)',
+                          color: msg.authorId === 'me' ? '#fff' : 'var(--charcoal)',
                           borderRadius: msg.authorId === 'me' ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
                         }}
                       >
                         {msg.content}
                       </div>
-                      <span className="text-[10px] mt-1 block" style={{ color: 'rgba(35,35,35,0.3)', fontFamily: "'JetBrains Mono', monospace" }}>
+                      <span className="text-[10px] mt-1 block" style={{ color: 'rgba(var(--charcoal-rgb), 0.3)', fontFamily: "'JetBrains Mono', monospace" }}>
                         {msg.timestamp}
                       </span>
                     </div>
@@ -712,7 +712,7 @@ function ClubDetail({
               </div>
 
               {/* Chat Input */}
-              <div className="p-3 flex items-center gap-2 border-t" style={{ borderColor: '#E8E2D8' }}>
+              <div className="p-3 flex items-center gap-2 border-t" style={{ borderColor: 'var(--linen-dark)' }}>
                 <input
                   type="text"
                   value={chatInput}
@@ -720,7 +720,7 @@ function ClubDetail({
                   onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
                   placeholder={t('clubs.typeMessage')}
                   className="flex-1 rounded-full px-4 py-2.5 text-sm outline-none"
-                  style={{ backgroundColor: 'rgba(232,226,216,0.4)', color: '#232323' }}
+                  style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.4)', color: 'var(--charcoal)' }}
                 />
                 <motion.button
                   whileTap={{ scale: 0.9 }}
@@ -746,16 +746,16 @@ function ClubDetail({
                 <div
                   key={member.id}
                   className="flex items-center gap-3 p-3 rounded-2xl"
-                  style={{ backgroundColor: '#FFFFFF' }}
+                  style={{ backgroundColor: 'var(--card-bg)' }}
                 >
                   <AvatarCircle initials={member.avatar} size={40} online={member.online} />
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-[#232323]">{member.name}</p>
+                    <p className="text-sm font-semibold text-[var(--charcoal)]">{member.name}</p>
                     <span
                       className="text-[11px] px-2 py-0.5 rounded-full font-medium capitalize"
                       style={{
-                        backgroundColor: member.role === 'admin' ? 'rgba(187,131,201,0.15)' : member.role === 'moderator' ? 'rgba(123,196,232,0.15)' : 'rgba(232,226,216,0.4)',
-                        color: member.role === 'admin' ? '#9A63A8' : member.role === 'moderator' ? '#5AA8D0' : 'rgba(35,35,35,0.4)',
+                        backgroundColor: member.role === 'admin' ? 'rgba(187,131,201,0.15)' : member.role === 'moderator' ? 'rgba(123,196,232,0.15)' : 'rgba(var(--linen-rgb), 0.4)',
+                        color: member.role === 'admin' ? '#9A63A8' : member.role === 'moderator' ? '#5AA8D0' : 'rgba(var(--charcoal-rgb), 0.4)',
                       }}
                     >
                       {t(`clubs.role_${member.role}`, { defaultValue: member.role })}
@@ -792,7 +792,7 @@ function ClubDetail({
       <Sheet open={showCreatePost} onOpenChange={setShowCreatePost}>
         <SheetContent side="bottom" className="rounded-t-[24px] p-6 max-h-[80vh]" style={{ backgroundColor: '#fff' }}>
           <SheetHeader>
-            <SheetTitle className="text-xl font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+            <SheetTitle className="text-xl font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
               {t('clubs.newPost')}
             </SheetTitle>
           </SheetHeader>
@@ -802,12 +802,12 @@ function ClubDetail({
               onChange={(e) => setNewPostText(e.target.value)}
               placeholder={t('clubs.sharePost')}
               className="w-full rounded-xl p-4 text-base outline-none resize-none"
-              style={{ backgroundColor: 'rgba(232,226,216,0.3)', minHeight: 100, color: '#232323' }}
+              style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.3)', minHeight: 100, color: 'var(--charcoal)' }}
             />
             <div className="flex items-center justify-between mt-4">
-              <button className="flex items-center gap-2 px-4 py-2 rounded-full" style={{ backgroundColor: 'rgba(232,226,216,0.4)' }}>
-                <Camera size={18} style={{ color: 'rgba(35,35,35,0.4)' }} />
-                <span className="text-xs font-medium" style={{ color: 'rgba(35,35,35,0.4)' }}>{t('clubs.photo')}</span>
+              <button className="flex items-center gap-2 px-4 py-2 rounded-full" style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.4)' }}>
+                <Camera size={18} style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }} />
+                <span className="text-xs font-medium" style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }}>{t('clubs.photo')}</span>
               </button>
               <button
                 onClick={handleCreatePost}
@@ -919,11 +919,11 @@ export default function Clubs() {
     >
       <div className="relative flex-1 flex flex-col overflow-hidden">
         {/* Main Tabs */}
-        <div className="px-5 flex gap-6 border-b" style={{ borderColor: '#E8E2D8' }}>
+        <div className="px-5 flex gap-6 border-b" style={{ borderColor: 'var(--linen-dark)' }}>
           <button
             onClick={() => setMainTab('myclubs')}
             className="pb-2.5 text-sm font-semibold relative"
-            style={{ color: mainTab === 'myclubs' ? '#232323' : 'rgba(35,35,35,0.4)' }}
+            style={{ color: mainTab === 'myclubs' ? 'var(--charcoal)' : 'rgba(var(--charcoal-rgb), 0.4)' }}
           >
             {t('clubs.myClubs')}
             {mainTab === 'myclubs' && (
@@ -933,7 +933,7 @@ export default function Clubs() {
           <button
             onClick={() => setMainTab('discover')}
             className="pb-2.5 text-sm font-semibold relative"
-            style={{ color: mainTab === 'discover' ? '#232323' : 'rgba(35,35,35,0.4)' }}
+            style={{ color: mainTab === 'discover' ? 'var(--charcoal)' : 'rgba(var(--charcoal-rgb), 0.4)' }}
           >
             {t('clubs.discover')}
             {mainTab === 'discover' && (
@@ -957,8 +957,8 @@ export default function Clubs() {
                 {myClubs.length === 0 ? (
                   <div className="flex flex-col items-center justify-center py-16">
                     <img src="./empty-clubs.png" alt="" className="w-40 h-40 mb-4 object-contain" />
-                    <h2 className="text-xl font-semibold text-[#232323]">{t('clubs.noClubs')}</h2>
-                    <p className="text-sm mt-2 text-center max-w-[280px]" style={{ color: 'rgba(35,35,35,0.6)' }}>
+                    <h2 className="text-xl font-semibold text-[var(--charcoal)]">{t('clubs.noClubs')}</h2>
+                    <p className="text-sm mt-2 text-center max-w-[280px]" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>
                       {t('clubs.noClubsDesc')}
                     </p>
                     <button
@@ -999,7 +999,7 @@ export default function Clubs() {
                   return (
                     <div key={category} className="mb-4">
                       <div className="flex items-center justify-between px-5 py-3">
-                        <h4 className="text-base font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                        <h4 className="text-base font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                           {category}
                         </h4>
                         <button className="text-sm font-semibold text-[#BB83C9]">{t('clubs.seeAll')}</button>
@@ -1023,11 +1023,11 @@ export default function Clubs() {
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setShowCreateModal(true)}
                   className="mx-5 mt-2 w-[calc(100%-40px)] rounded-[20px] p-6 flex flex-col items-center gap-2 border-2 border-dashed"
-                  style={{ borderColor: '#BB83C9', backgroundColor: '#FFFFFF' }}
+                  style={{ borderColor: '#BB83C9', backgroundColor: 'var(--card-bg)' }}
                 >
                   <Plus size={32} className="text-[#BB83C9]" />
-                  <span className="text-base font-semibold text-[#232323]">{t('clubs.createYourOwn')}</span>
-                  <span className="text-xs" style={{ color: 'rgba(35,35,35,0.4)' }}>{t('clubs.itsFree')}</span>
+                  <span className="text-base font-semibold text-[var(--charcoal)]">{t('clubs.createYourOwn')}</span>
+                  <span className="text-xs" style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }}>{t('clubs.itsFree')}</span>
                 </motion.button>
               </motion.div>
             )}
@@ -1047,9 +1047,9 @@ export default function Clubs() {
 
         {/* Create Club Modal */}
         <Dialog open={showCreateModal} onOpenChange={setShowCreateModal}>
-          <DialogContent className="rounded-[20px] max-w-[340px] p-6 border-0" style={{ backgroundColor: '#FFFFFF' }}>
+          <DialogContent className="rounded-[20px] max-w-[340px] p-6 border-0" style={{ backgroundColor: 'var(--card-bg)' }}>
             <DialogHeader>
-              <DialogTitle className="text-xl font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              <DialogTitle className="text-xl font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                 {t('clubs.createClub')}
               </DialogTitle>
             </DialogHeader>
@@ -1060,18 +1060,18 @@ export default function Clubs() {
                 onChange={(e) => setCreateName(e.target.value)}
                 placeholder={t('clubs.clubName')}
                 className="w-full rounded-xl px-4 py-3 text-base outline-none border-2 border-transparent focus:border-[#BB83C9] transition-colors"
-                style={{ backgroundColor: 'rgba(232,226,216,0.3)', color: '#232323' }}
+                style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.3)', color: 'var(--charcoal)' }}
               />
               <textarea
                 value={createDesc}
                 onChange={(e) => setCreateDesc(e.target.value)}
                 placeholder={t('clubs.clubDesc')}
                 className="w-full rounded-xl px-4 py-3 text-base outline-none border-2 border-transparent focus:border-[#BB83C9] transition-colors resize-none"
-                style={{ backgroundColor: 'rgba(232,226,216,0.3)', minHeight: 80, color: '#232323' }}
+                style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.3)', minHeight: 80, color: 'var(--charcoal)' }}
                 maxLength={200}
               />
               <div>
-                <label className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(35,35,35,0.5)' }}>Category</label>
+                <label className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>Category</label>
                 <div className="flex gap-2 mt-2 flex-wrap">
                   {categories.slice(0, 6).map((cat) => (
                     <button
@@ -1079,8 +1079,8 @@ export default function Clubs() {
                       onClick={() => setCreateCategory(cat)}
                       className="px-3 py-1.5 rounded-full text-xs font-medium transition-all"
                       style={{
-                        backgroundColor: createCategory === cat ? '#BB83C9' : 'rgba(232,226,216,0.4)',
-                        color: createCategory === cat ? '#fff' : '#232323',
+                        backgroundColor: createCategory === cat ? '#BB83C9' : 'rgba(var(--linen-rgb), 0.4)',
+                        color: createCategory === cat ? '#fff' : 'var(--charcoal)',
                       }}
                     >
                       {cat}

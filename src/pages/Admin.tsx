@@ -190,7 +190,7 @@ function Toast({ message, visible }: { message: string; visible: boolean; }) {
         >
           <div
             className="pointer-events-auto px-6 py-3 rounded-full shadow-lg flex items-center gap-2"
-            style={{ backgroundColor: '#232323', boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }}
+            style={{ backgroundColor: 'var(--charcoal)', boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }}
           >
             <CheckCircle size={18} style={{ color: '#7DE0B3' }} />
             <span className="text-sm font-medium text-white">{message}</span>
@@ -226,7 +226,7 @@ function StatsCards() {
             animate="visible"
             variants={cardVariants}
             className="flex-shrink-0 rounded-2xl p-4 w-[140px] flex flex-col gap-3"
-            style={{ backgroundColor: '#FFFFFF', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
+            style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
           >
             <div
               className="w-9 h-9 rounded-xl flex items-center justify-center"
@@ -235,10 +235,10 @@ function StatsCards() {
               <Icon size={18} style={{ color: s.color }} strokeWidth={2} />
             </div>
             <div>
-              <p className="text-2xl font-semibold text-[#232323] tracking-tight" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.72px' }}>
+              <p className="text-2xl font-semibold text-[var(--charcoal)] tracking-tight" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.72px' }}>
                 {s.value}
               </p>
-              <p className="text-xs font-medium text-[#232323] opacity-50 mt-0.5" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              <p className="text-xs font-medium text-[var(--charcoal)] opacity-50 mt-0.5" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                 {t(s.label)}
               </p>
             </div>
@@ -284,7 +284,7 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
+        <h2 className="text-lg font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
           {t('admin.reportsModeration')}
         </h2>
         <span className="text-xs font-medium px-2.5 py-1 rounded-full" style={{ backgroundColor: 'rgba(232,106,106,0.12)', color: '#E86A6A' }}>
@@ -293,10 +293,10 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
       </div>
 
       <Tabs value={filter} onValueChange={(v) => setFilter(v as 'All' | 'Pending' | 'Resolved')}>
-        <TabsList className="w-full bg-[#E8E2D8] rounded-xl p-1">
-          <TabsTrigger value="All" className="flex-1 rounded-lg text-xs font-medium data-[state=active]:bg-white data-[state=active]:text-[#232323] data-[state=active]:shadow-sm text-[#232323]/50">{t('admin.all')}</TabsTrigger>
-          <TabsTrigger value="Pending" className="flex-1 rounded-lg text-xs font-medium data-[state=active]:bg-white data-[state=active]:text-[#232323] data-[state=active]:shadow-sm text-[#232323]/50">{t('admin.pending')}</TabsTrigger>
-          <TabsTrigger value="Resolved" className="flex-1 rounded-lg text-xs font-medium data-[state=active]:bg-white data-[state=active]:text-[#232323] data-[state=active]:shadow-sm text-[#232323]/50">{t('admin.resolved')}</TabsTrigger>
+        <TabsList className="w-full bg-[var(--linen-dark)] rounded-xl p-1">
+          <TabsTrigger value="All" className="flex-1 rounded-lg text-xs font-medium data-[state=active]:bg-white dark:bg-[#22293B] data-[state=active]:text-[var(--charcoal)] data-[state=active]:shadow-sm text-[var(--charcoal)]/50">{t('admin.all')}</TabsTrigger>
+          <TabsTrigger value="Pending" className="flex-1 rounded-lg text-xs font-medium data-[state=active]:bg-white dark:bg-[#22293B] data-[state=active]:text-[var(--charcoal)] data-[state=active]:shadow-sm text-[var(--charcoal)]/50">{t('admin.pending')}</TabsTrigger>
+          <TabsTrigger value="Resolved" className="flex-1 rounded-lg text-xs font-medium data-[state=active]:bg-white dark:bg-[#22293B] data-[state=active]:text-[var(--charcoal)] data-[state=active]:shadow-sm text-[var(--charcoal)]/50">{t('admin.resolved')}</TabsTrigger>
         </TabsList>
 
         <TabsContent value={filter} className="mt-3 space-y-2">
@@ -310,9 +310,9 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
                   key={report.id}
                   value={report.id}
                   className="rounded-2xl border-0 px-4 py-1"
-                  style={{ backgroundColor: '#FFFFFF', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
+                  style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
                 >
-                  <AccordionTrigger className="hover:no-underline py-3 [&>svg]:text-[#232323]/30">
+                  <AccordionTrigger className="hover:no-underline py-3 [&>svg]:text-[var(--charcoal)]/30">
                     <div className="flex items-center gap-3 flex-1 pr-2">
                       <Avatar className="w-10 h-10">
                         <AvatarImage src={report.reportedUser.avatar} alt={report.reportedUser.name} />
@@ -320,8 +320,8 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
                       </Avatar>
                       <div className="flex-1 text-left">
                         <div className="flex items-center gap-2">
-                          <span className="text-sm font-semibold text-[#232323]">{report.reportedUser.name}</span>
-                          <span className="text-[10px] font-medium text-[#232323]/30">{report.timestamp}</span>
+                          <span className="text-sm font-semibold text-[var(--charcoal)]">{report.reportedUser.name}</span>
+                          <span className="text-[10px] font-medium text-[var(--charcoal)]/30">{report.timestamp}</span>
                         </div>
                         <div className="flex items-center gap-2 mt-0.5">
                           <span className="flex items-center gap-1 text-xs" style={{ color: reasonCfg.color }}>
@@ -342,21 +342,21 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
                     <div className="space-y-3 pb-2">
                       <div className="flex items-start gap-2">
                         <Flag size={14} className="mt-0.5 text-[#E86A6A]" />
-                        <p className="text-sm text-[#232323]/70">{report.details}</p>
+                        <p className="text-sm text-[var(--charcoal)]/70">{report.details}</p>
                       </div>
-                      <div className="flex items-center gap-2 text-xs text-[#232323]/40">
+                      <div className="flex items-center gap-2 text-xs text-[var(--charcoal)]/40">
                         <span>{t('admin.reportedBy')}</span>
                         <Avatar className="w-5 h-5">
                           <AvatarImage src={report.reporter.avatar} />
                           <AvatarFallback>{report.reporter.name[0]}</AvatarFallback>
                         </Avatar>
-                        <span className="font-medium text-[#232323]/60">{report.reporter.name}</span>
+                        <span className="font-medium text-[var(--charcoal)]/60">{report.reporter.name}</span>
                       </div>
                       {report.status === 'Pending' && (
                         <div className="flex gap-2 pt-1">
                           <Button
                             size="sm"
-                            className="flex-1 h-9 rounded-full text-xs font-semibold bg-[#F0B84A] text-[#232323] hover:bg-[#F0B84A]/90"
+                            className="flex-1 h-9 rounded-full text-xs font-semibold bg-[#F0B84A] text-[var(--charcoal)] hover:bg-[#F0B84A]/90"
                             onClick={(e) => { e.stopPropagation(); handleWarn(report.id); }}
                           >
                             <AlertOctagon size={14} className="mr-1" />
@@ -373,7 +373,7 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
                           <Button
                             size="sm"
                             variant="outline"
-                            className="flex-1 h-9 rounded-full text-xs font-semibold border-[#E8E2D8] text-[#232323]/60 hover:bg-[#F7F4EE]"
+                            className="flex-1 h-9 rounded-full text-xs font-semibold border-[var(--linen-dark)] text-[var(--charcoal)]/60 hover:bg-[var(--linen)]"
                             onClick={(e) => { e.stopPropagation(); handleDismiss(report.id); }}
                           >
                             <X size={14} className="mr-1" />
@@ -438,19 +438,19 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
+        <h2 className="text-lg font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
           {t('admin.userManagement')}
         </h2>
-        <span className="text-xs font-medium text-[#232323]/40">{users.length} users</span>
+        <span className="text-xs font-medium text-[var(--charcoal)]/40">{users.length} users</span>
       </div>
 
       <div className="relative">
-        <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#232323]/30" />
+        <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--charcoal)]/30" />
         <Input
           placeholder={t('admin.searchUsers')}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="pl-9 h-11 rounded-xl border-0 bg-white text-sm text-[#232323] placeholder:text-[#232323]/30 focus-visible:ring-[#BB83C9]/20"
+          className="pl-9 h-11 rounded-xl border-0 bg-white dark:bg-[#22293B] text-sm text-[var(--charcoal)] placeholder:text-[var(--charcoal)]/30 focus-visible:ring-[#BB83C9]/20"
           style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
         />
       </div>
@@ -465,7 +465,7 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
             variants={cardVariants}
             onClick={() => setSelectedUser(user)}
             className="w-full flex items-center gap-3 p-3 rounded-2xl text-left"
-            style={{ backgroundColor: '#FFFFFF', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
+            style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
           >
             <Avatar className="w-11 h-11">
               <AvatarImage src={user.avatar} alt={user.name} />
@@ -473,7 +473,7 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
             </Avatar>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2">
-                <span className="text-sm font-semibold text-[#232323] truncate">{user.name}</span>
+                <span className="text-sm font-semibold text-[var(--charcoal)] truncate">{user.name}</span>
                 {getStatusBadge(user.status)}
               </div>
               <div className="flex items-center gap-2 mt-0.5">
@@ -483,17 +483,17 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
                 >
                   TS {user.trustScore}
                 </span>
-                <span className="text-xs text-[#232323]/30">{user.joinDate}</span>
+                <span className="text-xs text-[var(--charcoal)]/30">{user.joinDate}</span>
               </div>
             </div>
-            <ChevronDown size={16} className="text-[#232323]/20 -rotate-90" />
+            <ChevronDown size={16} className="text-[var(--charcoal)]/20 -rotate-90" />
           </motion.button>
         ))}
       </div>
 
       <Dialog open={!!selectedUser} onOpenChange={() => setSelectedUser(null)}>
         {selectedUser && (
-          <DialogContent className="max-w-[340px] rounded-2xl border-0 p-0 overflow-hidden" style={{ backgroundColor: '#FFFFFF' }}>
+          <DialogContent className="max-w-[340px] rounded-2xl border-0 p-0 overflow-hidden" style={{ backgroundColor: 'var(--card-bg)' }}>
             <div className="p-6 space-y-5">
               <DialogHeader className="space-y-4">
                 <div className="flex items-center gap-4">
@@ -502,10 +502,10 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
                     <AvatarFallback className="text-xl">{selectedUser.name[0]}</AvatarFallback>
                   </Avatar>
                   <div>
-                    <DialogTitle className="text-xl font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                    <DialogTitle className="text-xl font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                       {selectedUser.name}
                     </DialogTitle>
-                    <DialogDescription className="text-xs text-[#232323]/40 mt-1">
+                    <DialogDescription className="text-xs text-[var(--charcoal)]/40 mt-1">
                       Joined {selectedUser.joinDate}
                     </DialogDescription>
                     <div className="flex items-center gap-2 mt-2">
@@ -521,16 +521,16 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
                 </div>
               </DialogHeader>
 
-              <Separator className="bg-[#E8E2D8]" />
+              <Separator className="bg-[var(--linen-dark)]" />
 
               <div>
-                <h4 className="text-sm font-semibold text-[#232323] mb-2">{t('admin.bio')}</h4>
-                <p className="text-sm text-[#232323]/60">{selectedUser.bio}</p>
+                <h4 className="text-sm font-semibold text-[var(--charcoal)] mb-2">{t('admin.bio')}</h4>
+                <p className="text-sm text-[var(--charcoal)]/60">{selectedUser.bio}</p>
               </div>
 
               <div>
-                <h4 className="text-sm font-semibold text-[#232323] mb-2">{t('admin.trustHistory')}</h4>
-                <div className="w-full h-2 rounded-full overflow-hidden" style={{ backgroundColor: '#E8E2D8' }}>
+                <h4 className="text-sm font-semibold text-[var(--charcoal)] mb-2">{t('admin.trustHistory')}</h4>
+                <div className="w-full h-2 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--linen-dark)' }}>
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${selectedUser.trustScore}%` }}
@@ -539,7 +539,7 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
                     style={{ backgroundColor: getTrustColor(selectedUser.trustScore) }}
                   />
                 </div>
-                <div className="flex justify-between text-[10px] text-[#232323]/30 mt-1">
+                <div className="flex justify-between text-[10px] text-[var(--charcoal)]/30 mt-1">
                   <span>0</span>
                   <span>50</span>
                   <span>100</span>
@@ -548,7 +548,7 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
 
               {selectedUser.badges.length > 0 && (
                 <div>
-                  <h4 className="text-sm font-semibold text-[#232323] mb-2">{t('admin.badges')}</h4>
+                  <h4 className="text-sm font-semibold text-[var(--charcoal)] mb-2">{t('admin.badges')}</h4>
                   <div className="flex flex-wrap gap-1.5">
                     {selectedUser.badges.map((badge) => (
                       <span
@@ -564,13 +564,13 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
               )}
 
               <div className="grid grid-cols-2 gap-3 text-center">
-                <div className="rounded-xl p-3" style={{ backgroundColor: '#F7F4EE' }}>
-                  <p className="text-lg font-semibold text-[#232323]">{selectedUser.matches}</p>
-                  <p className="text-[10px] text-[#232323]/40">{t('admin.matches')}</p>
+                <div className="rounded-xl p-3" style={{ backgroundColor: 'var(--linen)' }}>
+                  <p className="text-lg font-semibold text-[var(--charcoal)]">{selectedUser.matches}</p>
+                  <p className="text-[10px] text-[var(--charcoal)]/40">{t('admin.matches')}</p>
                 </div>
-                <div className="rounded-xl p-3" style={{ backgroundColor: '#F7F4EE' }}>
-                  <p className="text-lg font-semibold text-[#232323]">{selectedUser.badges.length}</p>
-                  <p className="text-[10px] text-[#232323]/40">{t('admin.badges')}</p>
+                <div className="rounded-xl p-3" style={{ backgroundColor: 'var(--linen)' }}>
+                  <p className="text-lg font-semibold text-[var(--charcoal)]">{selectedUser.badges.length}</p>
+                  <p className="text-[10px] text-[var(--charcoal)]/40">{t('admin.badges')}</p>
                 </div>
               </div>
 
@@ -622,10 +622,10 @@ function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
+        <h2 className="text-lg font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
           {t('admin.clubManagement')}
         </h2>
-        <span className="text-xs font-medium text-[#232323]/40">{clubs.length} clubs</span>
+        <span className="text-xs font-medium text-[var(--charcoal)]/40">{clubs.length} clubs</span>
       </div>
 
       <div className="space-y-2">
@@ -637,12 +637,12 @@ function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
             animate="visible"
             variants={cardVariants}
             className="p-4 rounded-2xl"
-            style={{ backgroundColor: '#FFFFFF', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
+            style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
           >
             <div className="flex items-start justify-between mb-2">
               <div>
-                <h3 className="text-sm font-semibold text-[#232323]">{club.name}</h3>
-                <p className="text-xs text-[#232323]/40 mt-0.5">{club.category} &middot; by {club.createdBy}</p>
+                <h3 className="text-sm font-semibold text-[var(--charcoal)]">{club.name}</h3>
+                <p className="text-xs text-[var(--charcoal)]/40 mt-0.5">{club.category} &middot; by {club.createdBy}</p>
               </div>
               {club.status === 'Pending Review' ? (
                 <Badge className="bg-[rgba(240,184,74,0.15)] text-[#F0B84A] hover:bg-[rgba(240,184,74,0.15)] text-[10px]">{t('admin.pending')}</Badge>
@@ -651,7 +651,7 @@ function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
               )}
             </div>
 
-            <div className="flex gap-4 text-xs text-[#232323]/50 mb-3">
+            <div className="flex gap-4 text-xs text-[var(--charcoal)]/50 mb-3">
               <span className="flex items-center gap-1">
                 <Users size={12} />
                 {club.memberCount} members
@@ -666,7 +666,7 @@ function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
               <div className="flex gap-2">
                 <Button
                   size="sm"
-                  className="flex-1 h-8 rounded-full text-xs font-semibold bg-[#7DE0B3] text-[#232323] hover:bg-[#5BC492]"
+                  className="flex-1 h-8 rounded-full text-xs font-semibold bg-[#7DE0B3] text-[var(--charcoal)] hover:bg-[#5BC492]"
                   onClick={() => handleApprove(club.id)}
                 >
                   <Check size={14} className="mr-1" />
@@ -686,7 +686,7 @@ function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
               <Button
                 size="sm"
                 variant="outline"
-                className="w-full h-8 rounded-full text-xs font-semibold border-[#E8E2D8] text-[#232323]/50 hover:bg-[#F7F4EE] hover:text-[#E86A6A] hover:border-[#E86A6A]"
+                className="w-full h-8 rounded-full text-xs font-semibold border-[var(--linen-dark)] text-[var(--charcoal)]/50 hover:bg-[var(--linen)] hover:text-[#E86A6A] hover:border-[#E86A6A]"
                 onClick={() => handleDelete(club.id)}
               >
                 <Trash2 size={14} className="mr-1" />
@@ -719,18 +719,18 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
     switch (status) {
       case 'Upcoming': return { bg: 'rgba(187,131,201,0.12)', color: '#9A63A8' };
       case 'Ongoing': return { bg: 'rgba(125,224,179,0.15)', color: '#5BC492' };
-      case 'Past': return { bg: 'rgba(232,226,216,0.5)', color: '#232323]/40' };
-      default: return { bg: '#E8E2D8', color: '#232323' };
+      case 'Past': return { bg: 'rgba(var(--linen-rgb), 0.5)', color: '#232323]/40' };
+      default: return { bg: 'var(--linen-dark)', color: 'var(--charcoal)' };
     }
   };
 
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
+        <h2 className="text-lg font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
           {t('admin.eventManagement')}
         </h2>
-        <span className="text-xs font-medium text-[#232323]/40">{events.length} events</span>
+        <span className="text-xs font-medium text-[var(--charcoal)]/40">{events.length} events</span>
       </div>
 
       <div className="space-y-2">
@@ -744,15 +744,15 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
               animate="visible"
               variants={cardVariants}
               className="p-4 rounded-2xl"
-              style={{ backgroundColor: '#FFFFFF', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
+              style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
             >
               <div className="flex items-start justify-between mb-2">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <h3 className="text-sm font-semibold text-[#232323] truncate">{evt.name}</h3>
+                    <h3 className="text-sm font-semibold text-[var(--charcoal)] truncate">{evt.name}</h3>
                     {evt.featured && <Star size={14} className="text-[#F0B84A] flex-shrink-0" fill="#F0B84A" />}
                   </div>
-                  <p className="text-xs text-[#232323]/40 mt-0.5">{evt.location}</p>
+                  <p className="text-xs text-[var(--charcoal)]/40 mt-0.5">{evt.location}</p>
                 </div>
                 <span
                   className="text-[10px] font-semibold px-2 py-0.5 rounded-full flex-shrink-0"
@@ -762,7 +762,7 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
                 </span>
               </div>
 
-              <div className="flex gap-4 text-xs text-[#232323]/50 mb-3">
+              <div className="flex gap-4 text-xs text-[var(--charcoal)]/50 mb-3">
                 <span className="flex items-center gap-1">
                   <Calendar size={12} />
                   {evt.date}
@@ -777,7 +777,7 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="flex-1 h-8 rounded-full text-xs font-semibold border-[#E8E2D8] text-[#232323]/60 hover:bg-[#F7F4EE]"
+                  className="flex-1 h-8 rounded-full text-xs font-semibold border-[var(--linen-dark)] text-[var(--charcoal)]/60 hover:bg-[var(--linen)]"
                   onClick={() => showToast(t('admin.editModeOpened'))}
                 >
                   <Edit3 size={14} className="mr-1" />
@@ -786,7 +786,7 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="flex-1 h-8 rounded-full text-xs font-semibold border-[#E8E2D8] text-[#F0B84A] hover:bg-[#F0B84A]/10 hover:border-[#F0B84A]"
+                  className="flex-1 h-8 rounded-full text-xs font-semibold border-[var(--linen-dark)] text-[#F0B84A] hover:bg-[#F0B84A]/10 hover:border-[#F0B84A]"
                   onClick={() => handleFeature(evt.id)}
                 >
                   <Star size={14} className="mr-1" />
@@ -795,7 +795,7 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="flex-1 h-8 rounded-full text-xs font-semibold border-[#E8E2D8] text-[#E86A6A] hover:bg-[#E86A6A]/10 hover:border-[#E86A6A]"
+                  className="flex-1 h-8 rounded-full text-xs font-semibold border-[var(--linen-dark)] text-[#E86A6A] hover:bg-[#E86A6A]/10 hover:border-[#E86A6A]"
                   onClick={() => handleDelete(evt.id)}
                 >
                   <Trash2 size={14} className="mr-1" />
@@ -838,19 +838,19 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-lg font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
+      <h2 className="text-lg font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
         {t('admin.manualActions')}
       </h2>
 
-      <div className="p-5 rounded-2xl space-y-4" style={{ backgroundColor: '#FFFFFF', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
-        <h3 className="text-sm font-semibold text-[#232323] flex items-center gap-2">
+      <div className="p-5 rounded-2xl space-y-4" style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
+        <h3 className="text-sm font-semibold text-[var(--charcoal)] flex items-center gap-2">
           <Award size={16} className="text-[#BB83C9]" />
           {t('admin.awardBadge')}
         </h3>
 
         <div className="space-y-3">
           <Select value={awardUser} onValueChange={setAwardUser}>
-            <SelectTrigger className="w-full h-11 rounded-xl border-[#E8E2D8] text-sm text-[#232323]">
+            <SelectTrigger className="w-full h-11 rounded-xl border-[var(--linen-dark)] text-sm text-[var(--charcoal)]">
               <SelectValue placeholder={t('admin.selectUser')} />
             </SelectTrigger>
             <SelectContent>
@@ -861,7 +861,7 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
           </Select>
 
           <Select value={awardBadge} onValueChange={setAwardBadge}>
-            <SelectTrigger className="w-full h-11 rounded-xl border-[#E8E2D8] text-sm text-[#232323]">
+            <SelectTrigger className="w-full h-11 rounded-xl border-[var(--linen-dark)] text-sm text-[var(--charcoal)]">
               <SelectValue placeholder={t('admin.selectBadge')} />
             </SelectTrigger>
             <SelectContent>
@@ -881,15 +881,15 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
         </div>
       </div>
 
-      <div className="p-5 rounded-2xl space-y-4" style={{ backgroundColor: '#FFFFFF', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
-        <h3 className="text-sm font-semibold text-[#232323] flex items-center gap-2">
+      <div className="p-5 rounded-2xl space-y-4" style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
+        <h3 className="text-sm font-semibold text-[var(--charcoal)] flex items-center gap-2">
           <Activity size={16} className="text-[#7DE0B3]" />
           {t('admin.adjustTrust')}
         </h3>
 
         <div className="space-y-3">
           <Select value={trustUser} onValueChange={setTrustUser}>
-            <SelectTrigger className="w-full h-11 rounded-xl border-[#E8E2D8] text-sm text-[#232323]">
+            <SelectTrigger className="w-full h-11 rounded-xl border-[var(--linen-dark)] text-sm text-[var(--charcoal)]">
               <SelectValue placeholder={t('admin.selectUser')} />
             </SelectTrigger>
             <SelectContent>
@@ -900,7 +900,7 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
           </Select>
 
           <div>
-            <div className="flex justify-between text-xs text-[#232323]/50 mb-2">
+            <div className="flex justify-between text-xs text-[var(--charcoal)]/50 mb-2">
               <span>{t('admin.trustScore')}</span>
               <span className="font-semibold text-[#BB83C9]">{trustScoreValue}</span>
             </div>
@@ -916,7 +916,7 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
                 accentColor: '#BB83C9',
               }}
             />
-            <div className="flex justify-between text-[10px] text-[#232323]/30 mt-1">
+            <div className="flex justify-between text-[10px] text-[var(--charcoal)]/30 mt-1">
               <span>0</span>
               <span>50</span>
               <span>100</span>
@@ -924,7 +924,7 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
           </div>
 
           <Button
-            className="w-full h-11 rounded-full font-semibold bg-[#7DE0B3] text-[#232323] hover:bg-[#5BC492]"
+            className="w-full h-11 rounded-full font-semibold bg-[#7DE0B3] text-[var(--charcoal)] hover:bg-[#5BC492]"
             onClick={handleAdjustTrust}
             disabled={!trustUser}
           >
@@ -986,12 +986,12 @@ export default function Admin() {
           className="pt-2"
         >
           <h1
-            className="text-2xl font-semibold text-[#232323]"
+            className="text-2xl font-semibold text-[var(--charcoal)]"
             style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.72px' }}
           >
             {t('admin.panel')}
           </h1>
-          <p className="text-sm text-[#232323]/40 mt-1">{t('admin.subtitle')}</p>
+          <p className="text-sm text-[var(--charcoal)]/40 mt-1">{t('admin.subtitle')}</p>
         </motion.div>
 
         {/* Stats Cards */}

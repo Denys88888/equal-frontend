@@ -249,7 +249,7 @@ export default function VideoCall() {
             <motion.button whileTap={{ scale: 0.9 }} transition={{ duration: 0.12 }} onClick={toggleMute}
               className="rounded-full flex items-center justify-center"
               style={{ width: 64, height: 64, backgroundColor: isMuted ? '#E86A6A' : '#FFF', boxShadow: '0 4px 20px rgba(0,0,0,0.25)' }}>
-              {isMuted ? <MicOff size={26} className="text-white" /> : <Mic size={26} className="text-[#232323]" />}
+              {isMuted ? <MicOff size={26} className="text-white" /> : <Mic size={26} className="text-[var(--charcoal)]" />}
             </motion.button>
             <motion.button whileTap={{ scale: 0.9 }} transition={{ duration: 0.12 }} onClick={handleEndCall}
               className="rounded-full flex items-center justify-center"
@@ -259,7 +259,7 @@ export default function VideoCall() {
             <motion.button whileTap={{ scale: 0.9 }} transition={{ duration: 0.12 }} onClick={toggleCamera}
               className="rounded-full flex items-center justify-center"
               style={{ width: 64, height: 64, backgroundColor: isCameraOff ? '#E86A6A' : '#FFF', boxShadow: '0 4px 20px rgba(0,0,0,0.25)' }}>
-              {isCameraOff ? <VideoOff size={26} className="text-white" /> : <VideoIcon size={26} className="text-[#232323]" />}
+              {isCameraOff ? <VideoOff size={26} className="text-white" /> : <VideoIcon size={26} className="text-[var(--charcoal)]" />}
             </motion.button>
           </div>
         )}

@@ -54,7 +54,7 @@ export default function LanguageSelector() {
     <div className="flex items-center gap-3">
       <Globe size={18} className="text-[#BB83C9] flex-shrink-0" strokeWidth={2} />
       <Select value={i18n.language} onValueChange={handleChange}>
-        <SelectTrigger className="w-[150px] h-9 rounded-[12px] border-0 bg-white px-3 text-sm font-semibold text-[#232323] shadow-none focus:ring-0 focus:ring-offset-0"
+        <SelectTrigger className="w-[150px] h-9 rounded-[12px] border-0 bg-white dark:bg-[#22293B] px-3 text-sm font-semibold text-[var(--charcoal)] shadow-none focus:ring-0 focus:ring-offset-0"
           style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
           <SelectValue placeholder="Select language">
             <span className="flex items-center gap-2">
@@ -63,11 +63,11 @@ export default function LanguageSelector() {
             </span>
           </SelectValue>
         </SelectTrigger>
-        <SelectContent className="rounded-[12px] border-0 bg-white max-h-[300px]"
+        <SelectContent className="rounded-[12px] border-0 bg-white dark:bg-[#22293B] max-h-[300px]"
           style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.08)', fontFamily: "'Outfit', system-ui, sans-serif" }} align="end">
           {languages.map((lang) => (
             <SelectItem key={lang.code} value={lang.code}
-              className="rounded-[10px] text-sm font-semibold text-[#232323] cursor-pointer focus:bg-[rgba(187,131,201,0.1)] focus:text-[#232323]">
+              className="rounded-[10px] text-sm font-semibold text-[var(--charcoal)] cursor-pointer focus:bg-[rgba(187,131,201,0.1)] focus:text-[var(--charcoal)]">
               <span className="flex items-center gap-2">
                 <span>{lang.flag}</span>
                 <span>{lang.label}</span>

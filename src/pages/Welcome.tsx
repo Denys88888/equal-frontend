@@ -76,11 +76,11 @@ function TrustFooter() {
         const Icon = item.icon;
         return (
           <div key={index} className="flex items-center gap-1">
-            <Icon size={14} style={{ color: 'rgba(35, 35, 35, 0.35)' }} strokeWidth={2} />
+            <Icon size={14} style={{ color: 'rgba(var(--charcoal-rgb), 0.35)' }} strokeWidth={2} />
             <span
               className="text-xs font-medium whitespace-nowrap"
               style={{
-                color: 'rgba(35, 35, 35, 0.35)',
+                color: 'rgba(var(--charcoal-rgb), 0.35)',
                 fontFamily: "'Outfit', system-ui, sans-serif",
               }}
             >
@@ -182,7 +182,7 @@ export default function Welcome() {
   const headlineWords = t('welcome.slogan').split(' ');
 
   return (
-    <div className="min-h-[100dvh] w-full flex justify-center" style={{ backgroundColor: '#F7F4EE' }}>
+    <div className="min-h-[100dvh] w-full flex justify-center" style={{ backgroundColor: 'var(--linen)' }}>
       <div className="w-full max-w-[430px] relative flex flex-col justify-between"
         style={{
           minHeight: '100dvh',
@@ -190,7 +190,7 @@ export default function Welcome() {
           background: `
             radial-gradient(circle at 30% 30%, rgba(187,131,201,0.35), transparent 60%),
             radial-gradient(circle at 70% 70%, rgba(125,224,179,0.3), transparent 60%),
-            #F7F4EE
+            var(--linen)
           `,
         }}
       >
@@ -218,7 +218,7 @@ export default function Welcome() {
           {headlineWords.map((word, i) => (
             <motion.span key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: easeOutExpo, delay: 0.7 + i * 0.08 }}
-              className="text-4xl font-bold text-[#232323] text-center"
+              className="text-4xl font-bold text-[var(--charcoal)] text-center"
               style={{ fontFamily: "'Outfit', system-ui, sans-serif", fontSize: 36, lineHeight: 1.05, letterSpacing: '-1.08px' }}>
               {word}
             </motion.span>
@@ -229,7 +229,7 @@ export default function Welcome() {
         <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: easeSmooth, delay: 0.9 }}
           className="text-center mt-4 px-8"
-          style={{ color: 'rgba(35, 35, 35, 0.65)', fontFamily: "'Outfit', system-ui, sans-serif", fontSize: 16, lineHeight: 1.6, letterSpacing: '-0.32px', maxWidth: 360, marginLeft: 'auto', marginRight: 'auto' }}>
+          style={{ color: 'rgba(var(--charcoal-rgb), 0.65)', fontFamily: "'Outfit', system-ui, sans-serif", fontSize: 16, lineHeight: 1.6, letterSpacing: '-0.32px', maxWidth: 360, marginLeft: 'auto', marginRight: 'auto' }}>
           {t('welcome.subtitle')}
         </motion.p>
 

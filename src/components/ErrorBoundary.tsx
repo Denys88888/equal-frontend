@@ -47,7 +47,7 @@ export default class ErrorBoundary extends Component<Props, State> {
       return (
         <div
           className="min-h-[100dvh] w-full flex items-center justify-center px-6"
-          style={{ backgroundColor: '#F7F4EE' }}
+          style={{ backgroundColor: 'var(--linen)' }}
         >
           <motion.div
             initial={{ opacity: 0, y: 24, scale: 0.96 }}
@@ -71,7 +71,7 @@ export default class ErrorBoundary extends Component<Props, State> {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.4, ease: easeOutExpo }}
-              className="text-2xl font-bold text-[#232323] mb-2"
+              className="text-2xl font-bold text-[var(--charcoal)] mb-2"
               style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
             >
               {i18n.t('error.title')}
@@ -82,7 +82,7 @@ export default class ErrorBoundary extends Component<Props, State> {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.4, ease: easeOutExpo }}
-              className="text-sm text-[#232323] opacity-50 mb-8 max-w-[280px]"
+              className="text-sm text-[var(--charcoal)] opacity-50 mb-8 max-w-[280px]"
               style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}
             >
               {i18n.t('error.subtitle')}
@@ -114,7 +114,7 @@ export default class ErrorBoundary extends Component<Props, State> {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     transition={{ duration: 0.25, ease: easeOutExpo }}
-                    className="mt-2 p-4 rounded-xl bg-white text-left overflow-hidden"
+                    className="mt-2 p-4 rounded-xl bg-white dark:bg-[#22293B] text-left overflow-hidden"
                     style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
                   >
                     <pre
@@ -153,7 +153,7 @@ export default class ErrorBoundary extends Component<Props, State> {
               <motion.button
                 whileTap={{ scale: 0.97 }}
                 onClick={this.handleGoHome}
-                className="w-full h-12 rounded-full border border-[rgba(35,35,35,0.1)] bg-[rgba(255,255,255,0.72)] text-[#232323] text-base font-semibold flex items-center justify-center gap-2"
+                className="w-full h-12 rounded-full border border-[rgba(var(--charcoal-rgb), 0.1)] bg-[rgba(var(--card-rgb), 0.72)] text-[var(--charcoal)] text-base font-semibold flex items-center justify-center gap-2"
                 style={{
                   backdropFilter: 'blur(12px)',
                   fontFamily: "'Outfit', system-ui, sans-serif",
@@ -169,7 +169,7 @@ export default class ErrorBoundary extends Component<Props, State> {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.55, duration: 0.4 }}
-              className="mt-8 text-[11px] text-[#232323] opacity-25"
+              className="mt-8 text-[11px] text-[var(--charcoal)] opacity-25"
               style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
             >
               Equal

@@ -32,8 +32,8 @@ export default function Layout({
   const shouldHideFooter = hideFooter || footerHiddenPaths.some((path) => location.pathname.startsWith(path));
 
   return (
-    <div className="min-h-[100dvh] w-full flex justify-center" style={{ backgroundColor: '#F7F4EE' }}>
-      <div className="w-full max-w-[430px] relative flex flex-col" style={{ backgroundColor: '#F7F4EE' }}>
+    <div className="min-h-[100dvh] w-full flex justify-center" style={{ backgroundColor: 'var(--linen)' }}>
+      <div className="w-full max-w-[430px] relative flex flex-col" style={{ backgroundColor: 'var(--linen)' }}>
         {!hideNavbar && (
           <Navbar
             title={title}

@@ -35,7 +35,7 @@ export default function Footer() {
     <nav
       className="fixed bottom-0 left-0 right-0 z-50"
       style={{
-        backgroundColor: 'rgba(255, 255, 255, 0.72)',
+        backgroundColor: 'rgba(var(--card-rgb), 0.72)',
         backdropFilter: 'blur(16px)',
         borderTop: '1px solid rgba(0,0,0,0.04)',
         boxShadow: '0 -4px 24px rgba(0,0,0,0.06)',
@@ -63,7 +63,7 @@ export default function Footer() {
                   size={24}
                   strokeWidth={2}
                   style={{
-                    color: isActive ? '#BB83C9' : 'rgba(35, 35, 35, 0.4)',
+                    color: isActive ? '#BB83C9' : 'rgba(var(--charcoal-rgb), 0.4)',
                     transition: 'color 0.2s ease',
                   }}
                 />
@@ -81,7 +81,7 @@ export default function Footer() {
               <span
                 className="text-[10px] font-medium leading-tight"
                 style={{
-                  color: isActive ? '#BB83C9' : 'rgba(35, 35, 35, 0.4)',
+                  color: isActive ? '#BB83C9' : 'rgba(var(--charcoal-rgb), 0.4)',
                   fontFamily: "'Outfit', system-ui, sans-serif",
                   transition: 'color 0.2s ease',
                 }}

@@ -111,7 +111,7 @@ function TrustScoreCircle({ score }: { score: number }) {
           cy="40"
           r={radius}
           fill="none"
-          stroke="#E8E2D8"
+          stroke="var(--linen-dark)"
           strokeWidth="6"
         />
         <motion.circle
@@ -130,10 +130,10 @@ function TrustScoreCircle({ score }: { score: number }) {
         />
       </svg>
       <div className="absolute flex flex-col items-center justify-center" style={{ width: 80, height: 80 }}>
-        <span className="text-2xl font-bold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+        <span className="text-2xl font-bold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
           <AnimatedCounter target={score} />
         </span>
-        <span className="text-xs text-[#232323] opacity-40" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>/100</span>
+        <span className="text-xs text-[var(--charcoal)] opacity-40" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>/100</span>
       </div>
     </div>
   );
@@ -157,7 +157,7 @@ function TrustScoreBar({ score }: { score: number }) {
         />
       </div>
       <motion.div
-        className="absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border-2 border-[#232323]"
+        className="absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white dark:bg-[#22293B] border-2 border-[var(--charcoal)]"
         initial={{ left: '0%' }}
         animate={{ left: `${score}%` }}
         transition={{ duration: 0.8, ease: easeSpring, delay: 0.2 }}
@@ -177,7 +177,7 @@ function SparkBalanceCard({ balance }: { balance: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.4, ease: easeOutExpo }}
-      className="mx-5 mt-6 p-5 rounded-[20px] bg-white"
+      className="mx-5 mt-6 p-5 rounded-[20px] bg-white dark:bg-[#22293B]"
       style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
     >
       <div className="flex items-center justify-between">
@@ -185,7 +185,7 @@ function SparkBalanceCard({ balance }: { balance: number }) {
           <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(125,224,179,0.15)' }}>
             <Zap size={22} className="text-[#7DE0B3]" strokeWidth={2} />
           </div>
-          <h3 className="text-lg font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+          <h3 className="text-lg font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
             {t('profile.sparks')}
           </h3>
         </div>
@@ -193,7 +193,7 @@ function SparkBalanceCard({ balance }: { balance: number }) {
           {balance}
         </span>
       </div>
-      <p className="mt-3 text-sm text-[#232323] opacity-60" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}>
+      <p className="mt-3 text-sm text-[var(--charcoal)] opacity-60" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}>
         Sparks are earned through activity — not bought. Send them to show someone special attention.
       </p>
       <div className="mt-4 space-y-2">
@@ -204,11 +204,11 @@ function SparkBalanceCard({ balance }: { balance: number }) {
           { text: 'profile2.taskInvite', amount: '+10 Sparks', done: false },
         ].map((item) => (
           <div key={item.text} className="flex items-center justify-between text-sm">
-            <span className={item.done ? 'text-[#7DE0B3]' : 'text-[#232323]'} style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+            <span className={item.done ? 'text-[#7DE0B3]' : 'text-[var(--charcoal)]'} style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
               {item.done ? <Check size={14} className="inline mr-1" /> : <span className="inline mr-1 opacity-30">○</span>}
               {t(item.text)}
             </span>
-            <span className={item.done ? 'text-[#7DE0B3] font-medium' : 'text-[#232323] opacity-40'} style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+            <span className={item.done ? 'text-[#7DE0B3] font-medium' : 'text-[var(--charcoal)] opacity-40'} style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
               {item.amount}
             </span>
           </div>
@@ -237,7 +237,7 @@ function PhotoLightbox({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.25 }}
-      className="fixed inset-0 z-[200] bg-[#232323] flex flex-col"
+      className="fixed inset-0 z-[200] bg-[var(--charcoal)] flex flex-col"
       onClick={onClose}
     >
       <div className="flex items-center justify-between p-4 z-10">
@@ -352,9 +352,9 @@ export default function Profile() {
           transition={{ duration: 0.12 }}
           onClick={() => navigate('/settings')}
           className="w-10 h-10 rounded-full flex items-center justify-center"
-          style={{ backgroundColor: 'rgba(255, 255, 255, 0.72)', backdropFilter: 'blur(12px)' }}
+          style={{ backgroundColor: 'rgba(var(--card-rgb), 0.72)', backdropFilter: 'blur(12px)' }}
         >
-          <Settings size={22} className="text-[#232323]" strokeWidth={2} />
+          <Settings size={22} className="text-[var(--charcoal)]" strokeWidth={2} />
         </motion.button>
       }
     >
@@ -381,7 +381,7 @@ export default function Profile() {
           {/* Gradient overlay */}
           <div
             className="absolute inset-0"
-            style={{ background: 'linear-gradient(180deg, transparent 30%, rgba(35,35,35,0.9) 100%)' }}
+            style={{ background: 'linear-gradient(180deg, transparent 30%, rgba(var(--charcoal-rgb), 0.9) 100%)' }}
           />
           {/* Edit photo button */}
           <motion.button
@@ -389,7 +389,7 @@ export default function Profile() {
             transition={{ duration: 0.12 }}
             onClick={() => setIsEditMode(!isEditMode)}
             className="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center z-10"
-            style={{ backgroundColor: 'rgba(255, 255, 255, 0.72)', backdropFilter: 'blur(12px)' }}
+            style={{ backgroundColor: 'rgba(var(--card-rgb), 0.72)', backdropFilter: 'blur(12px)' }}
           >
             <Pencil size={20} className="text-white" strokeWidth={2} />
           </motion.button>
@@ -420,16 +420,16 @@ export default function Profile() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: easeOutExpo, delay: 0.1 }}
-          className="relative -mt-5 mx-0 bg-white rounded-t-[24px] p-6 z-10"
+          className="relative -mt-5 mx-0 bg-white dark:bg-[#22293B] rounded-t-[24px] p-6 z-10"
           style={{ boxShadow: '0 -8px 32px rgba(0,0,0,0.08)' }}
         >
           <div className="flex items-center justify-between mb-5">
-            <h3 className="text-base font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+            <h3 className="text-base font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
               {t('profile.trustScore')}
             </h3>
             <button
-              className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-semibold text-[#232323]"
-              style={{ backgroundColor: 'rgba(35,35,35,0.1)' }}
+              className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-semibold text-[var(--charcoal)]"
+              style={{ backgroundColor: 'rgba(var(--charcoal-rgb), 0.1)' }}
               title="Your Trust Score helps us show you to quality matches. It increases with verification, activity, and positive feedback."
             >
               i
@@ -456,13 +456,13 @@ export default function Profile() {
             ].map((item) => (
               <div key={item.label} className="flex flex-col items-center text-center">
                 <item.icon size={20} style={{ color: item.color }} strokeWidth={2} />
-                <span className="mt-1.5 text-xs font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                <span className="mt-1.5 text-xs font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                   {t(item.label)}
                 </span>
                 <span className="text-xs font-bold" style={{ color: item.color, fontFamily: "'Outfit', system-ui, sans-serif" }}>
                   {item.score}
                 </span>
-                <span className="text-[10px] text-[#232323] opacity-40" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                <span className="text-[10px] text-[var(--charcoal)] opacity-40" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                   {t(item.desc)}
                 </span>
               </div>
@@ -481,7 +481,7 @@ export default function Profile() {
           {/* Bio */}
           <div className="mb-6">
             <div className="flex items-center justify-between mb-2">
-              <h4 className="text-base font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              <h4 className="text-base font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                 {t('profile.bio')}
               </h4>
               <motion.button
@@ -492,12 +492,12 @@ export default function Profile() {
               </motion.button>
             </div>
             {bio ? (
-              <p className="text-base text-[#232323] leading-relaxed" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.6 }}>
+              <p className="text-base text-[var(--charcoal)] leading-relaxed" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.6 }}>
                 {bio}
               </p>
             ) : (
               <div className="text-center py-4">
-                <p className="text-base text-[#232323] opacity-35" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                <p className="text-base text-[var(--charcoal)] opacity-35" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                   {t('profile2.addBioHint')}
                 </p>
                 <button
@@ -514,7 +514,7 @@ export default function Profile() {
           {/* Interests */}
           <div className="mb-6">
             <div className="flex items-center justify-between mb-3">
-              <h4 className="text-base font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              <h4 className="text-base font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                 {t('profile.interests')}
               </h4>
               <Pencil size={16} className="text-[#BB83C9] opacity-50" strokeWidth={2} />
@@ -523,8 +523,8 @@ export default function Profile() {
               {user.interests.map((interest) => (
                 <span
                   key={interest}
-                  className="inline-flex items-center px-3.5 py-1.5 rounded-full text-sm text-[#232323]"
-                  style={{ backgroundColor: '#E8E2D8', fontFamily: "'Outfit', system-ui, sans-serif" }}
+                  className="inline-flex items-center px-3.5 py-1.5 rounded-full text-sm text-[var(--charcoal)]"
+                  style={{ backgroundColor: 'var(--linen-dark)', fontFamily: "'Outfit', system-ui, sans-serif" }}
                 >
                   {t(`onboarding.int_${interest.toLowerCase()}`, { defaultValue: interest })}
                 </span>
@@ -534,15 +534,15 @@ export default function Profile() {
 
           {/* Dating Goals */}
           <div className="mb-2">
-            <h4 className="text-base font-semibold text-[#232323] mb-3" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+            <h4 className="text-base font-semibold text-[var(--charcoal)] mb-3" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
               {t('profile2.lookingFor')}
             </h4>
             <div
-              className="inline-flex items-center gap-2.5 px-4 py-3 rounded-[16px] bg-white border-2"
+              className="inline-flex items-center gap-2.5 px-4 py-3 rounded-[16px] bg-white dark:bg-[#22293B] border-2"
               style={{ borderColor: goalInfo.color, boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
             >
               <GoalIcon size={20} style={{ color: goalInfo.color }} strokeWidth={2} />
-              <span className="text-sm font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              <span className="text-sm font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                 {t(GOAL_LABEL_TO_KEY[goalLabel] ?? '', { defaultValue: goalLabel })}
               </span>
             </div>
@@ -559,10 +559,10 @@ export default function Profile() {
         >
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
-              <h4 className="text-base font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              <h4 className="text-base font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                 {t('profile2.photos')}
               </h4>
-              <span className="text-xs text-[#232323] opacity-40" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              <span className="text-xs text-[var(--charcoal)] opacity-40" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                 {user.photos.length}/9
               </span>
             </div>
@@ -593,9 +593,9 @@ export default function Profile() {
             {user.photos.length < 9 && (
               <motion.button
                 whileTap={{ scale: 0.95 }}
-                className="aspect-square rounded-xl border-2 border-dashed border-[#E8E2D8] flex items-center justify-center"
+                className="aspect-square rounded-xl border-2 border-dashed border-[var(--linen-dark)] flex items-center justify-center"
               >
-                <Camera size={24} className="text-[#232323] opacity-30" strokeWidth={2} />
+                <Camera size={24} className="text-[var(--charcoal)] opacity-30" strokeWidth={2} />
               </motion.button>
             )}
           </div>
@@ -610,7 +610,7 @@ export default function Profile() {
           className="mt-6"
         >
           <div className="px-5 mb-3">
-            <h4 className="text-base font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+            <h4 className="text-base font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
               {t('profile.badges')}
             </h4>
           </div>
@@ -625,7 +625,7 @@ export default function Profile() {
                   key={badge.id}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setShowBadgeDetail(badge.id)}
-                  className="flex-shrink-0 snap-start flex flex-col items-center justify-center w-[80px] h-[100px] rounded-[16px] bg-white p-3"
+                  className="flex-shrink-0 snap-start flex flex-col items-center justify-center w-[80px] h-[100px] rounded-[16px] bg-white dark:bg-[#22293B] p-3"
                   style={{
                     boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
                     opacity: badge.earned ? 1 : 0.3,
@@ -635,11 +635,11 @@ export default function Profile() {
                     <Icon size={32} style={{ color: badge.earned ? badge.color : '#999' }} strokeWidth={2} />
                     {!badge.earned && (
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <Lock size={14} className="text-[#232323] opacity-60" strokeWidth={2} />
+                        <Lock size={14} className="text-[var(--charcoal)] opacity-60" strokeWidth={2} />
                       </div>
                     )}
                   </div>
-                  <span className="mt-2 text-xs font-semibold text-[#232323] text-center leading-tight" style={{ fontFamily: "'Outfit', system-ui, sans-serif", display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                  <span className="mt-2 text-xs font-semibold text-[var(--charcoal)] text-center leading-tight" style={{ fontFamily: "'Outfit', system-ui, sans-serif", display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                     {t(badge.name)}
                   </span>
                 </motion.button>
@@ -663,16 +663,16 @@ export default function Profile() {
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.1 }}
             onClick={() => navigate('/settings')}
-            className="w-full flex items-center justify-between px-5 py-4 rounded-[16px] bg-white text-left"
+            className="w-full flex items-center justify-between px-5 py-4 rounded-[16px] bg-white dark:bg-[#22293B] text-left"
             style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
           >
             <div className="flex items-center gap-3">
-              <Settings size={22} className="text-[#232323] opacity-60" strokeWidth={2} />
-              <span className="text-base font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              <Settings size={22} className="text-[var(--charcoal)] opacity-60" strokeWidth={2} />
+              <span className="text-base font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                 {t('profile.settings')}
               </span>
             </div>
-            <ChevronRight size={20} className="text-[#232323] opacity-30" strokeWidth={2} />
+            <ChevronRight size={20} className="text-[var(--charcoal)] opacity-30" strokeWidth={2} />
           </motion.button>
         </motion.div>
 
@@ -682,9 +682,9 @@ export default function Profile() {
 
       {/* ─────────────── Bio Edit Dialog ─────────────── */}
       <Dialog open={showBioEdit} onOpenChange={setShowBioEdit}>
-        <DialogContent className="rounded-[20px] max-w-[340px] bg-white border-0" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
+        <DialogContent className="rounded-[20px] max-w-[340px] bg-white dark:bg-[#22293B] border-0" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
           <DialogHeader>
-            <DialogTitle className="text-xl font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+            <DialogTitle className="text-xl font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
               {t('profile.edit')}
             </DialogTitle>
           </DialogHeader>
@@ -692,14 +692,14 @@ export default function Profile() {
             value={editBioText}
             onChange={(e) => setEditBioText(e.target.value)}
             placeholder={t('profile2.bioPlaceholder')}
-            className="mt-2 min-h-[120px] rounded-xl border-[1.5px] border-transparent bg-[rgba(232,226,216,0.4)] text-base text-[#232323] placeholder:text-[#232323] placeholder:opacity-35 focus:border-[#BB83C3] focus:ring-[3px] focus:ring-[rgba(187,131,201,0.15)] resize-none"
+            className="mt-2 min-h-[120px] rounded-xl border-[1.5px] border-transparent bg-[rgba(var(--linen-rgb), 0.4)] text-base text-[var(--charcoal)] placeholder:text-[var(--charcoal)] placeholder:opacity-35 focus:border-[#BB83C3] focus:ring-[3px] focus:ring-[rgba(187,131,201,0.15)] resize-none"
             style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
           />
           <div className="flex gap-3 mt-4">
             <motion.button
               whileTap={{ scale: 0.97 }}
               onClick={() => setShowBioEdit(false)}
-              className="flex-1 h-12 rounded-full border border-[rgba(35,35,35,0.1)] bg-[rgba(255,255,255,0.72)] text-base font-semibold text-[#232323]"
+              className="flex-1 h-12 rounded-full border border-[rgba(var(--charcoal-rgb), 0.1)] bg-[rgba(var(--card-rgb), 0.72)] text-base font-semibold text-[var(--charcoal)]"
               style={{ backdropFilter: 'blur(12px)', fontFamily: "'Outfit', system-ui, sans-serif" }}
             >
               {t('profile2.cancel')}
@@ -718,7 +718,7 @@ export default function Profile() {
 
       {/* ─────────────── Badge Detail Dialog ─────────────── */}
       <Dialog open={!!showBadgeDetail} onOpenChange={() => setShowBadgeDetail(null)}>
-        <DialogContent className="rounded-[20px] max-w-[300px] bg-white border-0 text-center" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
+        <DialogContent className="rounded-[20px] max-w-[300px] bg-white dark:bg-[#22293B] border-0 text-center" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
           {(() => {
             const badge = badges.find((b) => b.id === showBadgeDetail);
             if (!badge) return null;
@@ -728,14 +728,14 @@ export default function Profile() {
                 <div className="flex flex-col items-center py-2">
                   <div
                     className="w-16 h-16 rounded-full flex items-center justify-center mb-3"
-                    style={{ backgroundColor: badge.earned ? `${badge.color}20` : 'rgba(232,226,216,0.4)' }}
+                    style={{ backgroundColor: badge.earned ? `${badge.color}20` : 'rgba(var(--linen-rgb), 0.4)' }}
                   >
                     <Icon size={32} style={{ color: badge.earned ? badge.color : '#999' }} strokeWidth={2} />
                   </div>
-                  <h3 className="text-lg font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                  <h3 className="text-lg font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                     {t(badge.name)}
                   </h3>
-                  <p className="mt-2 text-sm text-[#232323] opacity-60" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                  <p className="mt-2 text-sm text-[var(--charcoal)] opacity-60" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                     {t(badge.desc)}
                   </p>
                   <div className="mt-3 inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold" style={{

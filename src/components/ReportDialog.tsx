@@ -57,7 +57,7 @@ export default function ReportDialog({
       <DialogContent
         className="max-w-[340px] rounded-[20px] border-0 p-6 gap-0"
         style={{
-          backgroundColor: '#FFFFFF',
+          backgroundColor: 'var(--card-bg)',
           boxShadow: '0 20px 60px rgba(0,0,0,0.2)',
         }}
         showCloseButton={true}
@@ -70,7 +70,7 @@ export default function ReportDialog({
             className="text-center text-xl font-semibold"
             style={{
               fontFamily: "'Outfit', system-ui, sans-serif",
-              color: '#232323',
+              color: 'var(--charcoal)',
             }}
           >
             Report {userName}
@@ -79,7 +79,7 @@ export default function ReportDialog({
             className="text-center text-sm"
             style={{
               fontFamily: "'Outfit', system-ui, sans-serif",
-              color: 'rgba(35,35,35,0.6)',
+              color: 'rgba(var(--charcoal-rgb), 0.6)',
             }}
           >
             {t('report.subtitle')}
@@ -99,7 +99,7 @@ export default function ReportDialog({
                 htmlFor={`reason-${reason}`}
                 className="flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer transition-colors"
                 style={{
-                  backgroundColor: selectedReason === reason ? 'rgba(187,131,201,0.08)' : '#F7F4EE',
+                  backgroundColor: selectedReason === reason ? 'rgba(187,131,201,0.08)' : 'var(--linen)',
                   border: selectedReason === reason ? '1.5px solid #BB83C9' : '1.5px solid transparent',
                 }}
               >
@@ -108,14 +108,14 @@ export default function ReportDialog({
                   id={`reason-${reason}`}
                   className="shrink-0"
                   style={{
-                    borderColor: selectedReason === reason ? '#BB83C9' : '#E8E2D8',
+                    borderColor: selectedReason === reason ? '#BB83C9' : 'var(--linen-dark)',
                   }}
                 />
                 <span
                   className="text-sm font-medium"
                   style={{
                     fontFamily: "'Outfit', system-ui, sans-serif",
-                    color: '#232323',
+                    color: 'var(--charcoal)',
                   }}
                 >
                   {reason}
@@ -131,7 +131,7 @@ export default function ReportDialog({
             className="text-xs font-semibold uppercase tracking-wider mb-2 block"
             style={{
               fontFamily: "'Outfit', system-ui, sans-serif",
-              color: 'rgba(35,35,35,0.5)',
+              color: 'rgba(var(--charcoal-rgb), 0.5)',
               letterSpacing: '0.44px',
             }}
           >
@@ -147,15 +147,15 @@ export default function ReportDialog({
             placeholder={t('report.detailsPlaceholder')}
             className="rounded-xl border-0 resize-none text-sm"
             style={{
-              backgroundColor: 'rgba(232,226,216,0.4)',
+              backgroundColor: 'rgba(var(--linen-rgb), 0.4)',
               fontFamily: "'Outfit', system-ui, sans-serif",
-              color: '#232323',
+              color: 'var(--charcoal)',
               minHeight: 80,
             }}
           />
           <div
             className="text-right text-xs mt-1"
-            style={{ color: 'rgba(35,35,35,0.35)' }}
+            style={{ color: 'rgba(var(--charcoal-rgb), 0.35)' }}
           >
             {description.length}/200
           </div>

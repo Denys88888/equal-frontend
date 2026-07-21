@@ -254,8 +254,8 @@ export default function Onboarding() {
   const progressPercent = (step / TOTAL_STEPS) * 100;
 
   return (
-    <div className="min-h-[100dvh] w-full flex justify-center" style={{ backgroundColor: '#F7F4EE' }}>
-      <div className="w-full max-w-[430px] relative flex flex-col" style={{ backgroundColor: '#F7F4EE' }}>
+    <div className="min-h-[100dvh] w-full flex justify-center" style={{ backgroundColor: 'var(--linen)' }}>
+      <div className="w-full max-w-[430px] relative flex flex-col" style={{ backgroundColor: 'var(--linen)' }}>
         {/* ====== Progress Header ====== */}
         <motion.header
           initial={{ opacity: 0, y: -10 }}
@@ -263,11 +263,11 @@ export default function Onboarding() {
           transition={{ duration: 0.3, ease: easeSmooth }}
           className="sticky top-0 z-40 flex items-center gap-3 px-5"
           style={{
-            backgroundColor: 'rgba(247, 244, 238, 0.85)',
+            backgroundColor: 'rgba(var(--linen-rgb-main), 0.85)',
             backdropFilter: 'blur(12px)',
             height: 'calc(56px + env(safe-area-inset-top))',
             paddingTop: 'env(safe-area-inset-top)',
-            borderBottom: '1px solid rgba(232, 226, 216, 0.6)',
+            borderBottom: '1px solid rgba(var(--linen-rgb), 0.6)',
           }}
         >
           {/* Back */}
@@ -277,17 +277,17 @@ export default function Onboarding() {
             onClick={goBack}
             className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
             style={{
-              backgroundColor: 'rgba(255, 255, 255, 0.72)',
+              backgroundColor: 'rgba(var(--card-rgb), 0.72)',
               backdropFilter: 'blur(12px)',
               opacity: step === 1 ? 0.3 : 1,
               pointerEvents: step === 1 ? 'none' : 'auto',
             }}
           >
-            <ChevronLeft size={24} className="text-[#232323]" strokeWidth={2} />
+            <ChevronLeft size={24} className="text-[var(--charcoal)]" strokeWidth={2} />
           </motion.button>
 
           {/* Progress Bar */}
-          <div className="flex-1 h-1 rounded-full overflow-hidden" style={{ backgroundColor: '#E8E2D8' }}>
+          <div className="flex-1 h-1 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--linen-dark)' }}>
             <motion.div
               className="h-full rounded-full"
               style={{ backgroundColor: '#BB83C9' }}
@@ -302,7 +302,7 @@ export default function Onboarding() {
             onClick={handleSkip}
             className="flex-shrink-0 text-sm font-medium"
             style={{
-              color: 'rgba(35, 35, 35, 0.5)',
+              color: 'rgba(var(--charcoal-rgb), 0.5)',
               fontFamily: "'Outfit', system-ui, sans-serif",
               opacity: canSkip ? 1 : 0,
               pointerEvents: canSkip ? 'auto' : 'none',
@@ -329,14 +329,14 @@ export default function Onboarding() {
                 transition={{ duration: 0.35, ease: easeOutExpo }}
               >
                 <h1
-                  className="text-[28px] font-semibold text-[#232323] leading-tight tracking-tight"
+                  className="text-[28px] font-semibold text-[var(--charcoal)] leading-tight tracking-tight"
                   style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.84px' }}
                 >
                   {t(STEP_TITLES[step - 1])}
                 </h1>
                 <p
                   className="mt-2 text-base"
-                  style={{ color: 'rgba(35, 35, 35, 0.6)', fontFamily: "'Outfit', system-ui, sans-serif" }}
+                  style={{ color: 'rgba(var(--charcoal-rgb), 0.6)', fontFamily: "'Outfit', system-ui, sans-serif" }}
                 >
                   {t(STEP_SUBTITLES[step - 1])}
                 </p>
@@ -420,7 +420,7 @@ export default function Onboarding() {
           className="fixed bottom-0 left-0 right-0 z-50 flex justify-center"
           style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 16px)' }}
         >
-          <div className="w-full max-w-[430px] px-5 py-4" style={{ backgroundColor: '#F7F4EE' }}>
+          <div className="w-full max-w-[430px] px-5 py-4" style={{ backgroundColor: 'var(--linen)' }}>
             <motion.button
               whileTap={stepValid ? { scale: 0.97 } : {}}
               transition={{ duration: 0.08 }}
@@ -429,7 +429,7 @@ export default function Onboarding() {
               className="w-full h-14 rounded-full font-semibold text-base text-white transition-colors"
               style={{
                 fontFamily: "'Outfit', system-ui, sans-serif",
-                backgroundColor: stepValid ? '#BB83C9' : '#E8E2D8',
+                backgroundColor: stepValid ? '#BB83C9' : 'var(--linen-dark)',
                 opacity: stepValid ? 1 : 0.4,
                 boxShadow: stepValid ? '0 4px 16px rgba(187,131,201,0.3)' : 'none',
                 cursor: stepValid ? 'pointer' : 'not-allowed',
@@ -489,12 +489,12 @@ function StepPersonality({
             <div
               className="w-full rounded-[20px] p-6"
               style={{
-                backgroundColor: '#FFFFFF',
+                backgroundColor: 'var(--card-bg)',
                 boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
               }}
             >
               <p
-                className="text-lg font-semibold text-[#232323] mb-4"
+                className="text-lg font-semibold text-[var(--charcoal)] mb-4"
                 style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.54px' }}
               >
                 {t(currentQ.q)}
@@ -513,9 +513,9 @@ function StepPersonality({
                       className="w-full rounded-2xl h-16 font-semibold text-base text-center transition-all"
                       style={{
                         fontFamily: "'Outfit', system-ui, sans-serif",
-                        backgroundColor: isSelected ? 'rgba(187,131,201,0.08)' : 'rgba(232,226,216,0.3)',
+                        backgroundColor: isSelected ? 'rgba(187,131,201,0.08)' : 'rgba(var(--linen-rgb), 0.3)',
                         border: isSelected ? '2px solid #BB83C9' : '2px solid transparent',
-                        color: isSelected ? '#BB83C9' : '#232323',
+                        color: isSelected ? '#BB83C9' : 'var(--charcoal)',
                         opacity: currentAnswer && !isSelected ? 0.5 : 1,
                       }}
                     >
@@ -540,7 +540,7 @@ function StepPersonality({
               <Check size={32} style={{ color: '#5BC492' }} strokeWidth={2.5} />
             </div>
             <p
-              className="text-xl font-semibold text-[#232323]"
+              className="text-xl font-semibold text-[var(--charcoal)]"
               style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
             >
               {t('onboarding.allAnswered')}
@@ -561,7 +561,7 @@ function StepPersonality({
               transition={{ duration: 0.3, ease: easeSpring }}
               className="w-2 h-2 rounded-full flex items-center justify-center"
               style={{
-                backgroundColor: isCompleted ? '#7DE0B3' : isCurrent ? '#BB83C9' : '#E8E2D8',
+                backgroundColor: isCompleted ? '#7DE0B3' : isCurrent ? '#BB83C9' : 'var(--linen-dark)',
                 width: isCompleted ? 20 : 8,
                 height: isCompleted ? 20 : 8,
               }}
@@ -666,7 +666,7 @@ function StepPhotos({
                 <button
                   onClick={() => onPhotoRemove(index)}
                   className="absolute top-2 right-2 w-6 h-6 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: 'rgba(35,35,35,0.6)' }}
+                  style={{ backgroundColor: 'rgba(var(--charcoal-rgb), 0.6)' }}
                 >
                   <X size={14} className="text-white" strokeWidth={2.5} />
                 </button>
@@ -679,13 +679,13 @@ function StepPhotos({
                 className="w-full h-full flex flex-col items-center justify-center gap-1 rounded-xl"
                 style={{
                   border: '2px dashed #E8E2D8',
-                  backgroundColor: 'rgba(232,226,216,0.2)',
+                  backgroundColor: 'rgba(var(--linen-rgb), 0.2)',
                 }}
               >
-                <Camera size={24} style={{ color: 'rgba(35,35,35,0.3)' }} />
+                <Camera size={24} style={{ color: 'rgba(var(--charcoal-rgb), 0.3)' }} />
                 <span
                   className="text-xs font-medium"
-                  style={{ color: 'rgba(35,35,35,0.3)', fontFamily: "'Outfit', system-ui, sans-serif" }}
+                  style={{ color: 'rgba(var(--charcoal-rgb), 0.3)', fontFamily: "'Outfit', system-ui, sans-serif" }}
                 >
                   {t('onboarding.add')}
                 </span>
@@ -703,10 +703,10 @@ function StepPhotos({
         className="w-full h-12 rounded-full flex items-center justify-center gap-2 font-semibold text-base"
         style={{
           fontFamily: "'Outfit', system-ui, sans-serif",
-          backgroundColor: 'rgba(255,255,255,0.72)',
+          backgroundColor: 'rgba(var(--card-rgb), 0.72)',
           backdropFilter: 'blur(12px)',
-          border: '1.5px solid rgba(35,35,35,0.1)',
-          color: '#232323',
+          border: '1.5px solid rgba(var(--charcoal-rgb), 0.1)',
+          color: 'var(--charcoal)',
         }}
       >
         {data.videoIntro ? (
@@ -737,7 +737,7 @@ function StepPhotos({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           className="relative rounded-xl overflow-hidden"
-          style={{ backgroundColor: '#232323', aspectRatio: '16/9' }}
+          style={{ backgroundColor: 'var(--charcoal)', aspectRatio: '16/9' }}
         >
           <video
             src={data.videoIntro}
@@ -748,7 +748,7 @@ function StepPhotos({
           <button
             onClick={onVideoAdd}
             className="absolute top-2 right-2 w-6 h-6 rounded-full flex items-center justify-center"
-            style={{ backgroundColor: 'rgba(35,35,35,0.6)' }}
+            style={{ backgroundColor: 'rgba(var(--charcoal-rgb), 0.6)' }}
           >
             <X size={14} className="text-white" strokeWidth={2.5} />
           </button>
@@ -816,7 +816,7 @@ function StepBasics({
       {/* Name */}
       <div className="flex flex-col gap-2">
         <label
-          className="text-sm font-semibold text-[#232323]"
+          className="text-sm font-semibold text-[var(--charcoal)]"
           style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '0.44px' }}
         >
           {t('onboarding.yourName')}
@@ -830,9 +830,9 @@ function StepBasics({
           className="w-full h-[52px] rounded-xl px-4 text-base outline-none transition-all"
           style={{
             fontFamily: "'Outfit', system-ui, sans-serif",
-            backgroundColor: 'rgba(232,226,216,0.4)',
+            backgroundColor: 'rgba(var(--linen-rgb), 0.4)',
             border: nameError ? '1.5px solid #E86A6A' : '1.5px solid transparent',
-            color: '#232323',
+            color: 'var(--charcoal)',
           }}
         />
         {nameError && (
@@ -845,7 +845,7 @@ function StepBasics({
       {/* DOB */}
       <div className="flex flex-col gap-2">
         <label
-          className="text-sm font-semibold text-[#232323]"
+          className="text-sm font-semibold text-[var(--charcoal)]"
           style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '0.44px' }}
         >
           {t('onboarding.dob')}
@@ -858,9 +858,9 @@ function StepBasics({
           className="w-full h-[52px] rounded-xl px-4 text-base outline-none transition-all"
           style={{
             fontFamily: "'Outfit', system-ui, sans-serif",
-            backgroundColor: 'rgba(232,226,216,0.4)',
+            backgroundColor: 'rgba(var(--linen-rgb), 0.4)',
             border: dobError ? '1.5px solid #E86A6A' : '1.5px solid transparent',
-            color: '#232323',
+            color: 'var(--charcoal)',
             colorScheme: 'light',
           }}
         />
@@ -874,7 +874,7 @@ function StepBasics({
       {/* City */}
       <div className="flex flex-col gap-2">
         <label
-          className="text-sm font-semibold text-[#232323]"
+          className="text-sm font-semibold text-[var(--charcoal)]"
           style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '0.44px' }}
         >
           {t('onboarding.yourCity')}
@@ -883,7 +883,7 @@ function StepBasics({
           <MapPin
             size={20}
             className="absolute left-4 top-1/2 -translate-y-1/2"
-            style={{ color: 'rgba(35,35,35,0.3)' }}
+            style={{ color: 'rgba(var(--charcoal-rgb), 0.3)' }}
           />
           <input
             type="text"
@@ -893,9 +893,9 @@ function StepBasics({
             className="w-full h-[52px] rounded-xl pl-11 pr-4 text-base outline-none transition-all"
             style={{
               fontFamily: "'Outfit', system-ui, sans-serif",
-              backgroundColor: 'rgba(232,226,216,0.4)',
+              backgroundColor: 'rgba(var(--linen-rgb), 0.4)',
               border: '1.5px solid transparent',
-              color: '#232323',
+              color: 'var(--charcoal)',
             }}
           />
         </div>
@@ -947,7 +947,7 @@ function StepBioInterests({
       {/* Bio prompt selector */}
       <div className="flex flex-col gap-3">
         <p
-          className="text-sm font-semibold text-[#232323]"
+          className="text-sm font-semibold text-[var(--charcoal)]"
           style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '0.44px' }}
         >
           {t('onboarding.bioPrompt')}
@@ -960,8 +960,8 @@ function StepBioInterests({
               className="flex-shrink-0 px-4 py-2.5 rounded-full text-sm font-medium transition-all whitespace-nowrap"
               style={{
                 fontFamily: "'Outfit', system-ui, sans-serif",
-                backgroundColor: data.bioPrompt === prompt ? '#BB83C9' : '#E8E2D8',
-                color: data.bioPrompt === prompt ? '#FFFFFF' : '#232323',
+                backgroundColor: data.bioPrompt === prompt ? '#BB83C9' : 'var(--linen-dark)',
+                color: data.bioPrompt === prompt ? '#FFFFFF' : 'var(--charcoal)',
               }}
             >
               {t(prompt)}
@@ -973,7 +973,7 @@ function StepBioInterests({
       {/* Bio textarea */}
       <div className="flex flex-col gap-2">
         <label
-          className="text-sm font-semibold text-[#232323]"
+          className="text-sm font-semibold text-[var(--charcoal)]"
           style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '0.44px' }}
         >
           {t('onboarding.yourBio')}
@@ -988,14 +988,14 @@ function StepBioInterests({
             className="w-full min-h-[120px] rounded-2xl p-4 text-base outline-none resize-none transition-all"
             style={{
               fontFamily: "'Outfit', system-ui, sans-serif",
-              backgroundColor: 'rgba(232,226,216,0.4)',
+              backgroundColor: 'rgba(var(--linen-rgb), 0.4)',
               border: '1.5px solid transparent',
-              color: '#232323',
+              color: 'var(--charcoal)',
             }}
           />
           <span
             className="absolute bottom-3 right-3 text-xs font-medium"
-            style={{ color: 'rgba(35,35,35,0.35)' }}
+            style={{ color: 'rgba(var(--charcoal-rgb), 0.35)' }}
           >
             {bioLen}/500
           </span>
@@ -1009,12 +1009,12 @@ function StepBioInterests({
       <div className="flex flex-col gap-3">
         <div>
           <p
-            className="text-sm font-semibold text-[#232323]"
+            className="text-sm font-semibold text-[var(--charcoal)]"
             style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '0.44px' }}
           >
             {t('onboarding.yourInterests')}
           </p>
-          <p className="mt-1 text-sm" style={{ color: 'rgba(35,35,35,0.6)' }}>
+          <p className="mt-1 text-sm" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>
             {t('onboarding.pick3')}
           </p>
         </div>
@@ -1031,8 +1031,8 @@ function StepBioInterests({
                 className="px-3.5 py-2 rounded-full text-xs font-medium transition-colors"
                 style={{
                   fontFamily: "'Outfit', system-ui, sans-serif",
-                  backgroundColor: isSelected ? '#BB83C9' : '#E8E2D8',
-                  color: isSelected ? '#FFFFFF' : '#232323',
+                  backgroundColor: isSelected ? '#BB83C9' : 'var(--linen-dark)',
+                  color: isSelected ? '#FFFFFF' : 'var(--charcoal)',
                   transform: isSelected ? 'scale(1.05)' : 'scale(1)',
                 }}
               >
@@ -1058,9 +1058,9 @@ function StepBioInterests({
                 className="h-9 px-3 rounded-full text-xs font-medium outline-none"
                 style={{
                   fontFamily: "'Outfit', system-ui, sans-serif",
-                  backgroundColor: 'rgba(232,226,216,0.4)',
+                  backgroundColor: 'rgba(var(--linen-rgb), 0.4)',
                   border: '1.5px solid #BB83C9',
-                  color: '#232323',
+                  color: 'var(--charcoal)',
                   width: 140,
                 }}
               />
@@ -1124,7 +1124,7 @@ function StepGoals({
       }}
     >
       <div className="text-center mb-2">
-        <p className="text-base" style={{ color: 'rgba(35,35,35,0.6)' }}>
+        <p className="text-base" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>
           {t('onboarding.sub5')}
         </p>
       </div>
@@ -1148,7 +1148,7 @@ function StepGoals({
               onClick={() => update('goal', goal.id)}
               className="flex flex-col items-center justify-center gap-3 rounded-[20px] p-6 transition-all"
               style={{
-                backgroundColor: '#FFFFFF',
+                backgroundColor: 'var(--card-bg)',
                 border: isSelected ? `2px solid ${goal.color}` : '2px solid transparent',
                 background: isSelected ? `rgba(${hexToRgb(goal.color)}, 0.06)` : '#FFFFFF',
                 boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
@@ -1157,7 +1157,7 @@ function StepGoals({
               <div
                 className="w-10 h-10 rounded-full flex items-center justify-center"
                 style={{
-                  backgroundColor: isSelected ? goal.color : 'rgba(232,226,216,0.4)',
+                  backgroundColor: isSelected ? goal.color : 'rgba(var(--linen-rgb), 0.4)',
                 }}
               >
                 <Icon
@@ -1168,14 +1168,14 @@ function StepGoals({
                 />
               </div>
               <p
-                className="text-lg font-semibold text-[#232323] text-center"
+                className="text-lg font-semibold text-[var(--charcoal)] text-center"
                 style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.54px' }}
               >
                 {t(goal.label)}
               </p>
               <p
                 className="text-xs text-center"
-                style={{ color: 'rgba(35,35,35,0.5)' }}
+                style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}
               >
                 {t(goal.desc)}
               </p>

@@ -17,9 +17,9 @@ export default function NotificationBell() {
         whileTap={{ scale: 0.9 }}
         onClick={() => setOpen(!open)}
         className="relative w-10 h-10 rounded-full flex items-center justify-center"
-        style={{ backgroundColor: 'rgba(232,226,216,0.5)' }}
+        style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.5)' }}
       >
-        <Bell size={20} className="text-[#232323]" strokeWidth={2} />
+        <Bell size={20} className="text-[var(--charcoal)]" strokeWidth={2} />
         {unreadCount > 0 && (
           <span
             className="absolute -top-0.5 -right-0.5 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold text-white"
@@ -40,10 +40,10 @@ export default function NotificationBell() {
               exit={{ opacity: 0, y: -8, scale: 0.95 }}
               transition={{ duration: 0.2 }}
               className="absolute right-0 top-12 z-50 w-80 rounded-2xl overflow-hidden shadow-lg"
-              style={{ backgroundColor: '#FFFFFF', boxShadow: '0 8px 32px rgba(0,0,0,0.12)' }}
+              style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 8px 32px rgba(0,0,0,0.12)' }}
             >
               <div className="flex items-center justify-between px-4 py-3 border-b" style={{ borderColor: 'rgba(0,0,0,0.06)' }}>
-                <span className="text-sm font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                <span className="text-sm font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                   {t('notifications.title')}
                 </span>
                 {unreadCount > 0 && (
@@ -57,7 +57,7 @@ export default function NotificationBell() {
               <div className="max-h-80 overflow-y-auto">
                 {recentNotifications.length === 0 ? (
                   <div className="px-4 py-8 text-center">
-                    <p className="text-sm" style={{ color: 'rgba(35,35,35,0.4)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                    <p className="text-sm" style={{ color: 'rgba(var(--charcoal-rgb), 0.4)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
                       {t('notifications.empty')}
                     </p>
                   </div>
@@ -75,10 +75,10 @@ export default function NotificationBell() {
                     >
                       <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0" style={{ backgroundColor: n.read ? 'transparent' : '#BB83C9' }} />
                       <div>
-                        <p className="text-sm font-medium text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                        <p className="text-sm font-medium text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                           {n.title}
                         </p>
-                        <p className="text-xs mt-0.5" style={{ color: 'rgba(35,35,35,0.6)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                        <p className="text-xs mt-0.5" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
                           {n.body}
                         </p>
                       </div>

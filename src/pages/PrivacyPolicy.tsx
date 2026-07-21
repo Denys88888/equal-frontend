@@ -25,7 +25,7 @@ export default function PrivacyPolicy() {
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-[100dvh] w-full flex justify-center" style={{ backgroundColor: '#F7F4EE' }}>
+    <div className="min-h-[100dvh] w-full flex justify-center" style={{ backgroundColor: 'var(--linen)' }}>
       <div className="w-full max-w-[430px]" style={{ paddingTop: 'calc(24px + env(safe-area-inset-top))' }}>
         {/* Header */}
         <div className="flex items-center gap-3 px-5 py-4">
@@ -33,12 +33,12 @@ export default function PrivacyPolicy() {
             whileTap={{ scale: 0.9 }}
             onClick={() => navigate(-1)}
             className="w-10 h-10 rounded-full flex items-center justify-center"
-            style={{ backgroundColor: 'rgba(232,226,216,0.5)' }}
+            style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.5)' }}
           >
-            <ArrowLeft size={20} className="text-[#232323]" strokeWidth={2} />
+            <ArrowLeft size={20} className="text-[var(--charcoal)]" strokeWidth={2} />
           </motion.button>
           <h1
-            className="text-xl font-bold text-[#232323]"
+            className="text-xl font-bold text-[var(--charcoal)]"
             style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
           >
             {t('legal.privacyTitle')}
@@ -58,14 +58,14 @@ export default function PrivacyPolicy() {
 
           {SECTIONS.map((s) => (
             <section key={s.h}>
-              <h2 className="text-lg font-semibold text-[#232323] mb-2" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              <h2 className="text-lg font-semibold text-[var(--charcoal)] mb-2" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                 {t(s.h)}
               </h2>
-              <p className="text-sm leading-relaxed" style={{ color: 'rgba(35,35,35,0.7)', fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.6 }}>
+              <p className="text-sm leading-relaxed" style={{ color: 'rgba(var(--charcoal-rgb), 0.7)', fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.6 }}>
                 {t(s.p)}
               </p>
               {s.items && (
-                <ul className="mt-2 space-y-1 text-sm" style={{ color: 'rgba(35,35,35,0.7)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                <ul className="mt-2 space-y-1 text-sm" style={{ color: 'rgba(var(--charcoal-rgb), 0.7)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
                   {s.items.map((item) => (
                     <li key={item} className="flex items-start gap-2">
                       <span style={{ color: s.markerColor }}>{s.marker}</span>
@@ -78,7 +78,7 @@ export default function PrivacyPolicy() {
           ))}
 
           <div className="pt-4 pb-2 text-center">
-            <p className="text-xs" style={{ color: 'rgba(35,35,35,0.4)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
+            <p className="text-xs" style={{ color: 'rgba(var(--charcoal-rgb), 0.4)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
               {t('legal.lastUpdated')}
             </p>
           </div>

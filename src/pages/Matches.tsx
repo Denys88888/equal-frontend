@@ -31,13 +31,13 @@ interface Match {
 function TypingIndicator() {
   return (
     <div className="flex items-center gap-1">
-      <span className="text-xs" style={{ color: 'rgba(35,35,35,0.4)' }}>typing</span>
+      <span className="text-xs" style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }}>typing</span>
       <div className="flex items-center gap-0.5">
         {[0, 1, 2].map((i) => (
           <motion.div
             key={i}
             className="w-1.5 h-1.5 rounded-full"
-            style={{ backgroundColor: '#E8E2D8' }}
+            style={{ backgroundColor: 'var(--linen-dark)' }}
             animate={{ scale: [0.4, 1, 0.4] }}
             transition={{
               duration: 0.6,
@@ -103,14 +103,14 @@ function NewMatchItem({ match, index }: { match: Match; index: number }) {
         )}
       </div>
       <span
-        className="text-xs font-semibold text-[#232323] text-center truncate w-full"
+        className="text-xs font-semibold text-[var(--charcoal)] text-center truncate w-full"
         style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
       >
         {match.name}
       </span>
       <span
         className="px-1.5 py-0.5 rounded-full text-[10px] font-semibold"
-        style={{ backgroundColor: '#7DE0B3', color: '#232323' }}
+        style={{ backgroundColor: '#7DE0B3', color: 'var(--charcoal)' }}
       >
         {match.compatibility}%
       </span>
@@ -170,7 +170,7 @@ function ConversationRow({
       <span
         className="text-sm truncate block"
         style={{
-          color: match.unreadCount > 0 ? 'rgba(35,35,35,0.7)' : 'rgba(35,35,35,0.6)',
+          color: match.unreadCount > 0 ? 'rgba(var(--charcoal-rgb), 0.7)' : 'rgba(var(--charcoal-rgb), 0.6)',
           fontWeight: match.unreadCount > 0 ? 500 : 400,
         }}
       >
@@ -217,9 +217,9 @@ function ConversationRow({
         animate={{ x: isDeleting ? -80 : 0 }}
         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
         onClick={() => !isDeleting && navigate(`/chat/${match.id}`)}
-        className="relative z-10 flex items-center gap-3 px-4 py-3 bg-white active:bg-[rgba(232,226,216,0.2)] transition-colors cursor-pointer"
+        className="relative z-10 flex items-center gap-3 px-4 py-3 bg-white dark:bg-[#22293B] active:bg-[rgba(var(--linen-rgb), 0.2)] transition-colors cursor-pointer"
         style={{
-          borderBottom: '1px solid rgba(232,226,216,0.4)',
+          borderBottom: '1px solid rgba(var(--linen-rgb), 0.4)',
         }}
       >
         {/* Avatar */}
@@ -253,7 +253,7 @@ function ConversationRow({
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between mb-0.5">
             <h4
-              className="text-lg font-semibold text-[#232323] truncate"
+              className="text-lg font-semibold text-[var(--charcoal)] truncate"
               style={{
                 fontFamily: "'Outfit', system-ui, sans-serif",
                 fontWeight: match.unreadCount > 0 ? 600 : 500,
@@ -265,7 +265,7 @@ function ConversationRow({
               <span
                 className="text-xs flex-shrink-0 ml-2"
                 style={{
-                  color: 'rgba(35,35,35,0.35)',
+                  color: 'rgba(var(--charcoal-rgb), 0.35)',
                   fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                 }}
               >
@@ -306,10 +306,10 @@ function EmptyState() {
           <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
         </svg>
       </motion.div>
-      <h2 className="text-xl font-semibold text-[#232323] mb-2 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+      <h2 className="text-xl font-semibold text-[var(--charcoal)] mb-2 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
         {t('matches.noMatches')}
       </h2>
-      <p className="text-sm text-center mb-8 max-w-[260px]" style={{ color: 'rgba(35,35,35,0.6)' }}>
+      <p className="text-sm text-center mb-8 max-w-[260px]" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>
         {t('matches.startSwiping')}
       </p>
       <button
@@ -474,7 +474,7 @@ function MatchCelebration({
               duration: 0.5,
               ease: [0.34, 1.56, 0.64, 1] as [number, number, number, number],
             }}
-            className="w-full max-w-[320px] rounded-2xl overflow-hidden bg-white"
+            className="w-full max-w-[320px] rounded-2xl overflow-hidden bg-white dark:bg-[#22293B]"
             style={{
               boxShadow: '0 12px 40px rgba(0,0,0,0.15)',
             }}
@@ -514,7 +514,7 @@ function MatchCelebration({
               </div>
 
               <h3
-                className="text-lg font-semibold text-[#232323] leading-tight"
+                className="text-lg font-semibold text-[var(--charcoal)] leading-tight"
                 style={{
                   fontFamily: "'Outfit', system-ui, sans-serif",
                   fontSize: 18,
@@ -531,7 +531,7 @@ function MatchCelebration({
                   fontSize: 14,
                   lineHeight: 1.55,
                   letterSpacing: '-0.28px',
-                  color: 'rgba(35,35,35,0.65)',
+                  color: 'rgba(var(--charcoal-rgb), 0.65)',
                 }}
               >
                 {t('matches.restaurantOffer')}
@@ -558,7 +558,7 @@ function MatchCelebration({
                   onClick={() => setShowOffer(false)}
                   className="w-full py-1.5 text-sm font-semibold text-center"
                   style={{
-                    color: 'rgba(35,35,35,0.5)',
+                    color: 'rgba(var(--charcoal-rgb), 0.5)',
                     fontFamily: "'Outfit', system-ui, sans-serif",
                     fontSize: 14,
                     background: 'none',
@@ -652,9 +652,9 @@ export default function Matches() {
               whileTap={{ scale: 0.9 }}
               onClick={() => setShowSearch(!showSearch)}
               className="w-10 h-10 rounded-full flex items-center justify-center"
-              style={{ backgroundColor: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(12px)' }}
+              style={{ backgroundColor: 'rgba(var(--card-rgb), 0.72)', backdropFilter: 'blur(12px)' }}
             >
-              <Search size={20} className="text-[#232323]" strokeWidth={2} />
+              <Search size={20} className="text-[var(--charcoal)]" strokeWidth={2} />
             </motion.button>
           </div>
         }
@@ -673,15 +673,15 @@ export default function Matches() {
                 <div className="px-5 py-3">
                   <div
                     className="flex items-center gap-2 h-12 px-4 rounded-xl"
-                    style={{ backgroundColor: 'rgba(232,226,216,0.4)', border: '1.5px solid transparent' }}
+                    style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.4)', border: '1.5px solid transparent' }}
                   >
-                    <Search size={18} style={{ color: 'rgba(35,35,35,0.35)' }} />
+                    <Search size={18} style={{ color: 'rgba(var(--charcoal-rgb), 0.35)' }} />
                     <input
                       type="text"
                       placeholder={t('matches.searchPlaceholder')}
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="flex-1 bg-transparent text-base text-[#232323] placeholder:text-[rgba(35,35,35,0.35)] outline-none"
+                      className="flex-1 bg-transparent text-base text-[var(--charcoal)] placeholder:text-[rgba(var(--charcoal-rgb), 0.35)] outline-none"
                       style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
                       autoFocus
                     />
@@ -702,7 +702,7 @@ export default function Matches() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
                 className="text-[11px] font-semibold uppercase tracking-widest mb-3 block"
-                style={{ color: 'rgba(35,35,35,0.4)', fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '0.44px' }}
+                style={{ color: 'rgba(var(--charcoal-rgb), 0.4)', fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '0.44px' }}
               >
                 {t('matches.newMatches')}
               </motion.span>
@@ -720,7 +720,7 @@ export default function Matches() {
           {/* Messages Section */}
           {conversations.length > 0 && (
             <div
-              className="flex-1 flex flex-col overflow-hidden rounded-t-3xl bg-white"
+              className="flex-1 flex flex-col overflow-hidden rounded-t-3xl bg-white dark:bg-[#22293B]"
               style={{
                 boxShadow: '0 -4px 24px rgba(0,0,0,0.04)',
                 marginTop: newMatches.length > 0 ? 8 : 0,
@@ -733,12 +733,12 @@ export default function Matches() {
               >
                 <div className="flex items-center gap-2">
                   <h2
-                    className="text-xl font-semibold text-[#232323]"
+                    className="text-xl font-semibold text-[var(--charcoal)]"
                     style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
                   >
                     {t('matches.messages')}
                   </h2>
-                  <span className="text-xs" style={{ color: 'rgba(35,35,35,0.4)' }}>
+                  <span className="text-xs" style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }}>
                     ({conversations.length})
                   </span>
                 </div>
@@ -769,8 +769,8 @@ export default function Matches() {
                   ))
                 ) : (
                   <div className="flex flex-col items-center justify-center py-16 px-8">
-                    <Search size={40} style={{ color: 'rgba(35,35,35,0.2)' }} className="mb-3" />
-                    <p className="text-sm text-center" style={{ color: 'rgba(35,35,35,0.5)' }}>
+                    <Search size={40} style={{ color: 'rgba(var(--charcoal-rgb), 0.2)' }} className="mb-3" />
+                    <p className="text-sm text-center" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>
                       No conversations match &ldquo;{searchQuery}&rdquo;
                     </p>
                   </div>
@@ -782,10 +782,10 @@ export default function Matches() {
           {/* No conversations yet (only new matches) */}
           {conversations.length === 0 && newMatches.length > 0 && (
             <div
-              className="flex-1 flex flex-col items-center justify-center px-10 bg-white rounded-t-3xl"
+              className="flex-1 flex flex-col items-center justify-center px-10 bg-white dark:bg-[#22293B] rounded-t-3xl"
               style={{ boxShadow: '0 -4px 24px rgba(0,0,0,0.04)' }}
             >
-              <p className="text-sm text-center mb-4" style={{ color: 'rgba(35,35,35,0.5)' }}>
+              <p className="text-sm text-center mb-4" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>
                 {t('matches.startConvo')}
               </p>
               <button

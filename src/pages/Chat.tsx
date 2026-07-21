@@ -194,7 +194,7 @@ const CONVERSATIONS: Record<string, ConversationData> = {
 const TypingDot = React.memo(function TypingDot({ delay }: { delay: number }) {
   return (
     <motion.span
-      className="inline-block w-1.5 h-1.5 rounded-full bg-[#232323]"
+      className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--charcoal)]"
       style={{ opacity: 0.35, margin: '0 2px' }}
       animate={{ scale: [0.4, 1, 0.4] }}
       transition={{ duration: 0.6, repeat: Infinity, delay, ease: 'easeInOut' }}
@@ -205,7 +205,7 @@ const TypingDot = React.memo(function TypingDot({ delay }: { delay: number }) {
 function TypingIndicator() {
   return (
     <div className="flex justify-start mb-3">
-      <div className="inline-flex items-center px-3 py-2 rounded-full" style={{ backgroundColor: '#E8E2D8' }}>
+      <div className="inline-flex items-center px-3 py-2 rounded-full" style={{ backgroundColor: 'var(--linen-dark)' }}>
         <TypingDot delay={0} />
         <TypingDot delay={0.15} />
         <TypingDot delay={0.3} />
@@ -285,7 +285,7 @@ function ChatBubble({ message }: { message: Message }) {
           >
             <GiftIconComponent type={message.giftType || 'coffee'} size={28} />
           </motion.div>
-          <p className="text-sm font-medium mt-1.5 text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+          <p className="text-sm font-medium mt-1.5 text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
             {message.content}
           </p>
           {message.giftPrice && (
@@ -293,7 +293,7 @@ function ChatBubble({ message }: { message: Message }) {
               {message.giftPrice}
             </span>
           )}
-          <span className="text-[11px] mt-1" style={{ color: 'rgba(35,35,35,0.3)', fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}>
+          <span className="text-[11px] mt-1" style={{ color: 'rgba(var(--charcoal-rgb), 0.3)', fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}>
             {formatTime(message.timestamp)}
           </span>
         </div>
@@ -314,7 +314,7 @@ function ChatBubble({ message }: { message: Message }) {
           <div
             className="flex items-center gap-3 px-4 py-3"
             style={{
-              backgroundColor: isSent ? '#BB83C9' : 'rgba(232,226,216,0.6)',
+              backgroundColor: isSent ? '#BB83C9' : 'rgba(var(--linen-rgb), 0.6)',
               borderRadius: isSent ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
               boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
             }}
@@ -334,7 +334,7 @@ function ChatBubble({ message }: { message: Message }) {
             <span
               className="text-xs flex-shrink-0"
               style={{
-                color: isSent ? 'rgba(255,255,255,0.8)' : 'rgba(35,35,35,0.5)',
+                color: isSent ? 'rgba(255,255,255,0.8)' : 'rgba(var(--charcoal-rgb), 0.5)',
                 fontFamily: "'JetBrains Mono', ui-monospace, monospace",
               }}
             >
@@ -342,11 +342,11 @@ function ChatBubble({ message }: { message: Message }) {
             </span>
           </div>
           <div className={cn('flex items-center gap-1 mt-1', isSent ? 'justify-end' : 'justify-start')}>
-            <span style={{ color: 'rgba(35,35,35,0.3)', fontFamily: "'JetBrains Mono', ui-monospace, monospace", fontSize: 11 }}>
+            <span style={{ color: 'rgba(var(--charcoal-rgb), 0.3)', fontFamily: "'JetBrains Mono', ui-monospace, monospace", fontSize: 11 }}>
               {formatTime(message.timestamp)}
             </span>
             {isSent && message.read && (
-              <CheckCheck size={12} style={{ color: 'rgba(35,35,35,0.25)' }} />
+              <CheckCheck size={12} style={{ color: 'rgba(var(--charcoal-rgb), 0.25)' }} />
             )}
           </div>
         </div>
@@ -366,7 +366,7 @@ function ChatBubble({ message }: { message: Message }) {
         <div
           className="px-4 py-3"
           style={{
-            backgroundColor: isSent ? '#BB83C9' : 'rgba(232,226,216,0.6)',
+            backgroundColor: isSent ? '#BB83C9' : 'rgba(var(--linen-rgb), 0.6)',
             borderRadius: isSent ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
             boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
           }}
@@ -374,7 +374,7 @@ function ChatBubble({ message }: { message: Message }) {
           <p
             className="text-base leading-relaxed break-words whitespace-pre-wrap"
             style={{
-              color: isSent ? '#fff' : '#232323',
+              color: isSent ? '#fff' : 'var(--charcoal)',
               fontFamily: "'Outfit', system-ui, sans-serif",
               fontSize: 16,
               lineHeight: 1.6,
@@ -385,11 +385,11 @@ function ChatBubble({ message }: { message: Message }) {
           </p>
         </div>
         <div className={cn('flex items-center gap-1 mt-1', isSent ? 'justify-end' : 'justify-start')}>
-          <span style={{ color: 'rgba(35,35,35,0.3)', fontFamily: "'JetBrains Mono', ui-monospace, monospace", fontSize: 11 }}>
+          <span style={{ color: 'rgba(var(--charcoal-rgb), 0.3)', fontFamily: "'JetBrains Mono', ui-monospace, monospace", fontSize: 11 }}>
             {formatTime(message.timestamp)}
           </span>
           {isSent && message.read && (
-            <CheckCheck size={12} style={{ color: 'rgba(35,35,35,0.25)' }} />
+            <CheckCheck size={12} style={{ color: 'rgba(var(--charcoal-rgb), 0.25)' }} />
           )}
         </div>
       </div>
@@ -402,14 +402,14 @@ function ChatBubble({ message }: { message: Message }) {
 function DateDivider({ date }: { date: string }) {
   return (
     <div className="flex items-center my-5 gap-4 px-4">
-      <div className="flex-1 h-px" style={{ backgroundColor: '#E8E2D8' }} />
+      <div className="flex-1 h-px" style={{ backgroundColor: 'var(--linen-dark)' }} />
       <span
         className="text-xs font-medium flex-shrink-0"
-        style={{ color: 'rgba(35,35,35,0.35)', fontFamily: "'Outfit', system-ui, sans-serif", fontSize: 12 }}
+        style={{ color: 'rgba(var(--charcoal-rgb), 0.35)', fontFamily: "'Outfit', system-ui, sans-serif", fontSize: 12 }}
       >
         {date}
       </span>
-      <div className="flex-1 h-px" style={{ backgroundColor: '#E8E2D8' }} />
+      <div className="flex-1 h-px" style={{ backgroundColor: 'var(--linen-dark)' }} />
     </div>
   );
 }
@@ -425,7 +425,7 @@ function IcebreakerChips({ chips, onSend }: { chips: string[]; onSend: (text: st
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
         className="text-xs font-medium mb-2"
-        style={{ color: 'rgba(35,35,35,0.4)', fontFamily: "'Outfit', system-ui, sans-serif" }}
+        style={{ color: 'rgba(var(--charcoal-rgb), 0.4)', fontFamily: "'Outfit', system-ui, sans-serif" }}
       >
         {t('chat.icebreakers')}
       </motion.p>
@@ -441,7 +441,7 @@ function IcebreakerChips({ chips, onSend }: { chips: string[]; onSend: (text: st
             className="flex-shrink-0 snap-start px-4 py-3 rounded-full text-sm text-left"
             style={{
               backgroundColor: '#fff',
-              color: '#232323',
+              color: 'var(--charcoal)',
               fontFamily: "'Outfit', system-ui, sans-serif",
               fontSize: 14,
               boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
@@ -503,7 +503,7 @@ function GiftBottomSheet({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-[200]"
-            style={{ backgroundColor: 'rgba(35,35,35,0.4)', backdropFilter: 'blur(4px)' }}
+            style={{ backgroundColor: 'rgba(var(--charcoal-rgb), 0.4)', backdropFilter: 'blur(4px)' }}
             onClick={onClose}
           />
           <motion.div
@@ -515,12 +515,12 @@ function GiftBottomSheet({
             style={{ backgroundColor: '#fff', maxHeight: '60vh' }}
           >
             <div className="flex justify-center pt-3 pb-2">
-              <div className="w-10 h-1 rounded-full" style={{ backgroundColor: '#E8E2D8' }} />
+              <div className="w-10 h-1 rounded-full" style={{ backgroundColor: 'var(--linen-dark)' }} />
             </div>
             <div className="px-6 pb-6">
               <h3
                 className="text-xl font-semibold mb-5"
-                style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: '#232323', letterSpacing: '-0.6px' }}
+                style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: 'var(--charcoal)', letterSpacing: '-0.6px' }}
               >
                 {t('chat.sendAGift')}
               </h3>
@@ -540,7 +540,7 @@ function GiftBottomSheet({
                     <GiftIconComponent type={gift.icon} size={36} />
                     <span
                       className="text-base font-semibold mt-2"
-                      style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: '#232323' }}
+                      style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: 'var(--charcoal)' }}
                     >
                       {t(gift.nameKey, { defaultValue: gift.name })}
                     </span>
@@ -564,7 +564,7 @@ function GiftBottomSheet({
                     </div>
                     <span
                       className="text-xs mt-1 text-center"
-                      style={{ color: 'rgba(35,35,35,0.5)', fontFamily: "'Outfit', system-ui, sans-serif" }}
+                      style={{ color: 'rgba(var(--charcoal-rgb), 0.5)', fontFamily: "'Outfit', system-ui, sans-serif" }}
                     >
                       {t(gift.description)}
                     </span>
@@ -574,7 +574,7 @@ function GiftBottomSheet({
 
               <div className="flex items-center gap-2 mb-4">
                 <img src="./pi-logo.svg" alt="Pi" className="w-4 h-4" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
-                <span className="text-sm" style={{ color: 'rgba(35,35,35,0.6)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                <span className="text-sm" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
                   Your balance: 12.5 Pi
                 </span>
               </div>
@@ -643,7 +643,7 @@ function RecordingOverlay({ isRecording, onCancel }: { isRecording: boolean; onC
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="absolute inset-0 z-30 flex flex-col items-center justify-center"
-          style={{ backgroundColor: 'rgba(35,35,35,0.5)' }}
+          style={{ backgroundColor: 'rgba(var(--charcoal-rgb), 0.5)' }}
           onClick={onCancel}
         >
           <motion.div
@@ -652,7 +652,7 @@ function RecordingOverlay({ isRecording, onCancel }: { isRecording: boolean; onC
             className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
             style={{ backgroundColor: '#E86A6A' }}
           >
-            <div className="w-4 h-4 rounded-full bg-white" />
+            <div className="w-4 h-4 rounded-full bg-white dark:bg-[#22293B]" />
           </motion.div>
           <h3
             className="text-xl font-semibold text-white mb-1"
@@ -721,35 +721,35 @@ function ChatDropdownMenu({
           >
             <button
               onClick={() => { onViewProfile(); onClose(); }}
-              className="flex items-center gap-3 w-full px-4 py-3 text-left hover:bg-[#F7F4EE] transition-colors"
+              className="flex items-center gap-3 w-full px-4 py-3 text-left hover:bg-[var(--linen)] transition-colors"
             >
-              <User size={18} style={{ color: '#232323' }} />
-              <span className="text-sm font-medium" style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: '#232323' }}>
+              <User size={18} style={{ color: 'var(--charcoal)' }} />
+              <span className="text-sm font-medium" style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: 'var(--charcoal)' }}>
                 {t('chat.viewProfile')}
               </span>
             </button>
             <button
               onClick={() => { onMute(); onClose(); }}
-              className="flex items-center gap-3 w-full px-4 py-3 text-left hover:bg-[#F7F4EE] transition-colors"
+              className="flex items-center gap-3 w-full px-4 py-3 text-left hover:bg-[var(--linen)] transition-colors"
             >
-              <BellOff size={18} style={{ color: '#232323' }} />
-              <span className="text-sm font-medium" style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: '#232323' }}>
+              <BellOff size={18} style={{ color: 'var(--charcoal)' }} />
+              <span className="text-sm font-medium" style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: 'var(--charcoal)' }}>
                 {t('chat.muteNotifications')}
               </span>
             </button>
             <button
               onClick={() => { onBlock(); onClose(); }}
-              className="flex items-center gap-3 w-full px-4 py-3 text-left hover:bg-[#F7F4EE] transition-colors"
+              className="flex items-center gap-3 w-full px-4 py-3 text-left hover:bg-[var(--linen)] transition-colors"
             >
-              <UserX size={18} style={{ color: '#232323' }} />
-              <span className="text-sm font-medium" style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: '#232323' }}>
+              <UserX size={18} style={{ color: 'var(--charcoal)' }} />
+              <span className="text-sm font-medium" style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: 'var(--charcoal)' }}>
                 {t('chat.block')}
               </span>
             </button>
-            <div className="h-px" style={{ backgroundColor: '#E8E2D8' }} />
+            <div className="h-px" style={{ backgroundColor: 'var(--linen-dark)' }} />
             <button
               onClick={() => { onReport(); onClose(); }}
-              className="flex items-center gap-3 w-full px-4 py-3 text-left hover:bg-[#F7F4EE] transition-colors"
+              className="flex items-center gap-3 w-full px-4 py-3 text-left hover:bg-[var(--linen)] transition-colors"
             >
               <Flag size={18} style={{ color: '#E86A6A' }} />
               <span className="text-sm font-medium" style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: '#E86A6A' }}>
@@ -786,7 +786,7 @@ function Toast({ message, isVisible, onClose }: { message: string; isVisible: bo
           <div
             className="px-5 py-3 rounded-full text-sm text-white font-medium"
             style={{
-              backgroundColor: '#232323',
+              backgroundColor: 'var(--charcoal)',
               boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
               fontFamily: "'Outfit', system-ui, sans-serif",
             }}
@@ -1031,17 +1031,17 @@ export default function Chat() {
   const hasText = inputText.trim().length > 0;
 
   return (
-    <div className="min-h-[100dvh] w-full flex justify-center" style={{ backgroundColor: '#F7F4EE' }}>
-      <div className="w-full max-w-[430px] relative flex flex-col" style={{ backgroundColor: '#F7F4EE' }}>
+    <div className="min-h-[100dvh] w-full flex justify-center" style={{ backgroundColor: 'var(--linen)' }}>
+      <div className="w-full max-w-[430px] relative flex flex-col" style={{ backgroundColor: 'var(--linen)' }}>
         {/* ── Chat Header ── */}
         <div
           className="sticky top-0 z-40 flex items-center justify-between px-3"
           style={{
-            backgroundColor: 'rgba(255,255,255,0.85)',
+            backgroundColor: 'rgba(var(--card-rgb), 0.85)',
             backdropFilter: 'blur(12px)',
             paddingTop: 'env(safe-area-inset-top)',
             height: 'calc(56px + env(safe-area-inset-top))',
-            borderBottom: '1px solid rgba(232,226,216,0.5)',
+            borderBottom: '1px solid rgba(var(--linen-rgb), 0.5)',
           }}
         >
           {/* Left: Back + Avatar + Name */}
@@ -1051,9 +1051,9 @@ export default function Chat() {
               transition={{ duration: 0.12 }}
               onClick={() => navigate('/matches')}
               className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-              style={{ backgroundColor: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(12px)' }}
+              style={{ backgroundColor: 'rgba(var(--card-rgb), 0.72)', backdropFilter: 'blur(12px)' }}
             >
-              <ChevronLeft size={24} className="text-[#232323]" strokeWidth={2} />
+              <ChevronLeft size={24} className="text-[var(--charcoal)]" strokeWidth={2} />
             </motion.button>
 
             <motion.button
@@ -1080,7 +1080,7 @@ export default function Chat() {
               <div className="min-w-0 text-left">
                 <p
                   className="text-base font-semibold truncate"
-                  style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: '#232323', letterSpacing: '-0.32px', lineHeight: 1.3 }}
+                  style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: 'var(--charcoal)', letterSpacing: '-0.32px', lineHeight: 1.3 }}
                 >
                   {matchInfo.matchName}
                 </p>
@@ -1088,7 +1088,7 @@ export default function Chat() {
                   className="text-xs truncate"
                   style={{
                     fontFamily: "'Outfit', system-ui, sans-serif",
-                    color: matchInfo.isOnline ? '#7DE0B3' : 'rgba(35,35,35,0.4)',
+                    color: matchInfo.isOnline ? '#7DE0B3' : 'rgba(var(--charcoal-rgb), 0.4)',
                   }}
                 >
                   {matchInfo.isOnline ? t('chat.activeNow') : conversation.lastSeen || t('chat.offline')}
@@ -1105,7 +1105,7 @@ export default function Chat() {
               onClick={() => navigate(`/video/${matchId}`)}
               className="w-10 h-10 rounded-full flex items-center justify-center"
             >
-              <Video size={22} style={{ color: 'rgba(35,35,35,0.6)' }} strokeWidth={2} />
+              <Video size={22} style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }} strokeWidth={2} />
             </motion.button>
             <div className="relative">
               <motion.button
@@ -1114,7 +1114,7 @@ export default function Chat() {
                 onClick={() => setDropdownOpen(!dropdownOpen)}
                 className="w-10 h-10 rounded-full flex items-center justify-center"
               >
-                <MoreVertical size={20} style={{ color: 'rgba(35,35,35,0.6)' }} />
+                <MoreVertical size={20} style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }} />
               </motion.button>
               <ChatDropdownMenu
                 isOpen={dropdownOpen}
@@ -1133,7 +1133,7 @@ export default function Chat() {
           ref={scrollContainerRef}
           className="flex-1 overflow-y-auto relative"
           style={{
-            backgroundColor: '#F7F4EE',
+            backgroundColor: 'var(--linen)',
             padding: '8px 0 16px',
             WebkitOverflowScrolling: 'touch',
           }}
@@ -1188,7 +1188,7 @@ export default function Chat() {
           className="flex-shrink-0 z-40"
           style={{
             backgroundColor: '#fff',
-            borderTop: '1px solid rgba(232,226,216,0.5)',
+            borderTop: '1px solid rgba(var(--linen-rgb), 0.5)',
             paddingBottom: 'env(safe-area-inset-bottom)',
           }}
         >
@@ -1227,10 +1227,10 @@ export default function Chat() {
                 rows={1}
                 className="w-full resize-none outline-none px-4 py-2.5 text-base"
                 style={{
-                  backgroundColor: 'rgba(232,226,216,0.4)',
+                  backgroundColor: 'rgba(var(--linen-rgb), 0.4)',
                   borderRadius: 24,
                   fontFamily: "'Outfit', system-ui, sans-serif",
-                  color: '#232323',
+                  color: 'var(--charcoal)',
                   fontSize: 16,
                   lineHeight: 1.5,
                   minHeight: 40,
@@ -1238,11 +1238,11 @@ export default function Chat() {
                   letterSpacing: '-0.32px',
                 }}
                 onFocus={(e) => {
-                  (e.target as HTMLTextAreaElement).style.backgroundColor = 'rgba(232,226,216,0.6)';
+                  (e.target as HTMLTextAreaElement).style.backgroundColor = 'rgba(var(--linen-rgb), 0.6)';
                   (e.target as HTMLTextAreaElement).style.boxShadow = '0 0 0 3px rgba(187,131,201,0.15)';
                 }}
                 onBlur={(e) => {
-                  (e.target as HTMLTextAreaElement).style.backgroundColor = 'rgba(232,226,216,0.4)';
+                  (e.target as HTMLTextAreaElement).style.backgroundColor = 'rgba(var(--linen-rgb), 0.4)';
                   (e.target as HTMLTextAreaElement).style.boxShadow = 'none';
                 }}
               />
@@ -1275,7 +1275,7 @@ export default function Chat() {
                   onClick={handleMicPress}
                   className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 mb-0.5"
                 >
-                  <Mic size={22} style={{ color: 'rgba(35,35,35,0.5)' }} strokeWidth={2} />
+                  <Mic size={22} style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }} strokeWidth={2} />
                 </motion.button>
               )}
             </AnimatePresence>

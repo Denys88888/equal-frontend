@@ -15,7 +15,7 @@ export default function NotFound() {
   return (
     <div
       className="min-h-[100dvh] w-full flex items-center justify-center px-6"
-      style={{ backgroundColor: '#F7F4EE' }}
+      style={{ backgroundColor: 'var(--linen)' }}
     >
       <motion.div
         initial={{ opacity: 0, y: 24 }}
@@ -88,7 +88,7 @@ export default function NotFound() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.4, ease: easeOutExpo }}
-          className="text-xl font-bold text-[#232323] mb-3"
+          className="text-xl font-bold text-[var(--charcoal)] mb-3"
           style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
         >
           {t('common.error')}
@@ -99,7 +99,7 @@ export default function NotFound() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.28, duration: 0.4, ease: easeOutExpo }}
-          className="text-sm text-[#232323] opacity-45 max-w-[260px] mb-10"
+          className="text-sm text-[var(--charcoal)] opacity-45 max-w-[260px] mb-10"
           style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}
         >
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
@@ -168,7 +168,7 @@ export default function NotFound() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.4 }}
-          className="mt-10 text-[11px] text-[#232323] opacity-25"
+          className="mt-10 text-[11px] text-[var(--charcoal)] opacity-25"
           style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
         >
           Equal

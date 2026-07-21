@@ -271,7 +271,7 @@ function EventListCard({
       transition={{ duration: 0.1 }}
       onClick={onClick}
       className="w-full rounded-[20px] p-4 flex items-center gap-4 text-left"
-      style={{ backgroundColor: '#FFFFFF', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
+      style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
     >
       {/* Date Block */}
       <div
@@ -281,23 +281,23 @@ function EventListCard({
         <span className="text-[11px] font-semibold uppercase tracking-wider" style={{ color: catColor }}>
           {event.month}
         </span>
-        <span className="text-xl font-bold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+        <span className="text-xl font-bold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
           {event.day}
         </span>
       </div>
 
       {/* Event Info */}
       <div className="flex-1 min-w-0">
-        <h3 className="text-lg font-semibold text-[#232323] truncate" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+        <h3 className="text-lg font-semibold text-[var(--charcoal)] truncate" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
           {event.title}
         </h3>
         <div className="flex items-center gap-1 mt-0.5">
-          <Clock size={13} style={{ color: 'rgba(35,35,35,0.4)' }} />
-          <span className="text-xs" style={{ color: 'rgba(35,35,35,0.5)' }}>{event.time}</span>
+          <Clock size={13} style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }} />
+          <span className="text-xs" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>{event.time}</span>
         </div>
         <div className="flex items-center gap-1.5 mt-0.5">
-          <MapPin size={13} style={{ color: 'rgba(35,35,35,0.4)' }} />
-          <span className="text-xs truncate" style={{ color: 'rgba(35,35,35,0.5)' }}>{event.location}</span>
+          <MapPin size={13} style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }} />
+          <span className="text-xs truncate" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>{event.location}</span>
         </div>
         <div className="flex items-center gap-2 mt-1.5">
           <span
@@ -316,10 +316,10 @@ function EventListCard({
       <div className="flex-shrink-0">
         {isGoing ? (
           <div className="w-9 h-9 rounded-full bg-[#7DE0B3] flex items-center justify-center">
-            <Check size={18} className="text-[#232323]" strokeWidth={2.5} />
+            <Check size={18} className="text-[var(--charcoal)]" strokeWidth={2.5} />
           </div>
         ) : (
-          <ChevronRight size={20} style={{ color: 'rgba(35,35,35,0.3)' }} />
+          <ChevronRight size={20} style={{ color: 'rgba(var(--charcoal-rgb), 0.3)' }} />
         )}
       </div>
     </motion.button>
@@ -351,7 +351,7 @@ function FeaturedEventCard({
       style={{ aspectRatio: '16/10', boxShadow: '0 8px 32px rgba(0,0,0,0.12)' }}
     >
       <img src={event.image} alt="" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(35,35,35,0.4)' }} />
+      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(var(--charcoal-rgb), 0.4)' }} />
 
       {/* Featured Badge */}
       <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#BB83C9] text-white text-xs font-semibold">
@@ -365,7 +365,7 @@ function FeaturedEventCard({
         className="absolute bottom-4 right-4 px-4 py-2 rounded-full text-sm font-semibold cursor-pointer z-10"
         style={{
           backgroundColor: isGoing ? '#7DE0B3' : '#BB83C9',
-          color: isGoing ? '#232323' : '#fff',
+          color: isGoing ? 'var(--charcoal)' : '#fff',
         }}
       >
         {isGoing ? `${t('events.going')} ✓` : t('events.rsvp')}
@@ -467,9 +467,9 @@ function EventDetailSheet({
             whileTap={{ scale: 0.9 }}
             onClick={handleClose}
             className="absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center"
-            style={{ backgroundColor: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(12px)' }}
+            style={{ backgroundColor: 'rgba(var(--card-rgb), 0.72)', backdropFilter: 'blur(12px)' }}
           >
-            <X size={18} className="text-[#232323]" />
+            <X size={18} className="text-[var(--charcoal)]" />
           </motion.button>
           <div className="absolute bottom-4 left-6">
             <span
@@ -483,39 +483,39 @@ function EventDetailSheet({
 
         <div className="px-6 pb-8">
           {/* Title */}
-          <h1 className="text-2xl font-bold text-[#232323] mt-4" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+          <h1 className="text-2xl font-bold text-[var(--charcoal)] mt-4" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
             {event.title}
           </h1>
 
           {/* Meta Row */}
           <div className="flex flex-wrap gap-2 mt-3">
-            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium" style={{ backgroundColor: 'rgba(232,226,216,0.4)', color: '#232323' }}>
+            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium" style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.4)', color: 'var(--charcoal)' }}>
               <Calendar size={13} /> {event.date}
             </span>
-            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium" style={{ backgroundColor: 'rgba(232,226,216,0.4)', color: '#232323' }}>
+            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium" style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.4)', color: 'var(--charcoal)' }}>
               <Clock size={13} /> {event.time}
             </span>
           </div>
 
           {/* Description */}
-          <p className="text-base leading-relaxed mt-4 text-[#232323]" style={{ lineHeight: 1.6 }}>
+          <p className="text-base leading-relaxed mt-4 text-[var(--charcoal)]" style={{ lineHeight: 1.6 }}>
             {event.description}
           </p>
 
           {/* Venue */}
-          <div className="mt-4 rounded-2xl overflow-hidden" style={{ backgroundColor: 'rgba(232,226,216,0.3)' }}>
+          <div className="mt-4 rounded-2xl overflow-hidden" style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.3)' }}>
             <div className="h-[120px] relative">
               <div className="absolute inset-0 flex items-center justify-center" style={{ backgroundColor: 'rgba(187,131,201,0.1)' }}>
                 <div className="flex flex-col items-center gap-2">
                   <MapPin size={32} className="text-[#BB83C9]" />
-                  <span className="text-sm font-medium text-[#232323]">{event.venue}</span>
+                  <span className="text-sm font-medium text-[var(--charcoal)]">{event.venue}</span>
                 </div>
               </div>
             </div>
             <div className="p-4 flex items-center justify-between">
               <div>
-                <p className="text-sm font-semibold text-[#232323]">{event.venue}</p>
-                <p className="text-xs" style={{ color: 'rgba(35,35,35,0.5)' }}>{event.location}</p>
+                <p className="text-sm font-semibold text-[var(--charcoal)]">{event.venue}</p>
+                <p className="text-xs" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>{event.location}</p>
               </div>
               <span className="text-sm font-semibold text-[#BB83C9]">{t('events.getDirections')}</span>
             </div>
@@ -524,7 +524,7 @@ function EventDetailSheet({
           {/* Attendees */}
           <div className="mt-5">
             <div className="flex items-center justify-between">
-              <h4 className="text-base font-semibold text-[#232323]">
+              <h4 className="text-base font-semibold text-[var(--charcoal)]">
                 {t('events.peopleGoing', { count: event.attendees.length + 12 })}
               </h4>
               <button className="text-sm font-semibold text-[#BB83C9]">{t('events.seeAll')}</button>
@@ -536,7 +536,7 @@ function EventDetailSheet({
                 ))}
                 <div
                   className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-medium border-2 border-white"
-                  style={{ backgroundColor: 'rgba(232,226,216,0.6)', color: '#232323' }}
+                  style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.6)', color: 'var(--charcoal)' }}
                 >
                   +12
                 </div>
@@ -545,10 +545,10 @@ function EventDetailSheet({
           </div>
 
           {/* Host */}
-          <div className="mt-4 flex items-center gap-3 p-3 rounded-2xl" style={{ backgroundColor: 'rgba(232,226,216,0.3)' }}>
+          <div className="mt-4 flex items-center gap-3 p-3 rounded-2xl" style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.3)' }}>
             <AttendeeAvatar initials="EQ" size={40} />
             <div>
-              <p className="text-sm font-semibold text-[#232323]">{t('events.organizer')}</p>
+              <p className="text-sm font-semibold text-[var(--charcoal)]">{t('events.organizer')}</p>
               <span className="text-[11px] px-2 py-0.5 rounded-full font-semibold" style={{ backgroundColor: 'rgba(187,131,201,0.15)', color: '#9A63A8' }}>
                 {t('events.host')}
               </span>
@@ -557,11 +557,11 @@ function EventDetailSheet({
 
           {/* Ticket Section (paid events) */}
           {event.price > 0 && !isGoing && (
-            <div className="mt-5 p-4 rounded-2xl border" style={{ borderColor: '#E8E2D8' }}>
+            <div className="mt-5 p-4 rounded-2xl border" style={{ borderColor: 'var(--linen-dark)' }}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <img src="./pi-logo.svg" alt="Pi" className="w-6 h-6" />
-                  <span className="text-xl font-bold text-[#232323]">{event.price} Pi</span>
+                  <span className="text-xl font-bold text-[var(--charcoal)]">{event.price} Pi</span>
                 </div>
                 <button
                   onClick={handleBuyTicket}
@@ -582,15 +582,15 @@ function EventDetailSheet({
               className="mt-5 p-4 rounded-2xl border-2 border-dashed"
               style={{ backgroundColor: 'rgba(125,224,179,0.15)', borderColor: '#7DE0B3' }}
             >
-              <p className="text-sm font-semibold text-[#232323]">{t('events.youreGoing')}</p>
-              <p className="text-xs mt-1" style={{ color: 'rgba(35,35,35,0.6)' }}>{t('events.showAtDoor')}</p>
-              <div className="mt-3 p-3 bg-white rounded-xl flex items-center justify-center gap-2">
+              <p className="text-sm font-semibold text-[var(--charcoal)]">{t('events.youreGoing')}</p>
+              <p className="text-xs mt-1" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>{t('events.showAtDoor')}</p>
+              <div className="mt-3 p-3 bg-white dark:bg-[#22293B] rounded-xl flex items-center justify-center gap-2">
                 <div className="grid grid-cols-5 gap-1">
                   {Array.from({ length: 25 }).map((_, i) => (
-                    <div key={i} className={`w-1.5 h-1.5 rounded-sm ${i % 3 === 0 ? 'bg-[#232323]' : 'bg-transparent'}`} />
+                    <div key={i} className={`w-1.5 h-1.5 rounded-sm ${i % 3 === 0 ? 'bg-[var(--charcoal)]' : 'bg-transparent'}`} />
                   ))}
                 </div>
-                <span className="text-xs font-mono" style={{ color: 'rgba(35,35,35,0.5)' }}>EVT-{event.id.toUpperCase()}</span>
+                <span className="text-xs font-mono" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>EVT-{event.id.toUpperCase()}</span>
               </div>
             </motion.div>
           )}
@@ -602,7 +602,7 @@ function EventDetailSheet({
               className="flex-1 py-3.5 rounded-full text-sm font-semibold transition-all"
               style={{
                 backgroundColor: isGoing ? '#7DE0B3' : '#BB83C9',
-                color: isGoing ? '#232323' : '#fff',
+                color: isGoing ? 'var(--charcoal)' : '#fff',
                 boxShadow: isGoing ? 'none' : '0 4px 16px rgba(187,131,201,0.3)',
               }}
             >
@@ -612,8 +612,8 @@ function EventDetailSheet({
               onClick={onToggleInterested}
               className="flex items-center gap-2 px-5 py-3.5 rounded-full text-sm font-semibold transition-all"
               style={{
-                backgroundColor: isInterested ? 'rgba(240,184,74,0.15)' : 'rgba(232,226,216,0.4)',
-                color: isInterested ? '#D99E3A' : '#232323',
+                backgroundColor: isInterested ? 'rgba(240,184,74,0.15)' : 'rgba(var(--linen-rgb), 0.4)',
+                color: isInterested ? '#D99E3A' : 'var(--charcoal)',
               }}
             >
               <Star size={16} fill={isInterested ? '#F0B84A' : 'none'} />
@@ -623,9 +623,9 @@ function EventDetailSheet({
 
           {/* Post-Event Feedback */}
           {isGoing && (
-            <div className="mt-5 p-4 rounded-2xl" style={{ backgroundColor: 'rgba(232,226,216,0.3)' }}>
-              <h4 className="text-base font-semibold text-[#232323]">{t('events.howWasEvent')}</h4>
-              <p className="text-sm mt-1" style={{ color: 'rgba(35,35,35,0.6)' }}>{t('events.feedbackHelps')}</p>
+            <div className="mt-5 p-4 rounded-2xl" style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.3)' }}>
+              <h4 className="text-base font-semibold text-[var(--charcoal)]">{t('events.howWasEvent')}</h4>
+              <p className="text-sm mt-1" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>{t('events.feedbackHelps')}</p>
               {!feedbackSubmitted ? (
                 <>
                   <div className="flex flex-col gap-2 mt-3">
@@ -691,7 +691,7 @@ function EventDetailSheet({
       <Sheet open={showPayment} onOpenChange={(open) => !open && setShowPayment(false)}>
         <SheetContent side="bottom" className="rounded-t-[24px] p-6" style={{ backgroundColor: '#fff' }}>
           <SheetHeader>
-            <SheetTitle className="text-xl font-semibold text-[#232323]">{t('events.completePayment')}</SheetTitle>
+            <SheetTitle className="text-xl font-semibold text-[var(--charcoal)]">{t('events.completePayment')}</SheetTitle>
           </SheetHeader>
           <div className="mt-6 flex flex-col items-center">
             {paymentStep === 'initial' && (
@@ -702,20 +702,20 @@ function EventDetailSheet({
               >
                 <div className="flex items-center justify-center gap-3 mb-6">
                   <img src="./pi-logo.svg" alt="Pi" className="w-10 h-10" />
-                  <span className="text-3xl font-bold text-[#232323]">{event.price} Pi</span>
+                  <span className="text-3xl font-bold text-[var(--charcoal)]">{event.price} Pi</span>
                 </div>
-                <div className="p-4 rounded-2xl mb-4" style={{ backgroundColor: 'rgba(232,226,216,0.3)' }}>
+                <div className="p-4 rounded-2xl mb-4" style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.3)' }}>
                   <div className="flex justify-between text-sm mb-2">
-                    <span style={{ color: 'rgba(35,35,35,0.6)' }}>{t('events.ticket')}</span>
-                    <span className="font-medium text-[#232323]">{event.title}</span>
+                    <span style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>{t('events.ticket')}</span>
+                    <span className="font-medium text-[var(--charcoal)]">{event.title}</span>
                   </div>
                   <div className="flex justify-between text-sm mb-2">
-                    <span style={{ color: 'rgba(35,35,35,0.6)' }}>{t('events.date')}</span>
-                    <span className="font-medium text-[#232323]">{event.date}</span>
+                    <span style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>{t('events.date')}</span>
+                    <span className="font-medium text-[var(--charcoal)]">{event.date}</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span style={{ color: 'rgba(35,35,35,0.6)' }}>{t('events.total')}</span>
-                    <span className="font-bold text-[#232323]">{event.price} Pi</span>
+                    <span style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>{t('events.total')}</span>
+                    <span className="font-bold text-[var(--charcoal)]">{event.price} Pi</span>
                   </div>
                 </div>
                 <button
@@ -734,7 +734,7 @@ function EventDetailSheet({
                 className="flex flex-col items-center py-8"
               >
                 <div className="w-12 h-12 border-3 border-[#BB83C9] border-t-transparent rounded-full animate-spin" />
-                <p className="mt-4 text-base font-medium text-[#232323]">{t('events.processingPayment')}</p>
+                <p className="mt-4 text-base font-medium text-[var(--charcoal)]">{t('events.processingPayment')}</p>
               </motion.div>
             )}
             {paymentStep === 'success' && (
@@ -745,10 +745,10 @@ function EventDetailSheet({
                 className="flex flex-col items-center py-8"
               >
                 <div className="w-16 h-16 rounded-full bg-[#7DE0B3] flex items-center justify-center mb-4">
-                  <Check size={32} className="text-[#232323]" strokeWidth={2.5} />
+                  <Check size={32} className="text-[var(--charcoal)]" strokeWidth={2.5} />
                 </div>
-                <h3 className="text-xl font-bold text-[#232323]">{t('events.paymentSuccess')}</h3>
-                <p className="text-sm mt-2 text-center" style={{ color: 'rgba(35,35,35,0.6)' }}>
+                <h3 className="text-xl font-bold text-[var(--charcoal)]">{t('events.paymentSuccess')}</h3>
+                <p className="text-sm mt-2 text-center" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>
                   {t('events.ticketConfirmed')}
                 </p>
               </motion.div>
@@ -838,17 +838,17 @@ export default function Events() {
         <div className="px-5 pt-5 pb-3">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              <h1 className="text-2xl font-bold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                 {activeTab === 'upcoming' ? t('events.upcomingEvents') : activeTab === 'interested' ? t('events.interestedEvents') : t('events.pastEvents')}
               </h1>
-              <p className="text-sm mt-1" style={{ color: 'rgba(35,35,35,0.6)' }}>
+              <p className="text-sm mt-1" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>
                 {t('events.nearYou', { count: filteredEvents.length })}
               </p>
             </div>
           </div>
 
           {/* Sub Tabs */}
-          <div className="flex gap-1 mt-3 p-1 rounded-xl" style={{ backgroundColor: 'rgba(232,226,216,0.4)' }}>
+          <div className="flex gap-1 mt-3 p-1 rounded-xl" style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.4)' }}>
             {(['upcoming', 'interested', 'past'] as const).map((tab) => (
               <button
                 key={tab}
@@ -856,7 +856,7 @@ export default function Events() {
                 className="flex-1 py-2 rounded-lg text-xs font-semibold capitalize transition-all"
                 style={{
                   backgroundColor: activeTab === tab ? '#fff' : 'transparent',
-                  color: activeTab === tab ? '#232323' : 'rgba(35,35,35,0.5)',
+                  color: activeTab === tab ? 'var(--charcoal)' : 'rgba(var(--charcoal-rgb), 0.5)',
                   boxShadow: activeTab === tab ? '0 1px 4px rgba(0,0,0,0.06)' : 'none',
                 }}
               >
@@ -876,8 +876,8 @@ export default function Events() {
                 onClick={() => setActiveCategory(cat)}
                 className="px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all"
                 style={{
-                  backgroundColor: activeCategory === cat ? '#BB83C9' : 'rgba(232,226,216,0.5)',
-                  color: activeCategory === cat ? '#fff' : '#232323',
+                  backgroundColor: activeCategory === cat ? '#BB83C9' : 'rgba(var(--linen-rgb), 0.5)',
+                  color: activeCategory === cat ? '#fff' : 'var(--charcoal)',
                 }}
               >
                 {t(`events.cat_${cat.toLowerCase()}`, { defaultValue: cat })}
@@ -926,8 +926,8 @@ export default function Events() {
                 {filteredEvents.length === 0 && (
                   <div className="flex flex-col items-center justify-center py-16">
                     <img src="./empty-events.png" alt="" className="w-40 h-40 mb-4 object-contain" />
-                    <h2 className="text-xl font-semibold text-[#232323]">{t('events.noEvents')}</h2>
-                    <p className="text-sm mt-2 text-center" style={{ color: 'rgba(35,35,35,0.6)' }}>
+                    <h2 className="text-xl font-semibold text-[var(--charcoal)]">{t('events.noEvents')}</h2>
+                    <p className="text-sm mt-2 text-center" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>
                       {t('events.tryCategory')}
                     </p>
                   </div>
@@ -945,9 +945,9 @@ export default function Events() {
               >
                 {interestedEventsList.length === 0 ? (
                   <div className="flex flex-col items-center justify-center py-16">
-                    <Star size={48} style={{ color: 'rgba(35,35,35,0.15)' }} />
-                    <h2 className="text-xl font-semibold text-[#232323] mt-4">{t('events.noSaved')}</h2>
-                    <p className="text-sm mt-2 text-center max-w-[260px]" style={{ color: 'rgba(35,35,35,0.6)' }}>
+                    <Star size={48} style={{ color: 'rgba(var(--charcoal-rgb), 0.15)' }} />
+                    <h2 className="text-xl font-semibold text-[var(--charcoal)] mt-4">{t('events.noSaved')}</h2>
+                    <p className="text-sm mt-2 text-center max-w-[260px]" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>
                       Tap the star icon on events you&apos;re interested in to save them here.
                     </p>
                     <button
@@ -1002,8 +1002,8 @@ export default function Events() {
                 ))}
                 {goingEvents.size > 0 && !feedbackSubmitted() && (
                   <div className="mt-2 p-4 rounded-2xl bg-[#F0B84A15] border border-[#F0B84A40]">
-                    <p className="text-sm font-semibold text-[#232323]">{t('events.leaveFeedback')}</p>
-                    <p className="text-xs mt-1" style={{ color: 'rgba(35,35,35,0.6)' }}>Your feedback helps improve our community</p>
+                    <p className="text-sm font-semibold text-[var(--charcoal)]">{t('events.leaveFeedback')}</p>
+                    <p className="text-xs mt-1" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>Your feedback helps improve our community</p>
                   </div>
                 )}
               </motion.div>

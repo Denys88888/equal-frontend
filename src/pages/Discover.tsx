@@ -112,11 +112,11 @@ function FilterSheet({
     <div className="flex flex-col h-full">
       {/* Handle */}
       <div className="flex justify-center pt-3 pb-5">
-        <div className="w-10 h-1 rounded-full bg-[#E8E2D8]" />
+        <div className="w-10 h-1 rounded-full bg-[var(--linen-dark)]" />
       </div>
 
       {/* Title */}
-      <h2 className="text-xl font-semibold text-[#232323] px-6 mb-6" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
+      <h2 className="text-xl font-semibold text-[var(--charcoal)] px-6 mb-6" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
         {t('discover.filter')}
       </h2>
 
@@ -124,7 +124,7 @@ function FilterSheet({
         {/* Distance */}
         <div>
           <div className="flex justify-between mb-3">
-            <span className="text-sm font-medium text-[#232323]">{t('discover.maxDistance')}</span>
+            <span className="text-sm font-medium text-[var(--charcoal)]">{t('discover.maxDistance')}</span>
             <span className="text-sm font-medium text-[#BB83C9]">{t('discover.km', { d: filters.maxDistance })}</span>
           </div>
           <input
@@ -140,15 +140,15 @@ function FilterSheet({
             }}
           />
           <div className="flex justify-between mt-1">
-            <span className="text-xs text-[#232323]" style={{ opacity: 0.35 }}>{t('discover.km', { d: 1 })}</span>
-            <span className="text-xs text-[#232323]" style={{ opacity: 0.35 }}>{t('discover.km', { d: 100 })}</span>
+            <span className="text-xs text-[var(--charcoal)]" style={{ opacity: 0.35 }}>{t('discover.km', { d: 1 })}</span>
+            <span className="text-xs text-[var(--charcoal)]" style={{ opacity: 0.35 }}>{t('discover.km', { d: 100 })}</span>
           </div>
         </div>
 
         {/* Age Range */}
         <div>
           <div className="flex justify-between mb-3">
-            <span className="text-sm font-medium text-[#232323]">{t('discover.ageRange')}</span>
+            <span className="text-sm font-medium text-[var(--charcoal)]">{t('discover.ageRange')}</span>
             <span className="text-sm font-medium text-[#BB83C9]">{filters.ageMin} – {filters.ageMax}</span>
           </div>
           <div className="flex gap-4 items-center">
@@ -180,21 +180,21 @@ function FilterSheet({
             />
           </div>
           <div className="flex justify-between mt-1">
-            <span className="text-xs text-[#232323]" style={{ opacity: 0.35 }}>18</span>
-            <span className="text-xs text-[#232323]" style={{ opacity: 0.35 }}>80</span>
+            <span className="text-xs text-[var(--charcoal)]" style={{ opacity: 0.35 }}>18</span>
+            <span className="text-xs text-[var(--charcoal)]" style={{ opacity: 0.35 }}>80</span>
           </div>
         </div>
 
         {/* Goals */}
         <div>
-          <span className="text-sm font-medium text-[#232323] block mb-3">{t('discover.lookingFor')}</span>
+          <span className="text-sm font-medium text-[var(--charcoal)] block mb-3">{t('discover.lookingFor')}</span>
           <div className="space-y-2">
             {GOAL_OPTIONS.map((goal) => (
               <label key={goal} className="flex items-center gap-3 cursor-pointer">
                 <div
                   className="w-5 h-5 rounded border-2 flex items-center justify-center transition-colors"
                   style={{
-                    borderColor: filters.goals.includes(goal) ? '#BB83C9' : '#E8E2D8',
+                    borderColor: filters.goals.includes(goal) ? '#BB83C9' : 'var(--linen-dark)',
                     backgroundColor: filters.goals.includes(goal) ? '#BB83C9' : 'transparent',
                   }}
                   onClick={() => {
@@ -210,7 +210,7 @@ function FilterSheet({
                     </svg>
                   )}
                 </div>
-                <span className="text-sm text-[#232323]" style={{ opacity: 0.8 }}>{t(GOAL_KEYS[goal] ?? '', { defaultValue: goal })}</span>
+                <span className="text-sm text-[var(--charcoal)]" style={{ opacity: 0.8 }}>{t(GOAL_KEYS[goal] ?? '', { defaultValue: goal })}</span>
               </label>
             ))}
           </div>
@@ -218,7 +218,7 @@ function FilterSheet({
 
         {/* Interests */}
         <div>
-          <span className="text-sm font-medium text-[#232323] block mb-3">{t('discover.sharedInterests')}</span>
+          <span className="text-sm font-medium text-[var(--charcoal)] block mb-3">{t('discover.sharedInterests')}</span>
           <div className="flex flex-wrap gap-2">
             {INTEREST_OPTIONS.map((interest) => {
               const selected = filters.interests.includes(interest);
@@ -235,8 +235,8 @@ function FilterSheet({
                   }}
                   className="px-3 py-1.5 rounded-full text-xs font-medium transition-all"
                   style={{
-                    backgroundColor: selected ? '#BB83C9' : '#E8E2D8',
-                    color: selected ? '#fff' : '#232323',
+                    backgroundColor: selected ? '#BB83C9' : 'var(--linen-dark)',
+                    color: selected ? '#fff' : 'var(--charcoal)',
                     opacity: selected ? 1 : 0.7,
                   }}
                 >
@@ -250,30 +250,30 @@ function FilterSheet({
         {/* Toggles */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-[#232323]">{t('discover.verifiedOnly')}</span>
+            <span className="text-sm font-medium text-[var(--charcoal)]">{t('discover.verifiedOnly')}</span>
             <button
               onClick={() => onChange({ ...filters, verifiedOnly: !filters.verifiedOnly })}
               className="w-12 h-7 rounded-full relative transition-colors"
-              style={{ backgroundColor: filters.verifiedOnly ? '#BB83C9' : '#E8E2D8' }}
+              style={{ backgroundColor: filters.verifiedOnly ? '#BB83C9' : 'var(--linen-dark)' }}
             >
               <motion.div
                 animate={{ x: filters.verifiedOnly ? 20 : 2 }}
                 transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                className="w-6 h-6 rounded-full bg-white absolute top-0.5 shadow-sm"
+                className="w-6 h-6 rounded-full bg-white dark:bg-[#22293B] absolute top-0.5 shadow-sm"
               />
             </button>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-[#232323]">{t('discover.onlineNow')}</span>
+            <span className="text-sm font-medium text-[var(--charcoal)]">{t('discover.onlineNow')}</span>
             <button
               onClick={() => onChange({ ...filters, onlineNow: !filters.onlineNow })}
               className="w-12 h-7 rounded-full relative transition-colors"
-              style={{ backgroundColor: filters.onlineNow ? '#BB83C9' : '#E8E2D8' }}
+              style={{ backgroundColor: filters.onlineNow ? '#BB83C9' : 'var(--linen-dark)' }}
             >
               <motion.div
                 animate={{ x: filters.onlineNow ? 20 : 2 }}
                 transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                className="w-6 h-6 rounded-full bg-white absolute top-0.5 shadow-sm"
+                className="w-6 h-6 rounded-full bg-white dark:bg-[#22293B] absolute top-0.5 shadow-sm"
               />
             </button>
           </div>
@@ -281,7 +281,7 @@ function FilterSheet({
       </div>
 
       {/* Footer */}
-      <div className="flex items-center gap-3 px-6 py-4 border-t" style={{ borderColor: '#E8E2D8' }}>
+      <div className="flex items-center gap-3 px-6 py-4 border-t" style={{ borderColor: 'var(--linen-dark)' }}>
         <button
           onClick={onReset}
           className="flex-1 h-12 rounded-full flex items-center justify-center text-sm font-semibold text-[#BB83C9]"
@@ -376,7 +376,7 @@ function SwipeCard({
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(180deg, transparent 45%, rgba(35,35,35,0.88) 100%)',
+            background: 'linear-gradient(180deg, transparent 45%, rgba(var(--charcoal-rgb), 0.88) 100%)',
           }}
         />
 
@@ -462,7 +462,7 @@ function SwipeCard({
             </h3>
             <span
               className="px-3 py-1 rounded-full text-xs font-semibold"
-              style={{ backgroundColor: '#7DE0B3', color: '#232323' }}
+              style={{ backgroundColor: '#7DE0B3', color: 'var(--charcoal)' }}
             >
               {t('discover.matchPercent', { percent: profile.compatibility })}
             </span>
@@ -557,7 +557,7 @@ function ActionButtons({
         <Star size={24} strokeWidth={2.5} style={{ color: '#7DE0B3' }} />
         <span
           className="absolute -top-1.5 -right-2 min-w-[18px] h-[18px] rounded-full flex items-center justify-center text-[10px] font-semibold text-white px-1"
-          style={{ backgroundColor: sparkCount > 0 ? '#7DE0B3' : '#E8E2D8' }}
+          style={{ backgroundColor: sparkCount > 0 ? '#7DE0B3' : 'var(--linen-dark)' }}
         >
           {sparkCount}
         </span>
@@ -623,7 +623,7 @@ function MatchOverlay({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.3, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-        className="text-4xl font-bold text-[#232323] mb-2 text-center"
+        className="text-4xl font-bold text-[var(--charcoal)] mb-2 text-center"
         style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-1.08px' }}
       >
         {t('discover.itsAMatch')}
@@ -635,7 +635,7 @@ function MatchOverlay({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, delay: 0.5 }}
         className="text-base text-center mb-10"
-        style={{ color: 'rgba(35,35,35,0.6)' }}
+        style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}
       >
         {t('discover.likedEachOther', { name: matchProfile.name })}
       </motion.p>
@@ -656,8 +656,8 @@ function MatchOverlay({
         </button>
         <button
           onClick={onDismiss}
-          className="w-full h-12 rounded-full text-base font-semibold text-[#232323]"
-          style={{ backgroundColor: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(12px)', border: '1.5px solid rgba(35,35,35,0.1)' }}
+          className="w-full h-12 rounded-full text-base font-semibold text-[var(--charcoal)]"
+          style={{ backgroundColor: 'rgba(var(--card-rgb), 0.72)', backdropFilter: 'blur(12px)', border: '1.5px solid rgba(var(--charcoal-rgb), 0.1)' }}
         >
           {t('discover.keepSwiping')}
         </button>
@@ -683,16 +683,16 @@ function EmptyState({ onOpenFilters }: { onOpenFilters: () => void }) {
       <div className="w-40 h-40 mb-6 flex items-center justify-center">
         <Sparkles size={80} style={{ color: '#BB83C9', opacity: 0.4 }} />
       </div>
-      <h2 className="text-xl font-semibold text-[#232323] mb-2 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+      <h2 className="text-xl font-semibold text-[var(--charcoal)] mb-2 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
         {t('discover.noOneNew')}
       </h2>
-      <p className="text-sm text-center mb-6 max-w-[280px]" style={{ color: 'rgba(35,35,35,0.6)' }}>
+      <p className="text-sm text-center mb-6 max-w-[280px]" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>
         {t('discover.tryExpanding')}
       </p>
       <button
         onClick={onOpenFilters}
-        className="w-full max-w-[280px] h-12 rounded-full text-sm font-semibold text-[#232323] mb-3"
-        style={{ backgroundColor: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(12px)', border: '1.5px solid rgba(35,35,35,0.1)' }}
+        className="w-full max-w-[280px] h-12 rounded-full text-sm font-semibold text-[var(--charcoal)] mb-3"
+        style={{ backgroundColor: 'rgba(var(--card-rgb), 0.72)', backdropFilter: 'blur(12px)', border: '1.5px solid rgba(var(--charcoal-rgb), 0.1)' }}
       >
         {t('discover.adjustFilters')}
       </button>
@@ -708,7 +708,7 @@ function CompatibilityCard({ profile, onLike }: { profile: Profile; onLike: () =
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      className="flex items-center gap-4 p-4 rounded-2xl bg-white"
+      className="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-[#22293B]"
       style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
     >
       <div className="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0">
@@ -716,23 +716,23 @@ function CompatibilityCard({ profile, onLike }: { profile: Profile; onLike: () =
       </div>
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 mb-0.5">
-          <h3 className="text-lg font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+          <h3 className="text-lg font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
             {profile.name}, {profile.age}
           </h3>
         </div>
         <span
           className="inline-block px-2 py-0.5 rounded-full text-xs font-semibold mb-1.5"
-          style={{ backgroundColor: '#7DE0B3', color: '#232323' }}
+          style={{ backgroundColor: '#7DE0B3', color: 'var(--charcoal)' }}
         >
           {t('discover.matchPercent', { percent: profile.compatibility })}
         </span>
         <div className="flex items-center gap-1 mb-1">
-          <MapPin size={12} style={{ color: 'rgba(35,35,35,0.4)' }} />
-          <span className="text-xs" style={{ color: 'rgba(35,35,35,0.4)' }}>{t('discover.kmAway', { distance: profile.distance })}</span>
+          <MapPin size={12} style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }} />
+          <span className="text-xs" style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }}>{t('discover.kmAway', { distance: profile.distance })}</span>
         </div>
         <div className="flex flex-wrap gap-1">
           {profile.interests.slice(0, 3).map((i) => (
-            <span key={i} className="px-2 py-0.5 rounded-full text-[10px] font-medium" style={{ backgroundColor: '#E8E2D8', color: '#232323' }}>{i}</span>
+            <span key={i} className="px-2 py-0.5 rounded-full text-[10px] font-medium" style={{ backgroundColor: 'var(--linen-dark)', color: 'var(--charcoal)' }}>{i}</span>
           ))}
         </div>
       </div>
@@ -884,14 +884,14 @@ export default function Discover() {
       <div className="flex items-center justify-center gap-2 pt-3 pb-2 px-5">
         <div
           className="flex rounded-full p-1"
-          style={{ backgroundColor: '#E8E2D8' }}
+          style={{ backgroundColor: 'var(--linen-dark)' }}
         >
           <button
             onClick={() => setActiveTab('discover')}
             className="px-5 py-2 rounded-full text-sm font-semibold transition-all"
             style={{
               backgroundColor: activeTab === 'discover' ? '#BB83C9' : 'transparent',
-              color: activeTab === 'discover' ? '#fff' : '#232323',
+              color: activeTab === 'discover' ? '#fff' : 'var(--charcoal)',
               opacity: activeTab === 'discover' ? 1 : 0.6,
             }}
           >
@@ -902,7 +902,7 @@ export default function Discover() {
             className="px-5 py-2 rounded-full text-sm font-semibold transition-all"
             style={{
               backgroundColor: activeTab === 'compatibility' ? '#BB83C9' : 'transparent',
-              color: activeTab === 'compatibility' ? '#fff' : '#232323',
+              color: activeTab === 'compatibility' ? '#fff' : 'var(--charcoal)',
               opacity: activeTab === 'compatibility' ? 1 : 0.6,
             }}
           >
@@ -917,9 +917,9 @@ export default function Discover() {
           whileTap={{ scale: 0.9 }}
           onClick={() => setShowFilters(true)}
           className="absolute top-16 right-4 z-30 w-10 h-10 rounded-full flex items-center justify-center"
-          style={{ backgroundColor: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(12px)', boxShadow: '0 2px 12px rgba(0,0,0,0.08)' }}
+          style={{ backgroundColor: 'rgba(var(--card-rgb), 0.72)', backdropFilter: 'blur(12px)', boxShadow: '0 2px 12px rgba(0,0,0,0.08)' }}
         >
-          <SlidersHorizontal size={18} className="text-[#232323]" strokeWidth={2} />
+          <SlidersHorizontal size={18} className="text-[var(--charcoal)]" strokeWidth={2} />
         </motion.button>
       )}
 
@@ -971,7 +971,7 @@ export default function Discover() {
         ) : (
           /* Compatibility Tab */
           <div className="flex-1 px-5 pb-4 overflow-y-auto">
-            <p className="text-xs mb-4" style={{ color: 'rgba(35,35,35,0.4)' }}>
+            <p className="text-xs mb-4" style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }}>
               {t('discover.compatRefresh', { count: highCompatProfiles.length })}
             </p>
             <div className="space-y-3">
@@ -988,7 +988,7 @@ export default function Discover() {
             </div>
             {highCompatProfiles.length === 0 && (
               <div className="flex flex-col items-center justify-center py-16">
-                <p className="text-sm text-center" style={{ color: 'rgba(35,35,35,0.6)' }}>
+                <p className="text-sm text-center" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>
                   {t('discover.compatEmpty')}
                 </p>
               </div>
@@ -1009,7 +1009,7 @@ export default function Discover() {
             {/* Overlay */}
             <div
               className="absolute inset-0"
-              style={{ backgroundColor: 'rgba(35,35,35,0.4)', backdropFilter: 'blur(4px)' }}
+              style={{ backgroundColor: 'rgba(var(--charcoal-rgb), 0.4)', backdropFilter: 'blur(4px)' }}
             />
             {/* Sheet */}
             <motion.div
@@ -1018,7 +1018,7 @@ export default function Discover() {
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] as [number, number, number, number] }}
-              className="absolute bottom-0 left-0 right-0 rounded-t-3xl bg-white"
+              className="absolute bottom-0 left-0 right-0 rounded-t-3xl bg-white dark:bg-[#22293B]"
               style={{ maxHeight: '85vh' }}
             >
               <FilterSheet

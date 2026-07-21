@@ -88,20 +88,20 @@ function SettingRow({
       whileTap={{ scale: 0.98 }}
       transition={{ duration: 0.1 }}
       onClick={onClick}
-      className="w-full flex items-center justify-between px-5 py-4 rounded-[16px] bg-white text-left"
+      className="w-full flex items-center justify-between px-5 py-4 rounded-[16px] bg-white dark:bg-[#22293B] text-left"
       style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
     >
       <div className="flex items-center gap-3 min-w-0">
         <Icon
           size={20}
-          style={{ color: danger ? '#E86A6A' : (iconColor || 'rgba(35,35,35,0.6)') }}
+          style={{ color: danger ? '#E86A6A' : (iconColor || 'rgba(var(--charcoal-rgb), 0.6)') }}
           strokeWidth={2}
           className="flex-shrink-0"
         />
         <span
           className="text-base font-semibold truncate"
           style={{
-            color: danger ? '#E86A6A' : '#232323',
+            color: danger ? '#E86A6A' : 'var(--charcoal)',
             fontFamily: "'Outfit', system-ui, sans-serif",
           }}
         >
@@ -110,11 +110,11 @@ function SettingRow({
       </div>
       <div className="flex items-center gap-2 flex-shrink-0 ml-2">
         {detail && (
-          <span className="text-xs text-[#232323] opacity-40 whitespace-nowrap" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+          <span className="text-xs text-[var(--charcoal)] opacity-40 whitespace-nowrap" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
             {detail}
           </span>
         )}
-        {rightElement || <ChevronRight size={20} className="text-[#232323] opacity-30" strokeWidth={2} />}
+        {rightElement || <ChevronRight size={20} className="text-[var(--charcoal)] opacity-30" strokeWidth={2} />}
       </div>
     </motion.button>
   );
@@ -141,7 +141,7 @@ function ToggleRow({
 }: ToggleRowProps) {
   return (
     <div
-      className="w-full flex items-start justify-between px-5 py-4 rounded-[16px] bg-white"
+      className="w-full flex items-start justify-between px-5 py-4 rounded-[16px] bg-white dark:bg-[#22293B]"
       style={{
         boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
         backgroundColor: checked ? 'rgba(187,131,201,0.05)' : '#FFFFFF',
@@ -150,19 +150,19 @@ function ToggleRow({
       <div className="flex items-start gap-3 min-w-0 flex-1">
         <Icon
           size={20}
-          style={{ color: iconColor || 'rgba(35,35,35,0.6)', marginTop: 2 }}
+          style={{ color: iconColor || 'rgba(var(--charcoal-rgb), 0.6)', marginTop: 2 }}
           strokeWidth={2}
           className="flex-shrink-0"
         />
         <div className="min-w-0">
           <span
-            className="text-base font-semibold text-[#232323] block"
+            className="text-base font-semibold text-[var(--charcoal)] block"
             style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
           >
             {label}
           </span>
           {description && (
-            <span className="text-xs text-[#232323] opacity-45 block mt-0.5" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.5 }}>
+            <span className="text-xs text-[var(--charcoal)] opacity-45 block mt-0.5" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.5 }}>
               {description}
             </span>
           )}
@@ -186,7 +186,7 @@ function SectionLabel({ text, danger }: { text: string; danger?: boolean }) {
     <span
       className="block px-1 py-3 text-[11px] font-semibold uppercase tracking-wider"
       style={{
-        color: danger ? 'rgba(232,106,106,0.6)' : 'rgba(35,35,35,0.35)',
+        color: danger ? 'rgba(232,106,106,0.6)' : 'rgba(var(--charcoal-rgb), 0.35)',
         fontFamily: "'Outfit', system-ui, sans-serif",
         letterSpacing: '0.44px',
       }}
@@ -348,7 +348,7 @@ export default function Settings() {
         <SectionLabel text={t('settings.appearance')} />
         <div className="space-y-2">
           <div
-            className="w-full flex items-center justify-between px-5 py-4 rounded-[16px] bg-white"
+            className="w-full flex items-center justify-between px-5 py-4 rounded-[16px] bg-white dark:bg-[#22293B]"
             style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
           >
             <div className="flex items-center gap-3 min-w-0">
@@ -360,13 +360,13 @@ export default function Settings() {
               />
               <div className="min-w-0">
                 <span
-                  className="text-base font-semibold text-[#232323] block"
+                  className="text-base font-semibold text-[var(--charcoal)] block"
                   style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
                 >
                   {t('settings.darkMode')}
                 </span>
                 <span
-                  className="text-xs text-[#232323] opacity-45 block mt-0.5"
+                  className="text-xs text-[var(--charcoal)] opacity-45 block mt-0.5"
                   style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.5 }}
                 >
                   {t('settings2.themeToggle')}
@@ -383,7 +383,7 @@ export default function Settings() {
         <SectionLabel text={t('settings.language')} />
         <div className="space-y-2">
           <div
-            className="w-full flex items-center justify-between px-5 py-4 rounded-[16px] bg-white"
+            className="w-full flex items-center justify-between px-5 py-4 rounded-[16px] bg-white dark:bg-[#22293B]"
             style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
           >
             <div className="flex items-center gap-3 min-w-0">
@@ -395,13 +395,13 @@ export default function Settings() {
               />
               <div className="min-w-0">
                 <span
-                  className="text-base font-semibold text-[#232323] block"
+                  className="text-base font-semibold text-[var(--charcoal)] block"
                   style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
                 >
                   {t('settings.language')}
                 </span>
                 <span
-                  className="text-xs text-[#232323] opacity-45 block mt-0.5"
+                  className="text-xs text-[var(--charcoal)] opacity-45 block mt-0.5"
                   style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.5 }}
                 >
                   {t('settings2.languageDesc')}
@@ -448,7 +448,7 @@ export default function Settings() {
         <div className="space-y-2">
           <SettingRow icon={HelpCircle} iconColor="#7BC4E8" label={t('settings2.helpCenter')} onClick={() => {}} />
           <SettingRow icon={Flag} iconColor="#F0B84A" label={t('settings2.reportProblem')} onClick={() => {}} />
-          <SettingRow icon={Info} iconColor="rgba(35,35,35,0.4)" label={t('settings2.aboutEqual')} detail="v1.0.0" onClick={() => setShowAbout(true)} />
+          <SettingRow icon={Info} iconColor="rgba(var(--charcoal-rgb), 0.4)" label={t('settings2.aboutEqual')} detail="v1.0.0" onClick={() => setShowAbout(true)} />
           <SettingRow icon={FileText} iconColor="#BB83C9" label={t('settings2.privacyPolicy')} onClick={() => navigate('/privacy')} />
           <SettingRow icon={FileText} iconColor="#BB83C9" label={t('settings2.termsOfService')} onClick={() => navigate('/terms')} />
           <SettingRow icon={Cookie} iconColor="#F0B84A" label={t('settings2.cookiePrefs')} onClick={() => { localStorage.removeItem('equal-cookie-consent'); window.location.reload(); }} />
@@ -465,7 +465,7 @@ export default function Settings() {
           <motion.button
             whileTap={{ scale: 0.98 }}
             onClick={() => setShowDonation(true)}
-            className="w-full p-5 rounded-[20px] bg-white text-left"
+            className="w-full p-5 rounded-[20px] bg-white dark:bg-[#22293B] text-left"
             style={{
               boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
               backgroundImage: 'radial-gradient(circle at 30% 30%, rgba(187,131,201,0.12), transparent 60%), radial-gradient(circle at 70% 70%, rgba(125,224,179,0.10), transparent 60%)',
@@ -476,15 +476,15 @@ export default function Settings() {
                 <Heart size={20} className="text-[#BB83C9]" strokeWidth={2} />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                <h3 className="text-lg font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                   {t('settings.donate')}
                 </h3>
-                <p className="text-xs text-[#232323] opacity-45" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                <p className="text-xs text-[var(--charcoal)] opacity-45" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                   {t('settings2.donation')}
                 </p>
               </div>
             </div>
-            <p className="text-sm text-[#232323] opacity-60" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}>
+            <p className="text-sm text-[var(--charcoal)] opacity-60" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}>
               {t('settings2.supportText')}
             </p>
           </motion.button>
@@ -496,7 +496,7 @@ export default function Settings() {
           <motion.button
             whileTap={{ scale: 0.98 }}
             onClick={() => setShowLogoutConfirm(true)}
-            className="w-full flex items-center justify-between px-5 py-4 rounded-[16px] bg-white border border-[rgba(232,106,106,0.3)]"
+            className="w-full flex items-center justify-between px-5 py-4 rounded-[16px] bg-white dark:bg-[#22293B] border border-[rgba(232,106,106,0.3)]"
           >
             <div className="flex items-center gap-3">
               <LogOut size={20} className="text-[#E86A6A]" strokeWidth={2} />
@@ -508,7 +508,7 @@ export default function Settings() {
           <motion.button
             whileTap={{ scale: 0.98 }}
             onClick={() => setShowDeleteFlow(true)}
-            className="w-full flex items-center justify-between px-5 py-4 rounded-[16px] bg-white"
+            className="w-full flex items-center justify-between px-5 py-4 rounded-[16px] bg-white dark:bg-[#22293B]"
             style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
           >
             <div className="flex items-center gap-3">
@@ -528,24 +528,24 @@ export default function Settings() {
 
       {/* ── Blocked Users Bottom Sheet ── */}
       <Dialog open={showBlockedUsers} onOpenChange={setShowBlockedUsers}>
-        <DialogContent className="rounded-t-[24px] rounded-b-none max-w-[430px] bg-white border-0 p-0 gap-0" style={{ top: 'auto', bottom: 0, position: 'fixed', maxHeight: '70vh' }}>
+        <DialogContent className="rounded-t-[24px] rounded-b-none max-w-[430px] bg-white dark:bg-[#22293B] border-0 p-0 gap-0" style={{ top: 'auto', bottom: 0, position: 'fixed', maxHeight: '70vh' }}>
           {/* Handle */}
           <div className="flex justify-center pt-3 pb-2">
-            <div className="w-10 h-1 rounded-full bg-[#E8E2D8]" />
+            <div className="w-10 h-1 rounded-full bg-[var(--linen-dark)]" />
           </div>
           <DialogHeader className="px-6 pb-3">
-            <DialogTitle className="text-xl font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+            <DialogTitle className="text-xl font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
               {t('settings2.blockedUsers')}
             </DialogTitle>
           </DialogHeader>
           <div className="px-6 pb-6 overflow-y-auto">
             {blockedUsers.length === 0 ? (
               <div className="flex flex-col items-center py-10 text-center">
-                <Shield size={48} className="text-[#E8E2D8] mb-3" strokeWidth={1.5} />
-                <p className="text-base font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                <Shield size={48} className="text-[var(--linen-dark)] mb-3" strokeWidth={1.5} />
+                <p className="text-base font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                   {t('settings2.noBlocked')}
                 </p>
-                <p className="mt-1 text-sm text-[#232323] opacity-50" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                <p className="mt-1 text-sm text-[var(--charcoal)] opacity-50" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                   {t('settings2.blockedHint')}
                 </p>
               </div>
@@ -555,7 +555,7 @@ export default function Settings() {
                   <div key={user.id} className="flex items-center justify-between py-2">
                     <div className="flex items-center gap-3">
                       <img src={user.avatar} alt={user.name} className="w-10 h-10 rounded-full object-cover" />
-                      <span className="text-sm font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                      <span className="text-sm font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                         {user.name}
                       </span>
                     </div>
@@ -577,20 +577,20 @@ export default function Settings() {
 
       {/* ── Logout Confirmation ── */}
       <Dialog open={showLogoutConfirm} onOpenChange={setShowLogoutConfirm}>
-        <DialogContent className="rounded-[20px] max-w-[320px] bg-white border-0" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
+        <DialogContent className="rounded-[20px] max-w-[320px] bg-white dark:bg-[#22293B] border-0" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
           <DialogHeader>
-            <DialogTitle className="text-xl font-semibold text-[#232323] text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+            <DialogTitle className="text-xl font-semibold text-[var(--charcoal)] text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
               {t('settings2.logoutTitle')}
             </DialogTitle>
           </DialogHeader>
-          <p className="text-sm text-[#232323] opacity-60 text-center mt-1" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+          <p className="text-sm text-[var(--charcoal)] opacity-60 text-center mt-1" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
             {t('settings2.logoutConfirm')}
           </p>
           <div className="flex gap-3 mt-5">
             <motion.button
               whileTap={{ scale: 0.97 }}
               onClick={() => setShowLogoutConfirm(false)}
-              className="flex-1 h-12 rounded-full border border-[rgba(35,35,35,0.1)] bg-[rgba(255,255,255,0.72)] text-base font-semibold text-[#232323]"
+              className="flex-1 h-12 rounded-full border border-[rgba(var(--charcoal-rgb), 0.1)] bg-[rgba(var(--card-rgb), 0.72)] text-base font-semibold text-[var(--charcoal)]"
               style={{ backdropFilter: 'blur(12px)', fontFamily: "'Outfit', system-ui, sans-serif" }}
             >
               {t('settings2.cancel')}
@@ -609,7 +609,7 @@ export default function Settings() {
 
       {/* ── Delete Account Multi-Step Flow ── */}
       <Dialog open={showDeleteFlow} onOpenChange={handleCloseDelete}>
-        <DialogContent className="rounded-[20px] max-w-[340px] bg-white border-0" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
+        <DialogContent className="rounded-[20px] max-w-[340px] bg-white dark:bg-[#22293B] border-0" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
           <AnimatePresence mode="wait">
             {deleteStep === 1 && (
               <motion.div
@@ -623,10 +623,10 @@ export default function Settings() {
                   <div className="w-14 h-14 rounded-full bg-[rgba(232,106,106,0.15)] flex items-center justify-center mb-4">
                     <AlertTriangle size={28} className="text-[#E86A6A]" strokeWidth={2} />
                   </div>
-                  <h3 className="text-xl font-semibold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                  <h3 className="text-xl font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                     {t('settings2.deleteTitle')}
                   </h3>
-                  <div className="mt-4 space-y-2 text-sm text-[#232323] opacity-60 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.6 }}>
+                  <div className="mt-4 space-y-2 text-sm text-[var(--charcoal)] opacity-60 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.6 }}>
                     <p>{t('settings2.deletePermanent')}</p>
                     <p>{t('settings2.deleteData')}</p>
                   </div>
@@ -635,7 +635,7 @@ export default function Settings() {
                   <motion.button
                     whileTap={{ scale: 0.97 }}
                     onClick={handleCloseDelete}
-                    className="flex-1 h-12 rounded-full border border-[rgba(35,35,35,0.1)] bg-[rgba(255,255,255,0.72)] text-base font-semibold text-[#232323]"
+                    className="flex-1 h-12 rounded-full border border-[rgba(var(--charcoal-rgb), 0.1)] bg-[rgba(var(--card-rgb), 0.72)] text-base font-semibold text-[var(--charcoal)]"
                     style={{ backdropFilter: 'blur(12px)', fontFamily: "'Outfit', system-ui, sans-serif" }}
                   >
                     {t('settings2.cancel')}
@@ -660,17 +660,17 @@ export default function Settings() {
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.25, ease: easeSmooth }}
               >
-                <h3 className="text-xl font-semibold text-[#232323] text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                <h3 className="text-xl font-semibold text-[var(--charcoal)] text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                   {t('settings2.typeToConfirm')}
                 </h3>
-                <p className="mt-3 text-sm text-[#232323] opacity-60 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}>
+                <p className="mt-3 text-sm text-[var(--charcoal)] opacity-60 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}>
                   {t('settings2.deleteHintPre')} <span className="font-bold text-[#E86A6A]">DELETE</span> {t('settings2.deleteHintPost')}
                 </p>
                 <Input
                   value={deleteConfirmText}
                   onChange={(e) => setDeleteConfirmText(e.target.value)}
                   placeholder={t('settings2.typeDelete')}
-                  className="mt-4 h-[52px] rounded-xl border-[1.5px] border-transparent bg-[rgba(232,226,216,0.4)] text-base text-center text-[#232323] placeholder:text-[#232323] placeholder:opacity-35 focus:border-[#E86A6A] focus:ring-[3px] focus:ring-[rgba(232,106,106,0.15)] uppercase font-semibold"
+                  className="mt-4 h-[52px] rounded-xl border-[1.5px] border-transparent bg-[rgba(var(--linen-rgb), 0.4)] text-base text-center text-[var(--charcoal)] placeholder:text-[var(--charcoal)] placeholder:opacity-35 focus:border-[#E86A6A] focus:ring-[3px] focus:ring-[rgba(232,106,106,0.15)] uppercase font-semibold"
                   style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
                 />
                 <motion.button
@@ -701,10 +701,10 @@ export default function Settings() {
                   <div className="w-14 h-14 rounded-full bg-[rgba(232,106,106,0.15)] flex items-center justify-center mb-4">
                     <Trash2 size={28} className="text-[#E86A6A]" strokeWidth={2} />
                   </div>
-                  <h3 className="text-xl font-semibold text-[#232323] text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                  <h3 className="text-xl font-semibold text-[var(--charcoal)] text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                     {t('settings2.finalConfirm')}
                   </h3>
-                  <p className="mt-3 text-sm text-[#232323] opacity-60 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}>
+                  <p className="mt-3 text-sm text-[var(--charcoal)] opacity-60 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}>
                     {t('settings2.lastChance')}
                   </p>
                 </div>
@@ -719,7 +719,7 @@ export default function Settings() {
                 <motion.button
                   whileTap={{ scale: 0.97 }}
                   onClick={handleCloseDelete}
-                  className="w-full mt-2 h-12 rounded-full text-base font-semibold text-[#232323] opacity-60"
+                  className="w-full mt-2 h-12 rounded-full text-base font-semibold text-[var(--charcoal)] opacity-60"
                   style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
                 >
                   {t('settings2.cancel')}
@@ -732,9 +732,9 @@ export default function Settings() {
 
       {/* ── Donation Dialog ── */}
       <Dialog open={showDonation} onOpenChange={setShowDonation}>
-        <DialogContent className="rounded-[20px] max-w-[340px] bg-white border-0" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
+        <DialogContent className="rounded-[20px] max-w-[340px] bg-white dark:bg-[#22293B] border-0" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
           <DialogHeader>
-            <DialogTitle className="text-xl font-semibold text-[#232323] text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+            <DialogTitle className="text-xl font-semibold text-[var(--charcoal)] text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
               {t('settings2.supportEqual')}
             </DialogTitle>
           </DialogHeader>
@@ -742,7 +742,7 @@ export default function Settings() {
             <div className="w-14 h-14 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: 'rgba(187,131,201,0.15)' }}>
               <Heart size={28} className="text-[#BB83C9]" strokeWidth={2} />
             </div>
-            <p className="text-sm text-[#232323] opacity-60 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}>
+            <p className="text-sm text-[var(--charcoal)] opacity-60 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}>
               {t('settings2.supportText')}
             </p>
           </div>
@@ -755,9 +755,9 @@ export default function Settings() {
                 onClick={() => setDonationAmount(amount)}
                 className="px-4 py-2.5 rounded-full text-sm font-semibold border transition-colors"
                 style={{
-                  borderColor: donationAmount === amount ? '#BB83C9' : '#E8E2D8',
+                  borderColor: donationAmount === amount ? '#BB83C9' : 'var(--linen-dark)',
                   backgroundColor: donationAmount === amount ? 'rgba(187,131,201,0.1)' : '#FFFFFF',
-                  color: donationAmount === amount ? '#BB83C9' : '#232323',
+                  color: donationAmount === amount ? '#BB83C9' : 'var(--charcoal)',
                   fontFamily: "'Outfit', system-ui, sans-serif",
                 }}
               >
@@ -773,7 +773,7 @@ export default function Settings() {
               placeholder={t('settings2.customAmount')}
               value={donationAmount}
               onChange={(e) => setDonationAmount(e.target.value)}
-              className="h-[52px] rounded-xl border-[1.5px] border-[#E8E2D8] bg-[rgba(232,226,216,0.4)] text-base text-center text-[#232323] placeholder:text-[#232323] placeholder:opacity-35 focus:border-[#BB83C9] focus:ring-[3px] focus:ring-[rgba(187,131,201,0.15)]"
+              className="h-[52px] rounded-xl border-[1.5px] border-[var(--linen-dark)] bg-[rgba(var(--linen-rgb), 0.4)] text-base text-center text-[var(--charcoal)] placeholder:text-[var(--charcoal)] placeholder:opacity-35 focus:border-[#BB83C9] focus:ring-[3px] focus:ring-[rgba(187,131,201,0.15)]"
               style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
             />
           </div>
@@ -782,7 +782,7 @@ export default function Settings() {
             className="w-full mt-4 h-14 rounded-full bg-[#BB83C9] text-white text-base font-semibold flex items-center justify-center gap-2"
             style={{ boxShadow: '0 4px 16px rgba(187,131,201,0.3)', fontFamily: "'Outfit', system-ui, sans-serif" }}
           >
-            <span className="w-5 h-5 rounded-full bg-white flex items-center justify-center">
+            <span className="w-5 h-5 rounded-full bg-white dark:bg-[#22293B] flex items-center justify-center">
               <span className="text-[#BB83C9] text-[10px] font-bold">π</span>
             </span>
             Donate {donationAmount} Pi
@@ -792,23 +792,23 @@ export default function Settings() {
 
       {/* ── Payment History Dialog ── */}
       <Dialog open={showPaymentHistory} onOpenChange={setShowPaymentHistory}>
-        <DialogContent className="rounded-[20px] max-w-[340px] bg-white border-0" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
+        <DialogContent className="rounded-[20px] max-w-[340px] bg-white dark:bg-[#22293B] border-0" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
           <DialogHeader>
-            <DialogTitle className="text-lg font-bold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+            <DialogTitle className="text-lg font-bold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
               {t('settings.paymentHistory')}
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-2 max-h-[360px] overflow-y-auto pr-1">
             {paymentHistory.length === 0 ? (
-              <p className="text-sm text-[#232323] opacity-40 text-center py-8" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              <p className="text-sm text-[var(--charcoal)] opacity-40 text-center py-8" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                 {t('settings2.noPayments')}
               </p>
             ) : (
               paymentHistory.map((p) => (
                 <div key={p.id} className="flex items-center justify-between px-4 py-3 rounded-[14px] bg-[#F6F3EE]">
                   <div className="min-w-0">
-                    <p className="text-sm font-semibold text-[#232323] truncate" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>{p.memo}</p>
-                    <p className="text-xs text-[#232323] opacity-40 mt-0.5" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                    <p className="text-sm font-semibold text-[var(--charcoal)] truncate" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>{p.memo}</p>
+                    <p className="text-xs text-[var(--charcoal)] opacity-40 mt-0.5" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                       {new Date(p.createdAt).toLocaleDateString()}
                     </p>
                   </div>
@@ -827,22 +827,22 @@ export default function Settings() {
 
       {/* ── About Dialog ── */}
       <Dialog open={showAbout} onOpenChange={setShowAbout}>
-        <DialogContent className="rounded-[20px] max-w-[320px] bg-white border-0" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
+        <DialogContent className="rounded-[20px] max-w-[320px] bg-white dark:bg-[#22293B] border-0" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
           <div className="flex flex-col items-center py-4">
             <div className="w-16 h-16 rounded-[16px] flex items-center justify-center mb-3" style={{ background: 'linear-gradient(180deg, #BB83C9, #D4A8DE)' }}>
               <Heart size={28} className="text-white" strokeWidth={2} />
             </div>
-            <h3 className="text-xl font-bold text-[#232323]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+            <h3 className="text-xl font-bold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
               Equal
             </h3>
-            <p className="text-sm text-[#232323] opacity-40 mt-1" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+            <p className="text-sm text-[var(--charcoal)] opacity-40 mt-1" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
               {t('settings2.version')}
             </p>
-            <Separator className="w-full my-4 bg-[#E8E2D8]" />
-            <p className="text-sm text-[#232323] opacity-60 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.6 }}>
+            <Separator className="w-full my-4 bg-[var(--linen-dark)]" />
+            <p className="text-sm text-[var(--charcoal)] opacity-60 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.6 }}>
               {t('settings2.about')}
             </p>
-            <div className="mt-3 flex items-center gap-1.5 text-xs text-[#232323] opacity-40" style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}>
+            <div className="mt-3 flex items-center gap-1.5 text-xs text-[var(--charcoal)] opacity-40" style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}>
               <Code size={12} strokeWidth={2} />
               <span>{t('settings2.builtBy')}</span>
             </div>
