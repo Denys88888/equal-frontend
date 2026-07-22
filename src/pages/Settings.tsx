@@ -212,11 +212,13 @@ export default function Settings() {
   const [walletConnected, setWalletConnected] = useState(true);
   const [trustScore, setTrustScore] = useState<number | null>(null);
   const [photoCount, setPhotoCount] = useState<number | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     getMe().then((d) => {
       if (d.trustScore != null) setTrustScore(d.trustScore);
       if (d.photos) setPhotoCount(d.photos.length);
+      if ((d as { role?: string }).role === 'ADMIN') setIsAdmin(true);
     }).catch(() => {});
   }, []);
   const [paymentHistory, setPaymentHistory] = useState<{ id: string; amount: number; memo: string; status: string; createdAt: string }[]>([]);
@@ -283,6 +285,16 @@ export default function Settings() {
           <SettingRow icon={Camera} iconColor="#7BC4E8" label={t('settings2.photos')} detail={photoCount != null ? `${photoCount}/9` : ''} onClick={() => navigate('/profile')} />
           <SettingRow icon={Shield} iconColor="#7DE0B3" label={t('settings2.trustScore')} detail={trustScore != null ? `${trustScore}/100` : ''} onClick={() => {}} />
         </div>
+
+        {/* ───────── Admin ───────── */}
+        {isAdmin && (
+          <>
+            <SectionLabel text={t('settings2.adminSection')} />
+            <div className="space-y-2">
+              <SettingRow icon={AlertTriangle} iconColor="#BB83C9" label={t('settings2.adminPanel')} onClick={() => navigate('/admin')} />
+            </div>
+          </>
+        )}
 
         {/* ───────── Privacy ───────── */}
         <SectionLabel text={t('settings.privacy')} />

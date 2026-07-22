@@ -439,7 +439,9 @@
     "dangerZone": "Danger Zone",
     "deleteHintPre": "Type",
     "deleteHintPost": "to confirm you want to permanently delete your account.",
-    "privacyPolicy": "Privacy Policy"
+    "privacyPolicy": "Privacy Policy",
+    "adminSection": "Admin",
+    "adminPanel": "Admin Panel"
   },
   "profile2": {
     "addBioHint": "Add a bio to help people get to know you",
