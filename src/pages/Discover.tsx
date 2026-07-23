@@ -6,6 +6,7 @@ import confetti from 'canvas-confetti';
 import { useTranslation } from 'react-i18next';
 import Layout from '@/components/Layout';
 import SkeletonLoader from '@/components/SkeletonLoader';
+import { useAuth } from '@/context/AuthContext';
 import { discoverApi } from '@/api/discover';
 import { sparksApi } from '@/api/sparks';
 import type { ProfileCard } from '@/api/types';
@@ -570,10 +571,12 @@ function ActionButtons({
 
 function MatchOverlay({
   matchProfile,
+  userPhoto,
   onDismiss,
   onMessage,
 }: {
   matchProfile: Profile;
+  userPhoto: string;
   onDismiss: () => void;
   onMessage: () => void;
 }) {
@@ -599,7 +602,7 @@ function MatchOverlay({
           className="w-24 h-24 rounded-full overflow-hidden border-[3px] border-[#BB83C9] -mr-4 z-10"
         >
           <img
-            src="./avatar-ethan.jpg"
+            src={userPhoto}
             alt="You"
             className="w-full h-full object-cover"
           />
@@ -753,6 +756,8 @@ function CompatibilityCard({ profile, onLike }: { profile: Profile; onLike: () =
 export default function Discover() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { profile: authProfile } = useAuth();
+  const userPhoto = authProfile?.photos?.[0]?.url ?? './avatar-ava.jpg';
   const [activeTab, setActiveTab] = useState<'discover' | 'compatibility'>('discover');
   const [allProfiles, setAllProfiles] = useState<Profile[]>([]);
   const [profiles, setProfiles] = useState<Profile[]>([]);
@@ -1038,6 +1043,7 @@ export default function Discover() {
         {matchProfile && (
           <MatchOverlay
             matchProfile={matchProfile}
+            userPhoto={userPhoto}
             onDismiss={() => { setMatchProfile(null); setMatchId(null); }}
             onMessage={() => {
               const id = matchId ?? matchProfile.id;
