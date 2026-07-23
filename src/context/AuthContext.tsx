@@ -124,6 +124,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
           id: profileData.id,
           username: profileData.username,
           name: profileData.name,
+          role: (profileData as { role?: string }).role,
         });
       })
       .catch((err: { status?: number }) => {

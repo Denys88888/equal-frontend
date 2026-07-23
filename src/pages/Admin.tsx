@@ -948,7 +948,7 @@ export default function Admin() {
 
   // Guard: only authenticated ADMINs may view this page
   useEffect(() => {
-    if (!isLoading && (!user || (user as { role?: string }).role !== 'ADMIN')) {
+    if (!isLoading && (!user || user.role !== 'ADMIN')) {
       navigate('/', { replace: true });
     }
   }, [user, isLoading, navigate]);

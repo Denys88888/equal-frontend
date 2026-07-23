@@ -218,7 +218,7 @@ export default function Settings() {
     getMe().then((d) => {
       if (d.trustScore != null) setTrustScore(d.trustScore);
       if (d.photos) setPhotoCount(d.photos.length);
-      if ((d as { role?: string }).role === 'ADMIN') setIsAdmin(true);
+      if (d.role === 'ADMIN') setIsAdmin(true);
     }).catch(() => {});
   }, []);
   const [paymentHistory, setPaymentHistory] = useState<{ id: string; amount: number; memo: string; status: string; createdAt: string }[]>([]);

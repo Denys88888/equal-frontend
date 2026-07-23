@@ -6,12 +6,14 @@ export interface User {
   id: string;
   username: string;
   name: string;
+  role?: string;
 }
 
 export interface UserProfile {
   id: string;
   username: string;
   name: string;
+  role?: string;
   bio: string;
   birthDate: string;
   city: string;
