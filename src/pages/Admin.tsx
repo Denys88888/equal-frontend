@@ -288,7 +288,7 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
           {t('admin.reportsModeration')}
         </h2>
         <span className="text-xs font-medium px-2.5 py-1 rounded-full" style={{ backgroundColor: 'rgba(232,106,106,0.12)', color: '#E86A6A' }}>
-          {reports.filter((r) => r.status === 'Pending').length} pending
+          {reports.filter((r) => r.status === 'Pending').length} {t('admin.pending').toLowerCase()}
         </span>
       </div>
 
@@ -974,7 +974,7 @@ export default function Admin() {
   );
 
   return (
-    <Layout title="Admin Panel" showBack onBack={() => navigate('/profile')} rightAction={rightAction} hideFooter>
+    <Layout title={t('admin.panel')} showBack onBack={() => navigate('/profile')} rightAction={rightAction} hideFooter>
       <Toast message={toastMessage} visible={toastVisible} />
 
       <div className="flex-1 px-5 pb-8 space-y-8" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
