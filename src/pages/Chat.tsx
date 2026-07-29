@@ -735,17 +735,25 @@ export default function Chat() {
     matchId,
     useCallback((msg: IncomingMessage) => {
       if (!partnerId || msg.senderId !== partnerId) return;
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: `ws-${Date.now()}`,
-          type: 'TEXT' as const,
-          content: msg.content,
-          sender: 'them' as const,
-          timestamp: new Date(msg.createdAt),
-          read: false,
-        },
-      ]);
+      setMessages((prev) => {
+        // The REST route echoes to the whole match room, so the same message can
+        // also arrive via a refetch — key off the real id when we have one.
+        if (msg.id && prev.some((m) => m.id === msg.id)) return prev;
+        return [
+          ...prev,
+          {
+            id: msg.id ?? `ws-${Date.now()}`,
+            type: msg.type ?? 'TEXT',
+            content: msg.content,
+            sender: 'them' as const,
+            timestamp: new Date(msg.createdAt),
+            read: false,
+            ...(msg.giftType
+              ? { giftType: msg.giftType as 'coffee' | 'rose' | 'song' | 'spark' }
+              : {}),
+          },
+        ];
+      });
     }, [partnerId]),
     useCallback(() => setIsTyping(true), []),
     useCallback(() => setIsTyping(false), []),

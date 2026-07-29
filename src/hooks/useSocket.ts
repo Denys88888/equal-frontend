@@ -9,6 +9,11 @@ export interface IncomingMessage {
   content: string;
   senderId: string;
   createdAt: string;
+  // Present when the message came from the REST route (gifts, voice notes);
+  // the legacy socket-only path omits them.
+  id?: string;
+  type?: 'TEXT' | 'VOICE' | 'GIFT' | 'SYSTEM';
+  giftType?: string | null;
 }
 
 export interface MatchNewEvent {
