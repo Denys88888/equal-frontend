@@ -131,7 +131,8 @@
     "badges": "बैज",
     "bio": "बायो",
     "interests": "रुचियाँ",
-    "settings": "सेटिंग्स"
+    "settings": "सेटिंग्स",
+    "trustScoreHelp": "Your Trust Score helps us show you to quality matches. It increases with verification, activity, and positive feedback."
   },
   "settings": {
     "title": "सेटिंग्स",

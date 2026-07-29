@@ -131,7 +131,8 @@
     "badges": "Σήματα",
     "bio": "Βιογραφικό",
     "interests": "Ενδιαφέροντα",
-    "settings": "Ρυθμίσεις"
+    "settings": "Ρυθμίσεις",
+    "trustScoreHelp": "Your Trust Score helps us show you to quality matches. It increases with verification, activity, and positive feedback."
   },
   "settings": {
     "title": "Ρυθμίσεις",

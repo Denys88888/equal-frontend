@@ -131,7 +131,8 @@
     "badges": "الشارات",
     "bio": "نبذة",
     "interests": "الاهتمامات",
-    "settings": "الإعدادات"
+    "settings": "الإعدادات",
+    "trustScoreHelp": "Your Trust Score helps us show you to quality matches. It increases with verification, activity, and positive feedback."
   },
   "settings": {
     "title": "الإعدادات",

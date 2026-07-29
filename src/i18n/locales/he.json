@@ -131,7 +131,8 @@
     "badges": "תגים",
     "bio": "ביוגרפיה",
     "interests": "תחומי עניין",
-    "settings": "הגדרות"
+    "settings": "הגדרות",
+    "trustScoreHelp": "Your Trust Score helps us show you to quality matches. It increases with verification, activity, and positive feedback."
   },
   "settings": {
     "title": "הגדרות",

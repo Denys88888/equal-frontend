@@ -430,7 +430,7 @@ export default function Profile() {
             <button
               className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-semibold text-[var(--charcoal)]"
               style={{ backgroundColor: 'rgba(var(--charcoal-rgb), 0.1)' }}
-              title="Your Trust Score helps us show you to quality matches. It increases with verification, activity, and positive feedback."
+              title={t('profile.trustScoreHelp')}
             >
               i
             </button>

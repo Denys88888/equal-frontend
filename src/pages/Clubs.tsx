@@ -832,34 +832,30 @@ function ClubDetail({
 export default function Clubs() {
   const { t } = useTranslation();
   const [mainTab, setMainTab] = useState<'myclubs' | 'discover'>('myclubs');
-  const [clubs, setClubs] = useState(initialClubs);
+  const [clubs, setClubs] = useState<Club[]>([]);
+  const [clubsLoading, setClubsLoading] = useState(true);
 
-  const mergeApiClubs = useCallback((apiClubs: Awaited<ReturnType<typeof getClubs>>) => {
-    if (!apiClubs || apiClubs.length === 0) return;
-    setClubs((prev) => {
-      const existingIds = new Set(prev.map((c) => c.id));
-      const newClubs = apiClubs
-        .filter((c) => !existingIds.has(c.id))
-        .map((c) => ({
+  useEffect(() => {
+    getClubs()
+      .then((apiClubs) => {
+        if (!apiClubs || apiClubs.length === 0) return;
+        setClubs(apiClubs.map((c) => ({
           id: c.id,
           name: c.name,
           description: c.description ?? '',
           category: c.category ?? 'Other',
           icon: c.icon ?? '🌟',
-          gradient: 'from-purple-400 to-pink-400',
+          gradient: categoryGradients[c.category as keyof typeof categoryGradients] ?? 'from-purple-400 to-pink-400',
           memberCount: (c as unknown as { memberCount?: number }).memberCount ?? 0,
           joined: (c as unknown as { isJoined?: boolean }).isJoined ?? false,
           members: [],
           posts: [],
           chat: [],
-        } as Club));
-      return newClubs.length > 0 ? [...prev, ...newClubs] : prev;
-    });
+        } as Club)));
+      })
+      .catch(() => {})
+      .finally(() => setClubsLoading(false));
   }, []);
-
-  useEffect(() => {
-    getClubs().then(mergeApiClubs).catch(() => {});
-  }, [mergeApiClubs]);
   const [selectedClub, setSelectedClub] = useState<Club | null>(null);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [createName, setCreateName] = useState('');
@@ -954,7 +950,11 @@ export default function Clubs() {
                 transition={{ duration: 0.25 }}
                 className="p-4 flex flex-col gap-3"
               >
-                {myClubs.length === 0 ? (
+                {clubsLoading ? (
+                  <div className="flex flex-col gap-3">
+                    {[0,1,2].map(i => <div key={i} className="h-20 rounded-2xl bg-[rgba(var(--charcoal-rgb),0.06)] animate-pulse" />)}
+                  </div>
+                ) : myClubs.length === 0 ? (
                   <div className="flex flex-col items-center justify-center py-16">
                     <img src="./empty-clubs.png" alt="" className="w-40 h-40 mb-4 object-contain" />
                     <h2 className="text-xl font-semibold text-[var(--charcoal)]">{t('clubs.noClubs')}</h2>
@@ -993,7 +993,12 @@ export default function Clubs() {
                 transition={{ duration: 0.25 }}
                 className="pb-6"
               >
-                {categories.map((category) => {
+                {clubsLoading ? (
+                  <div className="flex flex-col gap-3 px-5 pt-4">
+                    {[0,1,2].map(i => <div key={i} className="h-28 rounded-2xl bg-[rgba(var(--charcoal-rgb),0.06)] animate-pulse" />)}
+                  </div>
+                ) : null}
+                {!clubsLoading && categories.map((category) => {
                   const catClubs = clubs.filter((c) => c.category === category);
                   if (catClubs.length === 0) return null;
                   return (

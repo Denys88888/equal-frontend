@@ -131,7 +131,8 @@
     "badges": "Lencana",
     "bio": "Bio",
     "interests": "Minat",
-    "settings": "Pengaturan"
+    "settings": "Pengaturan",
+    "trustScoreHelp": "Your Trust Score helps us show you to quality matches. It increases with verification, activity, and positive feedback."
   },
   "settings": {
     "title": "Pengaturan",

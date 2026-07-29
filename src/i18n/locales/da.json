@@ -131,7 +131,8 @@
     "badges": "Badges",
     "bio": "Bio",
     "interests": "Interesser",
-    "settings": "Indstillinger"
+    "settings": "Indstillinger",
+    "trustScoreHelp": "Your Trust Score helps us show you to quality matches. It increases with verification, activity, and positive feedback."
   },
   "settings": {
     "title": "Indstillinger",

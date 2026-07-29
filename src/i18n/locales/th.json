@@ -131,7 +131,8 @@
     "badges": "ตรา",
     "bio": "แนะนำตัว",
     "interests": "ความสนใจ",
-    "settings": "การตั้งค่า"
+    "settings": "การตั้งค่า",
+    "trustScoreHelp": "Your Trust Score helps us show you to quality matches. It increases with verification, activity, and positive feedback."
   },
   "settings": {
     "title": "การตั้งค่า",

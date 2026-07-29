@@ -131,7 +131,8 @@
     "badges": "徽章",
     "bio": "个人简介",
     "interests": "兴趣爱好",
-    "settings": "设置"
+    "settings": "设置",
+    "trustScoreHelp": "Your Trust Score helps us show you to quality matches. It increases with verification, activity, and positive feedback."
   },
   "settings": {
     "title": "设置",

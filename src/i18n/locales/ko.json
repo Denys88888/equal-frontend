@@ -131,7 +131,8 @@
     "badges": "배지",
     "bio": "자기소개",
     "interests": "관심사",
-    "settings": "설정"
+    "settings": "설정",
+    "trustScoreHelp": "Your Trust Score helps us show you to quality matches. It increases with verification, activity, and positive feedback."
   },
   "settings": {
     "title": "설정",

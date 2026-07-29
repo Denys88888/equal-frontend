@@ -131,7 +131,8 @@
     "badges": "ব্যাজ",
     "bio": "বায়ো",
     "interests": "আগ্রহ",
-    "settings": "সেটিংস"
+    "settings": "সেটিংস",
+    "trustScoreHelp": "Your Trust Score helps us show you to quality matches. It increases with verification, activity, and positive feedback."
   },
   "settings": {
     "title": "সেটিংস",
