@@ -510,7 +510,7 @@ function GiftBottomSheet({
 
 // ── RecordingOverlay ─────────────────────────────────────
 
-function RecordingOverlay({ isRecording, onCancel }: { isRecording: boolean; onCancel: () => void }) {
+function RecordingOverlay({ isRecording, onCancel, onSend }: { isRecording: boolean; onCancel: () => void; onSend: () => void }) {
   const { t } = useTranslation();
   const [elapsed, setElapsed] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -545,7 +545,10 @@ function RecordingOverlay({ isRecording, onCancel }: { isRecording: boolean; onC
           <motion.div
             animate={{ scale: [1, 1.1, 1] }}
             transition={{ duration: 1, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
+            role="button"
+            aria-label={t('chat.tapToSend', { defaultValue: 'Tap to send' })}
+            onClick={(e) => { e.stopPropagation(); onSend(); }}
+            className="w-16 h-16 rounded-full flex items-center justify-center mb-4 cursor-pointer"
             style={{ backgroundColor: '#E86A6A' }}
           >
             <div className="w-4 h-4 rounded-full bg-white dark:bg-[#22293B]" />
@@ -566,7 +569,7 @@ function RecordingOverlay({ isRecording, onCancel }: { isRecording: boolean; onC
             className="text-sm mt-3 text-white text-opacity-50"
             style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
           >
-            {t('chat.tapToCancel')}
+            {t('chat.tapCircleToSend', { defaultValue: 'Tap the circle to send · tap outside to cancel' })}
           </p>
         </motion.div>
       )}
@@ -844,20 +847,33 @@ export default function Chat() {
   }, [matchId]);
 
   const handleSendGift = useCallback(
-    (giftType: string, giftName: string) => {
-      const giftMsg: Message = {
+    async (giftType: string, giftName: string) => {
+      const content = t('chat.giftMsgContent', { partner: matchInfo.matchName, gift: `${giftName.toLowerCase()} ${giftType === 'coffee' ? '\u2615' : giftType === 'rose' ? '\ud83c\udf39' : giftType === 'song' ? '\ud83c\udfb5' : '\u2728'}` });
+      const optimistic: Message = {
         id: `gift-${Date.now()}`,
         type: 'GIFT',
-        content: t('chat.giftMsgContent', { partner: matchInfo.matchName, gift: `${giftName.toLowerCase()} ${giftType === 'coffee' ? '\u2615' : giftType === 'rose' ? '\ud83c\udf39' : giftType === 'song' ? '\ud83c\udfb5' : '\u2728'}` }),
+        content,
         sender: 'me',
         timestamp: new Date(),
         giftType: giftType as 'coffee' | 'rose' | 'song' | 'spark',
         read: false,
       };
-      setMessages((prev) => [...prev, giftMsg]);
-      showToast(t('chat.giftSent', { name: giftName }));
+      setMessages((prev) => [...prev, optimistic]);
+      if (!matchId) return;
+      try {
+        // The Pi payment already went through \u2014 the gift must be persisted or the
+        // recipient never sees what was paid for.
+        const saved = await messagesApi.sendMessage(matchId, content, 'GIFT', giftType);
+        setMessages((prev) =>
+          prev.map((m) => (m.id === optimistic.id ? { ...m, id: saved.id ?? m.id } : m))
+        );
+        showToast(t('chat.giftSent', { name: giftName }));
+      } catch {
+        setMessages((prev) => prev.filter((m) => m.id !== optimistic.id));
+        showToast(t('chat.giftFailed', { defaultValue: 'Could not deliver gift \u2014 please contact support' }));
+      }
     },
-    [matchInfo.matchName, showToast]
+    [matchId, matchInfo.matchName, showToast, t]
   );
 
   const handleAutoResize = useCallback(() => {
@@ -867,37 +883,81 @@ export default function Chat() {
     el.style.height = `${Math.min(el.scrollHeight, 120)}px`;
   }, []);
 
-  // Voice recording simulation
-  const handleMicPress = useCallback(() => {
+  // Voice recording — real capture via MediaRecorder, uploaded on release
+  const recorderRef = useRef<MediaRecorder | null>(null);
+  const chunksRef = useRef<Blob[]>([]);
+  const cancelledRef = useRef(false);
+  const recordStartRef = useRef<number>(0);
+
+  const stopTracks = useCallback(() => {
+    recorderRef.current?.stream.getTracks().forEach((tr) => tr.stop());
+    recorderRef.current = null;
+  }, []);
+
+  const handleMicPress = useCallback(async () => {
     if (inputText.trim()) {
       handleSendMessage(inputText);
       return;
     }
-    setIsRecording(true);
-  }, [inputText, handleSendMessage]);
+    if (!navigator.mediaDevices?.getUserMedia || typeof MediaRecorder === 'undefined') {
+      showToast(t('chat.voiceUnsupported', { defaultValue: 'Voice messages are not supported on this device' }));
+      return;
+    }
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const rec = new MediaRecorder(stream);
+      chunksRef.current = [];
+      cancelledRef.current = false;
+      recordStartRef.current = Date.now();
+      rec.ondataavailable = (e) => { if (e.data.size > 0) chunksRef.current.push(e.data); };
+      rec.onstop = async () => {
+        stopTracks();
+        const seconds = Math.round((Date.now() - recordStartRef.current) / 1000);
+        const blob = new Blob(chunksRef.current, { type: rec.mimeType || 'audio/webm' });
+        if (cancelledRef.current || !matchId || blob.size === 0 || seconds < 1) return;
+        const optimistic: Message = {
+          id: `voice-${Date.now()}`,
+          type: 'VOICE',
+          content: URL.createObjectURL(blob),
+          sender: 'me',
+          timestamp: new Date(),
+          duration: `0:${String(seconds).padStart(2, '0')}`,
+          read: false,
+        };
+        setMessages((prev) => [...prev, optimistic]);
+        try {
+          const saved = await messagesApi.sendVoice(matchId, blob);
+          setMessages((prev) =>
+            prev.map((m) => (m.id === optimistic.id ? { ...m, id: saved.id ?? m.id, content: saved.content ?? m.content } : m))
+          );
+        } catch {
+          setMessages((prev) => prev.filter((m) => m.id !== optimistic.id));
+          showToast(t('chat.voiceFailed', { defaultValue: 'Could not send voice message' }));
+        }
+      };
+      recorderRef.current = rec;
+      rec.start();
+      setIsRecording(true);
+    } catch {
+      showToast(t('chat.micDenied', { defaultValue: 'Microphone access is needed for voice messages' }));
+    }
+  }, [inputText, handleSendMessage, matchId, showToast, t, stopTracks]);
 
-  const handleRecordingCancel = useCallback(() => {
+  const handleRecordingSend = useCallback(() => {
+    cancelledRef.current = false;
     setIsRecording(false);
+    recorderRef.current?.stop();
   }, []);
 
-  // Simulate voice message send after recording
-  useEffect(() => {
-    if (!isRecording) return;
-    const timer = setTimeout(() => {
-      setIsRecording(false);
-      const voiceMsg: Message = {
-        id: `voice-${Date.now()}`,
-        type: 'VOICE',
-        content: 'voice',
-        sender: 'me',
-        timestamp: new Date(),
-        duration: '0:04',
-        read: false,
-      };
-      setMessages((prev) => [...prev, voiceMsg]);
-    }, 4000);
-    return () => clearTimeout(timer);
-  }, [isRecording]);
+  const handleRecordingCancel = useCallback(() => {
+    cancelledRef.current = true;
+    setIsRecording(false);
+    if (recorderRef.current) recorderRef.current.stop();
+    else stopTracks();
+  }, [stopTracks]);
+
+  // Release the mic if the user navigates away mid-recording
+  useEffect(() => stopTracks, [stopTracks]);
 
   const handleIcebreakerSend = useCallback(
     (text: string) => {
@@ -1031,7 +1091,7 @@ export default function Chat() {
             WebkitOverflowScrolling: 'touch',
           }}
         >
-          <RecordingOverlay isRecording={isRecording} onCancel={handleRecordingCancel} />
+          <RecordingOverlay isRecording={isRecording} onCancel={handleRecordingCancel} onSend={handleRecordingSend} />
 
           {isLoading ? (
             <div className="px-6 py-8 space-y-4">

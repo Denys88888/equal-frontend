@@ -32,10 +32,17 @@ interface PhotoItem {
   file?: File;
 }
 
+const GENDER_OPTIONS = ['woman', 'man', 'nonbinary'] as const;
+const GENDER_LABELS: Record<string, string> = { woman: 'Woman', man: 'Man', nonbinary: 'Non-binary' };
+const SEEKING_OPTIONS = ['women', 'men', 'everyone'] as const;
+const SEEKING_LABELS: Record<string, string> = { women: 'Women', men: 'Men', everyone: 'Everyone' };
+
 interface ProfileData {
   name: string;
   dob: string;
   city: string;
+  gender: string;
+  seeking: string[];
   bio: string;
   bioPrompt: string;
   interests: string[];
@@ -122,6 +129,8 @@ export default function Onboarding() {
     name: '',
     dob: '',
     city: '',
+    gender: '',
+    seeking: [],
     bio: '',
     bioPrompt: '',
     interests: [],
@@ -211,6 +220,8 @@ export default function Onboarding() {
         name: data.name || undefined,
         birthDate: data.dob || undefined,
         city: data.city || undefined,
+        gender: data.gender || undefined,
+        lookingFor: data.seeking.length > 0 ? data.seeking : undefined,
         bio: data.bio || data.bioPrompt || undefined,
         interests: data.interests.length > 0 ? data.interests : undefined,
         goals: data.goal ? [data.goal] : undefined,
@@ -234,7 +245,11 @@ export default function Onboarding() {
   /* ---- validation ---- */
   const personalityComplete = data.personalityAnswers.length === QUESTIONS.length;
   const hasPhotos = data.photos.length > 0 && data.photos.some((p) => !!p);
-  const basicsComplete = data.name.trim().length >= 2 && data.dob.length > 0;
+  const basicsComplete =
+    data.name.trim().length >= 2 &&
+    data.dob.length > 0 &&
+    data.gender.length > 0 &&
+    data.seeking.length > 0;
   const interestsComplete = data.interests.length >= 3;
   const goalSelected = data.goal.length > 0;
 
@@ -898,6 +913,74 @@ function StepBasics({
               color: 'var(--charcoal)',
             }}
           />
+        </div>
+      </div>
+
+      {/* Gender — required for matching */}
+      <div className="flex flex-col gap-2">
+        <label
+          className="text-sm font-semibold text-[var(--charcoal)]"
+          style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '0.44px' }}
+        >
+          {t('onboarding.iAm', { defaultValue: 'I am' })}
+        </label>
+        <div className="flex gap-2">
+          {GENDER_OPTIONS.map((g) => (
+            <button
+              key={g}
+              type="button"
+              onClick={() => update('gender', g)}
+              className="flex-1 h-[52px] rounded-xl text-sm font-semibold transition-all"
+              style={{
+                fontFamily: "'Outfit', system-ui, sans-serif",
+                backgroundColor: data.gender === g ? '#BB83C9' : 'rgba(var(--linen-rgb), 0.4)',
+                color: data.gender === g ? '#fff' : 'var(--charcoal)',
+                border: '1.5px solid transparent',
+              }}
+            >
+              {t(`onboarding.gender_${g}`, { defaultValue: GENDER_LABELS[g] })}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Seeking — multi-select, drives who appears in Discover */}
+      <div className="flex flex-col gap-2">
+        <label
+          className="text-sm font-semibold text-[var(--charcoal)]"
+          style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '0.44px' }}
+        >
+          {t('onboarding.lookingToMeet', { defaultValue: 'Looking to meet' })}
+        </label>
+        <div className="flex gap-2">
+          {SEEKING_OPTIONS.map((s) => {
+            const active = data.seeking.includes(s);
+            return (
+              <button
+                key={s}
+                type="button"
+                onClick={() =>
+                  update(
+                    'seeking',
+                    s === 'everyone'
+                      ? ['everyone']
+                      : active
+                        ? data.seeking.filter((x) => x !== s)
+                        : [...data.seeking.filter((x) => x !== 'everyone'), s],
+                  )
+                }
+                className="flex-1 h-[52px] rounded-xl text-sm font-semibold transition-all"
+                style={{
+                  fontFamily: "'Outfit', system-ui, sans-serif",
+                  backgroundColor: active ? '#BB83C9' : 'rgba(var(--linen-rgb), 0.4)',
+                  color: active ? '#fff' : 'var(--charcoal)',
+                  border: '1.5px solid transparent',
+                }}
+              >
+                {t(`onboarding.seeking_${s}`, { defaultValue: SEEKING_LABELS[s] })}
+              </button>
+            );
+          })}
         </div>
       </div>
     </div>

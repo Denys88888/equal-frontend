@@ -50,7 +50,8 @@ export async function updateMe(patch: Partial<UserProfile>): Promise<UserProfile
   // Split into user-level vs profile-level fields to support both backend versions:
   // - deployed main branch: /users/me only takes name/avatar; /profiles/me takes bio/city/etc.
   // - local master branch: /users/me accepts all fields
-  const { name, avatar, bio, birthDate, city, interests, goals } = patch as Record<string, unknown>;
+  const { name, avatar, bio, birthDate, city, interests, goals, gender, lookingFor, latitude, longitude } =
+    patch as Record<string, unknown>;
 
   const userPatch: Record<string, unknown> = {};
   if (name !== undefined) userPatch.name = name;
@@ -62,6 +63,11 @@ export async function updateMe(patch: Partial<UserProfile>): Promise<UserProfile
   if (city !== undefined) profilePatch.city = city;
   if (interests !== undefined) profilePatch.interests = interests;
   if (goals !== undefined) profilePatch.goals = goals;
+  // Required for Discover matching — without these the deck can't be filtered
+  if (gender !== undefined) profilePatch.gender = gender;
+  if (lookingFor !== undefined) profilePatch.lookingFor = lookingFor;
+  if (latitude !== undefined) profilePatch.latitude = latitude;
+  if (longitude !== undefined) profilePatch.longitude = longitude;
 
   await Promise.all([
     Object.keys(userPatch).length > 0 ? api.patch('/users/me', userPatch) : Promise.resolve(),
