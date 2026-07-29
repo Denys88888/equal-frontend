@@ -864,15 +864,13 @@ export default function Chat() {
     messagesApi.getMessages(matchId)
       .then(data => {
         if (cancelled) return;
-        if (data.messages.length > 0) {
-          // Convert API message timestamps from string to Date
-          const converted: Message[] = data.messages.map((m: ApiMessage) => ({
-            ...m,
-            timestamp: new Date(m.timestamp),
-          }));
-          setMessages(converted);
-          setShowIcebreakers(converted.length < 5);
-        }
+        // Always replace mock messages with real API result (even if empty)
+        const converted: Message[] = data.messages.map((m: ApiMessage) => ({
+          ...m,
+          timestamp: new Date(m.timestamp),
+        }));
+        setMessages(converted);
+        setShowIcebreakers(converted.length < 5);
         if (data.partnerId) setPartnerId(data.partnerId);
         setMatchInfo({
           matchName: data.matchName || conversation.matchName,

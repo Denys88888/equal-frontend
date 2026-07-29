@@ -61,176 +61,6 @@ const categories = ['All', 'Speed Dating', 'Social Mixers', 'Outdoor', 'Workshop
 /*  MOCK DATA                                                          */
 /* ------------------------------------------------------------------ */
 
-const MOCK_EVENTS: EventItem[] = [
-  {
-    id: 'e1',
-    title: 'Summer Singles Mixer at The Gallery',
-    description: 'Join us for an elegant evening of art, wine, and meaningful connections at The Gallery downtown. Mingle with like-minded singles in a sophisticated atmosphere featuring live jazz, curated wine pairings, and guided conversation prompts to break the ice. Dress code: smart casual.',
-    date: 'Sat, Dec 14',
-    day: '14',
-    month: 'DEC',
-    time: '7:00 PM - 10:00 PM',
-    location: 'The Gallery, Downtown',
-    venue: 'The Gallery',
-    category: 'Social Mixers',
-    price: 0,
-    image: '/event-featured.jpg',
-    attendees: [
-      { id: 'a1', name: 'Sarah', initials: 'SC' },
-      { id: 'a2', name: 'Jake', initials: 'JM' },
-      { id: 'a3', name: 'Priya', initials: 'PP' },
-      { id: 'a4', name: 'Lucas', initials: 'LK' },
-    ],
-    maxAttendees: 80,
-    featured: true,
-  },
-  {
-    id: 'e2',
-    title: 'Speed Dating Night - Ages 25-35',
-    description: 'A fun, fast-paced evening where you\'ll meet 10-15 potential matches in 5-minute rounds. At the end, mark your favorites on our app — mutual matches get connected! Includes one complimentary drink and light appetizers.',
-    date: 'Thu, Dec 12',
-    day: '12',
-    month: 'DEC',
-    time: '6:30 PM - 9:00 PM',
-    location: 'Velvet Lounge, Midtown',
-    venue: 'Velvet Lounge',
-    category: 'Speed Dating',
-    price: 5,
-    image: '/event-speed-dating.jpg',
-    attendees: [
-      { id: 'a1', name: 'Sarah', initials: 'SC' },
-      { id: 'a5', name: 'Emma', initials: 'EW' },
-      { id: 'a6', name: 'Diego', initials: 'DL' },
-    ],
-    maxAttendees: 30,
-  },
-  {
-    id: 'e3',
-    title: 'Sunset Ridge Trail Hike',
-    description: 'A moderate 4-mile group hike along the scenic Sunset Ridge with panoramic ocean views. Perfect for nature lovers and fitness enthusiasts. We\'ll stop at the summit for a picnic and group photos. Bring water, sunscreen, and comfortable shoes.',
-    date: 'Sun, Dec 15',
-    day: '15',
-    month: 'DEC',
-    time: '8:00 AM - 12:00 PM',
-    location: 'Sunset Ridge Trailhead, Marin',
-    venue: 'Sunset Ridge Trailhead',
-    category: 'Outdoor',
-    price: 0,
-    image: '/event-hiking.jpg',
-    attendees: [
-      { id: 'a4', name: 'Lucas', initials: 'LK' },
-      { id: 'a7', name: 'Ava', initials: 'AJ' },
-      { id: 'a8', name: 'Noah', initials: 'NB' },
-      { id: 'a2', name: 'Jake', initials: 'JM' },
-      { id: 'a1', name: 'Sarah', initials: 'SC' },
-    ],
-    maxAttendees: 25,
-  },
-  {
-    id: 'e4',
-    title: 'Rooftop New Year Eve Party',
-    description: 'Ring in the new year at the city\'s most stunning rooftop venue. Featuring a live DJ, champagne toast at midnight, and breathtaking skyline views. Early bird tickets include VIP access to the lounge area and a welcome cocktail.',
-    date: 'Tue, Dec 31',
-    day: '31',
-    month: 'DEC',
-    time: '9:00 PM - 2:00 AM',
-    location: 'Skyline Rooftop, Downtown',
-    venue: 'Skyline Rooftop',
-    category: 'Parties',
-    price: 10,
-    image: '/event-party.jpg',
-    attendees: [
-      { id: 'a1', name: 'Sarah', initials: 'SC' },
-      { id: 'a2', name: 'Jake', initials: 'JM' },
-      { id: 'a3', name: 'Priya', initials: 'PP' },
-      { id: 'a4', name: 'Lucas', initials: 'LK' },
-      { id: 'a5', name: 'Emma', initials: 'EW' },
-      { id: 'a6', name: 'Diego', initials: 'DL' },
-    ],
-    maxAttendees: 120,
-  },
-  {
-    id: 'e5',
-    title: 'Italian Cooking Workshop',
-    description: 'Learn to make fresh pasta from scratch in this hands-on cooking class led by Chef Marco. You\'ll prepare a 3-course Italian meal and enjoy it together at the end with paired wines. No experience needed — just bring your appetite!',
-    date: 'Wed, Dec 18',
-    day: '18',
-    month: 'DEC',
-    time: '5:30 PM - 8:30 PM',
-    location: 'Culinary Studio, SoMa',
-    venue: 'Culinary Studio',
-    category: 'Workshops',
-    price: 8,
-    image: '/event-workshop.jpg',
-    attendees: [
-      { id: 'a3', name: 'Priya', initials: 'PP' },
-      { id: 'a7', name: 'Ava', initials: 'AJ' },
-      { id: 'a5', name: 'Emma', initials: 'EW' },
-    ],
-    maxAttendees: 16,
-  },
-  {
-    id: 'e6',
-    title: 'Wine & Connect Tasting Evening',
-    description: 'Sample six curated wines from local Napa Valley vineyards while meeting fellow wine enthusiasts. Our sommelier will guide you through each tasting with notes on flavor profiles and pairing suggestions. A relaxed, intimate setting perfect for conversation.',
-    date: 'Fri, Dec 20',
-    day: '20',
-    month: 'DEC',
-    time: '7:00 PM - 9:30 PM',
-    location: 'The Cellar, North Beach',
-    venue: 'The Cellar',
-    category: 'Social Mixers',
-    price: 6,
-    image: '/event-mixer.jpg',
-    attendees: [
-      { id: 'a6', name: 'Diego', initials: 'DL' },
-      { id: 'a8', name: 'Noah', initials: 'NB' },
-      { id: 'a2', name: 'Jake', initials: 'JM' },
-    ],
-    maxAttendees: 24,
-  },
-  {
-    id: 'e7',
-    title: 'Beach Bonfire & Acoustic Night',
-    description: 'An intimate beach gathering with live acoustic music, s\'mores, and stargazing. Bring a blanket and your favorite beach-friendly beverage. The bonfire starts at sunset — arrive early to catch the golden hour!',
-    date: 'Sat, Dec 21',
-    day: '21',
-    month: 'DEC',
-    time: '5:00 PM - 10:00 PM',
-    location: 'Ocean Beach, Fire Pit 4',
-    venue: 'Ocean Beach',
-    category: 'Outdoor',
-    price: 0,
-    image: '/event-bonfire.jpg',
-    attendees: [
-      { id: 'a1', name: 'Sarah', initials: 'SC' },
-      { id: 'a5', name: 'Emma', initials: 'EW' },
-      { id: 'a7', name: 'Ava', initials: 'AJ' },
-      { id: 'a8', name: 'Noah', initials: 'NB' },
-    ],
-    maxAttendees: 40,
-  },
-  {
-    id: 'e8',
-    title: 'Sunset Yoga & Mindfulness',
-    description: 'Unwind with a guided yoga session on the beach as the sun sets over the ocean. Suitable for all levels — modifications provided. Followed by a 10-minute group meditation and optional smoothie social afterward.',
-    date: 'Sun, Dec 22',
-    day: '22',
-    month: 'DEC',
-    time: '4:30 PM - 6:00 PM',
-    location: 'Santa Monica Beach',
-    venue: 'Santa Monica Beach',
-    category: 'Wellness',
-    price: 0,
-    image: '/event-yoga.jpg',
-    attendees: [
-      { id: 'a3', name: 'Priya', initials: 'PP' },
-      { id: 'a4', name: 'Lucas', initials: 'LK' },
-      { id: 'a6', name: 'Diego', initials: 'DL' },
-    ],
-    maxAttendees: 20,
-  },
-];
 
 /* ------------------------------------------------------------------ */
 /*  AVATAR HELPER                                                      */
@@ -771,11 +601,11 @@ export default function Events() {
   const [goingEvents, setGoingEvents] = useState<Set<string>>(new Set());
   const [interestedEvents, setInterestedEvents] = useState<Set<string>>(new Set());
   const [activeTab, setActiveTab] = useState<'upcoming' | 'interested' | 'past'>('upcoming');
-  const [allEvents, setAllEvents] = useState<EventItem[]>(MOCK_EVENTS);
+  const [allEvents, setAllEvents] = useState<EventItem[]>([]);
 
   useEffect(() => {
     getEvents().then((data) => {
-      if (!data || data.length === 0) return;
+      if (!data) return;
       // Backend events lack UI-only fields (attendees, day/month, image…) — fill safe defaults
       setAllEvents((data as unknown as Partial<EventItem>[]).map((e, i) => {
         const parsed = e.date ? new Date(e.date) : null;
@@ -898,12 +728,14 @@ export default function Events() {
                 className="px-5 pb-6 flex flex-col gap-4"
               >
                 {/* Featured Event */}
+                {featuredEvent && (
                 <FeaturedEventCard
                   event={featuredEvent}
                   isGoing={goingEvents.has(featuredEvent.id)}
                   onToggleGoing={() => toggleGoing(featuredEvent.id)}
                   onClick={() => setSelectedEvent(featuredEvent)}
                 />
+                )}
 
                 {/* Events List */}
                 <div className="flex flex-col gap-3">
