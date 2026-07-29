@@ -49,16 +49,6 @@ interface Message {
   read?: boolean;
 }
 
-interface ConversationData {
-  matchName: string;
-  matchAvatar: string;
-  isOnline: boolean;
-  lastSeen?: string;
-  isVerified: boolean;
-  messages: Message[];
-  icebreakers: string[];
-  sharedInterests: string[];
-}
 
 // ── Helpers ──────────────────────────────────────────────
 
@@ -94,100 +84,6 @@ function groupMessagesByDate(messages: Message[]): { date: string; items: Messag
   if (currentItems.length > 0) groups.push({ date: currentDate, items: currentItems });
   return groups;
 }
-
-// ── Mock Data ────────────────────────────────────────────
-
-const CONVERSATIONS: Record<string, ConversationData> = {
-  'match-1': {
-    matchName: 'Sophie',
-    matchAvatar: 'https://i.pravatar.cc/150?img=5',
-    isOnline: true,
-    isVerified: true,
-    sharedInterests: ['Hiking', 'Coffee', 'Indie Music'],
-    icebreakers: [
-      "I see you love hiking too — favorite trail?",
-      "What's the best coffee spot in your city?",
-      "Your taste in music is impeccable — go-to concert?",
-    ],
-    messages: [
-      { id: 'm1', type: 'TEXT', content: 'Hey Sophie! 👋 Great to match with you!', sender: 'me', timestamp: new Date(Date.now() - 86400000 * 2 + 3600000 * 9), read: true },
-      { id: 'm2', type: 'TEXT', content: 'Hey! Thanks, excited to chat! Your profile stood out to me.', sender: 'them', timestamp: new Date(Date.now() - 86400000 * 2 + 3600000 * 9 + 300000), read: true },
-      { id: 'm3', type: 'TEXT', content: 'I noticed you listed hiking as an interest! Have you done any cool trails lately?', sender: 'me', timestamp: new Date(Date.now() - 86400000 * 2 + 3600000 * 10), read: true },
-      { id: 'm4', type: 'TEXT', content: 'Yes! I actually did the coastal trail at Big Sur last weekend. The views were absolutely unreal! 🌊', sender: 'them', timestamp: new Date(Date.now() - 86400000 * 2 + 3600000 * 10 + 600000), read: true },
-      { id: 'm5', type: 'TEXT', content: 'Oh wow, Big Sur is on my bucket list! How long was the hike?', sender: 'me', timestamp: new Date(Date.now() - 86400000 * 2 + 3600000 * 11), read: true },
-      { id: 'm6', type: 'TEXT', content: 'About 8 miles round trip. Took us around 5 hours with breaks for photos. Totally worth it!', sender: 'them', timestamp: new Date(Date.now() - 86400000 * 2 + 3600000 * 11 + 450000), read: true },
-      { id: 'm7', type: 'TEXT', content: 'That sounds perfect. I need to plan a trip there soon!', sender: 'me', timestamp: new Date(Date.now() - 86400000 + 3600000 * 10), read: true },
-      { id: 'm8', type: 'TEXT', content: 'You definitely should! I can share some recommendations if you want.', sender: 'them', timestamp: new Date(Date.now() - 86400000 + 3600000 * 10 + 200000), read: true },
-      { id: 'm9', type: 'TEXT', content: 'That would be amazing, thank you! 😊', sender: 'me', timestamp: new Date(Date.now() - 86400000 + 3600000 * 11), read: true },
-      { id: 'm10', type: 'TEXT', content: 'So what else are you into besides hiking?', sender: 'them', timestamp: new Date(Date.now() - 86400000 + 3600000 * 11 + 400000), read: true },
-      { id: 'm11', type: 'TEXT', content: 'I\'m a big coffee person. I probably spend way too much time at local cafes haha', sender: 'me', timestamp: new Date(Date.now() - 86400000 + 3600000 * 12), read: true },
-      { id: 'm12', type: 'TEXT', content: 'Haha same! There\'s this amazing place near me that roasts their own beans. Best latte I\'ve ever had.', sender: 'them', timestamp: new Date(Date.now() - 86400000 + 3600000 * 12 + 350000), read: true },
-      { id: 'm13', type: 'GIFT', content: 'Sophie sent you a coffee ☕', sender: 'them', timestamp: new Date(Date.now() - 86400000 + 3600000 * 13), read: true, giftType: 'coffee', giftPrice: '1π' },
-      { id: 'm14', type: 'TEXT', content: 'Aww thank you! That\'s so sweet! 🥰', sender: 'me', timestamp: new Date(Date.now() - 86400000 + 3600000 * 13 + 180000), read: true },
-      { id: 'm15', type: 'TEXT', content: 'You\'re welcome! I figured a virtual coffee was the least I could do ☕', sender: 'them', timestamp: new Date(Date.now() - 86400000 + 3600000 * 13 + 360000), read: true },
-      { id: 'm16', type: 'TEXT', content: 'By the way, are you going to the indie music festival next month?', sender: 'them', timestamp: new Date(Date.now() - 86400000 + 3600000 * 14), read: true },
-      { id: 'm17', type: 'TEXT', content: 'I was thinking about it! Arctic Monkeys and Tame Impala are headlining, right?', sender: 'me', timestamp: new Date(Date.now() - 86400000 + 3600000 * 14 + 500000), read: true },
-      { id: 'm18', type: 'TEXT', content: 'Yes! And Phoebe Bridgers too. The lineup is incredible.', sender: 'them', timestamp: new Date(Date.now() - 86400000 + 3600000 * 14 + 900000), read: true },
-      { id: 'm19', type: 'VOICE', content: 'voice', sender: 'me', timestamp: new Date(Date.now() - 86400000 + 3600000 * 15), duration: '0:08', read: true },
-      { id: 'm20', type: 'TEXT', content: 'Haha your voice note is too funny! 😂', sender: 'them', timestamp: new Date(Date.now() - 86400000 + 3600000 * 15 + 300000), read: true },
-      { id: 'm21', type: 'TEXT', content: 'Hey! Are you free to chat this evening?', sender: 'me', timestamp: new Date(Date.now() - 3600000 * 2), read: true },
-      { id: 'm22', type: 'TEXT', content: 'Yes! Just got back from a run. Give me 20 min to shower and I\'m all yours!', sender: 'them', timestamp: new Date(Date.now() - 3600000 * 1.5), read: true },
-      { id: 'm23', type: 'TEXT', content: 'Sounds perfect, no rush! 💪', sender: 'me', timestamp: new Date(Date.now() - 3600000), read: false },
-    ],
-  },
-  'match-2': {
-    matchName: 'Emma',
-    matchAvatar: 'https://i.pravatar.cc/150?img=9',
-    isOnline: false,
-    lastSeen: '2h ago',
-    isVerified: true,
-    sharedInterests: ['Photography', 'Travel', 'Yoga'],
-    icebreakers: [
-      "Love your travel photos! Where was your favorite trip?",
-      "How did you get into photography?",
-      "Morning yoga or evening yoga? 🧘‍♀️",
-    ],
-    messages: [
-      { id: 'e1', type: 'TEXT', content: 'Hi Emma! Your photos are absolutely stunning 📸', sender: 'me', timestamp: new Date(Date.now() - 86400000 * 3 + 3600000 * 10), read: true },
-      { id: 'e2', type: 'TEXT', content: 'Thank you so much! I\'ve been practicing photography for about 3 years now.', sender: 'them', timestamp: new Date(Date.now() - 86400000 * 3 + 3600000 * 11), read: true },
-      { id: 'e3', type: 'TEXT', content: 'That\'s impressive! Do you shoot mostly digital or film?', sender: 'me', timestamp: new Date(Date.now() - 86400000 * 3 + 3600000 * 11 + 400000), read: true },
-      { id: 'e4', type: 'TEXT', content: 'Both actually! Film has this warmth that digital can\'t replicate, but digital is so much more flexible.', sender: 'them', timestamp: new Date(Date.now() - 86400000 * 3 + 3600000 * 12), read: true },
-      { id: 'e5', type: 'TEXT', content: 'I totally agree. I\'ve been meaning to get into film photography.', sender: 'me', timestamp: new Date(Date.now() - 86400000 * 2 + 3600000 * 9), read: true },
-      { id: 'e6', type: 'TEXT', content: 'You should! Start with a simple point-and-shoot. The Contax T2 is legendary but pricey.', sender: 'them', timestamp: new Date(Date.now() - 86400000 * 2 + 3600000 * 10), read: true },
-      { id: 'e7', type: 'TEXT', content: 'I\'ll look into it! Any tips for a beginner?', sender: 'me', timestamp: new Date(Date.now() - 86400000 + 3600000 * 8), read: true },
-      { id: 'e8', type: 'TEXT', content: 'Start with Portra 400 film — very forgiving and beautiful colors!', sender: 'them', timestamp: new Date(Date.now() - 86400000 + 3600000 * 9), read: true },
-      { id: 'e9', type: 'VOICE', content: 'voice', sender: 'them', timestamp: new Date(Date.now() - 86400000 + 3600000 * 9 + 600000), duration: '0:05', read: true },
-      { id: 'e10', type: 'TEXT', content: 'Thanks for the voice tip! That\'s really helpful 🙏', sender: 'me', timestamp: new Date(Date.now() - 3600000 * 5), read: true },
-      { id: 'e11', type: 'TEXT', content: 'Of course! Let me know how your first roll turns out 😊', sender: 'them', timestamp: new Date(Date.now() - 3600000 * 4), read: true },
-    ],
-  },
-  'match-3': {
-    matchName: 'Olivia',
-    matchAvatar: 'https://i.pravatar.cc/150?img=12',
-    isOnline: true,
-    isVerified: false,
-    sharedInterests: ['Cooking', 'Netflix', 'Dogs'],
-    icebreakers: [
-      "What's your go-to comfort food to cook?",
-      "Any Netflix recommendations? I'm looking for something new!",
-      "Dog person, huh? Tell me about your pup! 🐕",
-    ],
-    messages: [
-      { id: 'o1', type: 'TEXT', content: 'Hey Olivia! Your dog is adorable! What\'s their name?', sender: 'me', timestamp: new Date(Date.now() - 86400000 * 2 + 3600000 * 14), read: true },
-      { id: 'o2', type: 'TEXT', content: 'Thank you! His name is Cooper and he\'s a golden retriever. Absolute sweetheart! 🐕', sender: 'them', timestamp: new Date(Date.now() - 86400000 * 2 + 3600000 * 14 + 500000), read: true },
-      { id: 'o3', type: 'TEXT', content: 'Goldens are the best! How old is he?', sender: 'me', timestamp: new Date(Date.now() - 86400000 * 2 + 3600000 * 15), read: true },
-      { id: 'o4', type: 'TEXT', content: 'He\'s 3! Still acts like a puppy though haha', sender: 'them', timestamp: new Date(Date.now() - 86400000 * 2 + 3600000 * 15 + 400000), read: true },
-      { id: 'o5', type: 'TEXT', content: 'That\'s the best age! Full of energy but past the destructive puppy phase 😅', sender: 'me', timestamp: new Date(Date.now() - 86400000 + 3600000 * 10), read: true },
-      { id: 'o6', type: 'TEXT', content: 'Exactly! Though he still chews on shoes when he\'s bored 😂', sender: 'them', timestamp: new Date(Date.now() - 86400000 + 3600000 * 10 + 600000), read: true },
-      { id: 'o7', type: 'TEXT', content: 'Haha that\'s Cooper\'s signature move', sender: 'them', timestamp: new Date(Date.now() - 86400000 + 3600000 * 11), read: true },
-      { id: 'o8', type: 'GIFT', content: 'Olivia sent you a coffee ☕', sender: 'them', timestamp: new Date(Date.now() - 86400000 + 3600000 * 12), read: true, giftType: 'coffee', giftPrice: '1π' },
-      { id: 'o9', type: 'TEXT', content: 'Aww thanks for the coffee! ☕ Now I have energy to take Cooper to the park!', sender: 'me', timestamp: new Date(Date.now() - 86400000 + 3600000 * 12 + 200000), read: true },
-      { id: 'o10', type: 'TEXT', content: 'Perfect timing! I\'m actually baking some cookies right now. Wish I could share through the app! 🍪', sender: 'them', timestamp: new Date(Date.now() - 3600000 * 3), read: true },
-      { id: 'o11', type: 'TEXT', content: 'Now that\'s a feature they need to add! What kind of cookies?', sender: 'me', timestamp: new Date(Date.now() - 3600000 * 2), read: true },
-      { id: 'o12', type: 'TEXT', content: 'Chocolate chip, classic! They\'re almost done. The whole apartment smells amazing!', sender: 'them', timestamp: new Date(Date.now() - 3600000), read: false },
-    ],
-  },
-};
 
 // ── TypingIndicator ──────────────────────────────────────
 
@@ -810,8 +706,7 @@ export default function Chat() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const conversation = CONVERSATIONS[matchId || ''] || CONVERSATIONS['match-1'];
-  const [messages, setMessages] = useState<Message[]>(conversation.messages);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const typingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -820,16 +715,16 @@ export default function Chat() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [reportDialogOpen, setReportDialogOpen] = useState(false);
   const [toast, setToast] = useState({ message: '', visible: false });
-  const [showIcebreakers, setShowIcebreakers] = useState(conversation.messages.length < 5);
+  const [showIcebreakers, setShowIcebreakers] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [partnerId, setPartnerId] = useState<string | null>(null);
   const [matchInfo, setMatchInfo] = useState({
-    matchName: conversation.matchName,
-    matchAvatar: conversation.matchAvatar,
-    isOnline: conversation.isOnline,
-    isVerified: conversation.isVerified,
-    sharedInterests: conversation.sharedInterests,
-    icebreakers: conversation.icebreakers,
+    matchName: '',
+    matchAvatar: '',
+    isOnline: false,
+    isVerified: false,
+    sharedInterests: [] as string[],
+    icebreakers: [] as string[],
   });
 
   // Real-time socket — receive messages from partner
@@ -873,18 +768,18 @@ export default function Chat() {
         setShowIcebreakers(converted.length < 5);
         if (data.partnerId) setPartnerId(data.partnerId);
         setMatchInfo({
-          matchName: data.matchName || conversation.matchName,
-          matchAvatar: data.matchAvatar || conversation.matchAvatar,
-          isOnline: data.isOnline ?? conversation.isOnline,
-          isVerified: data.isVerified ?? conversation.isVerified,
-          sharedInterests: data.sharedInterests?.length ? data.sharedInterests : conversation.sharedInterests,
-          icebreakers: data.icebreakers?.length ? data.icebreakers : conversation.icebreakers,
+          matchName: data.matchName || '',
+          matchAvatar: data.matchAvatar || '',
+          isOnline: data.isOnline ?? false,
+          isVerified: data.isVerified ?? false,
+          sharedInterests: data.sharedInterests ?? [],
+          icebreakers: data.icebreakers ?? [],
         });
         setIsLoading(false);
       })
       .catch(() => {
         if (cancelled) return;
-        setMessages(conversation.messages);
+        setMessages([]);
         setIsLoading(false);
       });
     return () => { cancelled = true; };
@@ -1089,7 +984,7 @@ export default function Chat() {
                     color: matchInfo.isOnline ? '#7DE0B3' : 'rgba(var(--charcoal-rgb), 0.4)',
                   }}
                 >
-                  {matchInfo.isOnline ? t('chat.activeNow') : conversation.lastSeen || t('chat.offline')}
+                  {matchInfo.isOnline ? t('chat.activeNow') : t('chat.offline')}
                 </p>
               </div>
             </motion.button>
