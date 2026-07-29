@@ -1,11 +1,14 @@
 services:
   - type: web
     name: equal-app
-    runtime: node
+    runtime: static
     plan: starter
     branch: master
-    buildCommand: npm ci && npm run build
-    startCommand: node server.js
+    buildCommand: >
+      npm ci && npm run build &&
+      mkdir -p dist/privacy dist/terms dist/discover dist/matches dist/clubs dist/events dist/profile dist/settings dist/onboarding dist/chat &&
+      for d in privacy terms discover matches clubs events profile settings onboarding chat; do cp dist/index.html dist/$d/index.html; done
+    staticPublishPath: ./dist
     nodeVersion: "20.11.0"
     envVars:
       - key: VITE_API_URL
