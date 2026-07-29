@@ -92,6 +92,8 @@ export interface SwipeResult {
   success: boolean;
   isMatch: boolean;
   matchId?: string;
+  /** Present when the swipe consumed a spark (server-authoritative balance). */
+  sparkBalance?: number;
 }
 
 // ── Matches & Messages ─────────────────────────────────

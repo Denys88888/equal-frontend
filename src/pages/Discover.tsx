@@ -838,26 +838,26 @@ export default function Discover() {
 
     const current = profiles[0];
 
+    // Sparks are consumed server-side by the swipe itself — spending separately
+    // here would charge twice. Local decrement is just optimistic UI.
     if (direction === 'up') {
-      if (sparkCount > 0) {
-        setSparkCount((c) => c - 1);
-        sparksApi.spend(1).then(r => setSparkCount(r.newBalance)).catch(() => {});
-      } else {
-        return;
-      }
+      if (sparkCount <= 0) return;
+      setSparkCount((c) => c - 1);
     }
 
     // Call swipe API with fallback
     const action = direction === 'right' ? 'like' : direction === 'left' ? 'dislike' : 'spark';
     try {
       const result = await discoverApi.swipeAction(current.id, action);
+      if (typeof result.sparkBalance === 'number') setSparkCount(result.sparkBalance);
       if (result.isMatch) {
         triggerMatchCelebration();
         setMatchProfile(current);
         setMatchId(result.matchId ?? current.id);
       }
     } catch {
-      // swipe recorded locally, API will sync on next load
+      // Roll the optimistic spark back — the server rejected the spend
+      if (direction === 'up') setSparkCount((c) => c + 1);
     }
 
     // Always remove swiped profile
