@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "postbuild": "for d in privacy terms discover matches clubs events profile settings chat onboarding; do mkdir -p dist/$d && cp dist/index.html dist/$d/index.html; done",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
