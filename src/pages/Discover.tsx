@@ -17,7 +17,7 @@ interface Profile {
   id: string;
   name: string;
   age: number;
-  distance: number;
+  distance: number | null;
   compatibility: number;
   bio: string;
   photo: string;
@@ -470,12 +470,14 @@ function SwipeCard({
           </div>
 
           {/* Distance */}
+          {profile.distance !== null && (
           <div className="flex items-center gap-1 mb-2">
             <MapPin size={14} className="text-white" style={{ opacity: 0.8 }} />
             <span className="text-xs font-medium text-white" style={{ opacity: 0.8 }}>
               {t('discover.kmAway', { distance: profile.distance })}
             </span>
           </div>
+          )}
 
           {/* Bio */}
           <p className="text-sm text-white mb-3 line-clamp-2" style={{ opacity: 0.7 }}>
@@ -729,10 +731,12 @@ function CompatibilityCard({ profile, onLike }: { profile: Profile; onLike: () =
         >
           {t('discover.matchPercent', { percent: profile.compatibility })}
         </span>
+        {profile.distance !== null && (
         <div className="flex items-center gap-1 mb-1">
           <MapPin size={12} style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }} />
           <span className="text-xs" style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }}>{t('discover.kmAway', { distance: profile.distance })}</span>
         </div>
+        )}
         <div className="flex flex-wrap gap-1">
           {profile.interests.slice(0, 3).map((i) => (
             <span key={i} className="px-2 py-0.5 rounded-full text-[10px] font-medium" style={{ backgroundColor: 'var(--linen-dark)', color: 'var(--charcoal)' }}>{i}</span>
@@ -803,7 +807,7 @@ export default function Discover() {
   // Apply filters
   const applyFilters = useCallback(() => {
     const filtered = allProfiles.filter((p) => {
-      if (p.distance > filters.maxDistance) return false;
+      if (p.distance !== null && p.distance > filters.maxDistance) return false;
       if (p.age < filters.ageMin || p.age > filters.ageMax) return false;
       if (filters.verifiedOnly && !p.verified) return false;
       if (filters.onlineNow && !p.activeNow) return false;
