@@ -115,34 +115,6 @@ const STATUS_CONFIG: Record<string, { color: string; bg: string }> = {
   'Auto-Resolved': { color: '#7BC4E8', bg: 'rgba(123,196,232,0.15)' },
 };
 
-const MOCK_REPORTS: Report[] = [
-  { id: 'r1', reportedUser: { name: 'Jake M.', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face' }, reporter: { name: 'Sarah L.', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face' }, reason: 'harassment', status: 'Pending', timestamp: '2h ago', details: 'User sent multiple unsolicited inappropriate messages after being told to stop.' },
-  { id: 'r2', reportedUser: { name: 'Anna K.', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop&crop=face' }, reporter: { name: 'Mike R.', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face' }, reason: 'fake profile', status: 'Pending', timestamp: '4h ago', details: 'Profile photos appear to be stock images. Reverse search shows they belong to a model.' },
-  { id: 'r3', reportedUser: { name: 'David P.', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face' }, reporter: { name: 'Emma W.', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face' }, reason: 'spam', status: 'Resolved', timestamp: '1d ago', details: 'Repeatedly sent promotional links to external cryptocurrency schemes.' },
-  { id: 'r4', reportedUser: { name: 'Lisa T.', avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=100&h=100&fit=crop&crop=face' }, reporter: { name: 'Noah B.', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face' }, reason: 'inappropriate content', status: 'Pending', timestamp: '5h ago', details: 'Posted sexually explicit content in the Outdoor Enthusiasts club feed.' },
-  { id: 'r5', reportedUser: { name: 'Ryan S.', avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop&crop=face' }, reporter: { name: 'Olivia G.', avatar: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=100&h=100&fit=crop&crop=face' }, reason: 'harassment', status: 'Auto-Resolved', timestamp: '2d ago', details: 'Automated detection flagged repeated offensive language in chat messages.' },
-  { id: 'r6', reportedUser: { name: 'Nina H.', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face' }, reporter: { name: 'Ethan C.', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face' }, reason: 'fake profile', status: 'Pending', timestamp: '8h ago', details: 'User claims to be a verified celebrity but identity cannot be confirmed.' },
-  { id: 'r7', reportedUser: { name: 'Tom B.', avatar: 'https://images.unsplash.com/photo-1463453091185-61582044d556?w=100&h=100&fit=crop&crop=face' }, reporter: { name: 'Sophia A.', avatar: 'https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=100&h=100&fit=crop&crop=face' }, reason: 'spam', status: 'Resolved', timestamp: '3d ago', details: 'Mass messaging the same promotional text to over 50 users within an hour.' },
-  { id: 'r8', reportedUser: { name: 'Chloe D.', avatar: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=100&h=100&fit=crop&crop=face' }, reporter: { name: 'Lucas F.', avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop&crop=face' }, reason: 'inappropriate content', status: 'Pending', timestamp: '12h ago', details: 'Uploaded photos containing nudity to profile gallery.' },
-  { id: 'r9', reportedUser: { name: 'Marcus J.', avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face' }, reporter: { name: 'Amelia V.', avatar: 'https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=100&h=100&fit=crop&crop=face' }, reason: 'harassment', status: 'Resolved', timestamp: '4d ago', details: 'Sent threatening messages after the reporter declined to meet in person.' },
-  { id: 'r10', reportedUser: { name: 'Priya S.', avatar: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=100&h=100&fit=crop&crop=face' }, reporter: { name: 'James H.', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face' }, reason: 'spam', status: 'Auto-Resolved', timestamp: '1d ago', details: 'Bot-like behavior detected: identical messages sent to 30+ users rapidly.' },
-];
-
-const MOCK_USERS: AppUser[] = [
-  { id: 'u1', name: 'Sarah Chen', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face', trustScore: 94, joinDate: 'Jan 15, 2025', status: 'Active', bio: 'Coffee lover • Hiking enthusiast', matches: 23, badges: ['Verified', 'Early Adopter', 'Top Matcher'] },
-  { id: 'u2', name: 'Emma Wilson', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop&crop=face', trustScore: 87, joinDate: 'Feb 3, 2025', status: 'Active', bio: 'Artist and dreamer', matches: 18, badges: ['Verified', 'Creative'] },
-  { id: 'u3', name: 'Liam Johnson', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face', trustScore: 42, joinDate: 'Mar 10, 2025', status: 'Reported', bio: 'Software engineer by day', matches: 5, badges: ['New'] },
-  { id: 'u4', name: 'Olivia Davis', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face', trustScore: 96, joinDate: 'Jan 8, 2025', status: 'Active', bio: 'Yoga instructor • Dog mom', matches: 31, badges: ['Verified', 'Super Trusted', 'Event Host'] },
-  { id: 'u5', name: 'Noah Martinez', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face', trustScore: 23, joinDate: 'Apr 22, 2025', status: 'Banned', bio: 'Musician • Traveler', matches: 0, badges: [] },
-  { id: 'u6', name: 'Ava Anderson', avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=100&h=100&fit=crop&crop=face', trustScore: 78, joinDate: 'Feb 20, 2025', status: 'Active', bio: 'Bookworm • Tea enthusiast', matches: 12, badges: ['Verified'] },
-  { id: 'u7', name: 'Ethan Taylor', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face', trustScore: 65, joinDate: 'Mar 5, 2025', status: 'Reported', bio: 'Fitness coach', matches: 8, badges: ['Fitness Pro'] },
-  { id: 'u8', name: 'Sophia Thomas', avatar: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=100&h=100&fit=crop&crop=face', trustScore: 91, joinDate: 'Jan 22, 2025', status: 'Active', bio: 'Photography • Film', matches: 27, badges: ['Verified', 'Photographer'] },
-  { id: 'u9', name: 'Mason Garcia', avatar: 'https://images.unsplash.com/photo-1463453091185-61582044d556?w=100&h=100&fit=crop&crop=face', trustScore: 55, joinDate: 'Apr 1, 2025', status: 'Active', bio: 'Entrepreneur', matches: 6, badges: ['New'] },
-  { id: 'u10', name: 'Isabella Lopez', avatar: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=100&h=100&fit=crop&crop=face', trustScore: 88, joinDate: 'Feb 14, 2025', status: 'Active', bio: 'Dancer • Cat lover', matches: 19, badges: ['Verified', 'Dancer'] },
-  { id: 'u11', name: 'Lucas Lee', avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop&crop=face', trustScore: 12, joinDate: 'May 2, 2025', status: 'Banned', bio: 'Surfer', matches: 0, badges: [] },
-  { id: 'u12', name: 'Mia Brown', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face', trustScore: 82, joinDate: 'Mar 18, 2025', status: 'Active', bio: 'Doctor • Marathon runner', matches: 15, badges: ['Verified', 'Marathoner'] },
-];
-
 const MOCK_CLUBS: Club[] = [
   { id: 'c1', name: 'Coffee Lovers', category: 'Lifestyle', memberCount: 342, postCount: 1280, status: 'Active', createdBy: 'Sarah Chen' },
   { id: 'c2', name: 'Hiking Adventures', category: 'Outdoor', memberCount: 567, postCount: 2340, status: 'Active', createdBy: 'Olivia Davis' },
@@ -254,10 +226,10 @@ function StatsCards() {
 function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) {
   const { t } = useTranslation();
   const [filter, setFilter] = useState<'All' | 'Pending' | 'Resolved'>('All');
-  const [reports, setReports] = useState<Report[]>(MOCK_REPORTS);
+  const [reports, setReports] = useState<Report[]>([]);
   useEffect(() => {
     getPendingReports().then((data) => {
-      if (data && data.length > 0) setReports(data as unknown as Report[]);
+      if (data) setReports(data as unknown as Report[]);
     }).catch(() => {});
   }, []);
 
@@ -399,10 +371,10 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
   const { t } = useTranslation();
   const [search, setSearch] = useState('');
   const [selectedUser, setSelectedUser] = useState<AppUser | null>(null);
-  const [users, setUsers] = useState<AppUser[]>(MOCK_USERS);
+  const [users, setUsers] = useState<AppUser[]>([]);
   useEffect(() => {
     getAdminUsers().then((data) => {
-      if (data && data.length > 0) setUsers(data as unknown as AppUser[]);
+      if (data) setUsers(data as unknown as AppUser[]);
     }).catch(() => {});
   }, []);
 
@@ -832,8 +804,8 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
     setTrustUser('');
   };
 
-  const [adminUsers, setAdminUsers] = useState(MOCK_USERS);
-  useEffect(() => { getAdminUsers().then((d) => { if (d?.length) setAdminUsers(d as unknown as AppUser[]); }).catch(() => {}); }, []);
+  const [adminUsers, setAdminUsers] = useState<AppUser[]>([]);
+  useEffect(() => { getAdminUsers().then((d) => { if (d) setAdminUsers(d as unknown as AppUser[]); }).catch(() => {}); }, []);
   const userNames = adminUsers.map((u) => u.name);
 
   return (
