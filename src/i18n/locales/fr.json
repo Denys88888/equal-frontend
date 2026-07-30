@@ -620,5 +620,24 @@
     "details": "Détails de l'erreur",
     "reload": "Recharger l'application",
     "goHome": "Accueil"
+  },
+  "verification": {
+    "title": "Verify your profile",
+    "doThis": "Do this on camera",
+    "gesture_blink": "Blink slowly",
+    "gesture_smile": "Smile",
+    "gesture_turn_left": "Turn your head left",
+    "gesture_turn_right": "Turn your head right",
+    "enableCamera": "Enable camera",
+    "record": "Record",
+    "recording": "Recording…",
+    "submitting": "Submitting…",
+    "pending": "Your submission is being reviewed",
+    "approved": "Your profile is verified",
+    "rejected": "Previous attempt was rejected — you can try again",
+    "failed": "Recording failed — please try again",
+    "cameraDenied": "Camera access is needed to verify your profile",
+    "unsupported": "Camera recording is not supported on this device",
+    "reviewNote": "Reviewed by a moderator. Only they see this recording — it is never shown on your profile."
   }
 }

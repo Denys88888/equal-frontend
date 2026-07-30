@@ -5,6 +5,7 @@ import { TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/api/client';
 import { api } from '@/api/client';
 import { getPaymentHistory } from '@/api/payments';
 import { getMe, getBlockedUsers, unblockUser } from '@/api/users';
+import VerificationDialog from '@/components/VerificationDialog';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ChevronRight,
@@ -226,6 +227,7 @@ export default function Settings() {
   }, []);
 
   const [showBlockedUsers, setShowBlockedUsers] = useState(false);
+  const [showVerification, setShowVerification] = useState(false);
   const [blockedUsers, setBlockedUsers] = useState<BlockedUser[]>([]);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [showDeleteFlow, setShowDeleteFlow] = useState(false);
@@ -316,6 +318,12 @@ export default function Settings() {
             description={t('settings2.verifiedOnlyDesc')}
             checked={verifiedOnly}
             onCheckedChange={setVerifiedOnly}
+          />
+          <SettingRow
+            icon={Camera}
+            iconColor="#7DE0B3"
+            label={t('verification.title', { defaultValue: 'Verify your profile' })}
+            onClick={() => setShowVerification(true)}
           />
           <SettingRow
             icon={Slash}
@@ -540,6 +548,9 @@ export default function Settings() {
       </motion.div>
 
       {/* ═══════════════════ MODALS & DIALOGS ═══════════════════ */}
+
+      {/* ── Profile Verification ── */}
+      <VerificationDialog open={showVerification} onOpenChange={setShowVerification} />
 
       {/* ── Blocked Users Bottom Sheet ── */}
       <Dialog open={showBlockedUsers} onOpenChange={setShowBlockedUsers}>
