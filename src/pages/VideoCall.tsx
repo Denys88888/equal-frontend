@@ -10,7 +10,34 @@ import { useAuth } from '@/context/AuthContext';
 
 const BACKEND_URL = import.meta.env.VITE_API_URL?.replace('/v1', '') || 'https://equal-backend.onrender.com';
 
-const ICE_SERVERS = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }, { urls: 'stun:stun1.l.google.com:19302' }] };
+/**
+ * STUN alone cannot traverse symmetric NAT, which is what most mobile carriers
+ * use — those calls simply never connect. Supply VITE_TURN_URL (plus username
+ * and credential) to add a relay; comma-separate the URL for multiple transports,
+ * e.g. "turn:host:3478?transport=udp,turns:host:5349?transport=tcp".
+ */
+const TURN_URL = import.meta.env.VITE_TURN_URL as string | undefined;
+const TURN_USERNAME = import.meta.env.VITE_TURN_USERNAME as string | undefined;
+const TURN_CREDENTIAL = import.meta.env.VITE_TURN_CREDENTIAL as string | undefined;
+
+const ICE_SERVERS: RTCConfiguration = {
+  iceServers: [
+    { urls: 'stun:stun.l.google.com:19302' },
+    { urls: 'stun:stun1.l.google.com:19302' },
+    ...(TURN_URL
+      ? [{
+          urls: TURN_URL.split(',').map((u) => u.trim()).filter(Boolean),
+          username: TURN_USERNAME,
+          credential: TURN_CREDENTIAL,
+        }]
+      : []),
+  ],
+};
+
+if (!TURN_URL && import.meta.env.PROD) {
+  // Surfaced deliberately: without a relay a chunk of real calls fail silently
+  console.warn('[VideoCall] No TURN server configured — calls behind symmetric NAT will fail to connect.');
+}
 
 type CallState = 'connecting' | 'ringing' | 'connected' | 'ended' | 'error';
 

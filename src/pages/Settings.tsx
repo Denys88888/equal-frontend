@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import { TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/api/client';
 import { api } from '@/api/client';
 import { getPaymentHistory } from '@/api/payments';
-import { getMe } from '@/api/users';
+import { getMe, getBlockedUsers, unblockUser } from '@/api/users';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ChevronRight,
@@ -55,12 +55,7 @@ function PiIcon({ size = 20, className = '' }: { size?: number; className?: stri
   );
 }
 
-/* ───────────────────── Mock Data ───────────────────── */
-
-const blockedUsersData = [
-  { id: 1, name: 'Alex M.', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop' },
-  { id: 2, name: 'Jordan K.', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop' },
-];
+interface BlockedUser { id: string; name: string; avatar: string }
 
 /* ───────────────────── Setting Row Component ───────────────────── */
 
@@ -231,7 +226,7 @@ export default function Settings() {
   }, []);
 
   const [showBlockedUsers, setShowBlockedUsers] = useState(false);
-  const [blockedUsers, setBlockedUsers] = useState(blockedUsersData);
+  const [blockedUsers, setBlockedUsers] = useState<BlockedUser[]>([]);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [showDeleteFlow, setShowDeleteFlow] = useState(false);
   const [deleteStep, setDeleteStep] = useState(1);
@@ -241,8 +236,16 @@ export default function Settings() {
   const [showAbout, setShowAbout] = useState(false);
 
   /* ── Handlers ── */
-  const handleUnblock = (id: number) => {
+  // Was showing two hardcoded strangers, and unblocking only edited local state —
+  // there was no way to actually undo a block.
+  useEffect(() => {
+    getBlockedUsers().then(setBlockedUsers).catch(() => {});
+  }, []);
+
+  const handleUnblock = (id: string) => {
+    const snapshot = blockedUsers;
     setBlockedUsers((prev) => prev.filter((u) => u.id !== id));
+    unblockUser(id).catch(() => setBlockedUsers(snapshot));
   };
 
   const handleDeleteNext = () => {

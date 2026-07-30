@@ -142,6 +142,23 @@ export async function submitVerificationSelfie(
   return data;
 }
 
+export interface BlockedUser {
+  id: string;
+  name: string;
+  avatar: string;
+}
+
+/** People this user has blocked. */
+export async function getBlockedUsers(): Promise<BlockedUser[]> {
+  const { data } = await api.get<BlockedUser[]>('/users/me/blocked');
+  return data;
+}
+
+/** Removes the block, which also puts the person back into Discover. */
+export async function unblockUser(targetId: string): Promise<void> {
+  await api.delete<void>(`/users/${encodeURIComponent(targetId)}/block`);
+}
+
 /**
  * Current verification state for the signed-in user. 'none' means nothing has
  * been submitted yet; approval is done by an admin, not automatically.
@@ -177,4 +194,6 @@ export const usersApi = {
   reorderPhotos,
   submitVerificationSelfie,
   getVerificationStatus,
+  getBlockedUsers,
+  unblockUser,
 };
