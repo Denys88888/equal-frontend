@@ -103,6 +103,52 @@ export async function unbanUser(userId: string): Promise<void> {
   await api.post<void>(`/admin/users/${encodeURIComponent(userId)}/unban`, {});
 }
 
+export interface AdminClub {
+  id: string;
+  name: string;
+  category: string;
+  memberCount: number;
+  postCount: number;
+  createdAt: string;
+}
+
+export interface AdminEvent {
+  id: string;
+  name: string;
+  date: string;
+  location: string;
+  attendees: number;
+  featured: boolean;
+  status: 'Upcoming' | 'Past';
+}
+
+export async function getAdminClubs(): Promise<AdminClub[]> {
+  const { data } = await api.get<AdminClub[]>('/admin/clubs');
+  return data;
+}
+
+export async function deleteClub(clubId: string): Promise<void> {
+  await api.delete<void>(`/admin/clubs/${encodeURIComponent(clubId)}`);
+}
+
+export async function getAdminEvents(): Promise<AdminEvent[]> {
+  const { data } = await api.get<AdminEvent[]>('/admin/events');
+  return data;
+}
+
+export async function deleteEvent(eventId: string): Promise<void> {
+  await api.delete<void>(`/admin/events/${encodeURIComponent(eventId)}`);
+}
+
+/** Toggles featured; returns the resulting state. */
+export async function toggleEventFeatured(eventId: string): Promise<boolean> {
+  const { data } = await api.post<{ featured: boolean }>(
+    `/admin/events/${encodeURIComponent(eventId)}/feature`,
+    {},
+  );
+  return data.featured;
+}
+
 export interface PendingVerification {
   id: string;
   mediaUrl: string;
@@ -140,4 +186,9 @@ export const adminApi = {
   getPendingVerifications,
   reviewVerification,
   setUserVerified,
+  getAdminClubs,
+  deleteClub,
+  getAdminEvents,
+  deleteEvent,
+  toggleEventFeatured,
 };

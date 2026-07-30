@@ -27,7 +27,10 @@ import {
   ChevronDown,
 } from 'lucide-react';
 import Layout from '@/components/Layout';
-import { getAdminStats, getAdminUsers, getPendingReports } from '@/api/admin';
+import {
+  getAdminStats, getAdminUsers, getPendingReports,
+  getAdminClubs, deleteClub, getAdminEvents, deleteEvent, toggleEventFeatured,
+} from '@/api/admin';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import {
@@ -115,24 +118,6 @@ const STATUS_CONFIG: Record<string, { color: string; bg: string }> = {
   'Auto-Resolved': { color: '#7BC4E8', bg: 'rgba(123,196,232,0.15)' },
 };
 
-const MOCK_CLUBS: Club[] = [
-  { id: 'c1', name: 'Coffee Lovers', category: 'Lifestyle', memberCount: 342, postCount: 1280, status: 'Active', createdBy: 'Sarah Chen' },
-  { id: 'c2', name: 'Hiking Adventures', category: 'Outdoor', memberCount: 567, postCount: 2340, status: 'Active', createdBy: 'Olivia Davis' },
-  { id: 'c3', name: 'Tech Talk', category: 'Technology', memberCount: 189, postCount: 456, status: 'Pending Review', createdBy: 'Mason Garcia' },
-  { id: 'c4', name: 'Yoga & Wellness', category: 'Health', memberCount: 423, postCount: 890, status: 'Active', createdBy: 'Emma Wilson' },
-  { id: 'c5', name: 'Nightlife NYC', category: 'Social', memberCount: 78, postCount: 123, status: 'Pending Review', createdBy: 'Jake M.' },
-  { id: 'c6', name: 'Book Club', category: 'Culture', memberCount: 256, postCount: 678, status: 'Active', createdBy: 'Ava Anderson' },
-  { id: 'c7', name: 'Crypto Pi Traders', category: 'Finance', memberCount: 45, postCount: 89, status: 'Pending Review', createdBy: 'Unknown' },
-  { id: 'c8', name: 'Dance Floor', category: 'Arts', memberCount: 198, postCount: 445, status: 'Active', createdBy: 'Isabella Lopez' },
-];
-
-const MOCK_EVENTS: AppEvent[] = [
-  { id: 'e1', name: 'Spring Mixer 2025', date: 'May 15, 2025', attendees: 128, status: 'Upcoming', location: 'Central Park, NY', featured: true },
-  { id: 'e2', name: 'Coffee & Connections', date: 'May 22, 2025', attendees: 45, status: 'Upcoming', location: 'Blue Bottle, Brooklyn', featured: false },
-  { id: 'e3', name: 'Sunset Yoga Social', date: 'May 10, 2025', attendees: 67, status: 'Ongoing', location: 'Santa Monica Pier', featured: true },
-  { id: 'e4', name: 'Pi Network Dating Gala', date: 'Apr 28, 2025', attendees: 234, status: 'Past', location: 'The Plaza Hotel, NY', featured: false },
-  { id: 'e5', name: 'Hiking Singles Meetup', date: 'Jun 5, 2025', attendees: 34, status: 'Upcoming', location: 'Griffith Park, LA', featured: false },
-];
 
 const BADGE_OPTIONS = ['Verified', 'Early Adopter', 'Top Matcher', 'Event Host', 'Super Trusted', 'Creative', 'Fitness Pro', 'Photographer', 'Marathoner', 'Dancer', 'New'];
 
@@ -576,20 +561,44 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
 
 function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
   const { t } = useTranslation();
-  const [clubs, setClubs] = useState<Club[]>(MOCK_CLUBS);
+  const [clubs, setClubs] = useState<Club[]>([]);
+
+  useEffect(() => {
+    getAdminClubs()
+      .then((data) => {
+        if (!data) return;
+        setClubs(data.map((c) => ({
+          id: c.id,
+          name: c.name,
+          category: c.category,
+          memberCount: c.memberCount,
+          postCount: c.postCount,
+          // No moderation gate exists server-side; everything listed is live
+          status: 'Active' as const,
+          createdBy: '',
+        })));
+      })
+      .catch(() => {});
+  }, []);
 
   const handleApprove = (id: string) => {
     setClubs((prev) => prev.map((c) => (c.id === id ? { ...c, status: 'Active' as const } : c)));
     showToast(t('admin.clubApproved'));
   };
-  const handleReject = (id: string) => {
+  // Reject and delete are the same server action — removing the club.
+  const removeClub = async (id: string, toast: string) => {
+    const snapshot = clubs;
     setClubs((prev) => prev.filter((c) => c.id !== id));
-    showToast(t('admin.clubRejected'));
+    try {
+      await deleteClub(id);
+      showToast(toast);
+    } catch {
+      setClubs(snapshot);
+      showToast(t('admin.actionFailed', { defaultValue: 'Action failed' }));
+    }
   };
-  const handleDelete = (id: string) => {
-    setClubs((prev) => prev.filter((c) => c.id !== id));
-    showToast(t('admin.clubDeleted'));
-  };
+  const handleReject = (id: string) => removeClub(id, t('admin.clubRejected'));
+  const handleDelete = (id: string) => removeClub(id, t('admin.clubDeleted'));
 
   return (
     <div className="space-y-4">
@@ -676,15 +685,48 @@ function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
 
 function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
   const { t } = useTranslation();
-  const [events, setEvents] = useState<AppEvent[]>(MOCK_EVENTS);
+  const [events, setEvents] = useState<AppEvent[]>([]);
 
-  const handleDelete = (id: string) => {
+  useEffect(() => {
+    getAdminEvents()
+      .then((data) => {
+        if (!data) return;
+        setEvents(data.map((e) => ({
+          id: e.id,
+          name: e.name,
+          date: new Date(e.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }),
+          attendees: e.attendees,
+          status: e.status,
+          location: e.location,
+          featured: e.featured,
+        })));
+      })
+      .catch(() => {});
+  }, []);
+
+  const handleDelete = async (id: string) => {
+    const snapshot = events;
     setEvents((prev) => prev.filter((e) => e.id !== id));
-    showToast(t('admin.eventDeleted'));
+    try {
+      await deleteEvent(id);
+      showToast(t('admin.eventDeleted'));
+    } catch {
+      setEvents(snapshot);
+      showToast(t('admin.actionFailed', { defaultValue: 'Action failed' }));
+    }
   };
-  const handleFeature = (id: string) => {
+  const handleFeature = async (id: string) => {
+    const wasFeatured = events.find((e) => e.id === id)?.featured;
     setEvents((prev) => prev.map((e) => (e.id === id ? { ...e, featured: !e.featured } : e)));
-    showToast(events.find((e) => e.id === id)?.featured ? t('admin.eventUnfeatured') : t('admin.eventFeatured'));
+    try {
+      const featured = await toggleEventFeatured(id);
+      // Trust the server's resulting state over the optimistic guess
+      setEvents((prev) => prev.map((e) => (e.id === id ? { ...e, featured } : e)));
+      showToast(featured ? t('admin.eventFeatured') : t('admin.eventUnfeatured'));
+    } catch {
+      setEvents((prev) => prev.map((e) => (e.id === id ? { ...e, featured: !!wasFeatured } : e)));
+      showToast(t('admin.actionFailed', { defaultValue: 'Action failed' }));
+    }
   };
 
   const getEventStatusColor = (status: string) => {
