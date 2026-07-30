@@ -37,9 +37,12 @@ export function useSocket(
   onMessage: (msg: IncomingMessage) => void,
   onTypingStart?: (userId: string) => void,
   onTypingStop?: (userId: string) => void,
+  onPresence?: (userId: string, isOnline: boolean) => void,
 ) {
   const onMessageRef = useRef(onMessage);
   onMessageRef.current = onMessage;
+  const onPresenceRef = useRef(onPresence);
+  onPresenceRef.current = onPresence;
 
   useEffect(() => {
     if (!matchId) return;
@@ -57,11 +60,16 @@ export function useSocket(
     socket.on('typing:start', onTStart);
     socket.on('typing:stop', onTStop);
 
+    const onPres = ({ userId, isOnline }: { userId: string; isOnline: boolean }) =>
+      onPresenceRef.current?.(userId, isOnline);
+    socket.on('presence:update', onPres);
+
     return () => {
       socket.off('connect', onConnect);
       socket.off('message:new', onMsg);
       socket.off('typing:start', onTStart);
       socket.off('typing:stop', onTStop);
+      socket.off('presence:update', onPres);
     };
   }, [matchId]);
 

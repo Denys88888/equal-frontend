@@ -757,6 +757,9 @@ export default function Chat() {
     }, [partnerId]),
     useCallback(() => setIsTyping(true), []),
     useCallback(() => setIsTyping(false), []),
+    useCallback((userId: string, isOnline: boolean) => {
+      if (userId === partnerId) setMatchInfo((prev) => ({ ...prev, isOnline }));
+    }, [partnerId]),
   );
 
   // Load messages from API on mount
