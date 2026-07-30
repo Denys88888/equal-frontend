@@ -1,6 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getClubs, joinClub, leaveClub, createPost } from '@/api/clubs';
+import { getClubs, joinClub, leaveClub, createPost, getPosts, togglePostLike, getClubMessages, sendClubMessage } from '@/api/clubs';
+import { useClubSocket, type IncomingClubMessage } from '@/hooks/useSocket';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Plus,
@@ -318,25 +319,49 @@ function ClubDetail({
   const chatEndRef = useRef<HTMLDivElement>(null);
 
   const handleLike = (postId: string) => {
+    // Optimistic, then reconciled with the server's count
     setPosts((prev) =>
       prev.map((p) =>
         p.id === postId ? { ...p, liked: !p.liked, likes: p.liked ? p.likes - 1 : p.likes + 1 } : p
       )
     );
+    togglePostLike(postId)
+      .then(({ likes, likedByMe }) => {
+        setPosts((prev) => prev.map((p) => (p.id === postId ? { ...p, likes, liked: likedByMe } : p)));
+      })
+      .catch(() => {
+        setPosts((prev) =>
+          prev.map((p) =>
+            p.id === postId ? { ...p, liked: !p.liked, likes: p.liked ? p.likes - 1 : p.likes + 1 } : p
+          )
+        );
+      });
   };
 
-  const handleSendMessage = () => {
-    if (!chatInput.trim()) return;
-    const msg: ChatMessage = {
+  const handleSendMessage = async () => {
+    const text = chatInput.trim();
+    if (!text) return;
+    setChatInput('');
+    const optimistic: ChatMessage = {
       id: `ch-${Date.now()}`,
       authorId: 'me',
       authorName: 'You',
       authorAvatar: 'YO',
-      content: chatInput.trim(),
+      content: text,
       timestamp: 'Just now',
     };
-    setChatMessages((prev) => [...prev, msg]);
-    setChatInput('');
+    setChatMessages((prev) => [...prev, optimistic]);
+    try {
+      // Club chat used to live only in this component's state — messages were
+      // lost on reload and no other member ever saw them.
+      const saved = await sendClubMessage(club.id, text);
+      setChatMessages((prev) =>
+        prev.map((m) => (m.id === optimistic.id ? { ...m, id: saved.id } : m))
+      );
+    } catch {
+      setChatMessages((prev) => prev.filter((m) => m.id !== optimistic.id));
+      setChatInput(text);
+    }
   };
 
   const handleCreatePost = () => {
@@ -369,6 +394,58 @@ function ClubDetail({
       onUpdateClub({ ...club, joined: !newJoined, memberCount: !newJoined ? club.memberCount + 1 : club.memberCount - 1 });
     });
   };
+
+  // Load the real feed and chat history for this club
+  useEffect(() => {
+    getPosts(club.id)
+      .then((apiPosts) => {
+        if (!apiPosts) return;
+        setPosts(apiPosts.map((p) => ({
+          id: p.id,
+          authorId: p.authorId,
+          authorName: p.authorName,
+          authorAvatar: (p.authorName || '?').slice(0, 2).toUpperCase(),
+          content: p.content,
+          likes: p.likes ?? 0,
+          comments: 0,
+          liked: (p as unknown as { likedByMe?: boolean }).likedByMe ?? false,
+          timestamp: new Date(p.createdAt).toLocaleDateString(),
+        } as Post)));
+      })
+      .catch(() => {});
+  }, [club.id]);
+
+  useEffect(() => {
+    if (!joined) return;
+    getClubMessages(club.id)
+      .then((msgs) => {
+        if (!msgs) return;
+        setChatMessages(msgs.map((m) => ({
+          id: m.id,
+          authorId: m.authorId,
+          authorName: m.authorName,
+          authorAvatar: (m.authorName || '?').slice(0, 2).toUpperCase(),
+          content: m.content,
+          timestamp: new Date(m.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        } as ChatMessage)));
+      })
+      .catch(() => {});
+  }, [club.id, joined]);
+
+  // Live messages from other members
+  useClubSocket(joined ? club.id : undefined, useCallback((msg: IncomingClubMessage) => {
+    setChatMessages((prev) => {
+      if (prev.some((m) => m.id === msg.id)) return prev;
+      return [...prev, {
+        id: msg.id,
+        authorId: msg.authorId,
+        authorName: msg.authorName,
+        authorAvatar: (msg.authorName || '?').slice(0, 2).toUpperCase(),
+        content: msg.content,
+        timestamp: new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      } as ChatMessage];
+    });
+  }, []));
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });

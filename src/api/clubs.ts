@@ -97,6 +97,58 @@ export async function createPost(clubId: string, payload: CreatePostRequest): Pr
   return data;
 }
 
+/**
+ * Toggle your like on a club post.
+ *
+ * @returns The resulting like count and whether you now like it
+ * @throws {ApiError} 403 if not a club member; 404 if the post is gone
+ */
+export async function togglePostLike(
+  postId: string,
+): Promise<{ likes: number; likedByMe: boolean }> {
+  const { data } = await api.post<{ likes: number; likedByMe: boolean }>(
+    `/clubs/posts/${encodeURIComponent(postId)}/like`,
+    {},
+  );
+  return data;
+}
+
+export interface ClubMessage {
+  id: string;
+  clubId: string;
+  authorId: string;
+  authorName: string;
+  authorAvatar: string;
+  content: string;
+  createdAt: string;
+}
+
+/**
+ * Club chat history, oldest first. Members only.
+ *
+ * @throws {ApiError} 403 if not a club member
+ */
+export async function getClubMessages(clubId: string): Promise<ClubMessage[]> {
+  const { data } = await api.get<ClubMessage[]>(
+    `/clubs/${encodeURIComponent(clubId)}/messages`,
+  );
+  return data;
+}
+
+/**
+ * Post to a club's chat. Other members receive it over the `club:message` socket
+ * event.
+ *
+ * @throws {ApiError} 403 if not a club member or the message is empty
+ */
+export async function sendClubMessage(clubId: string, content: string): Promise<ClubMessage> {
+  const { data } = await api.post<ClubMessage>(
+    `/clubs/${encodeURIComponent(clubId)}/messages`,
+    { content },
+  );
+  return data;
+}
+
 // ───────────────────────────────────────────────────────────
 // NAMESPACE EXPORT
 // ───────────────────────────────────────────────────────────
@@ -113,4 +165,7 @@ export const clubsApi = {
   leaveClub,
   getPosts,
   createPost,
+  togglePostLike,
+  getClubMessages,
+  sendClubMessage,
 };

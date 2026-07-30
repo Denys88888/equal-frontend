@@ -34,24 +34,24 @@ import Layout from '@/components/Layout';
 
 /* ───────────────────── Fallback User Data ───────────────────── */
 
-const FALLBACK_USER = {
-  name: 'Sarah',
-  age: 26,
-  location: 'San Francisco, CA',
-  distance: '2 miles away',
-  bio: 'Coffee enthusiast, hiking lover, and board game nerd. Looking for someone to share adventures and lazy Sundays with. I believe the best connections start with genuine curiosity.',
-  photos: [
-    'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=600&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600&h=600&fit=crop',
-  ],
-  interests: ['Coffee', 'Hiking', 'Board Games', 'Photography', 'Yoga', 'Travel', 'Cooking', 'Music'],
-  goals: 'Serious relationship',
-  trustScore: 82,
-  sparkBalance: 12,
-  verified: true,
+/**
+ * Empty shape shown until getMe() resolves. Deliberately blank — this screen
+ * renders the signed-in user's own profile, so placeholder people, stock photos
+ * and an unearned verified badge must never appear here.
+ */
+const EMPTY_USER = {
+  name: '',
+  age: null as number | null,
+  location: '',
+  distance: '',
+  bio: '',
+  photos: [] as string[],
+  interests: [] as string[],
+  goals: '',
+  trustScore: 0,
+  sparkBalance: 0,
+  verified: false,
+  badges: [] as string[],
   isOwnProfile: true,
 };
 
@@ -169,8 +169,25 @@ function TrustScoreBar({ score }: { score: number }) {
 
 /* ───────────────────── Spark Balance Card ───────────────────── */
 
-function SparkBalanceCard({ balance }: { balance: number }) {
+function SparkBalanceCard({
+  balance,
+  verified,
+  profileComplete,
+}: {
+  balance: number;
+  verified: boolean;
+  profileComplete: boolean;
+}) {
   const { t } = useTranslation();
+  // Reflects the server's actual earn rules. The verify/complete rows used to be
+  // hardcoded done:true — every user saw them ticked whether or not they had done
+  // them — and an "invite a friend, +10" row advertised a reward that no longer
+  // exists: there is no referral record to verify, so the server rejects it.
+  const tasks = [
+    { text: 'profile2.taskVerify', amount: '+5 Sparks', done: verified },
+    { text: 'profile2.taskComplete', amount: '+3 Sparks', done: profileComplete },
+    { text: 'profile2.taskClub', amount: '+1 Spark/day', done: false },
+  ];
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -197,12 +214,7 @@ function SparkBalanceCard({ balance }: { balance: number }) {
         Sparks are earned through activity — not bought. Send them to show someone special attention.
       </p>
       <div className="mt-4 space-y-2">
-        {[
-          { text: 'profile2.taskVerify', amount: '+5 Sparks', done: true },
-          { text: 'profile2.taskComplete', amount: '+3 Sparks', done: true },
-          { text: 'profile2.taskClub', amount: '+1 Spark/day', done: false },
-          { text: 'profile2.taskInvite', amount: '+10 Sparks', done: false },
-        ].map((item) => (
+        {tasks.map((item) => (
           <div key={item.text} className="flex items-center justify-between text-sm">
             <span className={item.done ? 'text-[#7DE0B3]' : 'text-[var(--charcoal)]'} style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
               {item.done ? <Check size={14} className="inline mr-1" /> : <span className="inline mr-1 opacity-30">○</span>}
@@ -275,7 +287,7 @@ function PhotoLightbox({
 export default function Profile() {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [user, setUser] = useState<typeof FALLBACK_USER>(FALLBACK_USER);
+  const [user, setUser] = useState<typeof EMPTY_USER>(EMPTY_USER);
   const [isEditMode, setIsEditMode] = useState(false);
   const [bio, setBio] = useState('');
   const [showBioEdit, setShowBioEdit] = useState(false);
@@ -285,20 +297,25 @@ export default function Profile() {
 
   useEffect(() => {
     getMe().then((d) => {
+      // Nothing falls back to placeholder data: this is the user's own profile,
+      // and showing someone else's name, photos or a verified badge they haven't
+      // earned is worse than showing an empty field.
       const mapped = {
-        ...FALLBACK_USER,
-        name: d.name,
+        name: d.name ?? '',
         age: d.birthDate
           ? Math.floor((Date.now() - new Date(d.birthDate).getTime()) / 31536000000)
-          : FALLBACK_USER.age,
-        bio: d.bio || '',
+          : null,
         location: d.city || '',
+        distance: '',
+        bio: d.bio || '',
         photos: d.photos?.map((p) => p.url) || [],
         interests: d.interests || [],
-        goals: Array.isArray(d.goals) ? (d.goals[0] ?? FALLBACK_USER.goals) : ((d.goals as string) || FALLBACK_USER.goals),
-        trustScore: d.trustScore ?? FALLBACK_USER.trustScore,
-        sparkBalance: d.sparkBalance ?? FALLBACK_USER.sparkBalance,
-        verified: d.verified ?? FALLBACK_USER.verified,
+        goals: Array.isArray(d.goals) ? (d.goals[0] ?? '') : ((d.goals as string) || ''),
+        trustScore: d.trustScore ?? 0,
+        sparkBalance: d.sparkBalance ?? 0,
+        verified: d.verified ?? false,
+        badges: (d as unknown as { badges?: string[] }).badges ?? [],
+        isOwnProfile: true,
       };
       setUser(mapped);
       setBio(mapped.bio);
@@ -332,15 +349,21 @@ export default function Profile() {
     try { await updateMe({ bio: editBioText }); } catch { /* non-critical */ }
   };
 
+  // "earned" used to be hardcoded, so every user was shown as Verified, Party,
+  // Pro, Profile and Trust regardless of what they had actually done. Verified
+  // now follows the real flag; the rest follow badges awarded by an admin.
+  const hasBadge = (id: string) =>
+    user.badges.some((b) => b.toLowerCase().replace(/[^a-z]/g, '').includes(id));
+
   const badges = [
-    { id: 'verified', name: 'profile2.badgeVerified', icon: Shield, color: '#7DE0B3', earned: true, desc: 'profile2.badgeVerifiedDesc' },
-    { id: 'party', name: 'profile2.badgeParty', icon: Sparkles, color: '#7BC4E8', earned: true, desc: 'profile2.badgePartyDesc' },
-    { id: 'pro', name: 'profile2.badgePro', icon: Trophy, color: '#BB83C9', earned: true, desc: 'profile2.badgeProDesc' },
-    { id: 'spark', name: 'profile2.badgeSpark', icon: Zap, color: '#FFD700', earned: false, desc: 'profile2.badgeSparkDesc' },
-    { id: 'chatty', name: 'profile2.badgeChatty', icon: MessageCircle, color: '#7DE0B3', earned: false, desc: 'profile2.badgeChattyDesc' },
-    { id: 'event', name: 'profile2.badgeEvent', icon: Calendar, color: '#F0B84A', earned: false, desc: 'profile2.badgeEventDesc' },
-    { id: 'profile', name: 'profile2.badgeProfile', icon: Award, color: '#7BC4E8', earned: true, desc: 'profile2.badgeProfileDesc' },
-    { id: 'trust', name: 'profile2.badgeTrust', icon: Heart, color: '#BB83C9', earned: true, desc: 'profile2.badgeTrustDesc' },
+    { id: 'verified', name: 'profile2.badgeVerified', icon: Shield, color: '#7DE0B3', earned: user.verified, desc: 'profile2.badgeVerifiedDesc' },
+    { id: 'party', name: 'profile2.badgeParty', icon: Sparkles, color: '#7BC4E8', earned: hasBadge('party'), desc: 'profile2.badgePartyDesc' },
+    { id: 'pro', name: 'profile2.badgePro', icon: Trophy, color: '#BB83C9', earned: hasBadge('pro'), desc: 'profile2.badgeProDesc' },
+    { id: 'spark', name: 'profile2.badgeSpark', icon: Zap, color: '#FFD700', earned: hasBadge('spark'), desc: 'profile2.badgeSparkDesc' },
+    { id: 'chatty', name: 'profile2.badgeChatty', icon: MessageCircle, color: '#7DE0B3', earned: hasBadge('chatty'), desc: 'profile2.badgeChattyDesc' },
+    { id: 'event', name: 'profile2.badgeEvent', icon: Calendar, color: '#F0B84A', earned: hasBadge('event'), desc: 'profile2.badgeEventDesc' },
+    { id: 'profile', name: 'profile2.badgeProfile', icon: Award, color: '#7BC4E8', earned: hasBadge('profile'), desc: 'profile2.badgeProfileDesc' },
+    { id: 'trust', name: 'profile2.badgeTrust', icon: Heart, color: '#BB83C9', earned: hasBadge('trust'), desc: 'profile2.badgeTrustDesc' },
   ];
 
   return (
@@ -649,7 +672,11 @@ export default function Profile() {
         </motion.div>
 
         {/* ─────────────── Spark Balance ─────────────── */}
-        <SparkBalanceCard balance={user.sparkBalance} />
+        <SparkBalanceCard
+          balance={user.sparkBalance}
+          verified={user.verified}
+          profileComplete={!!user.bio && user.photos.length > 0 && user.interests.length >= 3}
+        />
 
         {/* ─────────────── Settings Link ─────────────── */}
         <motion.div

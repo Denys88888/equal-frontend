@@ -109,3 +109,42 @@ export function useUserSocket(
     };
   }, [userId]);
 }
+
+export interface IncomingClubMessage {
+  id: string;
+  clubId: string;
+  authorId: string;
+  authorName: string;
+  authorAvatar: string;
+  content: string;
+  createdAt: string;
+}
+
+/** Joins a club's chat room. The server only admits actual members. */
+export function useClubSocket(
+  clubId: string | undefined,
+  onMessage: (msg: IncomingClubMessage) => void,
+) {
+  const onMessageRef = useRef(onMessage);
+  onMessageRef.current = onMessage;
+
+  useEffect(() => {
+    if (!clubId) return;
+    const socket = getSocket();
+
+    const join = () => socket.emit('join:club', clubId);
+    if (socket.connected) join();
+    else socket.on('connect', join);
+
+    const onMsg = (msg: IncomingClubMessage) => {
+      if (msg.clubId === clubId) onMessageRef.current(msg);
+    };
+    socket.on('club:message', onMsg);
+
+    return () => {
+      socket.emit('leave:club', clubId);
+      socket.off('connect', join);
+      socket.off('club:message', onMsg);
+    };
+  }, [clubId]);
+}

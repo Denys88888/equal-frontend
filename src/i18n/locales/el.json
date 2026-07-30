@@ -70,7 +70,8 @@
     "km": "{{d}} km",
     "verified": "Verified",
     "activeNow": "Active",
-    "newUser": "New"
+    "newUser": "New",
+    "undo": "Undo"
   },
   "matches": {
     "title": "Ταίρια",
@@ -122,7 +123,14 @@
     "mutedNotifs": "Notifications muted",
     "userBlocked": "User blocked",
     "giftSent": "{{name}} sent!",
-    "giftMsgContent": "You sent {{partner}} a {{gift}}"
+    "giftMsgContent": "You sent {{partner}} a {{gift}}",
+    "giftFailed": "Could not deliver gift — please contact support",
+    "voiceUnsupported": "Voice messages are not supported on this device",
+    "voiceFailed": "Could not send voice message",
+    "micDenied": "Microphone access is needed for voice messages",
+    "tapToSend": "Tap to send",
+    "tapCircleToSend": "Tap the circle to send · tap outside to cancel",
+    "photoFailed": "Could not send photo"
   },
   "profile": {
     "edit": "Επεξεργασία Προφίλ",
@@ -238,7 +246,15 @@
     "int_crypto": "Crypto",
     "int_philosophy": "Philosophy",
     "int_foodie": "Foodie",
-    "int_wine": "Wine"
+    "int_wine": "Wine",
+    "iAm": "I am",
+    "lookingToMeet": "Looking to meet",
+    "gender_woman": "Woman",
+    "gender_man": "Man",
+    "gender_nonbinary": "Non-binary",
+    "seeking_women": "Women",
+    "seeking_men": "Men",
+    "seeking_everyone": "Everyone"
   },
   "common": {
     "cancel": "Ακύρωση",
@@ -545,7 +561,8 @@
     "eventFeatured": "Event featured",
     "eventUnfeatured": "Event unfeatured",
     "badgeAwarded": "Awarded \"{{badge}}\" to {{user}}",
-    "trustAdjusted": "Trust score set to {{score}} for {{user}}"
+    "trustAdjusted": "Trust score set to {{score}} for {{user}}",
+    "actionFailed": "Action failed"
   },
   "legal": {
     "termsTitle": "Terms of Service",

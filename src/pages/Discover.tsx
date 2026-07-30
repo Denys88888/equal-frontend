@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence, useMotionValue, useTransform, type PanInfo } from 'framer-motion';
-import { X, Heart, Star, MapPin, SlidersHorizontal, Shield, Circle, Sparkles } from 'lucide-react';
+import { X, Heart, Star, MapPin, SlidersHorizontal, Shield, Circle, Sparkles, RotateCcw } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useTranslation } from 'react-i18next';
 import Layout from '@/components/Layout';
@@ -508,15 +508,35 @@ function ActionButtons({
   onDislike,
   onLike,
   onSpark,
+  onUndo,
+  canUndo,
   sparkCount,
 }: {
   onDislike: () => void;
   onLike: () => void;
   onSpark: () => void;
+  onUndo: () => void;
+  canUndo: boolean;
   sparkCount: number;
 }) {
   return (
     <div className="flex items-center justify-center gap-5">
+      {/* Undo last swipe */}
+      <motion.button
+        whileTap={{ scale: 0.88 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+        onClick={onUndo}
+        disabled={!canUndo}
+        className="w-12 h-12 rounded-full flex items-center justify-center"
+        style={{
+          backgroundColor: 'var(--card-bg)',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+          opacity: canUndo ? 1 : 0.4,
+        }}
+      >
+        <RotateCcw size={20} strokeWidth={2.5} style={{ color: '#F0B84A' }} />
+      </motion.button>
+
       {/* Dislike */}
       <motion.button
         whileTap={{ scale: 0.88 }}
@@ -769,6 +789,7 @@ export default function Discover() {
   const [showFilters, setShowFilters] = useState(false);
   const [matchProfile, setMatchProfile] = useState<Profile | null>(null);
   const [matchId, setMatchId] = useState<string | null>(null);
+  const [lastSwiped, setLastSwiped] = useState<Profile | null>(null);
   const [sparkCount, setSparkCount] = useState(0);
   const [filters, setFilters] = useState<Filters>({
     maxDistance: 50,
@@ -860,9 +881,24 @@ export default function Discover() {
       if (direction === 'up') setSparkCount((c) => c + 1);
     }
 
-    // Always remove swiped profile
+    // Always remove swiped profile, keeping it so the swipe can be undone
+    setLastSwiped(current);
     setProfiles((prev) => prev.slice(1));
   }, [profiles, sparkCount]);
+
+  const handleUndo = useCallback(async () => {
+    if (!lastSwiped) return;
+    try {
+      const res = await discoverApi.undoSwipe();
+      if (typeof res.sparkBalance === 'number') setSparkCount(res.sparkBalance);
+      // Put it back at the front of the deck
+      setProfiles((prev) => [lastSwiped, ...prev]);
+      setLastSwiped(null);
+    } catch {
+      // Server refuses once the resulting match has messages
+      setLastSwiped(null);
+    }
+  }, [lastSwiped]);
 
   const handleLike = () => handleSwipe('right');
   const handleDislike = () => handleSwipe('left');
@@ -972,6 +1008,8 @@ export default function Discover() {
                   onDislike={handleDislike}
                   onLike={handleLike}
                   onSpark={handleSpark}
+                  onUndo={handleUndo}
+                  canUndo={!!lastSwiped}
                   sparkCount={sparkCount}
                 />
               </div>

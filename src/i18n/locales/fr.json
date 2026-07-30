@@ -70,7 +70,8 @@
     "km": "{{d}} km",
     "verified": "Vérifié",
     "activeNow": "Actif",
-    "newUser": "Nouveau"
+    "newUser": "Nouveau",
+    "undo": "Undo"
   },
   "matches": {
     "title": "Matches",
@@ -122,7 +123,14 @@
     "mutedNotifs": "Notifications désactivées",
     "userBlocked": "Utilisateur bloqué",
     "giftSent": "{{name}} envoyé(e) !",
-    "giftMsgContent": "Vous avez envoyé un(e) {{gift}} à {{partner}}"
+    "giftMsgContent": "Vous avez envoyé un(e) {{gift}} à {{partner}}",
+    "giftFailed": "Could not deliver gift — please contact support",
+    "voiceUnsupported": "Voice messages are not supported on this device",
+    "voiceFailed": "Could not send voice message",
+    "micDenied": "Microphone access is needed for voice messages",
+    "tapToSend": "Tap to send",
+    "tapCircleToSend": "Tap the circle to send · tap outside to cancel",
+    "photoFailed": "Could not send photo"
   },
   "profile": {
     "edit": "Modifier le Profil",
@@ -238,7 +246,15 @@
     "int_crypto": "Crypto",
     "int_philosophy": "Philosophie",
     "int_foodie": "Gastronomie",
-    "int_wine": "Vin"
+    "int_wine": "Vin",
+    "iAm": "I am",
+    "lookingToMeet": "Looking to meet",
+    "gender_woman": "Woman",
+    "gender_man": "Man",
+    "gender_nonbinary": "Non-binary",
+    "seeking_women": "Women",
+    "seeking_men": "Men",
+    "seeking_everyone": "Everyone"
   },
   "common": {
     "cancel": "Annuler",
@@ -545,7 +561,8 @@
     "eventFeatured": "Événement mis en avant",
     "eventUnfeatured": "Événement retiré de la une",
     "badgeAwarded": "Badge \"{{badge}}\" attribué à {{user}}",
-    "trustAdjusted": "Score de confiance défini à {{score}} pour {{user}}"
+    "trustAdjusted": "Score de confiance défini à {{score}} pour {{user}}",
+    "actionFailed": "Action failed"
   },
   "legal": {
     "termsTitle": "Conditions d'utilisation",

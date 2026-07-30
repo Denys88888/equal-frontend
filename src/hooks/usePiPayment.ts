@@ -89,6 +89,9 @@ export function usePiPayment() {
             amount,
             memo,
             matchId: metadata.matchId,
+            // Without this the payment isn't linked to the event, so the RSVP
+            // check can't find it and a paid ticket is rejected as unpaid.
+            eventId: metadata.eventId,
           },
         );
 

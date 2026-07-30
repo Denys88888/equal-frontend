@@ -19,6 +19,7 @@ import {
   Music,
   Sparkles,
   Rose,
+  Image as ImageIcon,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
@@ -922,6 +923,31 @@ export default function Chat() {
     [matchId, matchInfo.matchName, showToast, t]
   );
 
+  const photoInputRef = useRef<HTMLInputElement>(null);
+
+  const handleSendPhoto = useCallback(async (file: File) => {
+    if (!matchId) return;
+    const localUrl = URL.createObjectURL(file);
+    const optimistic: Message = {
+      id: `img-${Date.now()}`,
+      type: 'IMAGE',
+      content: localUrl,
+      sender: 'me',
+      timestamp: new Date(),
+      read: false,
+    };
+    setMessages((prev) => [...prev, optimistic]);
+    try {
+      const saved = await messagesApi.sendImage(matchId, file);
+      setMessages((prev) =>
+        prev.map((m) => (m.id === optimistic.id ? { ...m, id: saved.id ?? m.id, content: saved.content ?? m.content } : m))
+      );
+    } catch {
+      setMessages((prev) => prev.filter((m) => m.id !== optimistic.id));
+      showToast(t('chat.photoFailed', { defaultValue: 'Could not send photo' }));
+    }
+  }, [matchId, showToast, t]);
+
   const handleAutoResize = useCallback(() => {
     const el = textareaRef.current;
     if (!el) return;
@@ -1200,6 +1226,27 @@ export default function Chat() {
               className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 mb-0.5"
             >
               <Gift size={22} style={{ color: '#F0B84A' }} strokeWidth={2} />
+            </motion.button>
+
+            {/* Attach photo */}
+            <input
+              ref={photoInputRef}
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                e.target.value = '';
+                if (file) handleSendPhoto(file);
+              }}
+            />
+            <motion.button
+              whileTap={{ scale: 0.85 }}
+              transition={{ duration: 0.15 }}
+              onClick={() => photoInputRef.current?.click()}
+              className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 mb-0.5"
+            >
+              <ImageIcon size={22} style={{ color: '#7BC4E8' }} strokeWidth={2} />
             </motion.button>
 
             {/* Text Input */}

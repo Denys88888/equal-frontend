@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getEvents, rsvp } from '@/api/events';
+import { usePiPayment } from '@/hooks/usePiPayment';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Calendar,
@@ -602,6 +603,7 @@ export default function Events() {
   const [interestedEvents, setInterestedEvents] = useState<Set<string>>(new Set());
   const [activeTab, setActiveTab] = useState<'upcoming' | 'interested' | 'past'>('upcoming');
   const [allEvents, setAllEvents] = useState<EventItem[]>([]);
+  const { initiatePayment } = usePiPayment();
 
   useEffect(() => {
     getEvents().then((data) => {
@@ -641,14 +643,35 @@ export default function Events() {
   const interestedEventsList = allEvents.filter((e) => interestedEvents.has(e.id));
   const pastEventsList = allEvents.filter((_, i) => i < 3);
 
-  const toggleGoing = (eventId: string) => {
+  const toggleGoing = async (eventId: string) => {
+    const wasGoing = goingEvents.has(eventId);
+    const event = allEvents.find((e) => e.id === eventId);
+
+    // Paid events must be paid for before the server will accept a GOING RSVP.
+    if (!wasGoing && event && event.price > 0) {
+      const result = await initiatePayment(
+        event.price,
+        `Ticket: ${event.title}`,
+        { eventId },
+      );
+      if (!result.success) return;
+    }
+
     setGoingEvents((prev) => {
       const next = new Set(prev);
-      const wasGoing = next.has(eventId);
-      if (wasGoing) { next.delete(eventId); } else { next.add(eventId); }
-      rsvp(eventId, wasGoing ? 'not_going' : 'going').catch(() => {});
+      if (wasGoing) next.delete(eventId); else next.add(eventId);
       return next;
     });
+    try {
+      await rsvp(eventId, wasGoing ? 'not_going' : 'going');
+    } catch {
+      // Server refused (full, or payment not registered) — undo the optimistic RSVP
+      setGoingEvents((prev) => {
+        const next = new Set(prev);
+        if (wasGoing) next.add(eventId); else next.delete(eventId);
+        return next;
+      });
+    }
   };
 
   const toggleInterested = (eventId: string) => {
