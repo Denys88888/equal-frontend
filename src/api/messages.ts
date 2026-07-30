@@ -10,7 +10,7 @@ export const messagesApi = {
   sendMessage: async (
     matchId: string,
     content: string,
-    type: 'TEXT' | 'VOICE' | 'GIFT' | 'SYSTEM' = 'TEXT',
+    type: 'TEXT' | 'VOICE' | 'IMAGE' | 'GIFT' | 'SYSTEM' = 'TEXT',
     giftType?: string,
   ): Promise<SendMessageResponse> => {
     const { data } = await api.post<SendMessageResponse>(`/matches/${matchId}/messages`, {
@@ -18,6 +18,17 @@ export const messagesApi = {
       type,
       ...(giftType ? { giftType } : {}),
     });
+    return data;
+  },
+
+  sendImage: async (matchId: string, image: File | Blob): Promise<SendMessageResponse> => {
+    const form = new FormData();
+    const name = image instanceof File ? image.name : `photo-${Date.now()}.jpg`;
+    form.append('image', image, name);
+    const { data } = await api.post<SendMessageResponse>(
+      `/matches/${matchId}/messages/image`,
+      form,
+    );
     return data;
   },
 

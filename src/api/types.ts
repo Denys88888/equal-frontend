@@ -115,7 +115,7 @@ export interface Match {
 
 export interface Message {
   id: string;
-  type: 'TEXT' | 'VOICE' | 'GIFT' | 'SYSTEM';
+  type: 'TEXT' | 'VOICE' | 'IMAGE' | 'GIFT' | 'SYSTEM';
   content: string;
   sender: 'me' | 'them';
   timestamp: string;
@@ -136,7 +136,7 @@ export interface MessagesResponse {
 
 export interface SendMessageRequest {
   content: string;
-  type: 'TEXT' | 'VOICE' | 'GIFT' | 'SYSTEM';
+  type: 'TEXT' | 'VOICE' | 'IMAGE' | 'GIFT' | 'SYSTEM';
 }
 
 export interface SendMessageResponse extends Message {}

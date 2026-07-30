@@ -35,7 +35,7 @@ import { usePiPayment } from '@/hooks/usePiPayment';
 
 // ── Types ────────────────────────────────────────────────
 
-type MessageType = 'TEXT' | 'VOICE' | 'GIFT' | 'SYSTEM';
+type MessageType = 'TEXT' | 'VOICE' | 'IMAGE' | 'GIFT' | 'SYSTEM';
 
 interface Message {
   id: string;
@@ -237,6 +237,41 @@ function ChatBubble({ message }: { message: Message }) {
               {message.duration}
             </span>
           </div>
+          <div className={cn('flex items-center gap-1 mt-1', isSent ? 'justify-end' : 'justify-start')}>
+            <span style={{ color: 'rgba(var(--charcoal-rgb), 0.3)', fontFamily: "'JetBrains Mono', ui-monospace, monospace", fontSize: 11 }}>
+              {formatTime(message.timestamp)}
+            </span>
+            {isSent && message.read && (
+              <CheckCheck size={12} style={{ color: 'rgba(var(--charcoal-rgb), 0.25)' }} />
+            )}
+          </div>
+        </div>
+      </motion.div>
+    );
+  }
+
+  // Photo — content holds the image URL, so it must not fall through to the
+  // text branch (which would render the raw URL as a message).
+  if (message.type === 'IMAGE') {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] }}
+        className={cn('flex mb-1', isSent ? 'justify-end' : 'justify-start')}
+      >
+        <div className="max-w-[75%]">
+          <img
+            src={message.content}
+            alt=""
+            loading="lazy"
+            className="w-full object-cover"
+            style={{
+              borderRadius: isSent ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
+              boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
+              maxHeight: 320,
+            }}
+          />
           <div className={cn('flex items-center gap-1 mt-1', isSent ? 'justify-end' : 'justify-start')}>
             <span style={{ color: 'rgba(var(--charcoal-rgb), 0.3)', fontFamily: "'JetBrains Mono', ui-monospace, monospace", fontSize: 11 }}>
               {formatTime(message.timestamp)}
