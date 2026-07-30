@@ -33,5 +33,14 @@ export const discoverApi = {
     return data;
   },
 
+  /** Undoes the last swipe. Rejects if the resulting match already has messages. */
+  undoSwipe: async (): Promise<{ success: boolean; targetId: string; sparkBalance?: number }> => {
+    const { data } = await api.post<{ success: boolean; targetId: string; sparkBalance?: number }>(
+      '/profiles/swipe/undo',
+      {},
+    );
+    return data;
+  },
+
   toLocalProfile: (p: ProfileCard) => p,
 };
