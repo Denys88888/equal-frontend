@@ -103,6 +103,31 @@ export async function unbanUser(userId: string): Promise<void> {
   await api.post<void>(`/admin/users/${encodeURIComponent(userId)}/unban`, {});
 }
 
+export interface PendingVerification {
+  id: string;
+  mediaUrl: string;
+  gesture: string;
+  createdAt: string;
+  user: { id: string; name: string; username: string };
+}
+
+/** Selfie verifications awaiting manual review. */
+export async function getPendingVerifications(): Promise<PendingVerification[]> {
+  const { data } = await api.get<PendingVerification[]>('/admin/verifications');
+  return data;
+}
+
+/** Approving is what sets User.verified — there is no automated liveness check. */
+export async function reviewVerification(requestId: string, approve: boolean): Promise<void> {
+  const action = approve ? 'approve' : 'reject';
+  await api.post<void>(`/admin/verifications/${encodeURIComponent(requestId)}/${action}`, {});
+}
+
+/** Sets or clears a user's verified flag directly, bypassing the request queue. */
+export async function setUserVerified(userId: string, verified: boolean): Promise<void> {
+  await api.post<void>(`/admin/users/${encodeURIComponent(userId)}/verify`, { verified });
+}
+
 export const adminApi = {
   getStats: getAdminStats,
   getUsers: getAdminUsers,
@@ -112,4 +137,7 @@ export const adminApi = {
   resolveReport,
   banUser,
   unbanUser,
+  getPendingVerifications,
+  reviewVerification,
+  setUserVerified,
 };

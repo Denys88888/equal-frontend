@@ -142,6 +142,25 @@ export async function submitVerificationSelfie(
   return data;
 }
 
+/**
+ * Current verification state for the signed-in user. 'none' means nothing has
+ * been submitted yet; approval is done by an admin, not automatically.
+ */
+export async function getVerificationStatus(): Promise<{
+  status: 'none' | 'pending' | 'approved' | 'rejected';
+  gesture?: VerificationGesture;
+  submittedAt?: string;
+  reviewedAt?: string;
+}> {
+  const { data } = await api.get<{
+    status: 'none' | 'pending' | 'approved' | 'rejected';
+    gesture?: VerificationGesture;
+    submittedAt?: string;
+    reviewedAt?: string;
+  }>('/verification/me');
+  return data;
+}
+
 // ───────────────────────────────────────────────────────────
 // NAMESPACE EXPORT
 // ───────────────────────────────────────────────────────────
@@ -157,4 +176,5 @@ export const usersApi = {
   deletePhoto,
   reorderPhotos,
   submitVerificationSelfie,
+  getVerificationStatus,
 };
