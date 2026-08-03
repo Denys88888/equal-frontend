@@ -25,12 +25,17 @@ import {
   MessageSquare,
   Flag,
   ChevronDown,
+  Coins,
+  Gift,
+  Ticket,
 } from 'lucide-react';
 import Layout from '@/components/Layout';
 import {
-  getAdminStats, getAdminUsers, getPendingReports,
+  getAdminStats, getRevenueHistory, getAdminUsers, getPendingReports,
   getAdminClubs, deleteClub, getAdminEvents, deleteEvent, toggleEventFeatured,
 } from '@/api/admin';
+import type { RevenueTransaction } from '@/api/admin';
+import type { AdminStats } from '@/api/types';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import {
@@ -160,48 +165,151 @@ function Toast({ message, visible }: { message: string; visible: boolean; }) {
 
 // ── Stats Cards ────────────────────────────────────────
 
+function formatPi(n: number | undefined): string {
+  if (n === undefined) return '…';
+  return `${n.toLocaleString(undefined, { maximumFractionDigits: 2 })} π`;
+}
+
 function StatsCards() {
   const { t } = useTranslation();
-  const [apiStats, setApiStats] = useState<{ totalUsers?: number; activeToday?: number; totalMatches?: number; pendingReports?: number } | null>(null);
+  const [apiStats, setApiStats] = useState<Partial<AdminStats> | null>(null);
   useEffect(() => { getAdminStats().then(setApiStats).catch(() => {}); }, []);
   const stats = [
     { label: 'admin.totalUsers', value: apiStats?.totalUsers?.toLocaleString() ?? '…', icon: Users, color: '#BB83C9', bg: 'rgba(187,131,201,0.12)' },
     { label: 'admin.activeToday', value: apiStats?.activeToday?.toLocaleString() ?? '…', icon: Activity, color: '#7DE0B3', bg: 'rgba(125,224,179,0.15)' },
     { label: 'admin.totalMatches', value: apiStats?.totalMatches?.toLocaleString() ?? '…', icon: Heart, color: '#E86A6A', bg: 'rgba(232,106,106,0.12)' },
     { label: 'admin.pendingReports', value: apiStats?.pendingReports?.toLocaleString() ?? '…', icon: AlertTriangle, color: '#F0B84A', bg: 'rgba(240,184,74,0.15)' },
+    // Every payment in Equal (gifts, event tickets) goes straight to the app's
+    // own Pi wallet — there is no A2U payout or platform-fee split, so this
+    // total IS the app's revenue, not a slice of it.
+    { label: 'admin.revenueTotal', value: formatPi(apiStats?.revenueTotalPi), icon: Coins, color: '#F0B84A', bg: 'rgba(240,184,74,0.15)' },
+    { label: 'admin.revenueToday', value: formatPi(apiStats?.revenueTodayPi), icon: Coins, color: '#7DE0B3', bg: 'rgba(125,224,179,0.15)' },
   ];
 
   return (
-    <div className="flex gap-3 overflow-x-auto pb-2 -mx-5 px-5 scrollbar-hide">
-      {stats.map((s, i) => {
-        const Icon = s.icon;
-        return (
-          <motion.div
-            key={s.label}
-            custom={i}
-            initial="hidden"
-            animate="visible"
-            variants={cardVariants}
-            className="flex-shrink-0 rounded-2xl p-4 w-[140px] flex flex-col gap-3"
-            style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
-          >
-            <div
-              className="w-9 h-9 rounded-xl flex items-center justify-center"
-              style={{ backgroundColor: s.bg }}
+    <>
+      <div className="flex gap-3 overflow-x-auto pb-2 -mx-5 px-5 scrollbar-hide">
+        {stats.map((s, i) => {
+          const Icon = s.icon;
+          return (
+            <motion.div
+              key={s.label}
+              custom={i}
+              initial="hidden"
+              animate="visible"
+              variants={cardVariants}
+              className="flex-shrink-0 rounded-2xl p-4 w-[140px] flex flex-col gap-3"
+              style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
             >
-              <Icon size={18} style={{ color: s.color }} strokeWidth={2} />
-            </div>
-            <div>
-              <p className="text-2xl font-semibold text-[var(--charcoal)] tracking-tight" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.72px' }}>
-                {s.value}
-              </p>
-              <p className="text-xs font-medium text-[var(--charcoal)] opacity-50 mt-0.5" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                {t(s.label)}
-              </p>
-            </div>
-          </motion.div>
-        );
-      })}
+              <div
+                className="w-9 h-9 rounded-xl flex items-center justify-center"
+                style={{ backgroundColor: s.bg }}
+              >
+                <Icon size={18} style={{ color: s.color }} strokeWidth={2} />
+              </div>
+              <div>
+                <p className="text-2xl font-semibold text-[var(--charcoal)] tracking-tight" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.72px' }}>
+                  {s.value}
+                </p>
+                <p className="text-xs font-medium text-[var(--charcoal)] opacity-50 mt-0.5" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                  {t(s.label)}
+                </p>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      {/* Revenue breakdown — gifts vs paid-event tickets, the only two payment
+          flows in the app. No commission split exists, so this is the full
+          picture of money collected. */}
+      <div className="mt-3 rounded-2xl p-4 flex items-center gap-4" style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
+        <div className="flex items-center gap-2 flex-1">
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(240,184,74,0.15)' }}>
+            <Gift size={16} style={{ color: '#F0B84A' }} />
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              {formatPi(apiStats?.giftRevenuePi)}
+            </p>
+            <p className="text-[11px] text-[var(--charcoal)] opacity-50">
+              {t('admin.giftRevenue')} ({apiStats?.giftRevenueCount ?? 0})
+            </p>
+          </div>
+        </div>
+        <div className="w-px h-8" style={{ backgroundColor: 'var(--linen-dark)' }} />
+        <div className="flex items-center gap-2 flex-1">
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(123,196,232,0.15)' }}>
+            <Ticket size={16} style={{ color: '#7BC4E8' }} />
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              {formatPi(apiStats?.ticketRevenuePi)}
+            </p>
+            <p className="text-[11px] text-[var(--charcoal)] opacity-50">
+              {t('admin.ticketRevenue')} ({apiStats?.ticketRevenueCount ?? 0})
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <RecentRevenue />
+    </>
+  );
+}
+
+/** Collapsed by default — the ledger behind the totals above, for spot-checking. */
+function RecentRevenue() {
+  const { t } = useTranslation();
+  const [open, setOpen] = useState(false);
+  const [txns, setTxns] = useState<RevenueTransaction[] | null>(null);
+
+  useEffect(() => {
+    if (open && txns === null) {
+      getRevenueHistory().then(setTxns).catch(() => setTxns([]));
+    }
+  }, [open, txns]);
+
+  return (
+    <div className="mt-3 rounded-2xl overflow-hidden" style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="w-full flex items-center justify-between p-4"
+      >
+        <span className="text-sm font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+          {t('admin.recentRevenue', { defaultValue: 'Recent transactions' })}
+        </span>
+        <ChevronDown
+          size={16}
+          className="text-[var(--charcoal)]/40 transition-transform"
+          style={{ transform: open ? 'rotate(180deg)' : 'none' }}
+        />
+      </button>
+      {open && (
+        <div className="px-4 pb-4 space-y-2 max-h-[280px] overflow-y-auto">
+          {txns === null ? (
+            <p className="text-xs text-[var(--charcoal)]/40 py-2">…</p>
+          ) : txns.length === 0 ? (
+            <p className="text-xs text-[var(--charcoal)]/40 py-2">
+              {t('admin.noTransactions', { defaultValue: 'No completed payments yet' })}
+            </p>
+          ) : (
+            txns.map((tx) => (
+              <div key={tx.id} className="flex items-center justify-between text-xs py-1.5 border-t first:border-t-0" style={{ borderColor: 'var(--linen-dark)' }}>
+                <div className="min-w-0 flex-1">
+                  <p className="font-medium text-[var(--charcoal)] truncate">{tx.memo}</p>
+                  <p className="text-[var(--charcoal)]/40">
+                    {tx.user.name} · {new Date(tx.createdAt).toLocaleDateString()}
+                  </p>
+                </div>
+                <span className="font-semibold text-[var(--charcoal)] flex-shrink-0 ml-2">
+                  {formatPi(tx.amount)}
+                </span>
+              </div>
+            ))
+          )}
+        </div>
+      )}
     </div>
   );
 }

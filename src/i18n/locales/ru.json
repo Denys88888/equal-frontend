@@ -562,7 +562,13 @@
     "eventUnfeatured": "Выделение снято",
     "badgeAwarded": "Бейдж \"{{badge}}\" присвоен {{user}}",
     "trustAdjusted": "Траст-счёт {{score}} установлен для {{user}}",
-    "actionFailed": "Action failed"
+    "actionFailed": "Action failed",
+    "revenueTotal": "Total Revenue",
+    "revenueToday": "Revenue Today",
+    "giftRevenue": "Gifts",
+    "ticketRevenue": "Event Tickets",
+    "recentRevenue": "Recent transactions",
+    "noTransactions": "No completed payments yet"
   },
   "legal": {
     "termsTitle": "Условия использования",

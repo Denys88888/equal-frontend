@@ -19,6 +19,20 @@ export async function getAdminStats(): Promise<AdminStats> {
   return data;
 }
 
+export interface RevenueTransaction {
+  id: string;
+  amount: number;
+  memo: string;
+  createdAt: string;
+  user: { name: string; username: string };
+}
+
+/** Completed payments only — the app's full revenue ledger, newest first. */
+export async function getRevenueHistory(): Promise<RevenueTransaction[]> {
+  const { data } = await api.get<RevenueTransaction[]>('/admin/revenue');
+  return data;
+}
+
 /**
  * List all users (admin view).
  *
@@ -176,6 +190,7 @@ export async function setUserVerified(userId: string, verified: boolean): Promis
 
 export const adminApi = {
   getStats: getAdminStats,
+  getRevenueHistory,
   getUsers: getAdminUsers,
   adjustTrust,
   awardBadge,

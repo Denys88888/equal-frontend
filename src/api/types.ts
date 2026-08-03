@@ -212,12 +212,25 @@ export interface DonationResponse {
 
 // ── Admin ──────────────────────────────────────────────
 
+/**
+ * Field names match GET /admin/stats exactly (admin.service.ts getStats()).
+ * Revenue fields: Equal has no A2U payout or fee split — every completed
+ * payment (gift or paid-event ticket) goes to the app's own Pi wallet, so
+ * these totals ARE the app's revenue, not a commission slice of it.
+ */
 export interface AdminStats {
-  dailyActiveUsers: number;
   totalUsers: number;
-  newMatchesToday: number;
-  reportsPending: number;
-  sparkPurchasesToday: number;
+  activeToday: number;
+  totalMatches: number;
+  pendingReports: number;
+  revenueTotalPi: number;
+  revenueTotalCount: number;
+  revenueTodayPi: number;
+  revenueTodayCount: number;
+  giftRevenuePi: number;
+  giftRevenueCount: number;
+  ticketRevenuePi: number;
+  ticketRevenueCount: number;
 }
 
 export interface UserAdmin {

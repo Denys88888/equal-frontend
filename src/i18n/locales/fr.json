@@ -562,7 +562,13 @@
     "eventUnfeatured": "Événement retiré de la une",
     "badgeAwarded": "Badge \"{{badge}}\" attribué à {{user}}",
     "trustAdjusted": "Score de confiance défini à {{score}} pour {{user}}",
-    "actionFailed": "Action failed"
+    "actionFailed": "Action failed",
+    "revenueTotal": "Total Revenue",
+    "revenueToday": "Revenue Today",
+    "giftRevenue": "Gifts",
+    "ticketRevenue": "Event Tickets",
+    "recentRevenue": "Recent transactions",
+    "noTransactions": "No completed payments yet"
   },
   "legal": {
     "termsTitle": "Conditions d'utilisation",
