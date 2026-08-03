@@ -458,7 +458,9 @@
     "deleteHintPost": "чтобы подтвердить безвозвратное удаление аккаунта.",
     "privacyPolicy": "Политика конфиденциальности",
     "adminSection": "Администратор",
-    "adminPanel": "Панель администратора"
+    "adminPanel": "Панель администратора",
+    "donationSent": "Thank you for your support!",
+    "donating": "Processing…"
   },
   "profile2": {
     "addBioHint": "Добавь био, чтобы людям было проще узнать тебя",
@@ -498,7 +500,8 @@
     "trustMid": "На верном пути",
     "trustHigh": "Высокое доверие",
     "earned": "Получен",
-    "locked": "Закрыт"
+    "locked": "Закрыт",
+    "photoUploadFailed": "Could not upload photo"
   },
   "admin": {
     "panel": "Админ-панель",

@@ -458,7 +458,9 @@
     "deleteHintPost": "to confirm you want to permanently delete your account.",
     "privacyPolicy": "Privacy Policy",
     "adminSection": "Admin",
-    "adminPanel": "Admin Panel"
+    "adminPanel": "Admin Panel",
+    "donationSent": "Thank you for your support!",
+    "donating": "Processing…"
   },
   "profile2": {
     "addBioHint": "Add a bio to help people get to know you",
@@ -498,7 +500,8 @@
     "trustMid": "Getting There",
     "trustHigh": "Highly Trusted",
     "earned": "Earned",
-    "locked": "Locked"
+    "locked": "Locked",
+    "photoUploadFailed": "Could not upload photo"
   },
   "admin": {
     "panel": "Admin Panel",

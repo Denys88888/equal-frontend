@@ -39,6 +39,7 @@ interface EventItem {
   price: number;
   image: string;
   attendees: Attendee[];
+  attendeeCount: number;
   maxAttendees: number;
   featured?: boolean;
 }
@@ -215,13 +216,20 @@ function FeaturedEventCard({
           <span className="text-sm" style={{ color: 'rgba(255,255,255,0.8)' }}>{event.venue}</span>
         </div>
         <div className="flex items-center mt-2">
-          <div className="flex -space-x-2">
-            {event.attendees.slice(0, 4).map((a) => (
-              <AttendeeAvatar key={a.id} initials={a.initials} size={24} />
-            ))}
-          </div>
-          <span className="text-xs ml-2" style={{ color: 'rgba(255,255,255,0.8)' }}>
-            +{t('events.peopleGoing', { count: event.attendees.length + 12 })}
+          {event.attendees.length > 0 && (
+            <div className="flex -space-x-2">
+              {event.attendees.slice(0, 4).map((a) => (
+                <AttendeeAvatar key={a.id} initials={a.initials} size={24} />
+              ))}
+            </div>
+          )}
+          {/* Real RSVP count from the server — this used to always read
+              "attendees.length + 12", and since the API never actually returns
+              per-attendee identities, attendees.length was always 0: every
+              event showed a fabricated "12 people going" regardless of real
+              turnout. */}
+          <span className={event.attendees.length > 0 ? 'text-xs ml-2' : 'text-xs'} style={{ color: 'rgba(255,255,255,0.8)' }}>
+            {t('events.peopleGoing', { count: event.attendeeCount })}
           </span>
         </div>
       </div>
@@ -352,27 +360,26 @@ function EventDetailSheet({
             </div>
           </div>
 
-          {/* Attendees */}
+          {/* Attendees — real RSVP count. This used to render
+              attendees.length + 12 next to a hardcoded "+12" avatar circle, so
+              every event showed a fabricated headcount regardless of actual
+              turnout (the API never returns per-attendee identities, so
+              attendees.length was always 0). The "See All" button that used to
+              sit here had no attendee-list screen to open, so it's dropped
+              rather than left as dead UI. */}
           <div className="mt-5">
-            <div className="flex items-center justify-between">
-              <h4 className="text-base font-semibold text-[var(--charcoal)]">
-                {t('events.peopleGoing', { count: event.attendees.length + 12 })}
-              </h4>
-              <button className="text-sm font-semibold text-[#BB83C9]">{t('events.seeAll')}</button>
-            </div>
-            <div className="flex items-center mt-3">
-              <div className="flex -space-x-2.5">
-                {event.attendees.map((a) => (
-                  <AttendeeAvatar key={a.id} initials={a.initials} size={36} />
-                ))}
-                <div
-                  className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-medium border-2 border-white"
-                  style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.6)', color: 'var(--charcoal)' }}
-                >
-                  +12
+            <h4 className="text-base font-semibold text-[var(--charcoal)]">
+              {t('events.peopleGoing', { count: event.attendeeCount })}
+            </h4>
+            {event.attendees.length > 0 && (
+              <div className="flex items-center mt-3">
+                <div className="flex -space-x-2.5">
+                  {event.attendees.slice(0, 8).map((a) => (
+                    <AttendeeAvatar key={a.id} initials={a.initials} size={36} />
+                  ))}
                 </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* Host */}
@@ -626,6 +633,7 @@ export default function Events() {
           price: e.price ?? 0,
           image: e.image ?? '/event-featured.jpg',
           attendees: e.attendees ?? [],
+          attendeeCount: (e as unknown as { attendeeCount?: number }).attendeeCount ?? 0,
           maxAttendees: e.maxAttendees ?? 50,
           featured: e.featured,
         } as EventItem;

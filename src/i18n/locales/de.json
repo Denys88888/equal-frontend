@@ -458,7 +458,9 @@
     "deleteHintPost": "um zu bestätigen, dass du dein Konto dauerhaft löschen möchtest.",
     "privacyPolicy": "Datenschutzerklärung",
     "adminSection": "Admin",
-    "adminPanel": "Admin-Panel"
+    "adminPanel": "Admin-Panel",
+    "donationSent": "Thank you for your support!",
+    "donating": "Processing…"
   },
   "profile2": {
     "addBioHint": "Füge eine Bio hinzu, damit die Leute dich kennenlernen",
@@ -498,7 +500,8 @@
     "trustMid": "Auf gutem Weg",
     "trustHigh": "Sehr vertrauenswürdig",
     "earned": "Verdient",
-    "locked": "Gesperrt"
+    "locked": "Gesperrt",
+    "photoUploadFailed": "Could not upload photo"
   },
   "admin": {
     "panel": "Admin-Panel",

@@ -458,7 +458,9 @@
     "deleteHintPost": "para confirmar que pretende eliminar permanentemente a sua conta.",
     "privacyPolicy": "Política de privacidade",
     "adminSection": "Admin",
-    "adminPanel": "Painel de admin"
+    "adminPanel": "Painel de admin",
+    "donationSent": "Thank you for your support!",
+    "donating": "Processing…"
   },
   "profile2": {
     "addBioHint": "Adicione uma bio para ajudar as pessoas a conhecê-lo/a",
@@ -498,7 +500,8 @@
     "trustMid": "A caminho",
     "trustHigh": "Muito confiável",
     "earned": "Ganho",
-    "locked": "Bloqueado"
+    "locked": "Bloqueado",
+    "photoUploadFailed": "Could not upload photo"
   },
   "admin": {
     "panel": "Painel de admin",

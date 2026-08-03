@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { getMe, updateMe } from '@/api/users';
+import { getMe, updateMe, uploadPhoto } from '@/api/users';
 import {
   Pencil,
   MapPin,
@@ -31,6 +31,7 @@ import { useTranslation } from 'react-i18next';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Textarea } from '@/components/ui/textarea';
 import Layout from '@/components/Layout';
+import { useToast } from '@/hooks/useToast';
 
 /* ───────────────────── Fallback User Data ───────────────────── */
 
@@ -287,13 +288,48 @@ function PhotoLightbox({
 export default function Profile() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { showToast } = useToast();
   const [user, setUser] = useState<typeof EMPTY_USER>(EMPTY_USER);
-  const [isEditMode, setIsEditMode] = useState(false);
   const [bio, setBio] = useState('');
   const [showBioEdit, setShowBioEdit] = useState(false);
   const [editBioText, setEditBioText] = useState('');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [showBadgeDetail, setShowBadgeDetail] = useState<string | null>(null);
+  const [showTrustInfo, setShowTrustInfo] = useState(false);
+
+  // Photo upload — both the hero "edit photo" pencil and the "+" add-photo tile
+  // used to have no onClick at all, so tapping them (the app's only real
+  // interaction model) did nothing.
+  const photoInputRef = useRef<HTMLInputElement>(null);
+  const pendingIsMainRef = useRef(false);
+  const [photoUploading, setPhotoUploading] = useState(false);
+
+  const openPhotoPicker = (isMain: boolean) => {
+    pendingIsMainRef.current = isMain;
+    photoInputRef.current?.click();
+  };
+
+  const handlePhotoFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    e.target.value = '';
+    if (!file) return;
+    const isMain = pendingIsMainRef.current;
+    setPhotoUploading(true);
+    try {
+      const photo = await uploadPhoto(file, isMain);
+      setUser((prev) => ({
+        ...prev,
+        // The backend demotes any previous main photo server-side; mirror that
+        // here by moving the new photo to index 0 (this screen's "Main" badge
+        // is positional, not driven by Photo.isMain).
+        photos: isMain ? [photo.url, ...prev.photos] : [...prev.photos, photo.url],
+      }));
+    } catch {
+      showToast('error', t('profile2.photoUploadFailed', { defaultValue: 'Could not upload photo' }));
+    } finally {
+      setPhotoUploading(false);
+    }
+  };
 
   useEffect(() => {
     getMe().then((d) => {
@@ -406,13 +442,16 @@ export default function Profile() {
             className="absolute inset-0"
             style={{ background: 'linear-gradient(180deg, transparent 30%, rgba(var(--charcoal-rgb), 0.9) 100%)' }}
           />
-          {/* Edit photo button */}
+          {/* Edit photo button — set isEditMode, a flag nothing in this file
+              ever reads, so tapping this did nothing visible at all. Now opens
+              the file picker and replaces the main photo. */}
           <motion.button
             whileTap={{ scale: 0.9 }}
             transition={{ duration: 0.12 }}
-            onClick={() => setIsEditMode(!isEditMode)}
+            onClick={() => openPhotoPicker(true)}
+            disabled={photoUploading}
             className="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center z-10"
-            style={{ backgroundColor: 'rgba(var(--card-rgb), 0.72)', backdropFilter: 'blur(12px)' }}
+            style={{ backgroundColor: 'rgba(var(--card-rgb), 0.72)', backdropFilter: 'blur(12px)', opacity: photoUploading ? 0.6 : 1 }}
           >
             <Pencil size={20} className="text-white" strokeWidth={2} />
           </motion.button>
@@ -450,7 +489,10 @@ export default function Profile() {
             <h3 className="text-base font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
               {t('profile.trustScore')}
             </h3>
+            {/* title-only tooltip never fires on a touchscreen — this button
+                did nothing on tap, which is the only interaction Pi Browser has */}
             <button
+              onClick={() => setShowTrustInfo(true)}
               className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-semibold text-[var(--charcoal)]"
               style={{ backgroundColor: 'rgba(var(--charcoal-rgb), 0.1)' }}
               title={t('profile.trustScoreHelp')}
@@ -589,10 +631,22 @@ export default function Profile() {
                 {user.photos.length}/9
               </span>
             </div>
-            <button className="text-base font-semibold text-[#BB83C9]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+            <button
+              onClick={() => openPhotoPicker(false)}
+              disabled={photoUploading || user.photos.length >= 9}
+              className="text-base font-semibold text-[#BB83C9]"
+              style={{ fontFamily: "'Outfit', system-ui, sans-serif", opacity: photoUploading || user.photos.length >= 9 ? 0.5 : 1 }}
+            >
               {t('profile.edit')}
             </button>
           </div>
+          <input
+            ref={photoInputRef}
+            type="file"
+            accept="image/*"
+            className="hidden"
+            onChange={handlePhotoFileChange}
+          />
           <div className="grid grid-cols-3 gap-2">
             {user.photos.map((photo, index) => (
               <motion.button
@@ -616,6 +670,8 @@ export default function Profile() {
             {user.photos.length < 9 && (
               <motion.button
                 whileTap={{ scale: 0.95 }}
+                onClick={() => openPhotoPicker(false)}
+                disabled={photoUploading}
                 className="aspect-square rounded-xl border-2 border-dashed border-[var(--linen-dark)] flex items-center justify-center"
               >
                 <Camera size={24} className="text-[var(--charcoal)] opacity-30" strokeWidth={2} />
@@ -739,6 +795,23 @@ export default function Profile() {
             >
               Save
             </motion.button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* ─────────────── Trust Score Info Dialog ─────────────── */}
+      <Dialog open={showTrustInfo} onOpenChange={setShowTrustInfo}>
+        <DialogContent className="rounded-[20px] max-w-[300px] bg-white dark:bg-[#22293B] border-0 text-center" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
+          <div className="flex flex-col items-center py-2">
+            <div className="w-16 h-16 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: 'rgba(125,224,179,0.15)' }}>
+              <Shield size={32} style={{ color: '#7DE0B3' }} strokeWidth={2} />
+            </div>
+            <h3 className="text-lg font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              {t('profile.trustScore')}
+            </h3>
+            <p className="mt-2 text-sm text-[var(--charcoal)] opacity-60" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              {t('profile.trustScoreHelp')}
+            </p>
           </div>
         </DialogContent>
       </Dialog>

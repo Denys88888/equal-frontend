@@ -287,7 +287,17 @@ function PostCard({ post, onLike, onMeet }: { post: Post; onLike: () => void; on
           <MessageCircle size={20} strokeWidth={2} style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }} />
           <span className="text-sm" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>{post.comments}</span>
         </button>
-        <button className="flex items-center gap-1.5">
+        <button
+          onClick={async () => {
+            const text = `${post.authorName}: ${post.content}`;
+            if (navigator.share) {
+              try { await navigator.share({ text }); } catch { /* user cancelled the share sheet */ }
+            } else {
+              await navigator.clipboard.writeText(text).catch(() => {});
+            }
+          }}
+          className="flex items-center gap-1.5"
+        >
           <Share2 size={20} strokeWidth={2} style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }} />
         </button>
       </div>
@@ -889,11 +899,13 @@ export default function Clubs() {
                   if (catClubs.length === 0) return null;
                   return (
                     <div key={category} className="mb-4">
-                      <div className="flex items-center justify-between px-5 py-3">
+                      {/* "See All" removed: catClubs already renders every club in
+                          this category with no pagination, so there was nothing
+                          left for the button to reveal — it never did anything. */}
+                      <div className="px-5 py-3">
                         <h4 className="text-base font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                           {category}
                         </h4>
-                        <button className="text-sm font-semibold text-[#BB83C9]">{t('clubs.seeAll')}</button>
                       </div>
                       <div className="flex gap-3 px-5 overflow-x-auto pb-2">
                         {catClubs.map((club) => (

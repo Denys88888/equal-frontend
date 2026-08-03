@@ -6,6 +6,8 @@ import { api } from '@/api/client';
 import { getPaymentHistory } from '@/api/payments';
 import { getMe, getBlockedUsers, unblockUser } from '@/api/users';
 import VerificationDialog from '@/components/VerificationDialog';
+import { usePiPayment } from '@/hooks/usePiPayment';
+import { useToast } from '@/hooks/useToast';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ChevronRight,
@@ -234,6 +236,9 @@ export default function Settings() {
   const [deleteStep, setDeleteStep] = useState(1);
   const [deleteConfirmText, setDeleteConfirmText] = useState('');
   const [showDonation, setShowDonation] = useState(false);
+  const [donating, setDonating] = useState(false);
+  const { initiatePayment } = usePiPayment();
+  const { showToast } = useToast();
   const [donationAmount, setDonationAmount] = useState<string>('0.5');
   const [showAbout, setShowAbout] = useState(false);
 
@@ -288,7 +293,7 @@ export default function Settings() {
         <div className="space-y-2">
           <SettingRow icon={User} iconColor="#BB83C9" label={t('settings2.editProfile')} onClick={() => navigate('/profile')} />
           <SettingRow icon={Camera} iconColor="#7BC4E8" label={t('settings2.photos')} detail={photoCount != null ? `${photoCount}/9` : ''} onClick={() => navigate('/profile')} />
-          <SettingRow icon={Shield} iconColor="#7DE0B3" label={t('settings2.trustScore')} detail={trustScore != null ? `${trustScore}/100` : ''} onClick={() => {}} />
+          <SettingRow icon={Shield} iconColor="#7DE0B3" label={t('settings2.trustScore')} detail={trustScore != null ? `${trustScore}/100` : ''} onClick={() => navigate('/profile')} />
         </div>
 
         {/* ───────── Admin ───────── */}
@@ -805,13 +810,28 @@ export default function Settings() {
           </div>
           <motion.button
             whileTap={{ scale: 0.97 }}
+            disabled={donating || !(parseFloat(donationAmount) > 0)}
+            onClick={async () => {
+              const amount = parseFloat(donationAmount);
+              if (!(amount > 0)) return;
+              setDonating(true);
+              try {
+                const result = await initiatePayment(amount, 'Donation to Equal', {});
+                if (result.success) {
+                  showToast('success', t('settings2.donationSent', { defaultValue: 'Thank you for your support!' }));
+                  setShowDonation(false);
+                }
+              } finally {
+                setDonating(false);
+              }
+            }}
             className="w-full mt-4 h-14 rounded-full bg-[#BB83C9] text-white text-base font-semibold flex items-center justify-center gap-2"
-            style={{ boxShadow: '0 4px 16px rgba(187,131,201,0.3)', fontFamily: "'Outfit', system-ui, sans-serif" }}
+            style={{ boxShadow: '0 4px 16px rgba(187,131,201,0.3)', fontFamily: "'Outfit', system-ui, sans-serif", opacity: donating ? 0.6 : 1 }}
           >
             <span className="w-5 h-5 rounded-full bg-white dark:bg-[#22293B] flex items-center justify-center">
               <span className="text-[#BB83C9] text-[10px] font-bold">π</span>
             </span>
-            Donate {donationAmount} Pi
+            {donating ? t('settings2.donating', { defaultValue: 'Processing…' }) : `Donate ${donationAmount} Pi`}
           </motion.button>
         </DialogContent>
       </Dialog>
