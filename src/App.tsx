@@ -10,6 +10,7 @@ const Matches = lazy(() => import('./pages/Matches'))
 const Chat = lazy(() => import('./pages/Chat'))
 const VideoCall = lazy(() => import('./pages/VideoCall'))
 const Profile = lazy(() => import('./pages/Profile'))
+const PublicProfile = lazy(() => import('./pages/PublicProfile'))
 const Settings = lazy(() => import('./pages/Settings'))
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
 const TermsOfService = lazy(() => import('./pages/TermsOfService'))
@@ -35,6 +36,7 @@ function AnimatedRoutes() {
       <Route path="/chat/:matchId" element={<Chat />} />
       <Route path="/video/:matchId" element={<VideoCall />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/profile/:userId" element={<PublicProfile />} />
       <Route path="/clubs" element={<Clubs />} />
       <Route path="/events" element={<Events />} />
       <Route path="/settings" element={<Settings />} />

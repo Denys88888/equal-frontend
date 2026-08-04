@@ -28,13 +28,16 @@ import {
   Coins,
   Gift,
   Ticket,
+  Mail,
 } from 'lucide-react';
 import Layout from '@/components/Layout';
 import {
   getAdminStats, getRevenueHistory, getAdminUsers, getPendingReports,
   getAdminClubs, deleteClub, getAdminEvents, deleteEvent, toggleEventFeatured,
+  setSupportEmail,
 } from '@/api/admin';
 import type { RevenueTransaction } from '@/api/admin';
+import { getSupportEmail } from '@/api/settings';
 import type { AdminStats } from '@/api/types';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
@@ -934,6 +937,62 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
 
 // ── Manual Actions ─────────────────────────────────────
 
+/**
+ * Lets the admin set the support inbox that Settings' Help Center / Report a
+ * Problem rows email — there was no support contact anywhere in the codebase
+ * before, so those buttons had nothing to point to.
+ */
+function SupportEmailCard({ showToast }: { showToast: (msg: string) => void }) {
+  const { t } = useTranslation();
+  const [email, setEmail] = useState('');
+  const [saving, setSaving] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    getSupportEmail().then((e) => setEmail(e ?? '')).catch(() => {}).finally(() => setLoaded(true));
+  }, []);
+
+  const handleSave = async () => {
+    if (!email.trim()) return;
+    setSaving(true);
+    try {
+      await setSupportEmail(email.trim());
+      showToast(t('admin.supportEmailSaved', { defaultValue: 'Support email updated' }));
+    } catch {
+      showToast(t('admin.actionFailed', { defaultValue: 'Action failed' }));
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  return (
+    <div className="p-5 rounded-2xl space-y-3" style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
+      <h3 className="text-sm font-semibold text-[var(--charcoal)] flex items-center gap-2">
+        <Mail size={16} className="text-[#7BC4E8]" />
+        {t('admin.supportEmail', { defaultValue: 'Support email' })}
+      </h3>
+      <p className="text-xs text-[var(--charcoal)]/50">
+        {t('admin.supportEmailHint', { defaultValue: "Where the app's Help Center and Report a Problem rows send users." })}
+      </p>
+      <Input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="support@yourapp.com"
+        disabled={!loaded}
+        className="h-11 rounded-xl border-[var(--linen-dark)] text-sm text-[var(--charcoal)]"
+      />
+      <Button
+        className="w-full h-11 rounded-full font-semibold bg-[#BB83C9] text-white hover:bg-[#9A63A8]"
+        onClick={handleSave}
+        disabled={saving || !email.trim()}
+      >
+        {saving ? t('admin.saving', { defaultValue: 'Saving…' }) : t('admin.save', { defaultValue: 'Save' })}
+      </Button>
+    </div>
+  );
+}
+
 function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
   const { t } = useTranslation();
   const [awardUser, setAwardUser] = useState('');
@@ -963,6 +1022,8 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
       <h2 className="text-lg font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
         {t('admin.manualActions')}
       </h2>
+
+      <SupportEmailCard showToast={showToast} />
 
       <div className="p-5 rounded-2xl space-y-4" style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
         <h3 className="text-sm font-semibold text-[var(--charcoal)] flex items-center gap-2">

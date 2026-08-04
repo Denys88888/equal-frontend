@@ -82,17 +82,72 @@ export async function getPosts(clubId: string): Promise<ClubPost[]> {
 }
 
 /**
- * Create a new post in a club.
+ * Create a new post in a club. Sent as multipart so an optional photo can ride
+ * alongside the text in one request (a post may have text, a photo, or both).
  *
  * @param clubId  — the club to post in
- * @param payload — post content and optional photo
+ * @param payload — post content and an optional photo file
  * @returns The created ClubPost record
- * @throws {ApiError} 403 if not a club member; 400 on empty content
+ * @throws {ApiError} 403 if not a club member; 400 if both content and image are empty
  */
 export async function createPost(clubId: string, payload: CreatePostRequest): Promise<ClubPost> {
-  const { data } = await api.post<ClubPost>(
+  const form = new FormData();
+  form.append('content', payload.content ?? '');
+  if (payload.image) form.append('image', payload.image);
+  const { data } = await api.postForm<ClubPost>(
     `/clubs/${encodeURIComponent(clubId)}/posts`,
-    payload,
+    form,
+  );
+  return data;
+}
+
+export interface ClubMember {
+  id: string;
+  name: string;
+  avatar: string;
+  role: 'admin' | 'moderator' | 'member';
+  online: boolean;
+}
+
+/**
+ * A club's real roster. Members-only.
+ *
+ * @throws {ApiError} 403 if not a club member
+ */
+export async function getMembers(clubId: string): Promise<ClubMember[]> {
+  const { data } = await api.get<ClubMember[]>(`/clubs/${encodeURIComponent(clubId)}/members`);
+  return data;
+}
+
+export interface ClubPostComment {
+  id: string;
+  postId: string;
+  authorId: string;
+  authorName: string;
+  authorAvatar: string;
+  content: string;
+  createdAt: string;
+}
+
+/**
+ * Comments on a post, oldest first. Members-only.
+ *
+ * @throws {ApiError} 403 if not a club member; 404 if the post is gone
+ */
+export async function getComments(postId: string): Promise<ClubPostComment[]> {
+  const { data } = await api.get<ClubPostComment[]>(`/clubs/posts/${encodeURIComponent(postId)}/comments`);
+  return data;
+}
+
+/**
+ * Add a comment to a post.
+ *
+ * @throws {ApiError} 403 if not a club member or the comment is empty
+ */
+export async function createComment(postId: string, content: string): Promise<ClubPostComment> {
+  const { data } = await api.post<ClubPostComment>(
+    `/clubs/posts/${encodeURIComponent(postId)}/comments`,
+    { content },
   );
   return data;
 }
@@ -168,4 +223,7 @@ export const clubsApi = {
   togglePostLike,
   getClubMessages,
   sendClubMessage,
+  getMembers,
+  getComments,
+  createComment,
 };

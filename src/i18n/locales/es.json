@@ -71,7 +71,9 @@
     "verified": "Verificado",
     "activeNow": "Activo",
     "newUser": "Nuevo",
-    "undo": "Undo"
+    "undo": "Undo",
+    "likeFailed": "Could not send like",
+    "alreadyLiked": "Already liked"
   },
   "matches": {
     "title": "Matches",
@@ -91,7 +93,8 @@
     "photoPrefix": "Foto",
     "voicePrefix": "Voz",
     "giftPrefix": "Regalo",
-    "goDiscover": "Ir a Descubrir"
+    "goDiscover": "Ir a Descubrir",
+    "message": "Message"
   },
   "chat": {
     "typeMessage": "Escribe un mensaje...",
@@ -312,7 +315,11 @@
     "club_cat_reading": "Lectura",
     "club_cat_fitness": "Fitness",
     "club_cat_art": "Arte",
-    "club_cat_gaming": "Videojuegos"
+    "club_cat_gaming": "Videojuegos",
+    "posting": "Posting…",
+    "comments": "Comments",
+    "noComments": "No comments yet — be the first",
+    "writeComment": "Write a comment…"
   },
   "events": {
     "title": "Eventos",
@@ -460,7 +467,8 @@
     "adminSection": "Admin",
     "adminPanel": "Panel de admin",
     "donationSent": "Thank you for your support!",
-    "donating": "Processing…"
+    "donating": "Processing…",
+    "supportUnavailable": "Support isn't configured yet"
   },
   "profile2": {
     "addBioHint": "Añade una bio para que la gente te conozca",
@@ -571,7 +579,12 @@
     "giftRevenue": "Gifts",
     "ticketRevenue": "Event Tickets",
     "recentRevenue": "Recent transactions",
-    "noTransactions": "No completed payments yet"
+    "noTransactions": "No completed payments yet",
+    "supportEmail": "Support email",
+    "supportEmailHint": "Where the app's Help Center and Report a Problem rows send users.",
+    "supportEmailSaved": "Support email updated",
+    "saving": "Saving…",
+    "save": "Save"
   },
   "legal": {
     "termsTitle": "Términos de servicio",
@@ -648,5 +661,8 @@
     "cameraDenied": "Camera access is needed to verify your profile",
     "unsupported": "Camera recording is not supported on this device",
     "reviewNote": "Reviewed by a moderator. Only they see this recording — it is never shown on your profile."
+  },
+  "publicProfile": {
+    "notFound": "This profile isn't available."
   }
 }

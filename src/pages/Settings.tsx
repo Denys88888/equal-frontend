@@ -5,6 +5,7 @@ import { TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/api/client';
 import { api } from '@/api/client';
 import { getPaymentHistory } from '@/api/payments';
 import { getMe, getBlockedUsers, unblockUser } from '@/api/users';
+import { getSupportEmail } from '@/api/settings';
 import VerificationDialog from '@/components/VerificationDialog';
 import { usePiPayment } from '@/hooks/usePiPayment';
 import { useToast } from '@/hooks/useToast';
@@ -230,6 +231,15 @@ export default function Settings() {
 
   const [showBlockedUsers, setShowBlockedUsers] = useState(false);
   const [showVerification, setShowVerification] = useState(false);
+  const [supportEmail, setSupportEmail] = useState<string | null>(null);
+  useEffect(() => { getSupportEmail().then(setSupportEmail).catch(() => {}); }, []);
+  const openSupportEmail = (subject: string) => {
+    if (!supportEmail) {
+      showToast('info', t('settings2.supportUnavailable', { defaultValue: 'Support isn\'t configured yet' }));
+      return;
+    }
+    window.location.href = `mailto:${supportEmail}?subject=${encodeURIComponent(subject)}`;
+  };
   const [blockedUsers, setBlockedUsers] = useState<BlockedUser[]>([]);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [showDeleteFlow, setShowDeleteFlow] = useState(false);
@@ -474,8 +484,8 @@ export default function Settings() {
         {/* ───────── Support ───────── */}
         <SectionLabel text={t('settings2.support')} />
         <div className="space-y-2">
-          <SettingRow icon={HelpCircle} iconColor="#7BC4E8" label={t('settings2.helpCenter')} onClick={() => {}} />
-          <SettingRow icon={Flag} iconColor="#F0B84A" label={t('settings2.reportProblem')} onClick={() => {}} />
+          <SettingRow icon={HelpCircle} iconColor="#7BC4E8" label={t('settings2.helpCenter')} onClick={() => openSupportEmail('Help — Equal')} />
+          <SettingRow icon={Flag} iconColor="#F0B84A" label={t('settings2.reportProblem')} onClick={() => openSupportEmail('Problem report — Equal')} />
           <SettingRow icon={Info} iconColor="rgba(var(--charcoal-rgb), 0.4)" label={t('settings2.aboutEqual')} detail="v1.0.0" onClick={() => setShowAbout(true)} />
           <SettingRow icon={FileText} iconColor="#BB83C9" label={t('settings2.privacyPolicy')} onClick={() => navigate('/privacy')} />
           <SettingRow icon={FileText} iconColor="#BB83C9" label={t('settings2.termsOfService')} onClick={() => navigate('/terms')} />

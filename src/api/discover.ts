@@ -44,3 +44,33 @@ export const discoverApi = {
 
   toLocalProfile: (p: ProfileCard) => p,
 };
+
+export interface PublicProfile {
+  id: string;
+  name: string;
+  age: number | null;
+  compatibility: number;
+  photo: string;
+  photos: string[];
+  bio: string;
+  interests: string[];
+  verified: boolean;
+  activeNow: boolean;
+  isMatch: boolean;
+  matchId: string | null;
+  alreadyLiked: boolean;
+}
+
+/**
+ * Another user's profile. Used by the "Meet" buttons (club post author, club
+ * member) — there was previously no screen anywhere in the app that could show
+ * someone other than the signed-in user's own profile.
+ *
+ * @throws {ApiError} 404 if the user doesn't exist, is inactive, or either side
+ *   has blocked the other (blocks return 404 rather than 403 so a block can't
+ *   be detected by probing this endpoint)
+ */
+export async function getPublicProfile(userId: string): Promise<PublicProfile> {
+  const { data } = await api.get<PublicProfile>(`/profiles/${encodeURIComponent(userId)}`);
+  return data;
+}

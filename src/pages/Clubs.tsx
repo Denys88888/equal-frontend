@@ -1,6 +1,10 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getClubs, joinClub, leaveClub, createPost, getPosts, togglePostLike, getClubMessages, sendClubMessage } from '@/api/clubs';
+import { useNavigate } from 'react-router';
+import {
+  getClubs, joinClub, leaveClub, createPost, getPosts, togglePostLike, getClubMessages, sendClubMessage,
+  getMembers, getComments, createComment, type ClubPostComment,
+} from '@/api/clubs';
 import { useClubSocket, type IncomingClubMessage } from '@/hooks/useSocket';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -227,7 +231,7 @@ function DiscoverClubCard({ club, onClick, onJoin }: { club: Club; onClick: () =
 /*  POST CARD                                                          */
 /* ------------------------------------------------------------------ */
 
-function PostCard({ post, onLike, onMeet }: { post: Post; onLike: () => void; onMeet: () => void }) {
+function PostCard({ post, onLike, onMeet, onComment }: { post: Post; onLike: () => void; onMeet: () => void; onComment: () => void }) {
   const { t } = useTranslation();
   const [animating, setAnimating] = useState(false);
 
@@ -283,7 +287,7 @@ function PostCard({ post, onLike, onMeet }: { post: Post; onLike: () => void; on
           </motion.div>
           <span className="text-sm" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>{post.likes}</span>
         </button>
-        <button className="flex items-center gap-1.5">
+        <button onClick={onComment} className="flex items-center gap-1.5">
           <MessageCircle size={20} strokeWidth={2} style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }} />
           <span className="text-sm" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>{post.comments}</span>
         </button>
@@ -319,14 +323,26 @@ function ClubDetail({
   onUpdateClub: (updated: Club) => void;
 }) {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [detailTab, setDetailTab] = useState<'feed' | 'chat' | 'members'>('feed');
   const [newPostText, setNewPostText] = useState('');
+  const [postImage, setPostImage] = useState<File | null>(null);
+  const [postImagePreview, setPostImagePreview] = useState<string | null>(null);
+  const [posting, setPosting] = useState(false);
+  const postImageInputRef = useRef<HTMLInputElement>(null);
   const [chatInput, setChatInput] = useState('');
   const [showCreatePost, setShowCreatePost] = useState(false);
   const [posts, setPosts] = useState(club.posts);
   const [chatMessages, setChatMessages] = useState(club.chat);
   const [joined, setJoined] = useState(club.joined);
+  const [members, setMembers] = useState<Member[]>([]);
+  const [commentsFor, setCommentsFor] = useState<string | null>(null);
+  const [comments, setComments] = useState<ClubPostComment[]>([]);
+  const [commentInput, setCommentInput] = useState('');
+  const [commentsLoading, setCommentsLoading] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
+
+  const goToProfile = (userId: string) => navigate(`/profile/${userId}`);
 
   const handleLike = (postId: string) => {
     // Optimistic, then reconciled with the server's count
@@ -346,6 +362,31 @@ function ClubDetail({
           )
         );
       });
+  };
+
+  // Comments — the comment button on a post used to open nothing at all.
+  const openComments = (postId: string) => {
+    setCommentsFor(postId);
+    setComments([]);
+    setCommentsLoading(true);
+    getComments(postId)
+      .then((data) => setComments(data ?? []))
+      .catch(() => {})
+      .finally(() => setCommentsLoading(false));
+  };
+
+  const handleSendComment = async () => {
+    const text = commentInput.trim();
+    if (!text || !commentsFor) return;
+    const postId = commentsFor;
+    setCommentInput('');
+    try {
+      const saved = await createComment(postId, text);
+      setComments((prev) => [...prev, saved]);
+      setPosts((prev) => prev.map((p) => (p.id === postId ? { ...p, comments: p.comments + 1 } : p)));
+    } catch {
+      setCommentInput(text);
+    }
   };
 
   const handleSendMessage = async () => {
@@ -374,24 +415,40 @@ function ClubDetail({
     }
   };
 
-  const handleCreatePost = () => {
+  const handleCreatePost = async () => {
     const text = newPostText.trim();
-    if (!text) return;
-    const post: Post = {
+    if (!text && !postImage) return;
+    setPosting(true);
+    const optimistic: Post = {
       id: `p-${Date.now()}`,
       authorId: 'me',
       authorName: 'You',
       authorAvatar: 'YO',
       content: text,
+      image: postImagePreview ?? undefined,
       likes: 0,
       comments: 0,
       liked: false,
       timestamp: 'Just now',
     };
-    setPosts((prev) => [post, ...prev]);
+    setPosts((prev) => [optimistic, ...prev]);
     setNewPostText('');
+    const imageToSend = postImage;
+    setPostImage(null);
+    setPostImagePreview(null);
     setShowCreatePost(false);
-    createPost(club.id, { content: text }).catch(() => {});
+    try {
+      // The camera button in this sheet used to do nothing at all — a post
+      // could only ever be text, regardless of what the UI implied.
+      const saved = await createPost(club.id, { content: text, image: imageToSend ?? undefined });
+      setPosts((prev) =>
+        prev.map((p) => (p.id === optimistic.id ? { ...p, id: saved.id, image: saved.image ?? p.image } : p))
+      );
+    } catch {
+      setPosts((prev) => prev.filter((p) => p.id !== optimistic.id));
+    } finally {
+      setPosting(false);
+    }
   };
 
   const toggleJoin = () => {
@@ -416,14 +473,39 @@ function ClubDetail({
           authorName: p.authorName,
           authorAvatar: (p.authorName || '?').slice(0, 2).toUpperCase(),
           content: p.content,
+          image: p.image ?? undefined,
           likes: p.likes ?? 0,
-          comments: 0,
-          liked: (p as unknown as { likedByMe?: boolean }).likedByMe ?? false,
+          // Was hardcoded 0 — the comment icon showed a fake count regardless
+          // of how many comments actually existed.
+          comments: p.comments ?? 0,
+          liked: p.likedByMe ?? false,
           timestamp: new Date(p.createdAt).toLocaleDateString(),
         } as Post)));
       })
       .catch(() => {});
   }, [club.id]);
+
+  // Real roster — the Members tab was permanently empty before (no endpoint
+  // backed it at all), so the club-member "Meet" button had no one real to
+  // point at.
+  useEffect(() => {
+    if (!joined) return;
+    getMembers(club.id)
+      .then((apiMembers) => {
+        if (!apiMembers) return;
+        // AvatarCircle renders text initials, not photos (matching every
+        // other avatar in this file) — derive initials rather than passing
+        // the real photo URL through as if it were a two-letter string.
+        setMembers(apiMembers.map((m) => ({
+          id: m.id,
+          name: m.name,
+          avatar: (m.name || '?').slice(0, 2).toUpperCase(),
+          role: m.role,
+          online: m.online,
+        })));
+      })
+      .catch(() => {});
+  }, [club.id, joined]);
 
   useEffect(() => {
     if (!joined) return;
@@ -549,7 +631,8 @@ function ClubDetail({
                   key={post.id}
                   post={post}
                   onLike={() => handleLike(post.id)}
-                  onMeet={() => {}}
+                  onMeet={() => goToProfile(post.authorId)}
+                  onComment={() => openComments(post.id)}
                 />
               ))}
               {posts.length === 0 && (
@@ -569,9 +652,9 @@ function ClubDetail({
               className="flex flex-col h-full"
             >
               {/* Online members */}
-              {club.members.filter((m) => m.online).length > 0 && (
+              {members.filter((m) => m.online).length > 0 && (
                 <div className="px-4 py-3 flex gap-2 overflow-x-auto border-b" style={{ borderColor: 'var(--linen-dark)' }}>
-                  {club.members.filter((m) => m.online).map((m) => (
+                  {members.filter((m) => m.online).map((m) => (
                     <div key={m.id} className="flex flex-col items-center gap-1 flex-shrink-0">
                       <AvatarCircle initials={m.avatar} size={40} online />
                       <span className="text-[10px] font-medium" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>{m.name.split(' ')[0]}</span>
@@ -638,7 +721,7 @@ function ClubDetail({
               exit={{ opacity: 0 }}
               className="p-4 flex flex-col gap-2"
             >
-              {club.members.map((member) => (
+              {members.map((member) => (
                 <div
                   key={member.id}
                   className="flex items-center gap-3 p-3 rounded-2xl"
@@ -658,6 +741,7 @@ function ClubDetail({
                     </span>
                   </div>
                   <button
+                    onClick={() => goToProfile(member.id)}
                     className="px-3 py-1.5 rounded-full text-xs font-semibold text-white"
                     style={{ backgroundColor: '#BB83C9' }}
                   >
@@ -700,20 +784,104 @@ function ClubDetail({
               className="w-full rounded-xl p-4 text-base outline-none resize-none"
               style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.3)', minHeight: 100, color: 'var(--charcoal)' }}
             />
+            {postImagePreview && (
+              <div className="relative mt-3 rounded-xl overflow-hidden" style={{ maxHeight: 180 }}>
+                <img src={postImagePreview} alt="" className="w-full object-cover" style={{ maxHeight: 180 }} />
+                <button
+                  onClick={() => { setPostImage(null); setPostImagePreview(null); }}
+                  className="absolute top-2 right-2 w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold"
+                  style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
+                >
+                  ✕
+                </button>
+              </div>
+            )}
+            <input
+              ref={postImageInputRef}
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                e.target.value = '';
+                if (!file) return;
+                setPostImage(file);
+                setPostImagePreview(URL.createObjectURL(file));
+              }}
+            />
             <div className="flex items-center justify-between mt-4">
-              <button className="flex items-center gap-2 px-4 py-2 rounded-full" style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.4)' }}>
+              <button
+                onClick={() => postImageInputRef.current?.click()}
+                className="flex items-center gap-2 px-4 py-2 rounded-full"
+                style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.4)' }}
+              >
                 <Camera size={18} style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }} />
                 <span className="text-xs font-medium" style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }}>{t('clubs.photo')}</span>
               </button>
               <button
                 onClick={handleCreatePost}
-                disabled={!newPostText.trim()}
+                disabled={posting || (!newPostText.trim() && !postImage)}
                 className="px-6 py-3 rounded-full text-sm font-semibold text-white disabled:opacity-40"
                 style={{ backgroundColor: '#BB83C9' }}
               >
-                {t('clubs.post')}
+                {posting ? t('clubs.posting', { defaultValue: 'Posting…' }) : t('clubs.post')}
               </button>
             </div>
+          </div>
+        </SheetContent>
+      </Sheet>
+
+      {/* Comments Sheet — the comment button on a post used to open nothing */}
+      <Sheet open={commentsFor !== null} onOpenChange={(open) => { if (!open) setCommentsFor(null); }}>
+        <SheetContent side="bottom" className="rounded-t-[24px] p-0 max-h-[80vh] flex flex-col" style={{ backgroundColor: 'var(--card-bg)' }}>
+          <SheetHeader className="p-6 pb-3">
+            <SheetTitle className="text-xl font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              {t('clubs.comments', { defaultValue: 'Comments' })}
+            </SheetTitle>
+          </SheetHeader>
+          <div className="flex-1 overflow-y-auto px-6 flex flex-col gap-3">
+            {commentsLoading ? (
+              <p className="text-sm py-6 text-center" style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }}>…</p>
+            ) : comments.length === 0 ? (
+              <p className="text-sm py-6 text-center" style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }}>
+                {t('clubs.noComments', { defaultValue: 'No comments yet — be the first' })}
+              </p>
+            ) : (
+              comments.map((c) => (
+                <div key={c.id} className="flex gap-2">
+                  <AvatarCircle initials={(c.authorName || '?').slice(0, 2).toUpperCase()} size={32} />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-sm font-semibold text-[var(--charcoal)]">{c.authorName}</span>
+                      <span className="text-[10px]" style={{ color: 'rgba(var(--charcoal-rgb), 0.3)' }}>
+                        {new Date(c.createdAt).toLocaleDateString()}
+                      </span>
+                    </div>
+                    <p className="text-sm text-[var(--charcoal)]" style={{ opacity: 0.85 }}>{c.content}</p>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+          <div className="p-4 flex items-center gap-2 border-t" style={{ borderColor: 'var(--linen-dark)' }}>
+            <input
+              type="text"
+              value={commentInput}
+              onChange={(e) => setCommentInput(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && handleSendComment()}
+              placeholder={t('clubs.writeComment', { defaultValue: 'Write a comment…' })}
+              className="flex-1 rounded-full px-4 py-2.5 text-sm outline-none"
+              style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.4)', color: 'var(--charcoal)' }}
+            />
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              onClick={handleSendComment}
+              disabled={!commentInput.trim()}
+              className="w-10 h-10 rounded-full flex items-center justify-center disabled:opacity-40"
+              style={{ backgroundColor: '#BB83C9' }}
+            >
+              <Send size={18} color="#fff" />
+            </motion.button>
           </div>
         </SheetContent>
       </Sheet>

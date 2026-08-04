@@ -188,6 +188,11 @@ export async function setUserVerified(userId: string, verified: boolean): Promis
   await api.post<void>(`/admin/users/${encodeURIComponent(userId)}/verify`, { verified });
 }
 
+/** The address Settings' Help Center / Report a Problem rows point to. */
+export async function setSupportEmail(email: string): Promise<void> {
+  await api.put<void>('/admin/settings/support-email', { email });
+}
+
 export const adminApi = {
   getStats: getAdminStats,
   getRevenueHistory,
@@ -206,4 +211,5 @@ export const adminApi = {
   getAdminEvents,
   deleteEvent,
   toggleEventFeatured,
+  setSupportEmail,
 };

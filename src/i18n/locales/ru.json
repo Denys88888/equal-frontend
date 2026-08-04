@@ -71,7 +71,9 @@
     "verified": "Проверен",
     "activeNow": "Онлайн",
     "newUser": "Новый",
-    "undo": "Undo"
+    "undo": "Undo",
+    "likeFailed": "Could not send like",
+    "alreadyLiked": "Already liked"
   },
   "matches": {
     "title": "Мэтчи",
@@ -91,7 +93,8 @@
     "photoPrefix": "Фото",
     "voicePrefix": "Голосовое",
     "giftPrefix": "Подарок",
-    "goDiscover": "Перейти к поиску"
+    "goDiscover": "Перейти к поиску",
+    "message": "Message"
   },
   "chat": {
     "typeMessage": "Напишите сообщение...",
@@ -312,7 +315,11 @@
     "club_cat_reading": "Книги",
     "club_cat_fitness": "Фитнес",
     "club_cat_art": "Искусство",
-    "club_cat_gaming": "Игры"
+    "club_cat_gaming": "Игры",
+    "posting": "Posting…",
+    "comments": "Comments",
+    "noComments": "No comments yet — be the first",
+    "writeComment": "Write a comment…"
   },
   "events": {
     "title": "События",
@@ -460,7 +467,8 @@
     "adminSection": "Администратор",
     "adminPanel": "Панель администратора",
     "donationSent": "Thank you for your support!",
-    "donating": "Processing…"
+    "donating": "Processing…",
+    "supportUnavailable": "Support isn't configured yet"
   },
   "profile2": {
     "addBioHint": "Добавь био, чтобы людям было проще узнать тебя",
@@ -571,7 +579,12 @@
     "giftRevenue": "Gifts",
     "ticketRevenue": "Event Tickets",
     "recentRevenue": "Recent transactions",
-    "noTransactions": "No completed payments yet"
+    "noTransactions": "No completed payments yet",
+    "supportEmail": "Support email",
+    "supportEmailHint": "Where the app's Help Center and Report a Problem rows send users.",
+    "supportEmailSaved": "Support email updated",
+    "saving": "Saving…",
+    "save": "Save"
   },
   "legal": {
     "termsTitle": "Условия использования",
@@ -648,5 +661,8 @@
     "cameraDenied": "Camera access is needed to verify your profile",
     "unsupported": "Camera recording is not supported on this device",
     "reviewNote": "Reviewed by a moderator. Only they see this recording — it is never shown on your profile."
+  },
+  "publicProfile": {
+    "notFound": "This profile isn't available."
   }
 }

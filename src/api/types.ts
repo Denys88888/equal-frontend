@@ -157,12 +157,14 @@ export interface Club {
 
 export interface ClubPost {
   id: string;
+  clubId: string;
   authorId: string;
   authorName: string;
-  authorPhoto?: string;
+  authorAvatar: string;
   content: string;
-  photo?: string;
+  image?: string | null;
   likes: number;
+  comments: number;
   likedByMe: boolean;
   createdAt: string;
 }
@@ -176,7 +178,7 @@ export interface CreateClubRequest {
 
 export interface CreatePostRequest {
   content: string;
-  photo?: string;
+  image?: File;
 }
 
 // ── Events ─────────────────────────────────────────────
