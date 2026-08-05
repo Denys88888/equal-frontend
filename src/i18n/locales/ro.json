@@ -94,7 +94,8 @@
     "voicePrefix": "Voice",
     "giftPrefix": "Gift",
     "goDiscover": "Go to Discover",
-    "message": "Message"
+    "message": "Message",
+    "unmatchFailed": "Could not unmatch — please try again"
   },
   "chat": {
     "typeMessage": "Scrie un mesaj...",
@@ -134,7 +135,10 @@
     "tapToSend": "Tap to send",
     "tapCircleToSend": "Tap the circle to send · tap outside to cancel",
     "photoFailed": "Could not send photo",
-    "reportSubmitted": "Report submitted. We'll review it shortly."
+    "reportSubmitted": "Report submitted. We'll review it shortly.",
+    "photoPreview": "Photo",
+    "voicePreview": "Voice message",
+    "giftPreview": "Sent a gift"
   },
   "profile": {
     "edit": "Editează profilul",

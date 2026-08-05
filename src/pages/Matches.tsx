@@ -8,6 +8,7 @@ import Layout from '@/components/Layout';
 import PartnerOffers from '@/components/PartnerOffers';
 import SkeletonLoader from '@/components/SkeletonLoader';
 import { matchesApi } from '@/api/matches';
+import { useToast } from '@/hooks/useToast';
 
 // ── Types ──────────────────────────────────────────────
 
@@ -20,6 +21,8 @@ interface Match {
   sparkUsed: boolean;
   isOnline: boolean;
   lastMessage?: string;
+  /** For VOICE/IMAGE, lastMessage is a Cloudinary/upload URL, not readable text. */
+  lastMessageType?: 'TEXT' | 'VOICE' | 'IMAGE' | 'GIFT' | 'SYSTEM';
   lastMessageTime?: string;
   unreadCount: number;
   isTyping?: boolean;
@@ -157,14 +160,14 @@ function ConversationRow({
     }
     if (!match.lastMessage) return null;
 
-    let prefix = '';
-    if (match.lastMessage.includes('photo') || match.lastMessage.includes('image')) {
-      prefix = 'Photo ';
-    } else if (match.lastMessage.includes('voice') || match.lastMessage.includes('audio')) {
-      prefix = 'Voice ';
-    } else if (match.lastMessage.includes('gift')) {
-      prefix = 'Gift ';
-    }
+    // Used to guess the type by checking whether the raw text happened to
+    // contain "photo"/"voice"/"gift" — for VOICE/IMAGE, lastMessage is actually
+    // a Cloudinary/upload URL, so a photo message showed its raw image URL as
+    // the preview text instead of a clean label.
+    let preview = match.lastMessage;
+    if (match.lastMessageType === 'IMAGE') preview = `📷 ${t('chat.photoPreview', { defaultValue: 'Photo' })}`;
+    else if (match.lastMessageType === 'VOICE') preview = `🎤 ${t('chat.voicePreview', { defaultValue: 'Voice message' })}`;
+    else if (match.lastMessageType === 'GIFT') preview = `🎁 ${t('chat.giftPreview', { defaultValue: 'Sent a gift' })}`;
 
     return (
       <span
@@ -174,8 +177,7 @@ function ConversationRow({
           fontWeight: match.unreadCount > 0 ? 500 : 400,
         }}
       >
-        {prefix && <span style={{ opacity: 0.6 }}>{prefix}</span>}
-        {match.lastMessage}
+        {preview}
       </span>
     );
   };
@@ -581,6 +583,7 @@ function MatchCelebration({
 export default function Matches() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { showToast } = useToast();
   const [matches, setMatches] = useState<Match[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [showSearch, setShowSearch] = useState(false);
@@ -616,13 +619,17 @@ export default function Matches() {
     : conversations;
 
   const handleDelete = useCallback((id: string) => {
+    // deleteMatch() is async — the try/catch here used to wrap the call
+    // synchronously, so it could never actually catch a rejected promise.
+    // On a failed unmatch the card still vanished from the UI while the match
+    // stayed real server-side, with no rollback and no error surfaced.
+    const snapshot = matches;
     setMatches((prev) => prev.filter((m) => m.id !== id));
-    // Also call API to delete
-    try {
-      matchesApi.deleteMatch(id);
-    } catch {
-    }
-  }, []);
+    matchesApi.deleteMatch(id).catch(() => {
+      setMatches(snapshot);
+      showToast('error', t('matches.unmatchFailed', { defaultValue: 'Could not unmatch — please try again' }));
+    });
+  }, [matches, showToast, t]);
 
   const handleCloseCelebration = useCallback(() => {
     setCelebrationMatch(null);

@@ -107,6 +107,8 @@ export interface Match {
   sparkUsed: boolean;
   isOnline: boolean;
   lastMessage?: string;
+  /** For VOICE/IMAGE, lastMessage is a Cloudinary/upload URL, not readable text. */
+  lastMessageType?: 'TEXT' | 'VOICE' | 'IMAGE' | 'GIFT' | 'SYSTEM';
   lastMessageTime?: string;
   unreadCount: number;
   isTyping?: boolean;

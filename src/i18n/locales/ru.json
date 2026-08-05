@@ -94,7 +94,8 @@
     "voicePrefix": "Голосовое",
     "giftPrefix": "Подарок",
     "goDiscover": "Перейти к поиску",
-    "message": "Message"
+    "message": "Message",
+    "unmatchFailed": "Не удалось разорвать мэтч — попробуйте ещё раз"
   },
   "chat": {
     "typeMessage": "Напишите сообщение...",
@@ -134,7 +135,10 @@
     "tapToSend": "Tap to send",
     "tapCircleToSend": "Tap the circle to send · tap outside to cancel",
     "photoFailed": "Could not send photo",
-    "reportSubmitted": "Жалоба отправлена. Мы рассмотрим её в ближайшее время."
+    "reportSubmitted": "Жалоба отправлена. Мы рассмотрим её в ближайшее время.",
+    "photoPreview": "Фото",
+    "voicePreview": "Голосовое сообщение",
+    "giftPreview": "Отправил(а) подарок"
   },
   "profile": {
     "edit": "Редактировать",
