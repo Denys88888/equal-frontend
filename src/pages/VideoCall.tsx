@@ -12,31 +12,48 @@ const BACKEND_URL = import.meta.env.VITE_API_URL?.replace('/v1', '') || 'https:/
 
 /**
  * STUN alone cannot traverse symmetric NAT, which is what most mobile carriers
- * use — those calls simply never connect. Supply VITE_TURN_URL (plus username
- * and credential) to add a relay; comma-separate the URL for multiple transports,
- * e.g. "turn:host:3478?transport=udp,turns:host:5349?transport=tcp".
+ * use — those calls simply never connect without a TURN relay.
+ *
+ * Priority: VITE_TURN_URL (+ username/credential), if the app ever gets its own
+ * TURN server (self-hosted coturn or a paid relay — real bandwidth, real cost,
+ * but private and reliable), takes over automatically. Until then, this falls
+ * back to Metered's "Open Relay Project" (https://www.metered.ca/tools/openrelay) —
+ * a genuinely free, no-signup public TURN server published exactly for this
+ * use case. It is a shared community resource with no SLA and no reliability
+ * guarantee (Metered's own docs frame it as fine for testing/small projects,
+ * not for guaranteed production scale) — it's a real working default, not a
+ * substitute for a dedicated relay if call volume grows or it becomes flaky.
  */
 const TURN_URL = import.meta.env.VITE_TURN_URL as string | undefined;
 const TURN_USERNAME = import.meta.env.VITE_TURN_USERNAME as string | undefined;
 const TURN_CREDENTIAL = import.meta.env.VITE_TURN_CREDENTIAL as string | undefined;
 
+// Verified directly (raw TCP connect from this session's network): port 80
+// accepts connections, port 443 refuses them — the :443 endpoints published in
+// most tutorials for this service are not reachable right now, so they're
+// deliberately left out rather than shipped on faith.
+const OPEN_RELAY_TURN = {
+  urls: ['turn:openrelay.metered.ca:80'],
+  username: 'openrelayproject',
+  credential: 'openrelayproject',
+};
+
 const ICE_SERVERS: RTCConfiguration = {
   iceServers: [
     { urls: 'stun:stun.l.google.com:19302' },
     { urls: 'stun:stun1.l.google.com:19302' },
-    ...(TURN_URL
-      ? [{
+    TURN_URL
+      ? {
           urls: TURN_URL.split(',').map((u) => u.trim()).filter(Boolean),
           username: TURN_USERNAME,
           credential: TURN_CREDENTIAL,
-        }]
-      : []),
+        }
+      : OPEN_RELAY_TURN,
   ],
 };
 
 if (!TURN_URL && import.meta.env.PROD) {
-  // Surfaced deliberately: without a relay a chunk of real calls fail silently
-  console.warn('[VideoCall] No TURN server configured — calls behind symmetric NAT will fail to connect.');
+  console.warn('[VideoCall] No dedicated TURN configured — using the free Open Relay Project as a fallback. Fine for now; move to a dedicated relay (self-hosted coturn or a paid provider) if call volume grows or connections start failing.');
 }
 
 type CallState = 'connecting' | 'ringing' | 'connected' | 'ended' | 'error';
