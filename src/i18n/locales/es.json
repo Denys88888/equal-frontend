@@ -509,7 +509,10 @@
     "trustHigh": "Muy confiable",
     "earned": "Ganado",
     "locked": "Bloqueado",
-    "photoUploadFailed": "Could not upload photo"
+    "photoUploadFailed": "Could not upload photo",
+    "sparksDesc": "Las chispas se ganan con actividad, no se compran. Envíalas para mostrar atención especial a alguien.",
+    "sparksAmount": "+{{count}} chispas",
+    "sparksPerDay": "+{{count}} chispa/día"
   },
   "admin": {
     "panel": "Panel de admin",

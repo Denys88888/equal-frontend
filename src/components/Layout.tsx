@@ -51,6 +51,11 @@ export default function Layout({
             animate={{ opacity: 1, y: 0, transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] } }}
             exit={{ opacity: 0, y: -10, transition: { duration: 0.2, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] } }}
             className="flex-1 flex flex-col"
+            // Footer is position:fixed, so it takes no space in this flex
+            // column — without this, the last ~80px of every page's content
+            // (e.g. Profile's Settings row) renders underneath the tab bar
+            // and its tap target is obscured/unreliable.
+            style={!shouldHideFooter ? { paddingBottom: 'calc(72px + max(env(safe-area-inset-bottom), 10px))' } : undefined}
           >
             {children}
           </motion.main>

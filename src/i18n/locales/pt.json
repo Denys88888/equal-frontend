@@ -509,7 +509,10 @@
     "trustHigh": "Muito confiável",
     "earned": "Ganho",
     "locked": "Bloqueado",
-    "photoUploadFailed": "Could not upload photo"
+    "photoUploadFailed": "Could not upload photo",
+    "sparksDesc": "As faíscas são ganhas através da atividade — não são compradas. Envie-as para mostrar atenção especial a alguém.",
+    "sparksAmount": "+{{count}} faíscas",
+    "sparksPerDay": "+{{count}} faísca/dia"
   },
   "admin": {
     "panel": "Painel de admin",

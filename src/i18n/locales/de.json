@@ -509,7 +509,10 @@
     "trustHigh": "Sehr vertrauenswürdig",
     "earned": "Verdient",
     "locked": "Gesperrt",
-    "photoUploadFailed": "Could not upload photo"
+    "photoUploadFailed": "Could not upload photo",
+    "sparksDesc": "Funken werden durch Aktivität verdient — nicht gekauft. Sende sie, um jemandem besondere Aufmerksamkeit zu zeigen.",
+    "sparksAmount": "+{{count}} Funken",
+    "sparksPerDay": "+{{count}} Funke/Tag"
   },
   "admin": {
     "panel": "Admin-Panel",

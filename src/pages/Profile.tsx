@@ -185,9 +185,9 @@ function SparkBalanceCard({
   // them — and an "invite a friend, +10" row advertised a reward that no longer
   // exists: there is no referral record to verify, so the server rejects it.
   const tasks = [
-    { text: 'profile2.taskVerify', amount: '+5 Sparks', done: verified },
-    { text: 'profile2.taskComplete', amount: '+3 Sparks', done: profileComplete },
-    { text: 'profile2.taskClub', amount: '+1 Spark/day', done: false },
+    { text: 'profile2.taskVerify', amount: t('profile2.sparksAmount', { count: 5, defaultValue: '+5 Sparks' }), done: verified },
+    { text: 'profile2.taskComplete', amount: t('profile2.sparksAmount', { count: 3, defaultValue: '+3 Sparks' }), done: profileComplete },
+    { text: 'profile2.taskClub', amount: t('profile2.sparksPerDay', { count: 1, defaultValue: '+1 Spark/day' }), done: false },
   ];
   return (
     <motion.div
@@ -212,7 +212,7 @@ function SparkBalanceCard({
         </span>
       </div>
       <p className="mt-3 text-sm text-[var(--charcoal)] opacity-60" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}>
-        Sparks are earned through activity — not bought. Send them to show someone special attention.
+        {t('profile2.sparksDesc', { defaultValue: 'Sparks are earned through activity — not bought. Send them to show someone special attention.' })}
       </p>
       <div className="mt-4 space-y-2">
         {tasks.map((item) => (

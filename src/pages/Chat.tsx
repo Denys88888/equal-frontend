@@ -1039,7 +1039,9 @@ export default function Chat() {
   );
 
   // Dropdown actions
-  const handleViewProfile = () => navigate(`/profile`);
+  // Used to navigate to your own /profile — before PublicProfile existed
+  // there was nowhere else to send it, but now it should show the partner.
+  const handleViewProfile = () => { if (partnerId) navigate(`/profile/${partnerId}`); };
   const handleMute = () => showToast(t('chat.mutedNotifs'));
   const handleBlock = () => {
     if (partnerId) api.post(`/users/${partnerId}/block`, {}).catch(() => {});

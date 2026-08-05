@@ -509,7 +509,10 @@
     "trustHigh": "Très fiable",
     "earned": "Obtenu",
     "locked": "Verrouillé",
-    "photoUploadFailed": "Could not upload photo"
+    "photoUploadFailed": "Could not upload photo",
+    "sparksDesc": "Les étincelles se gagnent par l'activité — elles ne s'achètent pas. Envoyez-les pour montrer une attention particulière.",
+    "sparksAmount": "+{{count}} étincelles",
+    "sparksPerDay": "+{{count}} étincelle/jour"
   },
   "admin": {
     "panel": "Panneau admin",
