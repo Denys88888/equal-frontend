@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { getMe, updateMe, uploadPhoto } from '@/api/users';
+import { getMe, updateMe, uploadPhoto, deletePhoto } from '@/api/users';
 import {
   Pencil,
   MapPin,
@@ -46,7 +46,9 @@ const EMPTY_USER = {
   location: '',
   distance: '',
   bio: '',
-  photos: [] as string[],
+  // Keeps the real Photo id, not just the URL — needed to delete a photo
+  // (deletePhoto takes an id; the URL alone can't identify which record to remove).
+  photos: [] as { id: string; url: string }[],
   interests: [] as string[],
   goals: '',
   trustScore: 0,
@@ -322,12 +324,26 @@ export default function Profile() {
         // The backend demotes any previous main photo server-side; mirror that
         // here by moving the new photo to index 0 (this screen's "Main" badge
         // is positional, not driven by Photo.isMain).
-        photos: isMain ? [photo.url, ...prev.photos] : [...prev.photos, photo.url],
+        photos: isMain
+          ? [{ id: photo.id, url: photo.url }, ...prev.photos]
+          : [...prev.photos, { id: photo.id, url: photo.url }],
       }));
     } catch {
       showToast('error', t('profile2.photoUploadFailed', { defaultValue: 'Could not upload photo' }));
     } finally {
       setPhotoUploading(false);
+    }
+  };
+
+  const handleDeletePhoto = async (photoId: string) => {
+    const snapshot = user.photos;
+    setUser((prev) => ({ ...prev, photos: prev.photos.filter((p) => p.id !== photoId) }));
+    setLightboxIndex(null);
+    try {
+      await deletePhoto(photoId);
+    } catch {
+      setUser((prev) => ({ ...prev, photos: snapshot }));
+      showToast('error', t('profile2.photoDeleteFailed', { defaultValue: 'Could not delete photo' }));
     }
   };
 
@@ -344,7 +360,7 @@ export default function Profile() {
         location: d.city || '',
         distance: '',
         bio: d.bio || '',
-        photos: d.photos?.map((p) => p.url) || [],
+        photos: d.photos?.map((p) => ({ id: p.id, url: p.url })) || [],
         interests: d.interests || [],
         goals: Array.isArray(d.goals) ? (d.goals[0] ?? '') : ((d.goals as string) || ''),
         trustScore: d.trustScore ?? 0,
@@ -423,7 +439,7 @@ export default function Profile() {
         <div className="relative w-full" style={{ height: '45vh', maxHeight: 400 }}>
           {user.photos[0] ? (
             <img
-              src={user.photos[0]}
+              src={user.photos[0].url}
               alt={`${user.name}'s profile`}
               className="w-full h-full object-cover"
             />
@@ -650,7 +666,7 @@ export default function Profile() {
           <div className="grid grid-cols-3 gap-2">
             {user.photos.map((photo, index) => (
               <motion.button
-                key={index}
+                key={photo.id}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -659,12 +675,22 @@ export default function Profile() {
                 onClick={() => setLightboxIndex(index)}
                 className="relative aspect-square rounded-xl overflow-hidden"
               >
-                <img src={photo} alt={`Photo ${index + 1}`} className="w-full h-full object-cover" />
+                <img src={photo.url} alt={`Photo ${index + 1}`} className="w-full h-full object-cover" />
                 {index === 0 && (
                   <div className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-[#BB83C9] text-white text-[10px] font-semibold" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                     Main
                   </div>
                 )}
+                {/* deletePhoto()/DELETE /users/me/photos existed on the backend
+                    already — nothing in this screen ever called it */}
+                <div
+                  role="button"
+                  onClick={(e) => { e.stopPropagation(); handleDeletePhoto(photo.id); }}
+                  className="absolute top-2 right-2 w-6 h-6 rounded-full flex items-center justify-center"
+                  style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
+                >
+                  <X size={14} className="text-white" strokeWidth={2.5} />
+                </div>
               </motion.button>
             ))}
             {user.photos.length < 9 && (
@@ -859,7 +885,7 @@ export default function Profile() {
       <AnimatePresence>
         {lightboxIndex !== null && (
           <PhotoLightbox
-            photos={user.photos}
+            photos={user.photos.map((p) => p.url)}
             initialIndex={lightboxIndex}
             onClose={() => setLightboxIndex(null)}
           />

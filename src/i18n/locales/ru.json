@@ -133,7 +133,8 @@
     "micDenied": "Microphone access is needed for voice messages",
     "tapToSend": "Tap to send",
     "tapCircleToSend": "Tap the circle to send · tap outside to cancel",
-    "photoFailed": "Could not send photo"
+    "photoFailed": "Could not send photo",
+    "reportSubmitted": "Жалоба отправлена. Мы рассмотрим её в ближайшее время."
   },
   "profile": {
     "edit": "Редактировать",
@@ -512,7 +513,8 @@
     "photoUploadFailed": "Could not upload photo",
     "sparksDesc": "Искры зарабатываются активностью — их нельзя купить. Отправляй их, чтобы показать особое внимание.",
     "sparksAmount": "+{{count}} искр",
-    "sparksPerDay": "+{{count}} искра/день"
+    "sparksPerDay": "+{{count}} искра/день",
+    "photoDeleteFailed": "Не удалось удалить фото"
   },
   "admin": {
     "panel": "Админ-панель",

@@ -3,9 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import {
   getClubs, joinClub, leaveClub, createPost, getPosts, togglePostLike, getClubMessages, sendClubMessage,
-  getMembers, getComments, createComment, type ClubPostComment,
+  getMembers, getComments, createComment, deletePost, deleteComment, type ClubPostComment,
 } from '@/api/clubs';
 import { useClubSocket, type IncomingClubMessage } from '@/hooks/useSocket';
+import { useAuth } from '@/context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Plus,
@@ -26,6 +27,7 @@ import {
   Palette,
   Gamepad2,
   Film,
+  Trash2,
 } from 'lucide-react';
 import Layout from '@/components/Layout';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
@@ -231,7 +233,7 @@ function DiscoverClubCard({ club, onClick, onJoin }: { club: Club; onClick: () =
 /*  POST CARD                                                          */
 /* ------------------------------------------------------------------ */
 
-function PostCard({ post, onLike, onMeet, onComment }: { post: Post; onLike: () => void; onMeet: () => void; onComment: () => void }) {
+function PostCard({ post, onLike, onMeet, onComment, onDelete }: { post: Post; onLike: () => void; onMeet: () => void; onComment: () => void; onDelete?: () => void }) {
   const { t } = useTranslation();
   const [animating, setAnimating] = useState(false);
 
@@ -263,6 +265,13 @@ function PostCard({ post, onLike, onMeet, onComment }: { post: Post; onLike: () 
             {post.timestamp}
           </span>
         </div>
+        {/* Own posts (or an admin's) could never be removed before — not by
+            the author, not by moderation. */}
+        {onDelete && (
+          <button onClick={onDelete} className="p-1.5 -m-1.5 flex-shrink-0">
+            <Trash2 size={16} style={{ color: 'rgba(var(--charcoal-rgb), 0.3)' }} />
+          </button>
+        )}
       </div>
 
       <p className="text-base text-[var(--charcoal)] leading-relaxed mb-3">{post.content}</p>
@@ -324,6 +333,8 @@ function ClubDetail({
 }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const isAdmin = user?.role === 'ADMIN';
   const [detailTab, setDetailTab] = useState<'feed' | 'chat' | 'members'>('feed');
   const [newPostText, setNewPostText] = useState('');
   const [postImage, setPostImage] = useState<File | null>(null);
@@ -389,6 +400,29 @@ function ClubDetail({
     }
   };
 
+  const handleDeletePost = async (postId: string) => {
+    const snapshot = posts;
+    setPosts((prev) => prev.filter((p) => p.id !== postId));
+    try {
+      await deletePost(postId);
+    } catch {
+      setPosts(snapshot);
+    }
+  };
+
+  const handleDeleteComment = async (commentId: string) => {
+    const postId = commentsFor;
+    const snapshot = comments;
+    setComments((prev) => prev.filter((c) => c.id !== commentId));
+    if (postId) setPosts((prev) => prev.map((p) => (p.id === postId ? { ...p, comments: Math.max(0, p.comments - 1) } : p)));
+    try {
+      await deleteComment(commentId);
+    } catch {
+      setComments(snapshot);
+      if (postId) setPosts((prev) => prev.map((p) => (p.id === postId ? { ...p, comments: p.comments + 1 } : p)));
+    }
+  };
+
   const handleSendMessage = async () => {
     const text = chatInput.trim();
     if (!text) return;
@@ -421,7 +455,10 @@ function ClubDetail({
     setPosting(true);
     const optimistic: Post = {
       id: `p-${Date.now()}`,
-      authorId: 'me',
+      // Real id (not a 'me' placeholder) so the delete button — which compares
+      // post.authorId to the signed-in user — works immediately, not just
+      // after a reload re-fetches from the API with the real authorId.
+      authorId: user?.id ?? 'me',
       authorName: 'You',
       authorAvatar: 'YO',
       content: text,
@@ -633,6 +670,7 @@ function ClubDetail({
                   onLike={() => handleLike(post.id)}
                   onMeet={() => goToProfile(post.authorId)}
                   onComment={() => openComments(post.id)}
+                  onDelete={post.authorId === user?.id || isAdmin ? () => handleDeletePost(post.id) : undefined}
                 />
               ))}
               {posts.length === 0 && (
@@ -859,6 +897,11 @@ function ClubDetail({
                     </div>
                     <p className="text-sm text-[var(--charcoal)]" style={{ opacity: 0.85 }}>{c.content}</p>
                   </div>
+                  {(c.authorId === user?.id || isAdmin) && (
+                    <button onClick={() => handleDeleteComment(c.id)} className="p-1.5 -m-1.5 flex-shrink-0 self-start">
+                      <Trash2 size={14} style={{ color: 'rgba(var(--charcoal-rgb), 0.3)' }} />
+                    </button>
+                  )}
                 </div>
               ))
             )}

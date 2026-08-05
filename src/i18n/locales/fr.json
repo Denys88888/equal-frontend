@@ -133,7 +133,8 @@
     "micDenied": "Microphone access is needed for voice messages",
     "tapToSend": "Tap to send",
     "tapCircleToSend": "Tap the circle to send · tap outside to cancel",
-    "photoFailed": "Could not send photo"
+    "photoFailed": "Could not send photo",
+    "reportSubmitted": "Report submitted. We'll review it shortly."
   },
   "profile": {
     "edit": "Modifier le Profil",
@@ -512,7 +513,8 @@
     "photoUploadFailed": "Could not upload photo",
     "sparksDesc": "Les étincelles se gagnent par l'activité — elles ne s'achètent pas. Envoyez-les pour montrer une attention particulière.",
     "sparksAmount": "+{{count}} étincelles",
-    "sparksPerDay": "+{{count}} étincelle/jour"
+    "sparksPerDay": "+{{count}} étincelle/jour",
+    "photoDeleteFailed": "Could not delete photo"
   },
   "admin": {
     "panel": "Panneau admin",

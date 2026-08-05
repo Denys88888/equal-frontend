@@ -204,6 +204,24 @@ export async function sendClubMessage(clubId: string, content: string): Promise<
   return data;
 }
 
+/**
+ * Delete your own post (admins can delete anyone's).
+ *
+ * @throws {ApiError} 403 if it isn't yours; 404 if it's already gone
+ */
+export async function deletePost(postId: string): Promise<void> {
+  await api.delete<void>(`/clubs/posts/${encodeURIComponent(postId)}`);
+}
+
+/**
+ * Delete your own comment (admins can delete anyone's).
+ *
+ * @throws {ApiError} 403 if it isn't yours; 404 if it's already gone
+ */
+export async function deleteComment(commentId: string): Promise<void> {
+  await api.delete<void>(`/clubs/comments/${encodeURIComponent(commentId)}`);
+}
+
 // ───────────────────────────────────────────────────────────
 // NAMESPACE EXPORT
 // ───────────────────────────────────────────────────────────
@@ -226,4 +244,6 @@ export const clubsApi = {
   getMembers,
   getComments,
   createComment,
+  deletePost,
+  deleteComment,
 };

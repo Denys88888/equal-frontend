@@ -133,7 +133,8 @@
     "micDenied": "Microphone access is needed for voice messages",
     "tapToSend": "Tap to send",
     "tapCircleToSend": "Tap the circle to send · tap outside to cancel",
-    "photoFailed": "Could not send photo"
+    "photoFailed": "Could not send photo",
+    "reportSubmitted": "Report submitted. We'll review it shortly."
   },
   "profile": {
     "edit": "Editar Perfil",
@@ -512,7 +513,8 @@
     "photoUploadFailed": "Could not upload photo",
     "sparksDesc": "As faíscas são ganhas através da atividade — não são compradas. Envie-as para mostrar atenção especial a alguém.",
     "sparksAmount": "+{{count}} faíscas",
-    "sparksPerDay": "+{{count}} faísca/dia"
+    "sparksPerDay": "+{{count}} faísca/dia",
+    "photoDeleteFailed": "Could not delete photo"
   },
   "admin": {
     "panel": "Painel de admin",

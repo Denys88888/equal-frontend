@@ -1,14 +1,75 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
-import { Heart, ShieldCheck, MessageCircle, Check } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Heart, ShieldCheck, MessageCircle, Check, MoreVertical, UserX, Flag } from 'lucide-react';
 import Layout from '@/components/Layout';
 import SkeletonLoader from '@/components/SkeletonLoader';
+import ReportDialog from '@/components/ReportDialog';
 import { useToast } from '@/hooks/useToast';
+import { api } from '@/api/client';
 import { getPublicProfile, discoverApi, type PublicProfile as PublicProfileData } from '@/api/discover';
 
 const easeOutExpo = [0.16, 1, 0.3, 1] as [number, number, number, number];
+
+/** Block/Report menu — reachable from clubs pre-match, so this screen needs
+    the same safety actions Chat already has, not just Like/Message. */
+function ProfileMenu({
+  isOpen,
+  onClose,
+  onBlock,
+  onReport,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  onBlock: () => void;
+  onReport: () => void;
+}) {
+  const { t } = useTranslation();
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[200]"
+            onClick={onClose}
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: -5 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -5 }}
+            transition={{ duration: 0.15 }}
+            className="absolute top-14 right-3 z-[201] rounded-2xl overflow-hidden shadow-xl"
+            style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 12px 40px rgba(0,0,0,0.15)', minWidth: 200 }}
+          >
+            <button
+              onClick={() => { onBlock(); onClose(); }}
+              className="flex items-center gap-3 w-full px-4 py-3 text-left hover:bg-[var(--linen)] transition-colors"
+            >
+              <UserX size={18} style={{ color: 'var(--charcoal)' }} />
+              <span className="text-sm font-medium" style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: 'var(--charcoal)' }}>
+                {t('chat.block')}
+              </span>
+            </button>
+            <div className="h-px" style={{ backgroundColor: 'var(--linen-dark)' }} />
+            <button
+              onClick={() => { onReport(); onClose(); }}
+              className="flex items-center gap-3 w-full px-4 py-3 text-left hover:bg-[var(--linen)] transition-colors"
+            >
+              <Flag size={18} style={{ color: '#E86A6A' }} />
+              <span className="text-sm font-medium" style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: '#E86A6A' }}>
+                {t('chat.report')}
+              </span>
+            </button>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  );
+}
 
 /**
  * Another user's profile. Didn't exist anywhere in the app before — club post
@@ -24,6 +85,8 @@ export default function PublicProfile() {
   const [isLoading, setIsLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const [liking, setLiking] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [reportOpen, setReportOpen] = useState(false);
 
   useEffect(() => {
     if (!userId) return;
@@ -53,6 +116,19 @@ export default function PublicProfile() {
     }
   };
 
+  const handleBlock = () => {
+    if (!userId) return;
+    api.post(`/users/${userId}/block`, {}).catch(() => {});
+    showToast('success', t('chat.userBlocked', { defaultValue: 'User blocked' }));
+    navigate(-1);
+  };
+
+  const handleReportSubmit = (reason: string, description: string) => {
+    if (!userId) return;
+    api.post(`/users/${userId}/report`, { reason, description }).catch(() => {});
+    showToast('success', t('chat.reportSubmitted', { defaultValue: "Report submitted. We'll review it shortly." }));
+  };
+
   if (isLoading) {
     return (
       <Layout title="" showBack onBack={() => navigate(-1)}>
@@ -76,7 +152,28 @@ export default function PublicProfile() {
   }
 
   return (
-    <Layout title="" showBack onBack={() => navigate(-1)}>
+    <Layout
+      title=""
+      showBack
+      onBack={() => navigate(-1)}
+      rightAction={
+        <div className="relative">
+          <button
+            onClick={() => setMenuOpen((o) => !o)}
+            className="w-10 h-10 rounded-full flex items-center justify-center"
+            style={{ backgroundColor: 'rgba(var(--card-rgb), 0.72)', backdropFilter: 'blur(12px)' }}
+          >
+            <MoreVertical size={20} className="text-[var(--charcoal)]" strokeWidth={2} />
+          </button>
+          <ProfileMenu
+            isOpen={menuOpen}
+            onClose={() => setMenuOpen(false)}
+            onBlock={handleBlock}
+            onReport={() => setReportOpen(true)}
+          />
+        </div>
+      }
+    >
       <div className="flex-1 overflow-y-auto pb-8">
         {/* Hero photo */}
         <div className="relative w-full" style={{ aspectRatio: '3/4' }}>
@@ -202,6 +299,13 @@ export default function PublicProfile() {
           )}
         </div>
       </div>
+
+      <ReportDialog
+        open={reportOpen}
+        onOpenChange={setReportOpen}
+        userName={profile.name}
+        onSubmit={handleReportSubmit}
+      />
     </Layout>
   );
 }

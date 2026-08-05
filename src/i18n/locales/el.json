@@ -133,7 +133,8 @@
     "micDenied": "Microphone access is needed for voice messages",
     "tapToSend": "Tap to send",
     "tapCircleToSend": "Tap the circle to send · tap outside to cancel",
-    "photoFailed": "Could not send photo"
+    "photoFailed": "Could not send photo",
+    "reportSubmitted": "Report submitted. We'll review it shortly."
   },
   "profile": {
     "edit": "Επεξεργασία Προφίλ",
@@ -512,7 +513,8 @@
     "photoUploadFailed": "Could not upload photo",
     "sparksDesc": "Sparks are earned through activity — not bought. Send them to show someone special attention.",
     "sparksAmount": "+{{count}} Sparks",
-    "sparksPerDay": "+{{count}} Spark/day"
+    "sparksPerDay": "+{{count}} Spark/day",
+    "photoDeleteFailed": "Could not delete photo"
   },
   "admin": {
     "panel": "Admin Panel",
