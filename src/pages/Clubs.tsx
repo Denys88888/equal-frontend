@@ -2,11 +2,12 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import {
-  getClubs, joinClub, leaveClub, createPost, getPosts, togglePostLike, getClubMessages, sendClubMessage,
+  getClubs, createClub, joinClub, leaveClub, createPost, getPosts, togglePostLike, getClubMessages, sendClubMessage,
   getMembers, getComments, createComment, deletePost, deleteComment, type ClubPostComment,
 } from '@/api/clubs';
 import { useClubSocket, type IncomingClubMessage } from '@/hooks/useSocket';
 import { useAuth } from '@/context/AuthContext';
+import { useToast } from '@/hooks/useToast';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Plus,
@@ -76,6 +77,7 @@ interface Club {
   gradient: string;
   memberCount: number;
   joined: boolean;
+  status?: 'PENDING' | 'ACTIVE';
   unread?: number;
   lastActivity?: string;
   latestPostPreview?: string;
@@ -938,9 +940,12 @@ function ClubDetail({
 
 export default function Clubs() {
   const { t } = useTranslation();
+  const { user } = useAuth();
+  const { showToast } = useToast();
   const [mainTab, setMainTab] = useState<'myclubs' | 'discover'>('myclubs');
   const [clubs, setClubs] = useState<Club[]>([]);
   const [clubsLoading, setClubsLoading] = useState(true);
+  const [creatingClub, setCreatingClub] = useState(false);
 
   useEffect(() => {
     getClubs()
@@ -955,6 +960,7 @@ export default function Clubs() {
           gradient: categoryGradients[c.category as keyof typeof categoryGradients] ?? 'from-purple-400 to-pink-400',
           memberCount: (c as unknown as { memberCount?: number }).memberCount ?? 0,
           joined: (c as unknown as { isJoined?: boolean }).isJoined ?? false,
+          status: (c as unknown as { status?: 'PENDING' | 'ACTIVE' }).status ?? 'ACTIVE',
           members: [],
           posts: [],
           chat: [],
@@ -986,25 +992,39 @@ export default function Clubs() {
     setClubs((prev) => prev.map((c) => (c.id === updated.id ? updated : c)));
   };
 
-  const handleCreateClub = () => {
-    if (!createName.trim() || createName.length < 3) return;
-    const newClub: Club = {
-      id: `c-${Date.now()}`,
-      name: createName.trim(),
-      description: createDesc.trim() || `A community for ${createCategory.toLowerCase()} enthusiasts.`,
-      category: createCategory,
-      icon: createCategory,
-      gradient: categoryGradients[createCategory] || categoryGradients.Other,
-      memberCount: 1,
-      joined: true,
-      members: [{ id: 'me', name: 'You', avatar: 'YO', role: 'admin', online: true }],
-      posts: [],
-      chat: [],
-    };
-    setClubs((prev) => [newClub, ...prev]);
-    setCreateName('');
-    setCreateDesc('');
-    setShowCreateModal(false);
+  const handleCreateClub = async () => {
+    if (!createName.trim() || createName.length < 3 || creatingClub) return;
+    setCreatingClub(true);
+    try {
+      const created = await createClub({
+        name: createName.trim(),
+        description: createDesc.trim() || `A community for ${createCategory.toLowerCase()} enthusiasts.`,
+        category: createCategory,
+      });
+      const newClub: Club = {
+        id: created.id,
+        name: created.name,
+        description: created.description ?? '',
+        category: created.category ?? createCategory,
+        icon: created.icon ?? '🌟',
+        gradient: categoryGradients[createCategory] || categoryGradients.Other,
+        memberCount: 1,
+        joined: true,
+        status: (created as unknown as { status?: 'PENDING' | 'ACTIVE' }).status ?? 'PENDING',
+        members: [{ id: user?.id ?? 'me', name: 'You', avatar: 'YO', role: 'admin', online: true }],
+        posts: [],
+        chat: [],
+      };
+      setClubs((prev) => [newClub, ...prev]);
+      setCreateName('');
+      setCreateDesc('');
+      setShowCreateModal(false);
+      showToast('success', t('clubs.createPending', { defaultValue: 'Club created — pending admin review before it appears for others.' }));
+    } catch {
+      showToast('error', t('clubs.createFailed', { defaultValue: 'Could not create club — please try again' }));
+    } finally {
+      setCreatingClub(false);
+    }
   };
 
   return (
@@ -1205,11 +1225,11 @@ export default function Clubs() {
               </div>
               <button
                 onClick={handleCreateClub}
-                disabled={!createName.trim() || createName.length < 3}
+                disabled={!createName.trim() || createName.length < 3 || creatingClub}
                 className="w-full py-3.5 rounded-full text-base font-semibold text-white disabled:opacity-40 mt-2"
                 style={{ backgroundColor: '#BB83C9', boxShadow: '0 4px 16px rgba(187,131,201,0.3)' }}
               >
-                {t('clubs.create')}
+                {creatingClub ? t('clubs.posting', { defaultValue: 'Posting…' }) : t('clubs.create')}
               </button>
             </div>
           </DialogContent>

@@ -682,14 +682,23 @@ export default function Events() {
     }
   };
 
-  const toggleInterested = (eventId: string) => {
+  const toggleInterested = async (eventId: string) => {
+    const wasInterested = interestedEvents.has(eventId);
     setInterestedEvents((prev) => {
       const next = new Set(prev);
-      const wasInterested = next.has(eventId);
       if (wasInterested) { next.delete(eventId); } else { next.add(eventId); }
-      rsvp(eventId, wasInterested ? 'not_going' : 'interested').catch(() => {});
       return next;
     });
+    try {
+      await rsvp(eventId, wasInterested ? 'not_going' : 'interested');
+    } catch {
+      // Server refused — undo the optimistic toggle so UI matches server state
+      setInterestedEvents((prev) => {
+        const next = new Set(prev);
+        if (wasInterested) next.add(eventId); else next.delete(eventId);
+        return next;
+      });
+    }
   };
 
   return (

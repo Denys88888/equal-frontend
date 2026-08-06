@@ -265,19 +265,25 @@ export default function Settings() {
     unblockUser(id).catch(() => setBlockedUsers(snapshot));
   };
 
-  const handleDeleteNext = () => {
+  const handleDeleteNext = async () => {
     if (deleteStep < 3) {
       setDeleteStep(deleteStep + 1);
     } else {
-      // Final deletion — call backend then clear local state
-      api.delete('/users/me').catch(() => {}).finally(() => {
-        localStorage.removeItem(TOKEN_KEY);
-        localStorage.removeItem(REFRESH_TOKEN_KEY);
-        setShowDeleteFlow(false);
-        setDeleteStep(1);
-        setDeleteConfirmText('');
-        navigate('/');
-      });
+      // Only clear local session and navigate away if the server actually
+      // deleted the account — otherwise the user is logged out believing
+      // their account is gone while it (and their data) still exists.
+      try {
+        await api.delete('/users/me');
+      } catch {
+        showToast('error', t('settings2.deleteFailed', { defaultValue: 'Something went wrong — your account was not deleted. Please try again.' }));
+        return;
+      }
+      localStorage.removeItem(TOKEN_KEY);
+      localStorage.removeItem(REFRESH_TOKEN_KEY);
+      setShowDeleteFlow(false);
+      setDeleteStep(1);
+      setDeleteConfirmText('');
+      navigate('/');
     }
   };
 

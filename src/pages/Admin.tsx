@@ -33,7 +33,7 @@ import {
 import Layout from '@/components/Layout';
 import {
   getAdminStats, getRevenueHistory, getAdminUsers, getPendingReports,
-  getAdminClubs, deleteClub, getAdminEvents, deleteEvent, toggleEventFeatured,
+  getAdminClubs, approveClub, deleteClub, getAdminEvents, deleteEvent, toggleEventFeatured,
   setSupportEmail,
 } from '@/api/admin';
 import type { RevenueTransaction } from '@/api/admin';
@@ -684,17 +684,23 @@ function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
           category: c.category,
           memberCount: c.memberCount,
           postCount: c.postCount,
-          // No moderation gate exists server-side; everything listed is live
-          status: 'Active' as const,
-          createdBy: '',
+          status: c.status === 'PENDING' ? 'Pending Review' as const : 'Active' as const,
+          createdBy: c.createdBy,
         })));
       })
       .catch(() => {});
   }, []);
 
-  const handleApprove = (id: string) => {
+  const handleApprove = async (id: string) => {
+    const snapshot = clubs;
     setClubs((prev) => prev.map((c) => (c.id === id ? { ...c, status: 'Active' as const } : c)));
-    showToast(t('admin.clubApproved'));
+    try {
+      await approveClub(id);
+      showToast(t('admin.clubApproved'));
+    } catch {
+      setClubs(snapshot);
+      showToast(t('admin.actionFailed', { defaultValue: 'Action failed' }));
+    }
   };
   // Reject and delete are the same server action — removing the club.
   const removeClub = async (id: string, toast: string) => {

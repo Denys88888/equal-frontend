@@ -123,6 +123,8 @@ export interface AdminClub {
   category: string;
   memberCount: number;
   postCount: number;
+  status: 'PENDING' | 'ACTIVE';
+  createdBy: string;
   createdAt: string;
 }
 
@@ -139,6 +141,10 @@ export interface AdminEvent {
 export async function getAdminClubs(): Promise<AdminClub[]> {
   const { data } = await api.get<AdminClub[]>('/admin/clubs');
   return data;
+}
+
+export async function approveClub(clubId: string): Promise<void> {
+  await api.post<void>(`/admin/clubs/${encodeURIComponent(clubId)}/approve`, {});
 }
 
 export async function deleteClub(clubId: string): Promise<void> {
@@ -207,6 +213,7 @@ export const adminApi = {
   reviewVerification,
   setUserVerified,
   getAdminClubs,
+  approveClub,
   deleteClub,
   getAdminEvents,
   deleteEvent,

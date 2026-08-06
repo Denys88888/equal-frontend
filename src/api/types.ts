@@ -154,6 +154,7 @@ export interface Club {
   memberCount: number;
   postCount: number;
   isJoined: boolean;
+  status?: 'PENDING' | 'ACTIVE';
   createdAt: string;
 }
 
