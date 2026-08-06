@@ -5,7 +5,6 @@ import { Search, Trash2, Circle, Sparkles, ExternalLink, X, Utensils } from 'luc
 import confetti from 'canvas-confetti';
 import { useTranslation } from 'react-i18next';
 import Layout from '@/components/Layout';
-import PartnerOffers from '@/components/PartnerOffers';
 import SkeletonLoader from '@/components/SkeletonLoader';
 import { matchesApi } from '@/api/matches';
 import { useToast } from '@/hooks/useToast';
@@ -587,7 +586,6 @@ export default function Matches() {
   const [matches, setMatches] = useState<Match[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [showSearch, setShowSearch] = useState(false);
-  const [showOffers, setShowOffers] = useState(true);
   const [celebrationMatch, setCelebrationMatch] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -633,10 +631,6 @@ export default function Matches() {
 
   const handleCloseCelebration = useCallback(() => {
     setCelebrationMatch(null);
-  }, []);
-
-  const handleDismissOffers = useCallback(() => {
-    setShowOffers(false);
   }, []);
 
   const totalUnread = conversations.reduce((sum, m) => sum + m.unreadCount, 0);
@@ -697,9 +691,6 @@ export default function Matches() {
               </motion.div>
             )}
           </AnimatePresence>
-
-          {/* Partner Offers Section */}
-          {showOffers && <PartnerOffers onDismiss={handleDismissOffers} />}
 
           {/* New Matches Banner */}
           {newMatches.length > 0 && (
