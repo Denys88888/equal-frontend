@@ -1010,6 +1010,7 @@ export default function Clubs() {
   return (
     <Layout
       title={t('nav.clubs')}
+      showNotifications
       rightAction={
         <motion.button
           whileTap={{ scale: 0.9 }}

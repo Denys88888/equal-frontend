@@ -421,6 +421,7 @@ export default function Profile() {
   return (
     <Layout
       title={t('profile2.title')}
+      showNotifications
       rightAction={
         <motion.button
           whileTap={{ scale: 0.9 }}

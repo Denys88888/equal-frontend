@@ -693,7 +693,7 @@ export default function Events() {
   };
 
   return (
-    <Layout title={t('events.title')}>
+    <Layout title={t('events.title')} showNotifications>
       <div className="relative flex-1 flex flex-col overflow-hidden">
         {/* Events Header with Tabs */}
         <div className="px-5 pt-5 pb-3">

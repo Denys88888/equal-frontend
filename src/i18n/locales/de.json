@@ -643,7 +643,9 @@
   "notifications": {
     "title": "Benachrichtigungen",
     "markAllRead": "Alle als gelesen markieren",
-    "empty": "Noch keine Benachrichtigungen"
+    "empty": "Noch keine Benachrichtigungen",
+    "newMatchTitle": "It's a match! 💜",
+    "newMatchBody": "You have a new connection — say hello!"
   },
   "error": {
     "title": "Etwas ist schiefgelaufen",

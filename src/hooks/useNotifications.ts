@@ -7,6 +7,8 @@ export interface AppNotification {
   type: 'match' | 'message' | 'system';
   read: boolean;
   timestamp: number;
+  /** In-app route to open when the notification is tapped, e.g. /chat/:matchId */
+  url?: string;
 }
 
 const STORAGE_KEY = 'equal-notifications';

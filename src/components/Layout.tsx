@@ -13,6 +13,7 @@ interface LayoutProps {
   transparentNav?: boolean;
   hideFooter?: boolean;
   hideNavbar?: boolean;
+  showNotifications?: boolean;
 }
 
 const footerHiddenPaths = ['/onboarding', '/chat'];
@@ -26,6 +27,7 @@ export default function Layout({
   transparentNav = false,
   hideFooter = false,
   hideNavbar = false,
+  showNotifications = false,
 }: LayoutProps) {
   const location = useLocation();
 
@@ -41,6 +43,7 @@ export default function Layout({
             onBack={onBack}
             rightAction={rightAction}
             transparent={transparentNav}
+            showNotifications={showNotifications}
           />
         )}
 

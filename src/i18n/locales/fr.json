@@ -643,7 +643,9 @@
   "notifications": {
     "title": "Notifications",
     "markAllRead": "Tout marquer comme lu",
-    "empty": "Aucune notification pour l'instant"
+    "empty": "Aucune notification pour l'instant",
+    "newMatchTitle": "It's a match! 💜",
+    "newMatchBody": "You have a new connection — say hello!"
   },
   "error": {
     "title": "Une erreur s'est produite",

@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { useNavigate } from 'react-router';
 import { ChevronLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
+import NotificationBell from './NotificationBell';
 
 interface NavbarProps {
   title?: string;
@@ -9,9 +10,12 @@ interface NavbarProps {
   onBack?: () => void;
   rightAction?: ReactNode;
   transparent?: boolean;
+  /** Shows the notification bell in the left slot — only meaningful when
+      showBack is false, since a back button already occupies that spot. */
+  showNotifications?: boolean;
 }
 
-export default function Navbar({ title, showBack = false, onBack, rightAction, transparent = false }: NavbarProps) {
+export default function Navbar({ title, showBack = false, onBack, rightAction, transparent = false, showNotifications = false }: NavbarProps) {
   const navigate = useNavigate();
 
   const handleBack = () => {
@@ -37,7 +41,7 @@ export default function Navbar({ title, showBack = false, onBack, rightAction, t
       }}
     >
       <div className="flex-1 flex items-center">
-        {showBack && (
+        {showBack ? (
           <motion.button
             whileTap={{ scale: 0.9 }}
             transition={{ duration: 0.12 }}
@@ -47,7 +51,9 @@ export default function Navbar({ title, showBack = false, onBack, rightAction, t
           >
             <ChevronLeft size={24} className="text-[var(--charcoal)]" strokeWidth={2} />
           </motion.button>
-        )}
+        ) : showNotifications ? (
+          <NotificationBell />
+        ) : null}
       </div>
 
       {title && (

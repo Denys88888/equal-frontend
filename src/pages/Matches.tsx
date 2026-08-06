@@ -637,7 +637,7 @@ export default function Matches() {
 
   if (!isLoading && matches.length === 0) {
     return (
-      <Layout title={t('matches.title')}>
+      <Layout title={t('matches.title')} showNotifications>
         <EmptyState />
       </Layout>
     );
@@ -647,6 +647,7 @@ export default function Matches() {
     <>
       <Layout
         title={t('matches.title')}
+        showNotifications
         rightAction={
           <div className="flex items-center gap-2">
             <motion.button

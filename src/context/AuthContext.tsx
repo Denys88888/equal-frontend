@@ -16,11 +16,13 @@ import {
   useRef,
   type ReactNode,
 } from 'react';
+import { useTranslation } from 'react-i18next';
 import { TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/api/client';
 import { authApi, usersApi } from '@/api';
 import type { User, UserProfile } from '@/api/types';
-import { useUserSocket } from '@/hooks/useSocket';
+import { useUserSocket, type MatchNewEvent } from '@/hooks/useSocket';
 import { usePushSubscription } from '@/hooks/usePushSubscription';
+import { useNotifications, type AppNotification } from '@/hooks/useNotifications';
 
 // ───────────────────────────────────────────────────────────
 // AUTH STATE SHAPE
@@ -37,6 +39,14 @@ export interface AuthState {
   isAuthenticated: boolean;
   /** Error from the most recent auth operation */
   error: string | null;
+  /**
+   * In-app notification history — separate from OS push (usePushSubscription
+   * handles that independently). Owned here, once, so the bell that reads it
+   * and the socket listener that writes to it share one instance instead of
+   * two out-of-sync copies of the same localStorage-backed hook.
+   */
+  notifications: AppNotification[];
+  unreadNotificationCount: number;
 }
 
 export interface AuthActions {
@@ -64,6 +74,12 @@ export interface AuthActions {
 
   /** Clear any active error message */
   clearError: () => void;
+
+  /** Mark one in-app notification as read */
+  markNotificationRead: (id: string) => void;
+
+  /** Mark all in-app notifications as read */
+  markAllNotificationsRead: () => void;
 }
 
 // ───────────────────────────────────────────────────────────
@@ -94,6 +110,7 @@ export interface AuthProviderProps {
 // ───────────────────────────────────────────────────────────
 
 export function AuthProvider({ children }: AuthProviderProps) {
+  const { t } = useTranslation();
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -220,6 +237,23 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setError(null);
   }, []);
 
+  // In-app notification history. The bell existed and compiled but was never
+  // rendered anywhere and nothing ever called addNotification — it was
+  // permanently empty, unreachable UI. OS-level push (usePushSubscription,
+  // below) already works independently; this adds a persistent history within
+  // the app, which push alone doesn't provide once a system notification is
+  // dismissed.
+  const { notifications, unreadCount: unreadNotificationCount, addNotification, markAsRead: markNotificationRead, markAllAsRead: markAllNotificationsRead } = useNotifications();
+
+  const onMatchNew = useCallback((event: MatchNewEvent) => {
+    addNotification({
+      title: t('notifications.newMatchTitle', { defaultValue: "It's a match! 💜" }),
+      body: t('notifications.newMatchBody', { defaultValue: 'You have a new connection — say hello!' }),
+      type: 'match',
+      url: `/chat/${event.matchId}`,
+    });
+  }, [addNotification]);
+
   // ── Render ───────────────────────────────────────────────
 
   const value: AuthState & AuthActions = {
@@ -228,16 +262,20 @@ export function AuthProvider({ children }: AuthProviderProps) {
     isLoading,
     isAuthenticated,
     error,
+    notifications,
+    unreadNotificationCount,
     loginWithPi,
     logout,
     refreshProfile,
     updateProfile,
     setToken,
     clearError,
+    markNotificationRead,
+    markAllNotificationsRead,
   };
 
   // Subscribe to user-level socket room for real-time match notifications
-  useUserSocket(user?.id);
+  useUserSocket(user?.id, onMatchNew);
   // Subscribe to web push notifications after login
   usePushSubscription(user?.id);
 

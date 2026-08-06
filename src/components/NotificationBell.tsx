@@ -1,12 +1,17 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bell, Check } from 'lucide-react';
-import { useNotifications } from '@/hooks/useNotifications';
+import { useAuth } from '@/context/AuthContext';
 
 export default function NotificationBell() {
   const { t } = useTranslation();
-  const { notifications, unreadCount, markAsRead, markAllAsRead } = useNotifications();
+  const navigate = useNavigate();
+  // Shared with AuthContext's socket listener — a locally-owned useNotifications()
+  // here would never see notifications added by the match:new handler elsewhere,
+  // since the hook's state isn't synced across separate instances.
+  const { notifications, unreadNotificationCount: unreadCount, markNotificationRead: markAsRead, markAllNotificationsRead: markAllAsRead } = useAuth();
   const [open, setOpen] = useState(false);
 
   const recentNotifications = notifications.slice(0, 10);
@@ -66,7 +71,10 @@ export default function NotificationBell() {
                     <motion.button
                       key={n.id}
                       whileTap={{ backgroundColor: 'rgba(187,131,201,0.05)' }}
-                      onClick={() => markAsRead(n.id)}
+                      onClick={() => {
+                        markAsRead(n.id);
+                        if (n.url) { setOpen(false); navigate(n.url); }
+                      }}
                       className="w-full text-left px-4 py-3 border-b flex items-start gap-3"
                       style={{
                         borderColor: 'rgba(0,0,0,0.04)',
