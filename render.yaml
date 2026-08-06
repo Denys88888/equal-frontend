@@ -15,3 +15,10 @@ services:
         value: https://equal-backend.onrender.com/v1
       - key: VITE_WS_URL
         value: wss://equal-backend.onrender.com
+      # App is registered as Testnet in the Pi Developer Portal. Without this,
+      # Pi.init() defaults to sandbox:false (mainnet) at build time, and the
+      # Pi wallet rejects createPayment() for a mainnet request against an
+      # app that's only approved for testnet — every payment (gifts, donate)
+      # fails silently from the user's point of view.
+      - key: VITE_PI_SANDBOX
+        value: "true"
