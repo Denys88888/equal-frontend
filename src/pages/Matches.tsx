@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence, type PanInfo } from 'framer-motion';
-import { Search, Trash2, Circle, Sparkles, ExternalLink, X, Utensils } from 'lucide-react';
+import { Search, Trash2, Circle, Sparkles, ExternalLink, X, Utensils, ChevronRight } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useTranslation } from 'react-i18next';
 import Layout from '@/components/Layout';
@@ -662,6 +662,29 @@ export default function Matches() {
         }
       >
         <div className="flex-1 flex flex-col overflow-hidden">
+          {/* Daily Match entry point. The bottom tab bar is full at five tabs,
+              so the feature is reached from here rather than restructuring nav. */}
+          <button
+            onClick={() => navigate('/daily-match')}
+            className="mx-5 mt-3 mb-1 rounded-2xl px-4 py-3 flex items-center gap-3 text-left"
+            style={{ background: 'linear-gradient(135deg, rgba(187,131,201,0.14), rgba(123,196,232,0.14))', border: '1.5px solid rgba(187,131,201,0.28)' }}
+          >
+            <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0"
+              style={{ backgroundColor: '#BB83C9' }}>
+              <Sparkles size={17} color="#fff" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold text-[var(--charcoal)]"
+                style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                {t('dailyMatch.title', { defaultValue: 'Daily Match' })}
+              </p>
+              <p className="text-xs text-[var(--charcoal)]/50 truncate">
+                {t('dailyMatch.yourMatchToday', { defaultValue: 'Your match today' })}
+              </p>
+            </div>
+            <ChevronRight size={18} className="text-[var(--charcoal)]/30 flex-shrink-0" />
+          </button>
+
           {/* Search Bar */}
           <AnimatePresence>
             {showSearch && (

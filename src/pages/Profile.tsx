@@ -31,6 +31,7 @@ import { useTranslation } from 'react-i18next';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Textarea } from '@/components/ui/textarea';
 import Layout from '@/components/Layout';
+import VoiceIntroRecorder from '@/components/VoiceIntroRecorder';
 import { useToast } from '@/hooks/useToast';
 
 /* ───────────────────── Fallback User Data ───────────────────── */
@@ -298,6 +299,7 @@ export default function Profile() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [showBadgeDetail, setShowBadgeDetail] = useState<string | null>(null);
   const [showTrustInfo, setShowTrustInfo] = useState(false);
+  const [voiceIntroUrl, setVoiceIntroUrl] = useState<string | null>(null);
 
   // Photo upload — both the hero "edit photo" pencil and the "+" add-photo tile
   // used to have no onClick at all, so tapping them (the app's only real
@@ -372,6 +374,7 @@ export default function Profile() {
       setUser(mapped);
       setBio(mapped.bio);
       setEditBioText(mapped.bio);
+      setVoiceIntroUrl((d as unknown as { voiceIntroUrl?: string | null }).voiceIntroUrl ?? null);
     }).catch(() => {});
   }, []);
 
@@ -753,6 +756,16 @@ export default function Profile() {
             })}
           </div>
         </motion.div>
+
+        {/* ─────────────── Voice Intro ─────────────── */}
+        {/* Mandatory for Daily Match — a profile without one is excluded from
+            matching server-side, so it belongs on the main profile screen. */}
+        <div className="px-5">
+          <VoiceIntroRecorder
+            existingUrl={voiceIntroUrl}
+            onSaved={(url) => setVoiceIntroUrl(url)}
+          />
+        </div>
 
         {/* ─────────────── Spark Balance ─────────────── */}
         <SparkBalanceCard

@@ -16,6 +16,7 @@ const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
 const TermsOfService = lazy(() => import('./pages/TermsOfService'))
 const Clubs = lazy(() => import('./pages/Clubs'))
 const Events = lazy(() => import('./pages/Events'))
+const DailyMatch = lazy(() => import('./pages/DailyMatch'))
 const Admin = lazy(() => import('./pages/Admin'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
@@ -39,6 +40,7 @@ function AnimatedRoutes() {
       <Route path="/profile/:userId" element={<PublicProfile />} />
       <Route path="/clubs" element={<Clubs />} />
       <Route path="/events" element={<Events />} />
+      <Route path="/daily-match" element={<DailyMatch />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/privacy" element={<PrivacyPolicy />} />
       <Route path="/terms" element={<TermsOfService />} />

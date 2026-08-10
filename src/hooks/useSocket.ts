@@ -148,3 +148,54 @@ export function useClubSocket(
     };
   }, [clubId]);
 }
+
+export interface IncomingDailyMessage {
+  id: string;
+  dailyMatchId: string;
+  senderId: string;
+  content: string;
+  kind: 'TEXT' | 'SYSTEM';
+  createdAt: string;
+}
+
+/**
+ * Joins a Daily Match room. Membership is verified server-side against the DB,
+ * so passing someone else's match id gets rejected rather than eavesdropped.
+ *
+ * `onReveal` fires when both sides have answered the icebreaker — the moment
+ * the answers become visible to each other.
+ */
+export function useDailySocket(
+  dailyMatchId: string | undefined,
+  onMessage: (msg: IncomingDailyMessage) => void,
+  onReveal?: () => void,
+) {
+  const onMessageRef = useRef(onMessage);
+  onMessageRef.current = onMessage;
+  const onRevealRef = useRef(onReveal);
+  onRevealRef.current = onReveal;
+
+  useEffect(() => {
+    if (!dailyMatchId) return;
+    const socket = getSocket();
+
+    const join = () => socket.emit('join:daily', dailyMatchId);
+    if (socket.connected) join();
+    else socket.on('connect', join);
+
+    const onMsg = (msg: IncomingDailyMessage) => {
+      if (msg.dailyMatchId === dailyMatchId) onMessageRef.current(msg);
+    };
+    const onRev = (payload: { matchId: string }) => {
+      if (payload.matchId === dailyMatchId) onRevealRef.current?.();
+    };
+    socket.on('daily:message', onMsg);
+    socket.on('daily:icebreaker-revealed', onRev);
+
+    return () => {
+      socket.off('connect', join);
+      socket.off('daily:message', onMsg);
+      socket.off('daily:icebreaker-revealed', onRev);
+    };
+  }, [dailyMatchId]);
+}
