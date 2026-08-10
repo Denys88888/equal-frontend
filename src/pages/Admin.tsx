@@ -32,7 +32,7 @@ import {
 } from 'lucide-react';
 import Layout from '@/components/Layout';
 import {
-  getAdminStats, getRevenueHistory, getAdminUsers, getPendingReports,
+  getAdminStats, getRevenueHistory, getAdminUsers, getPendingReports, resolveReport, banUser,
   getAdminClubs, approveClub, deleteClub, getAdminEvents, deleteEvent, toggleEventFeatured,
   setSupportEmail,
 } from '@/api/admin';
@@ -336,18 +336,24 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
     return true;
   });
 
-  const handleWarn = (id: string) => {
+  // These three only ever touched local state before — the "Ban" button
+  // never actually banned anyone server-side, it just relabeled the report
+  // in this admin's own browser. resolveReport() already applies the real
+  // effect (isActive:false / trustScore -10) as part of resolving the report.
+  const resolve = async (id: string, action: 'warn' | 'ban' | 'none', successMsg: string) => {
+    const snapshot = reports;
     setReports((prev) => prev.map((r) => (r.id === id ? { ...r, status: 'Resolved' as const } : r)));
-    showToast(t('admin.warnedSuccess'));
+    try {
+      await resolveReport(id, action);
+      showToast(successMsg);
+    } catch {
+      setReports(snapshot);
+      showToast(t('admin.actionFailed', { defaultValue: 'Action failed' }));
+    }
   };
-  const handleBan = (id: string) => {
-    setReports((prev) => prev.map((r) => (r.id === id ? { ...r, status: 'Resolved' as const } : r)));
-    showToast(t('admin.bannedSuccess'));
-  };
-  const handleDismiss = (id: string) => {
-    setReports((prev) => prev.map((r) => (r.id === id ? { ...r, status: 'Resolved' as const } : r)));
-    showToast(t('admin.reportDismissed'));
-  };
+  const handleWarn = (id: string) => resolve(id, 'warn', t('admin.warnedSuccess'));
+  const handleBan = (id: string) => resolve(id, 'ban', t('admin.bannedSuccess'));
+  const handleDismiss = (id: string) => resolve(id, 'none', t('admin.reportDismissed'));
 
   return (
     <div className="space-y-4">
@@ -465,6 +471,7 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
 
 function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [search, setSearch] = useState('');
   const [selectedUser, setSelectedUser] = useState<AppUser | null>(null);
   const [users, setUsers] = useState<AppUser[]>([]);
@@ -478,10 +485,17 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
     u.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  const handleBanUser = (userId: string) => {
+  const handleBanUser = async (userId: string) => {
+    const snapshot = users;
     setUsers((prev) => prev.map((u) => (u.id === userId ? { ...u, status: 'Banned' as const } : u)));
-    showToast(t('admin.bannedSuccess'));
     setSelectedUser(null);
+    try {
+      await banUser(userId);
+      showToast(t('admin.bannedSuccess'));
+    } catch {
+      setUsers(snapshot);
+      showToast(t('admin.actionFailed', { defaultValue: 'Action failed' }));
+    }
   };
 
   const getTrustColor = (score: number) => {
@@ -645,7 +659,7 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
               <DialogFooter className="flex-col gap-2 sm:flex-col">
                 <Button
                   className="w-full h-11 rounded-full font-semibold bg-[#BB83C9] text-white hover:bg-[#9A63A8]"
-                  onClick={() => { showToast(t('admin.viewingProfile')); setSelectedUser(null); }}
+                  onClick={() => navigate(`/profile/${selectedUser.id}`)}
                 >
                   <Eye size={16} className="mr-2" />
                   {t('admin.viewProfile')}
