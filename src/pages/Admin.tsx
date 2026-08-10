@@ -33,12 +33,12 @@ import {
 import Layout from '@/components/Layout';
 import {
   getAdminStats, getRevenueHistory, getAdminUsers, getPendingReports, resolveReport, banUser,
-  getAdminClubs, approveClub, deleteClub, getAdminEvents, deleteEvent, toggleEventFeatured,
-  setSupportEmail,
+  getAdminClubs, approveClub, deleteClub, getAdminEvents, deleteEvent, updateEvent, toggleEventFeatured,
+  setSupportEmail, adjustTrust, awardBadge, getPendingVerifications, reviewVerification,
 } from '@/api/admin';
-import type { RevenueTransaction } from '@/api/admin';
+import type { RevenueTransaction, PendingVerification } from '@/api/admin';
 import { getSupportEmail } from '@/api/settings';
-import type { AdminStats } from '@/api/types';
+import type { AdminStats, AwardBadgeRequest } from '@/api/types';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import {
@@ -57,6 +57,7 @@ import {
 } from '@/components/ui/accordion';
 import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import {
   Select,
@@ -105,10 +106,16 @@ interface AppEvent {
   id: string;
   name: string;
   date: string;
+  rawDate: string;
   attendees: number;
   status: 'Upcoming' | 'Ongoing' | 'Past';
   location: string;
   featured: boolean;
+  description: string;
+  city: string;
+  category: string;
+  price: number;
+  maxAttendees: number | null;
 }
 
 // ── Mock Data ──────────────────────────────────────────
@@ -817,6 +824,9 @@ function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
 function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
   const { t } = useTranslation();
   const [events, setEvents] = useState<AppEvent[]>([]);
+  const [editingEvent, setEditingEvent] = useState<AppEvent | null>(null);
+  const [editForm, setEditForm] = useState({ name: '', description: '', date: '', location: '', city: '', category: '', price: '', maxAttendees: '' });
+  const [savingEdit, setSavingEdit] = useState(false);
 
   useEffect(() => {
     getAdminEvents()
@@ -826,14 +836,72 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
           id: e.id,
           name: e.name,
           date: new Date(e.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }),
+          rawDate: e.date,
           attendees: e.attendees,
           status: e.status,
           location: e.location,
           featured: e.featured,
+          description: e.description,
+          city: e.city,
+          category: e.category,
+          price: e.price,
+          maxAttendees: e.maxAttendees,
         })));
       })
       .catch(() => {});
   }, []);
+
+  const openEdit = (evt: AppEvent) => {
+    setEditingEvent(evt);
+    setEditForm({
+      name: evt.name,
+      description: evt.description,
+      // <input type="date"> needs YYYY-MM-DD
+      date: evt.rawDate ? new Date(evt.rawDate).toISOString().slice(0, 10) : '',
+      location: evt.location,
+      city: evt.city,
+      category: evt.category,
+      price: String(evt.price ?? 0),
+      maxAttendees: evt.maxAttendees != null ? String(evt.maxAttendees) : '',
+    });
+  };
+
+  const handleSaveEdit = async () => {
+    if (!editingEvent) return;
+    setSavingEdit(true);
+    try {
+      const price = parseFloat(editForm.price);
+      const maxAttendees = editForm.maxAttendees.trim() ? parseInt(editForm.maxAttendees, 10) : undefined;
+      await updateEvent(editingEvent.id, {
+        title: editForm.name,
+        description: editForm.description,
+        date: editForm.date ? new Date(editForm.date).toISOString() : undefined,
+        location: editForm.location,
+        city: editForm.city,
+        category: editForm.category,
+        price: Number.isFinite(price) ? price : undefined,
+        maxAttendees,
+      });
+      setEvents((prev) => prev.map((e) => (e.id === editingEvent.id ? {
+        ...e,
+        name: editForm.name,
+        description: editForm.description,
+        date: editForm.date ? new Date(editForm.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : e.date,
+        rawDate: editForm.date ? new Date(editForm.date).toISOString() : e.rawDate,
+        location: editForm.location,
+        city: editForm.city,
+        category: editForm.category,
+        price: Number.isFinite(price) ? price : e.price,
+        maxAttendees: maxAttendees ?? e.maxAttendees,
+      } : e)));
+      showToast(t('admin.eventUpdated', { defaultValue: 'Event updated' }));
+      setEditingEvent(null);
+    } catch {
+      showToast(t('admin.actionFailed', { defaultValue: 'Action failed' }));
+    } finally {
+      setSavingEdit(false);
+    }
+  };
 
   const handleDelete = async (id: string) => {
     const snapshot = events;
@@ -923,7 +991,7 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
                   size="sm"
                   variant="outline"
                   className="flex-1 h-8 rounded-full text-xs font-semibold border-[var(--linen-dark)] text-[var(--charcoal)]/60 hover:bg-[var(--linen)]"
-                  onClick={() => showToast(t('admin.editModeOpened'))}
+                  onClick={() => openEdit(evt)}
                 >
                   <Edit3 size={14} className="mr-1" />
                   Edit
@@ -951,6 +1019,179 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
           );
         })}
       </div>
+
+      <Dialog open={!!editingEvent} onOpenChange={(open) => !open && setEditingEvent(null)}>
+        <DialogContent className="max-w-[360px] rounded-2xl border-0" style={{ backgroundColor: 'var(--card-bg)' }}>
+          <DialogHeader>
+            <DialogTitle className="text-lg font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              {t('admin.editEvent', { defaultValue: 'Edit event' })}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-3 max-h-[60vh] overflow-y-auto pr-1">
+            <Input
+              placeholder={t('admin.eventName', { defaultValue: 'Event name' })}
+              value={editForm.name}
+              onChange={(e) => setEditForm((f) => ({ ...f, name: e.target.value }))}
+              className="h-11 rounded-xl border-[var(--linen-dark)] text-sm text-[var(--charcoal)]"
+            />
+            <Textarea
+              placeholder={t('admin.eventDescription', { defaultValue: 'Description' })}
+              value={editForm.description}
+              onChange={(e) => setEditForm((f) => ({ ...f, description: e.target.value }))}
+              className="rounded-xl border-[var(--linen-dark)] text-sm text-[var(--charcoal)] min-h-[72px]"
+            />
+            <Input
+              type="date"
+              value={editForm.date}
+              onChange={(e) => setEditForm((f) => ({ ...f, date: e.target.value }))}
+              className="h-11 rounded-xl border-[var(--linen-dark)] text-sm text-[var(--charcoal)]"
+            />
+            <Input
+              placeholder={t('admin.eventLocation', { defaultValue: 'Location' })}
+              value={editForm.location}
+              onChange={(e) => setEditForm((f) => ({ ...f, location: e.target.value }))}
+              className="h-11 rounded-xl border-[var(--linen-dark)] text-sm text-[var(--charcoal)]"
+            />
+            <Input
+              placeholder={t('admin.eventCity', { defaultValue: 'City' })}
+              value={editForm.city}
+              onChange={(e) => setEditForm((f) => ({ ...f, city: e.target.value }))}
+              className="h-11 rounded-xl border-[var(--linen-dark)] text-sm text-[var(--charcoal)]"
+            />
+            <Input
+              placeholder={t('admin.eventCategory', { defaultValue: 'Category' })}
+              value={editForm.category}
+              onChange={(e) => setEditForm((f) => ({ ...f, category: e.target.value }))}
+              className="h-11 rounded-xl border-[var(--linen-dark)] text-sm text-[var(--charcoal)]"
+            />
+            <div className="flex gap-2">
+              <Input
+                type="number"
+                min={0}
+                step="0.1"
+                placeholder={t('admin.eventPrice', { defaultValue: 'Price (Pi)' })}
+                value={editForm.price}
+                onChange={(e) => setEditForm((f) => ({ ...f, price: e.target.value }))}
+                className="h-11 rounded-xl border-[var(--linen-dark)] text-sm text-[var(--charcoal)]"
+              />
+              <Input
+                type="number"
+                min={0}
+                placeholder={t('admin.eventMaxAttendees', { defaultValue: 'Max attendees' })}
+                value={editForm.maxAttendees}
+                onChange={(e) => setEditForm((f) => ({ ...f, maxAttendees: e.target.value }))}
+                className="h-11 rounded-xl border-[var(--linen-dark)] text-sm text-[var(--charcoal)]"
+              />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button
+              className="w-full h-11 rounded-full font-semibold bg-[#BB83C9] text-white hover:bg-[#9A63A8]"
+              onClick={handleSaveEdit}
+              disabled={savingEdit || !editForm.name.trim()}
+            >
+              {savingEdit ? t('admin.saving', { defaultValue: 'Saving…' }) : t('admin.save', { defaultValue: 'Save' })}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+}
+
+// ── Verification Requests ───────────────────────────────
+// Users can submit a selfie video via VerificationDialog.tsx, and the real
+// approve/reject endpoints already existed here — but nothing in the admin
+// UI ever rendered getPendingVerifications()/reviewVerification(), so every
+// submission queued forever with no way to actually review or approve it.
+
+function VerificationRequests({ showToast }: { showToast: (msg: string) => void }) {
+  const { t } = useTranslation();
+  const [requests, setRequests] = useState<PendingVerification[]>([]);
+  const [busyId, setBusyId] = useState<string | null>(null);
+
+  useEffect(() => {
+    getPendingVerifications().then((data) => { if (data) setRequests(data); }).catch(() => {});
+  }, []);
+
+  const handleReview = async (id: string, approve: boolean) => {
+    setBusyId(id);
+    const snapshot = requests;
+    setRequests((prev) => prev.filter((r) => r.id !== id));
+    try {
+      await reviewVerification(id, approve);
+      showToast(approve
+        ? t('admin.verificationApproved', { defaultValue: 'Verification approved' })
+        : t('admin.verificationRejected', { defaultValue: 'Verification rejected' }));
+    } catch {
+      setRequests(snapshot);
+      showToast(t('admin.actionFailed', { defaultValue: 'Action failed' }));
+    } finally {
+      setBusyId(null);
+    }
+  };
+
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <h2 className="text-lg font-semibold text-[var(--charcoal)] flex items-center gap-2" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
+          <ShieldCheck size={18} className="text-[#7DE0B3]" />
+          {t('admin.verificationRequests', { defaultValue: 'Verification requests' })}
+        </h2>
+        <span className="text-xs font-medium px-2.5 py-1 rounded-full" style={{ backgroundColor: 'rgba(125,224,179,0.15)', color: '#5BC492' }}>
+          {requests.length}
+        </span>
+      </div>
+
+      {requests.length === 0 ? (
+        <p className="text-sm text-[var(--charcoal)]/40 px-1">
+          {t('admin.noVerifications', { defaultValue: 'No pending verification requests' })}
+        </p>
+      ) : (
+        <div className="space-y-2">
+          {requests.map((req) => (
+            <div
+              key={req.id}
+              className="p-4 rounded-2xl flex items-center gap-3"
+              style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
+            >
+              <video
+                src={req.mediaUrl}
+                controls
+                playsInline
+                className="w-20 h-28 rounded-xl object-cover flex-shrink-0"
+                style={{ backgroundColor: 'var(--linen)' }}
+              />
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-semibold text-[var(--charcoal)] truncate">{req.user.name}</p>
+                <p className="text-xs text-[var(--charcoal)]/40 truncate">@{req.user.username}</p>
+                <p className="text-xs text-[var(--charcoal)]/50 mt-1">{t(`verification.gesture_${req.gesture}`, { defaultValue: req.gesture })}</p>
+                <div className="flex gap-2 mt-2">
+                  <Button
+                    size="sm"
+                    disabled={busyId === req.id}
+                    className="h-8 rounded-full text-xs font-semibold bg-[#7DE0B3] text-[var(--charcoal)] hover:bg-[#5BC492]"
+                    onClick={() => handleReview(req.id, true)}
+                  >
+                    <Check size={14} className="mr-1" />
+                    {t('admin.approve')}
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    disabled={busyId === req.id}
+                    className="h-8 rounded-full text-xs font-semibold border-[#E86A6A] text-[#E86A6A] hover:bg-[#E86A6A]/10"
+                    onClick={() => handleReview(req.id, false)}
+                  >
+                    <X size={14} className="mr-1" />
+                    {t('admin.reject')}
+                  </Button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -1015,27 +1256,50 @@ function SupportEmailCard({ showToast }: { showToast: (msg: string) => void }) {
 
 function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
   const { t } = useTranslation();
-  const [awardUser, setAwardUser] = useState('');
-  const [awardBadge, setAwardBadge] = useState('');
-  const [trustUser, setTrustUser] = useState('');
+  // Selects store the user's real id now, not their display name — awardBadge()/
+  // adjustTrust() need a real id to act on, and names aren't guaranteed unique.
+  const [awardUserId, setAwardUserId] = useState('');
+  const [awardBadgeValue, setAwardBadgeValue] = useState('');
+  const [trustUserId, setTrustUserId] = useState('');
   const [trustScoreValue, setTrustScoreValue] = useState(50);
-
-  const handleAwardBadge = () => {
-    if (!awardUser || !awardBadge) return;
-    showToast(t('admin.badgeAwarded', { badge: awardBadge, user: awardUser }));
-    setAwardUser('');
-    setAwardBadge('');
-  };
-
-  const handleAdjustTrust = () => {
-    if (!trustUser) return;
-    showToast(t('admin.trustAdjusted', { score: trustScoreValue, user: trustUser }));
-    setTrustUser('');
-  };
+  const [awarding, setAwarding] = useState(false);
+  const [adjustingTrust, setAdjustingTrust] = useState(false);
 
   const [adminUsers, setAdminUsers] = useState<AppUser[]>([]);
   useEffect(() => { getAdminUsers().then((d) => { if (d) setAdminUsers(d as unknown as AppUser[]); }).catch(() => {}); }, []);
-  const userNames = adminUsers.map((u) => u.name);
+
+  const handleAwardBadge = async () => {
+    if (!awardUserId || !awardBadgeValue) return;
+    const userName = adminUsers.find((u) => u.id === awardUserId)?.name ?? '';
+    setAwarding(true);
+    try {
+      await awardBadge(awardUserId, awardBadgeValue as AwardBadgeRequest['badge']);
+      showToast(t('admin.badgeAwarded', { badge: awardBadgeValue, user: userName }));
+      setAwardUserId('');
+      setAwardBadgeValue('');
+    } catch {
+      showToast(t('admin.actionFailed', { defaultValue: 'Action failed' }));
+    } finally {
+      setAwarding(false);
+    }
+  };
+
+  const handleAdjustTrust = async () => {
+    if (!trustUserId) return;
+    const userName = adminUsers.find((u) => u.id === trustUserId)?.name ?? '';
+    setAdjustingTrust(true);
+    try {
+      // 'reason' is required by the request shape but currently unused server-side
+      // (see admin.controller.ts adjustTrust — only score is read).
+      await adjustTrust(trustUserId, trustScoreValue, 'Manual admin adjustment');
+      showToast(t('admin.trustAdjusted', { score: trustScoreValue, user: userName }));
+      setTrustUserId('');
+    } catch {
+      showToast(t('admin.actionFailed', { defaultValue: 'Action failed' }));
+    } finally {
+      setAdjustingTrust(false);
+    }
+  };
 
   return (
     <div className="space-y-4">
@@ -1052,18 +1316,18 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
         </h3>
 
         <div className="space-y-3">
-          <Select value={awardUser} onValueChange={setAwardUser}>
+          <Select value={awardUserId} onValueChange={setAwardUserId}>
             <SelectTrigger className="w-full h-11 rounded-xl border-[var(--linen-dark)] text-sm text-[var(--charcoal)]">
               <SelectValue placeholder={t('admin.selectUser')} />
             </SelectTrigger>
             <SelectContent>
-              {userNames.map((name) => (
-                <SelectItem key={name} value={name}>{name}</SelectItem>
+              {adminUsers.map((u) => (
+                <SelectItem key={u.id} value={u.id}>{u.name}</SelectItem>
               ))}
             </SelectContent>
           </Select>
 
-          <Select value={awardBadge} onValueChange={setAwardBadge}>
+          <Select value={awardBadgeValue} onValueChange={setAwardBadgeValue}>
             <SelectTrigger className="w-full h-11 rounded-xl border-[var(--linen-dark)] text-sm text-[var(--charcoal)]">
               <SelectValue placeholder={t('admin.selectBadge')} />
             </SelectTrigger>
@@ -1077,9 +1341,9 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
           <Button
             className="w-full h-11 rounded-full font-semibold bg-[#BB83C9] text-white hover:bg-[#9A63A8]"
             onClick={handleAwardBadge}
-            disabled={!awardUser || !awardBadge}
+            disabled={!awardUserId || !awardBadgeValue || awarding}
           >
-            {t('admin.awardBadge')}
+            {awarding ? t('admin.saving', { defaultValue: 'Saving…' }) : t('admin.awardBadge')}
           </Button>
         </div>
       </div>
@@ -1091,13 +1355,13 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
         </h3>
 
         <div className="space-y-3">
-          <Select value={trustUser} onValueChange={setTrustUser}>
+          <Select value={trustUserId} onValueChange={setTrustUserId}>
             <SelectTrigger className="w-full h-11 rounded-xl border-[var(--linen-dark)] text-sm text-[var(--charcoal)]">
               <SelectValue placeholder={t('admin.selectUser')} />
             </SelectTrigger>
             <SelectContent>
-              {userNames.map((name) => (
-                <SelectItem key={name} value={name}>{name}</SelectItem>
+              {adminUsers.map((u) => (
+                <SelectItem key={u.id} value={u.id}>{u.name}</SelectItem>
               ))}
             </SelectContent>
           </Select>
@@ -1129,9 +1393,9 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
           <Button
             className="w-full h-11 rounded-full font-semibold bg-[#7DE0B3] text-[var(--charcoal)] hover:bg-[#5BC492]"
             onClick={handleAdjustTrust}
-            disabled={!trustUser}
+            disabled={!trustUserId || adjustingTrust}
           >
-            {t('admin.adjustTrust')}
+            {adjustingTrust ? t('admin.saving', { defaultValue: 'Saving…' }) : t('admin.adjustTrust')}
           </Button>
         </div>
       </div>
@@ -1211,6 +1475,9 @@ export default function Admin() {
 
         {/* Event Management */}
         <EventManagement showToast={showToast} />
+
+        {/* Verification Requests */}
+        <VerificationRequests showToast={showToast} />
 
         {/* Manual Actions */}
         <ManualActions showToast={showToast} />

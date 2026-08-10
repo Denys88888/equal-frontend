@@ -131,11 +131,27 @@ export interface AdminClub {
 export interface AdminEvent {
   id: string;
   name: string;
+  description: string;
   date: string;
   location: string;
+  city: string;
+  category: string;
+  price: number;
+  maxAttendees: number | null;
   attendees: number;
   featured: boolean;
   status: 'Upcoming' | 'Past';
+}
+
+export interface UpdateEventRequest {
+  title?: string;
+  description?: string;
+  date?: string;
+  location?: string;
+  city?: string;
+  category?: string;
+  price?: number;
+  maxAttendees?: number;
 }
 
 export async function getAdminClubs(): Promise<AdminClub[]> {
@@ -154,6 +170,10 @@ export async function deleteClub(clubId: string): Promise<void> {
 export async function getAdminEvents(): Promise<AdminEvent[]> {
   const { data } = await api.get<AdminEvent[]>('/admin/events');
   return data;
+}
+
+export async function updateEvent(eventId: string, body: UpdateEventRequest): Promise<void> {
+  await api.patch<void>(`/admin/events/${encodeURIComponent(eventId)}`, body);
 }
 
 export async function deleteEvent(eventId: string): Promise<void> {
@@ -217,6 +237,7 @@ export const adminApi = {
   deleteClub,
   getAdminEvents,
   deleteEvent,
+  updateEvent,
   toggleEventFeatured,
   setSupportEmail,
 };

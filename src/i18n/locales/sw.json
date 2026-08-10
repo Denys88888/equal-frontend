@@ -597,7 +597,20 @@
     "supportEmailHint": "Where the app's Help Center and Report a Problem rows send users.",
     "supportEmailSaved": "Support email updated",
     "saving": "Saving…",
-    "save": "Save"
+    "save": "Save",
+    "verificationRequests": "Verification requests",
+    "noVerifications": "No pending verification requests",
+    "verificationApproved": "Verification approved",
+    "verificationRejected": "Verification rejected",
+    "editEvent": "Edit event",
+    "eventName": "Event name",
+    "eventDescription": "Description",
+    "eventLocation": "Location",
+    "eventCity": "City",
+    "eventCategory": "Category",
+    "eventPrice": "Price (Pi)",
+    "eventMaxAttendees": "Max attendees",
+    "eventUpdated": "Event updated"
   },
   "legal": {
     "termsTitle": "Terms of Service",

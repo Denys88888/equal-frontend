@@ -597,7 +597,20 @@
     "supportEmailHint": "Where the app's Help Center and Report a Problem rows send users.",
     "supportEmailSaved": "Support email updated",
     "saving": "Saving…",
-    "save": "Save"
+    "save": "Save",
+    "verificationRequests": "Заявки на верификацию",
+    "noVerifications": "Нет заявок на верификацию",
+    "verificationApproved": "Верификация одобрена",
+    "verificationRejected": "Верификация отклонена",
+    "editEvent": "Редактировать событие",
+    "eventName": "Название события",
+    "eventDescription": "Описание",
+    "eventLocation": "Место",
+    "eventCity": "Город",
+    "eventCategory": "Категория",
+    "eventPrice": "Цена (Pi)",
+    "eventMaxAttendees": "Макс. участников",
+    "eventUpdated": "Событие обновлено"
   },
   "legal": {
     "termsTitle": "Условия использования",
