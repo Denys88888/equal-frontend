@@ -122,6 +122,7 @@ export default function Onboarding() {
   const [step, setStep] = useState(1);
   const [direction, setDirection] = useState(1);
   const [isCompleting, setIsCompleting] = useState(false);
+  const [completeError, setCompleteError] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [activePhotoSlot, setActivePhotoSlot] = useState<number | null>(null);
 
@@ -215,7 +216,13 @@ export default function Onboarding() {
   /* ---- completion ---- */
   const handleComplete = async () => {
     setIsCompleting(true);
+    setCompleteError('');
     try {
+      // These fields (especially gender/lookingFor) gate the whole matching
+      // system and Welcome's "does this user have a profile yet" check — if
+      // this save fails, the user must NOT be sent on to Discover, or they
+      // land with an empty profile and get bounced back to onboarding every
+      // time they open the app with no way to tell why.
       await updateMe({
         name: data.name || undefined,
         birthDate: data.dob || undefined,
@@ -226,18 +233,21 @@ export default function Onboarding() {
         interests: data.interests.length > 0 ? data.interests : undefined,
         goals: data.goal ? [data.goal] : undefined,
       } as Parameters<typeof updateMe>[0]);
-
-      // Upload photos collected during onboarding
-      const photosWithFile = data.photos.filter((p) => p?.file);
-      for (let i = 0; i < photosWithFile.length; i++) {
-        try {
-          await uploadPhoto(photosWithFile[i].file!, i === 0);
-        } catch {
-          // non-critical
-        }
-      }
     } catch {
-      // non-critical — user can update profile later
+      setIsCompleting(false);
+      setCompleteError(t('onboarding.saveFailed', { defaultValue: 'Could not save your profile — please try again' }));
+      return;
+    }
+
+    // Photos are more recoverable (can be re-added from Profile later), so a
+    // single failed upload doesn't block finishing onboarding.
+    const photosWithFile = data.photos.filter((p) => p?.file);
+    for (let i = 0; i < photosWithFile.length; i++) {
+      try {
+        await uploadPhoto(photosWithFile[i].file!, i === 0);
+      } catch {
+        // non-critical
+      }
     }
     setTimeout(() => navigate('/discover'), 1200);
   };
@@ -436,11 +446,16 @@ export default function Onboarding() {
           style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 16px)' }}
         >
           <div className="w-full max-w-[430px] px-5 py-4" style={{ backgroundColor: 'var(--linen)' }}>
+            {completeError && (
+              <p className="text-center text-sm mb-2" style={{ color: '#E74C3C', fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                {completeError}
+              </p>
+            )}
             <motion.button
               whileTap={stepValid ? { scale: 0.97 } : {}}
               transition={{ duration: 0.08 }}
               onClick={step === 5 ? handleComplete : goNext}
-              disabled={!stepValid}
+              disabled={!stepValid || isCompleting}
               className="w-full h-14 rounded-full font-semibold text-base text-white transition-colors"
               style={{
                 fontFamily: "'Outfit', system-ui, sans-serif",

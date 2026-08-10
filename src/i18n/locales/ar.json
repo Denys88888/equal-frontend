@@ -262,7 +262,8 @@
     "gender_nonbinary": "Non-binary",
     "seeking_women": "Women",
     "seeking_men": "Men",
-    "seeking_everyone": "Everyone"
+    "seeking_everyone": "Everyone",
+    "saveFailed": "Could not save your profile — please try again"
   },
   "common": {
     "cancel": "إلغاء",
