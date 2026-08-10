@@ -34,10 +34,15 @@ export default function VerificationDialog({
   const [secondsLeft, setSecondsLeft] = useState(0);
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  // streamRef alone doesn't trigger a re-render — the "Enable camera" ->
+  // "Record" button switch (both its label and its onClick target) read this
+  // instead, so the switch actually happens once the stream is granted.
+  const [cameraReady, setCameraReady] = useState(false);
 
   const stopCamera = useCallback(() => {
     streamRef.current?.getTracks().forEach((tr) => tr.stop());
     streamRef.current = null;
+    setCameraReady(false);
   }, []);
 
   useEffect(() => {
@@ -69,6 +74,7 @@ export default function VerificationDialog({
         videoRef.current.srcObject = stream;
         await videoRef.current.play().catch(() => {});
       }
+      setCameraReady(true);
     } catch {
       setError(t('verification.cameraDenied', { defaultValue: 'Camera access is needed to verify your profile' }));
     }
@@ -201,7 +207,7 @@ export default function VerificationDialog({
             )}
 
             <button
-              onClick={streamRef.current ? record : startCamera}
+              onClick={cameraReady ? record : startCamera}
               disabled={recording || submitting}
               className="w-full h-[52px] rounded-xl text-sm font-semibold text-white flex items-center justify-center gap-2"
               style={{ backgroundColor: '#BB83C9', opacity: recording || submitting ? 0.6 : 1 }}
@@ -211,7 +217,7 @@ export default function VerificationDialog({
                 ? t('verification.submitting', { defaultValue: 'Submitting…' })
                 : recording
                   ? t('verification.recording', { defaultValue: 'Recording…' })
-                  : streamRef.current
+                  : cameraReady
                     ? t('verification.record', { defaultValue: 'Record' })
                     : t('verification.enableCamera', { defaultValue: 'Enable camera' })}
             </button>
