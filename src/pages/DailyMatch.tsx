@@ -13,6 +13,7 @@ import VibeCheck from '@/components/VibeCheck';
 import TruthOrDareDialog, { type TruthOrDareCard } from '@/components/TruthOrDareDialog';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useAuth } from '@/context/AuthContext';
+import { getMe } from '@/api/users';
 import { useToast } from '@/hooks/useToast';
 import { usePiPayment } from '@/hooks/usePiPayment';
 import { useDailySocket, type IncomingDailyMessage } from '@/hooks/useSocket';
@@ -23,6 +24,8 @@ import {
 } from '@/api/dailyMatch';
 
 const EXTRA_MATCH_PRICE = 0.2;
+/** Must match EXTRA_MATCH_MEMO on the server — it verifies the payment by memo. */
+const EXTRA_MATCH_MEMO = 'Extra Daily Match';
 
 /** "23:41" from a millisecond remainder. */
 function formatCountdown(ms: number): string {
@@ -60,7 +63,10 @@ export default function DailyMatchPage() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const matchTime = '15:00';
+  // Real per-user delivery time. Was hardcoded '15:00', which is only the
+  // schema default — anyone who changed it was told the wrong time everywhere
+  // it appears ("new match tomorrow at …", the vibe confirmation).
+  const [matchTime, setMatchTime] = useState('15:00');
 
   // ── Load ────────────────────────────────────────────
 
@@ -87,6 +93,12 @@ export default function DailyMatchPage() {
 
   useEffect(() => {
     getMyVibe().then((v) => setVibe(v.vibe)).catch(() => {});
+    getMe()
+      .then((me) => {
+        const t = (me as unknown as { dailyMatchTime?: string }).dailyMatchTime;
+        if (t) setMatchTime(t);
+      })
+      .catch(() => {});
   }, []);
 
   // Live countdown; MUTUAL chats never expire so the timer stops mattering.
@@ -192,7 +204,7 @@ export default function DailyMatchPage() {
     setBuyingExtra(true);
     try {
       // The Pi payment must clear before the server hands out a match.
-      const result = await initiatePayment(EXTRA_MATCH_PRICE, 'Extra Daily Match', {});
+      const result = await initiatePayment(EXTRA_MATCH_PRICE, EXTRA_MATCH_MEMO, {});
       if (!result.success) return;
       const fresh = await claimExtraMatch();
       setMatch(fresh);
