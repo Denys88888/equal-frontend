@@ -263,7 +263,9 @@
     "seeking_women": "Women",
     "seeking_men": "Men",
     "seeking_everyone": "Everyone",
-    "saveFailed": "Could not save your profile — please try again"
+    "saveFailed": "Could not save your profile — please try again",
+    "title6": "Your voice",
+    "sub6": "A 10-second intro. Required to join Daily Match."
   },
   "common": {
     "cancel": "Batal",
@@ -779,7 +781,8 @@
       "q29": "What do people usually get wrong about you?",
       "q30": "If you could master one skill overnight, what would it be?"
     },
-    "voiceGate": "Record a voice intro to join Daily Match — profiles without one are not matched."
+    "voiceGate": "Record a voice intro to join Daily Match — profiles without one are not matched.",
+    "tooFast": "Too fast — wait 5 seconds."
   },
   "truthOrDare": {
     "truth": {

@@ -263,7 +263,9 @@
     "seeking_women": "Women",
     "seeking_men": "Men",
     "seeking_everyone": "Everyone",
-    "saveFailed": "Could not save your profile — please try again"
+    "saveFailed": "Could not save your profile — please try again",
+    "title6": "Giọng nói của bạn",
+    "sub6": "Lời giới thiệu 10 giây. Bắt buộc để tham gia Daily Match."
   },
   "common": {
     "cancel": "Hủy",
@@ -779,7 +781,8 @@
       "q29": "Mọi người thường hiểu sai điều gì về bạn?",
       "q30": "Kỹ năng nào bạn muốn thành thạo sau một đêm?"
     },
-    "voiceGate": "Ghi âm lời giới thiệu để tham gia Daily Match — hồ sơ không có sẽ không được ghép đôi."
+    "voiceGate": "Ghi âm lời giới thiệu để tham gia Daily Match — hồ sơ không có sẽ không được ghép đôi.",
+    "tooFast": "Quá nhanh — đợi 5 giây."
   },
   "truthOrDare": {
     "truth": {

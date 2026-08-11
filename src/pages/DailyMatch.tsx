@@ -25,6 +25,8 @@ import {
 } from '@/api/dailyMatch';
 
 const EXTRA_MATCH_PRICE = 0.2;
+/** Composer cap: roughly three lines at the current font size. */
+const TEXTAREA_MAX_H = 92;
 /** Must match EXTRA_MATCH_MEMO on the server — it verifies the payment by memo. */
 const EXTRA_MATCH_MEMO = 'Extra Daily Match';
 
@@ -63,6 +65,16 @@ export default function DailyMatchPage() {
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  /** Grow the composer with its content, capped at three lines. */
+  const autoResize = useCallback(() => {
+    const el = textareaRef.current;
+    if (!el) return;
+    // Reset first: scrollHeight only shrinks if the box isn't already tall.
+    el.style.height = '44px';
+    el.style.height = `${Math.min(el.scrollHeight, TEXTAREA_MAX_H)}px`;
+  }, []);
 
   // Real per-user delivery time. Was hardcoded '15:00', which is only the
   // schema default — anyone who changed it was told the wrong time everywhere
@@ -149,12 +161,23 @@ export default function DailyMatchPage() {
     if (!text || !match || sending) return;
     setSending(true);
     setDraft('');
+    // Collapse the grown composer back to one line along with the text.
+    requestAnimationFrame(autoResize);
     try {
       const saved = await sendDailyMessage(match.id, text);
       setMessages((prev) => (prev.some((m) => m.id === saved.id) ? prev : [...prev, saved]));
-    } catch {
+    } catch (err) {
       setDraft(text);
-      showToast('error', t('chat.sendFailed', { defaultValue: 'Could not send message' }));
+      // The server throttles this route to 1 message / 5s. A generic "could not
+      // send" reads as a failure the user can't act on; naming the limit tells
+      // them the message is fine and they just need a moment.
+      const status = (err as { status?: number })?.status;
+      showToast(
+        'error',
+        status === 429
+          ? t('dailyMatch.tooFast', { defaultValue: 'Too fast — wait 5 seconds.' })
+          : t('chat.sendFailed', { defaultValue: 'Could not send message' }),
+      );
     } finally {
       setSending(false);
     }
@@ -370,7 +393,8 @@ export default function DailyMatchPage() {
               </button>
               <textarea
                 value={draft}
-                onChange={(e) => setDraft(e.target.value)}
+                ref={textareaRef}
+                onChange={(e) => { setDraft(e.target.value); autoResize(); }}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
                 }}
@@ -378,7 +402,7 @@ export default function DailyMatchPage() {
                 maxLength={2000}
                 placeholder={t('dailyMatch.typeMessage', { defaultValue: 'Write a message…' })}
                 className="flex-1 rounded-2xl px-4 py-2.5 text-base outline-none resize-none border-[1.5px] border-transparent focus:border-[#BB83C9]"
-                style={{ backgroundColor: 'var(--card-bg)', color: 'var(--charcoal)', maxHeight: 120 }}
+                style={{ backgroundColor: 'var(--card-bg)', color: 'var(--charcoal)', height: 44, maxHeight: TEXTAREA_MAX_H }}
               />
               <button
                 onClick={handleSend}

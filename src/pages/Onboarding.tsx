@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { updateMe, uploadPhoto } from '@/api/users';
+import VoiceIntroRecorder from '@/components/VoiceIntroRecorder';
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
 /* ------------------------------------------------------------------ */
@@ -57,7 +58,10 @@ interface ProfileData {
 /*  Constants                                                          */
 /* ------------------------------------------------------------------ */
 
-const TOTAL_STEPS = 5;
+// Step 6 is the Voice Intro: mandatory, because a profile without one is
+// excluded from Daily Match server-side. Collecting it here means a new user
+// is eligible from day one instead of silently never being matched.
+const TOTAL_STEPS = 6;
 
 const QUESTIONS = [
   { q: 'onboarding.q1', options: ['onboarding.q1a', 'onboarding.q1b'] },
@@ -85,9 +89,9 @@ const GOALS = [
   { id: 'notsure', label: 'onboarding.goalNotsure', desc: 'onboarding.goalNotsureDesc', icon: Compass, color: '#F0B84A' },
 ];
 
-const STEP_TITLES = ['onboarding.title1', 'onboarding.title2', 'onboarding.title3', 'onboarding.title4', 'onboarding.title5'];
+const STEP_TITLES = ['onboarding.title1', 'onboarding.title2', 'onboarding.title3', 'onboarding.title4', 'onboarding.title5', 'onboarding.title6'];
 
-const STEP_SUBTITLES = ['onboarding.sub1', 'onboarding.sub2', 'onboarding.sub3', 'onboarding.sub4', 'onboarding.sub5'];
+const STEP_SUBTITLES = ['onboarding.sub1', 'onboarding.sub2', 'onboarding.sub3', 'onboarding.sub4', 'onboarding.sub5', 'onboarding.sub6'];
 
 /* ------------------------------------------------------------------ */
 /*  Animation helpers                                                  */
@@ -123,6 +127,7 @@ export default function Onboarding() {
   const [direction, setDirection] = useState(1);
   const [isCompleting, setIsCompleting] = useState(false);
   const [completeError, setCompleteError] = useState('');
+  const [voiceSaved, setVoiceSaved] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [activePhotoSlot, setActivePhotoSlot] = useState<number | null>(null);
 
@@ -269,6 +274,7 @@ export default function Onboarding() {
     step === 3 ? basicsComplete :
     step === 4 ? interestsComplete :
     step === 5 ? goalSelected :
+    step === 6 ? voiceSaved :
     false;
 
   /* ---- render helpers ---- */
@@ -421,6 +427,13 @@ export default function Onboarding() {
                       update={update}
                     />
                   )}
+                  {step === 6 && (
+                    // Uploads on save, so by the time Finish is pressed the
+                    // server already has it — nothing extra to send in
+                    // handleComplete. Title/subtitle come from STEP_TITLES,
+                    // like every other step.
+                    <VoiceIntroRecorder onSaved={() => setVoiceSaved(true)} />
+                  )}
                 </motion.div>
             </div>
           </div>
@@ -454,7 +467,7 @@ export default function Onboarding() {
             <motion.button
               whileTap={stepValid ? { scale: 0.97 } : {}}
               transition={{ duration: 0.08 }}
-              onClick={step === 5 ? handleComplete : goNext}
+              onClick={step === TOTAL_STEPS ? handleComplete : goNext}
               disabled={!stepValid || isCompleting}
               className="w-full h-14 rounded-full font-semibold text-base text-white transition-colors"
               style={{
@@ -465,7 +478,7 @@ export default function Onboarding() {
                 cursor: stepValid ? 'pointer' : 'not-allowed',
               }}
             >
-              {isCompleting ? t('onboarding.welcome') : step === 5 ? t('onboarding.finish') : t('onboarding.next')}
+              {isCompleting ? t('onboarding.welcome') : step === TOTAL_STEPS ? t('onboarding.finish') : t('onboarding.next')}
             </motion.button>
           </div>
         </div>

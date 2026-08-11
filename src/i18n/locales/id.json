@@ -263,7 +263,9 @@
     "seeking_women": "Women",
     "seeking_men": "Men",
     "seeking_everyone": "Everyone",
-    "saveFailed": "Could not save your profile — please try again"
+    "saveFailed": "Could not save your profile — please try again",
+    "title6": "Suaramu",
+    "sub6": "Intro 10 detik. Wajib untuk ikut Daily Match."
   },
   "common": {
     "cancel": "Batal",
@@ -779,7 +781,8 @@
       "q29": "Apa yang sering disalahpahami orang tentang kamu?",
       "q30": "Keterampilan apa yang ingin kamu kuasai dalam semalam?"
     },
-    "voiceGate": "Rekam voice intro untuk ikut Daily Match — profil tanpa itu tidak dicocokkan."
+    "voiceGate": "Rekam voice intro untuk ikut Daily Match — profil tanpa itu tidak dicocokkan.",
+    "tooFast": "Terlalu cepat — tunggu 5 detik."
   },
   "truthOrDare": {
     "truth": {

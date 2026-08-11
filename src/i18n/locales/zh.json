@@ -263,7 +263,9 @@
     "seeking_women": "Women",
     "seeking_men": "Men",
     "seeking_everyone": "Everyone",
-    "saveFailed": "Could not save your profile — please try again"
+    "saveFailed": "Could not save your profile — please try again",
+    "title6": "你的声音",
+    "sub6": "10 秒介绍。参与 Daily Match 必需。"
   },
   "common": {
     "cancel": "取消",
@@ -779,7 +781,8 @@
       "q29": "人们通常对你有什么误解？",
       "q30": "如果一夜之间能精通一项技能，你选什么？"
     },
-    "voiceGate": "录制语音介绍才能参与 Daily Match — 没有语音介绍的资料不会被配对。"
+    "voiceGate": "录制语音介绍才能参与 Daily Match — 没有语音介绍的资料不会被配对。",
+    "tooFast": "太快了 — 请等 5 秒。"
   },
   "truthOrDare": {
     "truth": {

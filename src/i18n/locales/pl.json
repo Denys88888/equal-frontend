@@ -263,7 +263,9 @@
     "seeking_women": "Women",
     "seeking_men": "Men",
     "seeking_everyone": "Everyone",
-    "saveFailed": "Could not save your profile — please try again"
+    "saveFailed": "Could not save your profile — please try again",
+    "title6": "Twój głos",
+    "sub6": "Intro na 10 sekund. Wymagane, by dołączyć do Daily Match."
   },
   "common": {
     "cancel": "Anuluj",
@@ -779,7 +781,8 @@
       "q29": "Co ludzie zwykle źle o tobie rozumieją?",
       "q30": "Jaką umiejętność opanowałbyś w jedną noc?"
     },
-    "voiceGate": "Nagraj intro głosowe, aby dołączyć do Daily Match — profile bez niego nie są dopasowywane."
+    "voiceGate": "Nagraj intro głosowe, aby dołączyć do Daily Match — profile bez niego nie są dopasowywane.",
+    "tooFast": "Za szybko — poczekaj 5 sekund."
   },
   "truthOrDare": {
     "truth": {
