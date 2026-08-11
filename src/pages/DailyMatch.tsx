@@ -4,12 +4,13 @@ import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import {
   MessageCircle, SkipForward, Play, ShieldCheck, Star, Clock,
-  Send, Gamepad2, HeartCrack, Heart, Sparkles,
+  Send, Gamepad2, HeartCrack, Heart, Sparkles, Mic,
 } from 'lucide-react';
 import Layout from '@/components/Layout';
 import SkeletonLoader from '@/components/SkeletonLoader';
 import IcebreakerPanel from '@/components/IcebreakerPanel';
 import VibeCheck from '@/components/VibeCheck';
+import VoiceIntroRecorder from '@/components/VoiceIntroRecorder';
 import TruthOrDareDialog, { type TruthOrDareCard } from '@/components/TruthOrDareDialog';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useAuth } from '@/context/AuthContext';
@@ -67,6 +68,9 @@ export default function DailyMatchPage() {
   // schema default — anyone who changed it was told the wrong time everywhere
   // it appears ("new match tomorrow at …", the vibe confirmation).
   const [matchTime, setMatchTime] = useState('15:00');
+  // null = not known yet; false is a hard gate, so don't accuse the user of
+  // missing a voice intro before the profile has actually loaded.
+  const [hasVoiceIntro, setHasVoiceIntro] = useState<boolean | null>(null);
 
   // ── Load ────────────────────────────────────────────
 
@@ -95,8 +99,9 @@ export default function DailyMatchPage() {
     getMyVibe().then((v) => setVibe(v.vibe)).catch(() => {});
     getMe()
       .then((me) => {
-        const t = (me as unknown as { dailyMatchTime?: string }).dailyMatchTime;
-        if (t) setMatchTime(t);
+        const profile = me as unknown as { dailyMatchTime?: string; voiceIntroUrl?: string | null };
+        if (profile.dailyMatchTime) setMatchTime(profile.dailyMatchTime);
+        setHasVoiceIntro(!!profile.voiceIntroUrl);
       })
       .catch(() => {});
   }, []);
@@ -252,6 +257,26 @@ export default function DailyMatchPage() {
   return (
     <Layout title={t('dailyMatch.title', { defaultValue: 'Daily Match' })} showNotifications>
       <div className="flex-1 overflow-y-auto px-5 pt-4 pb-6 space-y-4">
+        {/* A profile with no voice intro is excluded from matching server-side.
+            Without saying so here, a new user would just see "no match yet"
+            forever with nothing indicating why or what to do about it. */}
+        {hasVoiceIntro === false && (
+          <>
+            <div
+              className="rounded-2xl p-4 flex items-start gap-3"
+              style={{ backgroundColor: 'rgba(240,184,74,0.12)', border: '1.5px solid rgba(240,184,74,0.35)' }}
+            >
+              <Mic size={18} className="text-[#B8860B] flex-shrink-0 mt-0.5" />
+              <p className="text-sm text-[var(--charcoal)]" style={{ lineHeight: 1.5 }}>
+                {t('dailyMatch.voiceGate', {
+                  defaultValue: 'Record a voice intro to join Daily Match — profiles without one are not matched.',
+                })}
+              </p>
+            </div>
+            <VoiceIntroRecorder onSaved={() => { setHasVoiceIntro(true); load(); }} />
+          </>
+        )}
+
         <VibeCheck current={vibe} matchTime={matchTime} onSelect={handleVibe} saving={savingVibe} />
 
         {isTerminal && (

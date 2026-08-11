@@ -778,7 +778,8 @@
       "q28": "Điều gì khiến bạn quên mất thời gian?",
       "q29": "Mọi người thường hiểu sai điều gì về bạn?",
       "q30": "Kỹ năng nào bạn muốn thành thạo sau một đêm?"
-    }
+    },
+    "voiceGate": "Ghi âm lời giới thiệu để tham gia Daily Match — hồ sơ không có sẽ không được ghép đôi."
   },
   "truthOrDare": {
     "truth": {

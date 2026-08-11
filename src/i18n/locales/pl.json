@@ -778,7 +778,8 @@
       "q28": "Przy czym tracisz poczucie czasu?",
       "q29": "Co ludzie zwykle źle o tobie rozumieją?",
       "q30": "Jaką umiejętność opanowałbyś w jedną noc?"
-    }
+    },
+    "voiceGate": "Nagraj intro głosowe, aby dołączyć do Daily Match — profile bez niego nie są dopasowywane."
   },
   "truthOrDare": {
     "truth": {

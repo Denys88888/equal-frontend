@@ -778,7 +778,8 @@
       "q28": "Apa yang bikin kamu lupa waktu?",
       "q29": "Apa yang sering disalahpahami orang tentang kamu?",
       "q30": "Keterampilan apa yang ingin kamu kuasai dalam semalam?"
-    }
+    },
+    "voiceGate": "Rekam voice intro untuk ikut Daily Match — profil tanpa itu tidak dicocokkan."
   },
   "truthOrDare": {
     "truth": {

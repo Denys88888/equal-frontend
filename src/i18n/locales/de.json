@@ -778,7 +778,8 @@
       "q28": "What makes you lose track of time?",
       "q29": "What do people usually get wrong about you?",
       "q30": "If you could master one skill overnight, what would it be?"
-    }
+    },
+    "voiceGate": "Nimm ein Voice-Intro auf, um bei Daily Match mitzumachen — Profile ohne werden nicht gematcht."
   },
   "truthOrDare": {
     "truth": {
