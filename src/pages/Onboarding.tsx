@@ -155,6 +155,22 @@ export default function Onboarding() {
     }
   }, [user]);
 
+  // Dev shortcut: visit /?dev=1 to auto-complete onboarding without UI interaction
+  useEffect(() => {
+    if (!window.location.search.includes('dev=1') || !user) return;
+    updateMe({
+      name: user.name || user.username || 'User',
+      birthDate: '1990-01-01',
+      gender: 'man',
+      lookingFor: ['everyone'],
+      bio: 'Equal dating app test profile',
+      interests: ['Sports', 'Music', 'Tech'],
+      goals: ['serious'],
+    } as Parameters<typeof updateMe>[0])
+      .then(() => navigate('/discover'))
+      .catch(() => {});
+  }, [user]);
+
   /* ---- helpers ---- */
   const goNext = useCallback(() => {
     setDirection(1);
