@@ -898,6 +898,8 @@ function StepBasics({
           value={data.dob}
           onChange={(e) => handleDobChange(e.target.value)}
           onBlur={handleDobBlur}
+          min={(() => { const d = new Date(); d.setFullYear(d.getFullYear() - 100); return d.toISOString().slice(0, 10); })()}
+          max={(() => { const d = new Date(); d.setFullYear(d.getFullYear() - 18); return d.toISOString().slice(0, 10); })()}
           className="w-full h-[52px] rounded-xl px-4 text-base outline-none transition-all"
           style={{
             fontFamily: "'Outfit', system-ui, sans-serif",
