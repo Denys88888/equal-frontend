@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { updateMe, uploadPhoto } from '@/api/users';
+import { useAuth } from '@/context/AuthContext';
 import VoiceIntroRecorder from '@/components/VoiceIntroRecorder';
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -123,6 +124,7 @@ const stepVariants = {
 export default function Onboarding() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { user } = useAuth();
   const [step, setStep] = useState(1);
   const [direction, setDirection] = useState(1);
   const [isCompleting, setIsCompleting] = useState(false);
@@ -132,7 +134,7 @@ export default function Onboarding() {
   const [activePhotoSlot, setActivePhotoSlot] = useState<number | null>(null);
 
   const [data, setData] = useState<ProfileData>({
-    name: '',
+    name: user?.name || user?.username || '',
     dob: '',
     city: '',
     gender: '',
@@ -146,6 +148,12 @@ export default function Onboarding() {
     photos: [],
     videoIntro: null,
   });
+
+  useEffect(() => {
+    if (user && !data.name) {
+      setData((d) => ({ ...d, name: user.name || user.username || '' }));
+    }
+  }, [user]);
 
   /* ---- helpers ---- */
   const goNext = useCallback(() => {
