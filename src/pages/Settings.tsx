@@ -836,7 +836,11 @@ export default function Settings() {
                 if (result.success) {
                   showToast('success', t('settings2.donationSent', { defaultValue: 'Thank you for your support!' }));
                   setShowDonation(false);
+                } else if (result.error) {
+                  showToast('error', result.error);
                 }
+              } catch (e: unknown) {
+                showToast('error', e instanceof Error ? e.message : String(e));
               } finally {
                 setDonating(false);
               }
