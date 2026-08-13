@@ -18,7 +18,7 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/api/client';
-import { authApi, usersApi } from '@/api';
+import { authApi, usersApi, paymentsApi } from '@/api';
 import type { User, UserProfile } from '@/api/types';
 import { useUserSocket, type MatchNewEvent } from '@/hooks/useSocket';
 import { usePushSubscription } from '@/hooks/usePushSubscription';
@@ -144,7 +144,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
             status: { developer_approved: boolean };
           };
           try {
-            const { paymentsApi } = await import('@/api/payments');
             if (p.transaction?.txid && p.status.developer_approved) {
               await paymentsApi.complete(p.identifier, p.transaction.txid);
             } else {
