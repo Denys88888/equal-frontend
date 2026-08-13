@@ -132,6 +132,29 @@ export function AuthProvider({ children }: AuthProviderProps) {
       return;
     }
 
+    // Re-authenticate with Pi SDK silently so payments scope is active
+    // even when resuming a stored session (skipping the Welcome screen).
+    if (window.Pi) {
+      window.Pi.authenticate(
+        ['username', 'payments'],
+        async (payment: unknown) => {
+          const p = payment as {
+            identifier: string;
+            transaction: { txid: string } | null;
+            status: { developer_approved: boolean };
+          };
+          try {
+            const { paymentsApi } = await import('@/api/payments');
+            if (p.transaction?.txid && p.status.developer_approved) {
+              await paymentsApi.complete(p.identifier, p.transaction.txid);
+            } else {
+              await paymentsApi.approve(p.identifier);
+            }
+          } catch { /* best effort */ }
+        },
+      ).catch(() => { /* ignore: not in Pi Browser or scope denied */ });
+    }
+
     // Hydrate: fetch profile silently
     usersApi
       .getMe()
