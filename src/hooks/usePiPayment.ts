@@ -32,8 +32,8 @@ import { api } from '@/api/client';
 
 /** Server response when creating a payment */
 interface ServerPayment {
-  /** Internal payment identifier (used as paymentIdentifier in metadata) */
-  identifier: string;
+  /** Internal payment ID (Prisma UUID) */
+  id: string;
 }
 
 /** Result shape returned by initiatePayment() */
@@ -103,7 +103,7 @@ export function usePiPayment() {
               memo,
               metadata: {
                 ...metadata,
-                paymentIdentifier: serverPayment.identifier,
+                paymentIdentifier: serverPayment.id,
               },
             },
             {
