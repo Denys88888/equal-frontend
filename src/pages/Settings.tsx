@@ -828,11 +828,14 @@ export default function Settings() {
             whileTap={{ scale: 0.97 }}
             disabled={donating || !(parseFloat(donationAmount) > 0)}
             onClick={async () => {
+              window.alert('DBG: donate click fired');
               const amount = parseFloat(donationAmount);
-              if (!(amount > 0)) return;
+              if (!(amount > 0)) { window.alert('DBG: amount invalid: ' + donationAmount); return; }
               setDonating(true);
+              window.alert('DBG: calling initiatePayment(' + amount + ')');
               try {
                 const result = await initiatePayment(amount, 'Donation to Equal', {});
+                window.alert('DBG: result=' + JSON.stringify(result));
                 if (result.success) {
                   showToast('success', t('settings2.donationSent', { defaultValue: 'Thank you for your support!' }));
                   setShowDonation(false);
@@ -840,6 +843,7 @@ export default function Settings() {
                   showToast('error', result.error);
                 }
               } catch (e: unknown) {
+                window.alert('DBG: catch error=' + (e instanceof Error ? e.message : String(e)));
                 showToast('error', e instanceof Error ? e.message : String(e));
               } finally {
                 setDonating(false);
