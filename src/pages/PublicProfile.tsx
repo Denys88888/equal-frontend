@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, ShieldCheck, MessageCircle, Check, MoreVertical, UserX, Flag } from 'lucide-react';
+import { Heart, ShieldCheck, MessageCircle, Check, MoreVertical, UserX, Flag, Link2 } from 'lucide-react';
 import Layout from '@/components/Layout';
 import SkeletonLoader from '@/components/SkeletonLoader';
 import ReportDialog from '@/components/ReportDialog';
+import AskSection from '@/components/AskSection';
 import { useToast } from '@/hooks/useToast';
 import { api } from '@/api/client';
 import { getPublicProfile, discoverApi, type PublicProfile as PublicProfileData } from '@/api/discover';
@@ -76,7 +77,10 @@ function ProfileMenu({
  * "Meet [author]" and club-member "Meet" both had nowhere to send a tap.
  */
 export default function PublicProfile() {
-  const { userId } = useParams<{ userId: string }>();
+  // Reachable as /profile/:userId (in-app taps) and /u/:username (shared
+  // links). Both resolve the same way server-side, so one component serves both.
+  const { userId, username } = useParams<{ userId?: string; username?: string }>();
+  const handle = userId ?? username ?? '';
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { showToast } = useToast();
@@ -87,22 +91,72 @@ export default function PublicProfile() {
   const [liking, setLiking] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [reportOpen, setReportOpen] = useState(false);
+  const [askCounts, setAskCounts] = useState({ answered: 0, total: 0 });
 
   useEffect(() => {
-    if (!userId) return;
+    if (!handle) return;
     setIsLoading(true);
     setNotFound(false);
-    getPublicProfile(userId)
+    getPublicProfile(handle)
       .then(setProfile)
       .catch(() => setNotFound(true))
       .finally(() => setIsLoading(false));
-  }, [userId]);
+  }, [handle]);
 
+  /**
+   * Share preview tags. This is a client-rendered SPA, so crawlers that don't
+   * execute JS still see index.html's defaults — these help the in-app share
+   * sheet and any renderer that does run scripts.
+   */
+  useEffect(() => {
+    if (!profile) return;
+    const prevTitle = document.title;
+    document.title = t('ask.ogTitle', { defaultValue: `Ask ${profile.name} anything on Equal`, name: profile.name });
+
+    const setMeta = (attr: 'property' | 'name', key: string, value: string) => {
+      let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attr, key);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', value);
+    };
+
+    const desc = t('ask.ogDescription', {
+      defaultValue: `${askCounts.answered} questions answered. What would you like to know?`,
+      answered: askCounts.answered,
+    });
+    setMeta('property', 'og:title', document.title);
+    setMeta('property', 'og:description', desc);
+    if (profile.photo) setMeta('property', 'og:image', profile.photo);
+    setMeta('name', 'description', desc);
+
+    return () => { document.title = prevTitle; };
+  }, [profile, askCounts.answered, t]);
+
+  const handleCopyLink = async () => {
+    if (!profile) return;
+    const url = `${window.location.origin}/#/u/${encodeURIComponent(handle)}`;
+    const text = t('ask.shareText', {
+      defaultValue: `Ask me anything, anonymously 💜 ${url}`,
+      url,
+    });
+    try {
+      await navigator.clipboard.writeText(text);
+      showToast('success', t('ask.linkCopied', { defaultValue: 'Link copied!' }));
+    } catch {
+      showToast('error', t('ask.copyFailed', { defaultValue: 'Could not copy the link' }));
+    }
+  };
+
+  // These all take a real user id, never the URL handle — /u/:username resolves
+  // to an id server-side and profile.id is that resolved value.
   const handleLike = async () => {
-    if (!userId || !profile) return;
+    if (!profile) return;
     setLiking(true);
     try {
-      const result = await discoverApi.swipeAction(userId, 'like');
+      const result = await discoverApi.swipeAction(profile.id, 'like');
       if (result.isMatch) {
         showToast('match', t('discover.itsAMatch', { defaultValue: "It's a match!" }));
         setProfile({ ...profile, isMatch: true, matchId: result.matchId ?? null, alreadyLiked: true });
@@ -117,15 +171,15 @@ export default function PublicProfile() {
   };
 
   const handleBlock = () => {
-    if (!userId) return;
-    api.post(`/users/${userId}/block`, {}).catch(() => {});
+    if (!profile) return;
+    api.post(`/users/${profile.id}/block`, {}).catch(() => {});
     showToast('success', t('chat.userBlocked', { defaultValue: 'User blocked' }));
     navigate(-1);
   };
 
   const handleReportSubmit = (reason: string, description: string) => {
-    if (!userId) return;
-    api.post(`/users/${userId}/report`, { reason, description }).catch(() => {});
+    if (!profile) return;
+    api.post(`/users/${profile.id}/report`, { reason, description }).catch(() => {});
     showToast('success', t('chat.reportSubmitted', { defaultValue: "Report submitted. We'll review it shortly." }));
   };
 
@@ -297,6 +351,28 @@ export default function PublicProfile() {
               )}
             </button>
           )}
+        </div>
+
+        {/* Equal Ask — public Q&A */}
+        <AskSection
+          targetIdOrUsername={handle}
+          targetName={profile.name}
+          onCountsChange={setAskCounts}
+        />
+
+        {/* Viral loop: the link people paste into their bio */}
+        <div className="px-5 mt-5">
+          <button
+            onClick={handleCopyLink}
+            className="w-full h-11 rounded-full flex items-center justify-center gap-2 text-sm font-semibold"
+            style={{
+              backgroundColor: 'var(--linen-dark)',
+              color: 'var(--charcoal)',
+              fontFamily: "'Outfit', system-ui, sans-serif",
+            }}
+          >
+            <Link2 size={16} /> {t('ask.copyProfileLink', { defaultValue: 'Copy profile link' })}
+          </button>
         </div>
       </div>
 

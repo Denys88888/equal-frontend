@@ -32,7 +32,9 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Textarea } from '@/components/ui/textarea';
 import Layout from '@/components/Layout';
 import VoiceIntroRecorder from '@/components/VoiceIntroRecorder';
+import AskWidget from '@/components/AskWidget';
 import { useToast } from '@/hooks/useToast';
+import { useAuth } from '@/context/AuthContext';
 
 /* ───────────────────── Fallback User Data ───────────────────── */
 
@@ -292,6 +294,8 @@ export default function Profile() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { showToast } = useToast();
+  // Equal Ask keys off the account handle, which getMe()'s mapped shape drops.
+  const { profile: authProfile } = useAuth();
   const [user, setUser] = useState<typeof EMPTY_USER>(EMPTY_USER);
   const [bio, setBio] = useState('');
   const [showBioEdit, setShowBioEdit] = useState(false);
@@ -554,6 +558,21 @@ export default function Profile() {
             ))}
           </div>
         </motion.div>
+
+        {/* ─────────────── Equal Ask ─────────────── */}
+        {(authProfile?.username || authProfile?.id) && (
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: easeOutExpo, delay: 0.14 }}
+            className="px-6 mt-4"
+          >
+            <AskWidget
+              targetIdOrUsername={authProfile.username || authProfile.id}
+              variant="self"
+            />
+          </motion.div>
+        )}
 
         {/* ─────────────── Bio & Interests ─────────────── */}
         <motion.div

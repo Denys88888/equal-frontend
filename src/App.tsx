@@ -17,6 +17,7 @@ const TermsOfService = lazy(() => import('./pages/TermsOfService'))
 const Clubs = lazy(() => import('./pages/Clubs'))
 const Events = lazy(() => import('./pages/Events'))
 const DailyMatch = lazy(() => import('./pages/DailyMatch'))
+const MyAsks = lazy(() => import('./pages/MyAsks'))
 const Admin = lazy(() => import('./pages/Admin'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
@@ -38,6 +39,10 @@ function AnimatedRoutes() {
       <Route path="/video/:matchId" element={<VideoCall />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/profile/:userId" element={<PublicProfile />} />
+      {/* Shareable, human-readable alias of the line above — this is the URL
+          that goes out in "ask me anything" links. */}
+      <Route path="/u/:username" element={<PublicProfile />} />
+      <Route path="/my-asks" element={<MyAsks />} />
       <Route path="/clubs" element={<Clubs />} />
       <Route path="/events" element={<Events />} />
       <Route path="/daily-match" element={<DailyMatch />} />

@@ -25,3 +25,5 @@ export { eventsApi } from './events';
 export { paymentsApi } from './payments';
 export { adminApi } from './admin';
 export { sparksApi } from './sparks';
+export { askApi } from './ask';
+export type { AskItem, AskFeed, AskQuote, SentAskItem } from './ask';
