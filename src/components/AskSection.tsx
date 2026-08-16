@@ -24,11 +24,18 @@ export default function AskSection({
   targetIdOrUsername,
   targetName,
   onCountsChange,
+  onTargetResolved,
 }: {
   targetIdOrUsername: string;
   targetName: string;
   /** Lets the parent profile header show "15 questions · 12 answers". */
   onCountsChange?: (counts: { answered: number; total: number }) => void;
+  /**
+   * The feed endpoint is readable signed-out, unlike /profiles/:id. Handing the
+   * resolved target back up is what lets a shared link render a name for a
+   * visitor who has no account yet.
+   */
+  onTargetResolved?: (target: { id: string; name: string; username: string }) => void;
 }) {
   const { t } = useTranslation();
   const { isAuthenticated } = useAuth();
@@ -56,12 +63,13 @@ export default function AskSection({
       setAnsweredCount(feed.answeredCount);
       setTotalCount(feed.totalCount);
       onCountsChange?.({ answered: feed.answeredCount, total: feed.totalCount });
+      onTargetResolved?.(feed.target);
     } catch {
       // A profile with no Q&A yet is not an error state — show the empty view.
     } finally {
       setLoading(false);
     }
-  }, [targetIdOrUsername, onCountsChange]);
+  }, [targetIdOrUsername, onCountsChange, onTargetResolved]);
 
   useEffect(() => {
     void loadFeed();

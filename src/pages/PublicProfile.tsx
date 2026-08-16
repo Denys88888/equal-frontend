@@ -7,6 +7,7 @@ import Layout from '@/components/Layout';
 import SkeletonLoader from '@/components/SkeletonLoader';
 import ReportDialog from '@/components/ReportDialog';
 import AskSection from '@/components/AskSection';
+import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/hooks/useToast';
 import { api } from '@/api/client';
 import { getPublicProfile, discoverApi, type PublicProfile as PublicProfileData } from '@/api/discover';
@@ -84,6 +85,7 @@ export default function PublicProfile() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { showToast } = useToast();
+  const { isAuthenticated, isLoading: authLoading } = useAuth();
 
   const [profile, setProfile] = useState<PublicProfileData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -92,16 +94,24 @@ export default function PublicProfile() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [reportOpen, setReportOpen] = useState(false);
   const [askCounts, setAskCounts] = useState({ answered: 0, total: 0 });
+  const [askTarget, setAskTarget] = useState<{ id: string; name: string; username: string } | null>(null);
 
   useEffect(() => {
-    if (!handle) return;
+    if (!handle || authLoading) return;
+    // /profiles/:id is behind the JWT guard, so a signed-out visitor following a
+    // shared /u/ link can't fetch it. Skip it entirely rather than firing a
+    // request that 401s — the Ask feed below is public and carries the name.
+    if (!isAuthenticated) {
+      setIsLoading(false);
+      return;
+    }
     setIsLoading(true);
     setNotFound(false);
     getPublicProfile(handle)
       .then(setProfile)
       .catch(() => setNotFound(true))
       .finally(() => setIsLoading(false));
-  }, [handle]);
+  }, [handle, isAuthenticated, authLoading]);
 
   /**
    * Share preview tags. This is a client-rendered SPA, so crawlers that don't
@@ -109,9 +119,10 @@ export default function PublicProfile() {
    * sheet and any renderer that does run scripts.
    */
   useEffect(() => {
-    if (!profile) return;
+    const displayName = profile?.name ?? askTarget?.name;
+    if (!displayName) return;
     const prevTitle = document.title;
-    document.title = t('ask.ogTitle', { defaultValue: `Ask ${profile.name} anything on Equal`, name: profile.name });
+    document.title = t('ask.ogTitle', { defaultValue: `Ask ${displayName} anything on Equal`, name: displayName });
 
     const setMeta = (attr: 'property' | 'name', key: string, value: string) => {
       let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
@@ -129,14 +140,13 @@ export default function PublicProfile() {
     });
     setMeta('property', 'og:title', document.title);
     setMeta('property', 'og:description', desc);
-    if (profile.photo) setMeta('property', 'og:image', profile.photo);
+    if (profile?.photo) setMeta('property', 'og:image', profile.photo);
     setMeta('name', 'description', desc);
 
     return () => { document.title = prevTitle; };
-  }, [profile, askCounts.answered, t]);
+  }, [profile, askTarget, askCounts.answered, t]);
 
   const handleCopyLink = async () => {
-    if (!profile) return;
     const url = `${window.location.origin}/#/u/${encodeURIComponent(handle)}`;
     const text = t('ask.shareText', {
       defaultValue: `Ask me anything, anonymously 💜 ${url}`,
@@ -183,11 +193,45 @@ export default function PublicProfile() {
     showToast('success', t('chat.reportSubmitted', { defaultValue: "Report submitted. We'll review it shortly." }));
   };
 
-  if (isLoading) {
+  if (isLoading || authLoading) {
     return (
       <Layout title="" showBack onBack={() => navigate(-1)}>
         <div className="px-5 pt-4">
           <SkeletonLoader variant="card" />
+        </div>
+      </Layout>
+    );
+  }
+
+  /**
+   * Signed-out view of a shared link. Deliberately Ask-only: everything else on
+   * this screen (photos, compatibility, Like) needs an authenticated viewer, and
+   * the whole point of the link is that a stranger can read the answers and see
+   * what the app is before signing up.
+   */
+  if (!isAuthenticated) {
+    return (
+      <Layout title={askTarget?.name ?? ''} showBack onBack={() => navigate('/')}>
+        <div className="flex-1 overflow-y-auto pb-8">
+          <AskSection
+            targetIdOrUsername={handle}
+            targetName={askTarget?.name ?? ''}
+            onCountsChange={setAskCounts}
+            onTargetResolved={setAskTarget}
+          />
+          <div className="px-5 mt-6">
+            <button
+              onClick={() => navigate('/')}
+              className="w-full h-12 rounded-full text-white text-[15px] font-semibold"
+              style={{
+                backgroundColor: '#BB83C9',
+                boxShadow: '0 4px 16px rgba(187,131,201,0.4)',
+                fontFamily: "'Outfit', system-ui, sans-serif",
+              }}
+            >
+              {t('ask.loginToAsk', { defaultValue: 'Log in to ask a question' })}
+            </button>
+          </div>
         </div>
       </Layout>
     );
@@ -358,6 +402,7 @@ export default function PublicProfile() {
           targetIdOrUsername={handle}
           targetName={profile.name}
           onCountsChange={setAskCounts}
+          onTargetResolved={setAskTarget}
         />
 
         {/* Viral loop: the link people paste into their bio */}
