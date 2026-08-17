@@ -410,6 +410,7 @@ function GiftBottomSheet({
   matchName: string;
 }) {
   const { t } = useTranslation();
+  const { showToast } = useToast();
   const [selected, setSelected] = useState(0);
   const { initiatePayment, isProcessing } = usePiPayment();
 
@@ -418,7 +419,12 @@ function GiftBottomSheet({
     const price = parseFloat(gift.price);
     if (!isNaN(price) && price > 0) {
       const result = await initiatePayment(price, `Gift: ${gift.name} to ${matchName}`, { gift: gift.icon });
-      if (!result.success) return;
+      if (!result.success) {
+        // A dropped error here meant the gift sheet just sat there after a
+        // declined or cancelled payment, with nothing explaining why.
+        if (result.error) showToast('error', result.error);
+        return;
+      }
     }
     onSendGift(gift.icon, gift.name);
     onClose();
@@ -1036,15 +1042,28 @@ export default function Chat() {
   // there was nowhere else to send it, but now it should show the partner.
   const handleViewProfile = () => { if (partnerId) navigate(`/profile/${partnerId}`); };
   const handleMute = () => showToast(t('chat.mutedNotifs'));
-  const handleBlock = () => {
-    if (partnerId) api.post(`/users/${partnerId}/block`, {}).catch(() => {});
-    showToast(t('chat.userBlocked'));
-    setTimeout(() => navigate('/matches'), 1500);
+  // Block and report confirm only after the server actually accepted. Telling
+  // someone they blocked a person who can still message them is worse than an
+  // error message — these are the two actions where a fake success is unsafe.
+  const handleBlock = async () => {
+    if (!partnerId) return;
+    try {
+      await api.post(`/users/${partnerId}/block`, {});
+      showToast(t('chat.userBlocked'));
+      setTimeout(() => navigate('/matches'), 1500);
+    } catch (e: unknown) {
+      showGlobalToast('error', e instanceof Error ? e.message : t('chat.blockFailed', { defaultValue: 'Could not block — please try again' }));
+    }
   };
   const handleReport = () => setReportDialogOpen(true);
-  const handleReportSubmit = (reason: string, description: string) => {
-    if (partnerId) api.post(`/users/${partnerId}/report`, { reason, description }).catch(() => {});
-    showGlobalToast('success', 'Report submitted. We\'ll review it shortly.');
+  const handleReportSubmit = async (reason: string, description: string) => {
+    if (!partnerId) return;
+    try {
+      await api.post(`/users/${partnerId}/report`, { reason, description });
+      showGlobalToast('success', 'Report submitted. We\'ll review it shortly.');
+    } catch (e: unknown) {
+      showGlobalToast('error', e instanceof Error ? e.message : t('chat.reportFailed', { defaultValue: 'Could not send the report — please try again' }));
+    }
   };
 
   const groupedMessages = useMemo(() => groupMessagesByDate(messages), [messages]);

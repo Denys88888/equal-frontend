@@ -180,17 +180,27 @@ export default function PublicProfile() {
     }
   };
 
-  const handleBlock = () => {
+  // Confirm only on a real 2xx — see the matching handlers in Chat.tsx. A block
+  // that silently failed leaves the user believing someone can't reach them.
+  const handleBlock = async () => {
     if (!profile) return;
-    api.post(`/users/${profile.id}/block`, {}).catch(() => {});
-    showToast('success', t('chat.userBlocked', { defaultValue: 'User blocked' }));
-    navigate(-1);
+    try {
+      await api.post(`/users/${profile.id}/block`, {});
+      showToast('success', t('chat.userBlocked', { defaultValue: 'User blocked' }));
+      navigate(-1);
+    } catch (e: unknown) {
+      showToast('error', e instanceof Error ? e.message : t('chat.blockFailed', { defaultValue: 'Could not block — please try again' }));
+    }
   };
 
-  const handleReportSubmit = (reason: string, description: string) => {
+  const handleReportSubmit = async (reason: string, description: string) => {
     if (!profile) return;
-    api.post(`/users/${profile.id}/report`, { reason, description }).catch(() => {});
-    showToast('success', t('chat.reportSubmitted', { defaultValue: "Report submitted. We'll review it shortly." }));
+    try {
+      await api.post(`/users/${profile.id}/report`, { reason, description });
+      showToast('success', t('chat.reportSubmitted', { defaultValue: "Report submitted. We'll review it shortly." }));
+    } catch (e: unknown) {
+      showToast('error', e instanceof Error ? e.message : t('chat.reportFailed', { defaultValue: 'Could not send the report — please try again' }));
+    }
   };
 
   if (isLoading || authLoading) {

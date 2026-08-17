@@ -273,12 +273,21 @@ function RecentRevenue() {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [txns, setTxns] = useState<RevenueTransaction[] | null>(null);
+  // Kept separate from `txns` on purpose: collapsing a failed fetch into [] made
+  // this screen report "No completed payments yet" — i.e. zero revenue — on any
+  // network blip, on the one screen whose job is confirming real Pi arrived.
+  const [loadFailed, setLoadFailed] = useState(false);
 
   useEffect(() => {
-    if (open && txns === null) {
-      getRevenueHistory().then(setTxns).catch(() => setTxns([]));
+    if (open && txns === null && !loadFailed) {
+      getRevenueHistory()
+        .then(setTxns)
+        .catch((e: unknown) => {
+          console.error('[admin] revenue history load failed:', e);
+          setLoadFailed(true);
+        });
     }
-  }, [open, txns]);
+  }, [open, txns, loadFailed]);
 
   return (
     <div className="mt-3 rounded-2xl overflow-hidden" style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
@@ -297,7 +306,15 @@ function RecentRevenue() {
       </button>
       {open && (
         <div className="px-4 pb-4 space-y-2 max-h-[280px] overflow-y-auto">
-          {txns === null ? (
+          {loadFailed ? (
+            <button
+              onClick={() => { setLoadFailed(false); setTxns(null); }}
+              className="text-xs py-2 font-medium"
+              style={{ color: '#E86A6A' }}
+            >
+              {t('admin.loadFailedRetry', { defaultValue: "Couldn't load transactions — tap to retry" })}
+            </button>
+          ) : txns === null ? (
             <p className="text-xs text-[var(--charcoal)]/40 py-2">…</p>
           ) : txns.length === 0 ? (
             <p className="text-xs text-[var(--charcoal)]/40 py-2">

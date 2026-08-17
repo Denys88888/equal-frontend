@@ -403,9 +403,19 @@ export default function Profile() {
   const GoalIcon = goalInfo.icon;
 
   const handleSaveBio = async () => {
+    const previous = bio;
     setBio(editBioText);
     setShowBioEdit(false);
-    try { await updateMe({ bio: editBioText }); } catch { /* non-critical */ }
+    try {
+      await updateMe({ bio: editBioText });
+    } catch (e: unknown) {
+      // Revert rather than leave the optimistic value on screen: the sheet has
+      // already closed showing the new bio, so swallowing here means the user
+      // sees their edit "saved" and only finds out it wasn't on the next reload.
+      setBio(previous);
+      setEditBioText(previous);
+      showToast('error', e instanceof Error ? e.message : t('profile2.bioSaveFailed', { defaultValue: 'Could not save your bio — please try again' }));
+    }
   };
 
   // "earned" used to be hardcoded, so every user was shown as Verified, Party,

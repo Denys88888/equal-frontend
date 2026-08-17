@@ -111,11 +111,20 @@ export function usePiPayment() {
                 try {
                   await api.post(`/payments/${paymentId}/approve`, {});
                 } catch (err) {
-                  // eslint-disable-next-line no-console
-                  console.error(
-                    '[usePiPayment] Server approval failed:',
-                    err,
-                  );
+                  // Settling the promise here is the whole point. If approval
+                  // fails, Pi never calls onReadyForServerCompletion, onCancel
+                  // or onError — so without this the promise below never
+                  // settles, isProcessing stays true, and the button sits on
+                  // "Processing…" forever with no way out but a reload.
+                  // It also surfaces WHY approval failed, which is otherwise
+                  // invisible: Pi just shows "Payment Expired · the developer
+                  // failed to approve" ~48s later with no client-side trace.
+                  const msg =
+                    err instanceof Error ? err.message : 'Server approval failed';
+                  console.error('[usePiPayment] Server approval failed:', err);
+                  setError(msg);
+                  setIsProcessing(false);
+                  resolve({ success: false, error: msg, paymentId });
                 }
               },
 

@@ -6,6 +6,7 @@ import confetti from 'canvas-confetti';
 import { useTranslation } from 'react-i18next';
 import Layout from '@/components/Layout';
 import SkeletonLoader from '@/components/SkeletonLoader';
+import { useToast } from '@/hooks/useToast';
 import { useAuth } from '@/context/AuthContext';
 import { discoverApi } from '@/api/discover';
 import { sparksApi } from '@/api/sparks';
@@ -780,6 +781,7 @@ function CompatibilityCard({ profile, onLike }: { profile: Profile; onLike: () =
 export default function Discover() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { showToast } = useToast();
   const { profile: authProfile } = useAuth();
   const userPhoto = authProfile?.photos?.[0]?.url ?? './avatar-ava.jpg';
   const [activeTab, setActiveTab] = useState<'discover' | 'compatibility'>('discover');
@@ -876,15 +878,22 @@ export default function Discover() {
         setMatchProfile(current);
         setMatchId(result.matchId ?? current.id);
       }
-    } catch {
+    } catch (e: unknown) {
       // Roll the optimistic spark back — the server rejected the spend
       if (direction === 'up') setSparkCount((c) => c + 1);
+      // Keep the card in the deck. Advancing on a failed swipe threw the like
+      // away silently: the card animated off exactly as on success, so a match
+      // that never got recorded was indistinguishable from a real pass.
+      console.error('[discover] swipe failed:', e);
+      showToast('error', t('discover.swipeFailed', { defaultValue: 'Could not save that — try again' }));
+      return;
     }
 
-    // Always remove swiped profile, keeping it so the swipe can be undone
+    // Remove the swiped profile only once the server accepted it, keeping it so
+    // the swipe can be undone.
     setLastSwiped(current);
     setProfiles((prev) => prev.slice(1));
-  }, [profiles, sparkCount]);
+  }, [profiles, sparkCount, showToast, t]);
 
   const handleUndo = useCallback(async () => {
     if (!lastSwiped) return;

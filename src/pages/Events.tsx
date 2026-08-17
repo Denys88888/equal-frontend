@@ -13,6 +13,7 @@ import {
   X,
 } from 'lucide-react';
 import Layout from '@/components/Layout';
+import { useToast } from '@/hooks/useToast';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 
 /* ------------------------------------------------------------------ */
@@ -604,6 +605,7 @@ function EventDetailSheet({
 
 export default function Events() {
   const { t } = useTranslation();
+  const { showToast } = useToast();
   const [activeCategory, setActiveCategory] = useState('All');
   const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null);
   const [goingEvents, setGoingEvents] = useState<Set<string>>(new Set());
@@ -662,7 +664,12 @@ export default function Events() {
         `Ticket: ${event.title}`,
         { eventId },
       );
-      if (!result.success) return;
+      if (!result.success) {
+        // Without this a declined/cancelled/failed payment just silently
+        // un-ticks the RSVP with no explanation.
+        if (result.error) showToast('error', result.error);
+        return;
+      }
     }
 
     setGoingEvents((prev) => {

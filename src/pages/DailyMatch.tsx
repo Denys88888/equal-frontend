@@ -233,7 +233,12 @@ export default function DailyMatchPage() {
     try {
       // The Pi payment must clear before the server hands out a match.
       const result = await initiatePayment(EXTRA_MATCH_PRICE, EXTRA_MATCH_MEMO, {});
-      if (!result.success) return;
+      if (!result.success) {
+        // Surface why. Returning bare left the sheet silently resetting, with
+        // declined / cancelled / network failure all looking identical.
+        if (result.error) showToast('error', result.error);
+        return;
+      }
       const fresh = await claimExtraMatch();
       setMatch(fresh);
       setRemaining(fresh.expiresInMs);
