@@ -31,6 +31,7 @@ import {
   Mail,
 } from 'lucide-react';
 import Layout from '@/components/Layout';
+import LoadErrorNotice from '@/components/LoadErrorNotice';
 import {
   getAdminStats, getRevenueHistory, getAdminUsers, getPendingReports, resolveReport, banUser,
   getAdminClubs, approveClub, deleteClub, getAdminEvents, deleteEvent, updateEvent, toggleEventFeatured,
@@ -347,11 +348,19 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
   const { t } = useTranslation();
   const [filter, setFilter] = useState<'All' | 'Pending' | 'Resolved'>('All');
   const [reports, setReports] = useState<Report[]>([]);
+  // A moderation queue that looks empty because the fetch failed is worse than
+  // an error: reports pile up unreviewed while the admin believes it's clear.
+  const [loadFailed, setLoadFailed] = useState(false);
+  const [reloadKey, setReloadKey] = useState(0);
   useEffect(() => {
     getPendingReports().then((data) => {
       if (data) setReports(data as unknown as Report[]);
-    }).catch(() => {});
-  }, []);
+      setLoadFailed(false);
+    }).catch((e: unknown) => {
+      console.error('[admin] pending reports load failed:', e);
+      setLoadFailed(true);
+    });
+  }, [reloadKey]);
 
   const filtered = reports.filter((r) => {
     if (filter === 'All') return true;
@@ -398,6 +407,7 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
         </TabsList>
 
         <TabsContent value={filter} className="mt-3 space-y-2">
+          {loadFailed && <LoadErrorNotice onRetry={() => setReloadKey((k) => k + 1)} />}
           <Accordion type="multiple" className="space-y-2">
             {filtered.map((report) => {
               const reasonCfg = REASON_CONFIG[report.reason];
@@ -1127,9 +1137,19 @@ function VerificationRequests({ showToast }: { showToast: (msg: string) => void 
   const [requests, setRequests] = useState<PendingVerification[]>([]);
   const [busyId, setBusyId] = useState<string | null>(null);
 
+  // Same reasoning as the reports queue: "no pending requests" must mean it,
+  // not "the request failed".
+  const [loadFailed, setLoadFailed] = useState(false);
+  const [reloadKey, setReloadKey] = useState(0);
+
   useEffect(() => {
-    getPendingVerifications().then((data) => { if (data) setRequests(data); }).catch(() => {});
-  }, []);
+    getPendingVerifications()
+      .then((data) => { if (data) setRequests(data); setLoadFailed(false); })
+      .catch((e: unknown) => {
+        console.error('[admin] pending verifications load failed:', e);
+        setLoadFailed(true);
+      });
+  }, [reloadKey]);
 
   const handleReview = async (id: string, approve: boolean) => {
     setBusyId(id);
@@ -1160,7 +1180,9 @@ function VerificationRequests({ showToast }: { showToast: (msg: string) => void 
         </span>
       </div>
 
-      {requests.length === 0 ? (
+      {loadFailed ? (
+        <LoadErrorNotice onRetry={() => setReloadKey((k) => k + 1)} />
+      ) : requests.length === 0 ? (
         <p className="text-sm text-[var(--charcoal)]/40 px-1">
           {t('admin.noVerifications', { defaultValue: 'No pending verification requests' })}
         </p>

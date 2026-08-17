@@ -149,9 +149,17 @@ export function AuthProvider({ children }: AuthProviderProps) {
             } else {
               await paymentsApi.approve(p.identifier);
             }
-          } catch { /* best effort */ }
+          } catch (e: unknown) {
+            // An unresolvable incomplete payment blocks every subsequent
+            // payment the SDK will start — never let that fail silently.
+            console.error('[auth] incomplete payment resolution failed:', p.identifier, e);
+          }
         },
-      ).catch(() => { /* ignore: not in Pi Browser or scope denied */ });
+      ).catch((e: unknown) => {
+        // Expected outside Pi Browser or when the user denies the scope — but a
+        // backend outage lands here too and looked identical when swallowed.
+        console.error('[auth] silent Pi re-auth failed (payments scope may be inactive):', e);
+      });
     }
 
     // Hydrate: fetch profile silently
@@ -172,6 +180,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
         if (err?.status === 401 || err?.status === 403) {
           localStorage.removeItem(TOKEN_KEY);
           localStorage.removeItem(REFRESH_TOKEN_KEY);
+        } else {
+          // Anything else (Render cold-start timeout, 5xx) leaves the app
+          // unauthenticated while the token is still good. Keep the token, but
+          // don't let the cause vanish.
+          console.error('[auth] session hydration failed, keeping token:', err);
         }
       })
       .finally(() => {

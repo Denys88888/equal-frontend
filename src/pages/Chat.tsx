@@ -755,6 +755,11 @@ export default function Chat() {
   const [toast, setToast] = useState({ message: '', visible: false });
   const [showIcebreakers, setShowIcebreakers] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
+  // Distinct from "no messages": lets the thread say the history failed to load
+  // instead of silently rendering as an empty conversation.
+  const [loadFailed, setLoadFailed] = useState(false);
+  // Bumped by Retry to re-run the loader effect.
+  const [reloadKey, setReloadKey] = useState(0);
   const [partnerId, setPartnerId] = useState<string | null>(null);
   const [matchInfo, setMatchInfo] = useState({
     matchName: '',
@@ -826,13 +831,16 @@ export default function Chat() {
         });
         setIsLoading(false);
       })
-      .catch(() => {
+      .catch((e: unknown) => {
         if (cancelled) return;
-        setMessages([]);
+        // Do NOT clear to []. Wiping the thread made a failed fetch look like a
+        // conversation where nothing was ever said — in the app's core screen.
+        console.error('[chat] message history load failed:', e);
+        setLoadFailed(true);
         setIsLoading(false);
       });
     return () => { cancelled = true; };
-  }, [matchId]);
+  }, [matchId, reloadKey]);
 
   const { showToast: showGlobalToast } = useToast();
 
@@ -1185,6 +1193,19 @@ export default function Chat() {
               <div className="flex justify-end"><SkeletonLoader variant="text" className="w-[50%]" /></div>
               <div className="flex justify-start"><SkeletonLoader variant="text" className="w-[70%]" /></div>
               <div className="flex justify-end"><SkeletonLoader variant="text" className="w-[45%]" /></div>
+            </div>
+          ) : loadFailed ? (
+            <div className="px-6 py-10 text-center">
+              <p className="text-sm text-[var(--charcoal)] opacity-60" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                {t('chat.historyLoadFailed', { defaultValue: "Couldn't load this conversation." })}
+              </p>
+              <button
+                onClick={() => { setLoadFailed(false); setReloadKey((k) => k + 1); }}
+                className="mt-2 text-sm font-semibold"
+                style={{ color: '#BB83C9', fontFamily: "'Outfit', system-ui, sans-serif" }}
+              >
+                {t('common.retry', { defaultValue: 'Retry' })}
+              </button>
             </div>
           ) : (
             groupedMessages.map((group) => (

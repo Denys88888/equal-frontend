@@ -588,6 +588,9 @@ export default function Matches() {
   const [showSearch, setShowSearch] = useState(false);
   const [celebrationMatch, setCelebrationMatch] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  // Kept separate from an empty list so a failed fetch can say so.
+  const [loadFailed, setLoadFailed] = useState(false);
+  const [reloadKey, setReloadKey] = useState(0);
 
   // Fetch matches from API on mount
   useEffect(() => {
@@ -600,12 +603,16 @@ export default function Matches() {
         }
         setIsLoading(false);
       })
-      .catch(() => {
+      .catch((e: unknown) => {
         if (cancelled) return;
+        // Without this the list falls through to its "no matches yet" empty
+        // state, so a network blip reads as "nobody matched with you".
+        console.error('[matches] load failed:', e);
+        setLoadFailed(true);
         setIsLoading(false);
       });
     return () => { cancelled = true; };
-  }, []);
+  }, [reloadKey]);
 
   const newMatches = matches.filter((m) => m.isNew);
   const conversations = matches.filter((m) => m.hasConversation);
@@ -779,6 +786,19 @@ export default function Matches() {
                 {isLoading ? (
                   <div className="px-5 py-6">
                     <SkeletonLoader variant="list" count={5} />
+                  </div>
+                ) : loadFailed ? (
+                  <div className="flex flex-col items-center justify-center py-16 px-8">
+                    <p className="text-sm text-center text-[var(--charcoal)] opacity-60" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                      {t('matches.loadFailed', { defaultValue: "Couldn't load your matches." })}
+                    </p>
+                    <button
+                      onClick={() => { setLoadFailed(false); setIsLoading(true); setReloadKey((k) => k + 1); }}
+                      className="mt-2 text-sm font-semibold"
+                      style={{ color: '#BB83C9', fontFamily: "'Outfit', system-ui, sans-serif" }}
+                    >
+                      {t('common.retry', { defaultValue: 'Retry' })}
+                    </button>
                   </div>
                 ) : filteredConversations.length > 0 ? (
                   filteredConversations.map((match, index) => (

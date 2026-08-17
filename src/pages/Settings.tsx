@@ -43,6 +43,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
 import Layout from '@/components/Layout';
+import LoadErrorNotice from '@/components/LoadErrorNotice';
 
 /* ───────────────────── Easing Tokens ───────────────────── */
 
@@ -255,14 +256,29 @@ export default function Settings() {
   /* ── Handlers ── */
   // Was showing two hardcoded strangers, and unblocking only edited local state —
   // there was no way to actually undo a block.
+  // A failed fetch used to render as "Blocked: 0" — identical to having nobody
+  // blocked, on a safety screen where that difference matters.
+  const [blockedLoadFailed, setBlockedLoadFailed] = useState(false);
+  const [blockedReloadKey, setBlockedReloadKey] = useState(0);
   useEffect(() => {
-    getBlockedUsers().then(setBlockedUsers).catch(() => {});
-  }, []);
+    getBlockedUsers()
+      .then((u) => { setBlockedUsers(u); setBlockedLoadFailed(false); })
+      .catch((e: unknown) => {
+        console.error('[settings] blocked users load failed:', e);
+        setBlockedLoadFailed(true);
+      });
+  }, [blockedReloadKey]);
 
   const handleUnblock = (id: string) => {
     const snapshot = blockedUsers;
     setBlockedUsers((prev) => prev.filter((u) => u.id !== id));
-    unblockUser(id).catch(() => setBlockedUsers(snapshot));
+    unblockUser(id).catch((e: unknown) => {
+      // Rollback was already right; the missing half was telling the user the
+      // unblock didn't stick, so the row silently reappearing made sense.
+      console.error('[settings] unblock failed:', e);
+      setBlockedUsers(snapshot);
+      showToast('error', t('settings2.unblockFailed', { defaultValue: 'Could not unblock — please try again' }));
+    });
   };
 
   const handleDeleteNext = async () => {
@@ -586,7 +602,9 @@ export default function Settings() {
             </DialogTitle>
           </DialogHeader>
           <div className="px-6 pb-6 overflow-y-auto">
-            {blockedUsers.length === 0 ? (
+            {blockedLoadFailed ? (
+              <LoadErrorNotice onRetry={() => setBlockedReloadKey((k) => k + 1)} />
+            ) : blockedUsers.length === 0 ? (
               <div className="flex flex-col items-center py-10 text-center">
                 <Shield size={48} className="text-[var(--linen-dark)] mb-3" strokeWidth={1.5} />
                 <p className="text-base font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>

@@ -115,9 +115,16 @@ export default function Welcome() {
         const hasProfile = !!(profile.bio || (profile.interests && profile.interests.length > 0));
         navigate(hasProfile ? '/discover' : '/onboarding', { replace: true });
       })
-      .catch(() => {
-        // Token expired/invalid — clear it and show login
-        localStorage.removeItem(TOKEN_KEY);
+      .catch((err: { status?: number }) => {
+        // Only an actual auth rejection means the token is dead. Clearing it on
+        // ANY failure logged people out on a Render cold-start timeout — the
+        // backend is on a free tier that sleeps, so a slow first request was
+        // enough to throw away a perfectly valid session.
+        if (err?.status === 401 || err?.status === 403) {
+          localStorage.removeItem(TOKEN_KEY);
+        } else {
+          console.error('[welcome] session check failed, keeping token:', err);
+        }
         setIsLoading(false);
       });
   }, [navigate]);
@@ -153,7 +160,12 @@ export default function Welcome() {
               } else {
                 await paymentsApi.approve(p.identifier);
               }
-            } catch { /* best effort */ }
+            } catch (e: unknown) {
+              // Silence here is expensive: an incomplete payment that keeps
+              // failing to resolve blocks every NEW payment the Pi SDK will
+              // allow, with no trace of why.
+              console.error('[welcome] incomplete payment resolution failed:', p.identifier, e);
+            }
           }
         ),
         new Promise<never>((_, reject) =>
@@ -168,8 +180,13 @@ export default function Welcome() {
         const profile = await getMe();
         const hasProfile = !!(profile.bio || (profile.interests && profile.interests.length > 0));
         navigate(hasProfile ? '/discover' : '/onboarding');
-      } catch {
-        navigate('/onboarding');
+      } catch (e: unknown) {
+        // A new account gets a profile with an empty bio, not an error — so
+        // reaching here means the request itself failed and we genuinely don't
+        // know. Send them home rather than through onboarding, which would walk
+        // an existing user back over their own bio and interests.
+        console.error('[welcome] profile check after login failed:', e);
+        navigate('/discover');
       }
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : t('welcome.errAuthFailed');
