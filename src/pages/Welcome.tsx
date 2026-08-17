@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import LanguageSelector from '@/components/LanguageSelector';
 import { useAuth } from '@/context/AuthContext';
 import { getMe } from '@/api/users';
-import { paymentsApi } from '@/api/payments';
+import { resolveIncompletePayment } from '@/api/resolveIncompletePayment';
 import { TOKEN_KEY } from '@/api/client';
 
 const easeSmooth = [0.4, 0, 0.2, 1] as [number, number, number, number];
@@ -145,29 +145,7 @@ export default function Welcome() {
 
       // Race Pi.authenticate() against a 45-second timeout
       const authResult = await Promise.race([
-        window.Pi.authenticate(
-          ['username', 'payments'],
-          async (payment: unknown) => {
-            // Per Pi docs: if transaction already submitted → complete, else → approve
-            const p = payment as {
-              identifier: string;
-              transaction: { txid: string } | null;
-              status: { developer_approved: boolean };
-            };
-            try {
-              if (p.transaction?.txid && p.status.developer_approved) {
-                await paymentsApi.complete(p.identifier, p.transaction.txid);
-              } else {
-                await paymentsApi.approve(p.identifier);
-              }
-            } catch (e: unknown) {
-              // Silence here is expensive: an incomplete payment that keeps
-              // failing to resolve blocks every NEW payment the Pi SDK will
-              // allow, with no trace of why.
-              console.error('[welcome] incomplete payment resolution failed:', p.identifier, e);
-            }
-          }
-        ),
+        window.Pi.authenticate(['username', 'payments'], resolveIncompletePayment),
         new Promise<never>((_, reject) =>
           setTimeout(() => reject(new Error(t('welcome.errTimeout'))), 45000)
         ),

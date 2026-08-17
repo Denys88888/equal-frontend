@@ -97,6 +97,29 @@ export function usePiPayment() {
 
         // ── 3. Initiate Pi payment ──────────────────────────────
         return new Promise((resolve) => {
+          // The SDK re-invokes onReadyForServerApproval / onReadyForServerCompletion
+          // roughly every 10s until their timers end, so those callbacks can fire
+          // many times. `settle` makes the promise resolve exactly once, and kills
+          // the watchdog below.
+          let settled = false;
+          const settle = (result: PaymentResult) => {
+            if (settled) return;
+            settled = true;
+            clearTimeout(watchdog);
+            setIsProcessing(false);
+            resolve(result);
+          };
+
+          // Pi's approval window is ~60s; if it lapses without onCancel/onError
+          // (which is what "Payment Expired" looked like from the app's side),
+          // nothing would ever settle this promise and the button would sit on
+          // "Processing…" until a reload.
+          const watchdog = setTimeout(() => {
+            const msg = 'Payment timed out. Please try again.';
+            setError(msg);
+            settle({ success: false, error: msg });
+          }, 150_000);
+
           window.Pi!.createPayment(
             {
               amount,
@@ -111,20 +134,18 @@ export function usePiPayment() {
                 try {
                   await api.post(`/payments/${paymentId}/approve`, {});
                 } catch (err) {
-                  // Settling the promise here is the whole point. If approval
-                  // fails, Pi never calls onReadyForServerCompletion, onCancel
-                  // or onError — so without this the promise below never
-                  // settles, isProcessing stays true, and the button sits on
-                  // "Processing…" forever with no way out but a reload.
-                  // It also surfaces WHY approval failed, which is otherwise
-                  // invisible: Pi just shows "Payment Expired · the developer
-                  // failed to approve" ~48s later with no client-side trace.
-                  const msg =
-                    err instanceof Error ? err.message : 'Server approval failed';
-                  console.error('[usePiPayment] Server approval failed:', err);
-                  setError(msg);
-                  setIsProcessing(false);
-                  resolve({ success: false, error: msg, paymentId });
+                  // Deliberately does NOT settle the promise. Per the SDK
+                  // reference, Pi re-invokes this callback roughly every 10s
+                  // until the approval timer ends, so a first failure is a
+                  // retry, not a verdict — giving up here would kill a payment
+                  // that the very next attempt would have approved (a cold
+                  // Render backend loses the first request and serves the
+                  // second). The watchdog above is what stops a genuine
+                  // stall from hanging forever.
+                  console.error(
+                    `[usePiPayment] approval attempt failed (SDK will retry) piId=${paymentId}:`,
+                    err,
+                  );
                 }
               },
 
@@ -134,23 +155,23 @@ export function usePiPayment() {
               ) => {
                 try {
                   await api.post(`/payments/${paymentId}/complete`, { txid });
-                  setIsProcessing(false);
-                  resolve({ success: true, paymentId });
+                  settle({ success: true, paymentId });
                 } catch (err) {
-                  const msg =
-                    err instanceof Error
-                      ? err.message
-                      : 'Completion failed';
-                  setError(msg);
-                  setIsProcessing(false);
-                  resolve({ success: false, error: msg });
+                  // Same retry contract as approval: the SDK keeps calling this
+                  // every ~10s until the completion timer ends. Money has
+                  // already moved on-chain by now, so failing the payment on a
+                  // single flaky request would be the worst possible answer —
+                  // log and let the retry land it.
+                  console.error(
+                    `[usePiPayment] completion attempt failed (SDK will retry) piId=${paymentId}:`,
+                    err,
+                  );
                 }
               },
 
               onCancel: (paymentId: string) => {
                 setError('Payment cancelled');
-                setIsProcessing(false);
-                resolve({
+                settle({
                   success: false,
                   error: 'Payment cancelled',
                   paymentId,
@@ -159,8 +180,7 @@ export function usePiPayment() {
 
               onError: (error: Error) => {
                 setError(error.message);
-                setIsProcessing(false);
-                resolve({ success: false, error: error.message });
+                settle({ success: false, error: error.message });
               },
             },
           );

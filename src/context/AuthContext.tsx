@@ -18,7 +18,8 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/api/client';
-import { authApi, usersApi, paymentsApi } from '@/api';
+import { authApi, usersApi } from '@/api';
+import { resolveIncompletePayment } from '@/api/resolveIncompletePayment';
 import type { User, UserProfile } from '@/api/types';
 import { useUserSocket, type MatchNewEvent } from '@/hooks/useSocket';
 import { usePushSubscription } from '@/hooks/usePushSubscription';
@@ -137,24 +138,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     if (window.Pi) {
       window.Pi.authenticate(
         ['username', 'payments'],
-        async (payment: unknown) => {
-          const p = payment as {
-            identifier: string;
-            transaction: { txid: string } | null;
-            status: { developer_approved: boolean };
-          };
-          try {
-            if (p.transaction?.txid && p.status.developer_approved) {
-              await paymentsApi.complete(p.identifier, p.transaction.txid);
-            } else {
-              await paymentsApi.approve(p.identifier);
-            }
-          } catch (e: unknown) {
-            // An unresolvable incomplete payment blocks every subsequent
-            // payment the SDK will start — never let that fail silently.
-            console.error('[auth] incomplete payment resolution failed:', p.identifier, e);
-          }
-        },
+        resolveIncompletePayment,
       ).catch((e: unknown) => {
         // Expected outside Pi Browser or when the user denies the scope — but a
         // backend outage lands here too and looked identical when swallowed.
