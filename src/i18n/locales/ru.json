@@ -329,7 +329,9 @@
     "posting": "Posting…",
     "comments": "Comments",
     "noComments": "No comments yet — be the first",
-    "writeComment": "Write a comment…"
+    "writeComment": "Write a comment…",
+    "loadFailed": "Не удалось загрузить клубы",
+    "postFailed": "Не удалось опубликовать пост — попробуйте ещё раз"
   },
   "events": {
     "title": "События",
@@ -381,7 +383,10 @@
     "cat_parties": "Вечеринки",
     "cat_wellness": "Wellness",
     "free": "Бесплатно",
-    "rsvp": "Записаться"
+    "rsvp": "Записаться",
+    "loadFailed": "Не удалось загрузить события",
+    "noPast": "Прошедших событий пока нет",
+    "noPastDesc": "События, в которых вы участвуете, появятся здесь после завершения."
   },
   "video": {
     "connecting": "Соединение...",

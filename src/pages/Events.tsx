@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import Layout from '@/components/Layout';
 import { useToast } from '@/hooks/useToast';
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { Sheet, SheetContent } from '@/components/ui/sheet';
 
 /* ------------------------------------------------------------------ */
 /*  TYPES                                                              */
@@ -38,6 +38,8 @@ interface EventItem {
   venue: string;
   category: string;
   price: number;
+  /** Epoch ms of the event's start, or null when the server sent no usable date. */
+  startsAt: number | null;
   image: string;
   attendees: Attendee[];
   attendeeCount: number;
@@ -260,8 +262,6 @@ function EventDetailSheet({
   onToggleInterested: () => void;
 }) {
   const { t } = useTranslation();
-  const [showPayment, setShowPayment] = useState(false);
-  const [paymentStep, setPaymentStep] = useState<'initial' | 'processing' | 'success'>('initial');
   const [feedback, setFeedback] = useState<'great' | 'okay' | 'missed' | null>(null);
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
 
@@ -270,19 +270,6 @@ function EventDetailSheet({
   const catColor = categoryColors[event.category] || '#BB83C9';
   const hasTicket = isGoing && event.price > 0;
 
-  const handleBuyTicket = () => {
-    setShowPayment(true);
-    setPaymentStep('initial');
-  };
-
-  const processPayment = () => {
-    setPaymentStep('processing');
-    setTimeout(() => {
-      setPaymentStep('success');
-      onToggleGoing();
-    }, 2000);
-  };
-
   const handleFeedbackSubmit = () => {
     if (!feedback) return;
     setFeedbackSubmitted(true);
@@ -290,8 +277,6 @@ function EventDetailSheet({
 
   const handleClose = () => {
     onClose();
-    setShowPayment(false);
-    setPaymentStep('initial');
     setFeedback(null);
     setFeedbackSubmitted(false);
   };
@@ -403,7 +388,7 @@ function EventDetailSheet({
                   <span className="text-xl font-bold text-[var(--charcoal)]">{event.price} Pi</span>
                 </div>
                 <button
-                  onClick={handleBuyTicket}
+                  onClick={onToggleGoing}
                   className="px-6 py-3 rounded-full text-sm font-semibold text-white"
                   style={{ backgroundColor: '#BB83C9', boxShadow: '0 4px 16px rgba(187,131,201,0.3)' }}
                 >
@@ -526,75 +511,6 @@ function EventDetailSheet({
         </div>
       </SheetContent>
 
-      {/* Payment Flow Sheet */}
-      <Sheet open={showPayment} onOpenChange={(open) => !open && setShowPayment(false)}>
-        <SheetContent side="bottom" className="rounded-t-[24px] p-6" style={{ backgroundColor: 'var(--card-bg)' }}>
-          <SheetHeader>
-            <SheetTitle className="text-xl font-semibold text-[var(--charcoal)]">{t('events.completePayment')}</SheetTitle>
-          </SheetHeader>
-          <div className="mt-6 flex flex-col items-center">
-            {paymentStep === 'initial' && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="w-full"
-              >
-                <div className="flex items-center justify-center gap-3 mb-6">
-                  <img src="./pi-logo.svg" alt="Pi" className="w-10 h-10" />
-                  <span className="text-3xl font-bold text-[var(--charcoal)]">{event.price} Pi</span>
-                </div>
-                <div className="p-4 rounded-2xl mb-4" style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.3)' }}>
-                  <div className="flex justify-between text-sm mb-2">
-                    <span style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>{t('events.ticket')}</span>
-                    <span className="font-medium text-[var(--charcoal)]">{event.title}</span>
-                  </div>
-                  <div className="flex justify-between text-sm mb-2">
-                    <span style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>{t('events.date')}</span>
-                    <span className="font-medium text-[var(--charcoal)]">{event.date}</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>{t('events.total')}</span>
-                    <span className="font-bold text-[var(--charcoal)]">{event.price} Pi</span>
-                  </div>
-                </div>
-                <button
-                  onClick={processPayment}
-                  className="w-full py-4 rounded-full text-base font-semibold text-white"
-                  style={{ backgroundColor: '#BB83C9', boxShadow: '0 4px 16px rgba(187,131,201,0.3)' }}
-                >
-                  {t('events.payWithPi')}
-                </button>
-              </motion.div>
-            )}
-            {paymentStep === 'processing' && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="flex flex-col items-center py-8"
-              >
-                <div className="w-12 h-12 border-3 border-[#BB83C9] border-t-transparent rounded-full animate-spin" />
-                <p className="mt-4 text-base font-medium text-[var(--charcoal)]">{t('events.processingPayment')}</p>
-              </motion.div>
-            )}
-            {paymentStep === 'success' && (
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                className="flex flex-col items-center py-8"
-              >
-                <div className="w-16 h-16 rounded-full bg-[#7DE0B3] flex items-center justify-center mb-4">
-                  <Check size={32} className="text-[var(--charcoal)]" strokeWidth={2.5} />
-                </div>
-                <h3 className="text-xl font-bold text-[var(--charcoal)]">{t('events.paymentSuccess')}</h3>
-                <p className="text-sm mt-2 text-center" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>
-                  {t('events.ticketConfirmed')}
-                </p>
-              </motion.div>
-            )}
-          </div>
-        </SheetContent>
-      </Sheet>
     </Sheet>
   );
 }
@@ -618,7 +534,8 @@ export default function Events() {
     getEvents().then((data) => {
       if (!data) return;
       // Backend events lack UI-only fields (attendees, day/month, image…) — fill safe defaults
-      setAllEvents((data as unknown as Partial<EventItem>[]).map((e, i) => {
+      const raw = data as unknown as (Partial<EventItem> & { myRsvpStatus?: string | null })[];
+      setAllEvents(raw.map((e, i) => {
         const parsed = e.date ? new Date(e.date) : null;
         const valid = parsed && !isNaN(parsed.getTime()) ? parsed : null;
         return {
@@ -626,6 +543,9 @@ export default function Events() {
           title: e.title ?? '',
           description: e.description ?? '',
           date: valid ? valid.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' }) : (e.date ?? ''),
+          // Keep the machine-readable date too — "past" used to be the first
+          // three rows of the upcoming list, which had nothing to do with time.
+          startsAt: valid ? valid.getTime() : null,
           day: e.day ?? (valid ? String(valid.getDate()) : ''),
           month: e.month ?? (valid ? valid.toLocaleString(undefined, { month: 'short' }).toUpperCase() : ''),
           time: e.time ?? (valid ? valid.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' }) : ''),
@@ -640,18 +560,43 @@ export default function Events() {
           featured: e.featured,
         } as EventItem;
       }));
-    }).catch(() => {});
-  }, []);
 
-  const featuredEvent = allEvents.find((e) => e.featured) || allEvents[0];
+      // Restore this user's own RSVPs. Without this every reload started from
+      // an empty set, so a ticket someone had already paid for showed its Buy
+      // button again — and buying it a second time charged them again.
+      const going = new Set<string>();
+      const interested = new Set<string>();
+      raw.forEach((e, i) => {
+        const id = e.id ?? `srv-${i}`;
+        if (e.myRsvpStatus === 'GOING') going.add(id);
+        else if (e.myRsvpStatus === 'INTERESTED') interested.add(id);
+      });
+      setGoingEvents(going);
+      setInterestedEvents(interested);
+    }).catch(() => {
+      showToast('error', t('events.loadFailed', { defaultValue: 'Could not load events' }));
+    });
+  }, [showToast, t]);
 
-  const filteredEvents = allEvents.filter((e) => {
+  // "Upcoming" must actually mean upcoming: an event whose date has passed
+  // stayed in the list forever, still RSVP-able and still selling tickets.
+  const now = Date.now();
+  const isPast = (e: EventItem) => e.startsAt != null && e.startsAt < now;
+
+  const upcomingEvents = allEvents.filter((e) => !isPast(e));
+  const featuredEvent = upcomingEvents.find((e) => e.featured) || upcomingEvents[0];
+
+  const filteredEvents = upcomingEvents.filter((e) => {
     if (activeCategory === 'All') return true;
     return e.category === activeCategory;
   });
 
-  const interestedEventsList = allEvents.filter((e) => interestedEvents.has(e.id));
-  const pastEventsList = allEvents.filter((_, i) => i < 3);
+  const interestedEventsList = upcomingEvents.filter((e) => interestedEvents.has(e.id));
+  // Was `filter((_, i) => i < 3)` — the first three *upcoming* events, dimmed to
+  // look historic. Now genuinely past events, newest first.
+  const pastEventsList = allEvents
+    .filter(isPast)
+    .sort((a, b) => (b.startsAt ?? 0) - (a.startsAt ?? 0));
 
   const toggleGoing = async (eventId: string) => {
     const wasGoing = goingEvents.has(eventId);
@@ -864,6 +809,17 @@ export default function Events() {
                 exit={{ opacity: 0 }}
                 className="px-5 pb-6 flex flex-col gap-3"
               >
+                {pastEventsList.length === 0 && (
+                  <div className="flex flex-col items-center justify-center py-16">
+                    <Clock size={48} style={{ color: 'rgba(var(--charcoal-rgb), 0.15)' }} />
+                    <h2 className="text-xl font-semibold text-[var(--charcoal)] mt-4">
+                      {t('events.noPast', { defaultValue: 'No past events yet' })}
+                    </h2>
+                    <p className="text-sm mt-2 text-center max-w-[260px]" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>
+                      {t('events.noPastDesc', { defaultValue: 'Events you attend will show up here once they are over.' })}
+                    </p>
+                  </div>
+                )}
                 {pastEventsList.map((event, index) => (
                   <motion.div
                     key={event.id}
@@ -879,12 +835,6 @@ export default function Events() {
                     />
                   </motion.div>
                 ))}
-                {goingEvents.size > 0 && !feedbackSubmitted() && (
-                  <div className="mt-2 p-4 rounded-2xl bg-[#F0B84A15] border border-[#F0B84A40]">
-                    <p className="text-sm font-semibold text-[var(--charcoal)]">{t('events.leaveFeedback')}</p>
-                    <p className="text-xs mt-1" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>Your feedback helps improve our community</p>
-                  </div>
-                )}
               </motion.div>
             )}
           </AnimatePresence>
@@ -905,6 +855,3 @@ export default function Events() {
   );
 }
 
-function feedbackSubmitted() {
-  return false;
-}

@@ -336,6 +336,7 @@ function ClubDetail({
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { showToast } = useToast();
   const isAdmin = user?.role === 'ADMIN';
   const [detailTab, setDetailTab] = useState<'feed' | 'chat' | 'members'>('feed');
   const [newPostText, setNewPostText] = useState('');
@@ -485,6 +486,7 @@ function ClubDetail({
       );
     } catch {
       setPosts((prev) => prev.filter((p) => p.id !== optimistic.id));
+      showToast('error', t('clubs.postFailed', { defaultValue: 'Could not publish post — please try again' }));
     } finally {
       setPosting(false);
     }
@@ -966,9 +968,11 @@ export default function Clubs() {
           chat: [],
         } as Club)));
       })
-      .catch(() => {})
+      .catch(() => {
+        showToast('error', t('clubs.loadFailed', { defaultValue: 'Could not load clubs' }));
+      })
       .finally(() => setClubsLoading(false));
-  }, []);
+  }, [showToast, t]);
   const [selectedClub, setSelectedClub] = useState<Club | null>(null);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [createName, setCreateName] = useState('');

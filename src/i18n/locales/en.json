@@ -329,7 +329,9 @@
     "posting": "Posting…",
     "comments": "Comments",
     "noComments": "No comments yet — be the first",
-    "writeComment": "Write a comment…"
+    "writeComment": "Write a comment…",
+    "loadFailed": "Could not load clubs",
+    "postFailed": "Could not publish post — please try again"
   },
   "events": {
     "title": "Events",
@@ -381,7 +383,10 @@
     "cat_parties": "Parties",
     "cat_wellness": "Wellness",
     "free": "Free",
-    "rsvp": "RSVP"
+    "rsvp": "RSVP",
+    "loadFailed": "Could not load events",
+    "noPast": "No past events yet",
+    "noPastDesc": "Events you attend will show up here once they are over."
   },
   "video": {
     "connecting": "Connecting...",
