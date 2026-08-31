@@ -76,6 +76,22 @@ const resources = {
   he: { translation: he },
 };
 
+/**
+ * Languages written right-to-left. Without `dir="rtl"` on the document the
+ * Arabic, Hebrew and Persian text renders inside a left-to-right layout:
+ * punctuation lands on the wrong side, and rows built with flex-start read
+ * backwards. The translations alone are not enough to make those locales usable.
+ */
+const RTL_LANGUAGES = new Set(['ar', 'he', 'fa', 'ur', 'ps', 'sd', 'yi']);
+
+/** Point the document at the active language, for both direction and `:lang()`. */
+function applyDirection(lng: string | undefined): void {
+  const base = (lng ?? 'en').split('-')[0];
+  const root = document.documentElement;
+  root.lang = base;
+  root.dir = RTL_LANGUAGES.has(base) ? 'rtl' : 'ltr';
+}
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
@@ -92,5 +108,9 @@ i18n
       convertDetectedLanguage: (lng: string) => lng.split('-')[0],
     },
   });
+
+// Once for the detected language, then again whenever the user switches.
+applyDirection(i18n.resolvedLanguage ?? i18n.language);
+i18n.on('languageChanged', applyDirection);
 
 export default i18n;
