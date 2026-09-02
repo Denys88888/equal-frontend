@@ -15,11 +15,11 @@
     "discover": "Entdecken",
     "matches": "Matches",
     "clubs": "Clubs",
-    "events": "Events",
+    "events": "Veranstaltungen",
     "profile": "Profil"
   },
   "discover": {
-    "like": "Like",
+    "like": "Gefällt mir",
     "dislike": "Weiter",
     "spark": "Funke",
     "filter": "Filter",
@@ -27,7 +27,7 @@
     "compatRefresh": "Täglich aktualisiert • {{count}} hochkompatible Matches",
     "compatEmpty": "Komm morgen wieder für neue hochkompatible Matches!",
     "kmAway": "{{distance}} km entfernt",
-    "matchPercent": "{{percent}}% Match",
+    "matchPercent": "{{percent}}% Übereinstimmung",
     "maxDistance": "Maximale Entfernung",
     "ageRange": "Altersbereich",
     "lookingFor": "Suche nach",
@@ -334,7 +334,7 @@
     "postFailed": "Beitrag konnte nicht veröffentlicht werden – bitte versuche es erneut"
   },
   "events": {
-    "title": "Events",
+    "title": "Veranstaltungen",
     "upcoming": "Bevorstehend",
     "interested": "Interessiert",
     "past": "Vergangen",
@@ -534,7 +534,7 @@
   "admin": {
     "panel": "Admin-Panel",
     "subtitle": "Benutzer, Meldungen, Clubs und Veranstaltungen verwalten",
-    "badge": "Admin",
+    "badge": "Administration",
     "totalUsers": "Benutzer gesamt",
     "activeToday": "Heute aktiv",
     "totalMatches": "Matches gesamt",
@@ -747,7 +747,7 @@
     "vibeChange": "Stimmung ändern",
     "matchTime": "Uhrzeit des Tagesmatches",
     "languages": "Sprachen",
-    "reputation": "Reputation",
+    "reputation": "Ruf",
     "vibes": {
       "deep": "Tiefes Gespräch",
       "flirt": "Flirten",
