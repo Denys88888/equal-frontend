@@ -582,6 +582,7 @@
     "reasonInappropriate": "不適切",
     "warnedSuccess": "ユーザーに警告しました",
     "bannedSuccess": "ユーザーを利用停止にしました",
+    "unbannedSuccess": "ユーザーのBANを解除しました",
     "reportDismissed": "通報を却下しました",
     "viewingProfile": "プロフィールを開いています…",
     "clubApproved": "クラブを承認しました",

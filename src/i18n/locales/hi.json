@@ -582,6 +582,7 @@
     "reasonInappropriate": "अनुचित",
     "warnedSuccess": "उपयोगकर्ता को चेतावनी दी गई",
     "bannedSuccess": "उपयोगकर्ता प्रतिबंधित",
+    "unbannedSuccess": "उपयोगकर्ता से प्रतिबंध हटा दिया गया",
     "reportDismissed": "रिपोर्ट खारिज की गई",
     "viewingProfile": "प्रोफ़ाइल खोली जा रही है…",
     "clubApproved": "क्लब स्वीकृत",

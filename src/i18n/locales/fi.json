@@ -582,6 +582,7 @@
     "reasonInappropriate": "Sopimaton",
     "warnedSuccess": "Käyttäjää varoitettiin",
     "bannedSuccess": "Käyttäjä estettiin",
+    "unbannedSuccess": "Käyttäjän esto poistettu",
     "reportDismissed": "Ilmoitus hylättiin",
     "viewingProfile": "Avataan profiilia…",
     "clubApproved": "Kerho hyväksyttiin",

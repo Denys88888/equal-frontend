@@ -33,7 +33,7 @@ import {
 import Layout from '@/components/Layout';
 import LoadErrorNotice from '@/components/LoadErrorNotice';
 import {
-  getAdminStats, getRevenueHistory, getAdminUsers, getPendingReports, resolveReport, banUser,
+  getAdminStats, getRevenueHistory, getAdminUsers, getPendingReports, resolveReport, banUser, unbanUser,
   getAdminClubs, approveClub, deleteClub, getAdminEvents, deleteEvent, updateEvent, toggleEventFeatured,
   setSupportEmail, adjustTrust, awardBadge, getPendingVerifications, reviewVerification,
 } from '@/api/admin';
@@ -532,6 +532,19 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
     }
   };
 
+  const handleUnbanUser = async (userId: string) => {
+    const snapshot = users;
+    setUsers((prev) => prev.map((u) => (u.id === userId ? { ...u, status: 'Active' as const } : u)));
+    setSelectedUser(null);
+    try {
+      await unbanUser(userId);
+      showToast(t('admin.unbannedSuccess', { defaultValue: 'User unbanned' }));
+    } catch {
+      setUsers(snapshot);
+      showToast(t('admin.actionFailed', { defaultValue: 'Action failed' }));
+    }
+  };
+
   const getTrustColor = (score: number) => {
     if (score >= 75) return '#7DE0B3';
     if (score >= 40) return '#F0B84A';
@@ -698,13 +711,21 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
                   <Eye size={16} className="mr-2" />
                   {t('admin.viewProfile')}
                 </Button>
-                {selectedUser.status !== 'Banned' && (
+                {selectedUser.status !== 'Banned' ? (
                   <Button
                     className="w-full h-11 rounded-full font-semibold bg-[#E86A6A] text-white hover:bg-[#E86A6A]/90"
                     onClick={() => handleBanUser(selectedUser.id)}
                   >
                     <Ban size={16} className="mr-2" />
                     {t('admin.banUser')}
+                  </Button>
+                ) : (
+                  <Button
+                    className="w-full h-11 rounded-full font-semibold bg-[#7DE0B3] text-[var(--charcoal)] hover:bg-[#5BC492]"
+                    onClick={() => handleUnbanUser(selectedUser.id)}
+                  >
+                    <Check size={16} className="mr-2" />
+                    {t('admin.unbanUser')}
                   </Button>
                 )}
               </DialogFooter>

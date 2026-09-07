@@ -582,6 +582,7 @@
     "reasonInappropriate": "Nem megfelelő",
     "warnedSuccess": "A felhasználó figyelmeztetve",
     "bannedSuccess": "A felhasználó kitiltva",
+    "unbannedSuccess": "A felhasználó tiltása feloldva",
     "reportDismissed": "A bejelentés elutasítva",
     "viewingProfile": "Profil megnyitása…",
     "clubApproved": "A klub jóváhagyva",

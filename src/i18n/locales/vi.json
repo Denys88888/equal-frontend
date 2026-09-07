@@ -582,6 +582,7 @@
     "reasonInappropriate": "Không phù hợp",
     "warnedSuccess": "Đã cảnh cáo người dùng",
     "bannedSuccess": "Đã cấm người dùng",
+    "unbannedSuccess": "Đã bỏ cấm người dùng",
     "reportDismissed": "Đã bỏ qua báo cáo",
     "viewingProfile": "Đang mở hồ sơ…",
     "clubApproved": "Đã duyệt câu lạc bộ",

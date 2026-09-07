@@ -582,6 +582,7 @@
     "reasonInappropriate": "Ongepast",
     "warnedSuccess": "Gebruiker gewaarschuwd",
     "bannedSuccess": "Gebruiker verbannen",
+    "unbannedSuccess": "Gebruiker gedeblokkeerd",
     "reportDismissed": "Melding afgewezen",
     "viewingProfile": "Profiel wordt geopend…",
     "clubApproved": "Club goedgekeurd",

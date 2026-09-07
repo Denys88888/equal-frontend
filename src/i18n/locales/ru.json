@@ -582,6 +582,7 @@
     "reasonInappropriate": "Неприемлемое",
     "warnedSuccess": "Предупреждение отправлено",
     "bannedSuccess": "Пользователь заблокирован",
+    "unbannedSuccess": "Пользователь разбанен",
     "reportDismissed": "Жалоба отклонена",
     "viewingProfile": "Просмотр профиля…",
     "clubApproved": "Клуб одобрен",

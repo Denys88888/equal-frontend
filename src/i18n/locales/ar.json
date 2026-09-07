@@ -582,6 +582,7 @@
     "reasonInappropriate": "غير لائق",
     "warnedSuccess": "تم تحذير المستخدم",
     "bannedSuccess": "تم حظر المستخدم",
+    "unbannedSuccess": "تم رفع الحظر عن المستخدم",
     "reportDismissed": "تم رفض البلاغ",
     "viewingProfile": "جارٍ فتح الملف الشخصي…",
     "clubApproved": "تمت الموافقة على النادي",

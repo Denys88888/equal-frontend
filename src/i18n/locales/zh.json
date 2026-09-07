@@ -582,6 +582,7 @@
     "reasonInappropriate": "内容不当",
     "warnedSuccess": "已警告该用户",
     "bannedSuccess": "已封禁该用户",
+    "unbannedSuccess": "用户已解封",
     "reportDismissed": "举报已驳回",
     "viewingProfile": "正在打开资料…",
     "clubApproved": "俱乐部已通过",

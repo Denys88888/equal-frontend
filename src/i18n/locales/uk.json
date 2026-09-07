@@ -582,6 +582,7 @@
     "reasonInappropriate": "Неприйнятне",
     "warnedSuccess": "Користувача попереджено",
     "bannedSuccess": "Користувача заблоковано",
+    "unbannedSuccess": "Користувача розблоковано",
     "reportDismissed": "Скаргу відхилено",
     "viewingProfile": "Відкриваємо профіль…",
     "clubApproved": "Клуб схвалено",

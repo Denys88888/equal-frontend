@@ -582,6 +582,7 @@
     "reasonInappropriate": "Upassende",
     "warnedSuccess": "Brukeren er advart",
     "bannedSuccess": "Brukeren er utestengt",
+    "unbannedSuccess": "Brukerens utestengelse er opphevet",
     "reportDismissed": "Rapporten er avvist",
     "viewingProfile": "Åpner profilen…",
     "clubApproved": "Klubben er godkjent",

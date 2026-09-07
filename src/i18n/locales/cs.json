@@ -582,6 +582,7 @@
     "reasonInappropriate": "Nevhodné",
     "warnedSuccess": "Uživatel byl varován",
     "bannedSuccess": "Uživatel byl zablokován",
+    "unbannedSuccess": "Uživateli byl zrušen ban",
     "reportDismissed": "Hlášení zamítnuto",
     "viewingProfile": "Otevírá se profil…",
     "clubApproved": "Klub schválen",

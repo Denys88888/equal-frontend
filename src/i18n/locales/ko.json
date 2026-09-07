@@ -582,6 +582,7 @@
     "reasonInappropriate": "부적절함",
     "warnedSuccess": "사용자에게 경고했습니다",
     "bannedSuccess": "사용자를 차단했습니다",
+    "unbannedSuccess": "사용자 차단이 해제되었습니다",
     "reportDismissed": "신고를 기각했습니다",
     "viewingProfile": "프로필을 여는 중…",
     "clubApproved": "클럽을 승인했습니다",

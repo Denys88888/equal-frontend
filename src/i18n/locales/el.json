@@ -582,6 +582,7 @@
     "reasonInappropriate": "Ακατάλληλο",
     "warnedSuccess": "Ο χρήστης προειδοποιήθηκε",
     "bannedSuccess": "Ο χρήστης αποκλείστηκε",
+    "unbannedSuccess": "Άρθηκε ο αποκλεισμός του χρήστη",
     "reportDismissed": "Η αναφορά απορρίφθηκε",
     "viewingProfile": "Άνοιγμα προφίλ…",
     "clubApproved": "Η λέσχη εγκρίθηκε",

@@ -582,6 +582,7 @@
     "reasonInappropriate": "Neprikladno",
     "warnedSuccess": "Korisnik upozoren",
     "bannedSuccess": "Korisnik zabranjen",
+    "unbannedSuccess": "Korisniku je ukinuta zabrana",
     "reportDismissed": "Prijava odbačena",
     "viewingProfile": "Otvaranje profila…",
     "clubApproved": "Klub odobren",

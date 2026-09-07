@@ -582,6 +582,7 @@
     "reasonInappropriate": "ไม่เหมาะสม",
     "warnedSuccess": "เตือนผู้ใช้แล้ว",
     "bannedSuccess": "แบนผู้ใช้แล้ว",
+    "unbannedSuccess": "ปลดแบนผู้ใช้แล้ว",
     "reportDismissed": "ยกเลิกรายงานแล้ว",
     "viewingProfile": "กำลังเปิดโปรไฟล์…",
     "clubApproved": "อนุมัติคลับแล้ว",

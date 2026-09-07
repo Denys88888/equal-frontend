@@ -582,6 +582,7 @@
     "reasonInappropriate": "Nieodpowiednie",
     "warnedSuccess": "Użytkownik ostrzeżony",
     "bannedSuccess": "Użytkownik zbanowany",
+    "unbannedSuccess": "Użytkownik odblokowany",
     "reportDismissed": "Zgłoszenie odrzucone",
     "viewingProfile": "Otwieranie profilu…",
     "clubApproved": "Klub zatwierdzony",

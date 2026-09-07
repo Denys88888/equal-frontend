@@ -582,6 +582,7 @@
     "reasonInappropriate": "Unangemessener Inhalt",
     "warnedSuccess": "Benutzer gewarnt",
     "bannedSuccess": "Benutzer gesperrt",
+    "unbannedSuccess": "Benutzer entsperrt",
     "reportDismissed": "Meldung geschlossen",
     "viewingProfile": "Profil wird angezeigt…",
     "clubApproved": "Club genehmigt",

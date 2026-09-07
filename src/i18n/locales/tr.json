@@ -582,6 +582,7 @@
     "reasonInappropriate": "Uygunsuz",
     "warnedSuccess": "Kullanıcı uyarıldı",
     "bannedSuccess": "Kullanıcı yasaklandı",
+    "unbannedSuccess": "Kullanıcının yasağı kaldırıldı",
     "reportDismissed": "Bildirim reddedildi",
     "viewingProfile": "Profil açılıyor…",
     "clubApproved": "Kulüp onaylandı",

@@ -582,6 +582,7 @@
     "reasonInappropriate": "Olämpligt",
     "warnedSuccess": "Användaren varnad",
     "bannedSuccess": "Användaren avstängd",
+    "unbannedSuccess": "Användarens avstängning hävd",
     "reportDismissed": "Anmälan avfärdad",
     "viewingProfile": "Öppnar profilen…",
     "clubApproved": "Klubben godkänd",

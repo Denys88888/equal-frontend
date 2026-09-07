@@ -582,6 +582,7 @@
     "reasonInappropriate": "Tidak pantas",
     "warnedSuccess": "Pengguna diperingatkan",
     "bannedSuccess": "Pengguna diblokir",
+    "unbannedSuccess": "Blokir pengguna dibuka",
     "reportDismissed": "Laporan diabaikan",
     "viewingProfile": "Membuka profil…",
     "clubApproved": "Klub disetujui",

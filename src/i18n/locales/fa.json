@@ -582,6 +582,7 @@
     "reasonInappropriate": "نامناسب",
     "warnedSuccess": "به کاربر هشدار داده شد",
     "bannedSuccess": "کاربر مسدود شد",
+    "unbannedSuccess": "مسدودیت کاربر برداشته شد",
     "reportDismissed": "گزارش رد شد",
     "viewingProfile": "در حال باز کردن پروفایل…",
     "clubApproved": "باشگاه تأیید شد",

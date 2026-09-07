@@ -582,6 +582,7 @@
     "reasonInappropriate": "Inappropriate",
     "warnedSuccess": "User warned",
     "bannedSuccess": "User banned",
+    "unbannedSuccess": "User unbanned",
     "reportDismissed": "Report dismissed",
     "viewingProfile": "Viewing profile…",
     "clubApproved": "Club approved",
