@@ -545,7 +545,7 @@ export default function Profile() {
               onClick={() => setShowTrustInfo(true)}
               className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-semibold text-[var(--charcoal)]"
               style={{ backgroundColor: 'rgba(var(--charcoal-rgb), 0.1)' }}
-              title={t('profile.trustScoreHelp')}
+              title={t('profile.trustScoreHow', { verified: VERIFIED_TRUST_BONUS, warning: WARN_TRUST_PENALTY })}
             >
               i
             </button>
