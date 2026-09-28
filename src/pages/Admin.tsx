@@ -34,7 +34,7 @@ import Layout from '@/components/Layout';
 import LoadErrorNotice from '@/components/LoadErrorNotice';
 import {
   getAdminStats, getRevenueHistory, getAdminUsers, getPendingReports, resolveReport, banUser, unbanUser,
-  getAdminClubs, approveClub, deleteClub, getAdminEvents, deleteEvent, updateEvent, toggleEventFeatured,
+  getAdminClubs, approveClub, deleteClub, getAdminEvents, deleteEvent, updateEvent, toggleEventFeatured, approveEvent,
   setSupportEmail, adjustTrust, awardBadge, getPendingVerifications, reviewVerification,
 } from '@/api/admin';
 import type { RevenueTransaction, PendingVerification } from '@/api/admin';
@@ -117,6 +117,9 @@ interface AppEvent {
   category: string;
   price: number;
   maxAttendees: number | null;
+  /** PENDING = submitted by a user and hidden from everyone else until approved. */
+  moderation: 'PENDING' | 'ACTIVE';
+  createdBy: string;
 }
 
 // ── Mock Data ──────────────────────────────────────────
@@ -894,7 +897,10 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
           category: e.category,
           price: e.price,
           maxAttendees: e.maxAttendees,
-        })));
+          moderation: e.moderation ?? 'ACTIVE',
+          createdBy: e.createdBy ?? '',
+        // Submissions waiting for review first; date order is kept within each group.
+        })).sort((a, b) => Number(b.moderation === 'PENDING') - Number(a.moderation === 'PENDING')));
       })
       .catch(() => {});
   }, []);
@@ -920,10 +926,22 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
     try {
       const price = parseFloat(editForm.price);
       const maxAttendees = editForm.maxAttendees.trim() ? parseInt(editForm.maxAttendees, 10) : undefined;
+      // <input type="date"> carries no time. Sending it back on every save moved
+      // the event to midnight UTC whenever an admin edited anything — say, the
+      // price. Send a date only when the day was actually changed, and keep the
+      // event's original time of day when it is.
+      const original = editingEvent.rawDate ? new Date(editingEvent.rawDate) : null;
+      const originalDay = original ? original.toISOString().slice(0, 10) : '';
+      let date: string | undefined;
+      if (editForm.date && editForm.date !== originalDay) {
+        const moved = new Date(`${editForm.date}T00:00:00Z`);
+        if (original) moved.setUTCHours(original.getUTCHours(), original.getUTCMinutes(), 0, 0);
+        date = moved.toISOString();
+      }
       await updateEvent(editingEvent.id, {
         title: editForm.name,
         description: editForm.description,
-        date: editForm.date ? new Date(editForm.date).toISOString() : undefined,
+        date,
         location: editForm.location,
         city: editForm.city,
         category: editForm.category,
@@ -934,8 +952,8 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
         ...e,
         name: editForm.name,
         description: editForm.description,
-        date: editForm.date ? new Date(editForm.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : e.date,
-        rawDate: editForm.date ? new Date(editForm.date).toISOString() : e.rawDate,
+        date: date ? new Date(date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : e.date,
+        rawDate: date ?? e.rawDate,
         location: editForm.location,
         city: editForm.city,
         category: editForm.category,
@@ -962,6 +980,30 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
       showToast(t('admin.actionFailed', { defaultValue: 'Action failed' }));
     }
   };
+  const handleApproveEvent = async (id: string) => {
+    const snapshot = events;
+    setEvents((prev) => prev.map((e) => (e.id === id ? { ...e, moderation: 'ACTIVE' as const } : e)));
+    try {
+      await approveEvent(id);
+      showToast(t('admin.eventApproved', { defaultValue: 'Event approved — now visible to everyone' }));
+    } catch {
+      setEvents(snapshot);
+      showToast(t('admin.actionFailed', { defaultValue: 'Action failed' }));
+    }
+  };
+  // Rejecting a submission is deleting it — the same server action as clubs.
+  const handleRejectEvent = async (id: string) => {
+    const snapshot = events;
+    setEvents((prev) => prev.filter((e) => e.id !== id));
+    try {
+      await deleteEvent(id);
+      showToast(t('admin.eventRejected', { defaultValue: 'Event rejected' }));
+    } catch {
+      setEvents(snapshot);
+      showToast(t('admin.actionFailed', { defaultValue: 'Action failed' }));
+    }
+  };
+
   const handleFeature = async (id: string) => {
     const wasFeatured = events.find((e) => e.id === id)?.featured;
     setEvents((prev) => prev.map((e) => (e.id === id ? { ...e, featured: !e.featured } : e)));
@@ -1013,7 +1055,14 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
                     <h3 className="text-sm font-semibold text-[var(--charcoal)] truncate">{evt.name}</h3>
                     {evt.featured && <Star size={14} className="text-[#F0B84A] flex-shrink-0" fill="#F0B84A" />}
                   </div>
-                  <p className="text-xs text-[var(--charcoal)]/40 mt-0.5">{evt.location}</p>
+                  <p className="text-xs text-[var(--charcoal)]/40 mt-0.5">
+                    {evt.location}{evt.createdBy ? ` · ${evt.createdBy}` : ''}
+                  </p>
+                  {evt.moderation === 'PENDING' && (
+                    <Badge className="mt-1 bg-[rgba(240,184,74,0.15)] text-[#F0B84A] hover:bg-[rgba(240,184,74,0.15)] text-[10px]">
+                      {t('admin.pendingReview')}
+                    </Badge>
+                  )}
                 </div>
                 <span
                   className="text-[10px] font-semibold px-2 py-0.5 rounded-full flex-shrink-0"
@@ -1033,6 +1082,28 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
                   {evt.attendees} attending
                 </span>
               </div>
+
+              {evt.moderation === 'PENDING' && (
+                <div className="flex gap-2 mb-2">
+                  <Button
+                    size="sm"
+                    className="flex-1 h-8 rounded-full text-xs font-semibold bg-[#7DE0B3] text-[var(--charcoal)] hover:bg-[#5BC492]"
+                    onClick={() => handleApproveEvent(evt.id)}
+                  >
+                    <Check size={14} className="mr-1" />
+                    {t('admin.approve')}
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="flex-1 h-8 rounded-full text-xs font-semibold border-[#E86A6A] text-[#E86A6A] hover:bg-[#E86A6A]/10"
+                    onClick={() => handleRejectEvent(evt.id)}
+                  >
+                    <X size={14} className="mr-1" />
+                    {t('admin.reject')}
+                  </Button>
+                </div>
+              )}
 
               <div className="flex gap-2">
                 <Button

@@ -386,7 +386,20 @@
     "rsvp": "Sahkan kehadiran",
     "loadFailed": "Gagal memuatkan acara",
     "noPast": "Belum ada acara lepas lagi",
-    "noPastDesc": "Acara yang anda hadiri akan muncul di sini selepas ia tamat."
+    "noPastDesc": "Acara yang anda hadiri akan muncul di sini selepas ia tamat.",
+    "createEvent": "Cipta acara",
+    "eventTitle": "Nama acara",
+    "eventDescription": "Tentang apa acara ini?",
+    "eventLocation": "Tempat (alamat atau premis)",
+    "eventCity": "Bandar",
+    "eventMaxAttendees": "Maks. peserta (pilihan)",
+    "createHint": "Percuma untuk dicipta. Acara akan kelihatan kepada semua selepas admin meluluskannya.",
+    "submitForReview": "Hantar untuk semakan",
+    "createPending": "Acara dihantar — ia akan kelihatan kepada semua selepas semakan admin.",
+    "createTooMany": "Anda sudah mempunyai 3 acara yang menunggu semakan.",
+    "createFailed": "Tidak dapat menghantar acara — sila cuba lagi",
+    "pendingReview": "Dalam semakan",
+    "pendingReviewDesc": "Hanya anda boleh melihat acara ini sehingga admin meluluskannya."
   },
   "video": {
     "connecting": "Menyambung...",
@@ -618,7 +631,9 @@
     "eventCategory": "Kategori",
     "eventPrice": "Harga (Pi)",
     "eventMaxAttendees": "Maks. peserta",
-    "eventUpdated": "Acara dikemas kini"
+    "eventUpdated": "Acara dikemas kini",
+    "eventApproved": "Acara diluluskan — kini kelihatan kepada semua",
+    "eventRejected": "Acara ditolak"
   },
   "legal": {
     "termsTitle": "Terma Perkhidmatan",

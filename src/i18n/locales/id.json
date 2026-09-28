@@ -386,7 +386,20 @@
     "rsvp": "Konfirmasi",
     "loadFailed": "Tidak dapat memuat acara",
     "noPast": "Belum ada acara yang lalu",
-    "noPastDesc": "Acara yang kamu ikuti akan muncul di sini setelah selesai."
+    "noPastDesc": "Acara yang kamu ikuti akan muncul di sini setelah selesai.",
+    "createEvent": "Buat acara",
+    "eventTitle": "Nama acara",
+    "eventDescription": "Tentang apa acaranya?",
+    "eventLocation": "Tempat (alamat atau lokasi)",
+    "eventCity": "Kota",
+    "eventMaxAttendees": "Maks. peserta (opsional)",
+    "createHint": "Gratis dibuat. Acara akan terlihat oleh semua orang setelah disetujui admin.",
+    "submitForReview": "Kirim untuk ditinjau",
+    "createPending": "Acara terkirim — akan terlihat oleh semua orang setelah ditinjau admin.",
+    "createTooMany": "Anda sudah memiliki 3 acara yang menunggu tinjauan.",
+    "createFailed": "Tidak dapat mengirim acara — silakan coba lagi",
+    "pendingReview": "Sedang ditinjau",
+    "pendingReviewDesc": "Hanya Anda yang bisa melihat acara ini sampai admin menyetujuinya."
   },
   "video": {
     "connecting": "Menghubungkan...",
@@ -618,7 +631,9 @@
     "eventCategory": "Kategori",
     "eventPrice": "Harga (Pi)",
     "eventMaxAttendees": "Maks. peserta",
-    "eventUpdated": "Acara diperbarui"
+    "eventUpdated": "Acara diperbarui",
+    "eventApproved": "Acara disetujui — kini terlihat oleh semua orang",
+    "eventRejected": "Acara ditolak"
   },
   "legal": {
     "termsTitle": "Ketentuan Layanan",

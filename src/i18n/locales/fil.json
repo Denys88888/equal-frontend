@@ -386,7 +386,20 @@
     "rsvp": "Kumpirmahin ang pagpunta",
     "loadFailed": "Hindi na-load ang mga event",
     "noPast": "Wala pang nakaraang event",
-    "noPastDesc": "Ang mga event na dinaluhan mo ay lalabas dito pagkatapos matapos."
+    "noPastDesc": "Ang mga event na dinaluhan mo ay lalabas dito pagkatapos matapos.",
+    "createEvent": "Gumawa ng event",
+    "eventTitle": "Pangalan ng event",
+    "eventDescription": "Tungkol saan ito?",
+    "eventLocation": "Lugar (address o venue)",
+    "eventCity": "Lungsod",
+    "eventMaxAttendees": "Max na dadalo (opsyonal)",
+    "createHint": "Libre ang paggawa. Makikita ito ng lahat kapag inaprubahan na ng admin.",
+    "submitForReview": "Isumite para sa review",
+    "createPending": "Naisumite ang event — makikita ito ng lahat pagkatapos ng review ng admin.",
+    "createTooMany": "May 3 event ka nang naghihintay ng review.",
+    "createFailed": "Hindi naisumite ang event — pakisubukang muli",
+    "pendingReview": "Nire-review",
+    "pendingReviewDesc": "Ikaw lang ang nakakakita sa event na ito hangga't hindi ito inaaprubahan ng admin."
   },
   "video": {
     "connecting": "Kumokonekta...",
@@ -618,7 +631,9 @@
     "eventCategory": "Kategorya",
     "eventPrice": "Presyo (Pi)",
     "eventMaxAttendees": "Max na Dadalo",
-    "eventUpdated": "Na-update ang event"
+    "eventUpdated": "Na-update ang event",
+    "eventApproved": "Naaprubahan ang event — nakikita na ng lahat",
+    "eventRejected": "Tinanggihan ang event"
   },
   "legal": {
     "termsTitle": "Mga Tuntunin ng Serbisyo",

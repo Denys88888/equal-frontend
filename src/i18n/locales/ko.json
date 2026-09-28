@@ -386,7 +386,20 @@
     "rsvp": "참석 신청",
     "loadFailed": "이벤트를 불러오지 못했습니다",
     "noPast": "아직 지난 이벤트가 없습니다",
-    "noPastDesc": "참석한 이벤트가 끝나면 여기에 표시됩니다."
+    "noPastDesc": "참석한 이벤트가 끝나면 여기에 표시됩니다.",
+    "createEvent": "이벤트 만들기",
+    "eventTitle": "이벤트 이름",
+    "eventDescription": "어떤 이벤트인가요?",
+    "eventLocation": "장소 (주소 또는 매장)",
+    "eventCity": "도시",
+    "eventMaxAttendees": "최대 참가자 수 (선택)",
+    "createHint": "무료로 만들 수 있어요. 관리자가 승인하면 모두에게 표시됩니다.",
+    "submitForReview": "검토 요청",
+    "createPending": "이벤트가 제출되었어요 — 관리자 검토 후 모두에게 표시됩니다.",
+    "createTooMany": "검토 대기 중인 이벤트가 이미 3개 있어요.",
+    "createFailed": "이벤트를 제출하지 못했어요 — 다시 시도해 주세요",
+    "pendingReview": "검토 중",
+    "pendingReviewDesc": "관리자가 승인할 때까지 이 이벤트는 나만 볼 수 있어요."
   },
   "video": {
     "connecting": "연결 중...",
@@ -618,7 +631,9 @@
     "eventCategory": "카테고리",
     "eventPrice": "가격 (Pi)",
     "eventMaxAttendees": "최대 참석 인원",
-    "eventUpdated": "이벤트가 업데이트되었습니다"
+    "eventUpdated": "이벤트가 업데이트되었습니다",
+    "eventApproved": "이벤트 승인됨 — 이제 모두에게 표시됩니다",
+    "eventRejected": "이벤트 거절됨"
   },
   "legal": {
     "termsTitle": "이용약관",

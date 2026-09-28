@@ -386,7 +386,20 @@
     "rsvp": "Partecipo",
     "loadFailed": "Impossibile caricare gli eventi",
     "noPast": "Ancora nessun evento passato",
-    "noPastDesc": "Gli eventi a cui partecipi compariranno qui una volta conclusi."
+    "noPastDesc": "Gli eventi a cui partecipi compariranno qui una volta conclusi.",
+    "createEvent": "Crea evento",
+    "eventTitle": "Nome dell’evento",
+    "eventDescription": "Di cosa si tratta?",
+    "eventLocation": "Luogo (indirizzo o locale)",
+    "eventCity": "Città",
+    "eventMaxAttendees": "Max. partecipanti (facoltativo)",
+    "createHint": "La creazione è gratuita. L’evento sarà visibile a tutti dopo l’approvazione di un amministratore.",
+    "submitForReview": "Invia per la revisione",
+    "createPending": "Evento inviato — sarà visibile a tutti dopo la revisione dell’amministratore.",
+    "createTooMany": "Hai già 3 eventi in attesa di revisione.",
+    "createFailed": "Impossibile inviare l’evento — riprova",
+    "pendingReview": "In revisione",
+    "pendingReviewDesc": "Solo tu vedi questo evento finché un amministratore non lo approva."
   },
   "video": {
     "connecting": "Connessione...",
@@ -618,7 +631,9 @@
     "eventCategory": "Categoria",
     "eventPrice": "Prezzo (Pi)",
     "eventMaxAttendees": "Partecipanti max",
-    "eventUpdated": "Evento aggiornato"
+    "eventUpdated": "Evento aggiornato",
+    "eventApproved": "Evento approvato — ora visibile a tutti",
+    "eventRejected": "Evento rifiutato"
   },
   "legal": {
     "termsTitle": "Termini di servizio",

@@ -386,7 +386,20 @@
     "rsvp": "אשר הגעה",
     "loadFailed": "טעינת האירועים נכשלה",
     "noPast": "אין עדיין אירועים שעברו",
-    "noPastDesc": "אירועים שתשתתף בהם יופיעו כאן לאחר סיומם."
+    "noPastDesc": "אירועים שתשתתף בהם יופיעו כאן לאחר סיומם.",
+    "createEvent": "יצירת אירוע",
+    "eventTitle": "שם האירוע",
+    "eventDescription": "על מה האירוע?",
+    "eventLocation": "מקום (כתובת או מקום)",
+    "eventCity": "עיר",
+    "eventMaxAttendees": "מקסימום משתתפים (לא חובה)",
+    "createHint": "היצירה בחינם. האירוע יוצג לכולם לאחר אישור מנהל.",
+    "submitForReview": "שליחה לבדיקה",
+    "createPending": "האירוע נשלח — הוא יוצג לכולם לאחר בדיקת מנהל.",
+    "createTooMany": "כבר יש לך 3 אירועים שממתינים לבדיקה.",
+    "createFailed": "לא ניתן לשלוח את האירוע — נסו שוב",
+    "pendingReview": "בבדיקה",
+    "pendingReviewDesc": "רק את/ה רואה את האירוע הזה עד שמנהל יאשר אותו."
   },
   "video": {
     "connecting": "מתחבר...",
@@ -618,7 +631,9 @@
     "eventCategory": "קטגוריה",
     "eventPrice": "מחיר (Pi)",
     "eventMaxAttendees": "מספר משתתפים מקסימלי",
-    "eventUpdated": "האירוע עודכן"
+    "eventUpdated": "האירוע עודכן",
+    "eventApproved": "האירוע אושר — עכשיו גלוי לכולם",
+    "eventRejected": "האירוע נדחה"
   },
   "legal": {
     "termsTitle": "תנאי שימוש",

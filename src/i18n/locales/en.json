@@ -386,7 +386,20 @@
     "rsvp": "RSVP",
     "loadFailed": "Could not load events",
     "noPast": "No past events yet",
-    "noPastDesc": "Events you attend will show up here once they are over."
+    "noPastDesc": "Events you attend will show up here once they are over.",
+    "createEvent": "Create event",
+    "eventTitle": "Event name",
+    "eventDescription": "What is it about?",
+    "eventLocation": "Place (address or venue)",
+    "eventCity": "City",
+    "eventMaxAttendees": "Max. attendees (optional)",
+    "createHint": "Free to create. It will appear for everyone after an admin approves it.",
+    "submitForReview": "Submit for review",
+    "createPending": "Event submitted — it will appear for everyone after admin review.",
+    "createTooMany": "You already have 3 events waiting for review.",
+    "createFailed": "Could not submit the event — please try again",
+    "pendingReview": "On review",
+    "pendingReviewDesc": "Only you can see this event until an admin approves it."
   },
   "video": {
     "connecting": "Connecting...",
@@ -618,7 +631,9 @@
     "eventCategory": "Category",
     "eventPrice": "Price (Pi)",
     "eventMaxAttendees": "Max attendees",
-    "eventUpdated": "Event updated"
+    "eventUpdated": "Event updated",
+    "eventApproved": "Event approved — now visible to everyone",
+    "eventRejected": "Event rejected"
   },
   "legal": {
     "termsTitle": "Terms of Service",

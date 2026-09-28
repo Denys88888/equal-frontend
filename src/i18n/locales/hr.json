@@ -386,7 +386,20 @@
     "rsvp": "Potvrdi dolazak",
     "loadFailed": "Učitavanje događanja nije uspjelo",
     "noPast": "Još nema prošlih događanja",
-    "noPastDesc": "Događanja na kojima sudjeluješ pojavit će se ovdje kad završe."
+    "noPastDesc": "Događanja na kojima sudjeluješ pojavit će se ovdje kad završe.",
+    "createEvent": "Stvori događaj",
+    "eventTitle": "Naziv događaja",
+    "eventDescription": "O čemu se radi?",
+    "eventLocation": "Mjesto (adresa ili lokal)",
+    "eventCity": "Grad",
+    "eventMaxAttendees": "Maks. sudionika (neobavezno)",
+    "createHint": "Stvaranje je besplatno. Događaj će svi vidjeti nakon što ga administrator odobri.",
+    "submitForReview": "Pošalji na provjeru",
+    "createPending": "Događaj je poslan — svi će ga vidjeti nakon provjere administratora.",
+    "createTooMany": "Već imate 3 događaja koja čekaju provjeru.",
+    "createFailed": "Događaj nije moguće poslati — pokušajte ponovno",
+    "pendingReview": "Na provjeri",
+    "pendingReviewDesc": "Samo vi vidite ovaj događaj dok ga administrator ne odobri."
   },
   "video": {
     "connecting": "Povezivanje...",
@@ -618,7 +631,9 @@
     "eventCategory": "Kategorija",
     "eventPrice": "Cijena (Pi)",
     "eventMaxAttendees": "Maks. sudionika",
-    "eventUpdated": "Događanje ažurirano"
+    "eventUpdated": "Događanje ažurirano",
+    "eventApproved": "Događaj odobren — sada ga svi vide",
+    "eventRejected": "Događaj odbijen"
   },
   "legal": {
     "termsTitle": "Uvjeti korištenja",

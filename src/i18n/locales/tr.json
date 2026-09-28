@@ -386,7 +386,20 @@
     "rsvp": "Katılacağım",
     "loadFailed": "Etkinlikler yüklenemedi",
     "noPast": "Henüz geçmiş etkinlik yok",
-    "noPastDesc": "Katıldığın etkinlikler sona erdikten sonra burada görünür."
+    "noPastDesc": "Katıldığın etkinlikler sona erdikten sonra burada görünür.",
+    "createEvent": "Etkinlik oluştur",
+    "eventTitle": "Etkinlik adı",
+    "eventDescription": "Ne hakkında?",
+    "eventLocation": "Yer (adres veya mekân)",
+    "eventCity": "Şehir",
+    "eventMaxAttendees": "Maks. katılımcı (isteğe bağlı)",
+    "createHint": "Oluşturmak ücretsiz. Etkinlik, bir yönetici onayladıktan sonra herkese görünür.",
+    "submitForReview": "İncelemeye gönder",
+    "createPending": "Etkinlik gönderildi — yönetici incelemesinden sonra herkese görünecek.",
+    "createTooMany": "İncelemeyi bekleyen 3 etkinliğiniz zaten var.",
+    "createFailed": "Etkinlik gönderilemedi — lütfen tekrar deneyin",
+    "pendingReview": "İncelemede",
+    "pendingReviewDesc": "Bir yönetici onaylayana kadar bu etkinliği yalnızca siz görürsünüz."
   },
   "video": {
     "connecting": "Bağlanıyor...",
@@ -618,7 +631,9 @@
     "eventCategory": "Kategori",
     "eventPrice": "Fiyat (Pi)",
     "eventMaxAttendees": "Maks. katılımcı",
-    "eventUpdated": "Etkinlik güncellendi"
+    "eventUpdated": "Etkinlik güncellendi",
+    "eventApproved": "Etkinlik onaylandı — artık herkese görünür",
+    "eventRejected": "Etkinlik reddedildi"
   },
   "legal": {
     "termsTitle": "Kullanım Koşulları",

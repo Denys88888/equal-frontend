@@ -386,7 +386,20 @@
     "rsvp": "Confirmă participarea",
     "loadFailed": "Încărcarea evenimentelor a eșuat",
     "noPast": "Niciun eveniment trecut încă",
-    "noPastDesc": "Evenimentele la care participi vor apărea aici după ce se termină."
+    "noPastDesc": "Evenimentele la care participi vor apărea aici după ce se termină.",
+    "createEvent": "Creează eveniment",
+    "eventTitle": "Numele evenimentului",
+    "eventDescription": "Despre ce este?",
+    "eventLocation": "Locul (adresă sau local)",
+    "eventCity": "Oraș",
+    "eventMaxAttendees": "Nr. max. participanți (opțional)",
+    "createHint": "Crearea este gratuită. Evenimentul va fi vizibil pentru toți după aprobarea unui administrator.",
+    "submitForReview": "Trimite spre verificare",
+    "createPending": "Eveniment trimis — va fi vizibil pentru toți după verificarea administratorului.",
+    "createTooMany": "Ai deja 3 evenimente în așteptarea verificării.",
+    "createFailed": "Evenimentul nu a putut fi trimis — încearcă din nou",
+    "pendingReview": "În verificare",
+    "pendingReviewDesc": "Doar tu vezi acest eveniment până când un administrator îl aprobă."
   },
   "video": {
     "connecting": "Se conectează...",
@@ -618,7 +631,9 @@
     "eventCategory": "Categorie",
     "eventPrice": "Preț (Pi)",
     "eventMaxAttendees": "Nr. maxim de participanți",
-    "eventUpdated": "Eveniment actualizat"
+    "eventUpdated": "Eveniment actualizat",
+    "eventApproved": "Eveniment aprobat — acum vizibil pentru toți",
+    "eventRejected": "Eveniment respins"
   },
   "legal": {
     "termsTitle": "Termeni de utilizare",

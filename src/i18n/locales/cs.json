@@ -386,7 +386,20 @@
     "rsvp": "Potvrdit účast",
     "loadFailed": "Události se nepodařilo načíst",
     "noPast": "Zatím žádné proběhlé události",
-    "noPastDesc": "Události, kterých se zúčastníš, se tu objeví po jejich skončení."
+    "noPastDesc": "Události, kterých se zúčastníš, se tu objeví po jejich skončení.",
+    "createEvent": "Vytvořit událost",
+    "eventTitle": "Název události",
+    "eventDescription": "O čem to je?",
+    "eventLocation": "Místo (adresa nebo podnik)",
+    "eventCity": "Město",
+    "eventMaxAttendees": "Max. účastníků (nepovinné)",
+    "createHint": "Vytvoření je zdarma. Událost uvidí všichni po schválení administrátorem.",
+    "submitForReview": "Odeslat ke kontrole",
+    "createPending": "Událost odeslána — všichni ji uvidí po kontrole administrátorem.",
+    "createTooMany": "Už máte 3 události čekající na kontrolu.",
+    "createFailed": "Událost se nepodařilo odeslat — zkuste to znovu",
+    "pendingReview": "Ve schvalování",
+    "pendingReviewDesc": "Tuto událost vidíte jen vy, dokud ji administrátor neschválí."
   },
   "video": {
     "connecting": "Připojuje se...",
@@ -618,7 +631,9 @@
     "eventCategory": "Kategorie",
     "eventPrice": "Cena (Pi)",
     "eventMaxAttendees": "Max. účastníků",
-    "eventUpdated": "Událost aktualizována"
+    "eventUpdated": "Událost aktualizována",
+    "eventApproved": "Událost schválena — nyní ji vidí všichni",
+    "eventRejected": "Událost zamítnuta"
   },
   "legal": {
     "termsTitle": "Podmínky služby",

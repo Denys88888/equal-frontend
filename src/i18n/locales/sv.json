@@ -386,7 +386,20 @@
     "rsvp": "Anmäl dig",
     "loadFailed": "Kunde inte läsa in evenemangen",
     "noPast": "Inga tidigare evenemang än",
-    "noPastDesc": "Evenemang du deltar i dyker upp här när de är över."
+    "noPastDesc": "Evenemang du deltar i dyker upp här när de är över.",
+    "createEvent": "Skapa evenemang",
+    "eventTitle": "Evenemangets namn",
+    "eventDescription": "Vad handlar det om?",
+    "eventLocation": "Plats (adress eller ställe)",
+    "eventCity": "Stad",
+    "eventMaxAttendees": "Max antal deltagare (valfritt)",
+    "createHint": "Gratis att skapa. Evenemanget syns för alla när en admin har godkänt det.",
+    "submitForReview": "Skicka för granskning",
+    "createPending": "Evenemanget har skickats — det syns för alla efter granskning av en admin.",
+    "createTooMany": "Du har redan 3 evenemang som väntar på granskning.",
+    "createFailed": "Det gick inte att skicka evenemanget — försök igen",
+    "pendingReview": "Granskas",
+    "pendingReviewDesc": "Bara du ser det här evenemanget tills en admin godkänner det."
   },
   "video": {
     "connecting": "Ansluter...",
@@ -618,7 +631,9 @@
     "eventCategory": "Kategori",
     "eventPrice": "Pris (Pi)",
     "eventMaxAttendees": "Max antal deltagare",
-    "eventUpdated": "Evenemanget uppdaterat"
+    "eventUpdated": "Evenemanget uppdaterat",
+    "eventApproved": "Evenemanget godkänt — nu synligt för alla",
+    "eventRejected": "Evenemanget avvisat"
   },
   "legal": {
     "termsTitle": "Användarvillkor",

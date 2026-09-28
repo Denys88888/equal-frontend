@@ -386,7 +386,20 @@
     "rsvp": "Potwierdź udział",
     "loadFailed": "Nie udało się wczytać wydarzeń",
     "noPast": "Brak minionych wydarzeń",
-    "noPastDesc": "Wydarzenia, w których weźmiesz udział, pojawią się tu po ich zakończeniu."
+    "noPastDesc": "Wydarzenia, w których weźmiesz udział, pojawią się tu po ich zakończeniu.",
+    "createEvent": "Utwórz wydarzenie",
+    "eventTitle": "Nazwa wydarzenia",
+    "eventDescription": "O czym jest wydarzenie?",
+    "eventLocation": "Miejsce (adres lub lokal)",
+    "eventCity": "Miasto",
+    "eventMaxAttendees": "Maks. uczestników (opcjonalnie)",
+    "createHint": "Tworzenie jest bezpłatne. Wydarzenie zobaczą wszyscy po zatwierdzeniu przez administratora.",
+    "submitForReview": "Wyślij do weryfikacji",
+    "createPending": "Wydarzenie wysłane — wszyscy zobaczą je po weryfikacji przez administratora.",
+    "createTooMany": "Masz już 3 wydarzenia czekające na weryfikację.",
+    "createFailed": "Nie udało się wysłać wydarzenia — spróbuj ponownie",
+    "pendingReview": "W weryfikacji",
+    "pendingReviewDesc": "Tylko ty widzisz to wydarzenie, dopóki administrator go nie zatwierdzi."
   },
   "video": {
     "connecting": "Łączenie...",
@@ -618,7 +631,9 @@
     "eventCategory": "Kategoria",
     "eventPrice": "Cena (Pi)",
     "eventMaxAttendees": "Maks. uczestników",
-    "eventUpdated": "Wydarzenie zaktualizowane"
+    "eventUpdated": "Wydarzenie zaktualizowane",
+    "eventApproved": "Wydarzenie zatwierdzone — teraz widzą je wszyscy",
+    "eventRejected": "Wydarzenie odrzucone"
   },
   "legal": {
     "termsTitle": "Regulamin",

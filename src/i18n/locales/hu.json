@@ -386,7 +386,20 @@
     "rsvp": "Részvétel megerősítése",
     "loadFailed": "Az események betöltése nem sikerült",
     "noPast": "Még nincsenek elmúlt események",
-    "noPastDesc": "Az események, amelyeken részt veszel, itt jelennek meg, amint véget érnek."
+    "noPastDesc": "Az események, amelyeken részt veszel, itt jelennek meg, amint véget érnek.",
+    "createEvent": "Esemény létrehozása",
+    "eventTitle": "Az esemény neve",
+    "eventDescription": "Miről szól?",
+    "eventLocation": "Helyszín (cím vagy hely)",
+    "eventCity": "Város",
+    "eventMaxAttendees": "Max. résztvevő (nem kötelező)",
+    "createHint": "A létrehozás ingyenes. Az esemény mindenki számára látható lesz, miután egy adminisztrátor jóváhagyta.",
+    "submitForReview": "Beküldés ellenőrzésre",
+    "createPending": "Esemény beküldve — az adminisztrátori ellenőrzés után mindenki látni fogja.",
+    "createTooMany": "Már 3 eseményed vár ellenőrzésre.",
+    "createFailed": "Nem sikerült beküldeni az eseményt — próbáld újra",
+    "pendingReview": "Ellenőrzés alatt",
+    "pendingReviewDesc": "Ezt az eseményt csak te látod, amíg egy adminisztrátor jóvá nem hagyja."
   },
   "video": {
     "connecting": "Csatlakozás...",
@@ -618,7 +631,9 @@
     "eventCategory": "Kategória",
     "eventPrice": "Ár (Pi)",
     "eventMaxAttendees": "Max. résztvevő",
-    "eventUpdated": "Az esemény frissítve"
+    "eventUpdated": "Az esemény frissítve",
+    "eventApproved": "Esemény jóváhagyva — most már mindenki látja",
+    "eventRejected": "Esemény elutasítva"
   },
   "legal": {
     "termsTitle": "Felhasználási feltételek",

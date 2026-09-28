@@ -386,7 +386,20 @@
     "rsvp": "Anmelden",
     "loadFailed": "Events konnten nicht geladen werden",
     "noPast": "Noch keine vergangenen Events",
-    "noPastDesc": "Events, an denen du teilnimmst, erscheinen hier, sobald sie vorbei sind."
+    "noPastDesc": "Events, an denen du teilnimmst, erscheinen hier, sobald sie vorbei sind.",
+    "createEvent": "Event erstellen",
+    "eventTitle": "Name des Events",
+    "eventDescription": "Worum geht es?",
+    "eventLocation": "Ort (Adresse oder Location)",
+    "eventCity": "Stadt",
+    "eventMaxAttendees": "Max. Teilnehmer (optional)",
+    "createHint": "Kostenlos. Das Event ist für alle sichtbar, sobald ein Admin es freigibt.",
+    "submitForReview": "Zur Prüfung einreichen",
+    "createPending": "Event eingereicht — es erscheint für alle nach der Prüfung durch einen Admin.",
+    "createTooMany": "Du hast bereits 3 Events in Prüfung.",
+    "createFailed": "Event konnte nicht eingereicht werden — bitte versuche es erneut",
+    "pendingReview": "In Prüfung",
+    "pendingReviewDesc": "Nur du siehst dieses Event, bis ein Admin es freigibt."
   },
   "video": {
     "connecting": "Verbinden...",
@@ -618,7 +631,9 @@
     "eventCategory": "Kategorie",
     "eventPrice": "Preis (Pi)",
     "eventMaxAttendees": "Max. Teilnehmer",
-    "eventUpdated": "Veranstaltung aktualisiert"
+    "eventUpdated": "Veranstaltung aktualisiert",
+    "eventApproved": "Event freigegeben — jetzt für alle sichtbar",
+    "eventRejected": "Event abgelehnt"
   },
   "legal": {
     "termsTitle": "Nutzungsbedingungen",

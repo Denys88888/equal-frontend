@@ -386,7 +386,20 @@
     "rsvp": "Xác nhận tham gia",
     "loadFailed": "Không tải được sự kiện",
     "noPast": "Chưa có sự kiện đã qua",
-    "noPastDesc": "Các sự kiện bạn tham gia sẽ hiện ở đây sau khi kết thúc."
+    "noPastDesc": "Các sự kiện bạn tham gia sẽ hiện ở đây sau khi kết thúc.",
+    "createEvent": "Tạo sự kiện",
+    "eventTitle": "Tên sự kiện",
+    "eventDescription": "Sự kiện về gì?",
+    "eventLocation": "Địa điểm (địa chỉ hoặc quán)",
+    "eventCity": "Thành phố",
+    "eventMaxAttendees": "Số người tối đa (tùy chọn)",
+    "createHint": "Tạo miễn phí. Sự kiện sẽ hiển thị với mọi người sau khi quản trị viên duyệt.",
+    "submitForReview": "Gửi để duyệt",
+    "createPending": "Đã gửi sự kiện — sự kiện sẽ hiển thị với mọi người sau khi quản trị viên duyệt.",
+    "createTooMany": "Bạn đã có 3 sự kiện đang chờ duyệt.",
+    "createFailed": "Không thể gửi sự kiện — vui lòng thử lại",
+    "pendingReview": "Đang chờ duyệt",
+    "pendingReviewDesc": "Chỉ bạn nhìn thấy sự kiện này cho đến khi quản trị viên duyệt."
   },
   "video": {
     "connecting": "Đang kết nối...",
@@ -618,7 +631,9 @@
     "eventCategory": "Danh mục",
     "eventPrice": "Giá (Pi)",
     "eventMaxAttendees": "Số người tối đa",
-    "eventUpdated": "Đã cập nhật sự kiện"
+    "eventUpdated": "Đã cập nhật sự kiện",
+    "eventApproved": "Đã duyệt sự kiện — giờ mọi người đều thấy",
+    "eventRejected": "Đã từ chối sự kiện"
   },
   "legal": {
     "termsTitle": "Điều khoản dịch vụ",

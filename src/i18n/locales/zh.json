@@ -386,7 +386,20 @@
     "rsvp": "报名",
     "loadFailed": "无法加载活动",
     "noPast": "还没有往期活动",
-    "noPastDesc": "你参加过的活动结束后会显示在这里。"
+    "noPastDesc": "你参加过的活动结束后会显示在这里。",
+    "createEvent": "创建活动",
+    "eventTitle": "活动名称",
+    "eventDescription": "活动内容是什么？",
+    "eventLocation": "地点（地址或场所）",
+    "eventCity": "城市",
+    "eventMaxAttendees": "最多参与人数（可选）",
+    "createHint": "创建免费。管理员审核通过后，所有人都能看到该活动。",
+    "submitForReview": "提交审核",
+    "createPending": "活动已提交——管理员审核通过后所有人都能看到。",
+    "createTooMany": "你已有 3 个活动在等待审核。",
+    "createFailed": "无法提交活动——请重试",
+    "pendingReview": "审核中",
+    "pendingReviewDesc": "在管理员批准之前，只有你能看到此活动。"
   },
   "video": {
     "connecting": "连接中...",
@@ -618,7 +631,9 @@
     "eventCategory": "分类",
     "eventPrice": "价格（Pi）",
     "eventMaxAttendees": "人数上限",
-    "eventUpdated": "活动已更新"
+    "eventUpdated": "活动已更新",
+    "eventApproved": "活动已通过——现在所有人都能看到",
+    "eventRejected": "活动已被拒绝"
   },
   "legal": {
     "termsTitle": "服务条款",

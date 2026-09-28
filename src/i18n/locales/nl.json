@@ -386,7 +386,20 @@
     "rsvp": "Aanmelden",
     "loadFailed": "Kon de evenementen niet laden",
     "noPast": "Nog geen afgelopen evenementen",
-    "noPastDesc": "Evenementen waaraan je deelneemt verschijnen hier zodra ze voorbij zijn."
+    "noPastDesc": "Evenementen waaraan je deelneemt verschijnen hier zodra ze voorbij zijn.",
+    "createEvent": "Evenement maken",
+    "eventTitle": "Naam van het evenement",
+    "eventDescription": "Waar gaat het over?",
+    "eventLocation": "Locatie (adres of zaak)",
+    "eventCity": "Stad",
+    "eventMaxAttendees": "Max. deelnemers (optioneel)",
+    "createHint": "Aanmaken is gratis. Het evenement is voor iedereen zichtbaar zodra een beheerder het goedkeurt.",
+    "submitForReview": "Ter beoordeling indienen",
+    "createPending": "Evenement ingediend — het verschijnt voor iedereen na beoordeling door een beheerder.",
+    "createTooMany": "Je hebt al 3 evenementen in beoordeling.",
+    "createFailed": "Evenement kon niet worden ingediend — probeer het opnieuw",
+    "pendingReview": "In beoordeling",
+    "pendingReviewDesc": "Alleen jij ziet dit evenement totdat een beheerder het goedkeurt."
   },
   "video": {
     "connecting": "Verbinden...",
@@ -618,7 +631,9 @@
     "eventCategory": "Categorie",
     "eventPrice": "Prijs (Pi)",
     "eventMaxAttendees": "Max. deelnemers",
-    "eventUpdated": "Evenement bijgewerkt"
+    "eventUpdated": "Evenement bijgewerkt",
+    "eventApproved": "Evenement goedgekeurd — nu zichtbaar voor iedereen",
+    "eventRejected": "Evenement afgewezen"
   },
   "legal": {
     "termsTitle": "Servicevoorwaarden",

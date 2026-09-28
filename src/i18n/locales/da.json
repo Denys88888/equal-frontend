@@ -386,7 +386,20 @@
     "rsvp": "Tilmeld dig",
     "loadFailed": "Kunne ikke indlæse begivenhederne",
     "noPast": "Ingen tidligere begivenheder endnu",
-    "noPastDesc": "Begivenheder, du deltager i, dukker op her, når de er slut."
+    "noPastDesc": "Begivenheder, du deltager i, dukker op her, når de er slut.",
+    "createEvent": "Opret begivenhed",
+    "eventTitle": "Begivenhedens navn",
+    "eventDescription": "Hvad handler det om?",
+    "eventLocation": "Sted (adresse eller lokale)",
+    "eventCity": "By",
+    "eventMaxAttendees": "Maks. deltagere (valgfrit)",
+    "createHint": "Gratis at oprette. Begivenheden bliver synlig for alle, når en admin har godkendt den.",
+    "submitForReview": "Send til gennemgang",
+    "createPending": "Begivenheden er sendt — den bliver synlig for alle efter admin-gennemgang.",
+    "createTooMany": "Du har allerede 3 begivenheder, der venter på gennemgang.",
+    "createFailed": "Begivenheden kunne ikke sendes — prøv igen",
+    "pendingReview": "Til gennemgang",
+    "pendingReviewDesc": "Kun du kan se denne begivenhed, indtil en admin godkender den."
   },
   "video": {
     "connecting": "Forbinder...",
@@ -618,7 +631,9 @@
     "eventCategory": "Kategori",
     "eventPrice": "Pris (Pi)",
     "eventMaxAttendees": "Maks. antal deltagere",
-    "eventUpdated": "Begivenheden er opdateret"
+    "eventUpdated": "Begivenheden er opdateret",
+    "eventApproved": "Begivenhed godkendt — nu synlig for alle",
+    "eventRejected": "Begivenhed afvist"
   },
   "legal": {
     "termsTitle": "Servicevilkår",

@@ -386,7 +386,20 @@
     "rsvp": "Ilmoittaudu",
     "loadFailed": "Tapahtumia ei voitu ladata",
     "noPast": "Ei vielä menneitä tapahtumia",
-    "noPastDesc": "Tapahtumat, joihin osallistut, näkyvät täällä niiden päätyttyä."
+    "noPastDesc": "Tapahtumat, joihin osallistut, näkyvät täällä niiden päätyttyä.",
+    "createEvent": "Luo tapahtuma",
+    "eventTitle": "Tapahtuman nimi",
+    "eventDescription": "Mistä on kyse?",
+    "eventLocation": "Paikka (osoite tai paikka)",
+    "eventCity": "Kaupunki",
+    "eventMaxAttendees": "Osallistujia enintään (valinnainen)",
+    "createHint": "Luominen on ilmaista. Tapahtuma näkyy kaikille, kun ylläpitäjä on hyväksynyt sen.",
+    "submitForReview": "Lähetä tarkistettavaksi",
+    "createPending": "Tapahtuma lähetetty — se näkyy kaikille ylläpitäjän tarkistuksen jälkeen.",
+    "createTooMany": "Sinulla on jo 3 tapahtumaa odottamassa tarkistusta.",
+    "createFailed": "Tapahtuman lähettäminen epäonnistui — yritä uudelleen",
+    "pendingReview": "Tarkistettavana",
+    "pendingReviewDesc": "Vain sinä näet tämän tapahtuman, kunnes ylläpitäjä hyväksyy sen."
   },
   "video": {
     "connecting": "Yhdistetään...",
@@ -618,7 +631,9 @@
     "eventCategory": "Luokka",
     "eventPrice": "Hinta (Pi)",
     "eventMaxAttendees": "Enimmäisosallistujamäärä",
-    "eventUpdated": "Tapahtuma päivitettiin"
+    "eventUpdated": "Tapahtuma päivitettiin",
+    "eventApproved": "Tapahtuma hyväksytty — nyt kaikkien nähtävissä",
+    "eventRejected": "Tapahtuma hylätty"
   },
   "legal": {
     "termsTitle": "Käyttöehdot",

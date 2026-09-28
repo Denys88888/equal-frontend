@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getEvents, rsvp } from '@/api/events';
+import { getEvents, rsvp, createEvent } from '@/api/events';
+import type { CreateEventRequest } from '@/api/events';
 import { usePiPayment } from '@/hooks/usePiPayment';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -11,10 +12,12 @@ import {
   Check,
   Star,
   X,
+  Plus,
 } from 'lucide-react';
 import Layout from '@/components/Layout';
 import { useToast } from '@/hooks/useToast';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 /* ------------------------------------------------------------------ */
 /*  TYPES                                                              */
@@ -45,6 +48,8 @@ interface EventItem {
   attendeeCount: number;
   maxAttendees: number;
   featured?: boolean;
+  /** Submitted by this user and not yet approved — only its author ever receives it. */
+  pending?: boolean;
 }
 
 /* ------------------------------------------------------------------ */
@@ -141,6 +146,11 @@ function EventListCard({
           >
             {t(`events.cat_${event.category.toLowerCase()}`, { defaultValue: event.category })}
           </span>
+          {event.pending && (
+            <span className="text-[11px] px-2 py-0.5 rounded-full font-semibold" style={{ backgroundColor: 'rgba(240,184,74,0.15)', color: '#D99E3A' }}>
+              {t('events.pendingReview', { defaultValue: 'On review' })}
+            </span>
+          )}
           <span className="text-sm font-semibold" style={{ color: event.price === 0 ? '#5BC492' : '#BB83C9' }}>
             {event.price === 0 ? t('events.free') : `${event.price} Pi`}
           </span>
@@ -379,8 +389,18 @@ function EventDetailSheet({
             </div>
           </div>
 
+          {/* Pending submission: visible only to its author, not bookable yet */}
+          {event.pending && (
+            <div className="mt-5 p-4 rounded-2xl" style={{ backgroundColor: 'rgba(240,184,74,0.12)' }}>
+              <p className="text-sm font-semibold" style={{ color: '#D99E3A' }}>{t('events.pendingReview', { defaultValue: 'On review' })}</p>
+              <p className="text-xs mt-1" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>
+                {t('events.pendingReviewDesc', { defaultValue: 'Only you can see this event until an admin approves it.' })}
+              </p>
+            </div>
+          )}
+
           {/* Ticket Section (paid events) */}
-          {event.price > 0 && !isGoing && (
+          {!event.pending && event.price > 0 && !isGoing && (
             <div className="mt-5 p-4 rounded-2xl border" style={{ borderColor: 'var(--linen-dark)' }}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -420,6 +440,7 @@ function EventDetailSheet({
           )}
 
           {/* RSVP Actions */}
+          {!event.pending && (
           <div className="flex items-center gap-3 mt-5">
             <button
               onClick={onToggleGoing}
@@ -444,6 +465,7 @@ function EventDetailSheet({
               {isInterested ? t('events.interested') : t('events.save')}
             </button>
           </div>
+          )}
 
           {/* Post-Event Feedback */}
           {isGoing && (
@@ -528,9 +550,17 @@ export default function Events() {
   const [interestedEvents, setInterestedEvents] = useState<Set<string>>(new Set());
   const [activeTab, setActiveTab] = useState<'upcoming' | 'interested' | 'past'>('upcoming');
   const [allEvents, setAllEvents] = useState<EventItem[]>([]);
+  const [showCreate, setShowCreate] = useState(false);
+  const [creating, setCreating] = useState(false);
+  const [draft, setDraft] = useState({
+    title: '', description: '', date: '', location: '', city: '',
+    category: 'Social Mixers' as CreateEventRequest['category'], maxAttendees: '',
+  });
   const { initiatePayment } = usePiPayment();
 
-  useEffect(() => {
+  // Also called after creating an event: the server returns the author's own
+  // pending events, so reloading is what makes a fresh submission show up.
+  const loadEvents = useCallback(() => {
     getEvents().then((data) => {
       if (!data) return;
       // Backend events lack UI-only fields (attendees, day/month, image…) — fill safe defaults
@@ -558,6 +588,7 @@ export default function Events() {
           attendeeCount: (e as unknown as { attendeeCount?: number }).attendeeCount ?? 0,
           maxAttendees: e.maxAttendees ?? 50,
           featured: e.featured,
+          pending: (e as unknown as { status?: string }).status === 'PENDING',
         } as EventItem;
       }));
 
@@ -578,13 +609,16 @@ export default function Events() {
     });
   }, [showToast, t]);
 
+  useEffect(() => { loadEvents(); }, [loadEvents]);
+
   // "Upcoming" must actually mean upcoming: an event whose date has passed
   // stayed in the list forever, still RSVP-able and still selling tickets.
   const now = Date.now();
   const isPast = (e: EventItem) => e.startsAt != null && e.startsAt < now;
 
   const upcomingEvents = allEvents.filter((e) => !isPast(e));
-  const featuredEvent = upcomingEvents.find((e) => e.featured) || upcomingEvents[0];
+  // Never feature a user's own pending submission as the hero card.
+  const featuredEvent = upcomingEvents.find((e) => e.featured && !e.pending) || upcomingEvents.find((e) => !e.pending);
 
   const filteredEvents = upcomingEvents.filter((e) => {
     if (activeCategory === 'All') return true;
@@ -598,9 +632,48 @@ export default function Events() {
     .filter(isPast)
     .sort((a, b) => (b.startsAt ?? 0) - (a.startsAt ?? 0));
 
+  const draftWhen = draft.date ? new Date(draft.date) : null;
+  const draftMax = draft.maxAttendees.trim() ? Number(draft.maxAttendees) : undefined;
+  const canCreate =
+    draft.title.trim().length >= 3 &&
+    draft.location.trim().length >= 2 &&
+    draft.city.trim().length >= 2 &&
+    !!draftWhen && !isNaN(draftWhen.getTime()) && draftWhen.getTime() > Date.now() &&
+    (draftMax === undefined || (Number.isInteger(draftMax) && draftMax >= 2 && draftMax <= 1000));
+
+  const handleCreate = async () => {
+    if (!canCreate || creating || !draftWhen) return;
+    setCreating(true);
+    try {
+      await createEvent({
+        title: draft.title.trim(),
+        description: draft.description.trim() || undefined,
+        // datetime-local is the user's local time; toISOString sends it as UTC.
+        date: draftWhen.toISOString(),
+        location: draft.location.trim(),
+        city: draft.city.trim(),
+        category: draft.category,
+        ...(draftMax !== undefined && { maxAttendees: draftMax }),
+      });
+      setShowCreate(false);
+      setDraft({ title: '', description: '', date: '', location: '', city: '', category: 'Social Mixers', maxAttendees: '' });
+      showToast('success', t('events.createPending', { defaultValue: 'Event submitted — it will appear for everyone after admin review.' }));
+      loadEvents();
+    } catch (err) {
+      const tooMany = err instanceof Error && /waiting for review/i.test(err.message);
+      showToast('error', tooMany
+        ? t('events.createTooMany', { defaultValue: 'You already have 3 events waiting for review.' })
+        : t('events.createFailed', { defaultValue: 'Could not submit the event — please try again' }));
+    } finally {
+      setCreating(false);
+    }
+  };
+
   const toggleGoing = async (eventId: string) => {
     const wasGoing = goingEvents.has(eventId);
     const event = allEvents.find((e) => e.id === eventId);
+    // The server refuses RSVPs to unapproved events; don't offer one.
+    if (event?.pending) return;
 
     // Paid events must be paid for before the server will accept a GOING RSVP.
     if (!wasGoing && event && event.price > 0) {
@@ -635,6 +708,7 @@ export default function Events() {
   };
 
   const toggleInterested = async (eventId: string) => {
+    if (allEvents.find((e) => e.id === eventId)?.pending) return;
     const wasInterested = interestedEvents.has(eventId);
     setInterestedEvents((prev) => {
       const next = new Set(prev);
@@ -654,7 +728,20 @@ export default function Events() {
   };
 
   return (
-    <Layout title={t('events.title')} showNotifications>
+    <Layout
+      title={t('events.title')}
+      showNotifications
+      rightAction={
+        <motion.button
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setShowCreate(true)}
+          aria-label={t('events.createEvent', { defaultValue: 'Create event' })}
+          className="w-10 h-10 rounded-full flex items-center justify-center"
+        >
+          <Plus size={24} className="text-[#BB83C9]" strokeWidth={2} />
+        </motion.button>
+      }
+    >
       <div className="relative flex-1 flex flex-col overflow-hidden">
         {/* Events Header with Tabs */}
         <div className="px-5 pt-5 pb-3">
@@ -850,6 +937,100 @@ export default function Events() {
           onToggleGoing={() => selectedEvent && toggleGoing(selectedEvent.id)}
           onToggleInterested={() => selectedEvent && toggleInterested(selectedEvent.id)}
         />
+
+        {/* Create Event — same pattern as creating a club */}
+        <Dialog open={showCreate} onOpenChange={setShowCreate}>
+          <DialogContent className="rounded-[20px] max-w-[340px] p-6 border-0 max-h-[85vh] overflow-y-auto" style={{ backgroundColor: 'var(--card-bg)' }}>
+            <DialogHeader>
+              <DialogTitle className="text-xl font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                {t('events.createEvent', { defaultValue: 'Create event' })}
+              </DialogTitle>
+            </DialogHeader>
+            <div className="flex flex-col gap-3 mt-2">
+              <input
+                type="text"
+                value={draft.title}
+                onChange={(e) => setDraft((d) => ({ ...d, title: e.target.value }))}
+                placeholder={t('events.eventTitle', { defaultValue: 'Event name' })}
+                maxLength={100}
+                className="w-full rounded-xl px-4 py-3 text-base outline-none border-2 border-transparent focus:border-[#BB83C9] transition-colors"
+                style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.3)', color: 'var(--charcoal)' }}
+              />
+              <textarea
+                value={draft.description}
+                onChange={(e) => setDraft((d) => ({ ...d, description: e.target.value }))}
+                placeholder={t('events.eventDescription', { defaultValue: 'What is it about?' })}
+                maxLength={1000}
+                className="w-full rounded-xl px-4 py-3 text-base outline-none border-2 border-transparent focus:border-[#BB83C9] transition-colors resize-none"
+                style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.3)', minHeight: 72, color: 'var(--charcoal)' }}
+              />
+              <input
+                type="datetime-local"
+                value={draft.date}
+                onChange={(e) => setDraft((d) => ({ ...d, date: e.target.value }))}
+                aria-label={t('events.date')}
+                className="w-full rounded-xl px-4 py-3 text-base outline-none border-2 border-transparent focus:border-[#BB83C9] transition-colors"
+                style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.3)', color: 'var(--charcoal)' }}
+              />
+              <input
+                type="text"
+                value={draft.location}
+                onChange={(e) => setDraft((d) => ({ ...d, location: e.target.value }))}
+                placeholder={t('events.eventLocation', { defaultValue: 'Place (address or venue)' })}
+                maxLength={200}
+                className="w-full rounded-xl px-4 py-3 text-base outline-none border-2 border-transparent focus:border-[#BB83C9] transition-colors"
+                style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.3)', color: 'var(--charcoal)' }}
+              />
+              <input
+                type="text"
+                value={draft.city}
+                onChange={(e) => setDraft((d) => ({ ...d, city: e.target.value }))}
+                placeholder={t('events.eventCity', { defaultValue: 'City' })}
+                maxLength={100}
+                className="w-full rounded-xl px-4 py-3 text-base outline-none border-2 border-transparent focus:border-[#BB83C9] transition-colors"
+                style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.3)', color: 'var(--charcoal)' }}
+              />
+              <input
+                type="number"
+                inputMode="numeric"
+                min={2}
+                max={1000}
+                value={draft.maxAttendees}
+                onChange={(e) => setDraft((d) => ({ ...d, maxAttendees: e.target.value }))}
+                placeholder={t('events.eventMaxAttendees', { defaultValue: 'Max. attendees (optional)' })}
+                className="w-full rounded-xl px-4 py-3 text-base outline-none border-2 border-transparent focus:border-[#BB83C9] transition-colors"
+                style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.3)', color: 'var(--charcoal)' }}
+              />
+              <div className="flex gap-2 flex-wrap">
+                {(['Speed Dating', 'Social Mixers', 'Outdoor', 'Workshops', 'Parties'] as const).map((cat) => (
+                  <button
+                    key={cat}
+                    type="button"
+                    onClick={() => setDraft((d) => ({ ...d, category: cat }))}
+                    className="px-3 py-1.5 rounded-full text-xs font-medium transition-all"
+                    style={{
+                      backgroundColor: draft.category === cat ? '#BB83C9' : 'rgba(var(--linen-rgb), 0.4)',
+                      color: draft.category === cat ? '#fff' : 'var(--charcoal)',
+                    }}
+                  >
+                    {t(`events.cat_${cat.toLowerCase()}`, { defaultValue: cat })}
+                  </button>
+                ))}
+              </div>
+              <p className="text-xs" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>
+                {t('events.createHint', { defaultValue: 'Free to create. It will appear for everyone after an admin approves it.' })}
+              </p>
+              <button
+                onClick={handleCreate}
+                disabled={!canCreate || creating}
+                className="w-full py-3.5 rounded-full text-base font-semibold text-white disabled:opacity-40 mt-1"
+                style={{ backgroundColor: '#BB83C9', boxShadow: '0 4px 16px rgba(187,131,201,0.3)' }}
+              >
+                {creating ? t('clubs.posting', { defaultValue: 'Posting…' }) : t('events.submitForReview', { defaultValue: 'Submit for review' })}
+              </button>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </Layout>
   );

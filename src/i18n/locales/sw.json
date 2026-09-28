@@ -386,7 +386,20 @@
     "rsvp": "Thibitisha kuhudhuria",
     "loadFailed": "Kupakia matukio hakukufaulu",
     "noPast": "Bado hakuna matukio yaliyopita",
-    "noPastDesc": "Matukio unayoshiriki yataonekana hapa baada ya kumalizika."
+    "noPastDesc": "Matukio unayoshiriki yataonekana hapa baada ya kumalizika.",
+    "createEvent": "Unda tukio",
+    "eventTitle": "Jina la tukio",
+    "eventDescription": "Linahusu nini?",
+    "eventLocation": "Mahali (anwani au ukumbi)",
+    "eventCity": "Mji",
+    "eventMaxAttendees": "Idadi ya juu ya washiriki (si lazima)",
+    "createHint": "Kuunda ni bure. Tukio litaonekana kwa wote baada ya msimamizi kuliidhinisha.",
+    "submitForReview": "Tuma kwa ukaguzi",
+    "createPending": "Tukio limetumwa — litaonekana kwa wote baada ya ukaguzi wa msimamizi.",
+    "createTooMany": "Tayari una matukio 3 yanayosubiri ukaguzi.",
+    "createFailed": "Imeshindwa kutuma tukio — tafadhali jaribu tena",
+    "pendingReview": "Linakaguliwa",
+    "pendingReviewDesc": "Ni wewe pekee unayeona tukio hili hadi msimamizi aliidhinishe."
   },
   "video": {
     "connecting": "Inaunganisha...",
@@ -618,7 +631,9 @@
     "eventCategory": "Jamii",
     "eventPrice": "Bei (Pi)",
     "eventMaxAttendees": "Idadi ya Juu ya Wahudhuriaji",
-    "eventUpdated": "Tukio limesasishwa"
+    "eventUpdated": "Tukio limesasishwa",
+    "eventApproved": "Tukio limeidhinishwa — sasa linaonekana kwa wote",
+    "eventRejected": "Tukio limekataliwa"
   },
   "legal": {
     "termsTitle": "Masharti ya Huduma",

@@ -72,3 +72,26 @@ export const eventsApi = {
   getEvent,
   rsvp,
 };
+
+/** What a user sends to propose an event. Price is deliberately absent — only an admin sets it. */
+export interface CreateEventRequest {
+  title: string;
+  description?: string;
+  /** ISO 8601, must be in the future. */
+  date: string;
+  location: string;
+  city: string;
+  category: 'Speed Dating' | 'Social Mixers' | 'Outdoor' | 'Workshops' | 'Parties';
+  maxAttendees?: number;
+}
+
+/**
+ * Propose an event. It is created PENDING and stays visible only to its author
+ * until an admin approves it.
+ *
+ * @throws {ApiError} 400 if the date is past or the user already has 3 events awaiting review
+ */
+export async function createEvent(payload: CreateEventRequest): Promise<{ id: string; status: string }> {
+  const { data } = await api.post<{ id: string; status: string }>('/events', payload);
+  return data;
+}

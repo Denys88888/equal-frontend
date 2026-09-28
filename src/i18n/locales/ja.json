@@ -386,7 +386,20 @@
     "rsvp": "参加登録",
     "loadFailed": "イベントを読み込めませんでした",
     "noPast": "過去のイベントはまだありません",
-    "noPastDesc": "参加したイベントは終了後にここに表示されます。"
+    "noPastDesc": "参加したイベントは終了後にここに表示されます。",
+    "createEvent": "イベントを作成",
+    "eventTitle": "イベント名",
+    "eventDescription": "どんなイベントですか？",
+    "eventLocation": "場所（住所または会場）",
+    "eventCity": "都市",
+    "eventMaxAttendees": "最大参加人数（任意）",
+    "createHint": "作成は無料です。管理者が承認すると全員に表示されます。",
+    "submitForReview": "審査に提出",
+    "createPending": "イベントを送信しました。管理者の審査後に全員に表示されます。",
+    "createTooMany": "審査待ちのイベントがすでに3件あります。",
+    "createFailed": "イベントを送信できませんでした。もう一度お試しください",
+    "pendingReview": "審査中",
+    "pendingReviewDesc": "管理者が承認するまで、このイベントはあなたにしか表示されません。"
   },
   "video": {
     "connecting": "接続中...",
@@ -618,7 +631,9 @@
     "eventCategory": "カテゴリー",
     "eventPrice": "価格（Pi）",
     "eventMaxAttendees": "最大参加人数",
-    "eventUpdated": "イベントを更新しました"
+    "eventUpdated": "イベントを更新しました",
+    "eventApproved": "イベントを承認しました。全員に表示されます",
+    "eventRejected": "イベントを却下しました"
   },
   "legal": {
     "termsTitle": "利用規約",

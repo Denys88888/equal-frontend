@@ -386,7 +386,20 @@
     "rsvp": "Je participe",
     "loadFailed": "Impossible de charger les événements",
     "noPast": "Aucun événement passé pour l'instant",
-    "noPastDesc": "Les événements auxquels tu participes apparaîtront ici une fois terminés."
+    "noPastDesc": "Les événements auxquels tu participes apparaîtront ici une fois terminés.",
+    "createEvent": "Créer un événement",
+    "eventTitle": "Nom de l’événement",
+    "eventDescription": "De quoi s’agit-il ?",
+    "eventLocation": "Lieu (adresse ou établissement)",
+    "eventCity": "Ville",
+    "eventMaxAttendees": "Participants max. (facultatif)",
+    "createHint": "Création gratuite. L’événement sera visible par tous une fois approuvé par un administrateur.",
+    "submitForReview": "Soumettre pour validation",
+    "createPending": "Événement soumis — il sera visible par tous après validation par un administrateur.",
+    "createTooMany": "Vous avez déjà 3 événements en attente de validation.",
+    "createFailed": "Impossible d’envoyer l’événement — veuillez réessayer",
+    "pendingReview": "En validation",
+    "pendingReviewDesc": "Vous seul voyez cet événement jusqu’à ce qu’un administrateur l’approuve."
   },
   "video": {
     "connecting": "Connexion...",
@@ -618,7 +631,9 @@
     "eventCategory": "Catégorie",
     "eventPrice": "Prix (Pi)",
     "eventMaxAttendees": "Participants max",
-    "eventUpdated": "Événement mis à jour"
+    "eventUpdated": "Événement mis à jour",
+    "eventApproved": "Événement approuvé — désormais visible par tous",
+    "eventRejected": "Événement refusé"
   },
   "legal": {
     "termsTitle": "Conditions d'utilisation",

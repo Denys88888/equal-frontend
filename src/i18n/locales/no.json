@@ -386,7 +386,20 @@
     "rsvp": "Meld deg på",
     "loadFailed": "Kunne ikke laste arrangementene",
     "noPast": "Ingen tidligere arrangementer ennå",
-    "noPastDesc": "Arrangementer du deltar på, dukker opp her når de er ferdige."
+    "noPastDesc": "Arrangementer du deltar på, dukker opp her når de er ferdige.",
+    "createEvent": "Opprett arrangement",
+    "eventTitle": "Navn på arrangementet",
+    "eventDescription": "Hva handler det om?",
+    "eventLocation": "Sted (adresse eller lokale)",
+    "eventCity": "By",
+    "eventMaxAttendees": "Maks. deltakere (valgfritt)",
+    "createHint": "Gratis å opprette. Arrangementet blir synlig for alle når en admin har godkjent det.",
+    "submitForReview": "Send til gjennomgang",
+    "createPending": "Arrangementet er sendt — det blir synlig for alle etter gjennomgang av en admin.",
+    "createTooMany": "Du har allerede 3 arrangementer som venter på gjennomgang.",
+    "createFailed": "Kunne ikke sende arrangementet — prøv igjen",
+    "pendingReview": "Til gjennomgang",
+    "pendingReviewDesc": "Bare du ser dette arrangementet til en admin godkjenner det."
   },
   "video": {
     "connecting": "Kobler til...",
@@ -618,7 +631,9 @@
     "eventCategory": "Kategori",
     "eventPrice": "Pris (Pi)",
     "eventMaxAttendees": "Maks antall deltakere",
-    "eventUpdated": "Arrangementet er oppdatert"
+    "eventUpdated": "Arrangementet er oppdatert",
+    "eventApproved": "Arrangement godkjent — nå synlig for alle",
+    "eventRejected": "Arrangement avvist"
   },
   "legal": {
     "termsTitle": "Vilkår for bruk",

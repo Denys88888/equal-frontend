@@ -141,6 +141,10 @@ export interface AdminEvent {
   attendees: number;
   featured: boolean;
   status: 'Upcoming' | 'Past';
+  /** Separate from `status` (time): PENDING = submitted by a user, hidden until approved. */
+  moderation: 'PENDING' | 'ACTIVE';
+  /** Author's name; empty for events created before users could submit them. */
+  createdBy: string;
 }
 
 export interface UpdateEventRequest {
@@ -161,6 +165,11 @@ export async function getAdminClubs(): Promise<AdminClub[]> {
 
 export async function approveClub(clubId: string): Promise<void> {
   await api.post<void>(`/admin/clubs/${encodeURIComponent(clubId)}/approve`, {});
+}
+
+/** Make a user-submitted event visible. Rejecting one is deleteEvent, as with clubs. */
+export async function approveEvent(eventId: string): Promise<void> {
+  await api.post<void>(`/admin/events/${encodeURIComponent(eventId)}/approve`, {});
 }
 
 export async function deleteClub(clubId: string): Promise<void> {
@@ -234,6 +243,7 @@ export const adminApi = {
   setUserVerified,
   getAdminClubs,
   approveClub,
+  approveEvent,
   deleteClub,
   getAdminEvents,
   deleteEvent,
