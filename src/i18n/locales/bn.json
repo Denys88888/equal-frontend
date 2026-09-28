@@ -290,7 +290,7 @@
     "create": "একটি ক্লাব তৈরি করুন",
     "clubName": "ক্লাবের নাম",
     "clubDesc": "এই ক্লাবটি কী নিয়ে?",
-    "members": "{{count}} সদস্য",
+    "members": "{{count}} জন সদস্য",
     "join": "যোগ দিন",
     "joined": "যোগ দিয়েছেন",
     "newPost": "নতুন পোস্ট",
@@ -331,7 +331,13 @@
     "noComments": "এখনও কোনো মন্তব্য নেই — প্রথম হোন",
     "writeComment": "একটি মন্তব্য লিখুন…",
     "loadFailed": "ক্লাব লোড করতে ব্যর্থ হয়েছে",
-    "postFailed": "পোস্ট করতে ব্যর্থ হয়েছে — আবার চেষ্টা করুন"
+    "postFailed": "পোস্ট করতে ব্যর্থ হয়েছে — আবার চেষ্টা করুন",
+    "posts": "{{count}}টি পোস্ট",
+    "members_one": "{{count}} জন সদস্য",
+    "posts_one": "{{count}}টি পোস্ট",
+    "members_other": "{{count}} জন সদস্য",
+    "posts_other": "{{count}}টি পোস্ট",
+    "category": "বিভাগ"
   },
   "events": {
     "title": "ইভেন্ট",

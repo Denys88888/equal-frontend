@@ -331,7 +331,11 @@
     "noComments": "ยังไม่มีความคิดเห็น — มาเป็นคนแรก",
     "writeComment": "เขียนความคิดเห็น…",
     "loadFailed": "โหลดคลับไม่สำเร็จ",
-    "postFailed": "โพสต์ไม่สำเร็จ — โปรดลองอีกครั้ง"
+    "postFailed": "โพสต์ไม่สำเร็จ — โปรดลองอีกครั้ง",
+    "posts": "{{count}} โพสต์",
+    "members_other": "สมาชิก {{count}} คน",
+    "posts_other": "{{count}} โพสต์",
+    "category": "หมวดหมู่"
   },
   "events": {
     "title": "กิจกรรม",

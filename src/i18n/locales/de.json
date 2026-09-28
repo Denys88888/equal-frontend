@@ -331,7 +331,13 @@
     "noComments": "Noch keine Kommentare – sei der Erste",
     "writeComment": "Kommentar schreiben…",
     "loadFailed": "Clubs konnten nicht geladen werden",
-    "postFailed": "Beitrag konnte nicht veröffentlicht werden – bitte versuche es erneut"
+    "postFailed": "Beitrag konnte nicht veröffentlicht werden – bitte versuche es erneut",
+    "posts": "{{count}} Beiträge",
+    "members_one": "{{count}} Mitglied",
+    "posts_one": "{{count}} Beitrag",
+    "members_other": "{{count}} Mitglieder",
+    "posts_other": "{{count}} Beiträge",
+    "category": "Kategorie"
   },
   "events": {
     "title": "Veranstaltungen",

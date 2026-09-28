@@ -331,7 +331,13 @@
     "noComments": "Ei vielä kommentteja — ole ensimmäinen",
     "writeComment": "Kirjoita kommentti…",
     "loadFailed": "Kerhoja ei voitu ladata",
-    "postFailed": "Julkaisua ei voitu lähettää — yritä uudelleen"
+    "postFailed": "Julkaisua ei voitu lähettää — yritä uudelleen",
+    "posts": "{{count}} julkaisua",
+    "members_one": "{{count}} jäsen",
+    "posts_one": "{{count}} julkaisu",
+    "members_other": "{{count}} jäsentä",
+    "posts_other": "{{count}} julkaisua",
+    "category": "Kategoria"
   },
   "events": {
     "title": "Tapahtumat",

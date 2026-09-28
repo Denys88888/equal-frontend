@@ -290,7 +290,7 @@
     "create": "Создать клуб",
     "clubName": "Название клуба",
     "clubDesc": "О чём этот клуб?",
-    "members": "{{count}} участников",
+    "members": "{{count}} участника",
     "join": "Вступить",
     "joined": "Вы в клубе",
     "newPost": "Новый пост",
@@ -331,7 +331,17 @@
     "noComments": "Пока нет комментариев — будьте первым",
     "writeComment": "Напишите комментарий…",
     "loadFailed": "Не удалось загрузить клубы",
-    "postFailed": "Не удалось опубликовать пост — попробуйте ещё раз"
+    "postFailed": "Не удалось опубликовать пост — попробуйте ещё раз",
+    "posts": "{{count}} поста",
+    "members_one": "{{count}} участник",
+    "posts_one": "{{count}} пост",
+    "members_few": "{{count}} участника",
+    "posts_few": "{{count}} поста",
+    "members_many": "{{count}} участников",
+    "posts_many": "{{count}} постов",
+    "members_other": "{{count}} участника",
+    "posts_other": "{{count}} поста",
+    "category": "Категория"
   },
   "events": {
     "title": "События",

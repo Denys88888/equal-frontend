@@ -290,7 +290,7 @@
     "create": "Utwórz klub",
     "clubName": "Nazwa klubu",
     "clubDesc": "O czym jest ten klub?",
-    "members": "{{count}} członków",
+    "members": "{{count}} członka",
     "join": "Dołącz",
     "joined": "Dołączono",
     "newPost": "Nowy wpis",
@@ -331,7 +331,17 @@
     "noComments": "Brak komentarzy — bądź pierwszy",
     "writeComment": "Napisz komentarz…",
     "loadFailed": "Nie udało się wczytać klubów",
-    "postFailed": "Nie udało się opublikować wpisu — spróbuj ponownie"
+    "postFailed": "Nie udało się opublikować wpisu — spróbuj ponownie",
+    "posts": "{{count}} posta",
+    "members_one": "{{count}} członek",
+    "posts_one": "{{count}} post",
+    "members_few": "{{count}} członków",
+    "posts_few": "{{count}} posty",
+    "members_many": "{{count}} członków",
+    "posts_many": "{{count}} postów",
+    "members_other": "{{count}} członka",
+    "posts_other": "{{count}} posta",
+    "category": "Kategoria"
   },
   "events": {
     "title": "Wydarzenia",

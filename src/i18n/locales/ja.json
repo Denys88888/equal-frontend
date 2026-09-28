@@ -331,7 +331,11 @@
     "noComments": "まだコメントがありません。最初の1件を",
     "writeComment": "コメントを書く…",
     "loadFailed": "クラブを読み込めませんでした",
-    "postFailed": "投稿できませんでした。もう一度お試しください"
+    "postFailed": "投稿できませんでした。もう一度お試しください",
+    "posts": "{{count}}件の投稿",
+    "members_other": "{{count}}人のメンバー",
+    "posts_other": "{{count}}件の投稿",
+    "category": "カテゴリー"
   },
   "events": {
     "title": "イベント",

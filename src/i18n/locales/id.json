@@ -331,7 +331,11 @@
     "noComments": "Belum ada komentar — jadilah yang pertama",
     "writeComment": "Tulis komentar…",
     "loadFailed": "Tidak dapat memuat klub",
-    "postFailed": "Tidak dapat mengirim postingan — coba lagi"
+    "postFailed": "Tidak dapat mengirim postingan — coba lagi",
+    "posts": "{{count}} postingan",
+    "members_other": "{{count}} anggota",
+    "posts_other": "{{count}} postingan",
+    "category": "Kategori"
   },
   "events": {
     "title": "Acara",

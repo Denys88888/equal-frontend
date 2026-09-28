@@ -290,7 +290,7 @@
     "create": "Створити клуб",
     "clubName": "Назва клубу",
     "clubDesc": "Про що цей клуб?",
-    "members": "{{count}} учасників",
+    "members": "{{count}} учасника",
     "join": "Вступити",
     "joined": "Ви в клубі",
     "newPost": "Новий допис",
@@ -331,7 +331,17 @@
     "noComments": "Коментарів поки немає — стань першим",
     "writeComment": "Напиши коментар…",
     "loadFailed": "Не вдалося завантажити клуби",
-    "postFailed": "Не вдалося опублікувати допис — спробуй ще раз"
+    "postFailed": "Не вдалося опублікувати допис — спробуй ще раз",
+    "posts": "{{count}} допису",
+    "members_one": "{{count}} учасник",
+    "posts_one": "{{count}} допис",
+    "members_few": "{{count}} учасники",
+    "posts_few": "{{count}} дописи",
+    "members_many": "{{count}} учасників",
+    "posts_many": "{{count}} дописів",
+    "members_other": "{{count}} учасника",
+    "posts_other": "{{count}} допису",
+    "category": "Категорія"
   },
   "events": {
     "title": "Події",

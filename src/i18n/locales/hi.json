@@ -331,7 +331,13 @@
     "noComments": "अभी कोई टिप्पणी नहीं — पहले आप बनें",
     "writeComment": "टिप्पणी लिखें…",
     "loadFailed": "क्लब लोड नहीं हो सके",
-    "postFailed": "पोस्ट प्रकाशित नहीं हो सकी — दोबारा कोशिश करें"
+    "postFailed": "पोस्ट प्रकाशित नहीं हो सकी — दोबारा कोशिश करें",
+    "posts": "{{count}} पोस्ट",
+    "members_one": "{{count}} सदस्य",
+    "posts_one": "{{count}} पोस्ट",
+    "members_other": "{{count}} सदस्य",
+    "posts_other": "{{count}} पोस्ट",
+    "category": "श्रेणी"
   },
   "events": {
     "title": "कार्यक्रम",

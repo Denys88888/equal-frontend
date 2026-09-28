@@ -331,7 +331,13 @@
     "noComments": "Nog geen reacties — wees de eerste",
     "writeComment": "Schrijf een reactie…",
     "loadFailed": "Kon de clubs niet laden",
-    "postFailed": "Kon het bericht niet plaatsen — probeer het opnieuw"
+    "postFailed": "Kon het bericht niet plaatsen — probeer het opnieuw",
+    "posts": "{{count}} berichten",
+    "members_one": "{{count}} lid",
+    "posts_one": "{{count}} bericht",
+    "members_other": "{{count}} leden",
+    "posts_other": "{{count}} berichten",
+    "category": "Categorie"
   },
   "events": {
     "title": "Evenementen",

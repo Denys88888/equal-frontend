@@ -331,7 +331,13 @@
     "noComments": "No comments yet — be the first",
     "writeComment": "Write a comment…",
     "loadFailed": "Could not load clubs",
-    "postFailed": "Could not publish post — please try again"
+    "postFailed": "Could not publish post — please try again",
+    "posts": "{{count}} posts",
+    "members_one": "{{count}} member",
+    "posts_one": "{{count}} post",
+    "members_other": "{{count}} members",
+    "posts_other": "{{count}} posts",
+    "category": "Category"
   },
   "events": {
     "title": "Events",

@@ -331,7 +331,13 @@
     "noComments": "Henüz yorum yok — ilk sen ol",
     "writeComment": "Bir yorum yaz…",
     "loadFailed": "Kulüpler yüklenemedi",
-    "postFailed": "Gönderi paylaşılamadı — lütfen tekrar dene"
+    "postFailed": "Gönderi paylaşılamadı — lütfen tekrar dene",
+    "posts": "{{count}} gönderi",
+    "members_one": "{{count}} üye",
+    "posts_one": "{{count}} gönderi",
+    "members_other": "{{count}} üye",
+    "posts_other": "{{count}} gönderi",
+    "category": "Kategori"
   },
   "events": {
     "title": "Etkinlikler",

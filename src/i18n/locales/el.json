@@ -331,7 +331,13 @@
     "noComments": "Κανένα σχόλιο ακόμα — γίνε ο πρώτος",
     "writeComment": "Γράψε ένα σχόλιο…",
     "loadFailed": "Οι λέσχες δεν φορτώθηκαν",
-    "postFailed": "Η ανάρτηση δεν δημοσιεύτηκε — δοκίμασε ξανά"
+    "postFailed": "Η ανάρτηση δεν δημοσιεύτηκε — δοκίμασε ξανά",
+    "posts": "{{count}} αναρτήσεις",
+    "members_one": "{{count}} μέλος",
+    "posts_one": "{{count}} ανάρτηση",
+    "members_other": "{{count}} μέλη",
+    "posts_other": "{{count}} αναρτήσεις",
+    "category": "Κατηγορία"
   },
   "events": {
     "title": "Εκδηλώσεις",

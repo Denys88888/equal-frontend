@@ -331,7 +331,15 @@
     "noComments": "Ainda não há comentários — sê o primeiro",
     "writeComment": "Escreve um comentário…",
     "loadFailed": "Não foi possível carregar os clubes",
-    "postFailed": "Não foi possível publicar — tenta novamente"
+    "postFailed": "Não foi possível publicar — tenta novamente",
+    "posts": "{{count}} publicações",
+    "members_one": "{{count}} membro",
+    "posts_one": "{{count}} publicação",
+    "members_many": "{{count}} de membros",
+    "posts_many": "{{count}} de publicações",
+    "members_other": "{{count}} membros",
+    "posts_other": "{{count}} publicações",
+    "category": "Categoria"
   },
   "events": {
     "title": "Eventos",

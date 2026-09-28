@@ -331,7 +331,15 @@
     "noComments": "Aucun commentaire — sois le premier",
     "writeComment": "Écris un commentaire…",
     "loadFailed": "Impossible de charger les clubs",
-    "postFailed": "Impossible de publier — réessaie"
+    "postFailed": "Impossible de publier — réessaie",
+    "posts": "{{count}} publications",
+    "members_one": "{{count}} membre",
+    "posts_one": "{{count}} publication",
+    "members_many": "{{count}} de membres",
+    "posts_many": "{{count}} de publications",
+    "members_other": "{{count}} membres",
+    "posts_other": "{{count}} publications",
+    "category": "Catégorie"
   },
   "events": {
     "title": "Événements",

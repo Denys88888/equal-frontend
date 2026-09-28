@@ -331,7 +331,11 @@
     "noComments": "Belum ada komen lagi — jadilah yang pertama",
     "writeComment": "Tulis komen…",
     "loadFailed": "Gagal memuatkan kelab",
-    "postFailed": "Gagal menyiarkan — cuba lagi"
+    "postFailed": "Gagal menyiarkan — cuba lagi",
+    "posts": "{{count}} hantaran",
+    "members_other": "{{count}} ahli",
+    "posts_other": "{{count}} hantaran",
+    "category": "Kategori"
   },
   "events": {
     "title": "Acara",

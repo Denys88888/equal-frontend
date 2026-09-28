@@ -331,7 +331,13 @@
     "noComments": "هنوز نظری نیست — اولین نفر باشید",
     "writeComment": "نظری بنویسید…",
     "loadFailed": "بارگیری باشگاه‌ها انجام نشد",
-    "postFailed": "انتشار پست انجام نشد — دوباره تلاش کنید"
+    "postFailed": "انتشار پست انجام نشد — دوباره تلاش کنید",
+    "posts": "{{count}} پست",
+    "members_one": "{{count}} عضو",
+    "posts_one": "{{count}} پست",
+    "members_other": "{{count}} عضو",
+    "posts_other": "{{count}} پست",
+    "category": "دسته‌بندی"
   },
   "events": {
     "title": "رویدادها",

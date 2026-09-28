@@ -331,7 +331,13 @@
     "noComments": "Inga kommentarer än — bli den första",
     "writeComment": "Skriv en kommentar…",
     "loadFailed": "Kunde inte läsa in klubbarna",
-    "postFailed": "Kunde inte publicera inlägget — försök igen"
+    "postFailed": "Kunde inte publicera inlägget — försök igen",
+    "posts": "{{count}} inlägg",
+    "members_one": "{{count}} medlem",
+    "posts_one": "{{count}} inlägg",
+    "members_other": "{{count}} medlemmar",
+    "posts_other": "{{count}} inlägg",
+    "category": "Kategori"
   },
   "events": {
     "title": "Evenemang",

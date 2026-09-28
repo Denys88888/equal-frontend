@@ -331,7 +331,15 @@
     "noComments": "Ancora nessun commento — sii il primo",
     "writeComment": "Scrivi un commento…",
     "loadFailed": "Impossibile caricare i club",
-    "postFailed": "Impossibile pubblicare il post — riprova"
+    "postFailed": "Impossibile pubblicare il post — riprova",
+    "posts": "{{count}} post",
+    "members_one": "{{count}} membro",
+    "posts_one": "{{count}} post",
+    "members_many": "{{count}} di membri",
+    "posts_many": "{{count}} di post",
+    "members_other": "{{count}} membri",
+    "posts_other": "{{count}} post",
+    "category": "Categoria"
   },
   "events": {
     "title": "Eventi",

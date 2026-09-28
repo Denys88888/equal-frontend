@@ -331,7 +331,13 @@
     "noComments": "Ingen kommentarer ennå — bli den første",
     "writeComment": "Skriv en kommentar…",
     "loadFailed": "Kunne ikke laste klubbene",
-    "postFailed": "Kunne ikke publisere innlegget — prøv igjen"
+    "postFailed": "Kunne ikke publisere innlegget — prøv igjen",
+    "posts": "{{count}} innlegg",
+    "members_one": "{{count}} medlem",
+    "posts_one": "{{count}} innlegg",
+    "members_other": "{{count}} medlemmer",
+    "posts_other": "{{count}} innlegg",
+    "category": "Kategori"
   },
   "events": {
     "title": "Arrangementer",

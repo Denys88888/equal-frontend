@@ -331,7 +331,15 @@
     "noComments": "אין עדיין תגובות — היה הראשון",
     "writeComment": "כתוב תגובה…",
     "loadFailed": "טעינת המועדונים נכשלה",
-    "postFailed": "פרסום הפוסט נכשל — נסה שוב"
+    "postFailed": "פרסום הפוסט נכשל — נסה שוב",
+    "posts": "{{count}} פוסטים",
+    "members_one": "{{count}} חבר",
+    "posts_one": "{{count}} פוסט",
+    "members_two": "{{count}} חברים",
+    "posts_two": "{{count}} פוסטים",
+    "members_other": "{{count}} חברים",
+    "posts_other": "{{count}} פוסטים",
+    "category": "קטגוריה"
   },
   "events": {
     "title": "אירועים",

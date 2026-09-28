@@ -331,7 +331,13 @@
     "noComments": "Bado hakuna maoni — kuwa wa kwanza",
     "writeComment": "Andika maoni…",
     "loadFailed": "Kupakia vilabu hakukufaulu",
-    "postFailed": "Kuchapisha hakukufaulu — jaribu tena"
+    "postFailed": "Kuchapisha hakukufaulu — jaribu tena",
+    "posts": "machapisho {{count}}",
+    "members_one": "mwanachama {{count}}",
+    "posts_one": "chapisho {{count}}",
+    "members_other": "wanachama {{count}}",
+    "posts_other": "machapisho {{count}}",
+    "category": "Kategoria"
   },
   "events": {
     "title": "Matukio",

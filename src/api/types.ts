@@ -172,11 +172,11 @@ export interface ClubPost {
   createdAt: string;
 }
 
+/** Exactly what the server accepts (CreateClubDto); anything else is stripped. */
 export interface CreateClubRequest {
   name: string;
-  description: string;
+  description?: string;
   category: string;
-  icon?: string;
 }
 
 export interface CreatePostRequest {

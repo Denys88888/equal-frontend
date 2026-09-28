@@ -290,7 +290,7 @@
     "create": "클럽 만들기",
     "clubName": "클럽 이름",
     "clubDesc": "이 클럽은 무엇에 관한 것인가요?",
-    "members": "{{count}}명 멤버",
+    "members": "멤버 {{count}}명",
     "join": "가입",
     "joined": "가입됨",
     "newPost": "새 게시글",
@@ -331,7 +331,11 @@
     "noComments": "아직 댓글이 없습니다. 첫 댓글을 남겨 보세요",
     "writeComment": "댓글을 입력하세요…",
     "loadFailed": "클럽을 불러오지 못했습니다",
-    "postFailed": "게시글을 올리지 못했습니다. 다시 시도해 주세요"
+    "postFailed": "게시글을 올리지 못했습니다. 다시 시도해 주세요",
+    "posts": "게시물 {{count}}개",
+    "members_other": "멤버 {{count}}명",
+    "posts_other": "게시물 {{count}}개",
+    "category": "카테고리"
   },
   "events": {
     "title": "이벤트",

@@ -331,7 +331,13 @@
     "noComments": "Wala pang komento — ikaw ang una",
     "writeComment": "Sumulat ng komento…",
     "loadFailed": "Hindi na-load ang mga club",
-    "postFailed": "Hindi napost — subukan muli"
+    "postFailed": "Hindi napost — subukan muli",
+    "posts": "{{count}} post",
+    "members_one": "{{count}} miyembro",
+    "posts_one": "{{count}} post",
+    "members_other": "{{count}} miyembro",
+    "posts_other": "{{count}} post",
+    "category": "Kategorya"
   },
   "events": {
     "title": "Mga Event",

@@ -290,7 +290,7 @@
     "create": "创建俱乐部",
     "clubName": "俱乐部名称",
     "clubDesc": "这个俱乐部是关于什么的？",
-    "members": "{{count}} 名成员",
+    "members": "{{count}} 位成员",
     "join": "加入",
     "joined": "已加入",
     "newPost": "发布新帖",
@@ -331,7 +331,11 @@
     "noComments": "还没有评论——来做第一个",
     "writeComment": "写下评论…",
     "loadFailed": "无法加载俱乐部",
-    "postFailed": "无法发布帖子，请重试"
+    "postFailed": "无法发布帖子，请重试",
+    "posts": "{{count}} 条帖子",
+    "members_other": "{{count}} 位成员",
+    "posts_other": "{{count}} 条帖子",
+    "category": "类别"
   },
   "events": {
     "title": "活动",

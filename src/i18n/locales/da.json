@@ -331,7 +331,13 @@
     "noComments": "Ingen kommentarer endnu — bliv den første",
     "writeComment": "Skriv en kommentar…",
     "loadFailed": "Kunne ikke indlæse klubberne",
-    "postFailed": "Kunne ikke slå opslaget op — prøv igen"
+    "postFailed": "Kunne ikke slå opslaget op — prøv igen",
+    "posts": "{{count}} opslag",
+    "members_one": "{{count}} medlem",
+    "posts_one": "{{count}} opslag",
+    "members_other": "{{count}} medlemmer",
+    "posts_other": "{{count}} opslag",
+    "category": "Kategori"
   },
   "events": {
     "title": "Begivenheder",

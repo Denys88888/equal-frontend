@@ -331,7 +331,11 @@
     "noComments": "Chưa có bình luận — hãy là người đầu tiên",
     "writeComment": "Viết bình luận…",
     "loadFailed": "Không tải được câu lạc bộ",
-    "postFailed": "Không đăng được bài — vui lòng thử lại"
+    "postFailed": "Không đăng được bài — vui lòng thử lại",
+    "posts": "{{count}} bài đăng",
+    "members_other": "{{count}} thành viên",
+    "posts_other": "{{count}} bài đăng",
+    "category": "Danh mục"
   },
   "events": {
     "title": "Sự kiện",

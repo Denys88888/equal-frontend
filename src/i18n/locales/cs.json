@@ -331,7 +331,17 @@
     "noComments": "Zatím žádné komentáře — buď první",
     "writeComment": "Napiš komentář…",
     "loadFailed": "Kluby se nepodařilo načíst",
-    "postFailed": "Příspěvek se nepodařilo publikovat — zkus to znovu"
+    "postFailed": "Příspěvek se nepodařilo publikovat — zkus to znovu",
+    "posts": "{{count}} příspěvků",
+    "members_one": "{{count}} člen",
+    "posts_one": "{{count}} příspěvek",
+    "members_few": "{{count}} členové",
+    "posts_few": "{{count}} příspěvky",
+    "members_many": "{{count}} členu",
+    "posts_many": "{{count}} příspěvku",
+    "members_other": "{{count}} členů",
+    "posts_other": "{{count}} příspěvků",
+    "category": "Kategorie"
   },
   "events": {
     "title": "Události",

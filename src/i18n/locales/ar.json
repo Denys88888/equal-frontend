@@ -331,7 +331,21 @@
     "noComments": "لا توجد تعليقات بعد — كن الأول",
     "writeComment": "اكتب تعليقًا…",
     "loadFailed": "تعذّر تحميل النوادي",
-    "postFailed": "تعذّر نشر المنشور — حاول مرة أخرى"
+    "postFailed": "تعذّر نشر المنشور — حاول مرة أخرى",
+    "posts": "{{count}} منشور",
+    "members_zero": "{{count}} عضو",
+    "posts_zero": "{{count}} منشور",
+    "members_one": "{{count}} عضو",
+    "posts_one": "{{count}} منشور",
+    "members_two": "{{count}} عضو",
+    "posts_two": "{{count}} منشور",
+    "members_few": "{{count}} أعضاء",
+    "posts_few": "{{count}} منشورات",
+    "members_many": "{{count}} عضوًا",
+    "posts_many": "{{count}} منشورًا",
+    "members_other": "{{count}} عضو",
+    "posts_other": "{{count}} منشور",
+    "category": "الفئة"
   },
   "events": {
     "title": "الفعاليات",

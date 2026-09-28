@@ -331,7 +331,13 @@
     "noComments": "Még nincsenek hozzászólások — legyél te az első",
     "writeComment": "Írj hozzászólást…",
     "loadFailed": "A klubok betöltése nem sikerült",
-    "postFailed": "A bejegyzés közzététele nem sikerült — próbáld újra"
+    "postFailed": "A bejegyzés közzététele nem sikerült — próbáld újra",
+    "posts": "{{count}} bejegyzés",
+    "members_one": "{{count}} tag",
+    "posts_one": "{{count}} bejegyzés",
+    "members_other": "{{count}} tag",
+    "posts_other": "{{count}} bejegyzés",
+    "category": "Kategória"
   },
   "events": {
     "title": "Események",

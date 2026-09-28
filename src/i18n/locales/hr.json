@@ -331,7 +331,15 @@
     "noComments": "Još nema komentara — budi prvi/a",
     "writeComment": "Napiši komentar…",
     "loadFailed": "Učitavanje klubova nije uspjelo",
-    "postFailed": "Objavljivanje nije uspjelo — pokušaj ponovno"
+    "postFailed": "Objavljivanje nije uspjelo — pokušaj ponovno",
+    "posts": "{{count}} objava",
+    "members_one": "{{count}} član",
+    "posts_one": "{{count}} objava",
+    "members_few": "{{count}} člana",
+    "posts_few": "{{count}} objave",
+    "members_other": "{{count}} članova",
+    "posts_other": "{{count}} objava",
+    "category": "Kategorija"
   },
   "events": {
     "title": "Događanja",

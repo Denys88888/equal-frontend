@@ -199,6 +199,7 @@ function MyClubCard({ club, onClick }: { club: Club; onClick: () => void }) {
 /* ------------------------------------------------------------------ */
 
 function DiscoverClubCard({ club, onClick, onJoin }: { club: Club; onClick: () => void; onJoin: () => void }) {
+  const { t } = useTranslation();
   return (
     <motion.button
       whileTap={{ scale: 0.95 }}
@@ -217,16 +218,26 @@ function DiscoverClubCard({ club, onClick, onJoin }: { club: Club; onClick: () =
         {club.name}
       </p>
       <p className="text-[11px]" style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }}>
-        {club.memberCount} members
+        {t('clubs.members', { count: club.memberCount })}
       </p>
-      <div
-        role="button"
-        onClick={(e) => { e.stopPropagation(); onJoin(); }}
-        className="mt-auto px-4 py-1 rounded-full text-xs font-semibold text-white cursor-pointer"
-        style={{ backgroundColor: '#BB83C9' }}
-      >
-        Join
-      </div>
+      {/* A club you are already in used to offer "Join" here too. */}
+      {club.joined ? (
+        <div
+          className="mt-auto px-4 py-1 rounded-full text-xs font-semibold"
+          style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.5)', color: 'rgba(var(--charcoal-rgb), 0.6)' }}
+        >
+          {t('clubs.joined')}
+        </div>
+      ) : (
+        <div
+          role="button"
+          onClick={(e) => { e.stopPropagation(); onJoin(); }}
+          className="mt-auto px-4 py-1 rounded-full text-xs font-semibold text-white cursor-pointer"
+          style={{ backgroundColor: '#BB83C9' }}
+        >
+          {t('clubs.join')}
+        </div>
+      )}
     </motion.button>
   );
 }
@@ -618,7 +629,7 @@ function ClubDetail({
           {club.name}
         </h1>
         <p className="text-sm mt-1" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>
-          {t('clubs.membersPosts', { members: club.memberCount, posts: posts.length })}
+          {t('clubs.members', { count: club.memberCount })} • {t('clubs.posts', { count: posts.length })}
         </p>
         <button
           onClick={toggleJoin}
@@ -1002,7 +1013,9 @@ export default function Clubs() {
     try {
       const created = await createClub({
         name: createName.trim(),
-        description: createDesc.trim() || `A community for ${createCategory.toLowerCase()} enthusiasts.`,
+        // Left empty rather than filled with an English sentence that every
+        // user would then see, whatever their language.
+        description: createDesc.trim() || undefined,
         category: createCategory,
       });
       const newClub: Club = {
@@ -1140,7 +1153,7 @@ export default function Clubs() {
                           left for the button to reveal — it never did anything. */}
                       <div className="px-5 py-3">
                         <h4 className="text-base font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                          {category}
+                          {t(`clubs.club_cat_${category.toLowerCase()}`, { defaultValue: category })}
                         </h4>
                       </div>
                       <div className="flex gap-3 px-5 overflow-x-auto pb-2">
@@ -1211,7 +1224,7 @@ export default function Clubs() {
                 maxLength={200}
               />
               <div>
-                <label className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>Category</label>
+                <label className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>{t('clubs.category', { defaultValue: 'Category' })}</label>
                 <div className="flex gap-2 mt-2 flex-wrap">
                   {categories.slice(0, 6).map((cat) => (
                     <button
@@ -1223,7 +1236,7 @@ export default function Clubs() {
                         color: createCategory === cat ? '#fff' : 'var(--charcoal)',
                       }}
                     >
-                      {cat}
+                      {t(`clubs.club_cat_${cat.toLowerCase()}`, { defaultValue: cat })}
                     </button>
                   ))}
                 </div>

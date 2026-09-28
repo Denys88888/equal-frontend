@@ -290,7 +290,7 @@
     "create": "Creează club",
     "clubName": "Numele clubului",
     "clubDesc": "Despre ce este acest club?",
-    "members": "{{count}} membri",
+    "members": "{{count}} de membri",
     "join": "Alătură-te",
     "joined": "Alăturat",
     "newPost": "Postare nouă",
@@ -331,7 +331,15 @@
     "noComments": "Niciun comentariu încă — fii primul",
     "writeComment": "Scrie un comentariu…",
     "loadFailed": "Încărcarea cluburilor a eșuat",
-    "postFailed": "Publicarea postării a eșuat — încearcă din nou"
+    "postFailed": "Publicarea postării a eșuat — încearcă din nou",
+    "posts": "{{count}} de postări",
+    "members_one": "{{count}} membru",
+    "posts_one": "{{count}} postare",
+    "members_few": "{{count}} membri",
+    "posts_few": "{{count}} postări",
+    "members_other": "{{count}} de membri",
+    "posts_other": "{{count}} de postări",
+    "category": "Categorie"
   },
   "events": {
     "title": "Evenimente",
