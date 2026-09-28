@@ -9,7 +9,8 @@
     "trustPioneers": "60M+ Pioneiros",
     "errPiBrowser": "Por favor, abra esta app no Pi Browser",
     "errAuthFailed": "Autenticação Pi falhou",
-    "errTimeout": "A autenticação Pi expirou. Por favor, tente novamente."
+    "errTimeout": "A autenticação Pi expirou. Por favor, tente novamente.",
+    "heroAlt": "Duas pessoas formando um coração"
   },
   "nav": {
     "discover": "Descobrir",
@@ -24,7 +25,9 @@
     "spark": "Faísca",
     "filter": "Filtro",
     "compatibility": "Compatibilidade",
-    "compatRefresh": "Atualizado diariamente • {{count}} correspondências de alta compatibilidade",
+    "compatRefresh_one": "Atualizado diariamente • {{count}} correspondência de alta compatibilidade",
+    "compatRefresh_many": "Atualizado diariamente • {{count}} de correspondências de alta compatibilidade",
+    "compatRefresh_other": "Atualizado diariamente • {{count}} correspondências de alta compatibilidade",
     "compatEmpty": "Volte amanhã para novas correspondências de alta compatibilidade!",
     "kmAway": "A {{distance}} km de distância",
     "matchPercent": "{{percent}}% de match",
@@ -35,7 +38,9 @@
     "verifiedOnly": "Apenas utilizadores verificados",
     "onlineNow": "Online agora",
     "resetAll": "Repor tudo",
-    "applyMatches": "Aplicar ({{count}} correspondências)",
+    "applyMatches_one": "Aplicar ({{count}} correspondência)",
+    "applyMatches_many": "Aplicar ({{count}} de correspondências)",
+    "applyMatches_other": "Aplicar ({{count}} correspondências)",
     "itsAMatch": "É um Match!",
     "likedEachOther": "Você e {{name}} gostaram um do outro",
     "sendMessage": "Enviar mensagem",
@@ -73,7 +78,8 @@
     "newUser": "Novo",
     "undo": "Anular",
     "likeFailed": "Não foi possível enviar o gosto",
-    "alreadyLiked": "Já gostaste"
+    "alreadyLiked": "Já gostaste",
+    "you": "Você"
   },
   "matches": {
     "title": "Combinações",
@@ -95,7 +101,9 @@
     "giftPrefix": "Presente",
     "goDiscover": "Ir para Descobrir",
     "message": "Mensagem",
-    "unmatchFailed": "Não foi possível desfazer a combinação — tenta novamente"
+    "unmatchFailed": "Não foi possível desfazer a combinação — tenta novamente",
+    "newCount": "Novas: {{count}}",
+    "noSearchResults": "Nenhuma conversa corresponde a “{{query}}”"
   },
   "chat": {
     "typeMessage": "Digite uma mensagem...",
@@ -138,7 +146,9 @@
     "reportSubmitted": "Denúncia enviada. Vamos analisá-la em breve.",
     "photoPreview": "Foto",
     "voicePreview": "Mensagem de voz",
-    "giftPreview": "Enviou um presente"
+    "giftPreview": "Enviou um presente",
+    "typing": "digitando",
+    "sendGift": "Enviar {{gift}}"
   },
   "profile": {
     "edit": "Editar Perfil",
@@ -164,7 +174,9 @@
     "donate": "Apoiar o Equal",
     "deleteAccount": "Excluir conta",
     "logout": "Sair",
-    "paymentHistory": "Histórico de pagamentos"
+    "paymentHistory": "Histórico de pagamentos",
+    "switchToLight": "Mudar para o modo claro",
+    "switchToDark": "Mudar para o modo escuro"
   },
   "onboarding": {
     "next": "Próximo",
@@ -265,7 +277,8 @@
     "seeking_everyone": "Toda a gente",
     "saveFailed": "Não foi possível salvar seu perfil — tente novamente",
     "title6": "Sua voz",
-    "sub6": "Uma intro de 10 segundos. Obrigatória para o Daily Match."
+    "sub6": "Uma intro de 10 segundos. Obrigatória para o Daily Match.",
+    "photoTipsAlt": "Dicas de foto"
   },
   "common": {
     "cancel": "Cancelar",
@@ -279,7 +292,9 @@
     "cookieText": "Utilizamos cookies essenciais para autenticação e cookies opcionais para análise. Ver a nossa",
     "cookieAccept": "Aceitar tudo",
     "cookieEssential": "Apenas essenciais",
-    "privacyPolicy": "Política de privacidade"
+    "privacyPolicy": "Política de privacidade",
+    "notFoundDesc": "A página que você procura não existe ou foi movida.",
+    "photoN": "Foto {{n}}"
   },
   "clubs": {
     "title": "Clubes",
@@ -349,7 +364,9 @@
     "upcomingEvents": "Próximos eventos",
     "interestedEvents": "Interessado",
     "pastEvents": "Eventos passados",
-    "nearYou": "{{count}} eventos perto de você esta semana",
+    "nearYou_one": "{{count}} evento futuro",
+    "nearYou_many": "{{count}} de eventos futuros",
+    "nearYou_other": "{{count}} eventos futuros",
     "going": "Vou",
     "attend": "Participar",
     "featured": "Em destaque",
@@ -372,7 +389,9 @@
     "itWasOkay": "Foi razoável",
     "submitFeedback": "Enviar feedback",
     "thanksFeedback": "Obrigado pelo seu feedback! A sua pontuação de confiança agradece.",
-    "peopleGoing": "{{count}} vão",
+    "peopleGoing_one": "{{count}} vai",
+    "peopleGoing_many": "{{count}} de pessoas vão",
+    "peopleGoing_other": "{{count}} vão",
     "host": "Anfitrião",
     "youreGoing": "🎉 Vai participar!",
     "showAtDoor": "Mostre isto à entrada",
@@ -407,7 +426,8 @@
     "createTooMany": "Você já tem 3 eventos aguardando revisão.",
     "createFailed": "Não foi possível enviar o evento — tente novamente",
     "pendingReview": "Em revisão",
-    "pendingReviewDesc": "Só você vê este evento até que um administrador o aprove."
+    "pendingReviewDesc": "Só você vê este evento até que um administrador o aprove.",
+    "noSavedDesc": "Toque na estrela dos eventos que te interessam para salvá-los aqui."
   },
   "video": {
     "connecting": "A ligar...",
@@ -415,7 +435,8 @@
     "inCall": "Em chamada",
     "callEnded": "Chamada terminada",
     "callFailed": "Chamada falhada",
-    "backToChat": "Voltar ao chat"
+    "backToChat": "Voltar ao chat",
+    "duration": "Duração: {{time}}"
   },
   "report": {
     "title": "Reportar {{name}}",
@@ -426,7 +447,8 @@
     "inappropriate": "Conteúdo inapropriado",
     "other": "Outro",
     "detailsPlaceholder": "Conte-nos mais sobre o problema...",
-    "submit": "Enviar relatório"
+    "submit": "Enviar relatório",
+    "descriptionLabel": "Descrição (opcional)"
   },
   "offers": {
     "partner": "Parceiro",
@@ -505,7 +527,8 @@
     "adminPanel": "Painel de admin",
     "donationSent": "Obrigado pelo teu apoio!",
     "donating": "A processar…",
-    "supportUnavailable": "O apoio ainda não está configurado"
+    "supportUnavailable": "O apoio ainda não está configurado",
+    "donateAmount": "Doar {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "Adicione uma bio para ajudar as pessoas a conhecê-lo/a",
@@ -548,9 +571,12 @@
     "locked": "Bloqueado",
     "photoUploadFailed": "Não foi possível carregar a foto",
     "sparksDesc": "As faíscas são ganhas através da atividade — não são compradas. Envie-as para mostrar atenção especial a alguém.",
-    "sparksAmount": "+{{count}} faíscas",
+    "sparksAmount_one": "+{{count}} faísca",
+    "sparksAmount_many": "+{{count}} de faíscas",
+    "sparksAmount_other": "+{{count}} faíscas",
     "sparksPerDay": "+{{count}} faísca/dia",
-    "photoDeleteFailed": "Não foi possível eliminar a foto"
+    "photoDeleteFailed": "Não foi possível eliminar a foto",
+    "profileAlt": "Perfil de {{name}}"
   },
   "admin": {
     "panel": "Painel de admin",

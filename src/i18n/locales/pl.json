@@ -9,7 +9,8 @@
     "trustPioneers": "Ponad 60 mln Pionierów",
     "errPiBrowser": "Otwórz tę aplikację w Pi Browser",
     "errAuthFailed": "Uwierzytelnianie Pi nie powiodło się",
-    "errTimeout": "Upłynął limit czasu uwierzytelniania Pi. Spróbuj ponownie."
+    "errTimeout": "Upłynął limit czasu uwierzytelniania Pi. Spróbuj ponownie.",
+    "heroAlt": "Dwie osoby tworzące serce"
   },
   "nav": {
     "discover": "Odkrywaj",
@@ -24,7 +25,10 @@
     "spark": "Iskra",
     "filter": "Filtruj",
     "compatibility": "Dopasowanie",
-    "compatRefresh": "Odświeżane codziennie • {{count}} dopasowań o wysokiej zgodności",
+    "compatRefresh_one": "Odświeżane codziennie • {{count}} dopasowanie o wysokiej zgodności",
+    "compatRefresh_few": "Odświeżane codziennie • {{count}} dopasowania o wysokiej zgodności",
+    "compatRefresh_many": "Odświeżane codziennie • {{count}} dopasowań o wysokiej zgodności",
+    "compatRefresh_other": "Odświeżane codziennie • {{count}} dopasowania o wysokiej zgodności",
     "compatEmpty": "Wróć jutro po nowe dopasowania o wysokiej zgodności!",
     "kmAway": "{{distance}} km stąd",
     "matchPercent": "{{percent}}% zgodności",
@@ -35,7 +39,10 @@
     "verifiedOnly": "Tylko zweryfikowani użytkownicy",
     "onlineNow": "Teraz online",
     "resetAll": "Zresetuj wszystko",
-    "applyMatches": "Zastosuj ({{count}} dopasowań)",
+    "applyMatches_one": "Zastosuj ({{count}} dopasowanie)",
+    "applyMatches_few": "Zastosuj ({{count}} dopasowania)",
+    "applyMatches_many": "Zastosuj ({{count}} dopasowań)",
+    "applyMatches_other": "Zastosuj ({{count}} dopasowania)",
     "itsAMatch": "To dopasowanie!",
     "likedEachOther": "Ty i {{name}} polubiliście się nawzajem",
     "sendMessage": "Wyślij wiadomość",
@@ -73,7 +80,8 @@
     "newUser": "Nowy",
     "undo": "Cofnij",
     "likeFailed": "Nie udało się wysłać polubienia",
-    "alreadyLiked": "Już polubione"
+    "alreadyLiked": "Już polubione",
+    "you": "Ty"
   },
   "matches": {
     "title": "Pary",
@@ -95,7 +103,9 @@
     "giftPrefix": "Prezent",
     "goDiscover": "Przejdź do Odkrywaj",
     "message": "Wiadomość",
-    "unmatchFailed": "Nie udało się usunąć dopasowania — spróbuj ponownie"
+    "unmatchFailed": "Nie udało się usunąć dopasowania — spróbuj ponownie",
+    "newCount": "Nowe: {{count}}",
+    "noSearchResults": "Brak rozmów pasujących do „{{query}}”"
   },
   "chat": {
     "typeMessage": "Napisz wiadomość...",
@@ -138,7 +148,9 @@
     "reportSubmitted": "Zgłoszenie wysłane. Wkrótce je sprawdzimy.",
     "photoPreview": "Zdjęcie",
     "voicePreview": "Wiadomość głosowa",
-    "giftPreview": "Wysłał(a) prezent"
+    "giftPreview": "Wysłał(a) prezent",
+    "typing": "pisze",
+    "sendGift": "Wyślij prezent: {{gift}}"
   },
   "profile": {
     "edit": "Edytuj profil",
@@ -164,7 +176,9 @@
     "donate": "Wesprzyj Equal",
     "deleteAccount": "Usuń konto",
     "logout": "Wyloguj się",
-    "paymentHistory": "Historia płatności"
+    "paymentHistory": "Historia płatności",
+    "switchToLight": "Przełącz na tryb jasny",
+    "switchToDark": "Przełącz na tryb ciemny"
   },
   "onboarding": {
     "next": "Dalej",
@@ -265,7 +279,8 @@
     "seeking_everyone": "Wszystkich",
     "saveFailed": "Nie udało się zapisać profilu — spróbuj ponownie",
     "title6": "Twój głos",
-    "sub6": "Intro na 10 sekund. Wymagane, by dołączyć do Daily Match."
+    "sub6": "Intro na 10 sekund. Wymagane, by dołączyć do Daily Match.",
+    "photoTipsAlt": "Wskazówki dotyczące zdjęć"
   },
   "common": {
     "cancel": "Anuluj",
@@ -279,7 +294,9 @@
     "cookieText": "Używamy niezbędnych plików cookie do uwierzytelniania oraz opcjonalnych do analityki. Zobacz naszą",
     "cookieAccept": "Zaakceptuj wszystkie",
     "cookieEssential": "Tylko niezbędne",
-    "privacyPolicy": "Polityka prywatności"
+    "privacyPolicy": "Polityka prywatności",
+    "notFoundDesc": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
+    "photoN": "Zdjęcie {{n}}"
   },
   "clubs": {
     "title": "Kluby",
@@ -351,7 +368,10 @@
     "upcomingEvents": "Nadchodzące wydarzenia",
     "interestedEvents": "Zainteresowany",
     "pastEvents": "Minione wydarzenia",
-    "nearYou": "{{count}} wydarzeń w pobliżu w tym tygodniu",
+    "nearYou_one": "{{count}} nadchodzące wydarzenie",
+    "nearYou_few": "{{count}} nadchodzące wydarzenia",
+    "nearYou_many": "{{count}} nadchodzących wydarzeń",
+    "nearYou_other": "{{count}} nadchodzącego wydarzenia",
     "going": "Wybieram się",
     "attend": "Weź udział",
     "featured": "Wyróżnione",
@@ -374,7 +394,10 @@
     "itWasOkay": "Było w porządku",
     "submitFeedback": "Wyślij opinię",
     "thanksFeedback": "Dzięki za opinię! Twój Wskaźnik zaufania to docenia.",
-    "peopleGoing": "{{count}} osób się wybiera",
+    "peopleGoing_one": "{{count}} osoba się wybiera",
+    "peopleGoing_few": "{{count}} osoby się wybierają",
+    "peopleGoing_many": "{{count}} osób się wybiera",
+    "peopleGoing_other": "{{count}} osoby się wybiera",
     "host": "Organizator",
     "youreGoing": "🎉 Wybierasz się!",
     "showAtDoor": "Pokaż to przy wejściu",
@@ -409,7 +432,8 @@
     "createTooMany": "Masz już 3 wydarzenia czekające na weryfikację.",
     "createFailed": "Nie udało się wysłać wydarzenia — spróbuj ponownie",
     "pendingReview": "W weryfikacji",
-    "pendingReviewDesc": "Tylko ty widzisz to wydarzenie, dopóki administrator go nie zatwierdzi."
+    "pendingReviewDesc": "Tylko ty widzisz to wydarzenie, dopóki administrator go nie zatwierdzi.",
+    "noSavedDesc": "Stuknij gwiazdkę przy wydarzeniach, które cię interesują, aby zapisać je tutaj."
   },
   "video": {
     "connecting": "Łączenie...",
@@ -417,7 +441,8 @@
     "inCall": "W trakcie rozmowy",
     "callEnded": "Rozmowa zakończona",
     "callFailed": "Połączenie nie powiodło się",
-    "backToChat": "Wróć do czatu"
+    "backToChat": "Wróć do czatu",
+    "duration": "Czas trwania: {{time}}"
   },
   "report": {
     "title": "Zgłoś: {{name}}",
@@ -428,7 +453,8 @@
     "inappropriate": "Nieodpowiednie treści",
     "other": "Inne",
     "detailsPlaceholder": "Opisz problem dokładniej...",
-    "submit": "Wyślij zgłoszenie"
+    "submit": "Wyślij zgłoszenie",
+    "descriptionLabel": "Opis (opcjonalnie)"
   },
   "offers": {
     "partner": "Partner",
@@ -507,7 +533,8 @@
     "adminPanel": "Panel administratora",
     "donationSent": "Dziękujemy za wsparcie!",
     "donating": "Przetwarzanie…",
-    "supportUnavailable": "Pomoc nie została jeszcze skonfigurowana"
+    "supportUnavailable": "Pomoc nie została jeszcze skonfigurowana",
+    "donateAmount": "Przekaż {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "Dodaj opis, aby inni mogli Cię poznać",
@@ -550,9 +577,13 @@
     "locked": "Zablokowana",
     "photoUploadFailed": "Nie udało się przesłać zdjęcia",
     "sparksDesc": "Iskry zdobywa się przez aktywność — nie da się ich kupić. Wysyłaj je, by okazać komuś szczególną uwagę.",
-    "sparksAmount": "+{{count}} Iskier",
+    "sparksAmount_one": "+{{count}} Iskra",
+    "sparksAmount_few": "+{{count}} Iskry",
+    "sparksAmount_many": "+{{count}} Iskier",
+    "sparksAmount_other": "+{{count}} Iskry",
     "sparksPerDay": "+{{count}} Iskra dziennie",
-    "photoDeleteFailed": "Nie udało się usunąć zdjęcia"
+    "photoDeleteFailed": "Nie udało się usunąć zdjęcia",
+    "profileAlt": "Profil: {{name}}"
   },
   "admin": {
     "panel": "Panel administratora",

@@ -9,7 +9,8 @@
     "trustPioneers": "Lebih 60 juta Pioneers",
     "errPiBrowser": "Buka aplikasi ini dalam Pi Browser",
     "errAuthFailed": "Pengesahan Pi gagal",
-    "errTimeout": "Pengesahan Pi tamat masa. Cuba lagi."
+    "errTimeout": "Pengesahan Pi tamat masa. Cuba lagi.",
+    "heroAlt": "Dua orang membentuk hati"
   },
   "nav": {
     "discover": "Terokai",
@@ -24,7 +25,7 @@
     "spark": "Percikan",
     "filter": "Tapis",
     "compatibility": "Keserasian",
-    "compatRefresh": "Dikemas kini setiap hari • {{count}} padanan keserasian tinggi",
+    "compatRefresh_other": "Dikemas kini setiap hari • {{count}} padanan keserasian tinggi",
     "compatEmpty": "Kembali esok untuk padanan keserasian tinggi yang baharu!",
     "kmAway": "{{distance}} km jauhnya",
     "matchPercent": "{{percent}}% Padanan",
@@ -35,7 +36,7 @@
     "verifiedOnly": "Pengguna disahkan sahaja",
     "onlineNow": "Dalam talian sekarang",
     "resetAll": "Set semula semua",
-    "applyMatches": "Guna ({{count}} padanan)",
+    "applyMatches_other": "Guna ({{count}} padanan)",
     "itsAMatch": "Ia satu padanan!",
     "likedEachOther": "Anda dan {{name}} saling menyukai",
     "sendMessage": "Hantar mesej",
@@ -73,7 +74,8 @@
     "newUser": "Baharu",
     "undo": "Buat asal",
     "likeFailed": "Gagal menghantar suka",
-    "alreadyLiked": "Sudah disukai"
+    "alreadyLiked": "Sudah disukai",
+    "you": "Anda"
   },
   "matches": {
     "title": "Padanan",
@@ -95,7 +97,9 @@
     "giftPrefix": "Hadiah",
     "goDiscover": "Pergi ke Terokai",
     "message": "Mesej",
-    "unmatchFailed": "Gagal batalkan padanan — cuba lagi"
+    "unmatchFailed": "Gagal batalkan padanan — cuba lagi",
+    "newCount": "{{count}} baharu",
+    "noSearchResults": "Tiada perbualan yang sepadan dengan “{{query}}”"
   },
   "chat": {
     "typeMessage": "Taip mesej...",
@@ -138,7 +142,9 @@
     "reportSubmitted": "Laporan dihantar. Kami akan menyemaknya tidak lama lagi.",
     "photoPreview": "Foto",
     "voicePreview": "Mesej suara",
-    "giftPreview": "Menghantar hadiah"
+    "giftPreview": "Menghantar hadiah",
+    "typing": "sedang menaip",
+    "sendGift": "Hantar {{gift}}"
   },
   "profile": {
     "edit": "Edit Profil",
@@ -164,7 +170,9 @@
     "donate": "Sokong Equal",
     "deleteAccount": "Padam Akaun",
     "logout": "Log Keluar",
-    "paymentHistory": "Sejarah pembayaran"
+    "paymentHistory": "Sejarah pembayaran",
+    "switchToLight": "Tukar ke mod terang",
+    "switchToDark": "Tukar ke mod gelap"
   },
   "onboarding": {
     "next": "Seterusnya",
@@ -265,7 +273,8 @@
     "seeking_everyone": "Semua orang",
     "saveFailed": "Gagal menyimpan profil anda — cuba lagi",
     "title6": "Suara anda",
-    "sub6": "Pengenalan 10 saat. Diperlukan untuk menyertai Padanan Harian."
+    "sub6": "Pengenalan 10 saat. Diperlukan untuk menyertai Padanan Harian.",
+    "photoTipsAlt": "Tip foto"
   },
   "common": {
     "cancel": "Batal",
@@ -279,7 +288,9 @@
     "cookieText": "Kami menggunakan kuki penting untuk pengesahan dan kuki pilihan untuk analitik. Lihat",
     "cookieAccept": "Terima Semua",
     "cookieEssential": "Penting Sahaja",
-    "privacyPolicy": "Dasar Privasi"
+    "privacyPolicy": "Dasar Privasi",
+    "notFoundDesc": "Halaman yang anda cari tidak wujud atau telah dialihkan.",
+    "photoN": "Foto {{n}}"
   },
   "clubs": {
     "title": "Kelab",
@@ -345,7 +356,7 @@
     "upcomingEvents": "Acara akan datang",
     "interestedEvents": "Berminat",
     "pastEvents": "Acara lepas",
-    "nearYou": "{{count}} acara berdekatan anda minggu ini",
+    "nearYou_other": "{{count}} acara akan datang",
     "going": "Akan pergi",
     "attend": "Hadir",
     "featured": "Ditonjolkan",
@@ -368,7 +379,7 @@
     "itWasOkay": "Ia okey",
     "submitFeedback": "Hantar maklum balas",
     "thanksFeedback": "Terima kasih atas maklum balas anda! Skor Kepercayaan anda mendapat manfaat.",
-    "peopleGoing": "{{count}} akan pergi",
+    "peopleGoing_other": "{{count}} akan pergi",
     "host": "Penganjur",
     "youreGoing": "🎉 Anda akan pergi!",
     "showAtDoor": "Tunjukkan ini di pintu masuk",
@@ -403,7 +414,8 @@
     "createTooMany": "Anda sudah mempunyai 3 acara yang menunggu semakan.",
     "createFailed": "Tidak dapat menghantar acara — sila cuba lagi",
     "pendingReview": "Dalam semakan",
-    "pendingReviewDesc": "Hanya anda boleh melihat acara ini sehingga admin meluluskannya."
+    "pendingReviewDesc": "Hanya anda boleh melihat acara ini sehingga admin meluluskannya.",
+    "noSavedDesc": "Ketik ikon bintang pada acara yang anda minati untuk menyimpannya di sini."
   },
   "video": {
     "connecting": "Menyambung...",
@@ -411,7 +423,8 @@
     "inCall": "Dalam panggilan",
     "callEnded": "Panggilan tamat",
     "callFailed": "Panggilan gagal",
-    "backToChat": "Kembali ke sembang"
+    "backToChat": "Kembali ke sembang",
+    "duration": "Tempoh: {{time}}"
   },
   "report": {
     "title": "Laporkan {{name}}",
@@ -422,7 +435,8 @@
     "inappropriate": "Kandungan tidak sesuai",
     "other": "Lain-lain",
     "detailsPlaceholder": "Beritahu kami lebih lanjut tentang isu ini...",
-    "submit": "Hantar laporan"
+    "submit": "Hantar laporan",
+    "descriptionLabel": "Penerangan (pilihan)"
   },
   "offers": {
     "partner": "Rakan kongsi",
@@ -501,7 +515,8 @@
     "adminPanel": "Panel Pentadbir",
     "donationSent": "Terima kasih atas sokongan anda!",
     "donating": "Sedang memproses…",
-    "supportUnavailable": "Sokongan belum disediakan lagi"
+    "supportUnavailable": "Sokongan belum disediakan lagi",
+    "donateAmount": "Derma {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "Tambah bio supaya orang mengenali anda",
@@ -544,9 +559,10 @@
     "locked": "Dikunci",
     "photoUploadFailed": "Gagal memuat naik foto",
     "sparksDesc": "Percikan diperoleh melalui aktiviti — ia tidak dibeli. Hantar ia untuk menunjukkan perhatian istimewa kepada seseorang.",
-    "sparksAmount": "+{{count}} Percikan",
+    "sparksAmount_other": "+{{count}} Percikan",
     "sparksPerDay": "+{{count}} Percikan/hari",
-    "photoDeleteFailed": "Gagal memadam foto"
+    "photoDeleteFailed": "Gagal memadam foto",
+    "profileAlt": "Profil {{name}}"
   },
   "admin": {
     "panel": "Panel Pentadbir",

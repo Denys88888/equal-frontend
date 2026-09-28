@@ -252,7 +252,7 @@ export default function VideoCall() {
               </span>
             </div>
             <h2 className="text-2xl font-semibold text-white mb-2" style={{ fontFamily: "'Outfit', sans-serif" }}>
-              {matchName || 'Connecting…'}
+              {matchName || t('video.connecting')}
             </h2>
             <AnimatePresence mode="wait">
               <motion.p key={callState}
@@ -326,7 +326,7 @@ export default function VideoCall() {
                 </h3>
                 {callState === 'ended' && (
                   <p className="text-sm" style={{ color: 'rgba(255,255,255,0.6)', fontFamily: "ui-monospace, monospace" }}>
-                    Duration: {formatTimer(totalDuration || elapsed)}
+                    {t('video.duration', { time: formatTimer(totalDuration || elapsed) })}
                   </p>
                 )}
                 {callState === 'error' && (

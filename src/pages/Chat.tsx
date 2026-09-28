@@ -532,7 +532,7 @@ function GiftBottomSheet({
                     {t('chat.processing')}
                   </div>
                 ) : (
-                  `Send ${GIFT_OPTIONS[selected].icon === 'coffee' ? t('chat.giftCoffee') : GIFT_OPTIONS[selected].name}`
+                  t('chat.sendGift', { gift: t(GIFT_OPTIONS[selected].nameKey, { defaultValue: GIFT_OPTIONS[selected].name }) })
                 )}
               </motion.button>
             </div>

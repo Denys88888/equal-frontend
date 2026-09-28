@@ -713,7 +713,7 @@ function StepPhotos({
               <div className="relative w-full h-full">
                 <img
                   src={item.url}
-                  alt={`Photo ${index + 1}`}
+                  alt={t('common.photoN', { n: index + 1 })}
                   className="w-full h-full object-cover"
                   style={{ borderRadius: 12 }}
                 />
@@ -826,7 +826,7 @@ function StepPhotos({
       <div className="flex justify-center mt-2">
         <img
           src="./onboarding-photo.png"
-          alt="Photo tips"
+          alt={t('onboarding.photoTipsAlt')}
           className="w-40 h-40 object-contain rounded-2xl"
           style={{ opacity: 0.8 }}
         />

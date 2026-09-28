@@ -9,7 +9,8 @@
     "trustPioneers": "יותר מ-60 מיליון Pioneers",
     "errPiBrowser": "פתח את האפליקציה הזו ב-Pi Browser",
     "errAuthFailed": "אימות Pi נכשל",
-    "errTimeout": "פג הזמן הקצוב לאימות Pi. נסה שוב."
+    "errTimeout": "פג הזמן הקצוב לאימות Pi. נסה שוב.",
+    "heroAlt": "שני אנשים יוצרים לב"
   },
   "nav": {
     "discover": "גלה",
@@ -24,7 +25,9 @@
     "spark": "ניצוץ",
     "filter": "סינון",
     "compatibility": "תאימות",
-    "compatRefresh": "מתעדכן מדי יום • {{count}} התאמות בתאימות גבוהה",
+    "compatRefresh_one": "מתעדכן מדי יום • {{count}} התאמה בתאימות גבוהה",
+    "compatRefresh_two": "מתעדכן מדי יום • {{count}} התאמות בתאימות גבוהה",
+    "compatRefresh_other": "מתעדכן מדי יום • {{count}} התאמות בתאימות גבוהה",
     "compatEmpty": "חזור מחר להתאמות חדשות בתאימות גבוהה!",
     "kmAway": "{{distance}} ק\"מ ממך",
     "matchPercent": "{{percent}}% התאמה",
@@ -35,7 +38,9 @@
     "verifiedOnly": "משתמשים מאומתים בלבד",
     "onlineNow": "מחובר/ת עכשיו",
     "resetAll": "איפוס הכול",
-    "applyMatches": "החל ({{count}} התאמות)",
+    "applyMatches_one": "החל ({{count}} התאמה)",
+    "applyMatches_two": "החל ({{count}} התאמות)",
+    "applyMatches_other": "החל ({{count}} התאמות)",
     "itsAMatch": "זו התאמה!",
     "likedEachOther": "אתה ו-{{name}} אהבתם אחד את השני",
     "sendMessage": "שלח הודעה",
@@ -73,7 +78,8 @@
     "newUser": "חדש",
     "undo": "בטל",
     "likeFailed": "שליחת הלייק נכשלה",
-    "alreadyLiked": "כבר סימנת לייק"
+    "alreadyLiked": "כבר סימנת לייק",
+    "you": "את/ה"
   },
   "matches": {
     "title": "התאמות",
@@ -95,7 +101,9 @@
     "giftPrefix": "מתנה",
     "goDiscover": "עבור לגלה",
     "message": "הודעה",
-    "unmatchFailed": "ביטול ההתאמה נכשל — נסה שוב"
+    "unmatchFailed": "ביטול ההתאמה נכשל — נסה שוב",
+    "newCount": "חדשות: {{count}}",
+    "noSearchResults": "אין שיחות שתואמות את \"{{query}}\""
   },
   "chat": {
     "typeMessage": "כתוב הודעה...",
@@ -138,7 +146,9 @@
     "reportSubmitted": "הדיווח נשלח. נבדוק אותו בקרוב.",
     "photoPreview": "תמונה",
     "voicePreview": "הודעה קולית",
-    "giftPreview": "שלח מתנה"
+    "giftPreview": "שלח מתנה",
+    "typing": "מקליד/ה",
+    "sendGift": "שליחת {{gift}}"
   },
   "profile": {
     "edit": "ערוך פרופיל",
@@ -164,7 +174,9 @@
     "donate": "תמוך ב-Equal",
     "deleteAccount": "מחק חשבון",
     "logout": "התנתק",
-    "paymentHistory": "היסטוריית תשלומים"
+    "paymentHistory": "היסטוריית תשלומים",
+    "switchToLight": "מעבר למצב בהיר",
+    "switchToDark": "מעבר למצב כהה"
   },
   "onboarding": {
     "next": "הבא",
@@ -265,7 +277,8 @@
     "seeking_everyone": "כולם",
     "saveFailed": "שמירת הפרופיל נכשלה — נסה שוב",
     "title6": "הקול שלך",
-    "sub6": "היכרות קולית בת 10 שניות. נדרשת כדי להצטרף להתאמה היומית."
+    "sub6": "היכרות קולית בת 10 שניות. נדרשת כדי להצטרף להתאמה היומית.",
+    "photoTipsAlt": "טיפים לתמונות"
   },
   "common": {
     "cancel": "ביטול",
@@ -279,7 +292,9 @@
     "cookieText": "אנו משתמשים בעוגיות חיוניות לאימות ובעוגיות אופציונליות לניתוח נתונים. ראה את",
     "cookieAccept": "אשר הכול",
     "cookieEssential": "חיוניות בלבד",
-    "privacyPolicy": "מדיניות הפרטיות"
+    "privacyPolicy": "מדיניות הפרטיות",
+    "notFoundDesc": "הדף שחיפשת לא קיים או שהועבר.",
+    "photoN": "תמונה {{n}}"
   },
   "clubs": {
     "title": "מועדונים",
@@ -349,7 +364,9 @@
     "upcomingEvents": "אירועים קרובים",
     "interestedEvents": "מעניין אותי",
     "pastEvents": "אירועים שעברו",
-    "nearYou": "{{count}} אירועים בקרבתך השבוע",
+    "nearYou_one": "{{count}} אירוע קרוב",
+    "nearYou_two": "{{count}} אירועים קרובים",
+    "nearYou_other": "{{count}} אירועים קרובים",
     "going": "מגיע/ה",
     "attend": "השתתף",
     "featured": "מומלץ",
@@ -372,7 +389,9 @@
     "itWasOkay": "זה היה בסדר",
     "submitFeedback": "שלח משוב",
     "thanksFeedback": "תודה על המשוב! ניקוד האמון שלך נהנה מזה.",
-    "peopleGoing": "{{count}} מגיעים",
+    "peopleGoing_one": "{{count}} מגיע",
+    "peopleGoing_two": "{{count}} מגיעים",
+    "peopleGoing_other": "{{count}} מגיעים",
     "host": "מארח",
     "youreGoing": "🎉 אתה מגיע!",
     "showAtDoor": "הצג זאת בכניסה",
@@ -407,7 +426,8 @@
     "createTooMany": "כבר יש לך 3 אירועים שממתינים לבדיקה.",
     "createFailed": "לא ניתן לשלוח את האירוע — נסו שוב",
     "pendingReview": "בבדיקה",
-    "pendingReviewDesc": "רק את/ה רואה את האירוע הזה עד שמנהל יאשר אותו."
+    "pendingReviewDesc": "רק את/ה רואה את האירוע הזה עד שמנהל יאשר אותו.",
+    "noSavedDesc": "הקש/י על סמל הכוכב באירועים שמעניינים אותך כדי לשמור אותם כאן."
   },
   "video": {
     "connecting": "מתחבר...",
@@ -415,7 +435,8 @@
     "inCall": "בשיחה",
     "callEnded": "השיחה הסתיימה",
     "callFailed": "השיחה נכשלה",
-    "backToChat": "חזרה לצ'אט"
+    "backToChat": "חזרה לצ'אט",
+    "duration": "משך: {{time}}"
   },
   "report": {
     "title": "דווח על {{name}}",
@@ -426,7 +447,8 @@
     "inappropriate": "תוכן לא הולם",
     "other": "אחר",
     "detailsPlaceholder": "ספר לנו עוד על הבעיה...",
-    "submit": "שלח דיווח"
+    "submit": "שלח דיווח",
+    "descriptionLabel": "תיאור (אופציונלי)"
   },
   "offers": {
     "partner": "שותף",
@@ -505,7 +527,8 @@
     "adminPanel": "פאנל ניהול",
     "donationSent": "תודה על התמיכה שלך!",
     "donating": "מעבד…",
-    "supportUnavailable": "התמיכה עדיין לא הוגדרה"
+    "supportUnavailable": "התמיכה עדיין לא הוגדרה",
+    "donateAmount": "תרומה של {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "הוסף תיאור כדי שאנשים יכירו אותך",
@@ -548,9 +571,12 @@
     "locked": "נעול",
     "photoUploadFailed": "העלאת התמונה נכשלה",
     "sparksDesc": "ניצוצות מתקבלים על ידי פעילות — הם לא נרכשים. שלח אותם כדי להראות למישהו תשומת לב מיוחדת.",
-    "sparksAmount": "+{{count}} ניצוצות",
+    "sparksAmount_one": "+{{count}} ניצוץ",
+    "sparksAmount_two": "+{{count}} ניצוצות",
+    "sparksAmount_other": "+{{count}} ניצוצות",
     "sparksPerDay": "+{{count}} ניצוץ ליום",
-    "photoDeleteFailed": "מחיקת התמונה נכשלה"
+    "photoDeleteFailed": "מחיקת התמונה נכשלה",
+    "profileAlt": "הפרופיל של {{name}}"
   },
   "admin": {
     "panel": "פאנל ניהול",

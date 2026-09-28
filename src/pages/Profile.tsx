@@ -248,6 +248,7 @@ function PhotoLightbox({
   onClose: () => void;
 }) {
   const [current, setCurrent] = useState(initialIndex);
+  const { t } = useTranslation();
 
   return (
     <motion.div
@@ -270,7 +271,7 @@ function PhotoLightbox({
       <div className="flex-1 flex items-center justify-center px-4" onClick={(e) => e.stopPropagation()}>
         <img
           src={photos[current]}
-          alt={`Photo ${current + 1}`}
+          alt={t('common.photoN', { n: current + 1 })}
           className="max-w-full max-h-full object-contain rounded-xl"
         />
       </div>
@@ -458,7 +459,7 @@ export default function Profile() {
           {user.photos[0] ? (
             <img
               src={user.photos[0].url}
-              alt={`${user.name}'s profile`}
+              alt={t('profile2.profileAlt', { name: user.name })}
               className="w-full h-full object-cover"
             />
           ) : (
@@ -708,10 +709,10 @@ export default function Profile() {
                 onClick={() => setLightboxIndex(index)}
                 className="relative aspect-square rounded-xl overflow-hidden"
               >
-                <img src={photo.url} alt={`Photo ${index + 1}`} className="w-full h-full object-cover" />
+                <img src={photo.url} alt={t('common.photoN', { n: index + 1 })} className="w-full h-full object-cover" />
                 {index === 0 && (
                   <div className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-[#BB83C9] text-white text-[10px] font-semibold" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                    Main
+                    {t('onboarding.main')}
                   </div>
                 )}
                 {/* deletePhoto()/DELETE /users/me/photos existed on the backend
@@ -862,7 +863,7 @@ export default function Profile() {
               className="flex-1 h-12 rounded-full bg-[#BB83C9] text-white text-base font-semibold"
               style={{ boxShadow: '0 4px 16px rgba(187,131,201,0.3)', fontFamily: "'Outfit', system-ui, sans-serif" }}
             >
-              Save
+              {t('common.save')}
             </motion.button>
           </div>
         </DialogContent>

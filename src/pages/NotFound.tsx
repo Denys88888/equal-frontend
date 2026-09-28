@@ -102,7 +102,7 @@ export default function NotFound() {
           className="text-sm text-[var(--charcoal)] opacity-45 max-w-[260px] mb-10"
           style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}
         >
-          The page you&apos;re looking for doesn&apos;t exist or has been moved.
+          {t('common.notFoundDesc')}
         </motion.p>
 
         {/* Decorative illustration — abstract shapes */}

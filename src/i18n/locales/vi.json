@@ -9,7 +9,8 @@
     "trustPioneers": "Hơn 60 triệu Pioneer",
     "errPiBrowser": "Hãy mở ứng dụng này trong Pi Browser",
     "errAuthFailed": "Xác thực Pi thất bại",
-    "errTimeout": "Hết thời gian xác thực Pi. Vui lòng thử lại."
+    "errTimeout": "Hết thời gian xác thực Pi. Vui lòng thử lại.",
+    "heroAlt": "Hai người tạo thành trái tim"
   },
   "nav": {
     "discover": "Khám phá",
@@ -24,7 +25,7 @@
     "spark": "Tia lửa",
     "filter": "Bộ lọc",
     "compatibility": "Độ tương hợp",
-    "compatRefresh": "Cập nhật mỗi ngày • {{count}} ghép đôi có độ hợp cao",
+    "compatRefresh_other": "Cập nhật mỗi ngày • {{count}} ghép đôi có độ hợp cao",
     "compatEmpty": "Hãy quay lại vào ngày mai để xem các ghép đôi hợp nhau mới!",
     "kmAway": "Cách {{distance}} km",
     "matchPercent": "{{percent}}% Phù hợp",
@@ -35,7 +36,7 @@
     "verifiedOnly": "Chỉ người dùng đã xác minh",
     "onlineNow": "Đang trực tuyến",
     "resetAll": "Đặt lại tất cả",
-    "applyMatches": "Áp dụng ({{count}} ghép đôi)",
+    "applyMatches_other": "Áp dụng ({{count}} ghép đôi)",
     "itsAMatch": "Ghép đôi thành công!",
     "likedEachOther": "Bạn và {{name}} đã thích nhau",
     "sendMessage": "Gửi tin nhắn",
@@ -73,7 +74,8 @@
     "newUser": "Mới",
     "undo": "Hoàn tác",
     "likeFailed": "Không gửi được lượt thích",
-    "alreadyLiked": "Đã thích rồi"
+    "alreadyLiked": "Đã thích rồi",
+    "you": "Bạn"
   },
   "matches": {
     "title": "Ghép đôi",
@@ -95,7 +97,9 @@
     "giftPrefix": "Quà",
     "goDiscover": "Đến Khám phá",
     "message": "Tin nhắn",
-    "unmatchFailed": "Không hủy ghép đôi được — vui lòng thử lại"
+    "unmatchFailed": "Không hủy ghép đôi được — vui lòng thử lại",
+    "newCount": "{{count}} mới",
+    "noSearchResults": "Không có cuộc trò chuyện nào khớp với “{{query}}”"
   },
   "chat": {
     "typeMessage": "Nhập tin nhắn...",
@@ -138,7 +142,9 @@
     "reportSubmitted": "Đã gửi báo cáo. Chúng tôi sẽ xem xét sớm.",
     "photoPreview": "Ảnh",
     "voicePreview": "Tin nhắn thoại",
-    "giftPreview": "Đã gửi một món quà"
+    "giftPreview": "Đã gửi một món quà",
+    "typing": "đang nhập",
+    "sendGift": "Gửi {{gift}}"
   },
   "profile": {
     "edit": "Chỉnh sửa hồ sơ",
@@ -164,7 +170,9 @@
     "donate": "Ủng hộ Equal",
     "deleteAccount": "Xóa tài khoản",
     "logout": "Đăng xuất",
-    "paymentHistory": "Lịch sử thanh toán"
+    "paymentHistory": "Lịch sử thanh toán",
+    "switchToLight": "Chuyển sang chế độ sáng",
+    "switchToDark": "Chuyển sang chế độ tối"
   },
   "onboarding": {
     "next": "Tiếp theo",
@@ -265,7 +273,8 @@
     "seeking_everyone": "Tất cả mọi người",
     "saveFailed": "Không lưu được hồ sơ — vui lòng thử lại",
     "title6": "Giọng nói của bạn",
-    "sub6": "Lời giới thiệu 10 giây. Bắt buộc để tham gia Daily Match."
+    "sub6": "Lời giới thiệu 10 giây. Bắt buộc để tham gia Daily Match.",
+    "photoTipsAlt": "Mẹo chụp ảnh"
   },
   "common": {
     "cancel": "Hủy",
@@ -279,7 +288,9 @@
     "cookieText": "Chúng tôi dùng cookie thiết yếu để xác thực và cookie tùy chọn để phân tích. Xem",
     "cookieAccept": "Chấp nhận tất cả",
     "cookieEssential": "Chỉ thiết yếu",
-    "privacyPolicy": "Chính sách bảo mật"
+    "privacyPolicy": "Chính sách bảo mật",
+    "notFoundDesc": "Trang bạn đang tìm không tồn tại hoặc đã được di chuyển.",
+    "photoN": "Ảnh {{n}}"
   },
   "clubs": {
     "title": "Câu lạc bộ",
@@ -345,7 +356,7 @@
     "upcomingEvents": "Sự kiện sắp diễn ra",
     "interestedEvents": "Quan tâm",
     "pastEvents": "Sự kiện đã qua",
-    "nearYou": "{{count}} sự kiện gần bạn trong tuần này",
+    "nearYou_other": "{{count}} sự kiện sắp diễn ra",
     "going": "Sẽ tham gia",
     "attend": "Tham dự",
     "featured": "Nổi bật",
@@ -368,7 +379,7 @@
     "itWasOkay": "Cũng ổn",
     "submitFeedback": "Gửi phản hồi",
     "thanksFeedback": "Cảm ơn phản hồi của bạn! Điểm tin cậy của bạn rất trân trọng điều đó.",
-    "peopleGoing": "{{count}} người tham gia",
+    "peopleGoing_other": "{{count}} người tham gia",
     "host": "Người tổ chức",
     "youreGoing": "🎉 Bạn sẽ tham gia!",
     "showAtDoor": "Xuất trình cái này ở cửa",
@@ -403,7 +414,8 @@
     "createTooMany": "Bạn đã có 3 sự kiện đang chờ duyệt.",
     "createFailed": "Không thể gửi sự kiện — vui lòng thử lại",
     "pendingReview": "Đang chờ duyệt",
-    "pendingReviewDesc": "Chỉ bạn nhìn thấy sự kiện này cho đến khi quản trị viên duyệt."
+    "pendingReviewDesc": "Chỉ bạn nhìn thấy sự kiện này cho đến khi quản trị viên duyệt.",
+    "noSavedDesc": "Chạm vào biểu tượng ngôi sao trên các sự kiện bạn quan tâm để lưu chúng tại đây."
   },
   "video": {
     "connecting": "Đang kết nối...",
@@ -411,7 +423,8 @@
     "inCall": "Đang trong cuộc gọi",
     "callEnded": "Cuộc gọi đã kết thúc",
     "callFailed": "Cuộc gọi thất bại",
-    "backToChat": "Quay lại trò chuyện"
+    "backToChat": "Quay lại trò chuyện",
+    "duration": "Thời lượng: {{time}}"
   },
   "report": {
     "title": "Báo cáo {{name}}",
@@ -422,7 +435,8 @@
     "inappropriate": "Nội dung không phù hợp",
     "other": "Khác",
     "detailsPlaceholder": "Cho chúng tôi biết thêm về vấn đề này...",
-    "submit": "Gửi báo cáo"
+    "submit": "Gửi báo cáo",
+    "descriptionLabel": "Mô tả (không bắt buộc)"
   },
   "offers": {
     "partner": "Đối tác",
@@ -501,7 +515,8 @@
     "adminPanel": "Bảng quản trị",
     "donationSent": "Cảm ơn sự ủng hộ của bạn!",
     "donating": "Đang xử lý…",
-    "supportUnavailable": "Hỗ trợ chưa được thiết lập"
+    "supportUnavailable": "Hỗ trợ chưa được thiết lập",
+    "donateAmount": "Quyên góp {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "Thêm phần giới thiệu để mọi người hiểu bạn hơn",
@@ -544,9 +559,10 @@
     "locked": "Đã khóa",
     "photoUploadFailed": "Không tải được ảnh lên",
     "sparksDesc": "Tia lửa kiếm được nhờ hoạt động — không thể mua. Hãy gửi chúng để thể hiện sự quan tâm đặc biệt với ai đó.",
-    "sparksAmount": "+{{count}} Tia lửa",
+    "sparksAmount_other": "+{{count}} Tia lửa",
     "sparksPerDay": "+{{count}} Tia lửa/ngày",
-    "photoDeleteFailed": "Không xóa được ảnh"
+    "photoDeleteFailed": "Không xóa được ảnh",
+    "profileAlt": "Hồ sơ của {{name}}"
   },
   "admin": {
     "panel": "Bảng quản trị",

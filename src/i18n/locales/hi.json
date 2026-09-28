@@ -9,7 +9,8 @@
     "trustPioneers": "6 करोड़+ Pioneers",
     "errPiBrowser": "कृपया यह ऐप Pi Browser में खोलें",
     "errAuthFailed": "Pi प्रमाणीकरण विफल",
-    "errTimeout": "Pi प्रमाणीकरण का समय समाप्त। कृपया दोबारा कोशिश करें।"
+    "errTimeout": "Pi प्रमाणीकरण का समय समाप्त। कृपया दोबारा कोशिश करें।",
+    "heroAlt": "दिल बनाते हुए दो लोग"
   },
   "nav": {
     "discover": "खोजें",
@@ -24,7 +25,8 @@
     "spark": "स्पार्क",
     "filter": "फ़िल्टर",
     "compatibility": "अनुकूलता",
-    "compatRefresh": "रोज़ाना अपडेट • {{count}} उच्च अनुकूलता वाले मैच",
+    "compatRefresh_one": "रोज़ाना अपडेट • {{count}} उच्च अनुकूलता वाले मैच",
+    "compatRefresh_other": "रोज़ाना अपडेट • {{count}} उच्च अनुकूलता वाले मैच",
     "compatEmpty": "नए उच्च अनुकूलता वाले मैच के लिए कल फिर देखें!",
     "kmAway": "{{distance}} किमी दूर",
     "matchPercent": "{{percent}}% मैच",
@@ -35,7 +37,8 @@
     "verifiedOnly": "केवल सत्यापित उपयोगकर्ता",
     "onlineNow": "अभी ऑनलाइन",
     "resetAll": "सब रीसेट करें",
-    "applyMatches": "लागू करें ({{count}} मैच)",
+    "applyMatches_one": "लागू करें ({{count}} मैच)",
+    "applyMatches_other": "लागू करें ({{count}} मैच)",
     "itsAMatch": "यह एक मैच है!",
     "likedEachOther": "आपने और {{name}} ने एक-दूसरे को पसंद किया",
     "sendMessage": "संदेश भेजें",
@@ -73,7 +76,8 @@
     "newUser": "नया",
     "undo": "पूर्ववत करें",
     "likeFailed": "पसंद नहीं भेजी जा सकी",
-    "alreadyLiked": "पहले ही पसंद किया गया"
+    "alreadyLiked": "पहले ही पसंद किया गया",
+    "you": "आप"
   },
   "matches": {
     "title": "मैच",
@@ -95,7 +99,9 @@
     "giftPrefix": "उपहार",
     "goDiscover": "खोजें पर जाएँ",
     "message": "संदेश",
-    "unmatchFailed": "मैच नहीं हटाया जा सका — दोबारा कोशिश करें"
+    "unmatchFailed": "मैच नहीं हटाया जा सका — दोबारा कोशिश करें",
+    "newCount": "{{count}} नए",
+    "noSearchResults": "“{{query}}” से मेल खाती कोई बातचीत नहीं"
   },
   "chat": {
     "typeMessage": "मैसेज लिखें...",
@@ -138,7 +144,9 @@
     "reportSubmitted": "रिपोर्ट भेज दी गई। हम इसे जल्द देखेंगे।",
     "photoPreview": "फ़ोटो",
     "voicePreview": "वॉइस संदेश",
-    "giftPreview": "उपहार भेजा"
+    "giftPreview": "उपहार भेजा",
+    "typing": "टाइप कर रहे हैं",
+    "sendGift": "{{gift}} भेजें"
   },
   "profile": {
     "edit": "प्रोफाइल एडिट करें",
@@ -164,7 +172,9 @@
     "donate": "Equal को सपोर्ट करें",
     "deleteAccount": "अकाउंट डिलीट करें",
     "logout": "लॉग आउट",
-    "paymentHistory": "भुगतान इतिहास"
+    "paymentHistory": "भुगतान इतिहास",
+    "switchToLight": "लाइट मोड पर जाएँ",
+    "switchToDark": "डार्क मोड पर जाएँ"
   },
   "onboarding": {
     "next": "आगे",
@@ -265,7 +275,8 @@
     "seeking_everyone": "सभी से",
     "saveFailed": "आपकी प्रोफ़ाइल सहेजी नहीं जा सकी — दोबारा कोशिश करें",
     "title6": "आपकी आवाज़",
-    "sub6": "10 सेकंड का परिचय। डेली मैच में शामिल होने के लिए अनिवार्य।"
+    "sub6": "10 सेकंड का परिचय। डेली मैच में शामिल होने के लिए अनिवार्य।",
+    "photoTipsAlt": "फ़ोटो सुझाव"
   },
   "common": {
     "cancel": "रद्द करें",
@@ -279,7 +290,9 @@
     "cookieText": "हम प्रमाणीकरण के लिए आवश्यक कुकीज़ और विश्लेषण के लिए वैकल्पिक कुकीज़ का उपयोग करते हैं। देखें हमारी",
     "cookieAccept": "सभी स्वीकारें",
     "cookieEssential": "केवल आवश्यक",
-    "privacyPolicy": "गोपनीयता नीति"
+    "privacyPolicy": "गोपनीयता नीति",
+    "notFoundDesc": "आप जो पेज ढूंढ रहे हैं वह मौजूद नहीं है या हटा दिया गया है।",
+    "photoN": "फ़ोटो {{n}}"
   },
   "clubs": {
     "title": "क्लब",
@@ -347,7 +360,8 @@
     "upcomingEvents": "आगामी कार्यक्रम",
     "interestedEvents": "रुचि",
     "pastEvents": "पिछले कार्यक्रम",
-    "nearYou": "इस सप्ताह आपके पास {{count}} कार्यक्रम",
+    "nearYou_one": "{{count}} आगामी कार्यक्रम",
+    "nearYou_other": "{{count}} आगामी कार्यक्रम",
     "going": "जा रहे हैं",
     "attend": "भाग लें",
     "featured": "फ़ीचर्ड",
@@ -370,7 +384,8 @@
     "itWasOkay": "ठीक-ठाक था",
     "submitFeedback": "फ़ीडबैक भेजें",
     "thanksFeedback": "फ़ीडबैक के लिए धन्यवाद! आपके ट्रस्ट स्कोर को इससे फ़ायदा होता है।",
-    "peopleGoing": "{{count}} लोग जा रहे हैं",
+    "peopleGoing_one": "{{count}} लोग जा रहे हैं",
+    "peopleGoing_other": "{{count}} लोग जा रहे हैं",
     "host": "आयोजक",
     "youreGoing": "🎉 आप जा रहे हैं!",
     "showAtDoor": "प्रवेश पर यह दिखाएँ",
@@ -405,7 +420,8 @@
     "createTooMany": "आपके 3 इवेंट पहले से समीक्षा की प्रतीक्षा में हैं।",
     "createFailed": "इवेंट नहीं भेजा जा सका — कृपया फिर से कोशिश करें",
     "pendingReview": "समीक्षा में",
-    "pendingReviewDesc": "एडमिन की मंज़ूरी मिलने तक यह इवेंट सिर्फ़ आपको दिखेगा।"
+    "pendingReviewDesc": "एडमिन की मंज़ूरी मिलने तक यह इवेंट सिर्फ़ आपको दिखेगा।",
+    "noSavedDesc": "जिन कार्यक्रमों में आपकी रुचि है, उन पर स्टार आइकन टैप करें ताकि वे यहाँ सहेजे जाएँ।"
   },
   "video": {
     "connecting": "कनेक्ट हो रहा है...",
@@ -413,7 +429,8 @@
     "inCall": "कॉल पर",
     "callEnded": "कॉल समाप्त",
     "callFailed": "कॉल विफल",
-    "backToChat": "चैट पर वापस"
+    "backToChat": "चैट पर वापस",
+    "duration": "अवधि: {{time}}"
   },
   "report": {
     "title": "{{name}} की रिपोर्ट करें",
@@ -424,7 +441,8 @@
     "inappropriate": "अनुचित सामग्री",
     "other": "अन्य",
     "detailsPlaceholder": "समस्या के बारे में और बताएँ...",
-    "submit": "रिपोर्ट भेजें"
+    "submit": "रिपोर्ट भेजें",
+    "descriptionLabel": "विवरण (वैकल्पिक)"
   },
   "offers": {
     "partner": "पार्टनर",
@@ -503,7 +521,8 @@
     "adminPanel": "एडमिन पैनल",
     "donationSent": "आपके सहयोग के लिए धन्यवाद!",
     "donating": "प्रक्रिया जारी…",
-    "supportUnavailable": "सहायता अभी सेट नहीं की गई है"
+    "supportUnavailable": "सहायता अभी सेट नहीं की गई है",
+    "donateAmount": "{{amount}} Pi दान करें"
   },
   "profile2": {
     "addBioHint": "परिचय जोड़ें ताकि लोग आपको जान सकें",
@@ -546,9 +565,11 @@
     "locked": "लॉक",
     "photoUploadFailed": "फ़ोटो अपलोड नहीं हो सकी",
     "sparksDesc": "स्पार्क सक्रियता से मिलते हैं — खरीदे नहीं जाते। किसी को खास ध्यान देने के लिए इन्हें भेजें।",
-    "sparksAmount": "+{{count}} स्पार्क",
+    "sparksAmount_one": "+{{count}} स्पार्क",
+    "sparksAmount_other": "+{{count}} स्पार्क",
     "sparksPerDay": "+{{count}} स्पार्क प्रतिदिन",
-    "photoDeleteFailed": "फ़ोटो हटाई नहीं जा सकी"
+    "photoDeleteFailed": "फ़ोटो हटाई नहीं जा सकी",
+    "profileAlt": "{{name}} की प्रोफ़ाइल"
   },
   "admin": {
     "panel": "एडमिन पैनल",

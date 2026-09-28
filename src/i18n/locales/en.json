@@ -9,7 +9,8 @@
     "trustPioneers": "60M+ Pioneers",
     "errPiBrowser": "Please open this app in Pi Browser",
     "errAuthFailed": "Pi authentication failed",
-    "errTimeout": "Pi authentication timed out. Please try again."
+    "errTimeout": "Pi authentication timed out. Please try again.",
+    "heroAlt": "Two people forming a heart"
   },
   "nav": {
     "discover": "Discover",
@@ -24,7 +25,8 @@
     "spark": "Spark",
     "filter": "Filter",
     "compatibility": "Compatibility",
-    "compatRefresh": "Refreshes daily • {{count}} high-compatibility matches",
+    "compatRefresh_one": "Refreshes daily • {{count}} high-compatibility match",
+    "compatRefresh_other": "Refreshes daily • {{count}} high-compatibility matches",
     "compatEmpty": "Check back tomorrow for new high-compatibility matches!",
     "kmAway": "{{distance}} km away",
     "matchPercent": "{{percent}}% Match",
@@ -35,7 +37,8 @@
     "verifiedOnly": "Verified users only",
     "onlineNow": "Online now",
     "resetAll": "Reset all",
-    "applyMatches": "Apply ({{count}} matches)",
+    "applyMatches_one": "Apply ({{count}} match)",
+    "applyMatches_other": "Apply ({{count}} matches)",
     "itsAMatch": "It's a Match!",
     "likedEachOther": "You and {{name}} liked each other",
     "sendMessage": "Send a Message",
@@ -73,7 +76,8 @@
     "newUser": "New",
     "undo": "Undo",
     "likeFailed": "Could not send like",
-    "alreadyLiked": "Already liked"
+    "alreadyLiked": "Already liked",
+    "you": "You"
   },
   "matches": {
     "title": "Matches",
@@ -95,7 +99,9 @@
     "giftPrefix": "Gift",
     "goDiscover": "Go to Discover",
     "message": "Message",
-    "unmatchFailed": "Could not unmatch — please try again"
+    "unmatchFailed": "Could not unmatch — please try again",
+    "newCount": "{{count}} new",
+    "noSearchResults": "No conversations match “{{query}}”"
   },
   "chat": {
     "typeMessage": "Type a message...",
@@ -138,7 +144,9 @@
     "reportSubmitted": "Report submitted. We'll review it shortly.",
     "photoPreview": "Photo",
     "voicePreview": "Voice message",
-    "giftPreview": "Sent a gift"
+    "giftPreview": "Sent a gift",
+    "typing": "typing",
+    "sendGift": "Send {{gift}}"
   },
   "profile": {
     "edit": "Edit Profile",
@@ -164,7 +172,9 @@
     "donate": "Support Equal",
     "deleteAccount": "Delete Account",
     "logout": "Log Out",
-    "paymentHistory": "Payment History"
+    "paymentHistory": "Payment History",
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode"
   },
   "onboarding": {
     "next": "Next",
@@ -265,7 +275,8 @@
     "seeking_everyone": "Everyone",
     "saveFailed": "Could not save your profile — please try again",
     "title6": "Your voice",
-    "sub6": "A 10-second intro. Required to join Daily Match."
+    "sub6": "A 10-second intro. Required to join Daily Match.",
+    "photoTipsAlt": "Photo tips"
   },
   "common": {
     "cancel": "Cancel",
@@ -279,7 +290,9 @@
     "cookieText": "We use essential cookies for authentication and optional cookies for analytics. See our",
     "cookieAccept": "Accept All",
     "cookieEssential": "Essential Only",
-    "privacyPolicy": "Privacy Policy"
+    "privacyPolicy": "Privacy Policy",
+    "notFoundDesc": "The page you're looking for doesn't exist or has been moved.",
+    "photoN": "Photo {{n}}"
   },
   "clubs": {
     "title": "Clubs",
@@ -347,7 +360,8 @@
     "upcomingEvents": "Upcoming Events",
     "interestedEvents": "Interested",
     "pastEvents": "Past Events",
-    "nearYou": "{{count}} events near you this week",
+    "nearYou_one": "{{count}} upcoming event",
+    "nearYou_other": "{{count}} upcoming events",
     "going": "Going",
     "attend": "Attend",
     "featured": "Featured",
@@ -370,7 +384,8 @@
     "itWasOkay": "It was okay",
     "submitFeedback": "Submit Feedback",
     "thanksFeedback": "Thanks for your feedback! Your Trust Score appreciates it.",
-    "peopleGoing": "{{count}} going",
+    "peopleGoing_one": "{{count}} going",
+    "peopleGoing_other": "{{count}} going",
     "host": "Host",
     "youreGoing": "🎉 You're going!",
     "showAtDoor": "Show this at the door",
@@ -405,7 +420,8 @@
     "createTooMany": "You already have 3 events waiting for review.",
     "createFailed": "Could not submit the event — please try again",
     "pendingReview": "On review",
-    "pendingReviewDesc": "Only you can see this event until an admin approves it."
+    "pendingReviewDesc": "Only you can see this event until an admin approves it.",
+    "noSavedDesc": "Tap the star icon on events you're interested in to save them here."
   },
   "video": {
     "connecting": "Connecting...",
@@ -413,7 +429,8 @@
     "inCall": "In call",
     "callEnded": "Call ended",
     "callFailed": "Call failed",
-    "backToChat": "Back to chat"
+    "backToChat": "Back to chat",
+    "duration": "Duration: {{time}}"
   },
   "report": {
     "title": "Report {{name}}",
@@ -424,7 +441,8 @@
     "inappropriate": "Inappropriate Content",
     "other": "Other",
     "detailsPlaceholder": "Tell us more about the issue...",
-    "submit": "Submit Report"
+    "submit": "Submit Report",
+    "descriptionLabel": "Description (optional)"
   },
   "offers": {
     "partner": "Partner",
@@ -503,7 +521,8 @@
     "adminPanel": "Admin Panel",
     "donationSent": "Thank you for your support!",
     "donating": "Processing…",
-    "supportUnavailable": "Support isn't configured yet"
+    "supportUnavailable": "Support isn't configured yet",
+    "donateAmount": "Donate {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "Add a bio to help people get to know you",
@@ -546,9 +565,11 @@
     "locked": "Locked",
     "photoUploadFailed": "Could not upload photo",
     "sparksDesc": "Sparks are earned through activity — not bought. Send them to show someone special attention.",
-    "sparksAmount": "+{{count}} Sparks",
+    "sparksAmount_one": "+{{count}} Spark",
+    "sparksAmount_other": "+{{count}} Sparks",
     "sparksPerDay": "+{{count}} Spark/day",
-    "photoDeleteFailed": "Could not delete photo"
+    "photoDeleteFailed": "Could not delete photo",
+    "profileAlt": "{{name}}'s profile"
   },
   "admin": {
     "panel": "Admin Panel",

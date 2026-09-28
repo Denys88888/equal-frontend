@@ -47,7 +47,7 @@ const languages = [
 ];
 
 export default function LanguageSelector() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const handleChange = (value: string) => { i18n.changeLanguage(value); };
   const currentLang = languages.find((l) => l.code === i18n.language) || languages[0];
   return (
@@ -56,7 +56,7 @@ export default function LanguageSelector() {
       <Select value={i18n.language} onValueChange={handleChange}>
         <SelectTrigger className="w-[150px] h-9 rounded-[12px] border-0 bg-white dark:bg-[#22293B] px-3 text-sm font-semibold text-[var(--charcoal)] shadow-none focus:ring-0 focus:ring-offset-0"
           style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
-          <SelectValue placeholder="Select language">
+          <SelectValue placeholder={t('settings.language')}>
             <span className="flex items-center gap-2">
               <span>{currentLang.flag}</span>
               <span>{currentLang.code.toUpperCase()}</span>

@@ -9,7 +9,8 @@
     "trustPioneers": "6000 万+ 先锋",
     "errPiBrowser": "请在 Pi Browser 中打开本应用",
     "errAuthFailed": "Pi 身份验证失败",
-    "errTimeout": "Pi 身份验证超时，请重试。"
+    "errTimeout": "Pi 身份验证超时，请重试。",
+    "heroAlt": "两个人组成一颗心"
   },
   "nav": {
     "discover": "发现",
@@ -24,7 +25,7 @@
     "spark": "心动",
     "filter": "筛选",
     "compatibility": "契合度",
-    "compatRefresh": "每日更新 • {{count}} 位高契合度对象",
+    "compatRefresh_other": "每日更新 • {{count}} 位高契合度对象",
     "compatEmpty": "明天再来看看新的高契合度配对吧！",
     "kmAway": "距离 {{distance}} 公里",
     "matchPercent": "匹配度 {{percent}}%",
@@ -35,7 +36,7 @@
     "verifiedOnly": "仅显示已验证用户",
     "onlineNow": "当前在线",
     "resetAll": "全部重置",
-    "applyMatches": "应用（{{count}} 位配对）",
+    "applyMatches_other": "应用（{{count}} 位配对）",
     "itsAMatch": "配对成功！",
     "likedEachOther": "你和 {{name}} 互相喜欢",
     "sendMessage": "发送消息",
@@ -73,7 +74,8 @@
     "newUser": "新用户",
     "undo": "撤销",
     "likeFailed": "无法发送喜欢",
-    "alreadyLiked": "已经喜欢过了"
+    "alreadyLiked": "已经喜欢过了",
+    "you": "你"
   },
   "matches": {
     "title": "配对",
@@ -95,7 +97,9 @@
     "giftPrefix": "礼物",
     "goDiscover": "去发现",
     "message": "消息",
-    "unmatchFailed": "无法取消配对，请重试"
+    "unmatchFailed": "无法取消配对，请重试",
+    "newCount": "{{count}} 条新消息",
+    "noSearchResults": "没有与“{{query}}”匹配的对话"
   },
   "chat": {
     "typeMessage": "输入消息...",
@@ -138,7 +142,9 @@
     "reportSubmitted": "举报已提交，我们会尽快审核。",
     "photoPreview": "照片",
     "voicePreview": "语音消息",
-    "giftPreview": "送出了一份礼物"
+    "giftPreview": "送出了一份礼物",
+    "typing": "正在输入",
+    "sendGift": "赠送{{gift}}"
   },
   "profile": {
     "edit": "编辑资料",
@@ -164,7 +170,9 @@
     "donate": "支持 Equal",
     "deleteAccount": "注销账号",
     "logout": "退出登录",
-    "paymentHistory": "支付记录"
+    "paymentHistory": "支付记录",
+    "switchToLight": "切换到浅色模式",
+    "switchToDark": "切换到深色模式"
   },
   "onboarding": {
     "next": "下一步",
@@ -265,7 +273,8 @@
     "seeking_everyone": "所有人",
     "saveFailed": "无法保存你的资料，请重试",
     "title6": "你的声音",
-    "sub6": "10 秒介绍。参与 Daily Match 必需。"
+    "sub6": "10 秒介绍。参与 Daily Match 必需。",
+    "photoTipsAlt": "照片小贴士"
   },
   "common": {
     "cancel": "取消",
@@ -279,7 +288,9 @@
     "cookieText": "我们使用必要 Cookie 进行身份验证，并使用可选 Cookie 进行数据分析。详见我们的",
     "cookieAccept": "全部接受",
     "cookieEssential": "仅必要项",
-    "privacyPolicy": "隐私政策"
+    "privacyPolicy": "隐私政策",
+    "notFoundDesc": "你要找的页面不存在或已被移动。",
+    "photoN": "照片 {{n}}"
   },
   "clubs": {
     "title": "俱乐部",
@@ -345,7 +356,7 @@
     "upcomingEvents": "即将到来的活动",
     "interestedEvents": "感兴趣",
     "pastEvents": "过去的活动",
-    "nearYou": "本周附近{{count}}个活动",
+    "nearYou_other": "{{count}} 个即将举行的活动",
     "going": "参加",
     "attend": "报名",
     "featured": "精选",
@@ -368,7 +379,7 @@
     "itWasOkay": "还行",
     "submitFeedback": "提交反馈",
     "thanksFeedback": "感谢你的反馈！你的信任分会因此受益。",
-    "peopleGoing": "{{count}} 人参加",
+    "peopleGoing_other": "{{count}} 人参加",
     "host": "主办方",
     "youreGoing": "🎉 你要参加了！",
     "showAtDoor": "请在入口出示",
@@ -403,7 +414,8 @@
     "createTooMany": "你已有 3 个活动在等待审核。",
     "createFailed": "无法提交活动——请重试",
     "pendingReview": "审核中",
-    "pendingReviewDesc": "在管理员批准之前，只有你能看到此活动。"
+    "pendingReviewDesc": "在管理员批准之前，只有你能看到此活动。",
+    "noSavedDesc": "点击你感兴趣的活动上的星标，即可将其保存在这里。"
   },
   "video": {
     "connecting": "连接中...",
@@ -411,7 +423,8 @@
     "inCall": "通话中",
     "callEnded": "通话已结束",
     "callFailed": "通话失败",
-    "backToChat": "返回聊天"
+    "backToChat": "返回聊天",
+    "duration": "时长：{{time}}"
   },
   "report": {
     "title": "举报 {{name}}",
@@ -422,7 +435,8 @@
     "inappropriate": "不当内容",
     "other": "其他",
     "detailsPlaceholder": "请详细说明问题...",
-    "submit": "提交举报"
+    "submit": "提交举报",
+    "descriptionLabel": "描述（可选）"
   },
   "offers": {
     "partner": "合作商",
@@ -501,7 +515,8 @@
     "adminPanel": "管理面板",
     "donationSent": "感谢你的支持！",
     "donating": "处理中…",
-    "supportUnavailable": "客服支持尚未配置"
+    "supportUnavailable": "客服支持尚未配置",
+    "donateAmount": "捐赠 {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "添加简介，让别人更了解你",
@@ -544,9 +559,10 @@
     "locked": "未解锁",
     "photoUploadFailed": "无法上传照片",
     "sparksDesc": "火花通过活跃获得，无法购买。送出火花，向某人表达特别的关注。",
-    "sparksAmount": "+{{count}} 火花",
+    "sparksAmount_other": "+{{count}} 火花",
     "sparksPerDay": "每天 +{{count}} 火花",
-    "photoDeleteFailed": "无法删除照片"
+    "photoDeleteFailed": "无法删除照片",
+    "profileAlt": "{{name}}的个人资料"
   },
   "admin": {
     "panel": "管理面板",

@@ -9,7 +9,8 @@
     "trustPioneers": "Oltre 60 mln di Pioneer",
     "errPiBrowser": "Apri questa app in Pi Browser",
     "errAuthFailed": "Autenticazione Pi non riuscita",
-    "errTimeout": "Autenticazione Pi scaduta. Riprova."
+    "errTimeout": "Autenticazione Pi scaduta. Riprova.",
+    "heroAlt": "Due persone che formano un cuore"
   },
   "nav": {
     "discover": "Scopri",
@@ -24,7 +25,9 @@
     "spark": "Scintilla",
     "filter": "Filtro",
     "compatibility": "Compatibilità",
-    "compatRefresh": "Si aggiorna ogni giorno • {{count}} match ad alta affinità",
+    "compatRefresh_one": "Si aggiorna ogni giorno • {{count}} match ad alta affinità",
+    "compatRefresh_many": "Si aggiorna ogni giorno • {{count}} di match ad alta affinità",
+    "compatRefresh_other": "Si aggiorna ogni giorno • {{count}} match ad alta affinità",
     "compatEmpty": "Torna domani per nuovi match ad alta affinità!",
     "kmAway": "A {{distance}} km di distanza",
     "matchPercent": "Match al {{percent}}%",
@@ -35,7 +38,9 @@
     "verifiedOnly": "Solo utenti verificati",
     "onlineNow": "Online adesso",
     "resetAll": "Reimposta tutto",
-    "applyMatches": "Applica ({{count}} match)",
+    "applyMatches_one": "Applica ({{count}} match)",
+    "applyMatches_many": "Applica ({{count}} di match)",
+    "applyMatches_other": "Applica ({{count}} match)",
     "itsAMatch": "È un match!",
     "likedEachOther": "Tu e {{name}} vi siete piaciuti",
     "sendMessage": "Invia un messaggio",
@@ -73,7 +78,8 @@
     "newUser": "Nuovo",
     "undo": "Annulla",
     "likeFailed": "Impossibile inviare il mi piace",
-    "alreadyLiked": "Già piaciuto"
+    "alreadyLiked": "Già piaciuto",
+    "you": "Tu"
   },
   "matches": {
     "title": "Match",
@@ -95,7 +101,9 @@
     "giftPrefix": "Regalo",
     "goDiscover": "Vai a Scopri",
     "message": "Messaggio",
-    "unmatchFailed": "Impossibile annullare il match — riprova"
+    "unmatchFailed": "Impossibile annullare il match — riprova",
+    "newCount": "Nuovi: {{count}}",
+    "noSearchResults": "Nessuna conversazione corrisponde a “{{query}}”"
   },
   "chat": {
     "typeMessage": "Scrivi un messaggio...",
@@ -138,7 +146,9 @@
     "reportSubmitted": "Segnalazione inviata. La esamineremo a breve.",
     "photoPreview": "Foto",
     "voicePreview": "Messaggio vocale",
-    "giftPreview": "Ha inviato un regalo"
+    "giftPreview": "Ha inviato un regalo",
+    "typing": "sta scrivendo",
+    "sendGift": "Invia {{gift}}"
   },
   "profile": {
     "edit": "Modifica Profilo",
@@ -164,7 +174,9 @@
     "donate": "Supporta Equal",
     "deleteAccount": "Elimina account",
     "logout": "Esci",
-    "paymentHistory": "Cronologia pagamenti"
+    "paymentHistory": "Cronologia pagamenti",
+    "switchToLight": "Passa alla modalità chiara",
+    "switchToDark": "Passa alla modalità scura"
   },
   "onboarding": {
     "next": "Avanti",
@@ -265,7 +277,8 @@
     "seeking_everyone": "Tutti",
     "saveFailed": "Impossibile salvare il profilo — riprova",
     "title6": "La tua voce",
-    "sub6": "Una presentazione di 10 secondi. Obbligatoria per il Match del giorno."
+    "sub6": "Una presentazione di 10 secondi. Obbligatoria per il Match del giorno.",
+    "photoTipsAlt": "Consigli per le foto"
   },
   "common": {
     "cancel": "Annulla",
@@ -279,7 +292,9 @@
     "cookieText": "Usiamo cookie essenziali per l'autenticazione e cookie facoltativi per le statistiche. Consulta la nostra",
     "cookieAccept": "Accetta tutti",
     "cookieEssential": "Solo essenziali",
-    "privacyPolicy": "Informativa sulla privacy"
+    "privacyPolicy": "Informativa sulla privacy",
+    "notFoundDesc": "La pagina che cerchi non esiste o è stata spostata.",
+    "photoN": "Foto {{n}}"
   },
   "clubs": {
     "title": "Club",
@@ -349,7 +364,9 @@
     "upcomingEvents": "Prossimi eventi",
     "interestedEvents": "Interessato",
     "pastEvents": "Eventi passati",
-    "nearYou": "{{count}} eventi vicino a te questa settimana",
+    "nearYou_one": "{{count}} evento in arrivo",
+    "nearYou_many": "{{count}} di eventi in arrivo",
+    "nearYou_other": "{{count}} eventi in arrivo",
     "going": "Ci vado",
     "attend": "Partecipa",
     "featured": "In evidenza",
@@ -372,7 +389,9 @@
     "itWasOkay": "Nella media",
     "submitFeedback": "Invia il commento",
     "thanksFeedback": "Grazie per il tuo commento! Il tuo Punteggio di fiducia ne beneficia.",
-    "peopleGoing": "{{count}} partecipanti",
+    "peopleGoing_one": "{{count}} partecipante",
+    "peopleGoing_many": "{{count}} di partecipanti",
+    "peopleGoing_other": "{{count}} partecipanti",
     "host": "Organizzatore",
     "youreGoing": "🎉 Parteciperai!",
     "showAtDoor": "Mostra questo all'ingresso",
@@ -407,7 +426,8 @@
     "createTooMany": "Hai già 3 eventi in attesa di revisione.",
     "createFailed": "Impossibile inviare l’evento — riprova",
     "pendingReview": "In revisione",
-    "pendingReviewDesc": "Solo tu vedi questo evento finché un amministratore non lo approva."
+    "pendingReviewDesc": "Solo tu vedi questo evento finché un amministratore non lo approva.",
+    "noSavedDesc": "Tocca la stella sugli eventi che ti interessano per salvarli qui."
   },
   "video": {
     "connecting": "Connessione...",
@@ -415,7 +435,8 @@
     "inCall": "In chiamata",
     "callEnded": "Chiamata terminata",
     "callFailed": "Chiamata non riuscita",
-    "backToChat": "Torna alla chat"
+    "backToChat": "Torna alla chat",
+    "duration": "Durata: {{time}}"
   },
   "report": {
     "title": "Segnala {{name}}",
@@ -426,7 +447,8 @@
     "inappropriate": "Contenuto inappropriato",
     "other": "Altro",
     "detailsPlaceholder": "Raccontaci di più sul problema...",
-    "submit": "Invia segnalazione"
+    "submit": "Invia segnalazione",
+    "descriptionLabel": "Descrizione (facoltativa)"
   },
   "offers": {
     "partner": "Partner",
@@ -505,7 +527,8 @@
     "adminPanel": "Pannello di amministrazione",
     "donationSent": "Grazie per il tuo sostegno!",
     "donating": "Elaborazione…",
-    "supportUnavailable": "L'assistenza non è ancora configurata"
+    "supportUnavailable": "L'assistenza non è ancora configurata",
+    "donateAmount": "Dona {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "Aggiungi una bio per farti conoscere",
@@ -548,9 +571,12 @@
     "locked": "Bloccato",
     "photoUploadFailed": "Impossibile caricare la foto",
     "sparksDesc": "Le Scintille si guadagnano con l'attività, non si comprano. Inviale per mostrare un'attenzione speciale a qualcuno.",
-    "sparksAmount": "+{{count}} Scintille",
+    "sparksAmount_one": "+{{count}} Scintilla",
+    "sparksAmount_many": "+{{count}} di Scintille",
+    "sparksAmount_other": "+{{count}} Scintille",
     "sparksPerDay": "+{{count}} Scintilla/giorno",
-    "photoDeleteFailed": "Impossibile eliminare la foto"
+    "photoDeleteFailed": "Impossibile eliminare la foto",
+    "profileAlt": "Profilo di {{name}}"
   },
   "admin": {
     "panel": "Pannello di amministrazione",

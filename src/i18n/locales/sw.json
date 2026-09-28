@@ -9,7 +9,8 @@
     "trustPioneers": "Zaidi ya Wapainia milioni 60",
     "errPiBrowser": "Fungua programu hii katika Pi Browser",
     "errAuthFailed": "Uthibitishaji wa Pi umeshindwa",
-    "errTimeout": "Muda wa uthibitishaji wa Pi umekwisha. Jaribu tena."
+    "errTimeout": "Muda wa uthibitishaji wa Pi umekwisha. Jaribu tena.",
+    "heroAlt": "Watu wawili wakiunda moyo"
   },
   "nav": {
     "discover": "Gundua",
@@ -24,7 +25,8 @@
     "spark": "Kiwango",
     "filter": "Chuja",
     "compatibility": "Ulinganifu",
-    "compatRefresh": "Inasasishwa kila siku • mechi {{count}} zenye ulinganifu wa hali ya juu",
+    "compatRefresh_one": "Inasasishwa kila siku • mechi {{count}} yenye ulinganifu wa hali ya juu",
+    "compatRefresh_other": "Inasasishwa kila siku • mechi {{count}} zenye ulinganifu wa hali ya juu",
     "compatEmpty": "Rudi kesho kwa mechi mpya zenye ulinganifu wa hali ya juu!",
     "kmAway": "{{distance}} km mbali",
     "matchPercent": "Linganifu la %{{percent}}",
@@ -35,7 +37,8 @@
     "verifiedOnly": "Watumiaji walioThibitishwa pekee",
     "onlineNow": "Mtandaoni sasa",
     "resetAll": "Weka upya vyote",
-    "applyMatches": "Tumia (mechi {{count}})",
+    "applyMatches_one": "Tumia (mechi {{count}})",
+    "applyMatches_other": "Tumia (mechi {{count}})",
     "itsAMatch": "Hii ni mechi!",
     "likedEachOther": "Wewe na {{name}} mmependana",
     "sendMessage": "Tuma ujumbe",
@@ -73,7 +76,8 @@
     "newUser": "Mpya",
     "undo": "Tengua",
     "likeFailed": "Kutuma kupenda hakukufaulu",
-    "alreadyLiked": "Tayari umependa"
+    "alreadyLiked": "Tayari umependa",
+    "you": "Wewe"
   },
   "matches": {
     "title": "Linganifu",
@@ -95,7 +99,9 @@
     "giftPrefix": "Zawadi",
     "goDiscover": "Nenda Gundua",
     "message": "Ujumbe",
-    "unmatchFailed": "Kuondoa mechi hakukufaulu — jaribu tena"
+    "unmatchFailed": "Kuondoa mechi hakukufaulu — jaribu tena",
+    "newCount": "Mpya: {{count}}",
+    "noSearchResults": "Hakuna mazungumzo yanayolingana na “{{query}}”"
   },
   "chat": {
     "typeMessage": "Andika ujumbe...",
@@ -138,7 +144,9 @@
     "reportSubmitted": "Ripoti imetumwa. Tutaipitia hivi karibuni.",
     "photoPreview": "Picha",
     "voicePreview": "Ujumbe wa sauti",
-    "giftPreview": "Alituma zawadi"
+    "giftPreview": "Alituma zawadi",
+    "typing": "anaandika",
+    "sendGift": "Tuma {{gift}}"
   },
   "profile": {
     "edit": "Hariri Wasifu",
@@ -164,7 +172,9 @@
     "donate": "Saidia Equal",
     "deleteAccount": "Futa Akaunti",
     "logout": "Ondoka",
-    "paymentHistory": "Historia ya malipo"
+    "paymentHistory": "Historia ya malipo",
+    "switchToLight": "Badili kwenda hali ya mwanga",
+    "switchToDark": "Badili kwenda hali ya giza"
   },
   "onboarding": {
     "next": "Inayofuata",
@@ -265,7 +275,8 @@
     "seeking_everyone": "Kila mtu",
     "saveFailed": "Kuhifadhi wasifu wako hakukufaulu — jaribu tena",
     "title6": "Sauti yako",
-    "sub6": "Utangulizi wa sekunde 10. Unahitajika kujiunga na Mechi ya Kila Siku."
+    "sub6": "Utangulizi wa sekunde 10. Unahitajika kujiunga na Mechi ya Kila Siku.",
+    "photoTipsAlt": "Vidokezo vya picha"
   },
   "common": {
     "cancel": "Ghairi",
@@ -279,7 +290,9 @@
     "cookieText": "Tunatumia vidakuzi muhimu kwa uthibitishaji na vidakuzi vya hiari kwa uchambuzi. Angalia",
     "cookieAccept": "Kubali Vyote",
     "cookieEssential": "Muhimu Pekee",
-    "privacyPolicy": "Sera ya Faragha"
+    "privacyPolicy": "Sera ya Faragha",
+    "notFoundDesc": "Ukurasa unaoutafuta haupo au umehamishwa.",
+    "photoN": "Picha {{n}}"
   },
   "clubs": {
     "title": "Vilabu",
@@ -347,7 +360,8 @@
     "upcomingEvents": "Matukio Yajayo",
     "interestedEvents": "Ninapenda",
     "pastEvents": "Matukio Yaliyopita",
-    "nearYou": "matukio {{count}} karibu nawe wiki hii",
+    "nearYou_one": "tukio {{count}} lijalo",
+    "nearYou_other": "matukio {{count}} yajayo",
     "going": "Ninakwenda",
     "attend": "Hudhuria",
     "featured": "Maalum",
@@ -370,7 +384,8 @@
     "itWasOkay": "Ilikuwa sawa",
     "submitFeedback": "Tuma maoni",
     "thanksFeedback": "Asante kwa maoni yako! Kiwango chako cha Uaminifu kinafaidika.",
-    "peopleGoing": "watu {{count}} wanakwenda",
+    "peopleGoing_one": "mtu {{count}} anakwenda",
+    "peopleGoing_other": "watu {{count}} wanakwenda",
     "host": "Mwenyeji",
     "youreGoing": "🎉 Unakwenda!",
     "showAtDoor": "Onyesha hii mlangoni",
@@ -405,7 +420,8 @@
     "createTooMany": "Tayari una matukio 3 yanayosubiri ukaguzi.",
     "createFailed": "Imeshindwa kutuma tukio — tafadhali jaribu tena",
     "pendingReview": "Linakaguliwa",
-    "pendingReviewDesc": "Ni wewe pekee unayeona tukio hili hadi msimamizi aliidhinishe."
+    "pendingReviewDesc": "Ni wewe pekee unayeona tukio hili hadi msimamizi aliidhinishe.",
+    "noSavedDesc": "Gusa aikoni ya nyota kwenye matukio yanayokuvutia ili kuyahifadhi hapa."
   },
   "video": {
     "connecting": "Inaunganisha...",
@@ -413,7 +429,8 @@
     "inCall": "Katika simu",
     "callEnded": "Simu imekwisha",
     "callFailed": "Simu haikufaulu",
-    "backToChat": "Rudi kwenye mazungumzo"
+    "backToChat": "Rudi kwenye mazungumzo",
+    "duration": "Muda: {{time}}"
   },
   "report": {
     "title": "Ripoti {{name}}",
@@ -424,7 +441,8 @@
     "inappropriate": "Maudhui yasiyofaa",
     "other": "Nyingine",
     "detailsPlaceholder": "Tuambie zaidi kuhusu tatizo...",
-    "submit": "Tuma ripoti"
+    "submit": "Tuma ripoti",
+    "descriptionLabel": "Maelezo (si lazima)"
   },
   "offers": {
     "partner": "Mshirika",
@@ -503,7 +521,8 @@
     "adminPanel": "Kidhibiti cha Msimamizi",
     "donationSent": "Asante kwa msaada wako!",
     "donating": "Inachakata…",
-    "supportUnavailable": "Usaidizi bado haujawekwa"
+    "supportUnavailable": "Usaidizi bado haujawekwa",
+    "donateAmount": "Changia Pi {{amount}}"
   },
   "profile2": {
     "addBioHint": "Ongeza wasifu ili watu wakujue",
@@ -546,9 +565,11 @@
     "locked": "Imefungwa",
     "photoUploadFailed": "Kupakia picha hakukufaulu",
     "sparksDesc": "Cheche hupatikana kwa shughuli — hazinunuliwi. Zitume ili kuonyesha umakini maalum kwa mtu.",
-    "sparksAmount": "Cheche +{{count}}",
+    "sparksAmount_one": "Cheche +{{count}}",
+    "sparksAmount_other": "Cheche +{{count}}",
     "sparksPerDay": "Cheche +{{count}}/siku",
-    "photoDeleteFailed": "Kufuta picha hakukufaulu"
+    "photoDeleteFailed": "Kufuta picha hakukufaulu",
+    "profileAlt": "Wasifu wa {{name}}"
   },
   "admin": {
     "panel": "Kidhibiti cha Msimamizi",

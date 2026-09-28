@@ -9,7 +9,8 @@
     "trustPioneers": "60 Juta+ Pioneer",
     "errPiBrowser": "Buka aplikasi ini di Pi Browser",
     "errAuthFailed": "Autentikasi Pi gagal",
-    "errTimeout": "Autentikasi Pi melebihi batas waktu. Coba lagi."
+    "errTimeout": "Autentikasi Pi melebihi batas waktu. Coba lagi.",
+    "heroAlt": "Dua orang membentuk hati"
   },
   "nav": {
     "discover": "Jelajahi",
@@ -24,7 +25,7 @@
     "spark": "Percikan",
     "filter": "Filter",
     "compatibility": "Kecocokan",
-    "compatRefresh": "Diperbarui setiap hari • {{count}} kecocokan tinggi",
+    "compatRefresh_other": "Diperbarui setiap hari • {{count}} kecocokan tinggi",
     "compatEmpty": "Kembalilah besok untuk kecocokan tinggi yang baru!",
     "kmAway": "{{distance}} km jauhnya",
     "matchPercent": "{{percent}}% Cocok",
@@ -35,7 +36,7 @@
     "verifiedOnly": "Hanya pengguna terverifikasi",
     "onlineNow": "Sedang online",
     "resetAll": "Atur ulang semua",
-    "applyMatches": "Terapkan ({{count}} kecocokan)",
+    "applyMatches_other": "Terapkan ({{count}} kecocokan)",
     "itsAMatch": "Kalian cocok!",
     "likedEachOther": "Kamu dan {{name}} saling menyukai",
     "sendMessage": "Kirim pesan",
@@ -73,7 +74,8 @@
     "newUser": "Baru",
     "undo": "Batalkan",
     "likeFailed": "Tidak dapat mengirim suka",
-    "alreadyLiked": "Sudah disukai"
+    "alreadyLiked": "Sudah disukai",
+    "you": "Kamu"
   },
   "matches": {
     "title": "Kecocokan",
@@ -95,7 +97,9 @@
     "giftPrefix": "Hadiah",
     "goDiscover": "Ke Jelajahi",
     "message": "Pesan",
-    "unmatchFailed": "Tidak dapat membatalkan kecocokan — coba lagi"
+    "unmatchFailed": "Tidak dapat membatalkan kecocokan — coba lagi",
+    "newCount": "{{count}} baru",
+    "noSearchResults": "Tidak ada percakapan yang cocok dengan “{{query}}”"
   },
   "chat": {
     "typeMessage": "Ketik pesan...",
@@ -138,7 +142,9 @@
     "reportSubmitted": "Laporan terkirim. Kami akan meninjaunya segera.",
     "photoPreview": "Foto",
     "voicePreview": "Pesan suara",
-    "giftPreview": "Mengirim hadiah"
+    "giftPreview": "Mengirim hadiah",
+    "typing": "mengetik",
+    "sendGift": "Kirim {{gift}}"
   },
   "profile": {
     "edit": "Edit Profil",
@@ -164,7 +170,9 @@
     "donate": "Dukung Equal",
     "deleteAccount": "Hapus Akun",
     "logout": "Keluar",
-    "paymentHistory": "Riwayat pembayaran"
+    "paymentHistory": "Riwayat pembayaran",
+    "switchToLight": "Beralih ke mode terang",
+    "switchToDark": "Beralih ke mode gelap"
   },
   "onboarding": {
     "next": "Lanjut",
@@ -265,7 +273,8 @@
     "seeking_everyone": "Semua orang",
     "saveFailed": "Tidak dapat menyimpan profilmu — coba lagi",
     "title6": "Suaramu",
-    "sub6": "Intro 10 detik. Wajib untuk ikut Daily Match."
+    "sub6": "Intro 10 detik. Wajib untuk ikut Daily Match.",
+    "photoTipsAlt": "Tips foto"
   },
   "common": {
     "cancel": "Batal",
@@ -279,7 +288,9 @@
     "cookieText": "Kami memakai cookie esensial untuk autentikasi dan cookie opsional untuk analitik. Lihat",
     "cookieAccept": "Terima semua",
     "cookieEssential": "Hanya yang esensial",
-    "privacyPolicy": "Kebijakan Privasi"
+    "privacyPolicy": "Kebijakan Privasi",
+    "notFoundDesc": "Halaman yang kamu cari tidak ada atau sudah dipindahkan.",
+    "photoN": "Foto {{n}}"
   },
   "clubs": {
     "title": "Klub",
@@ -345,7 +356,7 @@
     "upcomingEvents": "Acara mendatang",
     "interestedEvents": "Tertarik",
     "pastEvents": "Acara yang lalu",
-    "nearYou": "{{count}} acara di dekatmu minggu ini",
+    "nearYou_other": "{{count}} acara mendatang",
     "going": "Hadir",
     "attend": "Ikut",
     "featured": "Unggulan",
@@ -368,7 +379,7 @@
     "itWasOkay": "Lumayan",
     "submitFeedback": "Kirim ulasan",
     "thanksFeedback": "Terima kasih atas ulasanmu! Skor Kepercayaanmu menghargainya.",
-    "peopleGoing": "{{count}} akan hadir",
+    "peopleGoing_other": "{{count}} akan hadir",
     "host": "Penyelenggara",
     "youreGoing": "🎉 Kamu akan hadir!",
     "showAtDoor": "Tunjukkan ini di pintu masuk",
@@ -403,7 +414,8 @@
     "createTooMany": "Anda sudah memiliki 3 acara yang menunggu tinjauan.",
     "createFailed": "Tidak dapat mengirim acara — silakan coba lagi",
     "pendingReview": "Sedang ditinjau",
-    "pendingReviewDesc": "Hanya Anda yang bisa melihat acara ini sampai admin menyetujuinya."
+    "pendingReviewDesc": "Hanya Anda yang bisa melihat acara ini sampai admin menyetujuinya.",
+    "noSavedDesc": "Ketuk ikon bintang pada acara yang kamu minati untuk menyimpannya di sini."
   },
   "video": {
     "connecting": "Menghubungkan...",
@@ -411,7 +423,8 @@
     "inCall": "Dalam panggilan",
     "callEnded": "Panggilan berakhir",
     "callFailed": "Panggilan gagal",
-    "backToChat": "Kembali ke obrolan"
+    "backToChat": "Kembali ke obrolan",
+    "duration": "Durasi: {{time}}"
   },
   "report": {
     "title": "Laporkan {{name}}",
@@ -422,7 +435,8 @@
     "inappropriate": "Konten tidak pantas",
     "other": "Lainnya",
     "detailsPlaceholder": "Ceritakan lebih lanjut tentang masalahnya...",
-    "submit": "Kirim laporan"
+    "submit": "Kirim laporan",
+    "descriptionLabel": "Deskripsi (opsional)"
   },
   "offers": {
     "partner": "Mitra",
@@ -501,7 +515,8 @@
     "adminPanel": "Panel admin",
     "donationSent": "Terima kasih atas dukunganmu!",
     "donating": "Memproses…",
-    "supportUnavailable": "Dukungan belum dikonfigurasi"
+    "supportUnavailable": "Dukungan belum dikonfigurasi",
+    "donateAmount": "Donasikan {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "Tambahkan bio agar orang lain mengenalmu",
@@ -544,9 +559,10 @@
     "locked": "Terkunci",
     "photoUploadFailed": "Tidak dapat mengunggah foto",
     "sparksDesc": "Percikan diperoleh lewat keaktifan — bukan dibeli. Kirimkan untuk menunjukkan perhatian khusus kepada seseorang.",
-    "sparksAmount": "+{{count}} Percikan",
+    "sparksAmount_other": "+{{count}} Percikan",
     "sparksPerDay": "+{{count}} Percikan/hari",
-    "photoDeleteFailed": "Tidak dapat menghapus foto"
+    "photoDeleteFailed": "Tidak dapat menghapus foto",
+    "profileAlt": "Profil {{name}}"
   },
   "admin": {
     "panel": "Panel admin",

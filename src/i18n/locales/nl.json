@@ -9,7 +9,8 @@
     "trustPioneers": "Meer dan 60 mln Pioneers",
     "errPiBrowser": "Open deze app in Pi Browser",
     "errAuthFailed": "Pi-authenticatie mislukt",
-    "errTimeout": "Pi-authenticatie duurde te lang. Probeer het opnieuw."
+    "errTimeout": "Pi-authenticatie duurde te lang. Probeer het opnieuw.",
+    "heroAlt": "Twee mensen die een hart vormen"
   },
   "nav": {
     "discover": "Ontdekken",
@@ -24,7 +25,8 @@
     "spark": "Vonk",
     "filter": "Filteren",
     "compatibility": "Compatibiliteit",
-    "compatRefresh": "Dagelijks vernieuwd • {{count}} matches met hoge klik",
+    "compatRefresh_one": "Dagelijks vernieuwd • {{count}} match met hoge klik",
+    "compatRefresh_other": "Dagelijks vernieuwd • {{count}} matches met hoge klik",
     "compatEmpty": "Kom morgen terug voor nieuwe matches met hoge klik!",
     "kmAway": "{{distance}} km verderop",
     "matchPercent": "{{percent}}% match",
@@ -35,7 +37,8 @@
     "verifiedOnly": "Alleen geverifieerde gebruikers",
     "onlineNow": "Nu online",
     "resetAll": "Alles resetten",
-    "applyMatches": "Toepassen ({{count}} matches)",
+    "applyMatches_one": "Toepassen ({{count}} match)",
+    "applyMatches_other": "Toepassen ({{count}} matches)",
     "itsAMatch": "Het is een match!",
     "likedEachOther": "Jij en {{name}} vinden elkaar leuk",
     "sendMessage": "Stuur een bericht",
@@ -73,7 +76,8 @@
     "newUser": "Nieuw",
     "undo": "Ongedaan maken",
     "likeFailed": "Kon 'leuk' niet versturen",
-    "alreadyLiked": "Al leuk gevonden"
+    "alreadyLiked": "Al leuk gevonden",
+    "you": "Jij"
   },
   "matches": {
     "title": "Matches",
@@ -95,7 +99,9 @@
     "giftPrefix": "Cadeau",
     "goDiscover": "Naar Ontdekken",
     "message": "Bericht",
-    "unmatchFailed": "Kon de match niet ongedaan maken — probeer het opnieuw"
+    "unmatchFailed": "Kon de match niet ongedaan maken — probeer het opnieuw",
+    "newCount": "{{count}} nieuw",
+    "noSearchResults": "Geen gesprekken gevonden voor ‘{{query}}’"
   },
   "chat": {
     "typeMessage": "Typ een bericht...",
@@ -138,7 +144,9 @@
     "reportSubmitted": "Melding verstuurd. We bekijken hem binnenkort.",
     "photoPreview": "Foto",
     "voicePreview": "Spraakbericht",
-    "giftPreview": "Heeft een cadeau gestuurd"
+    "giftPreview": "Heeft een cadeau gestuurd",
+    "typing": "typt",
+    "sendGift": "{{gift}} sturen"
   },
   "profile": {
     "edit": "Profiel bewerken",
@@ -164,7 +172,9 @@
     "donate": "Equal steunen",
     "deleteAccount": "Account verwijderen",
     "logout": "Uitloggen",
-    "paymentHistory": "Betalingsgeschiedenis"
+    "paymentHistory": "Betalingsgeschiedenis",
+    "switchToLight": "Overschakelen naar lichte modus",
+    "switchToDark": "Overschakelen naar donkere modus"
   },
   "onboarding": {
     "next": "Volgende",
@@ -265,7 +275,8 @@
     "seeking_everyone": "Iedereen",
     "saveFailed": "Kon je profiel niet opslaan — probeer het opnieuw",
     "title6": "Jouw stem",
-    "sub6": "Een intro van 10 seconden. Verplicht om mee te doen aan de Dagelijkse match."
+    "sub6": "Een intro van 10 seconden. Verplicht om mee te doen aan de Dagelijkse match.",
+    "photoTipsAlt": "Fototips"
   },
   "common": {
     "cancel": "Annuleren",
@@ -279,7 +290,9 @@
     "cookieText": "We gebruiken noodzakelijke cookies voor authenticatie en optionele cookies voor analyse. Bekijk ons",
     "cookieAccept": "Alles accepteren",
     "cookieEssential": "Alleen noodzakelijke",
-    "privacyPolicy": "Privacybeleid"
+    "privacyPolicy": "Privacybeleid",
+    "notFoundDesc": "De pagina die je zoekt bestaat niet of is verplaatst.",
+    "photoN": "Foto {{n}}"
   },
   "clubs": {
     "title": "Clubs",
@@ -347,7 +360,8 @@
     "upcomingEvents": "Aankomende evenementen",
     "interestedEvents": "Interesse",
     "pastEvents": "Afgelopen evenementen",
-    "nearYou": "{{count}} evenementen bij jou in de buurt deze week",
+    "nearYou_one": "{{count}} aankomend evenement",
+    "nearYou_other": "{{count}} aankomende evenementen",
     "going": "Ik ga",
     "attend": "Deelnemen",
     "featured": "Uitgelicht",
@@ -370,7 +384,8 @@
     "itWasOkay": "Het was oké",
     "submitFeedback": "Feedback versturen",
     "thanksFeedback": "Bedankt voor je feedback! Je Vertrouwensscore vaart er wel bij.",
-    "peopleGoing": "{{count}} gaan",
+    "peopleGoing_one": "{{count}} gaat",
+    "peopleGoing_other": "{{count}} gaan",
     "host": "Organisator",
     "youreGoing": "🎉 Je gaat erheen!",
     "showAtDoor": "Laat dit zien bij de ingang",
@@ -405,7 +420,8 @@
     "createTooMany": "Je hebt al 3 evenementen in beoordeling.",
     "createFailed": "Evenement kon niet worden ingediend — probeer het opnieuw",
     "pendingReview": "In beoordeling",
-    "pendingReviewDesc": "Alleen jij ziet dit evenement totdat een beheerder het goedkeurt."
+    "pendingReviewDesc": "Alleen jij ziet dit evenement totdat een beheerder het goedkeurt.",
+    "noSavedDesc": "Tik op de ster bij evenementen die je interessant vindt om ze hier op te slaan."
   },
   "video": {
     "connecting": "Verbinden...",
@@ -413,7 +429,8 @@
     "inCall": "In gesprek",
     "callEnded": "Gesprek beëindigd",
     "callFailed": "Gesprek mislukt",
-    "backToChat": "Terug naar chat"
+    "backToChat": "Terug naar chat",
+    "duration": "Duur: {{time}}"
   },
   "report": {
     "title": "{{name}} melden",
@@ -424,7 +441,8 @@
     "inappropriate": "Ongepaste inhoud",
     "other": "Anders",
     "detailsPlaceholder": "Vertel ons meer over het probleem...",
-    "submit": "Melding versturen"
+    "submit": "Melding versturen",
+    "descriptionLabel": "Beschrijving (optioneel)"
   },
   "offers": {
     "partner": "Partner",
@@ -503,7 +521,8 @@
     "adminPanel": "Beheerpaneel",
     "donationSent": "Bedankt voor je steun!",
     "donating": "Bezig…",
-    "supportUnavailable": "Ondersteuning is nog niet ingesteld"
+    "supportUnavailable": "Ondersteuning is nog niet ingesteld",
+    "donateAmount": "{{amount}} Pi doneren"
   },
   "profile2": {
     "addBioHint": "Voeg een bio toe zodat mensen je leren kennen",
@@ -546,9 +565,11 @@
     "locked": "Vergrendeld",
     "photoUploadFailed": "Kon de foto niet uploaden",
     "sparksDesc": "Vonken verdien je met activiteit — je kunt ze niet kopen. Stuur ze om iemand extra aandacht te geven.",
-    "sparksAmount": "+{{count}} Vonken",
+    "sparksAmount_one": "+{{count}} Vonk",
+    "sparksAmount_other": "+{{count}} Vonken",
     "sparksPerDay": "+{{count}} Vonk per dag",
-    "photoDeleteFailed": "Kon de foto niet verwijderen"
+    "photoDeleteFailed": "Kon de foto niet verwijderen",
+    "profileAlt": "Profiel van {{name}}"
   },
   "admin": {
     "panel": "Beheerpaneel",

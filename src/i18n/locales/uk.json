@@ -9,7 +9,8 @@
     "trustPioneers": "Понад 60 млн піонерів",
     "errPiBrowser": "Відкрий цей застосунок у Pi Browser",
     "errAuthFailed": "Не вдалося пройти автентифікацію Pi",
-    "errTimeout": "Час автентифікації Pi вичерпано. Спробуй ще раз."
+    "errTimeout": "Час автентифікації Pi вичерпано. Спробуй ще раз.",
+    "heroAlt": "Двоє людей утворюють серце"
   },
   "nav": {
     "discover": "Пошук",
@@ -24,7 +25,10 @@
     "spark": "Спалах",
     "filter": "Фільтр",
     "compatibility": "Сумісність",
-    "compatRefresh": "Оновлюється щодня • {{count}} збігів із високою сумісністю",
+    "compatRefresh_one": "Оновлюється щодня • {{count}} збіг із високою сумісністю",
+    "compatRefresh_few": "Оновлюється щодня • {{count}} збіги з високою сумісністю",
+    "compatRefresh_many": "Оновлюється щодня • {{count}} збігів із високою сумісністю",
+    "compatRefresh_other": "Оновлюється щодня • {{count}} збігу з високою сумісністю",
     "compatEmpty": "Завітай завтра по нові збіги з високою сумісністю!",
     "kmAway": "За {{distance}} км",
     "matchPercent": "{{percent}}% сумісності",
@@ -35,7 +39,10 @@
     "verifiedOnly": "Лише перевірені користувачі",
     "onlineNow": "Зараз онлайн",
     "resetAll": "Скинути все",
-    "applyMatches": "Застосувати ({{count}} збігів)",
+    "applyMatches_one": "Застосувати ({{count}} збіг)",
+    "applyMatches_few": "Застосувати ({{count}} збіги)",
+    "applyMatches_many": "Застосувати ({{count}} збігів)",
+    "applyMatches_other": "Застосувати ({{count}} збігу)",
     "itsAMatch": "Це збіг!",
     "likedEachOther": "Ти і {{name}} сподобалися одне одному",
     "sendMessage": "Надіслати повідомлення",
@@ -73,7 +80,8 @@
     "newUser": "Новий",
     "undo": "Скасувати",
     "likeFailed": "Не вдалося надіслати вподобайку",
-    "alreadyLiked": "Уже вподобано"
+    "alreadyLiked": "Уже вподобано",
+    "you": "Ви"
   },
   "matches": {
     "title": "Матчі",
@@ -95,7 +103,9 @@
     "giftPrefix": "Подарунок",
     "goDiscover": "До розділу «Пошук»",
     "message": "Повідомлення",
-    "unmatchFailed": "Не вдалося скасувати збіг — спробуй ще раз"
+    "unmatchFailed": "Не вдалося скасувати збіг — спробуй ще раз",
+    "newCount": "Нових: {{count}}",
+    "noSearchResults": "Немає розмов за запитом «{{query}}»"
   },
   "chat": {
     "typeMessage": "Написати повідомлення...",
@@ -138,7 +148,9 @@
     "reportSubmitted": "Скаргу надіслано. Ми розглянемо її найближчим часом.",
     "photoPreview": "Фото",
     "voicePreview": "Голосове повідомлення",
-    "giftPreview": "Надіслав(-ла) подарунок"
+    "giftPreview": "Надіслав(-ла) подарунок",
+    "typing": "друкує",
+    "sendGift": "Надіслати подарунок «{{gift}}»"
   },
   "profile": {
     "edit": "Редагувати профіль",
@@ -164,7 +176,9 @@
     "donate": "Підтримати Equal",
     "deleteAccount": "Видалити акаунт",
     "logout": "Вийти",
-    "paymentHistory": "Історія платежів"
+    "paymentHistory": "Історія платежів",
+    "switchToLight": "Увімкнути світлу тему",
+    "switchToDark": "Увімкнути темну тему"
   },
   "onboarding": {
     "next": "Далі",
@@ -265,7 +279,8 @@
     "seeking_everyone": "Усіма",
     "saveFailed": "Не вдалося зберегти профіль — спробуй ще раз",
     "title6": "Твій голос",
-    "sub6": "10-секундне представлення. Обов'язкове для участі в Щоденному збігу."
+    "sub6": "10-секундне представлення. Обов'язкове для участі в Щоденному збігу.",
+    "photoTipsAlt": "Поради щодо фото"
   },
   "common": {
     "cancel": "Скасувати",
@@ -279,7 +294,9 @@
     "cookieText": "Ми використовуємо необхідні cookie для автентифікації та необов'язкові для аналітики. Дивись нашу",
     "cookieAccept": "Прийняти всі",
     "cookieEssential": "Лише необхідні",
-    "privacyPolicy": "Політика конфіденційності"
+    "privacyPolicy": "Політика конфіденційності",
+    "notFoundDesc": "Сторінка, яку ви шукаєте, не існує або була переміщена.",
+    "photoN": "Фото {{n}}"
   },
   "clubs": {
     "title": "Клуби",
@@ -351,7 +368,10 @@
     "upcomingEvents": "Майбутні події",
     "interestedEvents": "Цікавить",
     "pastEvents": "Минулі події",
-    "nearYou": "{{count}} подій поруч цього тижня",
+    "nearYou_one": "{{count}} майбутня подія",
+    "nearYou_few": "{{count}} майбутні події",
+    "nearYou_many": "{{count}} майбутніх подій",
+    "nearYou_other": "{{count}} майбутньої події",
     "going": "Іду",
     "attend": "Взяти участь",
     "featured": "Обране",
@@ -374,7 +394,10 @@
     "itWasOkay": "Було непогано",
     "submitFeedback": "Надіслати відгук",
     "thanksFeedback": "Дякуємо за відгук! Твій Рейтинг довіри це цінує.",
-    "peopleGoing": "{{count}} відвідають",
+    "peopleGoing_one": "{{count}} людина прийде",
+    "peopleGoing_few": "{{count}} людини прийдуть",
+    "peopleGoing_many": "{{count}} людей прийдуть",
+    "peopleGoing_other": "{{count}} людини прийдуть",
     "host": "Організатор",
     "youreGoing": "🎉 Ти йдеш!",
     "showAtDoor": "Покажи це на вході",
@@ -409,7 +432,8 @@
     "createTooMany": "У вас уже 3 події на перевірці.",
     "createFailed": "Не вдалося надіслати подію — спробуйте ще раз",
     "pendingReview": "На перевірці",
-    "pendingReviewDesc": "Цю подію бачите лише ви, доки її не схвалить адміністратор."
+    "pendingReviewDesc": "Цю подію бачите лише ви, доки її не схвалить адміністратор.",
+    "noSavedDesc": "Торкніться зірочки на цікавих подіях, щоб зберегти їх тут."
   },
   "video": {
     "connecting": "Підключення...",
@@ -417,7 +441,8 @@
     "inCall": "У розмові",
     "callEnded": "Дзвінок завершено",
     "callFailed": "Не вдалося зателефонувати",
-    "backToChat": "Назад до чату"
+    "backToChat": "Назад до чату",
+    "duration": "Тривалість: {{time}}"
   },
   "report": {
     "title": "Поскаржитися на {{name}}",
@@ -428,7 +453,8 @@
     "inappropriate": "Неприйнятний вміст",
     "other": "Інше",
     "detailsPlaceholder": "Розкажи докладніше про проблему...",
-    "submit": "Надіслати скаргу"
+    "submit": "Надіслати скаргу",
+    "descriptionLabel": "Опис (необов’язково)"
   },
   "offers": {
     "partner": "Партнер",
@@ -507,7 +533,8 @@
     "adminPanel": "Панель адміністратора",
     "donationSent": "Дякуємо за підтримку!",
     "donating": "Обробка…",
-    "supportUnavailable": "Підтримку ще не налаштовано"
+    "supportUnavailable": "Підтримку ще не налаштовано",
+    "donateAmount": "Пожертвувати {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "Додай опис, щоб люди тебе краще знали",
@@ -550,9 +577,13 @@
     "locked": "Заблоковано",
     "photoUploadFailed": "Не вдалося завантажити фото",
     "sparksDesc": "Іскри заробляються активністю — їх не купують. Надсилай їх, щоб виявити комусь особливу увагу.",
-    "sparksAmount": "+{{count}} Іскор",
+    "sparksAmount_one": "+{{count}} Іскра",
+    "sparksAmount_few": "+{{count}} Іскри",
+    "sparksAmount_many": "+{{count}} Іскор",
+    "sparksAmount_other": "+{{count}} Іскри",
     "sparksPerDay": "+{{count}} Іскра на день",
-    "photoDeleteFailed": "Не вдалося видалити фото"
+    "photoDeleteFailed": "Не вдалося видалити фото",
+    "profileAlt": "Профіль: {{name}}"
   },
   "admin": {
     "panel": "Панель адміністратора",

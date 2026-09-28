@@ -31,9 +31,10 @@ interface Match {
 // ── Typing Indicator ───────────────────────────────────
 
 function TypingIndicator() {
+  const { t } = useTranslation();
   return (
     <div className="flex items-center gap-1">
-      <span className="text-xs" style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }}>typing</span>
+      <span className="text-xs" style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }}>{t('chat.typing')}</span>
       <div className="flex items-center gap-0.5">
         {[0, 1, 2].map((i) => (
           <motion.div
@@ -432,7 +433,7 @@ function MatchCelebration({
             textShadow: '0 2px 12px rgba(0,0,0,0.15)',
           }}
         >
-          It&apos;s a Match!
+          {t('discover.itsAMatch')}
         </h2>
         <p
           className="text-base text-white text-center"
@@ -442,7 +443,7 @@ function MatchCelebration({
             textShadow: '0 1px 8px rgba(0,0,0,0.1)',
           }}
         >
-          You and {matchName} liked each other
+          {t('discover.likedEachOther', { name: matchName })}
         </p>
 
         {/* Chat CTA */}
@@ -523,7 +524,7 @@ function MatchCelebration({
                   letterSpacing: '-0.54px',
                 }}
               >
-                Book a table at Le Petit Bistro with 20% off
+                {t('offers.o1t')}
               </h3>
               <p
                 className="text-sm leading-relaxed"
@@ -775,7 +776,7 @@ export default function Matches() {
                   <div className="flex items-center gap-1">
                     <Circle size={8} fill="#BB83C9" className="text-[#BB83C9]" />
                     <span className="text-xs font-medium" style={{ color: '#BB83C9' }}>
-                      {totalUnread} new
+                      {t('matches.newCount', { count: totalUnread })}
                     </span>
                   </div>
                 )}
@@ -813,7 +814,7 @@ export default function Matches() {
                   <div className="flex flex-col items-center justify-center py-16 px-8">
                     <Search size={40} style={{ color: 'rgba(var(--charcoal-rgb), 0.2)' }} className="mb-3" />
                     <p className="text-sm text-center" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>
-                      No conversations match &ldquo;{searchQuery}&rdquo;
+                      {t('matches.noSearchResults', { query: searchQuery })}
                     </p>
                   </div>
                 )}

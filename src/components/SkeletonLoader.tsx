@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface SkeletonLoaderProps {
   variant: 'card' | 'text' | 'circle' | 'list';
@@ -11,6 +12,7 @@ const SkeletonLoader = memo(function SkeletonLoader({
   count = 3,
   className = '',
 }: SkeletonLoaderProps) {
+  const { t } = useTranslation();
   const baseClasses = 'animate-pulse rounded-xl';
   const baseStyle: React.CSSProperties = {
     backgroundColor: 'var(--linen-dark, #E8E2D8)',
@@ -25,7 +27,7 @@ const SkeletonLoader = memo(function SkeletonLoader({
           aspectRatio: '3/4',
           borderRadius: 24,
         }}
-        aria-label="Loading card"
+        aria-label={t('common.loading')}
       />
     );
   }
@@ -40,14 +42,14 @@ const SkeletonLoader = memo(function SkeletonLoader({
           height: 48,
           borderRadius: '9999px',
         }}
-        aria-label="Loading avatar"
+        aria-label={t('common.loading')}
       />
     );
   }
 
   if (variant === 'text') {
     return (
-      <div className={`space-y-2 w-full ${className}`} aria-label="Loading text">
+      <div className={`space-y-2 w-full ${className}`} aria-label={t('common.loading')}>
         <div
           className={baseClasses}
           style={{ ...baseStyle, height: 16, width: '100%', borderRadius: 9999 }}
@@ -66,7 +68,7 @@ const SkeletonLoader = memo(function SkeletonLoader({
 
   if (variant === 'list') {
     return (
-      <div className={`space-y-3 w-full ${className}`} aria-label="Loading list">
+      <div className={`space-y-3 w-full ${className}`} aria-label={t('common.loading')}>
         {Array.from({ length: count }).map((_, i) => (
           <div key={i} className="flex items-center gap-3">
             <div

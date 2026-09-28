@@ -9,7 +9,8 @@
     "trustPioneers": "6,000万人以上のPioneer",
     "errPiBrowser": "このアプリはPi Browserで開いてください",
     "errAuthFailed": "Pi認証に失敗しました",
-    "errTimeout": "Pi認証がタイムアウトしました。もう一度お試しください。"
+    "errTimeout": "Pi認証がタイムアウトしました。もう一度お試しください。",
+    "heroAlt": "ハートを形作る二人"
   },
   "nav": {
     "discover": "さがす",
@@ -24,7 +25,7 @@
     "spark": "スパーク",
     "filter": "絞り込み",
     "compatibility": "相性",
-    "compatRefresh": "毎日更新 • 相性の高いマッチ{{count}}人",
+    "compatRefresh_other": "毎日更新 • 相性の高いマッチ{{count}}人",
     "compatEmpty": "明日また新しい相性の良いマッチをチェックしてください！",
     "kmAway": "{{distance}} km先",
     "matchPercent": "{{percent}}% マッチ",
@@ -35,7 +36,7 @@
     "verifiedOnly": "認証済みユーザーのみ",
     "onlineNow": "オンライン中",
     "resetAll": "すべてリセット",
-    "applyMatches": "適用（マッチ{{count}}人）",
+    "applyMatches_other": "適用（マッチ{{count}}人）",
     "itsAMatch": "マッチしました！",
     "likedEachOther": "あなたと{{name}}さんが互いにいいねしました",
     "sendMessage": "メッセージを送る",
@@ -73,7 +74,8 @@
     "newUser": "新規",
     "undo": "取り消す",
     "likeFailed": "いいねを送れませんでした",
-    "alreadyLiked": "すでにいいね済みです"
+    "alreadyLiked": "すでにいいね済みです",
+    "you": "あなた"
   },
   "matches": {
     "title": "マッチ一覧",
@@ -95,7 +97,9 @@
     "giftPrefix": "ギフト",
     "goDiscover": "見つけるへ",
     "message": "メッセージ",
-    "unmatchFailed": "マッチを解除できませんでした。もう一度お試しください"
+    "unmatchFailed": "マッチを解除できませんでした。もう一度お試しください",
+    "newCount": "新着 {{count}}件",
+    "noSearchResults": "「{{query}}」に一致する会話はありません"
   },
   "chat": {
     "typeMessage": "メッセージを入力...",
@@ -138,7 +142,9 @@
     "reportSubmitted": "通報を受け付けました。まもなく確認します。",
     "photoPreview": "写真",
     "voicePreview": "音声メッセージ",
-    "giftPreview": "ギフトを贈りました"
+    "giftPreview": "ギフトを贈りました",
+    "typing": "入力中",
+    "sendGift": "{{gift}}を贈る"
   },
   "profile": {
     "edit": "プロフィールを編集",
@@ -164,7 +170,9 @@
     "donate": "Equalを応援する",
     "deleteAccount": "アカウントを削除",
     "logout": "ログアウト",
-    "paymentHistory": "支払い履歴"
+    "paymentHistory": "支払い履歴",
+    "switchToLight": "ライトモードに切り替え",
+    "switchToDark": "ダークモードに切り替え"
   },
   "onboarding": {
     "next": "次へ",
@@ -265,7 +273,8 @@
     "seeking_everyone": "すべての人",
     "saveFailed": "プロフィールを保存できませんでした。もう一度お試しください",
     "title6": "あなたの声",
-    "sub6": "10秒の自己紹介。デイリーマッチへの参加に必須です。"
+    "sub6": "10秒の自己紹介。デイリーマッチへの参加に必須です。",
+    "photoTipsAlt": "写真のコツ"
   },
   "common": {
     "cancel": "キャンセル",
@@ -279,7 +288,9 @@
     "cookieText": "認証に必須のCookieと、分析のための任意のCookieを使用しています。詳しくは",
     "cookieAccept": "すべて許可",
     "cookieEssential": "必須のみ",
-    "privacyPolicy": "プライバシーポリシー"
+    "privacyPolicy": "プライバシーポリシー",
+    "notFoundDesc": "お探しのページは存在しないか、移動した可能性があります。",
+    "photoN": "写真 {{n}}"
   },
   "clubs": {
     "title": "クラブ",
@@ -345,7 +356,7 @@
     "upcomingEvents": "予定のイベント",
     "interestedEvents": "興味あり",
     "pastEvents": "過去のイベント",
-    "nearYou": "今週近くの{{count}}件のイベント",
+    "nearYou_other": "今後のイベント{{count}}件",
     "going": "参加予定",
     "attend": "参加する",
     "featured": "注目",
@@ -368,7 +379,7 @@
     "itWasOkay": "まあまあでした",
     "submitFeedback": "感想を送信",
     "thanksFeedback": "ご感想ありがとうございます！信頼スコアにも反映されます。",
-    "peopleGoing": "{{count}}人が参加",
+    "peopleGoing_other": "{{count}}人が参加",
     "host": "主催者",
     "youreGoing": "🎉 参加が確定しました！",
     "showAtDoor": "入口でこちらをご提示ください",
@@ -403,7 +414,8 @@
     "createTooMany": "審査待ちのイベントがすでに3件あります。",
     "createFailed": "イベントを送信できませんでした。もう一度お試しください",
     "pendingReview": "審査中",
-    "pendingReviewDesc": "管理者が承認するまで、このイベントはあなたにしか表示されません。"
+    "pendingReviewDesc": "管理者が承認するまで、このイベントはあなたにしか表示されません。",
+    "noSavedDesc": "気になるイベントの星アイコンをタップすると、ここに保存されます。"
   },
   "video": {
     "connecting": "接続中...",
@@ -411,7 +423,8 @@
     "inCall": "通話中",
     "callEnded": "通話が終了しました",
     "callFailed": "通話に失敗しました",
-    "backToChat": "チャットに戻る"
+    "backToChat": "チャットに戻る",
+    "duration": "通話時間：{{time}}"
   },
   "report": {
     "title": "{{name}}さんを通報",
@@ -422,7 +435,8 @@
     "inappropriate": "不適切なコンテンツ",
     "other": "その他",
     "detailsPlaceholder": "問題について詳しく教えてください...",
-    "submit": "通報を送信"
+    "submit": "通報を送信",
+    "descriptionLabel": "説明（任意）"
   },
   "offers": {
     "partner": "パートナー",
@@ -501,7 +515,8 @@
     "adminPanel": "管理パネル",
     "donationSent": "ご支援ありがとうございます！",
     "donating": "処理中…",
-    "supportUnavailable": "サポート窓口はまだ設定されていません"
+    "supportUnavailable": "サポート窓口はまだ設定されていません",
+    "donateAmount": "{{amount}} Pi を寄付する"
   },
   "profile2": {
     "addBioHint": "自己紹介を追加して、あなたのことを知ってもらいましょう",
@@ -544,9 +559,10 @@
     "locked": "未獲得",
     "photoUploadFailed": "写真をアップロードできませんでした",
     "sparksDesc": "スパークは活動で獲得するもので、購入はできません。特別な関心を伝えたいときに贈りましょう。",
-    "sparksAmount": "+{{count}} スパーク",
+    "sparksAmount_other": "+{{count}} スパーク",
     "sparksPerDay": "1日 +{{count}} スパーク",
-    "photoDeleteFailed": "写真を削除できませんでした"
+    "photoDeleteFailed": "写真を削除できませんでした",
+    "profileAlt": "{{name}}さんのプロフィール"
   },
   "admin": {
     "panel": "管理パネル",

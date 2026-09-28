@@ -869,7 +869,7 @@ export default function Settings() {
             <span className="w-5 h-5 rounded-full bg-white dark:bg-[#22293B] flex items-center justify-center">
               <span className="text-[#BB83C9] text-[10px] font-bold">π</span>
             </span>
-            {donating ? t('settings2.donating', { defaultValue: 'Processing…' }) : `Donate ${donationAmount} Pi`}
+            {donating ? t('settings2.donating', { defaultValue: 'Processing…' }) : t('settings2.donateAmount', { amount: donationAmount })}
           </motion.button>
         </DialogContent>
       </Dialog>

@@ -9,7 +9,8 @@
     "trustPioneers": "60M+ Pionniers",
     "errPiBrowser": "Veuillez ouvrir cette application dans Pi Browser",
     "errAuthFailed": "Échec de l'authentification Pi",
-    "errTimeout": "L'authentification Pi a expiré. Veuillez réessayer."
+    "errTimeout": "L'authentification Pi a expiré. Veuillez réessayer.",
+    "heroAlt": "Deux personnes formant un cœur"
   },
   "nav": {
     "discover": "Découvrir",
@@ -24,7 +25,9 @@
     "spark": "Étincelle",
     "filter": "Filtrer",
     "compatibility": "Compatibilité",
-    "compatRefresh": "Actualisé quotidiennement • {{count}} correspondances hautement compatibles",
+    "compatRefresh_one": "Actualisé quotidiennement • {{count}} correspondance hautement compatible",
+    "compatRefresh_many": "Actualisé quotidiennement • {{count}} de correspondances hautement compatibles",
+    "compatRefresh_other": "Actualisé quotidiennement • {{count}} correspondances hautement compatibles",
     "compatEmpty": "Revenez demain pour de nouvelles correspondances hautement compatibles !",
     "kmAway": "À {{distance}} km",
     "matchPercent": "{{percent}}% de compatibilité",
@@ -35,7 +38,9 @@
     "verifiedOnly": "Utilisateurs vérifiés uniquement",
     "onlineNow": "En ligne maintenant",
     "resetAll": "Tout réinitialiser",
-    "applyMatches": "Appliquer ({{count}} correspondances)",
+    "applyMatches_one": "Appliquer ({{count}} correspondance)",
+    "applyMatches_many": "Appliquer ({{count}} de correspondances)",
+    "applyMatches_other": "Appliquer ({{count}} correspondances)",
     "itsAMatch": "C'est un match !",
     "likedEachOther": "Vous et {{name}} vous êtes mutuellement aimés",
     "sendMessage": "Envoyer un message",
@@ -73,7 +78,8 @@
     "newUser": "Nouveau",
     "undo": "Annuler",
     "likeFailed": "Impossible d'envoyer le like",
-    "alreadyLiked": "Déjà liké"
+    "alreadyLiked": "Déjà liké",
+    "you": "Vous"
   },
   "matches": {
     "title": "Matchs",
@@ -95,7 +101,9 @@
     "giftPrefix": "Cadeau",
     "goDiscover": "Aller à Découvrir",
     "message": "Message",
-    "unmatchFailed": "Impossible d'annuler le match — réessaie"
+    "unmatchFailed": "Impossible d'annuler le match — réessaie",
+    "newCount": "Nouveaux : {{count}}",
+    "noSearchResults": "Aucune conversation ne correspond à « {{query}} »"
   },
   "chat": {
     "typeMessage": "Écris un message...",
@@ -138,7 +146,9 @@
     "reportSubmitted": "Signalement envoyé. Nous l'examinerons rapidement.",
     "photoPreview": "Photo",
     "voicePreview": "Message vocal",
-    "giftPreview": "A envoyé un cadeau"
+    "giftPreview": "A envoyé un cadeau",
+    "typing": "écrit",
+    "sendGift": "Envoyer {{gift}}"
   },
   "profile": {
     "edit": "Modifier le Profil",
@@ -164,7 +174,9 @@
     "donate": "Soutenir Equal",
     "deleteAccount": "Supprimer le Compte",
     "logout": "Se Déconnecter",
-    "paymentHistory": "Historique des paiements"
+    "paymentHistory": "Historique des paiements",
+    "switchToLight": "Passer en mode clair",
+    "switchToDark": "Passer en mode sombre"
   },
   "onboarding": {
     "next": "Suivant",
@@ -265,7 +277,8 @@
     "seeking_everyone": "Tout le monde",
     "saveFailed": "Impossible d'enregistrer votre profil — veuillez réessayer",
     "title6": "Ta voix",
-    "sub6": "Une intro de 10 secondes. Requise pour Daily Match."
+    "sub6": "Une intro de 10 secondes. Requise pour Daily Match.",
+    "photoTipsAlt": "Conseils photo"
   },
   "common": {
     "cancel": "Annuler",
@@ -279,7 +292,9 @@
     "cookieText": "Nous utilisons des cookies essentiels pour l'authentification et des cookies optionnels pour l'analyse. Voir notre",
     "cookieAccept": "Tout accepter",
     "cookieEssential": "Essentiels uniquement",
-    "privacyPolicy": "Politique de confidentialité"
+    "privacyPolicy": "Politique de confidentialité",
+    "notFoundDesc": "La page que vous recherchez n’existe pas ou a été déplacée.",
+    "photoN": "Photo {{n}}"
   },
   "clubs": {
     "title": "Clubs",
@@ -349,7 +364,9 @@
     "upcomingEvents": "Événements à venir",
     "interestedEvents": "Intéressé",
     "pastEvents": "Événements passés",
-    "nearYou": "{{count}} événements près de vous cette semaine",
+    "nearYou_one": "{{count}} événement à venir",
+    "nearYou_many": "{{count}} d’événements à venir",
+    "nearYou_other": "{{count}} événements à venir",
     "going": "J'y vais",
     "attend": "Participer",
     "featured": "Mis en avant",
@@ -372,7 +389,9 @@
     "itWasOkay": "C'était bien",
     "submitFeedback": "Envoyer l'avis",
     "thanksFeedback": "Merci pour votre avis ! Votre score de confiance l'apprécie.",
-    "peopleGoing": "{{count}} participants",
+    "peopleGoing_one": "{{count}} participant",
+    "peopleGoing_many": "{{count}} de participants",
+    "peopleGoing_other": "{{count}} participants",
     "host": "Organisateur",
     "youreGoing": "🎉 Vous y allez !",
     "showAtDoor": "Montrez ceci à l'entrée",
@@ -407,7 +426,8 @@
     "createTooMany": "Vous avez déjà 3 événements en attente de validation.",
     "createFailed": "Impossible d’envoyer l’événement — veuillez réessayer",
     "pendingReview": "En validation",
-    "pendingReviewDesc": "Vous seul voyez cet événement jusqu’à ce qu’un administrateur l’approuve."
+    "pendingReviewDesc": "Vous seul voyez cet événement jusqu’à ce qu’un administrateur l’approuve.",
+    "noSavedDesc": "Touchez l’étoile sur les événements qui vous intéressent pour les enregistrer ici."
   },
   "video": {
     "connecting": "Connexion...",
@@ -415,7 +435,8 @@
     "inCall": "En appel",
     "callEnded": "Appel terminé",
     "callFailed": "Appel échoué",
-    "backToChat": "Retour au chat"
+    "backToChat": "Retour au chat",
+    "duration": "Durée : {{time}}"
   },
   "report": {
     "title": "Signaler {{name}}",
@@ -426,7 +447,8 @@
     "inappropriate": "Contenu inapproprié",
     "other": "Autre",
     "detailsPlaceholder": "Dites-nous en plus sur le problème...",
-    "submit": "Envoyer le signalement"
+    "submit": "Envoyer le signalement",
+    "descriptionLabel": "Description (facultatif)"
   },
   "offers": {
     "partner": "Partenaire",
@@ -505,7 +527,8 @@
     "adminPanel": "Panneau admin",
     "donationSent": "Merci pour ton soutien !",
     "donating": "Traitement…",
-    "supportUnavailable": "L'assistance n'est pas encore configurée"
+    "supportUnavailable": "L'assistance n'est pas encore configurée",
+    "donateAmount": "Faire un don de {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "Ajoutez une bio pour aider les gens à vous connaître",
@@ -548,9 +571,12 @@
     "locked": "Verrouillé",
     "photoUploadFailed": "Impossible d'envoyer la photo",
     "sparksDesc": "Les étincelles se gagnent par l'activité — elles ne s'achètent pas. Envoyez-les pour montrer une attention particulière.",
-    "sparksAmount": "+{{count}} étincelles",
+    "sparksAmount_one": "+{{count}} étincelle",
+    "sparksAmount_many": "+{{count}} d’étincelles",
+    "sparksAmount_other": "+{{count}} étincelles",
     "sparksPerDay": "+{{count}} étincelle/jour",
-    "photoDeleteFailed": "Impossible de supprimer la photo"
+    "photoDeleteFailed": "Impossible de supprimer la photo",
+    "profileAlt": "Profil de {{name}}"
   },
   "admin": {
     "panel": "Panneau admin",

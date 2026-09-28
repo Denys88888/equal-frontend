@@ -9,7 +9,8 @@
     "trustPioneers": "6천만+ 파이오니어",
     "errPiBrowser": "Pi Browser에서 이 앱을 열어 주세요",
     "errAuthFailed": "Pi 인증에 실패했습니다",
-    "errTimeout": "Pi 인증 시간이 초과되었습니다. 다시 시도해 주세요."
+    "errTimeout": "Pi 인증 시간이 초과되었습니다. 다시 시도해 주세요.",
+    "heroAlt": "하트를 만드는 두 사람"
   },
   "nav": {
     "discover": "둘러보기",
@@ -24,7 +25,7 @@
     "spark": "스파크",
     "filter": "필터",
     "compatibility": "궁합",
-    "compatRefresh": "매일 갱신 • 궁합이 높은 매칭 {{count}}명",
+    "compatRefresh_other": "매일 갱신 • 궁합이 높은 매칭 {{count}}명",
     "compatEmpty": "내일 다시 오시면 궁합이 높은 새 매칭을 볼 수 있어요!",
     "kmAway": "{{distance}} km 거리",
     "matchPercent": "{{percent}}% 매치",
@@ -35,7 +36,7 @@
     "verifiedOnly": "인증된 사용자만",
     "onlineNow": "지금 접속 중",
     "resetAll": "모두 초기화",
-    "applyMatches": "적용 (매칭 {{count}}명)",
+    "applyMatches_other": "적용 (매칭 {{count}}명)",
     "itsAMatch": "매칭됐어요!",
     "likedEachOther": "회원님과 {{name}}님이 서로 좋아했어요",
     "sendMessage": "메시지 보내기",
@@ -73,7 +74,8 @@
     "newUser": "신규",
     "undo": "실행 취소",
     "likeFailed": "좋아요를 보내지 못했습니다",
-    "alreadyLiked": "이미 좋아요를 눌렀습니다"
+    "alreadyLiked": "이미 좋아요를 눌렀습니다",
+    "you": "나"
   },
   "matches": {
     "title": "매칭",
@@ -95,7 +97,9 @@
     "giftPrefix": "선물",
     "goDiscover": "탐색으로 가기",
     "message": "메시지",
-    "unmatchFailed": "매칭을 해제하지 못했습니다. 다시 시도해 주세요"
+    "unmatchFailed": "매칭을 해제하지 못했습니다. 다시 시도해 주세요",
+    "newCount": "새 메시지 {{count}}개",
+    "noSearchResults": "“{{query}}”와(과) 일치하는 대화가 없습니다"
   },
   "chat": {
     "typeMessage": "메시지를 입력하세요...",
@@ -138,7 +142,9 @@
     "reportSubmitted": "신고가 접수되었습니다. 곧 검토하겠습니다.",
     "photoPreview": "사진",
     "voicePreview": "음성 메시지",
-    "giftPreview": "선물을 보냈습니다"
+    "giftPreview": "선물을 보냈습니다",
+    "typing": "입력 중",
+    "sendGift": "{{gift}} 보내기"
   },
   "profile": {
     "edit": "프로필 수정",
@@ -164,7 +170,9 @@
     "donate": "Equal 응원하기",
     "deleteAccount": "계정 삭제",
     "logout": "로그아웃",
-    "paymentHistory": "결제 내역"
+    "paymentHistory": "결제 내역",
+    "switchToLight": "라이트 모드로 전환",
+    "switchToDark": "다크 모드로 전환"
   },
   "onboarding": {
     "next": "다음",
@@ -265,7 +273,8 @@
     "seeking_everyone": "모두",
     "saveFailed": "프로필을 저장하지 못했습니다. 다시 시도해 주세요",
     "title6": "당신의 목소리",
-    "sub6": "10초 소개. 데일리 매칭에 참여하려면 필수입니다."
+    "sub6": "10초 소개. 데일리 매칭에 참여하려면 필수입니다.",
+    "photoTipsAlt": "사진 팁"
   },
   "common": {
     "cancel": "취소",
@@ -279,7 +288,9 @@
     "cookieText": "인증을 위해 필수 쿠키를, 분석을 위해 선택 쿠키를 사용합니다. 자세한 내용은",
     "cookieAccept": "모두 허용",
     "cookieEssential": "필수만 허용",
-    "privacyPolicy": "개인정보 처리방침"
+    "privacyPolicy": "개인정보 처리방침",
+    "notFoundDesc": "찾으시는 페이지가 없거나 이동되었습니다.",
+    "photoN": "사진 {{n}}"
   },
   "clubs": {
     "title": "클럽",
@@ -345,7 +356,7 @@
     "upcomingEvents": "예정 이벤트",
     "interestedEvents": "관심 이벤트",
     "pastEvents": "지난 이벤트",
-    "nearYou": "이번 주 근처 {{count}}개 이벤트",
+    "nearYou_other": "예정된 이벤트 {{count}}개",
     "going": "참가",
     "attend": "참석",
     "featured": "추천",
@@ -368,7 +379,7 @@
     "itWasOkay": "괜찮았어요",
     "submitFeedback": "후기 보내기",
     "thanksFeedback": "후기 감사합니다! 신뢰 점수에 도움이 됩니다.",
-    "peopleGoing": "{{count}}명 참석",
+    "peopleGoing_other": "{{count}}명 참석",
     "host": "주최자",
     "youreGoing": "🎉 참석이 확정되었습니다!",
     "showAtDoor": "입장 시 이 화면을 보여 주세요",
@@ -403,7 +414,8 @@
     "createTooMany": "검토 대기 중인 이벤트가 이미 3개 있어요.",
     "createFailed": "이벤트를 제출하지 못했어요 — 다시 시도해 주세요",
     "pendingReview": "검토 중",
-    "pendingReviewDesc": "관리자가 승인할 때까지 이 이벤트는 나만 볼 수 있어요."
+    "pendingReviewDesc": "관리자가 승인할 때까지 이 이벤트는 나만 볼 수 있어요.",
+    "noSavedDesc": "관심 있는 이벤트의 별 아이콘을 탭하면 여기에 저장됩니다."
   },
   "video": {
     "connecting": "연결 중...",
@@ -411,7 +423,8 @@
     "inCall": "통화 중",
     "callEnded": "통화가 종료되었습니다",
     "callFailed": "통화에 실패했습니다",
-    "backToChat": "채팅으로 돌아가기"
+    "backToChat": "채팅으로 돌아가기",
+    "duration": "통화 시간: {{time}}"
   },
   "report": {
     "title": "{{name}}님 신고",
@@ -422,7 +435,8 @@
     "inappropriate": "부적절한 콘텐츠",
     "other": "기타",
     "detailsPlaceholder": "문제에 대해 더 자세히 알려 주세요...",
-    "submit": "신고 제출"
+    "submit": "신고 제출",
+    "descriptionLabel": "설명 (선택 사항)"
   },
   "offers": {
     "partner": "제휴사",
@@ -501,7 +515,8 @@
     "adminPanel": "관리자 패널",
     "donationSent": "후원해 주셔서 감사합니다!",
     "donating": "처리 중…",
-    "supportUnavailable": "지원 채널이 아직 설정되지 않았습니다"
+    "supportUnavailable": "지원 채널이 아직 설정되지 않았습니다",
+    "donateAmount": "{{amount}} Pi 기부하기"
   },
   "profile2": {
     "addBioHint": "소개를 추가해 사람들이 당신을 알 수 있게 하세요",
@@ -544,9 +559,10 @@
     "locked": "잠김",
     "photoUploadFailed": "사진을 업로드하지 못했습니다",
     "sparksDesc": "스파크는 활동으로 얻을 뿐 구매할 수 없습니다. 특별한 관심을 표현할 때 보내 보세요.",
-    "sparksAmount": "+{{count}} 스파크",
+    "sparksAmount_other": "+{{count}} 스파크",
     "sparksPerDay": "하루 +{{count}} 스파크",
-    "photoDeleteFailed": "사진을 삭제하지 못했습니다"
+    "photoDeleteFailed": "사진을 삭제하지 못했습니다",
+    "profileAlt": "{{name}}님의 프로필"
   },
   "admin": {
     "panel": "관리자 패널",

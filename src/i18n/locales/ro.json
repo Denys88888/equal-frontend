@@ -9,7 +9,8 @@
     "trustPioneers": "Peste 60 mil. Pioneers",
     "errPiBrowser": "Deschide această aplicație în Pi Browser",
     "errAuthFailed": "Autentificarea Pi a eșuat",
-    "errTimeout": "A expirat timpul pentru autentificarea Pi. Încearcă din nou."
+    "errTimeout": "A expirat timpul pentru autentificarea Pi. Încearcă din nou.",
+    "heroAlt": "Două persoane care formează o inimă"
   },
   "nav": {
     "discover": "Descoperă",
@@ -24,7 +25,9 @@
     "spark": "Scânteie",
     "filter": "Filtru",
     "compatibility": "Compatibilitate",
-    "compatRefresh": "Se actualizează zilnic • {{count}} potriviri cu compatibilitate ridicată",
+    "compatRefresh_one": "Se actualizează zilnic • {{count}} potrivire cu compatibilitate ridicată",
+    "compatRefresh_few": "Se actualizează zilnic • {{count}} potriviri cu compatibilitate ridicată",
+    "compatRefresh_other": "Se actualizează zilnic • {{count}} de potriviri cu compatibilitate ridicată",
     "compatEmpty": "Revino mâine pentru noi potriviri cu compatibilitate ridicată!",
     "kmAway": "{{distance}} km distanță",
     "matchPercent": "{{percent}}% potrivire",
@@ -35,7 +38,9 @@
     "verifiedOnly": "Doar utilizatori verificați",
     "onlineNow": "Online acum",
     "resetAll": "Resetează tot",
-    "applyMatches": "Aplică ({{count}} potriviri)",
+    "applyMatches_one": "Aplică ({{count}} potrivire)",
+    "applyMatches_few": "Aplică ({{count}} potriviri)",
+    "applyMatches_other": "Aplică ({{count}} de potriviri)",
     "itsAMatch": "Este o potrivire!",
     "likedEachOther": "Tu și {{name}} v-ați plăcut reciproc",
     "sendMessage": "Trimite un mesaj",
@@ -73,7 +78,8 @@
     "newUser": "Nou",
     "undo": "Anulează",
     "likeFailed": "Trimiterea aprecierii a eșuat",
-    "alreadyLiked": "Deja apreciat"
+    "alreadyLiked": "Deja apreciat",
+    "you": "Tu"
   },
   "matches": {
     "title": "Potriviri",
@@ -95,7 +101,9 @@
     "giftPrefix": "Cadou",
     "goDiscover": "Mergi la Descoperă",
     "message": "Mesaj",
-    "unmatchFailed": "Anularea potrivirii a eșuat — încearcă din nou"
+    "unmatchFailed": "Anularea potrivirii a eșuat — încearcă din nou",
+    "newCount": "Noi: {{count}}",
+    "noSearchResults": "Nicio conversație nu corespunde cu „{{query}}”"
   },
   "chat": {
     "typeMessage": "Scrie un mesaj...",
@@ -138,7 +146,9 @@
     "reportSubmitted": "Raportul a fost trimis. Îl vom analiza în curând.",
     "photoPreview": "Fotografie",
     "voicePreview": "Mesaj vocal",
-    "giftPreview": "A trimis un cadou"
+    "giftPreview": "A trimis un cadou",
+    "typing": "scrie",
+    "sendGift": "Trimite {{gift}}"
   },
   "profile": {
     "edit": "Editează profilul",
@@ -164,7 +174,9 @@
     "donate": "Susține Equal",
     "deleteAccount": "Șterge Contul",
     "logout": "Deconectare",
-    "paymentHistory": "Istoricul plăților"
+    "paymentHistory": "Istoricul plăților",
+    "switchToLight": "Comută la modul luminos",
+    "switchToDark": "Comută la modul întunecat"
   },
   "onboarding": {
     "next": "Următorul",
@@ -265,7 +277,8 @@
     "seeking_everyone": "Toți",
     "saveFailed": "Salvarea profilului tău a eșuat — încearcă din nou",
     "title6": "Vocea ta",
-    "sub6": "O prezentare de 10 secunde. Obligatorie pentru a participa la Potrivirea zilei."
+    "sub6": "O prezentare de 10 secunde. Obligatorie pentru a participa la Potrivirea zilei.",
+    "photoTipsAlt": "Sfaturi pentru fotografii"
   },
   "common": {
     "cancel": "Anulează",
@@ -279,7 +292,9 @@
     "cookieText": "Folosim cookie-uri esențiale pentru autentificare și cookie-uri opționale pentru analiză. Vezi",
     "cookieAccept": "Acceptă tot",
     "cookieEssential": "Doar esențiale",
-    "privacyPolicy": "Politica de confidențialitate"
+    "privacyPolicy": "Politica de confidențialitate",
+    "notFoundDesc": "Pagina pe care o cauți nu există sau a fost mutată.",
+    "photoN": "Fotografia {{n}}"
   },
   "clubs": {
     "title": "Cluburi",
@@ -349,7 +364,9 @@
     "upcomingEvents": "Evenimente viitoare",
     "interestedEvents": "Mă interesează",
     "pastEvents": "Evenimente trecute",
-    "nearYou": "{{count}} evenimente în apropierea ta săptămâna aceasta",
+    "nearYou_one": "{{count}} eveniment viitor",
+    "nearYou_few": "{{count}} evenimente viitoare",
+    "nearYou_other": "{{count}} de evenimente viitoare",
     "going": "Particip",
     "attend": "Participă",
     "featured": "Recomandat",
@@ -372,7 +389,9 @@
     "itWasOkay": "A fost în regulă",
     "submitFeedback": "Trimite feedback",
     "thanksFeedback": "Mulțumim pentru feedback! Scorul tău de încredere beneficiază de asta.",
-    "peopleGoing": "{{count}} participă",
+    "peopleGoing_one": "{{count}} participă",
+    "peopleGoing_few": "{{count}} participă",
+    "peopleGoing_other": "{{count}} participă",
     "host": "Gazdă",
     "youreGoing": "🎉 Participi!",
     "showAtDoor": "Arată asta la intrare",
@@ -407,7 +426,8 @@
     "createTooMany": "Ai deja 3 evenimente în așteptarea verificării.",
     "createFailed": "Evenimentul nu a putut fi trimis — încearcă din nou",
     "pendingReview": "În verificare",
-    "pendingReviewDesc": "Doar tu vezi acest eveniment până când un administrator îl aprobă."
+    "pendingReviewDesc": "Doar tu vezi acest eveniment până când un administrator îl aprobă.",
+    "noSavedDesc": "Atinge steaua de la evenimentele care te interesează pentru a le salva aici."
   },
   "video": {
     "connecting": "Se conectează...",
@@ -415,7 +435,8 @@
     "inCall": "În apel",
     "callEnded": "Apel încheiat",
     "callFailed": "Apelul a eșuat",
-    "backToChat": "Înapoi la chat"
+    "backToChat": "Înapoi la chat",
+    "duration": "Durată: {{time}}"
   },
   "report": {
     "title": "Raportează {{name}}",
@@ -426,7 +447,8 @@
     "inappropriate": "Conținut nepotrivit",
     "other": "Altele",
     "detailsPlaceholder": "Spune-ne mai multe despre problemă...",
-    "submit": "Trimite raportul"
+    "submit": "Trimite raportul",
+    "descriptionLabel": "Descriere (opțional)"
   },
   "offers": {
     "partner": "Partener",
@@ -505,7 +527,8 @@
     "adminPanel": "Panou de administrare",
     "donationSent": "Mulțumim pentru susținere!",
     "donating": "Se procesează…",
-    "supportUnavailable": "Asistența nu este configurată încă"
+    "supportUnavailable": "Asistența nu este configurată încă",
+    "donateAmount": "Donează {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "Adaugă o descriere pentru ca oamenii să te cunoască",
@@ -548,9 +571,12 @@
     "locked": "Blocat",
     "photoUploadFailed": "Încărcarea fotografiei a eșuat",
     "sparksDesc": "Scânteile se câștigă prin activitate — nu se cumpără. Trimite-le pentru a arăta cuiva o atenție specială.",
-    "sparksAmount": "+{{count}} Scântei",
+    "sparksAmount_one": "+{{count}} Scânteie",
+    "sparksAmount_few": "+{{count}} Scântei",
+    "sparksAmount_other": "+{{count}} de Scântei",
     "sparksPerDay": "+{{count}} Scânteie/zi",
-    "photoDeleteFailed": "Ștergerea fotografiei a eșuat"
+    "photoDeleteFailed": "Ștergerea fotografiei a eșuat",
+    "profileAlt": "Profil: {{name}}"
   },
   "admin": {
     "panel": "Panou de administrare",

@@ -9,7 +9,8 @@
     "trustPioneers": "Yli 60 milj. Pioneeria",
     "errPiBrowser": "Avaa sovellus Pi Browserissa",
     "errAuthFailed": "Pi-tunnistautuminen epäonnistui",
-    "errTimeout": "Pi-tunnistautuminen aikakatkaistiin. Yritä uudelleen."
+    "errTimeout": "Pi-tunnistautuminen aikakatkaistiin. Yritä uudelleen.",
+    "heroAlt": "Kaksi ihmistä muodostamassa sydäntä"
   },
   "nav": {
     "discover": "Löydä",
@@ -24,7 +25,8 @@
     "spark": "Kipinä",
     "filter": "Suodatin",
     "compatibility": "Yhteensopivuus",
-    "compatRefresh": "Päivittyy päivittäin • {{count}} erittäin sopivaa osumaa",
+    "compatRefresh_one": "Päivittyy päivittäin • {{count}} erittäin sopiva osuma",
+    "compatRefresh_other": "Päivittyy päivittäin • {{count}} erittäin sopivaa osumaa",
     "compatEmpty": "Palaa huomenna uusien hyvin sopivien osumien pariin!",
     "kmAway": "{{distance}} km päässä",
     "matchPercent": "{{percent}}% osuma",
@@ -35,7 +37,8 @@
     "verifiedOnly": "Vain vahvistetut käyttäjät",
     "onlineNow": "Paikalla nyt",
     "resetAll": "Nollaa kaikki",
-    "applyMatches": "Käytä ({{count}} osumaa)",
+    "applyMatches_one": "Käytä ({{count}} osuma)",
+    "applyMatches_other": "Käytä ({{count}} osumaa)",
     "itsAMatch": "Se on osuma!",
     "likedEachOther": "Sinä ja {{name}} tykkäsitte toisistanne",
     "sendMessage": "Lähetä viesti",
@@ -73,7 +76,8 @@
     "newUser": "Uusi",
     "undo": "Kumoa",
     "likeFailed": "Tykkäystä ei voitu lähettää",
-    "alreadyLiked": "Jo tykätty"
+    "alreadyLiked": "Jo tykätty",
+    "you": "Sinä"
   },
   "matches": {
     "title": "Osumat",
@@ -95,7 +99,9 @@
     "giftPrefix": "Lahja",
     "goDiscover": "Siirry Löydä-osioon",
     "message": "Viesti",
-    "unmatchFailed": "Osumaa ei voitu poistaa — yritä uudelleen"
+    "unmatchFailed": "Osumaa ei voitu poistaa — yritä uudelleen",
+    "newCount": "Uusia: {{count}}",
+    "noSearchResults": "Haulla ”{{query}}” ei löytynyt keskusteluja"
   },
   "chat": {
     "typeMessage": "Kirjoita viesti...",
@@ -138,7 +144,9 @@
     "reportSubmitted": "Ilmoitus lähetetty. Käsittelemme sen pian.",
     "photoPreview": "Kuva",
     "voicePreview": "Ääniviesti",
-    "giftPreview": "Lähetti lahjan"
+    "giftPreview": "Lähetti lahjan",
+    "typing": "kirjoittaa",
+    "sendGift": "Lähetä lahja: {{gift}}"
   },
   "profile": {
     "edit": "Muokkaa profiilia",
@@ -164,7 +172,9 @@
     "donate": "Tue Equalia",
     "deleteAccount": "Poista tili",
     "logout": "Kirjaudu ulos",
-    "paymentHistory": "Maksuhistoria"
+    "paymentHistory": "Maksuhistoria",
+    "switchToLight": "Vaihda vaaleaan tilaan",
+    "switchToDark": "Vaihda tummaan tilaan"
   },
   "onboarding": {
     "next": "Seuraava",
@@ -265,7 +275,8 @@
     "seeking_everyone": "Kaikkia",
     "saveFailed": "Profiiliasi ei voitu tallentaa — yritä uudelleen",
     "title6": "Äänesi",
-    "sub6": "10 sekunnin esittely. Pakollinen Päivän osumaan osallistumiseksi."
+    "sub6": "10 sekunnin esittely. Pakollinen Päivän osumaan osallistumiseksi.",
+    "photoTipsAlt": "Kuvavinkit"
   },
   "common": {
     "cancel": "Peruuta",
@@ -279,7 +290,9 @@
     "cookieText": "Käytämme välttämättömiä evästeitä kirjautumiseen ja valinnaisia analytiikkaan. Katso",
     "cookieAccept": "Hyväksy kaikki",
     "cookieEssential": "Vain välttämättömät",
-    "privacyPolicy": "Tietosuojakäytäntö"
+    "privacyPolicy": "Tietosuojakäytäntö",
+    "notFoundDesc": "Etsimääsi sivua ei ole olemassa tai se on siirretty.",
+    "photoN": "Kuva {{n}}"
   },
   "clubs": {
     "title": "Kerhot",
@@ -347,7 +360,8 @@
     "upcomingEvents": "Tulevat tapahtumat",
     "interestedEvents": "Kiinnostaa",
     "pastEvents": "Menneet tapahtumat",
-    "nearYou": "{{count}} tapahtumaa lähelläsi tällä viikolla",
+    "nearYou_one": "{{count}} tuleva tapahtuma",
+    "nearYou_other": "{{count}} tulevaa tapahtumaa",
     "going": "Osallistun",
     "attend": "Osallistu",
     "featured": "Nostettu",
@@ -370,7 +384,8 @@
     "itWasOkay": "Ihan ok",
     "submitFeedback": "Lähetä palaute",
     "thanksFeedback": "Kiitos palautteestasi! Luottamuspisteesi hyötyvät siitä.",
-    "peopleGoing": "{{count}} osallistuu",
+    "peopleGoing_one": "{{count}} osallistuu",
+    "peopleGoing_other": "{{count}} osallistuu",
     "host": "Järjestäjä",
     "youreGoing": "🎉 Olet tulossa!",
     "showAtDoor": "Näytä tämä sisäänkäynnillä",
@@ -405,7 +420,8 @@
     "createTooMany": "Sinulla on jo 3 tapahtumaa odottamassa tarkistusta.",
     "createFailed": "Tapahtuman lähettäminen epäonnistui — yritä uudelleen",
     "pendingReview": "Tarkistettavana",
-    "pendingReviewDesc": "Vain sinä näet tämän tapahtuman, kunnes ylläpitäjä hyväksyy sen."
+    "pendingReviewDesc": "Vain sinä näet tämän tapahtuman, kunnes ylläpitäjä hyväksyy sen.",
+    "noSavedDesc": "Napauta kiinnostavien tapahtumien tähteä tallentaaksesi ne tänne."
   },
   "video": {
     "connecting": "Yhdistetään...",
@@ -413,7 +429,8 @@
     "inCall": "Puhelussa",
     "callEnded": "Puhelu päättyi",
     "callFailed": "Puhelu epäonnistui",
-    "backToChat": "Takaisin keskusteluun"
+    "backToChat": "Takaisin keskusteluun",
+    "duration": "Kesto: {{time}}"
   },
   "report": {
     "title": "Ilmianna {{name}}",
@@ -424,7 +441,8 @@
     "inappropriate": "Sopimaton sisältö",
     "other": "Muu",
     "detailsPlaceholder": "Kerro lisää ongelmasta...",
-    "submit": "Lähetä ilmoitus"
+    "submit": "Lähetä ilmoitus",
+    "descriptionLabel": "Kuvaus (valinnainen)"
   },
   "offers": {
     "partner": "Kumppani",
@@ -503,7 +521,8 @@
     "adminPanel": "Ylläpitopaneeli",
     "donationSent": "Kiitos tuestasi!",
     "donating": "Käsitellään…",
-    "supportUnavailable": "Tukea ei ole vielä määritetty"
+    "supportUnavailable": "Tukea ei ole vielä määritetty",
+    "donateAmount": "Lahjoita {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "Lisää esittely, jotta muut oppivat tuntemaan sinut",
@@ -546,9 +565,11 @@
     "locked": "Lukittu",
     "photoUploadFailed": "Kuvaa ei voitu ladata",
     "sparksDesc": "Kipinät ansaitaan aktiivisuudella — niitä ei voi ostaa. Lähetä niitä osoittaaksesi jollekulle erityistä huomiota.",
-    "sparksAmount": "+{{count}} kipinää",
+    "sparksAmount_one": "+{{count}} kipinä",
+    "sparksAmount_other": "+{{count}} kipinää",
     "sparksPerDay": "+{{count}} kipinä/päivä",
-    "photoDeleteFailed": "Kuvaa ei voitu poistaa"
+    "photoDeleteFailed": "Kuvaa ei voitu poistaa",
+    "profileAlt": "Käyttäjän {{name}} profiili"
   },
   "admin": {
     "panel": "Ylläpitopaneeli",

@@ -9,7 +9,8 @@
     "trustPioneers": "Mahigit 60M na Pioneers",
     "errPiBrowser": "Buksan ang app na ito sa Pi Browser",
     "errAuthFailed": "Nabigo ang Pi authentication",
-    "errTimeout": "Nag-time out ang Pi authentication. Subukan muli."
+    "errTimeout": "Nag-time out ang Pi authentication. Subukan muli.",
+    "heroAlt": "Dalawang taong bumubuo ng puso"
   },
   "nav": {
     "discover": "Tuklasin",
@@ -24,7 +25,8 @@
     "spark": "Silay",
     "filter": "Salain",
     "compatibility": "Pagkakapareho",
-    "compatRefresh": "Nagre-refresh araw-araw • {{count}} matataas na compatibility na match",
+    "compatRefresh_one": "Nagre-refresh araw-araw • {{count}} matataas na compatibility na match",
+    "compatRefresh_other": "Nagre-refresh araw-araw • {{count}} matataas na compatibility na match",
     "compatEmpty": "Bumalik bukas para sa mga bagong match na mataas ang compatibility!",
     "kmAway": "{{distance}} km ang layo",
     "matchPercent": "{{percent}}% na Pagkakapareho",
@@ -35,7 +37,8 @@
     "verifiedOnly": "Mga beripikadong user lang",
     "onlineNow": "Online ngayon",
     "resetAll": "I-reset lahat",
-    "applyMatches": "I-apply ({{count}} match)",
+    "applyMatches_one": "I-apply ({{count}} match)",
+    "applyMatches_other": "I-apply ({{count}} match)",
     "itsAMatch": "Match kayo!",
     "likedEachOther": "Nagkagustuhan kayo ni {{name}}",
     "sendMessage": "Magpadala ng mensahe",
@@ -73,7 +76,8 @@
     "newUser": "Bago",
     "undo": "I-undo",
     "likeFailed": "Hindi naipadala ang like",
-    "alreadyLiked": "Na-like na"
+    "alreadyLiked": "Na-like na",
+    "you": "Ikaw"
   },
   "matches": {
     "title": "Mga Pares",
@@ -95,7 +99,9 @@
     "giftPrefix": "Regalo",
     "goDiscover": "Pumunta sa Discover",
     "message": "Mensahe",
-    "unmatchFailed": "Hindi na-unmatch — subukan muli"
+    "unmatchFailed": "Hindi na-unmatch — subukan muli",
+    "newCount": "{{count}} bago",
+    "noSearchResults": "Walang usapang tumutugma sa “{{query}}”"
   },
   "chat": {
     "typeMessage": "Magsulat ng mensahe...",
@@ -138,7 +144,9 @@
     "reportSubmitted": "Naisumite ang report. Susuriin namin ito sa lalong madaling panahon.",
     "photoPreview": "Larawan",
     "voicePreview": "Mensaheng boses",
-    "giftPreview": "Nagpadala ng regalo"
+    "giftPreview": "Nagpadala ng regalo",
+    "typing": "nagta-type",
+    "sendGift": "Ipadala ang {{gift}}"
   },
   "profile": {
     "edit": "I-edit ang Profile",
@@ -164,7 +172,9 @@
     "donate": "Suportahan ang Equal",
     "deleteAccount": "Burahin ang Account",
     "logout": "Mag-log Out",
-    "paymentHistory": "Kasaysayan ng bayad"
+    "paymentHistory": "Kasaysayan ng bayad",
+    "switchToLight": "Lumipat sa light mode",
+    "switchToDark": "Lumipat sa dark mode"
   },
   "onboarding": {
     "next": "Susunod",
@@ -265,7 +275,8 @@
     "seeking_everyone": "Lahat",
     "saveFailed": "Hindi na-save ang profile mo — subukan muli",
     "title6": "Boses mo",
-    "sub6": "10 segundong intro. Kailangan para sumali sa Daily Match."
+    "sub6": "10 segundong intro. Kailangan para sumali sa Daily Match.",
+    "photoTipsAlt": "Mga tip sa larawan"
   },
   "common": {
     "cancel": "Kanselahin",
@@ -279,7 +290,9 @@
     "cookieText": "Gumagamit kami ng mahahalagang cookie para sa authentication at opsyonal na cookie para sa analytics. Tingnan ang aming",
     "cookieAccept": "Tanggapin Lahat",
     "cookieEssential": "Mahahalaga Lang",
-    "privacyPolicy": "Patakaran sa Privacy"
+    "privacyPolicy": "Patakaran sa Privacy",
+    "notFoundDesc": "Wala ang pahinang hinahanap mo o nailipat na ito.",
+    "photoN": "Larawan {{n}}"
   },
   "clubs": {
     "title": "Mga Club",
@@ -347,7 +360,8 @@
     "upcomingEvents": "Paparating na Event",
     "interestedEvents": "Interesado",
     "pastEvents": "Mga Nakaraang Event",
-    "nearYou": "{{count}} event malapit sa'yo ngayong linggo",
+    "nearYou_one": "{{count}} paparating na event",
+    "nearYou_other": "{{count}} paparating na event",
     "going": "Pupunta",
     "attend": "Dumalo",
     "featured": "Naka-feature",
@@ -370,7 +384,8 @@
     "itWasOkay": "Okay lang",
     "submitFeedback": "Isumite ang feedback",
     "thanksFeedback": "Salamat sa feedback mo! Nakikinabang ang Trust Score mo dito.",
-    "peopleGoing": "{{count}} pupunta",
+    "peopleGoing_one": "{{count}} pupunta",
+    "peopleGoing_other": "{{count}} pupunta",
     "host": "Host",
     "youreGoing": "🎉 Pupunta ka!",
     "showAtDoor": "Ipakita ito sa pintuan",
@@ -405,7 +420,8 @@
     "createTooMany": "May 3 event ka nang naghihintay ng review.",
     "createFailed": "Hindi naisumite ang event — pakisubukang muli",
     "pendingReview": "Nire-review",
-    "pendingReviewDesc": "Ikaw lang ang nakakakita sa event na ito hangga't hindi ito inaaprubahan ng admin."
+    "pendingReviewDesc": "Ikaw lang ang nakakakita sa event na ito hangga't hindi ito inaaprubahan ng admin.",
+    "noSavedDesc": "I-tap ang star icon sa mga event na interesado ka para i-save ang mga ito rito."
   },
   "video": {
     "connecting": "Kumokonekta...",
@@ -413,7 +429,8 @@
     "inCall": "Nasa tawag",
     "callEnded": "Natapos ang tawag",
     "callFailed": "Nabigo ang tawag",
-    "backToChat": "Bumalik sa chat"
+    "backToChat": "Bumalik sa chat",
+    "duration": "Tagal: {{time}}"
   },
   "report": {
     "title": "I-report si {{name}}",
@@ -424,7 +441,8 @@
     "inappropriate": "Hindi angkop na nilalaman",
     "other": "Iba pa",
     "detailsPlaceholder": "Sabihin sa amin ang higit pa tungkol sa isyu...",
-    "submit": "Isumite ang report"
+    "submit": "Isumite ang report",
+    "descriptionLabel": "Paglalarawan (opsyonal)"
   },
   "offers": {
     "partner": "Kasosyo",
@@ -503,7 +521,8 @@
     "adminPanel": "Admin Panel",
     "donationSent": "Salamat sa suporta mo!",
     "donating": "Pinoproseso…",
-    "supportUnavailable": "Hindi pa naka-set up ang suporta"
+    "supportUnavailable": "Hindi pa naka-set up ang suporta",
+    "donateAmount": "Mag-donate ng {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "Magdagdag ng bio para makilala ka ng mga tao",
@@ -546,9 +565,11 @@
     "locked": "Naka-lock",
     "photoUploadFailed": "Hindi na-upload ang larawan",
     "sparksDesc": "Ang mga Spark ay nakukuha sa pamamagitan ng aktibidad — hindi ito binibili. Ipadala ito para magpakita ng espesyal na atensyon sa isang tao.",
-    "sparksAmount": "+{{count}} Spark",
+    "sparksAmount_one": "+{{count}} Spark",
+    "sparksAmount_other": "+{{count}} Spark",
     "sparksPerDay": "+{{count}} Spark/araw",
-    "photoDeleteFailed": "Hindi nabura ang larawan"
+    "photoDeleteFailed": "Hindi nabura ang larawan",
+    "profileAlt": "Profile ni {{name}}"
   },
   "admin": {
     "panel": "Admin Panel",

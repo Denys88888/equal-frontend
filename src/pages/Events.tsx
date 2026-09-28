@@ -859,7 +859,7 @@ export default function Events() {
                     <Star size={48} style={{ color: 'rgba(var(--charcoal-rgb), 0.15)' }} />
                     <h2 className="text-xl font-semibold text-[var(--charcoal)] mt-4">{t('events.noSaved')}</h2>
                     <p className="text-sm mt-2 text-center max-w-[260px]" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>
-                      Tap the star icon on events you&apos;re interested in to save them here.
+                      {t('events.noSavedDesc')}
                     </p>
                     <button
                       onClick={() => setActiveTab('upcoming')}

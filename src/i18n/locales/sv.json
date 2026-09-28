@@ -9,7 +9,8 @@
     "trustPioneers": "Över 60 milj. Pioneers",
     "errPiBrowser": "Öppna appen i Pi Browser",
     "errAuthFailed": "Pi-autentiseringen misslyckades",
-    "errTimeout": "Pi-autentiseringen tog för lång tid. Försök igen."
+    "errTimeout": "Pi-autentiseringen tog för lång tid. Försök igen.",
+    "heroAlt": "Två personer som bildar ett hjärta"
   },
   "nav": {
     "discover": "Upptäck",
@@ -24,7 +25,8 @@
     "spark": "Gnista",
     "filter": "Filter",
     "compatibility": "Kompatibilitet",
-    "compatRefresh": "Uppdateras dagligen • {{count}} matchningar med hög träffbild",
+    "compatRefresh_one": "Uppdateras dagligen • {{count}} matchning med hög träffbild",
+    "compatRefresh_other": "Uppdateras dagligen • {{count}} matchningar med hög träffbild",
     "compatEmpty": "Kom tillbaka i morgon för nya matchningar med hög träffbild!",
     "kmAway": "{{distance}} km bort",
     "matchPercent": "{{percent}}% matchning",
@@ -35,7 +37,8 @@
     "verifiedOnly": "Endast verifierade användare",
     "onlineNow": "Online nu",
     "resetAll": "Återställ allt",
-    "applyMatches": "Använd ({{count}} matchningar)",
+    "applyMatches_one": "Använd ({{count}} matchning)",
+    "applyMatches_other": "Använd ({{count}} matchningar)",
     "itsAMatch": "Det är en matchning!",
     "likedEachOther": "Du och {{name}} gillade varandra",
     "sendMessage": "Skicka ett meddelande",
@@ -73,7 +76,8 @@
     "newUser": "Ny",
     "undo": "Ångra",
     "likeFailed": "Kunde inte skicka gillamarkeringen",
-    "alreadyLiked": "Redan gillad"
+    "alreadyLiked": "Redan gillad",
+    "you": "Du"
   },
   "matches": {
     "title": "Matchningar",
@@ -95,7 +99,9 @@
     "giftPrefix": "Present",
     "goDiscover": "Gå till Utforska",
     "message": "Meddelande",
-    "unmatchFailed": "Kunde inte ta bort matchningen — försök igen"
+    "unmatchFailed": "Kunde inte ta bort matchningen — försök igen",
+    "newCount": "Nya: {{count}}",
+    "noSearchResults": "Inga konversationer matchar ”{{query}}”"
   },
   "chat": {
     "typeMessage": "Skriv ett meddelande...",
@@ -138,7 +144,9 @@
     "reportSubmitted": "Anmälan skickad. Vi granskar den inom kort.",
     "photoPreview": "Foto",
     "voicePreview": "Röstmeddelande",
-    "giftPreview": "Skickade en present"
+    "giftPreview": "Skickade en present",
+    "typing": "skriver",
+    "sendGift": "Skicka {{gift}}"
   },
   "profile": {
     "edit": "Redigera profil",
@@ -164,7 +172,9 @@
     "donate": "Stöd Equal",
     "deleteAccount": "Ta bort konto",
     "logout": "Logga ut",
-    "paymentHistory": "Betalningshistorik"
+    "paymentHistory": "Betalningshistorik",
+    "switchToLight": "Byt till ljust läge",
+    "switchToDark": "Byt till mörkt läge"
   },
   "onboarding": {
     "next": "Nästa",
@@ -265,7 +275,8 @@
     "seeking_everyone": "Alla",
     "saveFailed": "Kunde inte spara din profil — försök igen",
     "title6": "Din röst",
-    "sub6": "En presentation på 10 sekunder. Krävs för att delta i Dagens matchning."
+    "sub6": "En presentation på 10 sekunder. Krävs för att delta i Dagens matchning.",
+    "photoTipsAlt": "Fototips"
   },
   "common": {
     "cancel": "Avbryt",
@@ -279,7 +290,9 @@
     "cookieText": "Vi använder nödvändiga cookies för inloggning och valfria cookies för analys. Se vår",
     "cookieAccept": "Godkänn alla",
     "cookieEssential": "Endast nödvändiga",
-    "privacyPolicy": "Integritetspolicy"
+    "privacyPolicy": "Integritetspolicy",
+    "notFoundDesc": "Sidan du letar efter finns inte eller har flyttats.",
+    "photoN": "Foto {{n}}"
   },
   "clubs": {
     "title": "Klubbar",
@@ -347,7 +360,8 @@
     "upcomingEvents": "Kommande evenemang",
     "interestedEvents": "Intresserad",
     "pastEvents": "Tidigare evenemang",
-    "nearYou": "{{count}} evenemang nära dig den här veckan",
+    "nearYou_one": "{{count}} kommande evenemang",
+    "nearYou_other": "{{count}} kommande evenemang",
     "going": "Jag kommer",
     "attend": "Delta",
     "featured": "Utvalt",
@@ -370,7 +384,8 @@
     "itWasOkay": "Det var okej",
     "submitFeedback": "Skicka omdöme",
     "thanksFeedback": "Tack för ditt omdöme! Dina förtroendepoäng gynnas av det.",
-    "peopleGoing": "{{count}} kommer",
+    "peopleGoing_one": "{{count}} kommer",
+    "peopleGoing_other": "{{count}} kommer",
     "host": "Arrangör",
     "youreGoing": "🎉 Du kommer!",
     "showAtDoor": "Visa detta i entrén",
@@ -405,7 +420,8 @@
     "createTooMany": "Du har redan 3 evenemang som väntar på granskning.",
     "createFailed": "Det gick inte att skicka evenemanget — försök igen",
     "pendingReview": "Granskas",
-    "pendingReviewDesc": "Bara du ser det här evenemanget tills en admin godkänner det."
+    "pendingReviewDesc": "Bara du ser det här evenemanget tills en admin godkänner det.",
+    "noSavedDesc": "Tryck på stjärnan på evenemang som intresserar dig för att spara dem här."
   },
   "video": {
     "connecting": "Ansluter...",
@@ -413,7 +429,8 @@
     "inCall": "I samtal",
     "callEnded": "Samtalet avslutat",
     "callFailed": "Samtalet misslyckades",
-    "backToChat": "Tillbaka till chatten"
+    "backToChat": "Tillbaka till chatten",
+    "duration": "Längd: {{time}}"
   },
   "report": {
     "title": "Anmäl {{name}}",
@@ -424,7 +441,8 @@
     "inappropriate": "Olämpligt innehåll",
     "other": "Annat",
     "detailsPlaceholder": "Berätta mer om problemet...",
-    "submit": "Skicka anmälan"
+    "submit": "Skicka anmälan",
+    "descriptionLabel": "Beskrivning (valfritt)"
   },
   "offers": {
     "partner": "Partner",
@@ -503,7 +521,8 @@
     "adminPanel": "Adminpanel",
     "donationSent": "Tack för ditt stöd!",
     "donating": "Bearbetar…",
-    "supportUnavailable": "Supporten är inte konfigurerad än"
+    "supportUnavailable": "Supporten är inte konfigurerad än",
+    "donateAmount": "Donera {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "Lägg till en presentation så att andra lär känna dig",
@@ -546,9 +565,11 @@
     "locked": "Låst",
     "photoUploadFailed": "Kunde inte ladda upp fotot",
     "sparksDesc": "Gnistor tjänas genom aktivitet — de går inte att köpa. Skicka dem för att visa någon extra uppmärksamhet.",
-    "sparksAmount": "+{{count}} gnistor",
+    "sparksAmount_one": "+{{count}} gnista",
+    "sparksAmount_other": "+{{count}} gnistor",
     "sparksPerDay": "+{{count}} gnista/dag",
-    "photoDeleteFailed": "Kunde inte ta bort fotot"
+    "photoDeleteFailed": "Kunde inte ta bort fotot",
+    "profileAlt": "{{name}}s profil"
   },
   "admin": {
     "panel": "Adminpanel",

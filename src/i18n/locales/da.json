@@ -9,7 +9,8 @@
     "trustPioneers": "Over 60 mio. Pioneers",
     "errPiBrowser": "Åbn appen i Pi Browser",
     "errAuthFailed": "Pi-godkendelsen mislykkedes",
-    "errTimeout": "Pi-godkendelsen tog for lang tid. Prøv igen."
+    "errTimeout": "Pi-godkendelsen tog for lang tid. Prøv igen.",
+    "heroAlt": "To mennesker, der danner et hjerte"
   },
   "nav": {
     "discover": "Opdag",
@@ -24,7 +25,8 @@
     "spark": "Gnist",
     "filter": "Filter",
     "compatibility": "Kompatibilitet",
-    "compatRefresh": "Opdateres dagligt • {{count}} match med høj forenelighed",
+    "compatRefresh_one": "Opdateres dagligt • {{count}} match med høj forenelighed",
+    "compatRefresh_other": "Opdateres dagligt • {{count}} match med høj forenelighed",
     "compatEmpty": "Kig forbi i morgen efter nye match med høj forenelighed!",
     "kmAway": "{{distance}} km væk",
     "matchPercent": "{{percent}}% match",
@@ -35,7 +37,8 @@
     "verifiedOnly": "Kun verificerede brugere",
     "onlineNow": "Online nu",
     "resetAll": "Nulstil alt",
-    "applyMatches": "Anvend ({{count}} match)",
+    "applyMatches_one": "Anvend ({{count}} match)",
+    "applyMatches_other": "Anvend ({{count}} match)",
     "itsAMatch": "Det er et match!",
     "likedEachOther": "Du og {{name}} kunne lide hinanden",
     "sendMessage": "Send en besked",
@@ -73,7 +76,8 @@
     "newUser": "Ny",
     "undo": "Fortryd",
     "likeFailed": "Kunne ikke sende dit like",
-    "alreadyLiked": "Allerede liket"
+    "alreadyLiked": "Allerede liket",
+    "you": "Dig"
   },
   "matches": {
     "title": "Match",
@@ -95,7 +99,9 @@
     "giftPrefix": "Gave",
     "goDiscover": "Gå til Opdag",
     "message": "Besked",
-    "unmatchFailed": "Kunne ikke fjerne matchet — prøv igen"
+    "unmatchFailed": "Kunne ikke fjerne matchet — prøv igen",
+    "newCount": "Nye: {{count}}",
+    "noSearchResults": "Ingen samtaler matcher »{{query}}«"
   },
   "chat": {
     "typeMessage": "Skriv en besked...",
@@ -138,7 +144,9 @@
     "reportSubmitted": "Anmeldelsen er sendt. Vi kigger på den snarest.",
     "photoPreview": "Foto",
     "voicePreview": "Talebesked",
-    "giftPreview": "Sendte en gave"
+    "giftPreview": "Sendte en gave",
+    "typing": "skriver",
+    "sendGift": "Send {{gift}}"
   },
   "profile": {
     "edit": "Rediger profil",
@@ -164,7 +172,9 @@
     "donate": "Støt Equal",
     "deleteAccount": "Slet konto",
     "logout": "Log ud",
-    "paymentHistory": "Betalingshistorik"
+    "paymentHistory": "Betalingshistorik",
+    "switchToLight": "Skift til lyst tema",
+    "switchToDark": "Skift til mørkt tema"
   },
   "onboarding": {
     "next": "Næste",
@@ -265,7 +275,8 @@
     "seeking_everyone": "Alle",
     "saveFailed": "Kunne ikke gemme din profil — prøv igen",
     "title6": "Din stemme",
-    "sub6": "En præsentation på 10 sekunder. Påkrævet for at deltage i Dagens match."
+    "sub6": "En præsentation på 10 sekunder. Påkrævet for at deltage i Dagens match.",
+    "photoTipsAlt": "Fototips"
   },
   "common": {
     "cancel": "Annuller",
@@ -279,7 +290,9 @@
     "cookieText": "Vi bruger nødvendige cookies til login og valgfrie cookies til statistik. Se vores",
     "cookieAccept": "Accepter alle",
     "cookieEssential": "Kun nødvendige",
-    "privacyPolicy": "Privatlivspolitik"
+    "privacyPolicy": "Privatlivspolitik",
+    "notFoundDesc": "Siden, du leder efter, findes ikke eller er blevet flyttet.",
+    "photoN": "Foto {{n}}"
   },
   "clubs": {
     "title": "Klubber",
@@ -347,7 +360,8 @@
     "upcomingEvents": "Kommende begivenheder",
     "interestedEvents": "Interesseret",
     "pastEvents": "Tidligere begivenheder",
-    "nearYou": "{{count}} begivenheder i nærheden i denne uge",
+    "nearYou_one": "{{count}} kommende begivenhed",
+    "nearYou_other": "{{count}} kommende begivenheder",
     "going": "Jeg kommer",
     "attend": "Deltag",
     "featured": "Fremhævet",
@@ -370,7 +384,8 @@
     "itWasOkay": "Det var okay",
     "submitFeedback": "Send feedback",
     "thanksFeedback": "Tak for din feedback! Din tillidsscore får glæde af det.",
-    "peopleGoing": "{{count}} deltager",
+    "peopleGoing_one": "{{count}} deltager",
+    "peopleGoing_other": "{{count}} deltager",
     "host": "Arrangør",
     "youreGoing": "🎉 Du deltager!",
     "showAtDoor": "Vis dette ved indgangen",
@@ -405,7 +420,8 @@
     "createTooMany": "Du har allerede 3 begivenheder, der venter på gennemgang.",
     "createFailed": "Begivenheden kunne ikke sendes — prøv igen",
     "pendingReview": "Til gennemgang",
-    "pendingReviewDesc": "Kun du kan se denne begivenhed, indtil en admin godkender den."
+    "pendingReviewDesc": "Kun du kan se denne begivenhed, indtil en admin godkender den.",
+    "noSavedDesc": "Tryk på stjernen ved begivenheder, du er interesseret i, for at gemme dem her."
   },
   "video": {
     "connecting": "Forbinder...",
@@ -413,7 +429,8 @@
     "inCall": "I samtale",
     "callEnded": "Opkaldet er afsluttet",
     "callFailed": "Opkaldet mislykkedes",
-    "backToChat": "Tilbage til chatten"
+    "backToChat": "Tilbage til chatten",
+    "duration": "Varighed: {{time}}"
   },
   "report": {
     "title": "Anmeld {{name}}",
@@ -424,7 +441,8 @@
     "inappropriate": "Upassende indhold",
     "other": "Andet",
     "detailsPlaceholder": "Fortæl os mere om problemet...",
-    "submit": "Send anmeldelse"
+    "submit": "Send anmeldelse",
+    "descriptionLabel": "Beskrivelse (valgfri)"
   },
   "offers": {
     "partner": "Partner",
@@ -503,7 +521,8 @@
     "adminPanel": "Adminpanel",
     "donationSent": "Tak for din støtte!",
     "donating": "Behandler…",
-    "supportUnavailable": "Supporten er ikke sat op endnu"
+    "supportUnavailable": "Supporten er ikke sat op endnu",
+    "donateAmount": "Donér {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "Tilføj en profiltekst, så andre lærer dig at kende",
@@ -546,9 +565,11 @@
     "locked": "Låst",
     "photoUploadFailed": "Kunne ikke uploade billedet",
     "sparksDesc": "Gnister optjenes gennem aktivitet — de kan ikke købes. Send dem for at vise nogen særlig opmærksomhed.",
-    "sparksAmount": "+{{count}} gnister",
+    "sparksAmount_one": "+{{count}} gnist",
+    "sparksAmount_other": "+{{count}} gnister",
     "sparksPerDay": "+{{count}} gnist/dag",
-    "photoDeleteFailed": "Kunne ikke slette billedet"
+    "photoDeleteFailed": "Kunne ikke slette billedet",
+    "profileAlt": "{{name}}s profil"
   },
   "admin": {
     "panel": "Adminpanel",

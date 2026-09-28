@@ -626,7 +626,7 @@ function MatchOverlay({
         >
           <img
             src={userPhoto}
-            alt="You"
+            alt={t('discover.you')}
             className="w-full h-full object-cover"
           />
         </motion.div>

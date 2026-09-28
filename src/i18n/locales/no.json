@@ -9,7 +9,8 @@
     "trustPioneers": "Over 60 mill. Pioneers",
     "errPiBrowser": "Åpne appen i Pi Browser",
     "errAuthFailed": "Pi-autentiseringen mislyktes",
-    "errTimeout": "Pi-autentiseringen tok for lang tid. Prøv igjen."
+    "errTimeout": "Pi-autentiseringen tok for lang tid. Prøv igjen.",
+    "heroAlt": "To mennesker som danner et hjerte"
   },
   "nav": {
     "discover": "Oppdag",
@@ -24,7 +25,8 @@
     "spark": "Gnist",
     "filter": "Filter",
     "compatibility": "Kompatibilitet",
-    "compatRefresh": "Oppdateres daglig • {{count}} treff med høy match",
+    "compatRefresh_one": "Oppdateres daglig • {{count}} treff med høy match",
+    "compatRefresh_other": "Oppdateres daglig • {{count}} treff med høy match",
     "compatEmpty": "Kom tilbake i morgen for nye treff med høy match!",
     "kmAway": "{{distance}} km unna",
     "matchPercent": "{{percent}}% match",
@@ -35,7 +37,8 @@
     "verifiedOnly": "Bare verifiserte brukere",
     "onlineNow": "Pålogget nå",
     "resetAll": "Nullstill alt",
-    "applyMatches": "Bruk ({{count}} treff)",
+    "applyMatches_one": "Bruk ({{count}} treff)",
+    "applyMatches_other": "Bruk ({{count}} treff)",
     "itsAMatch": "Det er et treff!",
     "likedEachOther": "Du og {{name}} likte hverandre",
     "sendMessage": "Send en melding",
@@ -73,7 +76,8 @@
     "newUser": "Ny",
     "undo": "Angre",
     "likeFailed": "Kunne ikke sende liken",
-    "alreadyLiked": "Allerede likt"
+    "alreadyLiked": "Allerede likt",
+    "you": "Deg"
   },
   "matches": {
     "title": "Matcher",
@@ -95,7 +99,9 @@
     "giftPrefix": "Gave",
     "goDiscover": "Gå til Oppdag",
     "message": "Melding",
-    "unmatchFailed": "Kunne ikke fjerne treffet — prøv igjen"
+    "unmatchFailed": "Kunne ikke fjerne treffet — prøv igjen",
+    "newCount": "Nye: {{count}}",
+    "noSearchResults": "Ingen samtaler samsvarer med «{{query}}»"
   },
   "chat": {
     "typeMessage": "Skriv en melding...",
@@ -138,7 +144,9 @@
     "reportSubmitted": "Rapporten er sendt. Vi ser på den snart.",
     "photoPreview": "Bilde",
     "voicePreview": "Talemelding",
-    "giftPreview": "Sendte en gave"
+    "giftPreview": "Sendte en gave",
+    "typing": "skriver",
+    "sendGift": "Send {{gift}}"
   },
   "profile": {
     "edit": "Rediger profil",
@@ -164,7 +172,9 @@
     "donate": "Støtt Equal",
     "deleteAccount": "Slett konto",
     "logout": "Logg ut",
-    "paymentHistory": "Betalingshistorikk"
+    "paymentHistory": "Betalingshistorikk",
+    "switchToLight": "Bytt til lys modus",
+    "switchToDark": "Bytt til mørk modus"
   },
   "onboarding": {
     "next": "Neste",
@@ -265,7 +275,8 @@
     "seeking_everyone": "Alle",
     "saveFailed": "Kunne ikke lagre profilen din — prøv igjen",
     "title6": "Stemmen din",
-    "sub6": "En presentasjon på 10 sekunder. Påkrevd for å delta i Dagens treff."
+    "sub6": "En presentasjon på 10 sekunder. Påkrevd for å delta i Dagens treff.",
+    "photoTipsAlt": "Fototips"
   },
   "common": {
     "cancel": "Avbryt",
@@ -279,7 +290,9 @@
     "cookieText": "Vi bruker nødvendige informasjonskapsler for innlogging og valgfrie for analyse. Se vår",
     "cookieAccept": "Godta alle",
     "cookieEssential": "Bare nødvendige",
-    "privacyPolicy": "Personvernerklæring"
+    "privacyPolicy": "Personvernerklæring",
+    "notFoundDesc": "Siden du leter etter finnes ikke eller er flyttet.",
+    "photoN": "Bilde {{n}}"
   },
   "clubs": {
     "title": "Klubber",
@@ -347,7 +360,8 @@
     "upcomingEvents": "Kommende arrangementer",
     "interestedEvents": "Interessert",
     "pastEvents": "Tidligere arrangementer",
-    "nearYou": "{{count}} arrangementer i nærheten denne uken",
+    "nearYou_one": "{{count}} kommende arrangement",
+    "nearYou_other": "{{count}} kommende arrangementer",
     "going": "Jeg kommer",
     "attend": "Delta",
     "featured": "Fremhevet",
@@ -370,7 +384,8 @@
     "itWasOkay": "Det var greit",
     "submitFeedback": "Send tilbakemelding",
     "thanksFeedback": "Takk for tilbakemeldingen! Tillitspoengene dine har godt av det.",
-    "peopleGoing": "{{count}} kommer",
+    "peopleGoing_one": "{{count}} kommer",
+    "peopleGoing_other": "{{count}} kommer",
     "host": "Arrangør",
     "youreGoing": "🎉 Du skal dit!",
     "showAtDoor": "Vis dette i inngangen",
@@ -405,7 +420,8 @@
     "createTooMany": "Du har allerede 3 arrangementer som venter på gjennomgang.",
     "createFailed": "Kunne ikke sende arrangementet — prøv igjen",
     "pendingReview": "Til gjennomgang",
-    "pendingReviewDesc": "Bare du ser dette arrangementet til en admin godkjenner det."
+    "pendingReviewDesc": "Bare du ser dette arrangementet til en admin godkjenner det.",
+    "noSavedDesc": "Trykk på stjernen på arrangementer du er interessert i for å lagre dem her."
   },
   "video": {
     "connecting": "Kobler til...",
@@ -413,7 +429,8 @@
     "inCall": "I samtale",
     "callEnded": "Samtalen er avsluttet",
     "callFailed": "Samtalen mislyktes",
-    "backToChat": "Tilbake til chatten"
+    "backToChat": "Tilbake til chatten",
+    "duration": "Varighet: {{time}}"
   },
   "report": {
     "title": "Rapporter {{name}}",
@@ -424,7 +441,8 @@
     "inappropriate": "Upassende innhold",
     "other": "Annet",
     "detailsPlaceholder": "Fortell oss mer om problemet...",
-    "submit": "Send rapport"
+    "submit": "Send rapport",
+    "descriptionLabel": "Beskrivelse (valgfritt)"
   },
   "offers": {
     "partner": "Partner",
@@ -503,7 +521,8 @@
     "adminPanel": "Adminpanel",
     "donationSent": "Takk for støtten!",
     "donating": "Behandler…",
-    "supportUnavailable": "Brukerstøtten er ikke satt opp ennå"
+    "supportUnavailable": "Brukerstøtten er ikke satt opp ennå",
+    "donateAmount": "Doner {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "Legg til en presentasjon så andre blir kjent med deg",
@@ -546,9 +565,11 @@
     "locked": "Låst",
     "photoUploadFailed": "Kunne ikke laste opp bildet",
     "sparksDesc": "Gnister tjenes gjennom aktivitet — de kan ikke kjøpes. Send dem for å vise noen ekstra oppmerksomhet.",
-    "sparksAmount": "+{{count}} gnister",
+    "sparksAmount_one": "+{{count}} gnist",
+    "sparksAmount_other": "+{{count}} gnister",
     "sparksPerDay": "+{{count}} gnist/dag",
-    "photoDeleteFailed": "Kunne ikke slette bildet"
+    "photoDeleteFailed": "Kunne ikke slette bildet",
+    "profileAlt": "Profilen til {{name}}"
   },
   "admin": {
     "panel": "Adminpanel",

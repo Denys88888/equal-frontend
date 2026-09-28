@@ -9,7 +9,8 @@
     "trustPioneers": "Preko 60 mil. Pionira",
     "errPiBrowser": "Otvori ovu aplikaciju u Pi Browseru",
     "errAuthFailed": "Pi autentifikacija nije uspjela",
-    "errTimeout": "Isteklo je vrijeme za Pi autentifikaciju. Pokušaj ponovno."
+    "errTimeout": "Isteklo je vrijeme za Pi autentifikaciju. Pokušaj ponovno.",
+    "heroAlt": "Dvoje ljudi koji tvore srce"
   },
   "nav": {
     "discover": "Otkrij",
@@ -24,7 +25,9 @@
     "spark": "Iskra",
     "filter": "Filtar",
     "compatibility": "Kompatibilnost",
-    "compatRefresh": "Osvježava se svaki dan • {{count}} podudaranja visoke kompatibilnosti",
+    "compatRefresh_one": "Osvježava se svaki dan • {{count}} podudaranje visoke kompatibilnosti",
+    "compatRefresh_few": "Osvježava se svaki dan • {{count}} podudaranja visoke kompatibilnosti",
+    "compatRefresh_other": "Osvježava se svaki dan • {{count}} podudaranja visoke kompatibilnosti",
     "compatEmpty": "Vrati se sutra po nova podudaranja visoke kompatibilnosti!",
     "kmAway": "{{distance}} km udaljen",
     "matchPercent": "{{percent}}% podudaranje",
@@ -35,7 +38,9 @@
     "verifiedOnly": "Samo provjereni korisnici",
     "onlineNow": "Trenutno online",
     "resetAll": "Poništi sve",
-    "applyMatches": "Primijeni ({{count}} podudaranja)",
+    "applyMatches_one": "Primijeni ({{count}} podudaranje)",
+    "applyMatches_few": "Primijeni ({{count}} podudaranja)",
+    "applyMatches_other": "Primijeni ({{count}} podudaranja)",
     "itsAMatch": "To je podudaranje!",
     "likedEachOther": "Ti i {{name}} ste se svidjeli jedno drugom",
     "sendMessage": "Pošalji poruku",
@@ -73,7 +78,8 @@
     "newUser": "Novo",
     "undo": "Poništi",
     "likeFailed": "Slanje sviđanja nije uspjelo",
-    "alreadyLiked": "Već se sviđa"
+    "alreadyLiked": "Već se sviđa",
+    "you": "Ti"
   },
   "matches": {
     "title": "Spojevi",
@@ -95,7 +101,9 @@
     "giftPrefix": "Poklon",
     "goDiscover": "Idi na Otkrivanje",
     "message": "Poruka",
-    "unmatchFailed": "Nije uspjelo uklanjanje podudaranja — pokušaj ponovno"
+    "unmatchFailed": "Nije uspjelo uklanjanje podudaranja — pokušaj ponovno",
+    "newCount": "Novo: {{count}}",
+    "noSearchResults": "Nema razgovora koji odgovaraju „{{query}}”"
   },
   "chat": {
     "typeMessage": "Napiši poruku...",
@@ -138,7 +146,9 @@
     "reportSubmitted": "Prijava poslana. Uskoro ćemo je pregledati.",
     "photoPreview": "Fotografija",
     "voicePreview": "Glasovna poruka",
-    "giftPreview": "Poslao/la poklon"
+    "giftPreview": "Poslao/la poklon",
+    "typing": "piše",
+    "sendGift": "Pošalji poklon: {{gift}}"
   },
   "profile": {
     "edit": "Uredi profil",
@@ -164,7 +174,9 @@
     "donate": "Podrži Equal",
     "deleteAccount": "Izbriši račun",
     "logout": "Odjava",
-    "paymentHistory": "Povijest plaćanja"
+    "paymentHistory": "Povijest plaćanja",
+    "switchToLight": "Prebaci na svijetli način",
+    "switchToDark": "Prebaci na tamni način"
   },
   "onboarding": {
     "next": "Dalje",
@@ -265,7 +277,8 @@
     "seeking_everyone": "Sve",
     "saveFailed": "Spremanje profila nije uspjelo — pokušaj ponovno",
     "title6": "Tvoj glas",
-    "sub6": "10-sekundno predstavljanje. Obavezno za sudjelovanje u Dnevnom podudaranju."
+    "sub6": "10-sekundno predstavljanje. Obavezno za sudjelovanje u Dnevnom podudaranju.",
+    "photoTipsAlt": "Savjeti za fotografije"
   },
   "common": {
     "cancel": "Odustani",
@@ -279,7 +292,9 @@
     "cookieText": "Koristimo nužne kolačiće za prijavu i neobavezne kolačiće za analitiku. Pogledaj naš",
     "cookieAccept": "Prihvati sve",
     "cookieEssential": "Samo nužni",
-    "privacyPolicy": "Politika privatnosti"
+    "privacyPolicy": "Politika privatnosti",
+    "notFoundDesc": "Stranica koju tražiš ne postoji ili je premještena.",
+    "photoN": "Fotografija {{n}}"
   },
   "clubs": {
     "title": "Klubovi",
@@ -349,7 +364,9 @@
     "upcomingEvents": "Nadolazeća događanja",
     "interestedEvents": "Zanima me",
     "pastEvents": "Prošla događanja",
-    "nearYou": "{{count}} događanja u blizini ovaj tjedan",
+    "nearYou_one": "{{count}} nadolazeće događanje",
+    "nearYou_few": "{{count}} nadolazeća događanja",
+    "nearYou_other": "{{count}} nadolazećih događanja",
     "going": "Idem",
     "attend": "Sudjeluj",
     "featured": "Istaknuto",
@@ -372,7 +389,9 @@
     "itWasOkay": "Bilo je u redu",
     "submitFeedback": "Pošalji povratnu informaciju",
     "thanksFeedback": "Hvala na povratnoj informaciji! Tvoji bodovi povjerenja imaju koristi od toga.",
-    "peopleGoing": "{{count}} ide",
+    "peopleGoing_one": "{{count}} osoba ide",
+    "peopleGoing_few": "{{count}} osobe idu",
+    "peopleGoing_other": "{{count}} osoba ide",
     "host": "Organizator",
     "youreGoing": "🎉 Ideš!",
     "showAtDoor": "Pokaži ovo na ulazu",
@@ -407,7 +426,8 @@
     "createTooMany": "Već imate 3 događaja koja čekaju provjeru.",
     "createFailed": "Događaj nije moguće poslati — pokušajte ponovno",
     "pendingReview": "Na provjeri",
-    "pendingReviewDesc": "Samo vi vidite ovaj događaj dok ga administrator ne odobri."
+    "pendingReviewDesc": "Samo vi vidite ovaj događaj dok ga administrator ne odobri.",
+    "noSavedDesc": "Dodirni zvjezdicu na događanjima koja te zanimaju kako bi ih spremio ovdje."
   },
   "video": {
     "connecting": "Povezivanje...",
@@ -415,7 +435,8 @@
     "inCall": "U pozivu",
     "callEnded": "Poziv je završen",
     "callFailed": "Poziv nije uspio",
-    "backToChat": "Natrag na chat"
+    "backToChat": "Natrag na chat",
+    "duration": "Trajanje: {{time}}"
   },
   "report": {
     "title": "Prijavi {{name}}",
@@ -426,7 +447,8 @@
     "inappropriate": "Neprikladan sadržaj",
     "other": "Ostalo",
     "detailsPlaceholder": "Reci nam više o problemu...",
-    "submit": "Pošalji prijavu"
+    "submit": "Pošalji prijavu",
+    "descriptionLabel": "Opis (neobavezno)"
   },
   "offers": {
     "partner": "Partner",
@@ -505,7 +527,8 @@
     "adminPanel": "Admin panel",
     "donationSent": "Hvala na podršci!",
     "donating": "Obrada…",
-    "supportUnavailable": "Podrška još nije postavljena"
+    "supportUnavailable": "Podrška još nije postavljena",
+    "donateAmount": "Doniraj {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "Dodaj opis da bi te ljudi upoznali",
@@ -548,9 +571,12 @@
     "locked": "Zaključano",
     "photoUploadFailed": "Prijenos fotografije nije uspio",
     "sparksDesc": "Iskre se zarađuju aktivnošću — ne kupuju se. Pošalji ih kako bi nekome pokazao/la posebnu pažnju.",
-    "sparksAmount": "+{{count}} iskri",
+    "sparksAmount_one": "+{{count}} iskra",
+    "sparksAmount_few": "+{{count}} iskre",
+    "sparksAmount_other": "+{{count}} iskri",
     "sparksPerDay": "+{{count}} iskra/dan",
-    "photoDeleteFailed": "Brisanje fotografije nije uspjelo"
+    "photoDeleteFailed": "Brisanje fotografije nije uspjelo",
+    "profileAlt": "Profil: {{name}}"
   },
   "admin": {
     "panel": "Admin panel",

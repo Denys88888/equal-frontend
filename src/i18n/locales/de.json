@@ -9,7 +9,8 @@
     "trustPioneers": "60M+ Pioniere",
     "errPiBrowser": "Bitte öffne diese App im Pi Browser",
     "errAuthFailed": "Pi-Authentifizierung fehlgeschlagen",
-    "errTimeout": "Pi-Authentifizierung abgelaufen. Bitte versuche es erneut."
+    "errTimeout": "Pi-Authentifizierung abgelaufen. Bitte versuche es erneut.",
+    "heroAlt": "Zwei Menschen, die ein Herz bilden"
   },
   "nav": {
     "discover": "Entdecken",
@@ -24,7 +25,8 @@
     "spark": "Funke",
     "filter": "Filter",
     "compatibility": "Kompatibilität",
-    "compatRefresh": "Täglich aktualisiert • {{count}} hochkompatible Matches",
+    "compatRefresh_one": "Täglich aktualisiert • {{count}} hochkompatibles Match",
+    "compatRefresh_other": "Täglich aktualisiert • {{count}} hochkompatible Matches",
     "compatEmpty": "Komm morgen wieder für neue hochkompatible Matches!",
     "kmAway": "{{distance}} km entfernt",
     "matchPercent": "{{percent}}% Übereinstimmung",
@@ -35,7 +37,8 @@
     "verifiedOnly": "Nur verifizierte Benutzer",
     "onlineNow": "Gerade online",
     "resetAll": "Alles zurücksetzen",
-    "applyMatches": "Anwenden ({{count}} Matches)",
+    "applyMatches_one": "Anwenden ({{count}} Match)",
+    "applyMatches_other": "Anwenden ({{count}} Matches)",
     "itsAMatch": "Ein Match!",
     "likedEachOther": "Du und {{name}} habt euch gegenseitig geliked",
     "sendMessage": "Nachricht senden",
@@ -73,7 +76,8 @@
     "newUser": "Neu",
     "undo": "Rückgängig",
     "likeFailed": "Like konnte nicht gesendet werden",
-    "alreadyLiked": "Bereits geliked"
+    "alreadyLiked": "Bereits geliked",
+    "you": "Du"
   },
   "matches": {
     "title": "Matches",
@@ -95,7 +99,9 @@
     "giftPrefix": "Geschenk",
     "goDiscover": "Zu Entdecken",
     "message": "Nachricht",
-    "unmatchFailed": "Match konnte nicht aufgelöst werden – bitte versuche es erneut"
+    "unmatchFailed": "Match konnte nicht aufgelöst werden – bitte versuche es erneut",
+    "newCount": "{{count}} neu",
+    "noSearchResults": "Keine Unterhaltungen passend zu „{{query}}“"
   },
   "chat": {
     "typeMessage": "Nachricht schreiben...",
@@ -138,7 +144,9 @@
     "reportSubmitted": "Meldung eingereicht. Wir prüfen sie in Kürze.",
     "photoPreview": "Foto",
     "voicePreview": "Sprachnachricht",
-    "giftPreview": "Hat ein Geschenk gesendet"
+    "giftPreview": "Hat ein Geschenk gesendet",
+    "typing": "schreibt",
+    "sendGift": "{{gift}} senden"
   },
   "profile": {
     "edit": "Profil bearbeiten",
@@ -164,7 +172,9 @@
     "donate": "Equal unterstützen",
     "deleteAccount": "Konto löschen",
     "logout": "Abmelden",
-    "paymentHistory": "Zahlungsverlauf"
+    "paymentHistory": "Zahlungsverlauf",
+    "switchToLight": "Zum hellen Modus wechseln",
+    "switchToDark": "Zum dunklen Modus wechseln"
   },
   "onboarding": {
     "next": "Weiter",
@@ -265,7 +275,8 @@
     "seeking_everyone": "Alle",
     "saveFailed": "Dein Profil konnte nicht gespeichert werden — bitte versuche es erneut",
     "title6": "Deine Stimme",
-    "sub6": "Ein 10-Sekunden-Intro. Für Daily Match erforderlich."
+    "sub6": "Ein 10-Sekunden-Intro. Für Daily Match erforderlich.",
+    "photoTipsAlt": "Foto-Tipps"
   },
   "common": {
     "cancel": "Abbrechen",
@@ -279,7 +290,9 @@
     "cookieText": "Wir verwenden notwendige Cookies für die Authentifizierung und optionale Cookies für Analysen. Siehe unsere",
     "cookieAccept": "Alle akzeptieren",
     "cookieEssential": "Nur Notwendige",
-    "privacyPolicy": "Datenschutzerklärung"
+    "privacyPolicy": "Datenschutzerklärung",
+    "notFoundDesc": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+    "photoN": "Foto {{n}}"
   },
   "clubs": {
     "title": "Clubs",
@@ -347,7 +360,8 @@
     "upcomingEvents": "Bevorstehende Events",
     "interestedEvents": "Interessiert",
     "pastEvents": "Vergangene Events",
-    "nearYou": "{{count}} Events in deiner Nähe diese Woche",
+    "nearYou_one": "{{count}} anstehendes Event",
+    "nearYou_other": "{{count}} anstehende Events",
     "going": "Dabei",
     "attend": "Teilnehmen",
     "featured": "Hervorgehoben",
@@ -370,7 +384,8 @@
     "itWasOkay": "Es war okay",
     "submitFeedback": "Feedback senden",
     "thanksFeedback": "Danke für dein Feedback! Dein Vertrauensscore schätzt das.",
-    "peopleGoing": "{{count}} nehmen teil",
+    "peopleGoing_one": "{{count}} nimmt teil",
+    "peopleGoing_other": "{{count}} nehmen teil",
     "host": "Veranstalter",
     "youreGoing": "🎉 Du nimmst teil!",
     "showAtDoor": "Das an der Tür zeigen",
@@ -405,7 +420,8 @@
     "createTooMany": "Du hast bereits 3 Events in Prüfung.",
     "createFailed": "Event konnte nicht eingereicht werden — bitte versuche es erneut",
     "pendingReview": "In Prüfung",
-    "pendingReviewDesc": "Nur du siehst dieses Event, bis ein Admin es freigibt."
+    "pendingReviewDesc": "Nur du siehst dieses Event, bis ein Admin es freigibt.",
+    "noSavedDesc": "Tippe bei Events, die dich interessieren, auf den Stern, um sie hier zu speichern."
   },
   "video": {
     "connecting": "Verbinden...",
@@ -413,7 +429,8 @@
     "inCall": "Im Gespräch",
     "callEnded": "Anruf beendet",
     "callFailed": "Anruf fehlgeschlagen",
-    "backToChat": "Zurück zum Chat"
+    "backToChat": "Zurück zum Chat",
+    "duration": "Dauer: {{time}}"
   },
   "report": {
     "title": "{{name}} melden",
@@ -424,7 +441,8 @@
     "inappropriate": "Unangemessener Inhalt",
     "other": "Sonstiges",
     "detailsPlaceholder": "Erzähl uns mehr über das Problem...",
-    "submit": "Meldung einreichen"
+    "submit": "Meldung einreichen",
+    "descriptionLabel": "Beschreibung (optional)"
   },
   "offers": {
     "partner": "Partner",
@@ -503,7 +521,8 @@
     "adminPanel": "Admin-Panel",
     "donationSent": "Danke für deine Unterstützung!",
     "donating": "Wird verarbeitet…",
-    "supportUnavailable": "Der Support ist noch nicht eingerichtet"
+    "supportUnavailable": "Der Support ist noch nicht eingerichtet",
+    "donateAmount": "{{amount}} Pi spenden"
   },
   "profile2": {
     "addBioHint": "Füge eine Bio hinzu, damit die Leute dich kennenlernen",
@@ -546,9 +565,11 @@
     "locked": "Gesperrt",
     "photoUploadFailed": "Foto konnte nicht hochgeladen werden",
     "sparksDesc": "Funken werden durch Aktivität verdient — nicht gekauft. Sende sie, um jemandem besondere Aufmerksamkeit zu zeigen.",
-    "sparksAmount": "+{{count}} Funken",
+    "sparksAmount_one": "+{{count}} Funke",
+    "sparksAmount_other": "+{{count}} Funken",
     "sparksPerDay": "+{{count}} Funke/Tag",
-    "photoDeleteFailed": "Foto konnte nicht gelöscht werden"
+    "photoDeleteFailed": "Foto konnte nicht gelöscht werden",
+    "profileAlt": "Profil von {{name}}"
   },
   "admin": {
     "panel": "Admin-Panel",

@@ -9,7 +9,8 @@
     "trustPioneers": "بیش از ۶۰ میلیون Pioneer",
     "errPiBrowser": "این اپلیکیشن را در Pi Browser باز کنید",
     "errAuthFailed": "احراز هویت Pi ناموفق بود",
-    "errTimeout": "زمان احراز هویت Pi به پایان رسید. دوباره تلاش کنید."
+    "errTimeout": "زمان احراز هویت Pi به پایان رسید. دوباره تلاش کنید.",
+    "heroAlt": "دو نفر که یک قلب را تشکیل می‌دهند"
   },
   "nav": {
     "discover": "اکتشاف",
@@ -24,7 +25,8 @@
     "spark": "جرقه",
     "filter": "فیلتر",
     "compatibility": "سازگاری",
-    "compatRefresh": "هر روز به‌روزرسانی می‌شود • {{count}} تطبیق با سازگاری بالا",
+    "compatRefresh_one": "هر روز به‌روزرسانی می‌شود • {{count}} تطبیق با سازگاری بالا",
+    "compatRefresh_other": "هر روز به‌روزرسانی می‌شود • {{count}} تطبیق با سازگاری بالا",
     "compatEmpty": "فردا برای تطبیق‌های جدید با سازگاری بالا برگردید!",
     "kmAway": "{{distance}} کیلومتر فاصله",
     "matchPercent": "{{percent}}% سازگاری",
@@ -35,7 +37,8 @@
     "verifiedOnly": "فقط کاربران تأییدشده",
     "onlineNow": "اکنون آنلاین",
     "resetAll": "بازنشانی همه",
-    "applyMatches": "اعمال ({{count}} تطبیق)",
+    "applyMatches_one": "اعمال ({{count}} تطبیق)",
+    "applyMatches_other": "اعمال ({{count}} تطبیق)",
     "itsAMatch": "این یک تطبیق است!",
     "likedEachOther": "شما و {{name}} همدیگر را پسندیدید",
     "sendMessage": "ارسال پیام",
@@ -73,7 +76,8 @@
     "newUser": "جدید",
     "undo": "برگرداندن",
     "likeFailed": "ارسال پسند انجام نشد",
-    "alreadyLiked": "قبلاً پسندیده شده"
+    "alreadyLiked": "قبلاً پسندیده شده",
+    "you": "شما"
   },
   "matches": {
     "title": "هم‌نشین‌ها",
@@ -95,7 +99,9 @@
     "giftPrefix": "هدیه",
     "goDiscover": "برو به کشف",
     "message": "پیام",
-    "unmatchFailed": "لغو تطبیق انجام نشد — دوباره تلاش کنید"
+    "unmatchFailed": "لغو تطبیق انجام نشد — دوباره تلاش کنید",
+    "newCount": "{{count}} جدید",
+    "noSearchResults": "هیچ گفتگویی با «{{query}}» مطابقت ندارد"
   },
   "chat": {
     "typeMessage": "پیام بنویسید...",
@@ -138,7 +144,9 @@
     "reportSubmitted": "گزارش ارسال شد. به‌زودی بررسی می‌کنیم.",
     "photoPreview": "عکس",
     "voicePreview": "پیام صوتی",
-    "giftPreview": "یک هدیه فرستاد"
+    "giftPreview": "یک هدیه فرستاد",
+    "typing": "در حال نوشتن",
+    "sendGift": "ارسال {{gift}}"
   },
   "profile": {
     "edit": "ویرایش پروفایل",
@@ -164,7 +172,9 @@
     "donate": "حمایت از Equal",
     "deleteAccount": "حذف حساب کاربری",
     "logout": "خروج از حساب",
-    "paymentHistory": "تاریخچه پرداخت"
+    "paymentHistory": "تاریخچه پرداخت",
+    "switchToLight": "تغییر به حالت روشن",
+    "switchToDark": "تغییر به حالت تیره"
   },
   "onboarding": {
     "next": "بعدی",
@@ -265,7 +275,8 @@
     "seeking_everyone": "همه",
     "saveFailed": "ذخیره پروفایل شما انجام نشد — دوباره تلاش کنید",
     "title6": "صدای شما",
-    "sub6": "یک معرفی ۱۰ ثانیه‌ای. برای پیوستن به تطبیق روزانه الزامی است."
+    "sub6": "یک معرفی ۱۰ ثانیه‌ای. برای پیوستن به تطبیق روزانه الزامی است.",
+    "photoTipsAlt": "نکات عکس"
   },
   "common": {
     "cancel": "لغو",
@@ -279,7 +290,9 @@
     "cookieText": "ما از کوکی‌های ضروری برای احراز هویت و کوکی‌های اختیاری برای تحلیل استفاده می‌کنیم. مشاهده",
     "cookieAccept": "پذیرش همه",
     "cookieEssential": "فقط ضروری‌ها",
-    "privacyPolicy": "سیاست حریم خصوصی"
+    "privacyPolicy": "سیاست حریم خصوصی",
+    "notFoundDesc": "صفحه‌ای که دنبال آن هستید وجود ندارد یا منتقل شده است.",
+    "photoN": "عکس {{n}}"
   },
   "clubs": {
     "title": "باشگاه‌ها",
@@ -347,7 +360,8 @@
     "upcomingEvents": "رویدادهای پیش رو",
     "interestedEvents": "علاقه‌مندم",
     "pastEvents": "رویدادهای گذشته",
-    "nearYou": "{{count}} رویداد نزدیک شما این هفته",
+    "nearYou_one": "{{count}} رویداد پیش رو",
+    "nearYou_other": "{{count}} رویداد پیش رو",
     "going": "می‌آیم",
     "attend": "شرکت",
     "featured": "ویژه",
@@ -370,7 +384,8 @@
     "itWasOkay": "خوب بود",
     "submitFeedback": "ارسال بازخورد",
     "thanksFeedback": "از بازخوردتان سپاسگزاریم! امتیاز اعتماد شما از آن بهره می‌برد.",
-    "peopleGoing": "{{count}} نفر می‌آیند",
+    "peopleGoing_one": "{{count}} نفر می‌آیند",
+    "peopleGoing_other": "{{count}} نفر می‌آیند",
     "host": "میزبان",
     "youreGoing": "🎉 شما می‌آیید!",
     "showAtDoor": "این را دم در نشان دهید",
@@ -405,7 +420,8 @@
     "createTooMany": "شما در حال حاضر ۳ رویداد در انتظار بررسی دارید.",
     "createFailed": "ارسال رویداد ممکن نشد — لطفاً دوباره تلاش کنید",
     "pendingReview": "در حال بررسی",
-    "pendingReviewDesc": "تا زمانی که مدیر این رویداد را تأیید نکند، فقط شما آن را می‌بینید."
+    "pendingReviewDesc": "تا زمانی که مدیر این رویداد را تأیید نکند، فقط شما آن را می‌بینید.",
+    "noSavedDesc": "روی نماد ستاره در رویدادهای مورد علاقه‌تان بزنید تا اینجا ذخیره شوند."
   },
   "video": {
     "connecting": "در حال اتصال...",
@@ -413,7 +429,8 @@
     "inCall": "در تماس",
     "callEnded": "تماس پایان یافت",
     "callFailed": "تماس ناموفق بود",
-    "backToChat": "بازگشت به گفتگو"
+    "backToChat": "بازگشت به گفتگو",
+    "duration": "مدت: {{time}}"
   },
   "report": {
     "title": "گزارش {{name}}",
@@ -424,7 +441,8 @@
     "inappropriate": "محتوای نامناسب",
     "other": "دیگر",
     "detailsPlaceholder": "بیشتر درباره مشکل به ما بگویید...",
-    "submit": "ارسال گزارش"
+    "submit": "ارسال گزارش",
+    "descriptionLabel": "توضیحات (اختیاری)"
   },
   "offers": {
     "partner": "شریک",
@@ -503,7 +521,8 @@
     "adminPanel": "پنل مدیریت",
     "donationSent": "بابت حمایت شما سپاسگزاریم!",
     "donating": "در حال پردازش…",
-    "supportUnavailable": "پشتیبانی هنوز راه‌اندازی نشده است"
+    "supportUnavailable": "پشتیبانی هنوز راه‌اندازی نشده است",
+    "donateAmount": "اهدای {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "بیوگرافی اضافه کنید تا افراد شما را بهتر بشناسند",
@@ -546,9 +565,11 @@
     "locked": "قفل‌شده",
     "photoUploadFailed": "بارگذاری عکس انجام نشد",
     "sparksDesc": "جرقه‌ها با فعالیت کسب می‌شوند — خریداری نمی‌شوند. آن‌ها را ارسال کنید تا توجه ویژه‌ای به کسی نشان دهید.",
-    "sparksAmount": "+{{count}} جرقه",
+    "sparksAmount_one": "+{{count}} جرقه",
+    "sparksAmount_other": "+{{count}} جرقه",
     "sparksPerDay": "+{{count}} جرقه در روز",
-    "photoDeleteFailed": "حذف عکس انجام نشد"
+    "photoDeleteFailed": "حذف عکس انجام نشد",
+    "profileAlt": "نمایه {{name}}"
   },
   "admin": {
     "panel": "پنل مدیریت",

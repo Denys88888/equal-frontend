@@ -19,6 +19,15 @@ const REPORT_REASONS = [
   'Other',
 ] as const;
 
+/** The English reason is what the backend stores; only the label is translated. */
+const REASON_KEYS: Record<(typeof REPORT_REASONS)[number], string> = {
+  Spam: 'report.spam',
+  Harassment: 'report.harassment',
+  'Fake Profile': 'report.fakeProfile',
+  'Inappropriate Content': 'report.inappropriate',
+  Other: 'report.other',
+};
+
 interface ReportDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -73,7 +82,7 @@ export default function ReportDialog({
               color: 'var(--charcoal)',
             }}
           >
-            Report {userName}
+            {t('report.title', { name: userName })}
           </DialogTitle>
           <DialogDescription
             className="text-center text-sm"
@@ -118,7 +127,7 @@ export default function ReportDialog({
                     color: 'var(--charcoal)',
                   }}
                 >
-                  {reason}
+                  {t(REASON_KEYS[reason])}
                 </span>
               </label>
             ))}
@@ -135,7 +144,7 @@ export default function ReportDialog({
               letterSpacing: '0.44px',
             }}
           >
-            Description (optional)
+            {t('report.descriptionLabel')}
           </label>
           <Textarea
             value={description}

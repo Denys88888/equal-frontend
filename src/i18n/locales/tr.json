@@ -9,7 +9,8 @@
     "trustPioneers": "60 milyondan fazla Pioneer",
     "errPiBrowser": "Lütfen bu uygulamayı Pi Browser'da aç",
     "errAuthFailed": "Pi kimlik doğrulaması başarısız",
-    "errTimeout": "Pi kimlik doğrulaması zaman aşımına uğradı. Lütfen tekrar dene."
+    "errTimeout": "Pi kimlik doğrulaması zaman aşımına uğradı. Lütfen tekrar dene.",
+    "heroAlt": "Kalp oluşturan iki kişi"
   },
   "nav": {
     "discover": "Keşfet",
@@ -24,7 +25,8 @@
     "spark": "Kıvılcım",
     "filter": "Filtrele",
     "compatibility": "Uyumluluk",
-    "compatRefresh": "Her gün yenilenir • {{count}} yüksek uyumlu eşleşme",
+    "compatRefresh_one": "Her gün yenilenir • {{count}} yüksek uyumlu eşleşme",
+    "compatRefresh_other": "Her gün yenilenir • {{count}} yüksek uyumlu eşleşme",
     "compatEmpty": "Yeni yüksek uyumlu eşleşmeler için yarın tekrar bak!",
     "kmAway": "{{distance}} km uzakta",
     "matchPercent": "%{{percent}} Uyum",
@@ -35,7 +37,8 @@
     "verifiedOnly": "Yalnızca doğrulanmış kullanıcılar",
     "onlineNow": "Şu anda çevrimiçi",
     "resetAll": "Tümünü sıfırla",
-    "applyMatches": "Uygula ({{count}} eşleşme)",
+    "applyMatches_one": "Uygula ({{count}} eşleşme)",
+    "applyMatches_other": "Uygula ({{count}} eşleşme)",
     "itsAMatch": "Eşleştiniz!",
     "likedEachOther": "Sen ve {{name}} birbirinizi beğendiniz",
     "sendMessage": "Mesaj gönder",
@@ -73,7 +76,8 @@
     "newUser": "Yeni",
     "undo": "Geri al",
     "likeFailed": "Beğeni gönderilemedi",
-    "alreadyLiked": "Zaten beğenildi"
+    "alreadyLiked": "Zaten beğenildi",
+    "you": "Siz"
   },
   "matches": {
     "title": "Eşleşmeler",
@@ -95,7 +99,9 @@
     "giftPrefix": "Hediye",
     "goDiscover": "Keşfet'e git",
     "message": "Mesaj",
-    "unmatchFailed": "Eşleşme kaldırılamadı — lütfen tekrar dene"
+    "unmatchFailed": "Eşleşme kaldırılamadı — lütfen tekrar dene",
+    "newCount": "{{count}} yeni",
+    "noSearchResults": "“{{query}}” ile eşleşen sohbet yok"
   },
   "chat": {
     "typeMessage": "Bir mesaj yaz...",
@@ -138,7 +144,9 @@
     "reportSubmitted": "Bildirim gönderildi. Kısa süre içinde inceleyeceğiz.",
     "photoPreview": "Fotoğraf",
     "voicePreview": "Sesli mesaj",
-    "giftPreview": "Bir hediye gönderdi"
+    "giftPreview": "Bir hediye gönderdi",
+    "typing": "yazıyor",
+    "sendGift": "{{gift}} gönder"
   },
   "profile": {
     "edit": "Profili Düzenle",
@@ -164,7 +172,9 @@
     "donate": "Equal'ı Destekle",
     "deleteAccount": "Hesabı Sil",
     "logout": "Çıkış Yap",
-    "paymentHistory": "Ödeme Geçmişi"
+    "paymentHistory": "Ödeme Geçmişi",
+    "switchToLight": "Açık moda geç",
+    "switchToDark": "Koyu moda geç"
   },
   "onboarding": {
     "next": "İleri",
@@ -265,7 +275,8 @@
     "seeking_everyone": "Herkes",
     "saveFailed": "Profilin kaydedilemedi — lütfen tekrar dene",
     "title6": "Sesin",
-    "sub6": "10 saniyelik bir tanıtım. Günlük Eşleşme'ye katılmak için zorunlu."
+    "sub6": "10 saniyelik bir tanıtım. Günlük Eşleşme'ye katılmak için zorunlu.",
+    "photoTipsAlt": "Fotoğraf ipuçları"
   },
   "common": {
     "cancel": "İptal",
@@ -279,7 +290,9 @@
     "cookieText": "Kimlik doğrulama için zorunlu, analiz için isteğe bağlı çerezler kullanıyoruz. Bakabilirsin:",
     "cookieAccept": "Tümünü kabul et",
     "cookieEssential": "Yalnızca zorunlu",
-    "privacyPolicy": "Gizlilik Politikası"
+    "privacyPolicy": "Gizlilik Politikası",
+    "notFoundDesc": "Aradığınız sayfa mevcut değil veya taşınmış.",
+    "photoN": "Fotoğraf {{n}}"
   },
   "clubs": {
     "title": "Kulüpler",
@@ -347,7 +360,8 @@
     "upcomingEvents": "Yaklaşan etkinlikler",
     "interestedEvents": "İlgileniyor",
     "pastEvents": "Geçmiş etkinlikler",
-    "nearYou": "Bu hafta yakınınızda {{count}} etkinlik",
+    "nearYou_one": "{{count}} yaklaşan etkinlik",
+    "nearYou_other": "{{count}} yaklaşan etkinlik",
     "going": "Katılıyorum",
     "attend": "Katıl",
     "featured": "Öne çıkan",
@@ -370,7 +384,8 @@
     "itWasOkay": "Fena değildi",
     "submitFeedback": "Geri bildirim gönder",
     "thanksFeedback": "Geri bildirimin için teşekkürler! Güven Puanın da bundan faydalanıyor.",
-    "peopleGoing": "{{count}} kişi gidiyor",
+    "peopleGoing_one": "{{count}} kişi gidiyor",
+    "peopleGoing_other": "{{count}} kişi gidiyor",
     "host": "Düzenleyen",
     "youreGoing": "🎉 Katılıyorsun!",
     "showAtDoor": "Bunu girişte göster",
@@ -405,7 +420,8 @@
     "createTooMany": "İncelemeyi bekleyen 3 etkinliğiniz zaten var.",
     "createFailed": "Etkinlik gönderilemedi — lütfen tekrar deneyin",
     "pendingReview": "İncelemede",
-    "pendingReviewDesc": "Bir yönetici onaylayana kadar bu etkinliği yalnızca siz görürsünüz."
+    "pendingReviewDesc": "Bir yönetici onaylayana kadar bu etkinliği yalnızca siz görürsünüz.",
+    "noSavedDesc": "İlgilendiğiniz etkinliklerdeki yıldıza dokunarak onları buraya kaydedin."
   },
   "video": {
     "connecting": "Bağlanıyor...",
@@ -413,7 +429,8 @@
     "inCall": "Görüşmede",
     "callEnded": "Görüşme sona erdi",
     "callFailed": "Görüşme başarısız",
-    "backToChat": "Sohbete dön"
+    "backToChat": "Sohbete dön",
+    "duration": "Süre: {{time}}"
   },
   "report": {
     "title": "{{name}} kişisini bildir",
@@ -424,7 +441,8 @@
     "inappropriate": "Uygunsuz içerik",
     "other": "Diğer",
     "detailsPlaceholder": "Sorun hakkında bize daha fazla bilgi ver...",
-    "submit": "Bildirimi gönder"
+    "submit": "Bildirimi gönder",
+    "descriptionLabel": "Açıklama (isteğe bağlı)"
   },
   "offers": {
     "partner": "Partner",
@@ -503,7 +521,8 @@
     "adminPanel": "Yönetim paneli",
     "donationSent": "Desteğin için teşekkürler!",
     "donating": "İşleniyor…",
-    "supportUnavailable": "Destek henüz yapılandırılmadı"
+    "supportUnavailable": "Destek henüz yapılandırılmadı",
+    "donateAmount": "{{amount}} Pi bağışla"
   },
   "profile2": {
     "addBioHint": "İnsanların seni tanıması için bir biyografi ekle",
@@ -546,9 +565,11 @@
     "locked": "Kilitli",
     "photoUploadFailed": "Fotoğraf yüklenemedi",
     "sparksDesc": "Kıvılcımlar aktiflikle kazanılır, satın alınmaz. Birine özel ilgi göstermek için gönder.",
-    "sparksAmount": "+{{count}} Kıvılcım",
+    "sparksAmount_one": "+{{count}} Kıvılcım",
+    "sparksAmount_other": "+{{count}} Kıvılcım",
     "sparksPerDay": "Günde +{{count}} Kıvılcım",
-    "photoDeleteFailed": "Fotoğraf silinemedi"
+    "photoDeleteFailed": "Fotoğraf silinemedi",
+    "profileAlt": "{{name}} profili"
   },
   "admin": {
     "panel": "Yönetim paneli",

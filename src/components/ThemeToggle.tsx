@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { Sun, Moon } from 'lucide-react';
 import { useDarkMode } from '@/hooks/useDarkMode';
 
@@ -11,6 +12,8 @@ const easeOutExpo = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
 export default function ThemeToggle({ size = 20, className = '' }: ThemeToggleProps) {
   const { isDark, toggle } = useDarkMode();
+  const { t } = useTranslation();
+  const label = isDark ? t('settings.switchToLight') : t('settings.switchToDark');
 
   return (
     <motion.button
@@ -20,8 +23,8 @@ export default function ThemeToggle({ size = 20, className = '' }: ThemeTogglePr
       style={{
         backgroundColor: isDark ? 'rgba(187,131,201,0.15)' : 'rgba(var(--charcoal-rgb), 0.05)',
       }}
-      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-      title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-label={label}
+      title={label}
     >
       <motion.div
         key={isDark ? 'dark' : 'light'}

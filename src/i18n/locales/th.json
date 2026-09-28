@@ -9,7 +9,8 @@
     "trustPioneers": "ผู้บุกเบิกกว่า 60 ล้านคน",
     "errPiBrowser": "โปรดเปิดแอปนี้ใน Pi Browser",
     "errAuthFailed": "การยืนยันตัวตน Pi ล้มเหลว",
-    "errTimeout": "การยืนยันตัวตน Pi หมดเวลา โปรดลองอีกครั้ง"
+    "errTimeout": "การยืนยันตัวตน Pi หมดเวลา โปรดลองอีกครั้ง",
+    "heroAlt": "คนสองคนรวมกันเป็นรูปหัวใจ"
   },
   "nav": {
     "discover": "ค้นหา",
@@ -24,7 +25,7 @@
     "spark": "ประกายไฟ",
     "filter": "ตัวกรอง",
     "compatibility": "ความเข้ากัน",
-    "compatRefresh": "อัปเดตทุกวัน • แมตช์ที่เข้ากันสูง {{count}} คน",
+    "compatRefresh_other": "อัปเดตทุกวัน • แมตช์ที่เข้ากันสูง {{count}} คน",
     "compatEmpty": "กลับมาพรุ่งนี้เพื่อดูแมตช์ที่เข้ากันสูงใหม่ ๆ!",
     "kmAway": "ห่าง {{distance}} กม.",
     "matchPercent": "ตรงกัน {{percent}}%",
@@ -35,7 +36,7 @@
     "verifiedOnly": "เฉพาะผู้ใช้ที่ยืนยันแล้ว",
     "onlineNow": "ออนไลน์อยู่",
     "resetAll": "รีเซ็ตทั้งหมด",
-    "applyMatches": "ใช้ตัวกรอง ({{count}} แมตช์)",
+    "applyMatches_other": "ใช้ตัวกรอง ({{count}} แมตช์)",
     "itsAMatch": "แมตช์กันแล้ว!",
     "likedEachOther": "คุณกับ {{name}} ถูกใจกันและกัน",
     "sendMessage": "ส่งข้อความ",
@@ -73,7 +74,8 @@
     "newUser": "ใหม่",
     "undo": "เลิกทำ",
     "likeFailed": "ส่งการถูกใจไม่สำเร็จ",
-    "alreadyLiked": "ถูกใจไปแล้ว"
+    "alreadyLiked": "ถูกใจไปแล้ว",
+    "you": "คุณ"
   },
   "matches": {
     "title": "คู่ที่ตรงกัน",
@@ -95,7 +97,9 @@
     "giftPrefix": "ของขวัญ",
     "goDiscover": "ไปที่ค้นหา",
     "message": "ข้อความ",
-    "unmatchFailed": "ยกเลิกแมตช์ไม่สำเร็จ — โปรดลองอีกครั้ง"
+    "unmatchFailed": "ยกเลิกแมตช์ไม่สำเร็จ — โปรดลองอีกครั้ง",
+    "newCount": "ใหม่ {{count}}",
+    "noSearchResults": "ไม่มีการสนทนาที่ตรงกับ “{{query}}”"
   },
   "chat": {
     "typeMessage": "พิมพ์ข้อความ...",
@@ -138,7 +142,9 @@
     "reportSubmitted": "ส่งรายงานแล้ว เราจะตรวจสอบเร็ว ๆ นี้",
     "photoPreview": "รูปภาพ",
     "voicePreview": "ข้อความเสียง",
-    "giftPreview": "ส่งของขวัญ"
+    "giftPreview": "ส่งของขวัญ",
+    "typing": "กำลังพิมพ์",
+    "sendGift": "ส่ง{{gift}}"
   },
   "profile": {
     "edit": "แก้ไขโปรไฟล์",
@@ -164,7 +170,9 @@
     "donate": "สนับสนุน Equal",
     "deleteAccount": "ลบบัญชี",
     "logout": "ออกจากระบบ",
-    "paymentHistory": "ประวัติการชำระเงิน"
+    "paymentHistory": "ประวัติการชำระเงิน",
+    "switchToLight": "เปลี่ยนเป็นโหมดสว่าง",
+    "switchToDark": "เปลี่ยนเป็นโหมดมืด"
   },
   "onboarding": {
     "next": "ถัดไป",
@@ -265,7 +273,8 @@
     "seeking_everyone": "ทุกคน",
     "saveFailed": "บันทึกโปรไฟล์ไม่สำเร็จ — โปรดลองอีกครั้ง",
     "title6": "เสียงของคุณ",
-    "sub6": "แนะนำตัว 10 วินาที จำเป็นสำหรับการเข้าร่วมแมตช์รายวัน"
+    "sub6": "แนะนำตัว 10 วินาที จำเป็นสำหรับการเข้าร่วมแมตช์รายวัน",
+    "photoTipsAlt": "เคล็ดลับการถ่ายรูป"
   },
   "common": {
     "cancel": "ยกเลิก",
@@ -279,7 +288,9 @@
     "cookieText": "เราใช้คุกกี้ที่จำเป็นสำหรับการยืนยันตัวตน และคุกกี้เสริมสำหรับการวิเคราะห์ ดูได้ที่",
     "cookieAccept": "ยอมรับทั้งหมด",
     "cookieEssential": "เฉพาะที่จำเป็น",
-    "privacyPolicy": "นโยบายความเป็นส่วนตัว"
+    "privacyPolicy": "นโยบายความเป็นส่วนตัว",
+    "notFoundDesc": "ไม่พบหน้าที่คุณกำลังค้นหา หรือหน้านั้นถูกย้ายแล้ว",
+    "photoN": "รูปที่ {{n}}"
   },
   "clubs": {
     "title": "คลับ",
@@ -345,7 +356,7 @@
     "upcomingEvents": "กิจกรรมที่กำลังจะมาถึง",
     "interestedEvents": "สนใจ",
     "pastEvents": "กิจกรรมที่ผ่านมา",
-    "nearYou": "{{count}} กิจกรรมใกล้คุณสัปดาห์นี้",
+    "nearYou_other": "{{count}} กิจกรรมที่กำลังจะมาถึง",
     "going": "จะไป",
     "attend": "เข้าร่วม",
     "featured": "แนะนำ",
@@ -368,7 +379,7 @@
     "itWasOkay": "ก็โอเค",
     "submitFeedback": "ส่งความเห็น",
     "thanksFeedback": "ขอบคุณสำหรับความเห็น! คะแนนความน่าเชื่อถือของคุณได้ประโยชน์จากสิ่งนี้",
-    "peopleGoing": "{{count}} คนจะไป",
+    "peopleGoing_other": "{{count}} คนจะไป",
     "host": "ผู้จัด",
     "youreGoing": "🎉 คุณจะไปแล้ว!",
     "showAtDoor": "แสดงสิ่งนี้ที่ทางเข้า",
@@ -403,7 +414,8 @@
     "createTooMany": "คุณมีกิจกรรมรอตรวจสอบอยู่แล้ว 3 รายการ",
     "createFailed": "ส่งกิจกรรมไม่สำเร็จ — โปรดลองอีกครั้ง",
     "pendingReview": "รอตรวจสอบ",
-    "pendingReviewDesc": "มีเพียงคุณที่เห็นกิจกรรมนี้จนกว่าผู้ดูแลจะอนุมัติ"
+    "pendingReviewDesc": "มีเพียงคุณที่เห็นกิจกรรมนี้จนกว่าผู้ดูแลจะอนุมัติ",
+    "noSavedDesc": "แตะไอคอนดาวบนกิจกรรมที่คุณสนใจเพื่อบันทึกไว้ที่นี่"
   },
   "video": {
     "connecting": "กำลังเชื่อมต่อ...",
@@ -411,7 +423,8 @@
     "inCall": "อยู่ในสาย",
     "callEnded": "สิ้นสุดการโทร",
     "callFailed": "การโทรล้มเหลว",
-    "backToChat": "กลับไปที่แชท"
+    "backToChat": "กลับไปที่แชท",
+    "duration": "ระยะเวลา: {{time}}"
   },
   "report": {
     "title": "รายงาน {{name}}",
@@ -422,7 +435,8 @@
     "inappropriate": "เนื้อหาไม่เหมาะสม",
     "other": "อื่น ๆ",
     "detailsPlaceholder": "เล่าปัญหาให้เราฟังเพิ่มเติม...",
-    "submit": "ส่งรายงาน"
+    "submit": "ส่งรายงาน",
+    "descriptionLabel": "คำอธิบาย (ไม่บังคับ)"
   },
   "offers": {
     "partner": "พาร์ตเนอร์",
@@ -501,7 +515,8 @@
     "adminPanel": "แผงผู้ดูแลระบบ",
     "donationSent": "ขอบคุณสำหรับการสนับสนุน!",
     "donating": "กำลังดำเนินการ…",
-    "supportUnavailable": "ยังไม่ได้ตั้งค่าช่องทางสนับสนุน"
+    "supportUnavailable": "ยังไม่ได้ตั้งค่าช่องทางสนับสนุน",
+    "donateAmount": "บริจาค {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "เพิ่มคำแนะนำตัวเพื่อให้คนอื่นรู้จักคุณ",
@@ -544,9 +559,10 @@
     "locked": "ล็อกอยู่",
     "photoUploadFailed": "อัปโหลดรูปภาพไม่สำเร็จ",
     "sparksDesc": "ประกายไฟได้มาจากการใช้งาน ไม่ใช่การซื้อ ส่งให้เพื่อแสดงความใส่ใจเป็นพิเศษกับใครสักคน",
-    "sparksAmount": "+{{count}} ประกายไฟ",
+    "sparksAmount_other": "+{{count}} ประกายไฟ",
     "sparksPerDay": "+{{count}} ประกายไฟ/วัน",
-    "photoDeleteFailed": "ลบรูปภาพไม่สำเร็จ"
+    "photoDeleteFailed": "ลบรูปภาพไม่สำเร็จ",
+    "profileAlt": "โปรไฟล์ของ {{name}}"
   },
   "admin": {
     "panel": "แผงผู้ดูแลระบบ",

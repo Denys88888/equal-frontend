@@ -9,7 +9,8 @@
     "trustPioneers": "Přes 60 mil. Pionýrů",
     "errPiBrowser": "Otevři tuto aplikaci v Pi Browseru",
     "errAuthFailed": "Ověření Pi se nezdařilo",
-    "errTimeout": "Vypršel čas ověření Pi. Zkus to znovu."
+    "errTimeout": "Vypršel čas ověření Pi. Zkus to znovu.",
+    "heroAlt": "Dva lidé tvořící srdce"
   },
   "nav": {
     "discover": "Objevovat",
@@ -24,7 +25,10 @@
     "spark": "Jiskra",
     "filter": "Filtr",
     "compatibility": "Kompatibilita",
-    "compatRefresh": "Obnovuje se denně • {{count}} shod s vysokou kompatibilitou",
+    "compatRefresh_one": "Obnovuje se denně • {{count}} shoda s vysokou kompatibilitou",
+    "compatRefresh_few": "Obnovuje se denně • {{count}} shody s vysokou kompatibilitou",
+    "compatRefresh_many": "Obnovuje se denně • {{count}} shody s vysokou kompatibilitou",
+    "compatRefresh_other": "Obnovuje se denně • {{count}} shod s vysokou kompatibilitou",
     "compatEmpty": "Vrať se zítra pro nové shody s vysokou kompatibilitou!",
     "kmAway": "{{distance}} km daleko",
     "matchPercent": "{{percent}}% shoda",
@@ -35,7 +39,10 @@
     "verifiedOnly": "Pouze ověření uživatelé",
     "onlineNow": "Právě online",
     "resetAll": "Resetovat vše",
-    "applyMatches": "Použít ({{count}} shod)",
+    "applyMatches_one": "Použít ({{count}} shoda)",
+    "applyMatches_few": "Použít ({{count}} shody)",
+    "applyMatches_many": "Použít ({{count}} shody)",
+    "applyMatches_other": "Použít ({{count}} shod)",
     "itsAMatch": "Je to shoda!",
     "likedEachOther": "Tobě i {{name}} jste se navzájem líbili",
     "sendMessage": "Poslat zprávu",
@@ -73,7 +80,8 @@
     "newUser": "Nový",
     "undo": "Zpět",
     "likeFailed": "Nepodařilo se odeslat lajk",
-    "alreadyLiked": "Už jsi dal(a) lajk"
+    "alreadyLiked": "Už jsi dal(a) lajk",
+    "you": "Ty"
   },
   "matches": {
     "title": "Shody",
@@ -95,7 +103,9 @@
     "giftPrefix": "Dárek",
     "goDiscover": "Přejít na Objevovat",
     "message": "Zpráva",
-    "unmatchFailed": "Shodu se nepodařilo zrušit — zkus to znovu"
+    "unmatchFailed": "Shodu se nepodařilo zrušit — zkus to znovu",
+    "newCount": "Nové: {{count}}",
+    "noSearchResults": "Žádné konverzace neodpovídají „{{query}}“"
   },
   "chat": {
     "typeMessage": "Napiš zprávu...",
@@ -138,7 +148,9 @@
     "reportSubmitted": "Hlášení odesláno. Brzy se na něj podíváme.",
     "photoPreview": "Fotka",
     "voicePreview": "Hlasová zpráva",
-    "giftPreview": "Poslal(a) dárek"
+    "giftPreview": "Poslal(a) dárek",
+    "typing": "píše",
+    "sendGift": "Poslat dárek: {{gift}}"
   },
   "profile": {
     "edit": "Upravit profil",
@@ -164,7 +176,9 @@
     "donate": "Podpořit Equal",
     "deleteAccount": "Smazat účet",
     "logout": "Odhlásit se",
-    "paymentHistory": "Historie plateb"
+    "paymentHistory": "Historie plateb",
+    "switchToLight": "Přepnout na světlý režim",
+    "switchToDark": "Přepnout na tmavý režim"
   },
   "onboarding": {
     "next": "Další",
@@ -265,7 +279,8 @@
     "seeking_everyone": "Všechny",
     "saveFailed": "Profil se nepodařilo uložit — zkus to znovu",
     "title6": "Tvůj hlas",
-    "sub6": "10sekundové představení. Povinné pro zapojení do Denní shody."
+    "sub6": "10sekundové představení. Povinné pro zapojení do Denní shody.",
+    "photoTipsAlt": "Tipy k fotkám"
   },
   "common": {
     "cancel": "Zrušit",
@@ -279,7 +294,9 @@
     "cookieText": "Používáme nezbytné cookies pro přihlášení a volitelné pro analytiku. Podívej se na naše",
     "cookieAccept": "Přijmout vše",
     "cookieEssential": "Jen nezbytné",
-    "privacyPolicy": "Zásady ochrany soukromí"
+    "privacyPolicy": "Zásady ochrany soukromí",
+    "notFoundDesc": "Stránka, kterou hledáš, neexistuje nebo byla přesunuta.",
+    "photoN": "Fotka {{n}}"
   },
   "clubs": {
     "title": "Kluby",
@@ -351,7 +368,10 @@
     "upcomingEvents": "Nadcházející události",
     "interestedEvents": "Zajímá mě",
     "pastEvents": "Proběhlé události",
-    "nearYou": "{{count}} událostí ve tvém okolí tento týden",
+    "nearYou_one": "{{count}} nadcházející událost",
+    "nearYou_few": "{{count}} nadcházející události",
+    "nearYou_many": "{{count}} nadcházející události",
+    "nearYou_other": "{{count}} nadcházejících událostí",
     "going": "Přijdu",
     "attend": "Zúčastnit se",
     "featured": "Doporučeno",
@@ -374,7 +394,10 @@
     "itWasOkay": "Bylo to fajn",
     "submitFeedback": "Odeslat zpětnou vazbu",
     "thanksFeedback": "Díky za zpětnou vazbu! Tvému skóre důvěry to prospívá.",
-    "peopleGoing": "{{count}} lidí přijde",
+    "peopleGoing_one": "{{count}} člověk přijde",
+    "peopleGoing_few": "{{count}} lidé přijdou",
+    "peopleGoing_many": "{{count}} lidí přijde",
+    "peopleGoing_other": "{{count}} lidí přijde",
     "host": "Pořadatel",
     "youreGoing": "🎉 Jdeš tam!",
     "showAtDoor": "Ukaž tohle u vchodu",
@@ -409,7 +432,8 @@
     "createTooMany": "Už máte 3 události čekající na kontrolu.",
     "createFailed": "Událost se nepodařilo odeslat — zkuste to znovu",
     "pendingReview": "Ve schvalování",
-    "pendingReviewDesc": "Tuto událost vidíte jen vy, dokud ji administrátor neschválí."
+    "pendingReviewDesc": "Tuto událost vidíte jen vy, dokud ji administrátor neschválí.",
+    "noSavedDesc": "Klepni na hvězdičku u událostí, které tě zajímají, a ulož si je sem."
   },
   "video": {
     "connecting": "Připojuje se...",
@@ -417,7 +441,8 @@
     "inCall": "V hovoru",
     "callEnded": "Hovor ukončen",
     "callFailed": "Hovor se nezdařil",
-    "backToChat": "Zpět do chatu"
+    "backToChat": "Zpět do chatu",
+    "duration": "Délka: {{time}}"
   },
   "report": {
     "title": "Nahlásit uživatele {{name}}",
@@ -428,7 +453,8 @@
     "inappropriate": "Nevhodný obsah",
     "other": "Jiné",
     "detailsPlaceholder": "Popiš problém podrobněji...",
-    "submit": "Odeslat hlášení"
+    "submit": "Odeslat hlášení",
+    "descriptionLabel": "Popis (nepovinné)"
   },
   "offers": {
     "partner": "Partner",
@@ -507,7 +533,8 @@
     "adminPanel": "Panel správce",
     "donationSent": "Děkujeme za podporu!",
     "donating": "Zpracovává se…",
-    "supportUnavailable": "Podpora zatím není nastavena"
+    "supportUnavailable": "Podpora zatím není nastavena",
+    "donateAmount": "Darovat {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "Přidej popis, ať tě lidé lépe poznají",
@@ -550,9 +577,13 @@
     "locked": "Zamčeno",
     "photoUploadFailed": "Fotku se nepodařilo nahrát",
     "sparksDesc": "Jiskry se získávají aktivitou — nedají se koupit. Posílej je, když chceš někomu věnovat zvláštní pozornost.",
-    "sparksAmount": "+{{count}} jisker",
+    "sparksAmount_one": "+{{count}} jiskra",
+    "sparksAmount_few": "+{{count}} jiskry",
+    "sparksAmount_many": "+{{count}} jiskry",
+    "sparksAmount_other": "+{{count}} jisker",
     "sparksPerDay": "+{{count}} jiskra denně",
-    "photoDeleteFailed": "Fotku se nepodařilo smazat"
+    "photoDeleteFailed": "Fotku se nepodařilo smazat",
+    "profileAlt": "Profil: {{name}}"
   },
   "admin": {
     "panel": "Panel správce",

@@ -9,7 +9,8 @@
     "trustPioneers": "Több mint 60 millió Pioneer",
     "errPiBrowser": "Nyisd meg ezt az alkalmazást a Pi Browserben",
     "errAuthFailed": "A Pi hitelesítés sikertelen",
-    "errTimeout": "Lejárt a Pi hitelesítés ideje. Próbáld újra."
+    "errTimeout": "Lejárt a Pi hitelesítés ideje. Próbáld újra.",
+    "heroAlt": "Szívet formáló két ember"
   },
   "nav": {
     "discover": "Felfedezés",
@@ -24,7 +25,8 @@
     "spark": "Szikra",
     "filter": "Szűrő",
     "compatibility": "Kompatibilitás",
-    "compatRefresh": "Naponta frissül • {{count}} magas kompatibilitású találat",
+    "compatRefresh_one": "Naponta frissül • {{count}} magas kompatibilitású találat",
+    "compatRefresh_other": "Naponta frissül • {{count}} magas kompatibilitású találat",
     "compatEmpty": "Gyere vissza holnap új, magas kompatibilitású találatokért!",
     "kmAway": "{{distance}} km-re",
     "matchPercent": "{{percent}}% egyezés",
@@ -35,7 +37,8 @@
     "verifiedOnly": "Csak ellenőrzött felhasználók",
     "onlineNow": "Most online",
     "resetAll": "Összes visszaállítása",
-    "applyMatches": "Alkalmaz ({{count}} találat)",
+    "applyMatches_one": "Alkalmaz ({{count}} találat)",
+    "applyMatches_other": "Alkalmaz ({{count}} találat)",
     "itsAMatch": "Ez egy találat!",
     "likedEachOther": "Te és {{name}} tetszettetek egymásnak",
     "sendMessage": "Üzenet küldése",
@@ -73,7 +76,8 @@
     "newUser": "Új",
     "undo": "Visszavonás",
     "likeFailed": "A kedvelés küldése nem sikerült",
-    "alreadyLiked": "Már kedvelted"
+    "alreadyLiked": "Már kedvelted",
+    "you": "Te"
   },
   "matches": {
     "title": "Egyezések",
@@ -95,7 +99,9 @@
     "giftPrefix": "Ajándék",
     "goDiscover": "Ugrás a Felfedezéshez",
     "message": "Üzenet",
-    "unmatchFailed": "A találat visszavonása nem sikerült — próbáld újra"
+    "unmatchFailed": "A találat visszavonása nem sikerült — próbáld újra",
+    "newCount": "{{count}} új",
+    "noSearchResults": "Nincs a(z) „{{query}}” keresésnek megfelelő beszélgetés"
   },
   "chat": {
     "typeMessage": "Írj egy üzenetet...",
@@ -138,7 +144,9 @@
     "reportSubmitted": "A bejelentés elküldve. Hamarosan átnézzük.",
     "photoPreview": "Fotó",
     "voicePreview": "Hangüzenet",
-    "giftPreview": "Ajándékot küldött"
+    "giftPreview": "Ajándékot küldött",
+    "typing": "ír",
+    "sendGift": "Küldés: {{gift}}"
   },
   "profile": {
     "edit": "Profil szerkesztése",
@@ -164,7 +172,9 @@
     "donate": "Támogasd az Equal-t",
     "deleteAccount": "Fiók törlése",
     "logout": "Kijelentkezés",
-    "paymentHistory": "Fizetési előzmények"
+    "paymentHistory": "Fizetési előzmények",
+    "switchToLight": "Váltás világos módra",
+    "switchToDark": "Váltás sötét módra"
   },
   "onboarding": {
     "next": "Következő",
@@ -265,7 +275,8 @@
     "seeking_everyone": "Mindenkit",
     "saveFailed": "A profilod mentése nem sikerült — próbáld újra",
     "title6": "A hangod",
-    "sub6": "Egy 10 másodperces bemutatkozás. Szükséges a Napi találathoz való csatlakozáshoz."
+    "sub6": "Egy 10 másodperces bemutatkozás. Szükséges a Napi találathoz való csatlakozáshoz.",
+    "photoTipsAlt": "Fotótippek"
   },
   "common": {
     "cancel": "Mégse",
@@ -279,7 +290,9 @@
     "cookieText": "Szükséges sütiket használunk a hitelesítéshez, és opcionális sütiket az elemzéshez. Nézd meg a",
     "cookieAccept": "Összes elfogadása",
     "cookieEssential": "Csak a szükségesek",
-    "privacyPolicy": "Adatvédelmi irányelvek"
+    "privacyPolicy": "Adatvédelmi irányelvek",
+    "notFoundDesc": "A keresett oldal nem létezik, vagy áthelyezték.",
+    "photoN": "{{n}}. fotó"
   },
   "clubs": {
     "title": "Klubok",
@@ -347,7 +360,8 @@
     "upcomingEvents": "Közelgő események",
     "interestedEvents": "Érdekel",
     "pastEvents": "Elmúlt események",
-    "nearYou": "{{count}} esemény a közeledben ezen a héten",
+    "nearYou_one": "{{count}} közelgő esemény",
+    "nearYou_other": "{{count}} közelgő esemény",
     "going": "Megyek",
     "attend": "Részvétel",
     "featured": "Kiemelt",
@@ -370,7 +384,8 @@
     "itWasOkay": "Rendben volt",
     "submitFeedback": "Visszajelzés küldése",
     "thanksFeedback": "Köszönjük a visszajelzést! A Bizalmi pontszámod hasznát veszi.",
-    "peopleGoing": "{{count}} fő jelezte, hogy megy",
+    "peopleGoing_one": "{{count}} fő jelezte, hogy megy",
+    "peopleGoing_other": "{{count}} fő jelezte, hogy megy",
     "host": "Házigazda",
     "youreGoing": "🎉 Mész!",
     "showAtDoor": "Mutasd ezt a bejáratnál",
@@ -405,7 +420,8 @@
     "createTooMany": "Már 3 eseményed vár ellenőrzésre.",
     "createFailed": "Nem sikerült beküldeni az eseményt — próbáld újra",
     "pendingReview": "Ellenőrzés alatt",
-    "pendingReviewDesc": "Ezt az eseményt csak te látod, amíg egy adminisztrátor jóvá nem hagyja."
+    "pendingReviewDesc": "Ezt az eseményt csak te látod, amíg egy adminisztrátor jóvá nem hagyja.",
+    "noSavedDesc": "Koppints a csillagra az érdeklő eseményeknél, hogy ide mentsd őket."
   },
   "video": {
     "connecting": "Csatlakozás...",
@@ -413,7 +429,8 @@
     "inCall": "Hívásban",
     "callEnded": "A hívás véget ért",
     "callFailed": "A hívás sikertelen",
-    "backToChat": "Vissza a chathez"
+    "backToChat": "Vissza a chathez",
+    "duration": "Időtartam: {{time}}"
   },
   "report": {
     "title": "{{name}} bejelentése",
@@ -424,7 +441,8 @@
     "inappropriate": "Nem megfelelő tartalom",
     "other": "Egyéb",
     "detailsPlaceholder": "Mesélj bővebben a problémáról...",
-    "submit": "Bejelentés küldése"
+    "submit": "Bejelentés küldése",
+    "descriptionLabel": "Leírás (nem kötelező)"
   },
   "offers": {
     "partner": "Partner",
@@ -503,7 +521,8 @@
     "adminPanel": "Admin panel",
     "donationSent": "Köszönjük a támogatásodat!",
     "donating": "Feldolgozás…",
-    "supportUnavailable": "A támogatás még nincs beállítva"
+    "supportUnavailable": "A támogatás még nincs beállítva",
+    "donateAmount": "{{amount}} Pi adományozása"
   },
   "profile2": {
     "addBioHint": "Adj hozzá egy bemutatkozást, hogy jobban megismerjenek",
@@ -546,9 +565,11 @@
     "locked": "Zárolva",
     "photoUploadFailed": "A fotó feltöltése nem sikerült",
     "sparksDesc": "A Szikrákat aktivitással szerzed — nem vásárolhatók meg. Küldd el, hogy különleges figyelmet mutass valakinek.",
-    "sparksAmount": "+{{count}} Szikra",
+    "sparksAmount_one": "+{{count}} Szikra",
+    "sparksAmount_other": "+{{count}} Szikra",
     "sparksPerDay": "+{{count}} Szikra/nap",
-    "photoDeleteFailed": "A fotó törlése nem sikerült"
+    "photoDeleteFailed": "A fotó törlése nem sikerült",
+    "profileAlt": "{{name}} profilja"
   },
   "admin": {
     "panel": "Admin panel",

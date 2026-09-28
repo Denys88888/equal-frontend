@@ -9,7 +9,8 @@
     "trustPioneers": "أكثر من 60 مليون رائد",
     "errPiBrowser": "افتح هذا التطبيق في متصفح Pi",
     "errAuthFailed": "فشلت مصادقة Pi",
-    "errTimeout": "انتهت مهلة مصادقة Pi. حاول مرة أخرى."
+    "errTimeout": "انتهت مهلة مصادقة Pi. حاول مرة أخرى.",
+    "heroAlt": "شخصان يشكّلان قلبًا"
   },
   "nav": {
     "discover": "استكشاف",
@@ -24,7 +25,12 @@
     "spark": "شرارة",
     "filter": "تصفية",
     "compatibility": "التوافق",
-    "compatRefresh": "يتحدّث يوميًا • {{count}} توافقات عالية",
+    "compatRefresh_zero": "يتحدّث يوميًا • {{count}} توافق عالٍ",
+    "compatRefresh_one": "يتحدّث يوميًا • {{count}} توافق عالٍ",
+    "compatRefresh_two": "يتحدّث يوميًا • {{count}} توافقان عاليان",
+    "compatRefresh_few": "يتحدّث يوميًا • {{count}} توافقات عالية",
+    "compatRefresh_many": "يتحدّث يوميًا • {{count}} توافقًا عاليًا",
+    "compatRefresh_other": "يتحدّث يوميًا • {{count}} توافق عالٍ",
     "compatEmpty": "عد غدًا لتوافقات جديدة عالية!",
     "kmAway": "{{distance}} كم منك",
     "matchPercent": "{{percent}}% تطابق",
@@ -35,7 +41,12 @@
     "verifiedOnly": "المستخدمون الموثّقون فقط",
     "onlineNow": "متصل الآن",
     "resetAll": "إعادة ضبط الكل",
-    "applyMatches": "تطبيق ({{count}} توافقات)",
+    "applyMatches_zero": "تطبيق ({{count}} توافق)",
+    "applyMatches_one": "تطبيق ({{count}} توافق)",
+    "applyMatches_two": "تطبيق ({{count}} توافقان)",
+    "applyMatches_few": "تطبيق ({{count}} توافقات)",
+    "applyMatches_many": "تطبيق ({{count}} توافقًا)",
+    "applyMatches_other": "تطبيق ({{count}} توافق)",
     "itsAMatch": "إنه توافق!",
     "likedEachOther": "أنت و{{name}} أُعجبتما ببعضكما",
     "sendMessage": "إرسال رسالة",
@@ -73,7 +84,8 @@
     "newUser": "جديد",
     "undo": "تراجع",
     "likeFailed": "تعذّر إرسال الإعجاب",
-    "alreadyLiked": "سبق أن أُعجبت به"
+    "alreadyLiked": "سبق أن أُعجبت به",
+    "you": "أنت"
   },
   "matches": {
     "title": "التطابقات",
@@ -95,7 +107,9 @@
     "giftPrefix": "هدية",
     "goDiscover": "اذهب إلى الاستكشاف",
     "message": "رسالة",
-    "unmatchFailed": "تعذّر إلغاء التوافق — حاول مرة أخرى"
+    "unmatchFailed": "تعذّر إلغاء التوافق — حاول مرة أخرى",
+    "newCount": "جديدة: {{count}}",
+    "noSearchResults": "لا توجد محادثات تطابق «{{query}}»"
   },
   "chat": {
     "typeMessage": "اكتب رسالة...",
@@ -138,7 +152,9 @@
     "reportSubmitted": "تم إرسال البلاغ. سنراجعه قريبًا.",
     "photoPreview": "صورة",
     "voicePreview": "رسالة صوتية",
-    "giftPreview": "أرسل هدية"
+    "giftPreview": "أرسل هدية",
+    "typing": "يكتب",
+    "sendGift": "إرسال {{gift}}"
   },
   "profile": {
     "edit": "تعديل الملف الشخصي",
@@ -164,7 +180,9 @@
     "donate": "ادعم Equal",
     "deleteAccount": "حذف الحساب",
     "logout": "تسجيل الخروج",
-    "paymentHistory": "سجل المدفوعات"
+    "paymentHistory": "سجل المدفوعات",
+    "switchToLight": "التبديل إلى الوضع الفاتح",
+    "switchToDark": "التبديل إلى الوضع الداكن"
   },
   "onboarding": {
     "next": "التالي",
@@ -265,7 +283,8 @@
     "seeking_everyone": "الجميع",
     "saveFailed": "تعذّر حفظ ملفك الشخصي — حاول مرة أخرى",
     "title6": "صوتك",
-    "sub6": "تعريف مدته 10 ثوانٍ. مطلوب للانضمام إلى التوافق اليومي."
+    "sub6": "تعريف مدته 10 ثوانٍ. مطلوب للانضمام إلى التوافق اليومي.",
+    "photoTipsAlt": "نصائح للصور"
   },
   "common": {
     "cancel": "إلغاء",
@@ -279,7 +298,9 @@
     "cookieText": "نستخدم ملفات تعريف ارتباط أساسية للمصادقة وأخرى اختيارية للتحليلات. اطّلع على",
     "cookieAccept": "قبول الكل",
     "cookieEssential": "الأساسية فقط",
-    "privacyPolicy": "سياسة الخصوصية"
+    "privacyPolicy": "سياسة الخصوصية",
+    "notFoundDesc": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+    "photoN": "الصورة {{n}}"
   },
   "clubs": {
     "title": "النوادي",
@@ -355,7 +376,12 @@
     "upcomingEvents": "الفعاليات القادمة",
     "interestedEvents": "مهتم",
     "pastEvents": "الفعاليات الماضية",
-    "nearYou": "{{count}} فعاليات قريبة منك هذا الأسبوع",
+    "nearYou_zero": "{{count}} فعالية قادمة",
+    "nearYou_one": "{{count}} فعالية قادمة",
+    "nearYou_two": "{{count}} فعاليتان قادمتان",
+    "nearYou_few": "{{count}} فعاليات قادمة",
+    "nearYou_many": "{{count}} فعالية قادمة",
+    "nearYou_other": "{{count}} فعالية قادمة",
     "going": "سأحضر",
     "attend": "حضور",
     "featured": "مميّزة",
@@ -378,7 +404,12 @@
     "itWasOkay": "كانت مقبولة",
     "submitFeedback": "إرسال الرأي",
     "thanksFeedback": "شكرًا على رأيك! درجة الثقة لديك تستفيد من ذلك.",
-    "peopleGoing": "{{count}} سيحضرون",
+    "peopleGoing_zero": "{{count}} سيحضرون",
+    "peopleGoing_one": "{{count}} سيحضر",
+    "peopleGoing_two": "{{count}} سيحضران",
+    "peopleGoing_few": "{{count}} سيحضرون",
+    "peopleGoing_many": "{{count}} سيحضرون",
+    "peopleGoing_other": "{{count}} سيحضرون",
     "host": "المنظّم",
     "youreGoing": "🎉 ستحضر!",
     "showAtDoor": "اعرض هذا عند المدخل",
@@ -413,7 +444,8 @@
     "createTooMany": "لديك بالفعل 3 فعاليات بانتظار المراجعة.",
     "createFailed": "تعذّر إرسال الفعالية — يُرجى المحاولة مرة أخرى",
     "pendingReview": "قيد المراجعة",
-    "pendingReviewDesc": "أنت وحدك ترى هذه الفعالية حتى يوافق عليها المشرف."
+    "pendingReviewDesc": "أنت وحدك ترى هذه الفعالية حتى يوافق عليها المشرف.",
+    "noSavedDesc": "اضغط على أيقونة النجمة في الفعاليات التي تهمك لحفظها هنا."
   },
   "video": {
     "connecting": "جارٍ الاتصال...",
@@ -421,7 +453,8 @@
     "inCall": "في مكالمة",
     "callEnded": "انتهت المكالمة",
     "callFailed": "فشلت المكالمة",
-    "backToChat": "العودة إلى الدردشة"
+    "backToChat": "العودة إلى الدردشة",
+    "duration": "المدة: {{time}}"
   },
   "report": {
     "title": "الإبلاغ عن {{name}}",
@@ -432,7 +465,8 @@
     "inappropriate": "محتوى غير لائق",
     "other": "أخرى",
     "detailsPlaceholder": "أخبرنا المزيد عن المشكلة...",
-    "submit": "إرسال البلاغ"
+    "submit": "إرسال البلاغ",
+    "descriptionLabel": "الوصف (اختياري)"
   },
   "offers": {
     "partner": "شريك",
@@ -511,7 +545,8 @@
     "adminPanel": "لوحة الإدارة",
     "donationSent": "شكرًا على دعمك!",
     "donating": "جارٍ المعالجة…",
-    "supportUnavailable": "لم يتم إعداد الدعم بعد"
+    "supportUnavailable": "لم يتم إعداد الدعم بعد",
+    "donateAmount": "تبرّع بـ {{amount}} Pi"
   },
   "profile2": {
     "addBioHint": "أضف نبذة ليتعرّف عليك الناس",
@@ -554,9 +589,15 @@
     "locked": "مقفلة",
     "photoUploadFailed": "تعذّر رفع الصورة",
     "sparksDesc": "الشرارات تُكتسب بالنشاط ولا تُشترى. أرسلها لتُظهر لشخص اهتمامًا خاصًا.",
-    "sparksAmount": "+{{count}} شرارات",
+    "sparksAmount_zero": "+{{count}} شرارة",
+    "sparksAmount_one": "+{{count}} شرارة",
+    "sparksAmount_two": "+{{count}} شرارتان",
+    "sparksAmount_few": "+{{count}} شرارات",
+    "sparksAmount_many": "+{{count}} شرارة",
+    "sparksAmount_other": "+{{count}} شرارة",
     "sparksPerDay": "+{{count}} شرارة يوميًا",
-    "photoDeleteFailed": "تعذّر حذف الصورة"
+    "photoDeleteFailed": "تعذّر حذف الصورة",
+    "profileAlt": "الملف الشخصي لـ {{name}}"
   },
   "admin": {
     "panel": "لوحة الإدارة",
