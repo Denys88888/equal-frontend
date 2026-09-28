@@ -534,7 +534,8 @@
     "donationSent": "Дякуємо за підтримку!",
     "donating": "Обробка…",
     "supportUnavailable": "Підтримку ще не налаштовано",
-    "donateAmount": "Пожертвувати {{amount}} Pi"
+    "donateAmount": "Пожертвувати {{amount}} Pi",
+    "settingSaveFailed": "Не вдалося зберегти налаштування — спробуйте ще раз"
   },
   "profile2": {
     "addBioHint": "Додай опис, щоб люди тебе краще знали",

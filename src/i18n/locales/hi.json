@@ -522,7 +522,8 @@
     "donationSent": "आपके सहयोग के लिए धन्यवाद!",
     "donating": "प्रक्रिया जारी…",
     "supportUnavailable": "सहायता अभी सेट नहीं की गई है",
-    "donateAmount": "{{amount}} Pi दान करें"
+    "donateAmount": "{{amount}} Pi दान करें",
+    "settingSaveFailed": "यह सेटिंग सहेजी नहीं जा सकी — कृपया फिर से कोशिश करें"
   },
   "profile2": {
     "addBioHint": "परिचय जोड़ें ताकि लोग आपको जान सकें",

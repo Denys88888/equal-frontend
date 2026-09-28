@@ -546,7 +546,8 @@
     "donationSent": "شكرًا على دعمك!",
     "donating": "جارٍ المعالجة…",
     "supportUnavailable": "لم يتم إعداد الدعم بعد",
-    "donateAmount": "تبرّع بـ {{amount}} Pi"
+    "donateAmount": "تبرّع بـ {{amount}} Pi",
+    "settingSaveFailed": "تعذّر حفظ هذا الإعداد — يُرجى المحاولة مرة أخرى"
   },
   "profile2": {
     "addBioHint": "أضف نبذة ليتعرّف عليك الناس",

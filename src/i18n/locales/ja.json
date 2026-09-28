@@ -516,7 +516,8 @@
     "donationSent": "ご支援ありがとうございます！",
     "donating": "処理中…",
     "supportUnavailable": "サポート窓口はまだ設定されていません",
-    "donateAmount": "{{amount}} Pi を寄付する"
+    "donateAmount": "{{amount}} Pi を寄付する",
+    "settingSaveFailed": "設定を保存できませんでした。もう一度お試しください"
   },
   "profile2": {
     "addBioHint": "自己紹介を追加して、あなたのことを知ってもらいましょう",

@@ -522,7 +522,8 @@
     "donationSent": "Danke für deine Unterstützung!",
     "donating": "Wird verarbeitet…",
     "supportUnavailable": "Der Support ist noch nicht eingerichtet",
-    "donateAmount": "{{amount}} Pi spenden"
+    "donateAmount": "{{amount}} Pi spenden",
+    "settingSaveFailed": "Einstellung konnte nicht gespeichert werden – bitte versuche es erneut"
   },
   "profile2": {
     "addBioHint": "Füge eine Bio hinzu, damit die Leute dich kennenlernen",

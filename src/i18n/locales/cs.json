@@ -534,7 +534,8 @@
     "donationSent": "Děkujeme za podporu!",
     "donating": "Zpracovává se…",
     "supportUnavailable": "Podpora zatím není nastavena",
-    "donateAmount": "Darovat {{amount}} Pi"
+    "donateAmount": "Darovat {{amount}} Pi",
+    "settingSaveFailed": "Nastavení se nepodařilo uložit — zkus to znovu"
   },
   "profile2": {
     "addBioHint": "Přidej popis, ať tě lidé lépe poznají",

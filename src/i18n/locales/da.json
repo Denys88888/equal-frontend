@@ -522,7 +522,8 @@
     "donationSent": "Tak for din støtte!",
     "donating": "Behandler…",
     "supportUnavailable": "Supporten er ikke sat op endnu",
-    "donateAmount": "Donér {{amount}} Pi"
+    "donateAmount": "Donér {{amount}} Pi",
+    "settingSaveFailed": "Indstillingen kunne ikke gemmes – prøv igen"
   },
   "profile2": {
     "addBioHint": "Tilføj en profiltekst, så andre lærer dig at kende",

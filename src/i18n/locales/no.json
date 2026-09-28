@@ -522,7 +522,8 @@
     "donationSent": "Takk for støtten!",
     "donating": "Behandler…",
     "supportUnavailable": "Brukerstøtten er ikke satt opp ennå",
-    "donateAmount": "Doner {{amount}} Pi"
+    "donateAmount": "Doner {{amount}} Pi",
+    "settingSaveFailed": "Kunne ikke lagre innstillingen – prøv igjen"
   },
   "profile2": {
     "addBioHint": "Legg til en presentasjon så andre blir kjent med deg",

@@ -528,7 +528,8 @@
     "donationSent": "תודה על התמיכה שלך!",
     "donating": "מעבד…",
     "supportUnavailable": "התמיכה עדיין לא הוגדרה",
-    "donateAmount": "תרומה של {{amount}} Pi"
+    "donateAmount": "תרומה של {{amount}} Pi",
+    "settingSaveFailed": "לא ניתן היה לשמור את ההגדרה — נסו שוב"
   },
   "profile2": {
     "addBioHint": "הוסף תיאור כדי שאנשים יכירו אותך",

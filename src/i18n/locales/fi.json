@@ -522,7 +522,8 @@
     "donationSent": "Kiitos tuestasi!",
     "donating": "Käsitellään…",
     "supportUnavailable": "Tukea ei ole vielä määritetty",
-    "donateAmount": "Lahjoita {{amount}} Pi"
+    "donateAmount": "Lahjoita {{amount}} Pi",
+    "settingSaveFailed": "Asetusta ei voitu tallentaa – yritä uudelleen"
   },
   "profile2": {
     "addBioHint": "Lisää esittely, jotta muut oppivat tuntemaan sinut",

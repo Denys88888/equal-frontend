@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import { TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/api/client';
 import { api } from '@/api/client';
 import { getPaymentHistory } from '@/api/payments';
-import { getMe, getBlockedUsers, unblockUser } from '@/api/users';
+import { getMe, getBlockedUsers, unblockUser, updateSettings, DEFAULT_SETTINGS } from '@/api/users';
+import type { UserSettings } from '@/api/types';
 import { getSupportEmail } from '@/api/settings';
 import VerificationDialog from '@/components/VerificationDialog';
 import { usePiPayment } from '@/hooks/usePiPayment';
@@ -203,13 +204,12 @@ export default function Settings() {
   const { t } = useTranslation();
 
   /* ── State ── */
-  const [ghostMode, setGhostMode] = useState(false);
-  const [verifiedOnly, setVerifiedOnly] = useState(true);
-  const [notifMatches, setNotifMatches] = useState(true);
-  const [notifMessages, setNotifMessages] = useState(true);
-  const [notifEvents, setNotifEvents] = useState(true);
-  const [notifClubs, setNotifClubs] = useState(true);
-  const [walletConnected, setWalletConnected] = useState(true);
+  // These six were plain useState: they reset on every visit, never reached the
+  // server, and changed nothing — Ghost Mode said the profile was hidden while
+  // it stayed in everyone's deck. Now they load from and save to /users/me.
+  const [prefs, setPrefs] = useState<UserSettings>(DEFAULT_SETTINGS);
+  // Keys the user changed before /users/me answered must not be overwritten by it.
+  const touchedPrefs = useRef(new Set<keyof UserSettings>());
   const [trustScore, setTrustScore] = useState<number | null>(null);
   const [photoCount, setPhotoCount] = useState<number | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -219,8 +219,25 @@ export default function Settings() {
       if (d.trustScore != null) setTrustScore(d.trustScore);
       if (d.photos) setPhotoCount(d.photos.length);
       if (d.role === 'ADMIN') setIsAdmin(true);
+      setPrefs((p) => {
+        const next = { ...p };
+        for (const k of Object.keys(DEFAULT_SETTINGS) as (keyof UserSettings)[]) {
+          if (typeof d[k] === 'boolean' && !touchedPrefs.current.has(k)) next[k] = d[k] as boolean;
+        }
+        return next;
+      });
     }).catch(() => {});
   }, []);
+
+  const savePref = (key: keyof UserSettings, value: boolean) => {
+    touchedPrefs.current.add(key);
+    setPrefs((p) => ({ ...p, [key]: value }));
+    updateSettings({ [key]: value }).catch((e: unknown) => {
+      console.error('[settings] save failed:', key, e);
+      setPrefs((p) => ({ ...p, [key]: !value }));
+      showToast('error', t('settings2.settingSaveFailed'));
+    });
+  };
   const [paymentHistory, setPaymentHistory] = useState<{ id: string; amount: number; memo: string; status: string; createdAt: string }[]>([]);
   const [showPaymentHistory, setShowPaymentHistory] = useState(false);
 
@@ -345,16 +362,16 @@ export default function Settings() {
             icon={Ghost}
             label={t('settings.ghostMode')}
             description={t('settings2.ghostDesc')}
-            checked={ghostMode}
-            onCheckedChange={setGhostMode}
+            checked={prefs.ghostMode}
+            onCheckedChange={(v) => savePref('ghostMode', v)}
           />
           <ToggleRow
             icon={ShieldCheck}
             iconColor="#7DE0B3"
             label={t('settings.verifiedOnly')}
             description={t('settings2.verifiedOnlyDesc')}
-            checked={verifiedOnly}
-            onCheckedChange={setVerifiedOnly}
+            checked={prefs.verifiedOnly}
+            onCheckedChange={(v) => savePref('verifiedOnly', v)}
           />
           <SettingRow
             icon={Camera}
@@ -378,29 +395,29 @@ export default function Settings() {
             icon={Bell}
             label={t('settings2.notifMatches')}
             description={t('settings2.notifMatchesDesc')}
-            checked={notifMatches}
-            onCheckedChange={setNotifMatches}
+            checked={prefs.notifyMatches}
+            onCheckedChange={(v) => savePref('notifyMatches', v)}
           />
           <ToggleRow
             icon={MessageSquare}
             label={t('settings2.notifMessages')}
             description={t('settings2.notifMessagesDesc')}
-            checked={notifMessages}
-            onCheckedChange={setNotifMessages}
+            checked={prefs.notifyMessages}
+            onCheckedChange={(v) => savePref('notifyMessages', v)}
           />
           <ToggleRow
             icon={Calendar}
             label={t('settings2.notifEvents')}
             description={t('settings2.notifEventsDesc')}
-            checked={notifEvents}
-            onCheckedChange={setNotifEvents}
+            checked={prefs.notifyEvents}
+            onCheckedChange={(v) => savePref('notifyEvents', v)}
           />
           <ToggleRow
             icon={Users}
             label={t('settings2.notifClubs')}
             description={t('settings2.notifClubsDesc')}
-            checked={notifClubs}
-            onCheckedChange={setNotifClubs}
+            checked={prefs.notifyClubs}
+            onCheckedChange={(v) => savePref('notifyClubs', v)}
           />
         </div>
 
@@ -477,30 +494,24 @@ export default function Settings() {
         {/* ───────── Pi Wallet ───────── */}
         <SectionLabel text={t('settings.piWallet')} />
         <div className="space-y-2">
+          {/* Signing in with Pi is what connects the wallet, so on this screen
+              it is always connected. Tapping the row used to flip a local flag
+              to "Connect" and hide Payment History, with nothing behind it. */}
           <SettingRow
             icon={PiIcon}
             iconColor="#BB83C9"
             label={t('settings.piWallet')}
             rightElement={
-              walletConnected ? (
-                <span className="text-xs font-semibold text-[#7DE0B3]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>{t('settings2.walletConnected')}</span>
-              ) : (
-                <span className="text-xs font-semibold text-[#BB83C9]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>{t('settings2.walletConnect')}</span>
-              )
+              <span className="text-xs font-semibold text-[#7DE0B3]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>{t('settings2.walletConnected')}</span>
             }
-            onClick={() => setWalletConnected(!walletConnected)}
           />
-          {walletConnected && (
-            <>
-              <SettingRow
-                icon={Receipt}
-                iconColor="#7BC4E8"
-                label={t('settings.paymentHistory')}
-                detail={paymentHistory.length > 0 ? `${paymentHistory.length}` : ''}
-                onClick={() => setShowPaymentHistory(true)}
-              />
-            </>
-          )}
+          <SettingRow
+            icon={Receipt}
+            iconColor="#7BC4E8"
+            label={t('settings.paymentHistory')}
+            detail={paymentHistory.length > 0 ? `${paymentHistory.length}` : ''}
+            onClick={() => setShowPaymentHistory(true)}
+          />
         </div>
 
         {/* ───────── Support ───────── */}

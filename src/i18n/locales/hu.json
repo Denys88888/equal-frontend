@@ -522,7 +522,8 @@
     "donationSent": "Köszönjük a támogatásodat!",
     "donating": "Feldolgozás…",
     "supportUnavailable": "A támogatás még nincs beállítva",
-    "donateAmount": "{{amount}} Pi adományozása"
+    "donateAmount": "{{amount}} Pi adományozása",
+    "settingSaveFailed": "Nem sikerült menteni a beállítást – próbáld újra"
   },
   "profile2": {
     "addBioHint": "Adj hozzá egy bemutatkozást, hogy jobban megismerjenek",

@@ -516,7 +516,8 @@
     "donationSent": "Terima kasih atas dukunganmu!",
     "donating": "Memproses…",
     "supportUnavailable": "Dukungan belum dikonfigurasi",
-    "donateAmount": "Donasikan {{amount}} Pi"
+    "donateAmount": "Donasikan {{amount}} Pi",
+    "settingSaveFailed": "Tidak dapat menyimpan pengaturan — coba lagi"
   },
   "profile2": {
     "addBioHint": "Tambahkan bio agar orang lain mengenalmu",

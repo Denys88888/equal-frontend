@@ -516,7 +516,8 @@
     "donationSent": "ขอบคุณสำหรับการสนับสนุน!",
     "donating": "กำลังดำเนินการ…",
     "supportUnavailable": "ยังไม่ได้ตั้งค่าช่องทางสนับสนุน",
-    "donateAmount": "บริจาค {{amount}} Pi"
+    "donateAmount": "บริจาค {{amount}} Pi",
+    "settingSaveFailed": "บันทึกการตั้งค่าไม่สำเร็จ — โปรดลองอีกครั้ง"
   },
   "profile2": {
     "addBioHint": "เพิ่มคำแนะนำตัวเพื่อให้คนอื่นรู้จักคุณ",

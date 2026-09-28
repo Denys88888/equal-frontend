@@ -528,7 +528,8 @@
     "donationSent": "Hvala na podršci!",
     "donating": "Obrada…",
     "supportUnavailable": "Podrška još nije postavljena",
-    "donateAmount": "Doniraj {{amount}} Pi"
+    "donateAmount": "Doniraj {{amount}} Pi",
+    "settingSaveFailed": "Postavka nije spremljena — pokušaj ponovno"
   },
   "profile2": {
     "addBioHint": "Dodaj opis da bi te ljudi upoznali",

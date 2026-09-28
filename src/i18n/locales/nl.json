@@ -522,7 +522,8 @@
     "donationSent": "Bedankt voor je steun!",
     "donating": "Bezig…",
     "supportUnavailable": "Ondersteuning is nog niet ingesteld",
-    "donateAmount": "{{amount}} Pi doneren"
+    "donateAmount": "{{amount}} Pi doneren",
+    "settingSaveFailed": "Instelling kon niet worden opgeslagen — probeer het opnieuw"
   },
   "profile2": {
     "addBioHint": "Voeg een bio toe zodat mensen je leren kennen",

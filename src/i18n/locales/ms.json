@@ -516,7 +516,8 @@
     "donationSent": "Terima kasih atas sokongan anda!",
     "donating": "Sedang memproses…",
     "supportUnavailable": "Sokongan belum disediakan lagi",
-    "donateAmount": "Derma {{amount}} Pi"
+    "donateAmount": "Derma {{amount}} Pi",
+    "settingSaveFailed": "Tidak dapat menyimpan tetapan — sila cuba lagi"
   },
   "profile2": {
     "addBioHint": "Tambah bio supaya orang mengenali anda",

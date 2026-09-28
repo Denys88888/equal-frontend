@@ -8,6 +8,7 @@
 import { api } from './client';
 import type {
   UserProfile,
+  UserSettings,
   Photo,
   VerificationSelfieResponse,
   VerificationGesture,
@@ -182,6 +183,22 @@ export async function getVerificationStatus(): Promise<{
 // NAMESPACE EXPORT
 // ───────────────────────────────────────────────────────────
 
+/** Server defaults, used until /users/me answers. */
+export const DEFAULT_SETTINGS: UserSettings = {
+  ghostMode: false,
+  verifiedOnly: false,
+  notifyMatches: true,
+  notifyMessages: true,
+  notifyEvents: true,
+  notifyClubs: true,
+};
+
+/** Save one or more Settings toggles; resolves with every saved value. */
+export async function updateSettings(patch: Partial<UserSettings>): Promise<UserSettings> {
+  const { data } = await api.patch<UserSettings>('/users/me/settings', patch);
+  return data;
+}
+
 /**
  * Grouped users API methods:
  * `import { usersApi } from '@/api/users'`
@@ -196,4 +213,5 @@ export const usersApi = {
   getVerificationStatus,
   getBlockedUsers,
   unblockUser,
+  updateSettings,
 };

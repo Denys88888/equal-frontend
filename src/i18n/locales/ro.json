@@ -528,7 +528,8 @@
     "donationSent": "Mulțumim pentru susținere!",
     "donating": "Se procesează…",
     "supportUnavailable": "Asistența nu este configurată încă",
-    "donateAmount": "Donează {{amount}} Pi"
+    "donateAmount": "Donează {{amount}} Pi",
+    "settingSaveFailed": "Setarea nu a putut fi salvată — încearcă din nou"
   },
   "profile2": {
     "addBioHint": "Adaugă o descriere pentru ca oamenii să te cunoască",

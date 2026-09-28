@@ -522,7 +522,8 @@
     "donationSent": "بابت حمایت شما سپاسگزاریم!",
     "donating": "در حال پردازش…",
     "supportUnavailable": "پشتیبانی هنوز راه‌اندازی نشده است",
-    "donateAmount": "اهدای {{amount}} Pi"
+    "donateAmount": "اهدای {{amount}} Pi",
+    "settingSaveFailed": "ذخیره این تنظیم ممکن نشد — لطفاً دوباره تلاش کنید"
   },
   "profile2": {
     "addBioHint": "بیوگرافی اضافه کنید تا افراد شما را بهتر بشناسند",

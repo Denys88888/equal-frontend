@@ -25,6 +25,23 @@ export interface UserProfile {
   sparkBalance: number;
   createdAt: string;
   updatedAt: string;
+  // Settings toggles; absent from an older backend, so always optional here.
+  ghostMode?: boolean;
+  verifiedOnly?: boolean;
+  notifyMatches?: boolean;
+  notifyMessages?: boolean;
+  notifyEvents?: boolean;
+  notifyClubs?: boolean;
+}
+
+/** Settings → Privacy / Notifications, as stored on the server. */
+export interface UserSettings {
+  ghostMode: boolean;
+  verifiedOnly: boolean;
+  notifyMatches: boolean;
+  notifyMessages: boolean;
+  notifyEvents: boolean;
+  notifyClubs: boolean;
 }
 
 export interface Photo {

@@ -528,7 +528,8 @@
     "donationSent": "Obrigado pelo teu apoio!",
     "donating": "A processar…",
     "supportUnavailable": "O apoio ainda não está configurado",
-    "donateAmount": "Doar {{amount}} Pi"
+    "donateAmount": "Doar {{amount}} Pi",
+    "settingSaveFailed": "Não foi possível salvar a configuração — tente novamente"
   },
   "profile2": {
     "addBioHint": "Adicione uma bio para ajudar as pessoas a conhecê-lo/a",

@@ -522,7 +522,8 @@
     "donationSent": "Asante kwa msaada wako!",
     "donating": "Inachakata…",
     "supportUnavailable": "Usaidizi bado haujawekwa",
-    "donateAmount": "Changia Pi {{amount}}"
+    "donateAmount": "Changia Pi {{amount}}",
+    "settingSaveFailed": "Imeshindwa kuhifadhi mpangilio huu — tafadhali jaribu tena"
   },
   "profile2": {
     "addBioHint": "Ongeza wasifu ili watu wakujue",

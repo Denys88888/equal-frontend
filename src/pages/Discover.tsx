@@ -10,6 +10,7 @@ import { useToast } from '@/hooks/useToast';
 import { useAuth } from '@/context/AuthContext';
 import { discoverApi } from '@/api/discover';
 import { sparksApi } from '@/api/sparks';
+import { getMe } from '@/api/users';
 import type { ProfileCard } from '@/api/types';
 
 // ── Types ──────────────────────────────────────────────
@@ -802,6 +803,8 @@ export default function Discover() {
     goals: [],
     interests: [],
   });
+  // Settings → "Verified only" is the saved default for this filter.
+  const [defaultVerifiedOnly, setDefaultVerifiedOnly] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [_error, _setError] = useState<string | null>(null);
   const sheetRef = useRef<HTMLDivElement>(null);
@@ -812,12 +815,16 @@ export default function Discover() {
     Promise.all([
       discoverApi.getProfiles({ maxDistance: 50 }),
       sparksApi.getBalance(),
-    ]).then(([data, sparks]) => {
+      getMe().then((me) => me.verifiedOnly === true).catch(() => false),
+    ]).then(([data, sparks, verifiedOnly]) => {
       if (cancelled) return;
       const mapped = data.profiles.map((p: ProfileCard) => ({ ...p }));
+      const deck = verifiedOnly ? mapped.filter((p: ProfileCard) => p.verified) : mapped;
+      setDefaultVerifiedOnly(verifiedOnly);
+      if (verifiedOnly) setFilters((f) => ({ ...f, verifiedOnly: true }));
       setAllProfiles(mapped);
-      setProfiles(mapped);
-      setFilteredProfiles(mapped);
+      setProfiles(deck);
+      setFilteredProfiles(deck);
       setSparkCount(sparks.balance);
       setIsLoading(false);
     }).catch(() => {
@@ -847,13 +854,14 @@ export default function Discover() {
       maxDistance: 50,
       ageMin: 22,
       ageMax: 35,
-      verifiedOnly: false,
+      verifiedOnly: defaultVerifiedOnly,
       onlineNow: false,
       goals: [],
       interests: [],
     });
-    setFilteredProfiles(allProfiles);
-    setProfiles(allProfiles);
+    const deck = defaultVerifiedOnly ? allProfiles.filter((p) => p.verified) : allProfiles;
+    setFilteredProfiles(deck);
+    setProfiles(deck);
   };
 
   const handleSwipe = useCallback(async (direction: 'left' | 'right' | 'up') => {

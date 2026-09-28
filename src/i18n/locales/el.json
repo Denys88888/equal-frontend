@@ -522,7 +522,8 @@
     "donationSent": "Ευχαριστούμε για τη στήριξη!",
     "donating": "Επεξεργασία…",
     "supportUnavailable": "Η υποστήριξη δεν έχει ρυθμιστεί ακόμα",
-    "donateAmount": "Δωρεά {{amount}} Pi"
+    "donateAmount": "Δωρεά {{amount}} Pi",
+    "settingSaveFailed": "Δεν ήταν δυνατή η αποθήκευση της ρύθμισης — δοκίμασε ξανά"
   },
   "profile2": {
     "addBioHint": "Πρόσθεσε λίγα λόγια για να σε γνωρίσουν οι άλλοι",

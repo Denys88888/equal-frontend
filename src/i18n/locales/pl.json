@@ -534,7 +534,8 @@
     "donationSent": "Dziękujemy za wsparcie!",
     "donating": "Przetwarzanie…",
     "supportUnavailable": "Pomoc nie została jeszcze skonfigurowana",
-    "donateAmount": "Przekaż {{amount}} Pi"
+    "donateAmount": "Przekaż {{amount}} Pi",
+    "settingSaveFailed": "Nie udało się zapisać ustawienia — spróbuj ponownie"
   },
   "profile2": {
     "addBioHint": "Dodaj opis, aby inni mogli Cię poznać",

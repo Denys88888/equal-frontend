@@ -516,7 +516,8 @@
     "donationSent": "Cảm ơn sự ủng hộ của bạn!",
     "donating": "Đang xử lý…",
     "supportUnavailable": "Hỗ trợ chưa được thiết lập",
-    "donateAmount": "Quyên góp {{amount}} Pi"
+    "donateAmount": "Quyên góp {{amount}} Pi",
+    "settingSaveFailed": "Không thể lưu cài đặt — vui lòng thử lại"
   },
   "profile2": {
     "addBioHint": "Thêm phần giới thiệu để mọi người hiểu bạn hơn",

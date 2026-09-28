@@ -522,7 +522,8 @@
     "donationSent": "Salamat sa suporta mo!",
     "donating": "Pinoproseso…",
     "supportUnavailable": "Hindi pa naka-set up ang suporta",
-    "donateAmount": "Mag-donate ng {{amount}} Pi"
+    "donateAmount": "Mag-donate ng {{amount}} Pi",
+    "settingSaveFailed": "Hindi ma-save ang setting — pakisubukang muli"
   },
   "profile2": {
     "addBioHint": "Magdagdag ng bio para makilala ka ng mga tao",

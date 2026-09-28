@@ -516,7 +516,8 @@
     "donationSent": "후원해 주셔서 감사합니다!",
     "donating": "처리 중…",
     "supportUnavailable": "지원 채널이 아직 설정되지 않았습니다",
-    "donateAmount": "{{amount}} Pi 기부하기"
+    "donateAmount": "{{amount}} Pi 기부하기",
+    "settingSaveFailed": "설정을 저장하지 못했습니다. 다시 시도해 주세요"
   },
   "profile2": {
     "addBioHint": "소개를 추가해 사람들이 당신을 알 수 있게 하세요",

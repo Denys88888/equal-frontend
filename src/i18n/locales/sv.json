@@ -522,7 +522,8 @@
     "donationSent": "Tack för ditt stöd!",
     "donating": "Bearbetar…",
     "supportUnavailable": "Supporten är inte konfigurerad än",
-    "donateAmount": "Donera {{amount}} Pi"
+    "donateAmount": "Donera {{amount}} Pi",
+    "settingSaveFailed": "Det gick inte att spara inställningen – försök igen"
   },
   "profile2": {
     "addBioHint": "Lägg till en presentation så att andra lär känna dig",

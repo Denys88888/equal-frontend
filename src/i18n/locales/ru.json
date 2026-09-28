@@ -534,7 +534,8 @@
     "donationSent": "Спасибо за вашу поддержку!",
     "donating": "Обработка…",
     "supportUnavailable": "Поддержка ещё не настроена",
-    "donateAmount": "Пожертвовать {{amount}} Pi"
+    "donateAmount": "Пожертвовать {{amount}} Pi",
+    "settingSaveFailed": "Не удалось сохранить настройку — попробуйте ещё раз"
   },
   "profile2": {
     "addBioHint": "Добавь био, чтобы людям было проще узнать тебя",

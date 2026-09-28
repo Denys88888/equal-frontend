@@ -522,7 +522,8 @@
     "donationSent": "আপনার সমর্থনের জন্য ধন্যবাদ!",
     "donating": "প্রক্রিয়াকরণ হচ্ছে…",
     "supportUnavailable": "সহায়তা এখনও সেট আপ করা হয়নি",
-    "donateAmount": "{{amount}} Pi দান করুন"
+    "donateAmount": "{{amount}} Pi দান করুন",
+    "settingSaveFailed": "এই সেটিং সংরক্ষণ করা যায়নি — আবার চেষ্টা করুন"
   },
   "profile2": {
     "addBioHint": "মানুষকে আপনাকে জানতে একটি বায়ো যোগ করুন",

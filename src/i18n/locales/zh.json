@@ -516,7 +516,8 @@
     "donationSent": "感谢你的支持！",
     "donating": "处理中…",
     "supportUnavailable": "客服支持尚未配置",
-    "donateAmount": "捐赠 {{amount}} Pi"
+    "donateAmount": "捐赠 {{amount}} Pi",
+    "settingSaveFailed": "无法保存此设置，请重试"
   },
   "profile2": {
     "addBioHint": "添加简介，让别人更了解你",
