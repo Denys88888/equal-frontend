@@ -195,7 +195,8 @@ function SparkBalanceCard({
   const tasks = [
     { text: 'profile2.taskVerify', amount: t('profile2.sparksAmount', { count: 5, defaultValue: '+5 Sparks' }), done: verified },
     { text: 'profile2.taskComplete', amount: t('profile2.sparksAmount', { count: 3, defaultValue: '+3 Sparks' }), done: profileComplete },
-    { text: 'profile2.taskClub', amount: t('profile2.sparksPerDay', { count: 1, defaultValue: '+1 Spark/day' }), done: false },
+    // The server grants this per club post (up to 5 a day), not for joining.
+    { text: 'profile2.taskClubPost', amount: t('profile2.sparksAmount', { count: 1 }), done: false },
   ];
   return (
     <motion.div

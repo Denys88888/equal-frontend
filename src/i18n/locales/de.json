@@ -606,7 +606,8 @@
     "scoreStartDesc": "Hier beginnen alle",
     "scoreVerifiedDone": "Verifiziert",
     "scoreWarnings": "Verwarnungen",
-    "scoreWarningsDesc": "Pro Verwarnung"
+    "scoreWarningsDesc": "Pro Verwarnung",
+    "taskClubPost": "Beitrag in einem Club (bis zu 5 pro Tag)"
   },
   "admin": {
     "panel": "Admin-Panel",
@@ -699,7 +700,11 @@
     "eventApproved": "Event freigegeben — jetzt für alle sichtbar",
     "eventRejected": "Event abgelehnt",
     "joinedOn": "Dabei seit {{date}}",
-    "loadFailedRetry": "Transaktionen konnten nicht geladen werden – zum Wiederholen tippen"
+    "loadFailedRetry": "Transaktionen konnten nicht geladen werden – zum Wiederholen tippen",
+    "byAuthor": "von {{name}}",
+    "edit": "Bearbeiten",
+    "feature": "Hervorheben",
+    "unfeature": "Nicht mehr hervorheben"
   },
   "legal": {
     "termsTitle": "Nutzungsbedingungen",

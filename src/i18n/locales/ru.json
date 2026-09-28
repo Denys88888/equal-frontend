@@ -620,7 +620,8 @@
     "scoreStartDesc": "С этого начинают все",
     "scoreVerifiedDone": "Подтверждено",
     "scoreWarnings": "Предупреждения",
-    "scoreWarningsDesc": "За каждое предупреждение"
+    "scoreWarningsDesc": "За каждое предупреждение",
+    "taskClubPost": "Пост в клубе (до 5 в день)"
   },
   "admin": {
     "panel": "Админ-панель",
@@ -713,7 +714,11 @@
     "eventApproved": "Событие одобрено — теперь его видят все",
     "eventRejected": "Событие отклонено",
     "joinedOn": "С нами с {{date}}",
-    "loadFailedRetry": "Не удалось загрузить транзакции — нажмите, чтобы повторить"
+    "loadFailedRetry": "Не удалось загрузить транзакции — нажмите, чтобы повторить",
+    "byAuthor": "автор: {{name}}",
+    "edit": "Изменить",
+    "feature": "В избранное",
+    "unfeature": "Убрать из избранного"
   },
   "legal": {
     "termsTitle": "Условия использования",

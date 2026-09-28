@@ -599,7 +599,8 @@
     "scoreStartDesc": "ทุกคนเริ่มที่นี่",
     "scoreVerifiedDone": "ยืนยันแล้ว",
     "scoreWarnings": "การเตือน",
-    "scoreWarningsDesc": "ต่อการเตือนหนึ่งครั้ง"
+    "scoreWarningsDesc": "ต่อการเตือนหนึ่งครั้ง",
+    "taskClubPost": "โพสต์ในคลับ (สูงสุด 5 ครั้งต่อวัน)"
   },
   "admin": {
     "panel": "แผงผู้ดูแลระบบ",
@@ -692,7 +693,11 @@
     "eventApproved": "อนุมัติกิจกรรมแล้ว — ทุกคนเห็นได้แล้ว",
     "eventRejected": "ปฏิเสธกิจกรรมแล้ว",
     "joinedOn": "เข้าร่วมเมื่อ {{date}}",
-    "loadFailedRetry": "โหลดธุรกรรมไม่ได้ — แตะเพื่อลองอีกครั้ง"
+    "loadFailedRetry": "โหลดธุรกรรมไม่ได้ — แตะเพื่อลองอีกครั้ง",
+    "byAuthor": "โดย {{name}}",
+    "edit": "แก้ไข",
+    "feature": "แนะนำ",
+    "unfeature": "เลิกแนะนำ"
   },
   "legal": {
     "termsTitle": "ข้อกำหนดในการให้บริการ",

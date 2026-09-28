@@ -606,7 +606,8 @@
     "scoreStartDesc": "Mindenki innen indul",
     "scoreVerifiedDone": "Ellenőrizve",
     "scoreWarnings": "Figyelmeztetések",
-    "scoreWarningsDesc": "Figyelmeztetésenként"
+    "scoreWarningsDesc": "Figyelmeztetésenként",
+    "taskClubPost": "Bejegyzés egy klubban (naponta legfeljebb 5)"
   },
   "admin": {
     "panel": "Admin panel",
@@ -699,7 +700,11 @@
     "eventApproved": "Esemény jóváhagyva — most már mindenki látja",
     "eventRejected": "Esemény elutasítva",
     "joinedOn": "Csatlakozott: {{date}}",
-    "loadFailedRetry": "Nem sikerült betölteni a tranzakciókat – koppints az újrapróbáláshoz"
+    "loadFailedRetry": "Nem sikerült betölteni a tranzakciókat – koppints az újrapróbáláshoz",
+    "byAuthor": "létrehozta: {{name}}",
+    "edit": "Szerkesztés",
+    "feature": "Kiemelés",
+    "unfeature": "Kiemelés megszüntetése"
   },
   "legal": {
     "termsTitle": "Felhasználási feltételek",

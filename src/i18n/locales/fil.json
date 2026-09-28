@@ -606,7 +606,8 @@
     "scoreStartDesc": "Dito nagsisimula ang lahat",
     "scoreVerifiedDone": "Na-verify",
     "scoreWarnings": "Mga babala",
-    "scoreWarningsDesc": "Bawat babala"
+    "scoreWarningsDesc": "Bawat babala",
+    "taskClubPost": "Mag-post sa isang club (hanggang 5 bawat araw)"
   },
   "admin": {
     "panel": "Admin Panel",
@@ -699,7 +700,11 @@
     "eventApproved": "Naaprubahan ang event — nakikita na ng lahat",
     "eventRejected": "Tinanggihan ang event",
     "joinedOn": "Sumali noong {{date}}",
-    "loadFailedRetry": "Hindi ma-load ang mga transaksyon — i-tap para subukang muli"
+    "loadFailedRetry": "Hindi ma-load ang mga transaksyon — i-tap para subukang muli",
+    "byAuthor": "ni {{name}}",
+    "edit": "I-edit",
+    "feature": "I-feature",
+    "unfeature": "Alisin sa feature"
   },
   "legal": {
     "termsTitle": "Mga Tuntunin ng Serbisyo",

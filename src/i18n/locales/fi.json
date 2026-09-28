@@ -606,7 +606,8 @@
     "scoreStartDesc": "Tästä kaikki aloittavat",
     "scoreVerifiedDone": "Vahvistettu",
     "scoreWarnings": "Varoitukset",
-    "scoreWarningsDesc": "Per varoitus"
+    "scoreWarningsDesc": "Per varoitus",
+    "taskClubPost": "Julkaise klubissa (enintään 5 päivässä)"
   },
   "admin": {
     "panel": "Ylläpitopaneeli",
@@ -699,7 +700,11 @@
     "eventApproved": "Tapahtuma hyväksytty — nyt kaikkien nähtävissä",
     "eventRejected": "Tapahtuma hylätty",
     "joinedOn": "Liittynyt {{date}}",
-    "loadFailedRetry": "Tapahtumia ei voitu ladata – yritä uudelleen napauttamalla"
+    "loadFailedRetry": "Tapahtumia ei voitu ladata – yritä uudelleen napauttamalla",
+    "byAuthor": "tekijä: {{name}}",
+    "edit": "Muokkaa",
+    "feature": "Nosta esiin",
+    "unfeature": "Poista nosto"
   },
   "legal": {
     "termsTitle": "Käyttöehdot",

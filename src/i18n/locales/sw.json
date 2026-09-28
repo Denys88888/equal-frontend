@@ -606,7 +606,8 @@
     "scoreStartDesc": "Kila mtu huanzia hapa",
     "scoreVerifiedDone": "Imethibitishwa",
     "scoreWarnings": "Maonyo",
-    "scoreWarningsDesc": "Kwa kila onyo"
+    "scoreWarningsDesc": "Kwa kila onyo",
+    "taskClubPost": "Chapisha kwenye klabu (hadi mara 5 kwa siku)"
   },
   "admin": {
     "panel": "Kidhibiti cha Msimamizi",
@@ -699,7 +700,11 @@
     "eventApproved": "Tukio limeidhinishwa — sasa linaonekana kwa wote",
     "eventRejected": "Tukio limekataliwa",
     "joinedOn": "Alijiunga {{date}}",
-    "loadFailedRetry": "Miamala haikuweza kupakiwa — gusa ili kujaribu tena"
+    "loadFailedRetry": "Miamala haikuweza kupakiwa — gusa ili kujaribu tena",
+    "byAuthor": "na {{name}}",
+    "edit": "Hariri",
+    "feature": "Angazia",
+    "unfeature": "Ondoa kuangazia"
   },
   "legal": {
     "termsTitle": "Masharti ya Huduma",

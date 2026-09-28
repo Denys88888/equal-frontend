@@ -606,7 +606,8 @@
     "scoreStartDesc": "Hier begint iedereen",
     "scoreVerifiedDone": "Geverifieerd",
     "scoreWarnings": "Waarschuwingen",
-    "scoreWarningsDesc": "Per waarschuwing"
+    "scoreWarningsDesc": "Per waarschuwing",
+    "taskClubPost": "Post in een club (tot 5 per dag)"
   },
   "admin": {
     "panel": "Beheerpaneel",
@@ -699,7 +700,11 @@
     "eventApproved": "Evenement goedgekeurd — nu zichtbaar voor iedereen",
     "eventRejected": "Evenement afgewezen",
     "joinedOn": "Lid sinds {{date}}",
-    "loadFailedRetry": "Transacties konden niet worden geladen — tik om opnieuw te proberen"
+    "loadFailedRetry": "Transacties konden niet worden geladen — tik om opnieuw te proberen",
+    "byAuthor": "door {{name}}",
+    "edit": "Bewerken",
+    "feature": "Uitlichten",
+    "unfeature": "Niet meer uitlichten"
   },
   "legal": {
     "termsTitle": "Servicevoorwaarden",

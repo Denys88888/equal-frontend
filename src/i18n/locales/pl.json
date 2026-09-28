@@ -620,7 +620,8 @@
     "scoreStartDesc": "Tu zaczyna każdy",
     "scoreVerifiedDone": "Zweryfikowano",
     "scoreWarnings": "Ostrzeżenia",
-    "scoreWarningsDesc": "Za każde ostrzeżenie"
+    "scoreWarningsDesc": "Za każde ostrzeżenie",
+    "taskClubPost": "Post w klubie (do 5 dziennie)"
   },
   "admin": {
     "panel": "Panel administratora",
@@ -713,7 +714,11 @@
     "eventApproved": "Wydarzenie zatwierdzone — teraz widzą je wszyscy",
     "eventRejected": "Wydarzenie odrzucone",
     "joinedOn": "Dołączył(a) {{date}}",
-    "loadFailedRetry": "Nie udało się wczytać transakcji — stuknij, aby ponowić"
+    "loadFailedRetry": "Nie udało się wczytać transakcji — stuknij, aby ponowić",
+    "byAuthor": "autor: {{name}}",
+    "edit": "Edytuj",
+    "feature": "Wyróżnij",
+    "unfeature": "Usuń wyróżnienie"
   },
   "legal": {
     "termsTitle": "Regulamin",

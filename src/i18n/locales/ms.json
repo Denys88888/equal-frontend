@@ -599,7 +599,8 @@
     "scoreStartDesc": "Semua orang bermula di sini",
     "scoreVerifiedDone": "Disahkan",
     "scoreWarnings": "Amaran",
-    "scoreWarningsDesc": "Bagi setiap amaran"
+    "scoreWarningsDesc": "Bagi setiap amaran",
+    "taskClubPost": "Siarkan dalam kelab (sehingga 5 sehari)"
   },
   "admin": {
     "panel": "Panel Pentadbir",
@@ -692,7 +693,11 @@
     "eventApproved": "Acara diluluskan — kini kelihatan kepada semua",
     "eventRejected": "Acara ditolak",
     "joinedOn": "Menyertai pada {{date}}",
-    "loadFailedRetry": "Transaksi tidak dapat dimuatkan — ketik untuk cuba lagi"
+    "loadFailedRetry": "Transaksi tidak dapat dimuatkan — ketik untuk cuba lagi",
+    "byAuthor": "oleh {{name}}",
+    "edit": "Sunting",
+    "feature": "Tonjolkan",
+    "unfeature": "Batalkan tonjolan"
   },
   "legal": {
     "termsTitle": "Terma Perkhidmatan",

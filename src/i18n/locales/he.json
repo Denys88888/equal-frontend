@@ -613,7 +613,8 @@
     "scoreStartDesc": "כולם מתחילים כאן",
     "scoreVerifiedDone": "מאומת",
     "scoreWarnings": "אזהרות",
-    "scoreWarningsDesc": "לכל אזהרה"
+    "scoreWarningsDesc": "לכל אזהרה",
+    "taskClubPost": "פרסום במועדון (עד 5 ביום)"
   },
   "admin": {
     "panel": "פאנל ניהול",
@@ -706,7 +707,11 @@
     "eventApproved": "האירוע אושר — עכשיו גלוי לכולם",
     "eventRejected": "האירוע נדחה",
     "joinedOn": "הצטרף/ה ב-{{date}}",
-    "loadFailedRetry": "לא ניתן היה לטעון את העסקאות — הקישו לניסיון נוסף"
+    "loadFailedRetry": "לא ניתן היה לטעון את העסקאות — הקישו לניסיון נוסף",
+    "byAuthor": "מאת {{name}}",
+    "edit": "עריכה",
+    "feature": "הצג כמומלץ",
+    "unfeature": "הסר מהמומלצים"
   },
   "legal": {
     "termsTitle": "תנאי שימוש",

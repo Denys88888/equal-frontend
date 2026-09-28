@@ -599,7 +599,8 @@
     "scoreStartDesc": "모두 여기서 시작해요",
     "scoreVerifiedDone": "인증됨",
     "scoreWarnings": "경고",
-    "scoreWarningsDesc": "경고 1회당"
+    "scoreWarningsDesc": "경고 1회당",
+    "taskClubPost": "클럽에 게시하기 (하루 최대 5회)"
   },
   "admin": {
     "panel": "관리자 패널",
@@ -692,7 +693,11 @@
     "eventApproved": "이벤트 승인됨 — 이제 모두에게 표시됩니다",
     "eventRejected": "이벤트 거절됨",
     "joinedOn": "{{date}} 가입",
-    "loadFailedRetry": "거래 내역을 불러오지 못했어요. 탭하여 다시 시도"
+    "loadFailedRetry": "거래 내역을 불러오지 못했어요. 탭하여 다시 시도",
+    "byAuthor": "만든 사람: {{name}}",
+    "edit": "편집",
+    "feature": "추천하기",
+    "unfeature": "추천 해제"
   },
   "legal": {
     "termsTitle": "이용약관",

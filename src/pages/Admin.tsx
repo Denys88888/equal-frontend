@@ -574,7 +574,7 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
         <h2 className="text-lg font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
           {t('admin.userManagement')}
         </h2>
-        <span className="text-xs font-medium text-[var(--charcoal)]/40">{users.length} users</span>
+        <span className="text-xs font-medium text-[var(--charcoal)]/40">{users.length}</span>
       </div>
 
       <div className="relative">
@@ -647,7 +647,7 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
                         className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
                         style={{ backgroundColor: `${getTrustColor(selectedUser.trustScore)}15`, color: getTrustColor(selectedUser.trustScore) }}
                       >
-                        Trust Score: {selectedUser.trustScore}
+                        {t('profile.trustScore')}: {selectedUser.trustScore}
                       </span>
                     </div>
                   </div>
@@ -796,7 +796,7 @@ function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
         <h2 className="text-lg font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
           {t('admin.clubManagement')}
         </h2>
-        <span className="text-xs font-medium text-[var(--charcoal)]/40">{clubs.length} clubs</span>
+        <span className="text-xs font-medium text-[var(--charcoal)]/40">{clubs.length}</span>
       </div>
 
       <div className="space-y-2">
@@ -813,7 +813,7 @@ function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
             <div className="flex items-start justify-between mb-2">
               <div>
                 <h3 className="text-sm font-semibold text-[var(--charcoal)]">{club.name}</h3>
-                <p className="text-xs text-[var(--charcoal)]/40 mt-0.5">{club.category} &middot; by {club.createdBy}</p>
+                <p className="text-xs text-[var(--charcoal)]/40 mt-0.5">{t(`clubs.club_cat_${club.category.toLowerCase()}`, { defaultValue: club.category })} &middot; {t('admin.byAuthor', { name: club.createdBy })}</p>
               </div>
               {club.status === 'Pending Review' ? (
                 <Badge className="bg-[rgba(240,184,74,0.15)] text-[#F0B84A] hover:bg-[rgba(240,184,74,0.15)] text-[10px]">{t('admin.pending')}</Badge>
@@ -825,11 +825,11 @@ function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
             <div className="flex gap-4 text-xs text-[var(--charcoal)]/50 mb-3">
               <span className="flex items-center gap-1">
                 <Users size={12} />
-                {club.memberCount} members
+                {t('clubs.members', { count: club.memberCount })}
               </span>
               <span className="flex items-center gap-1">
                 <MessageSquare size={12} />
-                {club.postCount} posts
+                {t('clubs.posts', { count: club.postCount })}
               </span>
             </div>
 
@@ -1034,7 +1034,7 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
         <h2 className="text-lg font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.6px' }}>
           {t('admin.eventManagement')}
         </h2>
-        <span className="text-xs font-medium text-[var(--charcoal)]/40">{events.length} events</span>
+        <span className="text-xs font-medium text-[var(--charcoal)]/40">{events.length}</span>
       </div>
 
       <div className="space-y-2">
@@ -1080,7 +1080,7 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
                 </span>
                 <span className="flex items-center gap-1">
                   <Users size={12} />
-                  {evt.attendees} attending
+                  {t('events.peopleGoing', { count: evt.attendees })}
                 </span>
               </div>
 
@@ -1114,7 +1114,7 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
                   onClick={() => openEdit(evt)}
                 >
                   <Edit3 size={14} className="mr-1" />
-                  Edit
+                  {t('admin.edit')}
                 </Button>
                 <Button
                   size="sm"
@@ -1123,7 +1123,7 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
                   onClick={() => handleFeature(evt.id)}
                 >
                   <Star size={14} className="mr-1" />
-                  {evt.featured ? 'Unfeature' : 'Feature'}
+                  {evt.featured ? t('admin.unfeature') : t('admin.feature')}
                 </Button>
                 <Button
                   size="sm"

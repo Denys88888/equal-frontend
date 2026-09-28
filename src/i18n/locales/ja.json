@@ -599,7 +599,8 @@
     "scoreStartDesc": "全員ここから始まります",
     "scoreVerifiedDone": "確認済み",
     "scoreWarnings": "警告",
-    "scoreWarningsDesc": "警告1回ごと"
+    "scoreWarningsDesc": "警告1回ごと",
+    "taskClubPost": "クラブに投稿（1日5回まで）"
   },
   "admin": {
     "panel": "管理パネル",
@@ -692,7 +693,11 @@
     "eventApproved": "イベントを承認しました。全員に表示されます",
     "eventRejected": "イベントを却下しました",
     "joinedOn": "{{date}}に登録",
-    "loadFailedRetry": "取引を読み込めませんでした。タップして再試行"
+    "loadFailedRetry": "取引を読み込めませんでした。タップして再試行",
+    "byAuthor": "作成者：{{name}}",
+    "edit": "編集",
+    "feature": "注目に設定",
+    "unfeature": "注目を解除"
   },
   "legal": {
     "termsTitle": "利用規約",

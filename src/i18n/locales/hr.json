@@ -613,7 +613,8 @@
     "scoreStartDesc": "Ovdje svi počinju",
     "scoreVerifiedDone": "Verificirano",
     "scoreWarnings": "Upozorenja",
-    "scoreWarningsDesc": "Po upozorenju"
+    "scoreWarningsDesc": "Po upozorenju",
+    "taskClubPost": "Objava u klubu (do 5 dnevno)"
   },
   "admin": {
     "panel": "Admin panel",
@@ -706,7 +707,11 @@
     "eventApproved": "Događaj odobren — sada ga svi vide",
     "eventRejected": "Događaj odbijen",
     "joinedOn": "Član od {{date}}",
-    "loadFailedRetry": "Transakcije se nisu mogle učitati — dodirni za ponovni pokušaj"
+    "loadFailedRetry": "Transakcije se nisu mogle učitati — dodirni za ponovni pokušaj",
+    "byAuthor": "autor: {{name}}",
+    "edit": "Uredi",
+    "feature": "Istakni",
+    "unfeature": "Ukloni isticanje"
   },
   "legal": {
     "termsTitle": "Uvjeti korištenja",

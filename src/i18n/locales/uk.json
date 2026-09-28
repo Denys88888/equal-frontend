@@ -620,7 +620,8 @@
     "scoreStartDesc": "З цього починають усі",
     "scoreVerifiedDone": "Підтверджено",
     "scoreWarnings": "Попередження",
-    "scoreWarningsDesc": "За кожне попередження"
+    "scoreWarningsDesc": "За кожне попередження",
+    "taskClubPost": "Допис у клубі (до 5 на день)"
   },
   "admin": {
     "panel": "Панель адміністратора",
@@ -713,7 +714,11 @@
     "eventApproved": "Подію схвалено — тепер її бачать усі",
     "eventRejected": "Подію відхилено",
     "joinedOn": "З нами з {{date}}",
-    "loadFailedRetry": "Не вдалося завантажити транзакції — натисніть, щоб повторити"
+    "loadFailedRetry": "Не вдалося завантажити транзакції — натисніть, щоб повторити",
+    "byAuthor": "автор: {{name}}",
+    "edit": "Змінити",
+    "feature": "В обране",
+    "unfeature": "Прибрати з обраного"
   },
   "legal": {
     "termsTitle": "Умови користування",

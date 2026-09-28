@@ -606,7 +606,8 @@
     "scoreStartDesc": "Everyone begins here",
     "scoreVerifiedDone": "Verified",
     "scoreWarnings": "Warnings",
-    "scoreWarningsDesc": "Per moderator warning"
+    "scoreWarningsDesc": "Per moderator warning",
+    "taskClubPost": "Post in a club (up to 5 a day)"
   },
   "admin": {
     "panel": "Admin Panel",
@@ -699,7 +700,11 @@
     "eventApproved": "Event approved — now visible to everyone",
     "eventRejected": "Event rejected",
     "joinedOn": "Joined {{date}}",
-    "loadFailedRetry": "Couldn't load transactions — tap to retry"
+    "loadFailedRetry": "Couldn't load transactions — tap to retry",
+    "byAuthor": "by {{name}}",
+    "edit": "Edit",
+    "feature": "Feature",
+    "unfeature": "Unfeature"
   },
   "legal": {
     "termsTitle": "Terms of Service",

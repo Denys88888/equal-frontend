@@ -606,7 +606,8 @@
     "scoreStartDesc": "Herkes buradan başlar",
     "scoreVerifiedDone": "Doğrulandı",
     "scoreWarnings": "Uyarılar",
-    "scoreWarningsDesc": "Uyarı başına"
+    "scoreWarningsDesc": "Uyarı başına",
+    "taskClubPost": "Kulüpte paylaşım yap (günde en fazla 5)"
   },
   "admin": {
     "panel": "Yönetim paneli",
@@ -699,7 +700,11 @@
     "eventApproved": "Etkinlik onaylandı — artık herkese görünür",
     "eventRejected": "Etkinlik reddedildi",
     "joinedOn": "Katılım: {{date}}",
-    "loadFailedRetry": "İşlemler yüklenemedi — tekrar denemek için dokunun"
+    "loadFailedRetry": "İşlemler yüklenemedi — tekrar denemek için dokunun",
+    "byAuthor": "oluşturan: {{name}}",
+    "edit": "Düzenle",
+    "feature": "Öne çıkar",
+    "unfeature": "Öne çıkarmayı kaldır"
   },
   "legal": {
     "termsTitle": "Kullanım Koşulları",

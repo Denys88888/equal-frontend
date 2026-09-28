@@ -599,7 +599,8 @@
     "scoreStartDesc": "Mọi người đều bắt đầu từ đây",
     "scoreVerifiedDone": "Đã xác minh",
     "scoreWarnings": "Cảnh cáo",
-    "scoreWarningsDesc": "Mỗi cảnh cáo"
+    "scoreWarningsDesc": "Mỗi cảnh cáo",
+    "taskClubPost": "Đăng bài trong câu lạc bộ (tối đa 5 lần/ngày)"
   },
   "admin": {
     "panel": "Bảng quản trị",
@@ -692,7 +693,11 @@
     "eventApproved": "Đã duyệt sự kiện — giờ mọi người đều thấy",
     "eventRejected": "Đã từ chối sự kiện",
     "joinedOn": "Tham gia ngày {{date}}",
-    "loadFailedRetry": "Không thể tải giao dịch — chạm để thử lại"
+    "loadFailedRetry": "Không thể tải giao dịch — chạm để thử lại",
+    "byAuthor": "bởi {{name}}",
+    "edit": "Chỉnh sửa",
+    "feature": "Nổi bật",
+    "unfeature": "Bỏ nổi bật"
   },
   "legal": {
     "termsTitle": "Điều khoản dịch vụ",

@@ -634,7 +634,8 @@
     "scoreStartDesc": "الجميع يبدأ من هنا",
     "scoreVerifiedDone": "تم التحقق",
     "scoreWarnings": "التحذيرات",
-    "scoreWarningsDesc": "لكل تحذير"
+    "scoreWarningsDesc": "لكل تحذير",
+    "taskClubPost": "انشر في نادٍ (حتى 5 مرات يوميًا)"
   },
   "admin": {
     "panel": "لوحة الإدارة",
@@ -727,7 +728,11 @@
     "eventApproved": "تمت الموافقة على الفعالية — أصبحت مرئية للجميع",
     "eventRejected": "تم رفض الفعالية",
     "joinedOn": "انضم في {{date}}",
-    "loadFailedRetry": "تعذّر تحميل المعاملات — اضغط لإعادة المحاولة"
+    "loadFailedRetry": "تعذّر تحميل المعاملات — اضغط لإعادة المحاولة",
+    "byAuthor": "بواسطة {{name}}",
+    "edit": "تعديل",
+    "feature": "تمييز",
+    "unfeature": "إلغاء التمييز"
   },
   "legal": {
     "termsTitle": "شروط الخدمة",

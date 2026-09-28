@@ -606,7 +606,8 @@
     "scoreStartDesc": "सभी यहीं से शुरू करते हैं",
     "scoreVerifiedDone": "सत्यापित",
     "scoreWarnings": "चेतावनियाँ",
-    "scoreWarningsDesc": "हर चेतावनी पर"
+    "scoreWarningsDesc": "हर चेतावनी पर",
+    "taskClubPost": "किसी क्लब में पोस्ट करें (दिन में 5 तक)"
   },
   "admin": {
     "panel": "एडमिन पैनल",
@@ -699,7 +700,11 @@
     "eventApproved": "इवेंट मंज़ूर — अब सबको दिख रहा है",
     "eventRejected": "इवेंट अस्वीकार किया गया",
     "joinedOn": "{{date}} को जुड़े",
-    "loadFailedRetry": "लेन-देन लोड नहीं हो सके — दोबारा कोशिश के लिए टैप करें"
+    "loadFailedRetry": "लेन-देन लोड नहीं हो सके — दोबारा कोशिश के लिए टैप करें",
+    "byAuthor": "{{name}} द्वारा",
+    "edit": "संपादित करें",
+    "feature": "फ़ीचर करें",
+    "unfeature": "फ़ीचर से हटाएँ"
   },
   "legal": {
     "termsTitle": "सेवा की शर्तें",

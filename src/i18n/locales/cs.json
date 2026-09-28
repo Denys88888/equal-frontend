@@ -620,7 +620,8 @@
     "scoreStartDesc": "Tady začíná každý",
     "scoreVerifiedDone": "Ověřeno",
     "scoreWarnings": "Varování",
-    "scoreWarningsDesc": "Za každé varování"
+    "scoreWarningsDesc": "Za každé varování",
+    "taskClubPost": "Příspěvek v klubu (až 5 denně)"
   },
   "admin": {
     "panel": "Panel správce",
@@ -713,7 +714,11 @@
     "eventApproved": "Událost schválena — nyní ji vidí všichni",
     "eventRejected": "Událost zamítnuta",
     "joinedOn": "Členem od {{date}}",
-    "loadFailedRetry": "Transakce se nepodařilo načíst — klepnutím to zkus znovu"
+    "loadFailedRetry": "Transakce se nepodařilo načíst — klepnutím to zkus znovu",
+    "byAuthor": "autor: {{name}}",
+    "edit": "Upravit",
+    "feature": "Zvýraznit",
+    "unfeature": "Zrušit zvýraznění"
   },
   "legal": {
     "termsTitle": "Podmínky služby",

@@ -606,7 +606,8 @@
     "scoreStartDesc": "همه از اینجا شروع می‌کنند",
     "scoreVerifiedDone": "تأییدشده",
     "scoreWarnings": "اخطارها",
-    "scoreWarningsDesc": "به ازای هر اخطار"
+    "scoreWarningsDesc": "به ازای هر اخطار",
+    "taskClubPost": "پست در باشگاه (حداکثر ۵ بار در روز)"
   },
   "admin": {
     "panel": "پنل مدیریت",
@@ -699,7 +700,11 @@
     "eventApproved": "رویداد تأیید شد — اکنون برای همه قابل مشاهده است",
     "eventRejected": "رویداد رد شد",
     "joinedOn": "عضو از {{date}}",
-    "loadFailedRetry": "تراکنش‌ها بارگیری نشد — برای تلاش دوباره ضربه بزنید"
+    "loadFailedRetry": "تراکنش‌ها بارگیری نشد — برای تلاش دوباره ضربه بزنید",
+    "byAuthor": "توسط {{name}}",
+    "edit": "ویرایش",
+    "feature": "ویژه کردن",
+    "unfeature": "حذف از ویژه‌ها"
   },
   "legal": {
     "termsTitle": "شرایط خدمات",

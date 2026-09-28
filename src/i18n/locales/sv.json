@@ -606,7 +606,8 @@
     "scoreStartDesc": "Här börjar alla",
     "scoreVerifiedDone": "Verifierad",
     "scoreWarnings": "Varningar",
-    "scoreWarningsDesc": "Per varning"
+    "scoreWarningsDesc": "Per varning",
+    "taskClubPost": "Gör ett inlägg i en klubb (upp till 5 per dag)"
   },
   "admin": {
     "panel": "Adminpanel",
@@ -699,7 +700,11 @@
     "eventApproved": "Evenemanget godkänt — nu synligt för alla",
     "eventRejected": "Evenemanget avvisat",
     "joinedOn": "Medlem sedan {{date}}",
-    "loadFailedRetry": "Det gick inte att läsa in transaktioner – tryck för att försöka igen"
+    "loadFailedRetry": "Det gick inte att läsa in transaktioner – tryck för att försöka igen",
+    "byAuthor": "av {{name}}",
+    "edit": "Redigera",
+    "feature": "Framhäv",
+    "unfeature": "Ta bort framhävning"
   },
   "legal": {
     "termsTitle": "Användarvillkor",

@@ -606,7 +606,8 @@
     "scoreStartDesc": "সবাই এখান থেকে শুরু করেন",
     "scoreVerifiedDone": "যাচাইকৃত",
     "scoreWarnings": "সতর্কতা",
-    "scoreWarningsDesc": "প্রতি সতর্কতায়"
+    "scoreWarningsDesc": "প্রতি সতর্কতায়",
+    "taskClubPost": "ক্লাবে পোস্ট করুন (দিনে সর্বোচ্চ ৫টি)"
   },
   "admin": {
     "panel": "অ্যাডমিন প্যানেল",
@@ -699,7 +700,11 @@
     "eventApproved": "ইভেন্ট অনুমোদিত — এখন সবাই দেখতে পাচ্ছে",
     "eventRejected": "ইভেন্ট প্রত্যাখ্যাত",
     "joinedOn": "{{date}} তারিখে যোগ দিয়েছেন",
-    "loadFailedRetry": "লেনদেন লোড করা যায়নি — আবার চেষ্টা করতে ট্যাপ করুন"
+    "loadFailedRetry": "লেনদেন লোড করা যায়নি — আবার চেষ্টা করতে ট্যাপ করুন",
+    "byAuthor": "{{name}}-এর তৈরি",
+    "edit": "সম্পাদনা",
+    "feature": "ফিচার করুন",
+    "unfeature": "ফিচার থেকে সরান"
   },
   "legal": {
     "termsTitle": "পরিষেবার শর্তাবলী",

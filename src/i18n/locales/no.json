@@ -606,7 +606,8 @@
     "scoreStartDesc": "Her starter alle",
     "scoreVerifiedDone": "Verifisert",
     "scoreWarnings": "Advarsler",
-    "scoreWarningsDesc": "Per advarsel"
+    "scoreWarningsDesc": "Per advarsel",
+    "taskClubPost": "Innlegg i en klubb (opptil 5 om dagen)"
   },
   "admin": {
     "panel": "Adminpanel",
@@ -699,7 +700,11 @@
     "eventApproved": "Arrangement godkjent — nå synlig for alle",
     "eventRejected": "Arrangement avvist",
     "joinedOn": "Medlem siden {{date}}",
-    "loadFailedRetry": "Kunne ikke laste inn transaksjoner – trykk for å prøve igjen"
+    "loadFailedRetry": "Kunne ikke laste inn transaksjoner – trykk for å prøve igjen",
+    "byAuthor": "av {{name}}",
+    "edit": "Rediger",
+    "feature": "Fremhev",
+    "unfeature": "Fjern fremheving"
   },
   "legal": {
     "termsTitle": "Vilkår for bruk",

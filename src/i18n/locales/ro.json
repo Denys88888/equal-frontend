@@ -613,7 +613,8 @@
     "scoreStartDesc": "Toată lumea începe de aici",
     "scoreVerifiedDone": "Verificat",
     "scoreWarnings": "Avertismente",
-    "scoreWarningsDesc": "Per avertisment"
+    "scoreWarningsDesc": "Per avertisment",
+    "taskClubPost": "Postează într-un club (până la 5 pe zi)"
   },
   "admin": {
     "panel": "Panou de administrare",
@@ -706,7 +707,11 @@
     "eventApproved": "Eveniment aprobat — acum vizibil pentru toți",
     "eventRejected": "Eveniment respins",
     "joinedOn": "Membru din {{date}}",
-    "loadFailedRetry": "Tranzacțiile nu au putut fi încărcate — atinge pentru a reîncerca"
+    "loadFailedRetry": "Tranzacțiile nu au putut fi încărcate — atinge pentru a reîncerca",
+    "byAuthor": "de {{name}}",
+    "edit": "Editează",
+    "feature": "Evidențiază",
+    "unfeature": "Elimină evidențierea"
   },
   "legal": {
     "termsTitle": "Termeni de utilizare",

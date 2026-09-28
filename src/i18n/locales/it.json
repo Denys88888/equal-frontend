@@ -613,7 +613,8 @@
     "scoreStartDesc": "Tutti partono da qui",
     "scoreVerifiedDone": "Verificato",
     "scoreWarnings": "Avvertimenti",
-    "scoreWarningsDesc": "Per ogni avvertimento"
+    "scoreWarningsDesc": "Per ogni avvertimento",
+    "taskClubPost": "Pubblica in un club (fino a 5 al giorno)"
   },
   "admin": {
     "panel": "Pannello di amministrazione",
@@ -706,7 +707,11 @@
     "eventApproved": "Evento approvato — ora visibile a tutti",
     "eventRejected": "Evento rifiutato",
     "joinedOn": "Iscritto dal {{date}}",
-    "loadFailedRetry": "Impossibile caricare le transazioni — tocca per riprovare"
+    "loadFailedRetry": "Impossibile caricare le transazioni — tocca per riprovare",
+    "byAuthor": "di {{name}}",
+    "edit": "Modifica",
+    "feature": "Metti in evidenza",
+    "unfeature": "Togli dall'evidenza"
   },
   "legal": {
     "termsTitle": "Termini di servizio",

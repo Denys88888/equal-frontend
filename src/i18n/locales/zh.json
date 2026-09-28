@@ -599,7 +599,8 @@
     "scoreStartDesc": "每个人都从这里开始",
     "scoreVerifiedDone": "已认证",
     "scoreWarnings": "警告",
-    "scoreWarningsDesc": "每次警告"
+    "scoreWarningsDesc": "每次警告",
+    "taskClubPost": "在俱乐部发帖（每天最多 5 次）"
   },
   "admin": {
     "panel": "管理面板",
@@ -692,7 +693,11 @@
     "eventApproved": "活动已通过——现在所有人都能看到",
     "eventRejected": "活动已被拒绝",
     "joinedOn": "{{date}} 加入",
-    "loadFailedRetry": "无法加载交易记录，点击重试"
+    "loadFailedRetry": "无法加载交易记录，点击重试",
+    "byAuthor": "创建者：{{name}}",
+    "edit": "编辑",
+    "feature": "设为精选",
+    "unfeature": "取消精选"
   },
   "legal": {
     "termsTitle": "服务条款",
