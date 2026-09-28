@@ -1198,6 +1198,7 @@ export default function Clubs() {
                 value={createName}
                 onChange={(e) => setCreateName(e.target.value)}
                 placeholder={t('clubs.clubName')}
+                maxLength={80}
                 className="w-full rounded-xl px-4 py-3 text-base outline-none border-2 border-transparent focus:border-[#BB83C9] transition-colors"
                 style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.3)', color: 'var(--charcoal)' }}
               />
