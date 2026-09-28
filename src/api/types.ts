@@ -141,7 +141,7 @@ export interface SendMessageRequest {
   type: 'TEXT' | 'VOICE' | 'IMAGE' | 'GIFT' | 'SYSTEM';
 }
 
-export interface SendMessageResponse extends Message {}
+export type SendMessageResponse = Message;
 
 // ── Clubs ──────────────────────────────────────────────
 
