@@ -1,13 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { getMe, updateMe, uploadPhoto, deletePhoto } from '@/api/users';
+import { getMe, updateMe, uploadPhoto, deletePhoto, getAchievements } from '@/api/users';
 import {
   Pencil,
   MapPin,
   Shield,
-  Flame,
-  ThumbsUp,
   Star,
   Settings,
   ChevronRight,
@@ -25,6 +23,7 @@ import {
   Zap,
   Users,
   HelpCircle,
+  AlertTriangle,
 } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
@@ -60,6 +59,10 @@ const EMPTY_USER = {
   badges: [] as string[],
   isOwnProfile: true,
 };
+
+/** Mirrors the server's trust rules (RewardsService / AdminService). */
+const VERIFIED_TRUST_BONUS = 20;
+const WARN_TRUST_PENALTY = 10;
 
 const goalConfig: Record<string, { color: string; icon: typeof Heart }> = {
   'Serious relationship': { color: '#BB83C9', icon: Heart },
@@ -354,7 +357,13 @@ export default function Profile() {
     }
   };
 
+  // Until /users/me answers, the hero showed "?" and a lone ", " where the
+  // name and age go.
+  const [profileLoaded, setProfileLoaded] = useState(false);
+  const [achievements, setAchievements] = useState<Record<string, boolean>>({});
+
   useEffect(() => {
+    getAchievements().then(setAchievements).catch(() => {});
     getMe().then((d) => {
       // Nothing falls back to placeholder data: this is the user's own profile,
       // and showing someone else's name, photos or a verified badge they haven't
@@ -380,7 +389,7 @@ export default function Profile() {
       setBio(mapped.bio);
       setEditBioText(mapped.bio);
       setVoiceIntroUrl((d as unknown as { voiceIntroUrl?: string | null }).voiceIntroUrl ?? null);
-    }).catch(() => {});
+    }).catch(() => {}).finally(() => setProfileLoaded(true));
   }, []);
 
   const trustZone = user.trustScore <= 40 ? t('profile2.trustLow') : user.trustScore <= 75 ? t('profile2.trustMid') : t('profile2.trustHigh');
@@ -419,11 +428,11 @@ export default function Profile() {
     }
   };
 
-  // "earned" used to be hardcoded, so every user was shown as Verified, Party,
-  // Pro, Profile and Trust regardless of what they had actually done. Verified
-  // now follows the real flag; the rest follow badges awarded by an admin.
+  // "earned" used to be hardcoded, then followed only badges an admin typed
+  // in, so nobody earned one by doing what the badge describes. The server now
+  // checks each goal against real activity; an admin-awarded badge still counts.
   const hasBadge = (id: string) =>
-    user.badges.some((b) => b.toLowerCase().replace(/[^a-z]/g, '').includes(id));
+    !!achievements[id] || user.badges.some((b) => b.toLowerCase().replace(/[^a-z]/g, '').includes(id));
 
   const badges = [
     { id: 'verified', name: 'profile2.badgeVerified', icon: Shield, color: '#7DE0B3', earned: user.verified, desc: 'profile2.badgeVerifiedDesc' },
@@ -468,7 +477,7 @@ export default function Profile() {
               style={{ background: 'linear-gradient(135deg, #BB83C9 0%, #7DE0B3 100%)' }}
             >
               <span className="text-white font-bold" style={{ fontSize: 96, fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                {(user.name || '?').charAt(0).toUpperCase()}
+                {profileLoaded ? (user.name || '?').charAt(0).toUpperCase() : null}
               </span>
             </div>
           )}
@@ -492,10 +501,12 @@ export default function Profile() {
           </motion.button>
 
           {/* Profile info overlay */}
+          {profileLoaded && (
           <div className="absolute bottom-0 left-0 right-0 p-5">
             <div className="flex items-center gap-2 mb-1">
               <h1 className="text-[28px] font-bold text-white tracking-tight" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.15 }}>
-                {user.name}, {user.age}
+                {/* No trailing ", " when the birth date isn't set */}
+                {[user.name, user.age].filter((v) => v !== null && v !== '').join(', ')}
               </h1>
               {user.verified && (
                 <div className="w-5 h-5 rounded-full bg-[#7DE0B3] flex items-center justify-center">
@@ -503,13 +514,16 @@ export default function Profile() {
                 </div>
               )}
             </div>
+            {user.location && (
             <div className="flex items-center gap-1.5">
               <MapPin size={14} className="text-white opacity-80" strokeWidth={2} />
               <span className="text-sm text-white opacity-80 font-medium" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                 {user.location}
               </span>
             </div>
+            )}
           </div>
+          )}
         </div>
 
         {/* ─────────────── Trust Score Card ─────────────── */}
@@ -550,9 +564,18 @@ export default function Profile() {
           {/* Score Breakdown */}
           <div className="grid grid-cols-3 gap-3 mt-5">
             {[
-              { icon: Shield, label: 'profile2.scoreVerification', score: '+30', desc: 'profile2.scoreVerificationDesc', color: '#BB83C9' },
-              { icon: Flame, label: 'profile2.scoreActivity', score: '+32', desc: 'profile2.scoreActivityDesc', color: '#F0B84A' },
-              { icon: ThumbsUp, label: 'profile2.scoreFeedback', score: '+20', desc: 'profile2.scoreFeedbackDesc', color: '#7DE0B3' },
+              // These were fixed numbers (+30 / +32 / +20) that summed to 82
+              // next to a score of 50, and nothing earned them. They are now the
+              // actual rules the server applies.
+              { icon: Star, label: 'profile2.scoreStart', score: '50', desc: 'profile2.scoreStartDesc', color: '#F0B84A' },
+              {
+                icon: Shield,
+                label: 'profile2.scoreVerification',
+                score: user.verified ? '✓' : `+${VERIFIED_TRUST_BONUS}`,
+                desc: user.verified ? 'profile2.scoreVerifiedDone' : 'profile2.scoreVerificationDesc',
+                color: '#BB83C9',
+              },
+              { icon: AlertTriangle, label: 'profile2.scoreWarnings', score: `−${WARN_TRUST_PENALTY}`, desc: 'profile2.scoreWarningsDesc', color: '#E86A6A' },
             ].map((item) => (
               <div key={item.label} className="flex flex-col items-center text-center">
                 <item.icon size={20} style={{ color: item.color }} strokeWidth={2} />
@@ -880,7 +903,7 @@ export default function Profile() {
               {t('profile.trustScore')}
             </h3>
             <p className="mt-2 text-sm text-[var(--charcoal)] opacity-60" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-              {t('profile.trustScoreHelp')}
+              {t('profile.trustScoreHow', { verified: VERIFIED_TRUST_BONUS, warning: WARN_TRUST_PENALTY })}
             </p>
           </div>
         </DialogContent>

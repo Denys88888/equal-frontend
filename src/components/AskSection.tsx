@@ -6,6 +6,7 @@ import { askApi, type AskItem, type AskQuote } from '@/api/ask';
 import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/hooks/useToast';
 import { usePiPayment } from '@/hooks/usePiPayment';
+import { formatDate } from '@/lib/format';
 
 const easeOutExpo = [0.16, 1, 0.3, 1] as [number, number, number, number];
 const MAX_LEN = 500;
@@ -365,7 +366,7 @@ export default function AskSection({
                       className="text-[11px] text-[var(--charcoal)] opacity-40"
                       style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
                     >
-                      {new Date(q.answeredAt).toLocaleDateString()}
+                      {formatDate(q.answeredAt)}
                     </span>
                   )}
                   {isAuthenticated && (

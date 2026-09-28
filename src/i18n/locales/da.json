@@ -77,7 +77,8 @@
     "undo": "Fortryd",
     "likeFailed": "Kunne ikke sende dit like",
     "alreadyLiked": "Allerede liket",
-    "you": "Dig"
+    "you": "Dig",
+    "swipeFailed": "Kunne ikke gemmes – prøv igen"
   },
   "matches": {
     "title": "Match",
@@ -101,7 +102,8 @@
     "message": "Besked",
     "unmatchFailed": "Kunne ikke fjerne matchet — prøv igen",
     "newCount": "Nye: {{count}}",
-    "noSearchResults": "Ingen samtaler matcher »{{query}}«"
+    "noSearchResults": "Ingen samtaler matcher »{{query}}«",
+    "loadFailed": "Dine matches kunne ikke indlæses."
   },
   "chat": {
     "typeMessage": "Skriv en besked...",
@@ -146,7 +148,26 @@
     "voicePreview": "Talebesked",
     "giftPreview": "Sendte en gave",
     "typing": "skriver",
-    "sendGift": "Send {{gift}}"
+    "sendGift": "Send {{gift}}",
+    "giftYouSent": "Du sendte {{partner}} en gave: {{gift}}",
+    "giftTheySent": "{{partner}} sendte dig en gave: {{gift}}",
+    "ib_hiking": "Din yndlingsvandrerute?",
+    "ib_coffee": "Den bedste café i din by?",
+    "ib_music": "Din yndlingskunstner lige nu?",
+    "ib_travel": "Hvilket rejsemål står øverst på din liste?",
+    "ib_photography": "Analog eller digital?",
+    "ib_cooking": "Hvad er din signaturret?",
+    "ib_reading": "Den sidste bog, du ikke kunne lægge fra dig?",
+    "ib_gaming": "Dit yndlingsspil lige nu?",
+    "ib_yoga": "Yoga om morgenen eller aftenen?",
+    "ib_fitness": "Yndlingstræning?",
+    "ib_art": "Laver du selv kunst?",
+    "ib_movies": "Den sidste film, der blæste dig bagover?",
+    "ib_generic": "Hej {{name}}! Hvad har du lavet af sjovt for nylig?",
+    "blockFailed": "Kunne ikke blokere – prøv igen",
+    "historyLoadFailed": "Samtalen kunne ikke indlæses.",
+    "reportFailed": "Anmeldelsen kunne ikke sendes – prøv igen",
+    "sendFailed": "Beskeden kunne ikke sendes"
   },
   "profile": {
     "edit": "Rediger profil",
@@ -156,7 +177,8 @@
     "bio": "Om mig",
     "interests": "Interesser",
     "settings": "Indstillinger",
-    "trustScoreHelp": "Din tillidsscore hjælper os med at vise dig for gode match. Den stiger med verificering, aktivitet og positiv feedback."
+    "trustScoreHelp": "Din tillidsscore hjælper os med at vise dig for gode match. Den stiger med verificering, aktivitet og positiv feedback.",
+    "trustScoreHow": "Din tillidsscore hjælper os med at vise dig for de rigtige. Alle starter på 50, verificering giver {{verified}}, og hver advarsel fra en moderator koster {{warning}}."
   },
   "settings": {
     "title": "Indstillinger",
@@ -292,7 +314,8 @@
     "cookieEssential": "Kun nødvendige",
     "privacyPolicy": "Privatlivspolitik",
     "notFoundDesc": "Siden, du leder efter, findes ikke eller er blevet flyttet.",
-    "photoN": "Foto {{n}}"
+    "photoN": "Foto {{n}}",
+    "loadFailed": "Kunne ikke indlæses – tjek din forbindelse."
   },
   "clubs": {
     "title": "Klubber",
@@ -421,7 +444,10 @@
     "createFailed": "Begivenheden kunne ikke sendes — prøv igen",
     "pendingReview": "Til gennemgang",
     "pendingReviewDesc": "Kun du kan se denne begivenhed, indtil en admin godkender den.",
-    "noSavedDesc": "Tryk på stjernen ved begivenheder, du er interesseret i, for at gemme dem her."
+    "noSavedDesc": "Tryk på stjernen ved begivenheder, du er interesseret i, for at gemme dem her.",
+    "ended": "Begivenheden er slut",
+    "feedbackFailed": "Din feedback kunne ikke sendes – prøv igen",
+    "thanksFeedbackSaved": "Tak for din feedback!"
   },
   "video": {
     "connecting": "Forbinder...",
@@ -523,7 +549,11 @@
     "donating": "Behandler…",
     "supportUnavailable": "Supporten er ikke sat op endnu",
     "donateAmount": "Donér {{amount}} Pi",
-    "settingSaveFailed": "Indstillingen kunne ikke gemmes – prøv igen"
+    "settingSaveFailed": "Indstillingen kunne ikke gemmes – prøv igen",
+    "payCompleted": "Gennemført",
+    "payCancelled": "Annulleret",
+    "payProcessing": "Behandles",
+    "unblockFailed": "Kunne ikke fjerne blokeringen – prøv igen"
   },
   "profile2": {
     "addBioHint": "Tilføj en profiltekst, så andre lærer dig at kende",
@@ -570,7 +600,13 @@
     "sparksAmount_other": "+{{count}} gnister",
     "sparksPerDay": "+{{count}} gnist/dag",
     "photoDeleteFailed": "Kunne ikke slette billedet",
-    "profileAlt": "{{name}}s profil"
+    "profileAlt": "{{name}}s profil",
+    "bioSaveFailed": "Din bio kunne ikke gemmes – prøv igen",
+    "scoreStart": "Start",
+    "scoreStartDesc": "Her starter alle",
+    "scoreVerifiedDone": "Verificeret",
+    "scoreWarnings": "Advarsler",
+    "scoreWarningsDesc": "Pr. advarsel"
   },
   "admin": {
     "panel": "Adminpanel",
@@ -661,7 +697,9 @@
     "eventMaxAttendees": "Maks. antal deltagere",
     "eventUpdated": "Begivenheden er opdateret",
     "eventApproved": "Begivenhed godkendt — nu synlig for alle",
-    "eventRejected": "Begivenhed afvist"
+    "eventRejected": "Begivenhed afvist",
+    "joinedOn": "Medlem siden {{date}}",
+    "loadFailedRetry": "Transaktionerne kunne ikke indlæses – tryk for at prøve igen"
   },
   "legal": {
     "termsTitle": "Servicevilkår",
@@ -831,7 +869,12 @@
       "q30": "Hvis du kunne mestre én færdighed på én nat, hvilken skulle det være?"
     },
     "voiceGate": "Optag en stemmepræsentation for at være med i Dagens match — profiler uden bliver ikke matchet.",
-    "tooFast": "For hurtigt — vent 5 sekunder."
+    "tooFast": "For hurtigt — vent 5 sekunder.",
+    "extraFailed": "Ingen er tilgængelige lige nu – prøv igen senere",
+    "extraNeedsVoice": "Optag først en stemmeintro – Daily Match parrer kun profiler, der har en.",
+    "extraSaved": "Din betaling er gemt – hent det ekstra match senere uden at betale igen.",
+    "claimExtra": "Hent dit betalte ekstra match",
+    "arrivesToday": "Dit nye match kommer i dag kl. {{time}}"
   },
   "truthOrDare": {
     "truth": {

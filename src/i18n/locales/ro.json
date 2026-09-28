@@ -79,7 +79,8 @@
     "undo": "Anulează",
     "likeFailed": "Trimiterea aprecierii a eșuat",
     "alreadyLiked": "Deja apreciat",
-    "you": "Tu"
+    "you": "Tu",
+    "swipeFailed": "Nu s-a putut salva — încearcă din nou"
   },
   "matches": {
     "title": "Potriviri",
@@ -103,7 +104,8 @@
     "message": "Mesaj",
     "unmatchFailed": "Anularea potrivirii a eșuat — încearcă din nou",
     "newCount": "Noi: {{count}}",
-    "noSearchResults": "Nicio conversație nu corespunde cu „{{query}}”"
+    "noSearchResults": "Nicio conversație nu corespunde cu „{{query}}”",
+    "loadFailed": "Potrivirile tale nu au putut fi încărcate."
   },
   "chat": {
     "typeMessage": "Scrie un mesaj...",
@@ -148,7 +150,26 @@
     "voicePreview": "Mesaj vocal",
     "giftPreview": "A trimis un cadou",
     "typing": "scrie",
-    "sendGift": "Trimite {{gift}}"
+    "sendGift": "Trimite {{gift}}",
+    "giftYouSent": "I-ai trimis lui {{partner}} un cadou: {{gift}}",
+    "giftTheySent": "{{partner}} ți-a trimis un cadou: {{gift}}",
+    "ib_hiking": "Traseul tău preferat de drumeție?",
+    "ib_coffee": "Cea mai bună cafenea din orașul tău?",
+    "ib_music": "Artistul tău preferat acum?",
+    "ib_travel": "Ce destinație e prima pe lista ta?",
+    "ib_photography": "Film sau digital?",
+    "ib_cooking": "Care e felul tău de mâncare de suflet?",
+    "ib_reading": "Ultima carte pe care n-ai putut s-o lași din mână?",
+    "ib_gaming": "Jocul tău preferat acum?",
+    "ib_yoga": "Yoga dimineața sau seara?",
+    "ib_fitness": "Antrenamentul preferat?",
+    "ib_art": "Faci și tu artă?",
+    "ib_movies": "Ultimul film care te-a lăsat fără cuvinte?",
+    "ib_generic": "Salut, {{name}}! Ce ai făcut interesant în ultima vreme?",
+    "blockFailed": "Nu s-a putut bloca — încearcă din nou",
+    "historyLoadFailed": "Conversația nu a putut fi încărcată.",
+    "reportFailed": "Raportul nu a putut fi trimis — încearcă din nou",
+    "sendFailed": "Mesajul nu a putut fi trimis"
   },
   "profile": {
     "edit": "Editează profilul",
@@ -158,7 +179,8 @@
     "bio": "Despre mine",
     "interests": "Interese",
     "settings": "Setări",
-    "trustScoreHelp": "Scorul tău de încredere ne ajută să te arătăm unor potriviri de calitate. Crește prin verificare, activitate și feedback pozitiv."
+    "trustScoreHelp": "Scorul tău de încredere ne ajută să te arătăm unor potriviri de calitate. Crește prin verificare, activitate și feedback pozitiv.",
+    "trustScoreHow": "Scorul de încredere ne ajută să te arătăm persoanelor potrivite. Toată lumea începe de la 50, verificarea adaugă {{verified}}, iar fiecare avertisment de la un moderator scade {{warning}}."
   },
   "settings": {
     "title": "Setări",
@@ -294,7 +316,8 @@
     "cookieEssential": "Doar esențiale",
     "privacyPolicy": "Politica de confidențialitate",
     "notFoundDesc": "Pagina pe care o cauți nu există sau a fost mutată.",
-    "photoN": "Fotografia {{n}}"
+    "photoN": "Fotografia {{n}}",
+    "loadFailed": "Nu s-a putut încărca — verifică conexiunea."
   },
   "clubs": {
     "title": "Cluburi",
@@ -427,7 +450,10 @@
     "createFailed": "Evenimentul nu a putut fi trimis — încearcă din nou",
     "pendingReview": "În verificare",
     "pendingReviewDesc": "Doar tu vezi acest eveniment până când un administrator îl aprobă.",
-    "noSavedDesc": "Atinge steaua de la evenimentele care te interesează pentru a le salva aici."
+    "noSavedDesc": "Atinge steaua de la evenimentele care te interesează pentru a le salva aici.",
+    "ended": "Acest eveniment s-a încheiat",
+    "feedbackFailed": "Părerea ta nu a putut fi trimisă — încearcă din nou",
+    "thanksFeedbackSaved": "Mulțumim pentru părere!"
   },
   "video": {
     "connecting": "Se conectează...",
@@ -529,7 +555,11 @@
     "donating": "Se procesează…",
     "supportUnavailable": "Asistența nu este configurată încă",
     "donateAmount": "Donează {{amount}} Pi",
-    "settingSaveFailed": "Setarea nu a putut fi salvată — încearcă din nou"
+    "settingSaveFailed": "Setarea nu a putut fi salvată — încearcă din nou",
+    "payCompleted": "Finalizată",
+    "payCancelled": "Anulată",
+    "payProcessing": "În procesare",
+    "unblockFailed": "Deblocarea nu a reușit — încearcă din nou"
   },
   "profile2": {
     "addBioHint": "Adaugă o descriere pentru ca oamenii să te cunoască",
@@ -577,7 +607,13 @@
     "sparksAmount_other": "+{{count}} de Scântei",
     "sparksPerDay": "+{{count}} Scânteie/zi",
     "photoDeleteFailed": "Ștergerea fotografiei a eșuat",
-    "profileAlt": "Profil: {{name}}"
+    "profileAlt": "Profil: {{name}}",
+    "bioSaveFailed": "Descrierea nu a putut fi salvată — încearcă din nou",
+    "scoreStart": "Start",
+    "scoreStartDesc": "Toată lumea începe de aici",
+    "scoreVerifiedDone": "Verificat",
+    "scoreWarnings": "Avertismente",
+    "scoreWarningsDesc": "Per avertisment"
   },
   "admin": {
     "panel": "Panou de administrare",
@@ -668,7 +704,9 @@
     "eventMaxAttendees": "Nr. maxim de participanți",
     "eventUpdated": "Eveniment actualizat",
     "eventApproved": "Eveniment aprobat — acum vizibil pentru toți",
-    "eventRejected": "Eveniment respins"
+    "eventRejected": "Eveniment respins",
+    "joinedOn": "Membru din {{date}}",
+    "loadFailedRetry": "Tranzacțiile nu au putut fi încărcate — atinge pentru a reîncerca"
   },
   "legal": {
     "termsTitle": "Termeni de utilizare",
@@ -838,7 +876,12 @@
       "q30": "Dacă ai putea stăpâni o abilitate peste noapte, care ar fi aceea?"
     },
     "voiceGate": "Înregistrează o prezentare vocală pentru a te alătura Potrivirii zilei — profilurile fără ea nu sunt potrivite.",
-    "tooFast": "Prea repede — așteaptă 5 secunde."
+    "tooFast": "Prea repede — așteaptă 5 secunde.",
+    "extraFailed": "Nimeni nu e disponibil acum — încearcă mai târziu",
+    "extraNeedsVoice": "Înregistrează mai întâi o prezentare vocală — Daily Match potrivește doar profilurile care au una.",
+    "extraSaved": "Plata ta e păstrată — revendică potrivirea suplimentară mai târziu, fără să plătești din nou.",
+    "claimExtra": "Revendică potrivirea suplimentară plătită",
+    "arrivesToday": "Noua ta potrivire sosește azi la {{time}}"
   },
   "truthOrDare": {
     "truth": {

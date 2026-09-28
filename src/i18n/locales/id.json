@@ -75,7 +75,8 @@
     "undo": "Batalkan",
     "likeFailed": "Tidak dapat mengirim suka",
     "alreadyLiked": "Sudah disukai",
-    "you": "Kamu"
+    "you": "Kamu",
+    "swipeFailed": "Gagal menyimpan — coba lagi"
   },
   "matches": {
     "title": "Kecocokan",
@@ -99,7 +100,8 @@
     "message": "Pesan",
     "unmatchFailed": "Tidak dapat membatalkan kecocokan — coba lagi",
     "newCount": "{{count}} baru",
-    "noSearchResults": "Tidak ada percakapan yang cocok dengan “{{query}}”"
+    "noSearchResults": "Tidak ada percakapan yang cocok dengan “{{query}}”",
+    "loadFailed": "Kecocokanmu tidak dapat dimuat."
   },
   "chat": {
     "typeMessage": "Ketik pesan...",
@@ -144,7 +146,26 @@
     "voicePreview": "Pesan suara",
     "giftPreview": "Mengirim hadiah",
     "typing": "mengetik",
-    "sendGift": "Kirim {{gift}}"
+    "sendGift": "Kirim {{gift}}",
+    "giftYouSent": "Kamu mengirim hadiah ke {{partner}}: {{gift}}",
+    "giftTheySent": "{{partner}} mengirimimu hadiah: {{gift}}",
+    "ib_hiking": "Jalur pendakian favoritmu?",
+    "ib_coffee": "Kedai kopi terbaik di kotamu?",
+    "ib_music": "Artis favoritmu saat ini?",
+    "ib_travel": "Destinasi teratas di daftarmu?",
+    "ib_photography": "Film atau digital?",
+    "ib_cooking": "Apa masakan andalanmu?",
+    "ib_reading": "Buku terakhir yang tak bisa kamu lepaskan?",
+    "ib_gaming": "Game favoritmu saat ini?",
+    "ib_yoga": "Yoga pagi atau malam?",
+    "ib_fitness": "Latihan favoritmu?",
+    "ib_art": "Kamu juga berkarya seni?",
+    "ib_movies": "Film terakhir yang bikin kamu terpukau?",
+    "ib_generic": "Hai {{name}}! Apa hal seru yang kamu lakukan baru-baru ini?",
+    "blockFailed": "Gagal memblokir — coba lagi",
+    "historyLoadFailed": "Percakapan ini tidak dapat dimuat.",
+    "reportFailed": "Laporan tidak dapat dikirim — coba lagi",
+    "sendFailed": "Pesan tidak dapat dikirim"
   },
   "profile": {
     "edit": "Edit Profil",
@@ -154,7 +175,8 @@
     "bio": "Bio",
     "interests": "Minat",
     "settings": "Pengaturan",
-    "trustScoreHelp": "Skor Kepercayaanmu membantu kami menampilkanmu ke kecocokan berkualitas. Skor naik lewat verifikasi, keaktifan, dan umpan balik positif."
+    "trustScoreHelp": "Skor Kepercayaanmu membantu kami menampilkanmu ke kecocokan berkualitas. Skor naik lewat verifikasi, keaktifan, dan umpan balik positif.",
+    "trustScoreHow": "Skor Kepercayaan membantu kami menampilkanmu ke orang yang tepat. Semua mulai dari 50, verifikasi menambah {{verified}}, dan setiap peringatan moderator mengurangi {{warning}}."
   },
   "settings": {
     "title": "Pengaturan",
@@ -290,7 +312,8 @@
     "cookieEssential": "Hanya yang esensial",
     "privacyPolicy": "Kebijakan Privasi",
     "notFoundDesc": "Halaman yang kamu cari tidak ada atau sudah dipindahkan.",
-    "photoN": "Foto {{n}}"
+    "photoN": "Foto {{n}}",
+    "loadFailed": "Gagal memuat — periksa koneksimu."
   },
   "clubs": {
     "title": "Klub",
@@ -415,7 +438,10 @@
     "createFailed": "Tidak dapat mengirim acara — silakan coba lagi",
     "pendingReview": "Sedang ditinjau",
     "pendingReviewDesc": "Hanya Anda yang bisa melihat acara ini sampai admin menyetujuinya.",
-    "noSavedDesc": "Ketuk ikon bintang pada acara yang kamu minati untuk menyimpannya di sini."
+    "noSavedDesc": "Ketuk ikon bintang pada acara yang kamu minati untuk menyimpannya di sini.",
+    "ended": "Acara ini sudah berakhir",
+    "feedbackFailed": "Masukanmu tidak dapat dikirim — coba lagi",
+    "thanksFeedbackSaved": "Terima kasih atas masukanmu!"
   },
   "video": {
     "connecting": "Menghubungkan...",
@@ -517,7 +543,11 @@
     "donating": "Memproses…",
     "supportUnavailable": "Dukungan belum dikonfigurasi",
     "donateAmount": "Donasikan {{amount}} Pi",
-    "settingSaveFailed": "Tidak dapat menyimpan pengaturan — coba lagi"
+    "settingSaveFailed": "Tidak dapat menyimpan pengaturan — coba lagi",
+    "payCompleted": "Selesai",
+    "payCancelled": "Dibatalkan",
+    "payProcessing": "Diproses",
+    "unblockFailed": "Gagal membuka blokir — coba lagi"
   },
   "profile2": {
     "addBioHint": "Tambahkan bio agar orang lain mengenalmu",
@@ -563,7 +593,13 @@
     "sparksAmount_other": "+{{count}} Percikan",
     "sparksPerDay": "+{{count}} Percikan/hari",
     "photoDeleteFailed": "Tidak dapat menghapus foto",
-    "profileAlt": "Profil {{name}}"
+    "profileAlt": "Profil {{name}}",
+    "bioSaveFailed": "Bio-mu tidak dapat disimpan — coba lagi",
+    "scoreStart": "Awal",
+    "scoreStartDesc": "Semua mulai dari sini",
+    "scoreVerifiedDone": "Terverifikasi",
+    "scoreWarnings": "Peringatan",
+    "scoreWarningsDesc": "Per peringatan"
   },
   "admin": {
     "panel": "Panel admin",
@@ -654,7 +690,9 @@
     "eventMaxAttendees": "Maks. peserta",
     "eventUpdated": "Acara diperbarui",
     "eventApproved": "Acara disetujui — kini terlihat oleh semua orang",
-    "eventRejected": "Acara ditolak"
+    "eventRejected": "Acara ditolak",
+    "joinedOn": "Bergabung {{date}}",
+    "loadFailedRetry": "Transaksi tidak dapat dimuat — ketuk untuk mencoba lagi"
   },
   "legal": {
     "termsTitle": "Ketentuan Layanan",
@@ -824,7 +862,12 @@
       "q30": "Keterampilan apa yang ingin kamu kuasai dalam semalam?"
     },
     "voiceGate": "Rekam voice intro untuk ikut Daily Match — profil tanpa itu tidak dicocokkan.",
-    "tooFast": "Terlalu cepat — tunggu 5 detik."
+    "tooFast": "Terlalu cepat — tunggu 5 detik.",
+    "extraFailed": "Tidak ada yang tersedia saat ini — coba lagi nanti",
+    "extraNeedsVoice": "Rekam intro suara dulu — Daily Match hanya memasangkan profil yang memilikinya.",
+    "extraSaved": "Pembayaranmu tersimpan — ambil kecocokan tambahan nanti tanpa membayar lagi.",
+    "claimExtra": "Ambil kecocokan tambahan yang sudah dibayar",
+    "arrivesToday": "Kecocokan barumu datang hari ini pukul {{time}}"
   },
   "truthOrDare": {
     "truth": {

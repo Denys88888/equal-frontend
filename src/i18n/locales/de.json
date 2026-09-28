@@ -77,7 +77,8 @@
     "undo": "Rückgängig",
     "likeFailed": "Like konnte nicht gesendet werden",
     "alreadyLiked": "Bereits geliked",
-    "you": "Du"
+    "you": "Du",
+    "swipeFailed": "Konnte nicht gespeichert werden – versuche es erneut"
   },
   "matches": {
     "title": "Matches",
@@ -101,7 +102,8 @@
     "message": "Nachricht",
     "unmatchFailed": "Match konnte nicht aufgelöst werden – bitte versuche es erneut",
     "newCount": "{{count}} neu",
-    "noSearchResults": "Keine Unterhaltungen passend zu „{{query}}“"
+    "noSearchResults": "Keine Unterhaltungen passend zu „{{query}}“",
+    "loadFailed": "Deine Matches konnten nicht geladen werden."
   },
   "chat": {
     "typeMessage": "Nachricht schreiben...",
@@ -146,7 +148,26 @@
     "voicePreview": "Sprachnachricht",
     "giftPreview": "Hat ein Geschenk gesendet",
     "typing": "schreibt",
-    "sendGift": "{{gift}} senden"
+    "sendGift": "{{gift}} senden",
+    "giftYouSent": "Du hast {{partner}} ein Geschenk gesendet: {{gift}}",
+    "giftTheySent": "{{partner}} hat dir ein Geschenk gesendet: {{gift}}",
+    "ib_hiking": "Deine liebste Wanderroute?",
+    "ib_coffee": "Das beste Café in deiner Stadt?",
+    "ib_music": "Wer ist gerade dein Lieblingsartist?",
+    "ib_travel": "Welches Reiseziel steht ganz oben auf deiner Liste?",
+    "ib_photography": "Analog oder digital?",
+    "ib_cooking": "Was ist dein Signature-Gericht?",
+    "ib_reading": "Das letzte Buch, das du nicht weglegen konntest?",
+    "ib_gaming": "Dein Lieblingsspiel gerade?",
+    "ib_yoga": "Yoga morgens oder abends?",
+    "ib_fitness": "Dein Lieblingstraining?",
+    "ib_art": "Machst du selbst Kunst?",
+    "ib_movies": "Der letzte Film, der dich umgehauen hat?",
+    "ib_generic": "Hey {{name}}! Was hast du in letzter Zeit Schönes erlebt?",
+    "blockFailed": "Blockieren fehlgeschlagen – bitte versuche es erneut",
+    "historyLoadFailed": "Unterhaltung konnte nicht geladen werden.",
+    "reportFailed": "Meldung konnte nicht gesendet werden – bitte versuche es erneut",
+    "sendFailed": "Nachricht konnte nicht gesendet werden"
   },
   "profile": {
     "edit": "Profil bearbeiten",
@@ -156,7 +177,8 @@
     "bio": "Bio",
     "interests": "Interessen",
     "settings": "Einstellungen",
-    "trustScoreHelp": "Dein Vertrauenswert hilft uns, dich passenden Matches zu zeigen. Er steigt durch Verifizierung, Aktivität und positives Feedback."
+    "trustScoreHelp": "Dein Vertrauenswert hilft uns, dich passenden Matches zu zeigen. Er steigt durch Verifizierung, Aktivität und positives Feedback.",
+    "trustScoreHow": "Dein Vertrauensscore hilft uns, dich passenden Menschen zu zeigen. Alle starten bei 50, eine Verifizierung bringt {{verified}}, jede Verwarnung durch Moderatoren kostet {{warning}}."
   },
   "settings": {
     "title": "Einstellungen",
@@ -292,7 +314,8 @@
     "cookieEssential": "Nur Notwendige",
     "privacyPolicy": "Datenschutzerklärung",
     "notFoundDesc": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
-    "photoN": "Foto {{n}}"
+    "photoN": "Foto {{n}}",
+    "loadFailed": "Konnte nicht geladen werden – prüfe deine Verbindung."
   },
   "clubs": {
     "title": "Clubs",
@@ -421,7 +444,10 @@
     "createFailed": "Event konnte nicht eingereicht werden — bitte versuche es erneut",
     "pendingReview": "In Prüfung",
     "pendingReviewDesc": "Nur du siehst dieses Event, bis ein Admin es freigibt.",
-    "noSavedDesc": "Tippe bei Events, die dich interessieren, auf den Stern, um sie hier zu speichern."
+    "noSavedDesc": "Tippe bei Events, die dich interessieren, auf den Stern, um sie hier zu speichern.",
+    "ended": "Dieses Event ist vorbei",
+    "feedbackFailed": "Feedback konnte nicht gesendet werden – bitte versuche es erneut",
+    "thanksFeedbackSaved": "Danke für dein Feedback!"
   },
   "video": {
     "connecting": "Verbinden...",
@@ -523,7 +549,11 @@
     "donating": "Wird verarbeitet…",
     "supportUnavailable": "Der Support ist noch nicht eingerichtet",
     "donateAmount": "{{amount}} Pi spenden",
-    "settingSaveFailed": "Einstellung konnte nicht gespeichert werden – bitte versuche es erneut"
+    "settingSaveFailed": "Einstellung konnte nicht gespeichert werden – bitte versuche es erneut",
+    "payCompleted": "Abgeschlossen",
+    "payCancelled": "Storniert",
+    "payProcessing": "In Bearbeitung",
+    "unblockFailed": "Entsperren fehlgeschlagen – bitte versuche es erneut"
   },
   "profile2": {
     "addBioHint": "Füge eine Bio hinzu, damit die Leute dich kennenlernen",
@@ -570,7 +600,13 @@
     "sparksAmount_other": "+{{count}} Funken",
     "sparksPerDay": "+{{count}} Funke/Tag",
     "photoDeleteFailed": "Foto konnte nicht gelöscht werden",
-    "profileAlt": "Profil von {{name}}"
+    "profileAlt": "Profil von {{name}}",
+    "bioSaveFailed": "Deine Bio konnte nicht gespeichert werden – bitte versuche es erneut",
+    "scoreStart": "Start",
+    "scoreStartDesc": "Hier beginnen alle",
+    "scoreVerifiedDone": "Verifiziert",
+    "scoreWarnings": "Verwarnungen",
+    "scoreWarningsDesc": "Pro Verwarnung"
   },
   "admin": {
     "panel": "Admin-Panel",
@@ -661,7 +697,9 @@
     "eventMaxAttendees": "Max. Teilnehmer",
     "eventUpdated": "Veranstaltung aktualisiert",
     "eventApproved": "Event freigegeben — jetzt für alle sichtbar",
-    "eventRejected": "Event abgelehnt"
+    "eventRejected": "Event abgelehnt",
+    "joinedOn": "Dabei seit {{date}}",
+    "loadFailedRetry": "Transaktionen konnten nicht geladen werden – zum Wiederholen tippen"
   },
   "legal": {
     "termsTitle": "Nutzungsbedingungen",
@@ -831,7 +869,12 @@
       "q30": "Wenn du über Nacht eine Fähigkeit meistern könntest, welche wäre es?"
     },
     "voiceGate": "Nimm ein Voice-Intro auf, um bei Daily Match mitzumachen — Profile ohne werden nicht gematcht.",
-    "tooFast": "Zu schnell — warte 5 Sekunden."
+    "tooFast": "Zu schnell — warte 5 Sekunden.",
+    "extraFailed": "Gerade ist niemand verfügbar – versuche es später erneut",
+    "extraNeedsVoice": "Nimm zuerst ein Sprach-Intro auf – Daily Match verbindet nur Profile mit Intro.",
+    "extraSaved": "Deine Zahlung ist gespeichert – hol dir das Extra-Match später, ohne erneut zu zahlen.",
+    "claimExtra": "Bezahltes Extra-Match abholen",
+    "arrivesToday": "Dein neues Match kommt heute um {{time}}"
   },
   "truthOrDare": {
     "truth": {

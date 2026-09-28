@@ -8,6 +8,7 @@ import SkeletonLoader from '@/components/SkeletonLoader';
 import { useToast } from '@/hooks/useToast';
 import { useAuth } from '@/context/AuthContext';
 import { askApi, type AskItem } from '@/api/ask';
+import { formatDate } from '@/lib/format';
 
 const easeOutExpo = [0.16, 1, 0.3, 1] as [number, number, number, number];
 const ACCENT = '#BB83C9';
@@ -245,7 +246,7 @@ export default function MyAsks() {
                       ? t('ask.asks', { defaultValue: `${q.asker.name} asks`, name: q.asker.name })
                       : t('ask.anonymousAsks', { defaultValue: 'Anonymous asks' })}
                     {' · '}
-                    {new Date(q.createdAt).toLocaleDateString()}
+                    {formatDate(q.createdAt)}
                   </span>
                 </div>
 

@@ -77,7 +77,8 @@
     "undo": "Ongedaan maken",
     "likeFailed": "Kon 'leuk' niet versturen",
     "alreadyLiked": "Al leuk gevonden",
-    "you": "Jij"
+    "you": "Jij",
+    "swipeFailed": "Opslaan mislukt — probeer het opnieuw"
   },
   "matches": {
     "title": "Matches",
@@ -101,7 +102,8 @@
     "message": "Bericht",
     "unmatchFailed": "Kon de match niet ongedaan maken — probeer het opnieuw",
     "newCount": "{{count}} nieuw",
-    "noSearchResults": "Geen gesprekken gevonden voor ‘{{query}}’"
+    "noSearchResults": "Geen gesprekken gevonden voor ‘{{query}}’",
+    "loadFailed": "Je matches konden niet worden geladen."
   },
   "chat": {
     "typeMessage": "Typ een bericht...",
@@ -146,7 +148,26 @@
     "voicePreview": "Spraakbericht",
     "giftPreview": "Heeft een cadeau gestuurd",
     "typing": "typt",
-    "sendGift": "{{gift}} sturen"
+    "sendGift": "{{gift}} sturen",
+    "giftYouSent": "Je stuurde {{partner}} een cadeau: {{gift}}",
+    "giftTheySent": "{{partner}} stuurde je een cadeau: {{gift}}",
+    "ib_hiking": "Je favoriete wandelroute?",
+    "ib_coffee": "Beste koffiezaak in je stad?",
+    "ib_music": "Je favoriete artiest op dit moment?",
+    "ib_travel": "Welke bestemming staat bovenaan je lijst?",
+    "ib_photography": "Analoog of digitaal?",
+    "ib_cooking": "Wat is je signature-gerecht?",
+    "ib_reading": "Het laatste boek dat je niet kon wegleggen?",
+    "ib_gaming": "Je favoriete game op dit moment?",
+    "ib_yoga": "Yoga 's ochtends of 's avonds?",
+    "ib_fitness": "Je favoriete workout?",
+    "ib_art": "Maak je zelf kunst?",
+    "ib_movies": "De laatste film die je omver blies?",
+    "ib_generic": "Hé {{name}}! Wat heb je laatst leuks gedaan?",
+    "blockFailed": "Blokkeren mislukt — probeer het opnieuw",
+    "historyLoadFailed": "Dit gesprek kon niet worden geladen.",
+    "reportFailed": "Melding kon niet worden verstuurd — probeer het opnieuw",
+    "sendFailed": "Bericht kon niet worden verstuurd"
   },
   "profile": {
     "edit": "Profiel bewerken",
@@ -156,7 +177,8 @@
     "bio": "Bio",
     "interests": "Interesses",
     "settings": "Instellingen",
-    "trustScoreHelp": "Je Vertrouwensscore helpt ons je aan goede matches te tonen. Hij stijgt door verificatie, activiteit en positieve feedback."
+    "trustScoreHelp": "Je Vertrouwensscore helpt ons je aan goede matches te tonen. Hij stijgt door verificatie, activiteit en positieve feedback.",
+    "trustScoreHow": "Je vertrouwensscore helpt ons je aan de juiste mensen te tonen. Iedereen begint op 50, verificatie levert {{verified}} op en elke waarschuwing van een moderator kost {{warning}}."
   },
   "settings": {
     "title": "Instellingen",
@@ -292,7 +314,8 @@
     "cookieEssential": "Alleen noodzakelijke",
     "privacyPolicy": "Privacybeleid",
     "notFoundDesc": "De pagina die je zoekt bestaat niet of is verplaatst.",
-    "photoN": "Foto {{n}}"
+    "photoN": "Foto {{n}}",
+    "loadFailed": "Laden mislukt — controleer je verbinding."
   },
   "clubs": {
     "title": "Clubs",
@@ -421,7 +444,10 @@
     "createFailed": "Evenement kon niet worden ingediend — probeer het opnieuw",
     "pendingReview": "In beoordeling",
     "pendingReviewDesc": "Alleen jij ziet dit evenement totdat een beheerder het goedkeurt.",
-    "noSavedDesc": "Tik op de ster bij evenementen die je interessant vindt om ze hier op te slaan."
+    "noSavedDesc": "Tik op de ster bij evenementen die je interessant vindt om ze hier op te slaan.",
+    "ended": "Dit evenement is afgelopen",
+    "feedbackFailed": "Je feedback kon niet worden verstuurd — probeer het opnieuw",
+    "thanksFeedbackSaved": "Bedankt voor je feedback!"
   },
   "video": {
     "connecting": "Verbinden...",
@@ -523,7 +549,11 @@
     "donating": "Bezig…",
     "supportUnavailable": "Ondersteuning is nog niet ingesteld",
     "donateAmount": "{{amount}} Pi doneren",
-    "settingSaveFailed": "Instelling kon niet worden opgeslagen — probeer het opnieuw"
+    "settingSaveFailed": "Instelling kon niet worden opgeslagen — probeer het opnieuw",
+    "payCompleted": "Voltooid",
+    "payCancelled": "Geannuleerd",
+    "payProcessing": "Bezig",
+    "unblockFailed": "Deblokkeren mislukt — probeer het opnieuw"
   },
   "profile2": {
     "addBioHint": "Voeg een bio toe zodat mensen je leren kennen",
@@ -570,7 +600,13 @@
     "sparksAmount_other": "+{{count}} Vonken",
     "sparksPerDay": "+{{count}} Vonk per dag",
     "photoDeleteFailed": "Kon de foto niet verwijderen",
-    "profileAlt": "Profiel van {{name}}"
+    "profileAlt": "Profiel van {{name}}",
+    "bioSaveFailed": "Je bio kon niet worden opgeslagen — probeer het opnieuw",
+    "scoreStart": "Start",
+    "scoreStartDesc": "Hier begint iedereen",
+    "scoreVerifiedDone": "Geverifieerd",
+    "scoreWarnings": "Waarschuwingen",
+    "scoreWarningsDesc": "Per waarschuwing"
   },
   "admin": {
     "panel": "Beheerpaneel",
@@ -661,7 +697,9 @@
     "eventMaxAttendees": "Max. deelnemers",
     "eventUpdated": "Evenement bijgewerkt",
     "eventApproved": "Evenement goedgekeurd — nu zichtbaar voor iedereen",
-    "eventRejected": "Evenement afgewezen"
+    "eventRejected": "Evenement afgewezen",
+    "joinedOn": "Lid sinds {{date}}",
+    "loadFailedRetry": "Transacties konden niet worden geladen — tik om opnieuw te proberen"
   },
   "legal": {
     "termsTitle": "Servicevoorwaarden",
@@ -831,7 +869,12 @@
       "q30": "Als je één vaardigheid van de ene op de andere dag kon beheersen, welke zou dat zijn?"
     },
     "voiceGate": "Neem een stem-intro op om mee te doen aan de Dagelijkse match — profielen zonder intro worden niet gematcht.",
-    "tooFast": "Te snel — wacht 5 seconden."
+    "tooFast": "Te snel — wacht 5 seconden.",
+    "extraFailed": "Er is nu niemand beschikbaar — probeer het later opnieuw",
+    "extraNeedsVoice": "Neem eerst een spraakintro op — Daily Match koppelt alleen profielen die er een hebben.",
+    "extraSaved": "Je betaling is bewaard — haal de extra match later op zonder opnieuw te betalen.",
+    "claimExtra": "Haal je betaalde extra match op",
+    "arrivesToday": "Je nieuwe match komt vandaag om {{time}}"
   },
   "truthOrDare": {
     "truth": {

@@ -45,6 +45,7 @@ import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
 import Layout from '@/components/Layout';
 import LoadErrorNotice from '@/components/LoadErrorNotice';
+import { formatDate } from '@/lib/format';
 
 /* ───────────────────── Easing Tokens ───────────────────── */
 
@@ -900,17 +901,25 @@ export default function Settings() {
               </p>
             ) : (
               paymentHistory.map((p) => (
-                <div key={p.id} className="flex items-center justify-between px-4 py-3 rounded-[14px] bg-[#F6F3EE]">
+                <div key={p.id} className="flex items-center justify-between px-4 py-3 rounded-[14px] bg-[var(--linen)]">
                   <div className="min-w-0">
                     <p className="text-sm font-semibold text-[var(--charcoal)] truncate" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>{p.memo}</p>
                     <p className="text-xs text-[var(--charcoal)] opacity-40 mt-0.5" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                      {new Date(p.createdAt).toLocaleDateString()}
+                      {formatDate(p.createdAt)}
                     </p>
                   </div>
                   <div className="flex flex-col items-end ml-3 flex-shrink-0">
                     <span className="text-sm font-bold text-[#BB83C9]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>{p.amount} π</span>
-                    <span className={`text-xs font-semibold mt-0.5 ${p.status === 'COMPLETED' ? 'text-[#7DE0B3]' : 'text-[#F0B84A]'}`} style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                      {p.status}
+                    {/* Was the raw database enum ("PENDING") in every language. */}
+                    <span
+                      className={`text-xs font-semibold mt-0.5 ${p.status === 'COMPLETED' ? 'text-[#7DE0B3]' : p.status === 'CANCELLED' ? 'text-[var(--charcoal)] opacity-40' : 'text-[#F0B84A]'}`}
+                      style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
+                    >
+                      {p.status === 'COMPLETED'
+                        ? t('settings2.payCompleted')
+                        : p.status === 'CANCELLED'
+                          ? t('settings2.payCancelled')
+                          : t('settings2.payProcessing')}
                     </span>
                   </div>
                 </div>

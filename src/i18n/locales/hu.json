@@ -77,7 +77,8 @@
     "undo": "Visszavonás",
     "likeFailed": "A kedvelés küldése nem sikerült",
     "alreadyLiked": "Már kedvelted",
-    "you": "Te"
+    "you": "Te",
+    "swipeFailed": "Nem sikerült menteni – próbáld újra"
   },
   "matches": {
     "title": "Egyezések",
@@ -101,7 +102,8 @@
     "message": "Üzenet",
     "unmatchFailed": "A találat visszavonása nem sikerült — próbáld újra",
     "newCount": "{{count}} új",
-    "noSearchResults": "Nincs a(z) „{{query}}” keresésnek megfelelő beszélgetés"
+    "noSearchResults": "Nincs a(z) „{{query}}” keresésnek megfelelő beszélgetés",
+    "loadFailed": "Nem sikerült betölteni a találataidat."
   },
   "chat": {
     "typeMessage": "Írj egy üzenetet...",
@@ -146,7 +148,26 @@
     "voicePreview": "Hangüzenet",
     "giftPreview": "Ajándékot küldött",
     "typing": "ír",
-    "sendGift": "Küldés: {{gift}}"
+    "sendGift": "Küldés: {{gift}}",
+    "giftYouSent": "Ajándékot küldtél {{partner}} számára: {{gift}}",
+    "giftTheySent": "{{partner}} ajándékot küldött neked: {{gift}}",
+    "ib_hiking": "Kedvenc túraútvonalad?",
+    "ib_coffee": "A legjobb kávézó a városodban?",
+    "ib_music": "Ki most a kedvenc előadód?",
+    "ib_travel": "Melyik úti cél áll a listád élén?",
+    "ib_photography": "Film vagy digitális?",
+    "ib_cooking": "Mi a te specialitásod?",
+    "ib_reading": "Az utolsó könyv, amit nem tudtál letenni?",
+    "ib_gaming": "Mi most a kedvenc játékod?",
+    "ib_yoga": "Reggeli vagy esti jóga?",
+    "ib_fitness": "Kedvenc edzésed?",
+    "ib_art": "Te is alkotsz?",
+    "ib_movies": "Az utolsó film, ami lenyűgözött?",
+    "ib_generic": "Szia, {{name}}! Mi jót csináltál mostanában?",
+    "blockFailed": "Nem sikerült letiltani – próbáld újra",
+    "historyLoadFailed": "Nem sikerült betölteni a beszélgetést.",
+    "reportFailed": "Nem sikerült elküldeni a bejelentést – próbáld újra",
+    "sendFailed": "Nem sikerült elküldeni az üzenetet"
   },
   "profile": {
     "edit": "Profil szerkesztése",
@@ -156,7 +177,8 @@
     "bio": "Bemutatkozás",
     "interests": "Érdeklődési körök",
     "settings": "Beállítások",
-    "trustScoreHelp": "A Bizalmi pontszámod segít abban, hogy minőségi találatoknak mutassunk be. Az ellenőrzéssel, aktivitással és pozitív visszajelzésekkel nő."
+    "trustScoreHelp": "A Bizalmi pontszámod segít abban, hogy minőségi találatoknak mutassunk be. Az ellenőrzéssel, aktivitással és pozitív visszajelzésekkel nő.",
+    "trustScoreHow": "A bizalmi pontszám segít, hogy a hozzád illő emberek lássanak. Mindenki 50-ről indul, az ellenőrzés {{verified}} pontot ad, minden moderátori figyelmeztetés {{warning}} pontot von le."
   },
   "settings": {
     "title": "Beállítások",
@@ -292,7 +314,8 @@
     "cookieEssential": "Csak a szükségesek",
     "privacyPolicy": "Adatvédelmi irányelvek",
     "notFoundDesc": "A keresett oldal nem létezik, vagy áthelyezték.",
-    "photoN": "{{n}}. fotó"
+    "photoN": "{{n}}. fotó",
+    "loadFailed": "Nem sikerült betölteni – ellenőrizd a kapcsolatot."
   },
   "clubs": {
     "title": "Klubok",
@@ -421,7 +444,10 @@
     "createFailed": "Nem sikerült beküldeni az eseményt — próbáld újra",
     "pendingReview": "Ellenőrzés alatt",
     "pendingReviewDesc": "Ezt az eseményt csak te látod, amíg egy adminisztrátor jóvá nem hagyja.",
-    "noSavedDesc": "Koppints a csillagra az érdeklő eseményeknél, hogy ide mentsd őket."
+    "noSavedDesc": "Koppints a csillagra az érdeklő eseményeknél, hogy ide mentsd őket.",
+    "ended": "Ez az esemény már véget ért",
+    "feedbackFailed": "Nem sikerült elküldeni a visszajelzést – próbáld újra",
+    "thanksFeedbackSaved": "Köszönjük a visszajelzést!"
   },
   "video": {
     "connecting": "Csatlakozás...",
@@ -523,7 +549,11 @@
     "donating": "Feldolgozás…",
     "supportUnavailable": "A támogatás még nincs beállítva",
     "donateAmount": "{{amount}} Pi adományozása",
-    "settingSaveFailed": "Nem sikerült menteni a beállítást – próbáld újra"
+    "settingSaveFailed": "Nem sikerült menteni a beállítást – próbáld újra",
+    "payCompleted": "Teljesítve",
+    "payCancelled": "Törölve",
+    "payProcessing": "Feldolgozás alatt",
+    "unblockFailed": "Nem sikerült feloldani a letiltást – próbáld újra"
   },
   "profile2": {
     "addBioHint": "Adj hozzá egy bemutatkozást, hogy jobban megismerjenek",
@@ -570,7 +600,13 @@
     "sparksAmount_other": "+{{count}} Szikra",
     "sparksPerDay": "+{{count}} Szikra/nap",
     "photoDeleteFailed": "A fotó törlése nem sikerült",
-    "profileAlt": "{{name}} profilja"
+    "profileAlt": "{{name}} profilja",
+    "bioSaveFailed": "Nem sikerült menteni a bemutatkozásodat – próbáld újra",
+    "scoreStart": "Kezdés",
+    "scoreStartDesc": "Mindenki innen indul",
+    "scoreVerifiedDone": "Ellenőrizve",
+    "scoreWarnings": "Figyelmeztetések",
+    "scoreWarningsDesc": "Figyelmeztetésenként"
   },
   "admin": {
     "panel": "Admin panel",
@@ -661,7 +697,9 @@
     "eventMaxAttendees": "Max. résztvevő",
     "eventUpdated": "Az esemény frissítve",
     "eventApproved": "Esemény jóváhagyva — most már mindenki látja",
-    "eventRejected": "Esemény elutasítva"
+    "eventRejected": "Esemény elutasítva",
+    "joinedOn": "Csatlakozott: {{date}}",
+    "loadFailedRetry": "Nem sikerült betölteni a tranzakciókat – koppints az újrapróbáláshoz"
   },
   "legal": {
     "termsTitle": "Felhasználási feltételek",
@@ -831,7 +869,12 @@
       "q30": "Ha egyetlen éjszaka alatt elsajátíthatnál egy készséget, melyik lenne az?"
     },
     "voiceGate": "Vegyél fel egy hangos bemutatkozást, hogy csatlakozhass a Napi találathoz — a nélküle lévő profilok nem kerülnek párosításra.",
-    "tooFast": "Túl gyors — várj 5 másodpercet."
+    "tooFast": "Túl gyors — várj 5 másodpercet.",
+    "extraFailed": "Most senki sem elérhető – próbáld később",
+    "extraNeedsVoice": "Előbb vegyél fel egy hangos bemutatkozást – a Daily Match csak az ilyen profilokat párosítja.",
+    "extraSaved": "A fizetésed megmaradt – az extra találatot később, újabb fizetés nélkül is megkaphatod.",
+    "claimExtra": "Kifizetett extra találat átvétele",
+    "arrivesToday": "Az új találatod ma {{time}}-kor érkezik"
   },
   "truthOrDare": {
     "truth": {

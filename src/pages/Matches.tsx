@@ -1,13 +1,14 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence, type PanInfo } from 'framer-motion';
-import { Search, Trash2, Circle, Sparkles, ExternalLink, X, Utensils, ChevronRight } from 'lucide-react';
-import confetti from 'canvas-confetti';
+import { Search, Trash2, Circle, Sparkles, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import Layout from '@/components/Layout';
 import SkeletonLoader from '@/components/SkeletonLoader';
 import { matchesApi } from '@/api/matches';
 import { useToast } from '@/hooks/useToast';
+import UserAvatar from '@/components/UserAvatar';
+import { formatListStamp } from '@/lib/format';
 
 // ── Types ──────────────────────────────────────────────
 
@@ -80,11 +81,7 @@ function NewMatchItem({ match, index }: { match: Match; index: number }) {
           className="w-[72px] h-[72px] rounded-full overflow-hidden"
           style={{ border: '3px solid #BB83C9' }}
         >
-          <img
-            src={match.photo}
-            alt={match.name}
-            className="w-full h-full object-cover"
-          />
+          <UserAvatar src={match.photo} name={match.name} className="text-2xl" />
         </div>
         {/* Spark indicator */}
         {match.sparkUsed && (
@@ -230,11 +227,7 @@ function ConversationRow({
             className="w-14 h-14 rounded-full overflow-hidden"
             style={{ border: match.unreadCount > 0 ? '2px solid #BB83C9' : '2px solid transparent' }}
           >
-            <img
-              src={match.photo}
-              alt={match.name}
-              className="w-full h-full object-cover"
-            />
+            <UserAvatar src={match.photo} name={match.name} className="text-xl" />
           </div>
           {/* Online indicator */}
           {match.isOnline && (
@@ -271,7 +264,7 @@ function ConversationRow({
                   fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                 }}
               >
-                {match.lastMessageTime}
+                {formatListStamp(match.lastMessageTime)}
               </span>
             )}
           </div>
@@ -325,261 +318,6 @@ function EmptyState() {
   );
 }
 
-// ── Match Celebration Overlay ──────────────────────────
-
-function MatchCelebration({
-  matchName,
-  onClose,
-}: {
-  matchName: string;
-  onClose: () => void;
-}) {
-  const { t } = useTranslation();
-  const [showOffer, setShowOffer] = useState(false);
-  const _navigate = useNavigate();
-  void _navigate;
-
-  useEffect(() => {
-    // Launch confetti burst
-    const colors = ['#BB83C9', '#7DE0B3', '#7BC4E8', '#FFD700'];
-
-    const end = Date.now() + 1200;
-
-    const frame = () => {
-      confetti({
-        particleCount: 6,
-        angle: 60,
-        spread: 55,
-        origin: { x: 0.2, y: 0.5 },
-        colors,
-        shapes: ['circle', 'star'],
-        scalar: 1.2,
-      });
-      confetti({
-        particleCount: 6,
-        angle: 120,
-        spread: 55,
-        origin: { x: 0.8, y: 0.5 },
-        colors,
-        shapes: ['circle', 'star'],
-        scalar: 1.2,
-      });
-      if (Date.now() < end) {
-        requestAnimationFrame(frame);
-      } else {
-        // Show partner offer after confetti finishes
-        setTimeout(() => setShowOffer(true), 300);
-      }
-    };
-
-    requestAnimationFrame(frame);
-  }, []);
-
-  const handleBookNow = () => {
-    window.open('https://example.com/le-petit-bistro', '_blank', 'noopener,noreferrer');
-  };
-
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[300] flex flex-col items-center justify-center px-6"
-      style={{
-        background: 'radial-gradient(circle, rgba(187,131,201,0.85), rgba(125,224,179,0.75), rgba(247,244,238,0.95))',
-        backdropFilter: 'blur(8px)',
-      }}
-    >
-      {/* Close button */}
-      <motion.button
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.2 }}
-        whileTap={{ scale: 0.88 }}
-        onClick={onClose}
-        className="absolute top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center"
-        style={{ backgroundColor: 'rgba(255,255,255,0.3)', backdropFilter: 'blur(8px)' }}
-      >
-        <X size={20} className="text-white" strokeWidth={2} />
-      </motion.button>
-
-      {/* Match Info */}
-      <motion.div
-        initial={{ scale: 0.5, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{
-          type: 'spring',
-          stiffness: 300,
-          damping: 20,
-          delay: 0.1,
-        }}
-        className="flex flex-col items-center mb-8"
-      >
-        {/* Decorative hearts */}
-        <motion.div
-          animate={{ rotate: [0, 10, -10, 0], scale: [1, 1.1, 1] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className="mb-4"
-        >
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="#BB83C9" stroke="none">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-          </svg>
-        </motion.div>
-
-        <h2
-          className="text-2xl font-semibold text-white text-center mb-1"
-          style={{
-            fontFamily: "'Outfit', system-ui, sans-serif",
-            textShadow: '0 2px 12px rgba(0,0,0,0.15)',
-          }}
-        >
-          {t('discover.itsAMatch')}
-        </h2>
-        <p
-          className="text-base text-white text-center"
-          style={{
-            fontFamily: "'Outfit', system-ui, sans-serif",
-            opacity: 0.9,
-            textShadow: '0 1px 8px rgba(0,0,0,0.1)',
-          }}
-        >
-          {t('discover.likedEachOther', { name: matchName })}
-        </p>
-
-        {/* Chat CTA */}
-        <motion.button
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          whileTap={{ scale: 0.97 }}
-          onClick={onClose}
-          className="mt-5 h-12 px-8 rounded-full text-sm font-semibold text-white"
-          style={{
-            backgroundColor: 'rgba(255,255,255,0.25)',
-            backdropFilter: 'blur(12px)',
-            border: '1.5px solid rgba(255,255,255,0.4)',
-            fontFamily: "'Outfit', system-ui, sans-serif",
-          }}
-        >
-          {t('matches.sendMessage')}
-        </motion.button>
-      </motion.div>
-
-      {/* Partner Offer Card — appears after confetti */}
-      <AnimatePresence>
-        {showOffer && (
-          <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{
-              duration: 0.5,
-              ease: [0.34, 1.56, 0.64, 1] as [number, number, number, number],
-            }}
-            className="w-full max-w-[320px] rounded-2xl overflow-hidden bg-white dark:bg-[#22293B]"
-            style={{
-              boxShadow: '0 12px 40px rgba(0,0,0,0.15)',
-            }}
-          >
-            {/* Mini gradient header */}
-            <div
-              className="relative w-full flex items-center justify-center py-5"
-              style={{
-                background: 'linear-gradient(135deg, #BB83C9 0%, #D4A8DE 60%, #7DE0B3 100%)',
-              }}
-            >
-              <div
-                className="w-10 h-10 rounded-full flex items-center justify-center"
-                style={{
-                  backgroundColor: 'rgba(255,255,255,0.25)',
-                  backdropFilter: 'blur(8px)',
-                  color: '#FFFFFF',
-                }}
-              >
-                <Utensils size={18} strokeWidth={1.5} />
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className="p-4 flex flex-col gap-2">
-              <div
-                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full self-start"
-                style={{ backgroundColor: '#BB83C9' }}
-              >
-                <Sparkles size={10} className="text-white" />
-                <span
-                  className="text-[10px] font-semibold text-white uppercase tracking-wide"
-                  style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
-                >
-                  {t('matches.celebrate')}
-                </span>
-              </div>
-
-              <h3
-                className="text-lg font-semibold text-[var(--charcoal)] leading-tight"
-                style={{
-                  fontFamily: "'Outfit', system-ui, sans-serif",
-                  fontSize: 18,
-                  lineHeight: 1.35,
-                  letterSpacing: '-0.54px',
-                }}
-              >
-                {t('offers.o1t')}
-              </h3>
-              <p
-                className="text-sm leading-relaxed"
-                style={{
-                  fontFamily: "'Outfit', system-ui, sans-serif",
-                  fontSize: 14,
-                  lineHeight: 1.55,
-                  letterSpacing: '-0.28px',
-                  color: 'rgba(var(--charcoal-rgb), 0.65)',
-                }}
-              >
-                {t('matches.restaurantOffer')}
-              </p>
-
-              {/* Buttons */}
-              <div className="flex flex-col gap-2 mt-1">
-                <motion.button
-                  whileTap={{ scale: 0.97 }}
-                  onClick={handleBookNow}
-                  className="w-full h-11 rounded-full flex items-center justify-center gap-2 text-sm font-semibold text-white"
-                  style={{
-                    backgroundColor: '#BB83C9',
-                    fontFamily: "'Outfit', system-ui, sans-serif",
-                    boxShadow: '0 4px 16px rgba(187,131,201,0.3)',
-                  }}
-                >
-                  {t('matches.bookNow')}
-                  <ExternalLink size={14} strokeWidth={2} />
-                </motion.button>
-
-                <motion.button
-                  whileTap={{ opacity: 0.6 }}
-                  onClick={() => setShowOffer(false)}
-                  className="w-full py-1.5 text-sm font-semibold text-center"
-                  style={{
-                    color: 'rgba(var(--charcoal-rgb), 0.5)',
-                    fontFamily: "'Outfit', system-ui, sans-serif",
-                    fontSize: 14,
-                    background: 'none',
-                    border: 'none',
-                  }}
-                >
-                  {t('matches.maybeLater')}
-                </motion.button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
-  );
-}
-
-// ── Main Matches Component ─────────────────────────────
-
 export default function Matches() {
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -587,7 +325,6 @@ export default function Matches() {
   const [matches, setMatches] = useState<Match[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [showSearch, setShowSearch] = useState(false);
-  const [celebrationMatch, setCelebrationMatch] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   // Kept separate from an empty list so a failed fetch can say so.
   const [loadFailed, setLoadFailed] = useState(false);
@@ -636,10 +373,6 @@ export default function Matches() {
       showToast('error', t('matches.unmatchFailed', { defaultValue: 'Could not unmatch — please try again' }));
     });
   }, [matches, showToast, t]);
-
-  const handleCloseCelebration = useCallback(() => {
-    setCelebrationMatch(null);
-  }, []);
 
   const totalUnread = conversations.reduce((sum, m) => sum + m.unreadCount, 0);
 
@@ -843,15 +576,6 @@ export default function Matches() {
         </div>
       </Layout>
 
-      {/* Match Celebration Overlay */}
-      <AnimatePresence>
-        {celebrationMatch && (
-          <MatchCelebration
-            matchName={celebrationMatch}
-            onClose={handleCloseCelebration}
-          />
-        )}
-      </AnimatePresence>
     </>
   );
 }

@@ -77,7 +77,8 @@
     "undo": "Angre",
     "likeFailed": "Kunne ikke sende liken",
     "alreadyLiked": "Allerede likt",
-    "you": "Deg"
+    "you": "Deg",
+    "swipeFailed": "Kunne ikke lagre – prøv igjen"
   },
   "matches": {
     "title": "Matcher",
@@ -101,7 +102,8 @@
     "message": "Melding",
     "unmatchFailed": "Kunne ikke fjerne treffet — prøv igjen",
     "newCount": "Nye: {{count}}",
-    "noSearchResults": "Ingen samtaler samsvarer med «{{query}}»"
+    "noSearchResults": "Ingen samtaler samsvarer med «{{query}}»",
+    "loadFailed": "Kunne ikke laste inn treffene dine."
   },
   "chat": {
     "typeMessage": "Skriv en melding...",
@@ -146,7 +148,26 @@
     "voicePreview": "Talemelding",
     "giftPreview": "Sendte en gave",
     "typing": "skriver",
-    "sendGift": "Send {{gift}}"
+    "sendGift": "Send {{gift}}",
+    "giftYouSent": "Du sendte {{partner}} en gave: {{gift}}",
+    "giftTheySent": "{{partner}} sendte deg en gave: {{gift}}",
+    "ib_hiking": "Favorittstien din å gå tur på?",
+    "ib_coffee": "Beste kaffebar i byen din?",
+    "ib_music": "Favorittartisten din akkurat nå?",
+    "ib_travel": "Hvilket reisemål står øverst på lista di?",
+    "ib_photography": "Analogt eller digitalt?",
+    "ib_cooking": "Hva er signaturretten din?",
+    "ib_reading": "Den siste boka du ikke klarte å legge fra deg?",
+    "ib_gaming": "Favorittspillet ditt akkurat nå?",
+    "ib_yoga": "Yoga om morgenen eller kvelden?",
+    "ib_fitness": "Favoritt-trening?",
+    "ib_art": "Lager du kunst selv?",
+    "ib_movies": "Den siste filmen som blåste deg av banen?",
+    "ib_generic": "Hei {{name}}! Hva har du gjort som var gøy i det siste?",
+    "blockFailed": "Kunne ikke blokkere – prøv igjen",
+    "historyLoadFailed": "Kunne ikke laste inn samtalen.",
+    "reportFailed": "Kunne ikke sende rapporten – prøv igjen",
+    "sendFailed": "Kunne ikke sende meldingen"
   },
   "profile": {
     "edit": "Rediger profil",
@@ -156,7 +177,8 @@
     "bio": "Om meg",
     "interests": "Interesser",
     "settings": "Innstillinger",
-    "trustScoreHelp": "Tillitspoengene dine hjelper oss å vise deg til gode treff. De øker med verifisering, aktivitet og positive tilbakemeldinger."
+    "trustScoreHelp": "Tillitspoengene dine hjelper oss å vise deg til gode treff. De øker med verifisering, aktivitet og positive tilbakemeldinger.",
+    "trustScoreHow": "Tillitspoengene hjelper oss å vise deg til de rette. Alle starter på 50, verifisering gir {{verified}}, og hver advarsel fra en moderator koster {{warning}}."
   },
   "settings": {
     "title": "Innstillinger",
@@ -292,7 +314,8 @@
     "cookieEssential": "Bare nødvendige",
     "privacyPolicy": "Personvernerklæring",
     "notFoundDesc": "Siden du leter etter finnes ikke eller er flyttet.",
-    "photoN": "Bilde {{n}}"
+    "photoN": "Bilde {{n}}",
+    "loadFailed": "Kunne ikke laste inn – sjekk tilkoblingen."
   },
   "clubs": {
     "title": "Klubber",
@@ -421,7 +444,10 @@
     "createFailed": "Kunne ikke sende arrangementet — prøv igjen",
     "pendingReview": "Til gjennomgang",
     "pendingReviewDesc": "Bare du ser dette arrangementet til en admin godkjenner det.",
-    "noSavedDesc": "Trykk på stjernen på arrangementer du er interessert i for å lagre dem her."
+    "noSavedDesc": "Trykk på stjernen på arrangementer du er interessert i for å lagre dem her.",
+    "ended": "Arrangementet er over",
+    "feedbackFailed": "Kunne ikke sende tilbakemeldingen – prøv igjen",
+    "thanksFeedbackSaved": "Takk for tilbakemeldingen!"
   },
   "video": {
     "connecting": "Kobler til...",
@@ -523,7 +549,11 @@
     "donating": "Behandler…",
     "supportUnavailable": "Brukerstøtten er ikke satt opp ennå",
     "donateAmount": "Doner {{amount}} Pi",
-    "settingSaveFailed": "Kunne ikke lagre innstillingen – prøv igjen"
+    "settingSaveFailed": "Kunne ikke lagre innstillingen – prøv igjen",
+    "payCompleted": "Fullført",
+    "payCancelled": "Avbrutt",
+    "payProcessing": "Behandles",
+    "unblockFailed": "Kunne ikke oppheve blokkeringen – prøv igjen"
   },
   "profile2": {
     "addBioHint": "Legg til en presentasjon så andre blir kjent med deg",
@@ -570,7 +600,13 @@
     "sparksAmount_other": "+{{count}} gnister",
     "sparksPerDay": "+{{count}} gnist/dag",
     "photoDeleteFailed": "Kunne ikke slette bildet",
-    "profileAlt": "Profilen til {{name}}"
+    "profileAlt": "Profilen til {{name}}",
+    "bioSaveFailed": "Kunne ikke lagre bioen din – prøv igjen",
+    "scoreStart": "Start",
+    "scoreStartDesc": "Her starter alle",
+    "scoreVerifiedDone": "Verifisert",
+    "scoreWarnings": "Advarsler",
+    "scoreWarningsDesc": "Per advarsel"
   },
   "admin": {
     "panel": "Adminpanel",
@@ -661,7 +697,9 @@
     "eventMaxAttendees": "Maks antall deltakere",
     "eventUpdated": "Arrangementet er oppdatert",
     "eventApproved": "Arrangement godkjent — nå synlig for alle",
-    "eventRejected": "Arrangement avvist"
+    "eventRejected": "Arrangement avvist",
+    "joinedOn": "Medlem siden {{date}}",
+    "loadFailedRetry": "Kunne ikke laste inn transaksjoner – trykk for å prøve igjen"
   },
   "legal": {
     "termsTitle": "Vilkår for bruk",
@@ -831,7 +869,12 @@
       "q30": "Hvis du kunne mestret én ferdighet over natten, hvilken ville det vært?"
     },
     "voiceGate": "Ta opp en stemmepresentasjon for å delta i Dagens treff — profiler uten blir ikke matchet.",
-    "tooFast": "For raskt — vent 5 sekunder."
+    "tooFast": "For raskt — vent 5 sekunder.",
+    "extraFailed": "Ingen er tilgjengelige akkurat nå – prøv igjen senere",
+    "extraNeedsVoice": "Spill inn en taleintro først – Daily Match kobler bare profiler som har en.",
+    "extraSaved": "Betalingen er lagret – hent det ekstra treffet senere uten å betale på nytt.",
+    "claimExtra": "Hent det betalte ekstra treffet",
+    "arrivesToday": "Det nye treffet ditt kommer i dag kl. {{time}}"
   },
   "truthOrDare": {
     "truth": {

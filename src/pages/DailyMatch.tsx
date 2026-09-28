@@ -20,8 +20,8 @@ import { usePiPayment } from '@/hooks/usePiPayment';
 import { useDailySocket, type IncomingDailyMessage } from '@/hooks/useSocket';
 import {
   getDailyMatch, getDailyMessages, sendDailyMessage, skipDailyMatch, logDailyMatchView,
-  answerIcebreaker, skipIcebreaker, claimExtraMatch, getMyVibe, setMyVibe,
-  type DailyMatch as DailyMatchModel, type DailyMatchMessage, type Vibe,
+  answerIcebreaker, skipIcebreaker, claimExtraMatch, getExtraMatchStatus, getMyVibe, setMyVibe,
+  type DailyMatch as DailyMatchModel, type DailyMatchMessage, type Vibe, type ExtraMatchStatus,
 } from '@/api/dailyMatch';
 
 const EXTRA_MATCH_PRICE = 0.2;
@@ -59,6 +59,7 @@ export default function DailyMatchPage() {
   const [showSkipConfirm, setShowSkipConfirm] = useState(false);
   const [showTruthOrDare, setShowTruthOrDare] = useState(false);
   const [buyingExtra, setBuyingExtra] = useState(false);
+  const [extraStatus, setExtraStatus] = useState<ExtraMatchStatus | null>(null);
   const [vibe, setVibe] = useState<Vibe | null>(null);
   const [savingVibe, setSavingVibe] = useState(false);
   const [celebrated, setCelebrated] = useState(false);
@@ -108,6 +109,7 @@ export default function DailyMatchPage() {
   useEffect(() => { load(); }, [load]);
 
   useEffect(() => {
+    getExtraMatchStatus().then(setExtraStatus).catch(() => {});
     getMyVibe().then((v) => setVibe(v.vibe)).catch(() => {});
     getMe()
       .then((me) => {
@@ -227,24 +229,45 @@ export default function DailyMatchPage() {
     }
   };
 
+  // Used to take the payment first and only then look for someone: with nobody
+  // available the user paid for nothing, and trying again charged them again
+  // although the first payment was still unused.
   const handleBuyExtra = async () => {
     if (buyingExtra) return;
     setBuyingExtra(true);
     try {
-      // The Pi payment must clear before the server hands out a match.
-      const result = await initiatePayment(EXTRA_MATCH_PRICE, EXTRA_MATCH_MEMO, {});
-      if (!result.success) {
-        // Surface why. Returning bare left the sheet silently resetting, with
-        // declined / cancelled / network failure all looking identical.
-        if (result.error) showToast('error', result.error);
-        return;
+      const status = await getExtraMatchStatus();
+      setExtraStatus(status);
+      if (!status.hasCredit) {
+        if (!status.available) {
+          showToast('info', status.reason === 'voice_intro'
+            ? t('dailyMatch.extraNeedsVoice')
+            : t('dailyMatch.extraFailed', { defaultValue: 'No one available right now — try again later' }));
+          return;
+        }
+        // The Pi payment must clear before the server hands out a match.
+        const result = await initiatePayment(EXTRA_MATCH_PRICE, EXTRA_MATCH_MEMO, {});
+        if (!result.success) {
+          // Surface why. Returning bare left the sheet silently resetting, with
+          // declined / cancelled / network failure all looking identical.
+          if (result.error) showToast('error', result.error);
+          return;
+        }
       }
-      const fresh = await claimExtraMatch();
-      setMatch(fresh);
-      setRemaining(fresh.expiresInMs);
-      setMessages([]);
-      setChatOpen(false);
-      celebrate();
+      try {
+        const fresh = await claimExtraMatch();
+        setExtraStatus({ ...status, hasCredit: false });
+        setMatch(fresh);
+        setRemaining(fresh.expiresInMs);
+        setMessages([]);
+        setChatOpen(false);
+        celebrate();
+      } catch {
+        // Paid, but the last candidate went in the meantime. The payment stays
+        // unused on the server and is claimed next time without paying again.
+        setExtraStatus({ ...status, hasCredit: true });
+        showToast('info', t('dailyMatch.extraSaved'));
+      }
     } catch {
       showToast('error', t('dailyMatch.extraFailed', { defaultValue: 'No one available right now — try again later' }));
     } finally {
@@ -281,6 +304,17 @@ export default function DailyMatchPage() {
   }
 
   const isTerminal = !match || match.status === 'EXPIRED' || match.status === 'REJECTED';
+  // "Arrives tomorrow" was said even at 9:00 on a day with no match yet, when
+  // today's delivery (matchTime, in the user's own timezone) was still ahead.
+  const arrivesToday = (() => {
+    const [hh, mm] = matchTime.split(':').map(Number);
+    const now = new Date();
+    const todayAt = new Date(now);
+    todayAt.setHours(hh || 0, mm || 0, 0, 0);
+    const hadOneToday = !!match && new Date(match.matchDate).toDateString() === now.toDateString();
+    return !hadOneToday && now < todayAt;
+  })();
+  const extraBlocked = !!extraStatus && !extraStatus.hasCredit && !extraStatus.available;
 
   return (
     <Layout title={t('dailyMatch.title', { defaultValue: 'Daily Match' })} showNotifications>
@@ -307,7 +341,9 @@ export default function DailyMatchPage() {
 
         <VibeCheck current={vibe} matchTime={matchTime} onSelect={handleVibe} saving={savingVibe} />
 
-        {isTerminal && (
+        {/* Without a voice intro there is no match to wait for or buy — the
+            banner and recorder above already say what to do. */}
+        {isTerminal && hasVoiceIntro !== false && (
           <div
             className="rounded-2xl p-6 text-center"
             style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
@@ -325,19 +361,28 @@ export default function DailyMatchPage() {
                   : t('dailyMatch.noMatchTitle', { defaultValue: 'No match yet' })}
             </h2>
             <p className="text-sm text-[var(--charcoal)]/55 mt-1.5">
-              {match?.status === 'REJECTED'
-                ? t('dailyMatch.rejectedBody', { defaultValue: 'Your new match arrives tomorrow' })
-                : t('dailyMatch.expiredBody', { time: matchTime, defaultValue: `Your new match arrives tomorrow at ${matchTime}` })}
+              {arrivesToday
+                ? t('dailyMatch.arrivesToday', { time: matchTime })
+                : match?.status === 'REJECTED'
+                  ? t('dailyMatch.rejectedBody', { defaultValue: 'Your new match arrives tomorrow' })
+                  : t('dailyMatch.expiredBody', { time: matchTime, defaultValue: `Your new match arrives tomorrow at ${matchTime}` })}
             </p>
             <button
               onClick={handleBuyExtra}
-              disabled={buyingExtra}
+              disabled={buyingExtra || extraBlocked}
               className="w-full mt-5 h-12 rounded-full text-sm font-semibold text-white flex items-center justify-center gap-2 disabled:opacity-60"
               style={{ backgroundColor: '#BB83C9' }}
             >
               <Sparkles size={16} />
-              {t('dailyMatch.extraMatch', { price: EXTRA_MATCH_PRICE, defaultValue: `Extra match (${EXTRA_MATCH_PRICE} Pi)` })}
+              {extraStatus?.hasCredit
+                ? t('dailyMatch.claimExtra')
+                : t('dailyMatch.extraMatch', { price: EXTRA_MATCH_PRICE, defaultValue: `Extra match (${EXTRA_MATCH_PRICE} Pi)` })}
             </button>
+            {extraBlocked && (
+              <p className="text-xs text-[var(--charcoal)]/50 mt-2">
+                {t('dailyMatch.extraFailed', { defaultValue: 'No one available right now — try again later' })}
+              </p>
+            )}
           </div>
         )}
 

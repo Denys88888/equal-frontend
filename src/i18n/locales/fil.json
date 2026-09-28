@@ -77,7 +77,8 @@
     "undo": "I-undo",
     "likeFailed": "Hindi naipadala ang like",
     "alreadyLiked": "Na-like na",
-    "you": "Ikaw"
+    "you": "Ikaw",
+    "swipeFailed": "Hindi ma-save — subukang muli"
   },
   "matches": {
     "title": "Mga Pares",
@@ -101,7 +102,8 @@
     "message": "Mensahe",
     "unmatchFailed": "Hindi na-unmatch — subukan muli",
     "newCount": "{{count}} bago",
-    "noSearchResults": "Walang usapang tumutugma sa “{{query}}”"
+    "noSearchResults": "Walang usapang tumutugma sa “{{query}}”",
+    "loadFailed": "Hindi ma-load ang iyong mga match."
   },
   "chat": {
     "typeMessage": "Magsulat ng mensahe...",
@@ -146,7 +148,26 @@
     "voicePreview": "Mensaheng boses",
     "giftPreview": "Nagpadala ng regalo",
     "typing": "nagta-type",
-    "sendGift": "Ipadala ang {{gift}}"
+    "sendGift": "Ipadala ang {{gift}}",
+    "giftYouSent": "Pinadalhan mo si {{partner}} ng regalo: {{gift}}",
+    "giftTheySent": "Pinadalhan ka ni {{partner}} ng regalo: {{gift}}",
+    "ib_hiking": "Paborito mong hiking trail?",
+    "ib_coffee": "Pinakamagandang coffee shop sa lungsod mo?",
+    "ib_music": "Paborito mong artist ngayon?",
+    "ib_travel": "Anong destinasyon ang nangunguna sa listahan mo?",
+    "ib_photography": "Film o digital?",
+    "ib_cooking": "Ano ang signature dish mo?",
+    "ib_reading": "Huling librong hindi mo mabitawan?",
+    "ib_gaming": "Paborito mong laro ngayon?",
+    "ib_yoga": "Yoga sa umaga o sa gabi?",
+    "ib_fitness": "Paboritong workout?",
+    "ib_art": "Gumagawa ka rin ba ng sining?",
+    "ib_movies": "Huling pelikulang talagang humanga ka?",
+    "ib_generic": "Hi {{name}}! Ano ang nakakatuwang ginawa mo kamakailan?",
+    "blockFailed": "Hindi ma-block — pakisubukang muli",
+    "historyLoadFailed": "Hindi ma-load ang usapang ito.",
+    "reportFailed": "Hindi maipadala ang ulat — pakisubukang muli",
+    "sendFailed": "Hindi maipadala ang mensahe"
   },
   "profile": {
     "edit": "I-edit ang Profile",
@@ -156,7 +177,8 @@
     "bio": "Bio",
     "interests": "Mga Interes",
     "settings": "Mga Setting",
-    "trustScoreHelp": "Tumutulong ang Trust Score mo para ipakita ka sa magagandang match. Tumataas ito sa verification, aktibidad, at positibong feedback."
+    "trustScoreHelp": "Tumutulong ang Trust Score mo para ipakita ka sa magagandang match. Tumataas ito sa verification, aktibidad, at positibong feedback.",
+    "trustScoreHow": "Tinutulungan kami ng iyong Marka ng Tiwala na maipakita ka sa tamang mga tao. Lahat ay nagsisimula sa 50, nagdadagdag ng {{verified}} ang pag-verify, at bawat babala ng moderator ay nagbabawas ng {{warning}}."
   },
   "settings": {
     "title": "Mga Setting",
@@ -292,7 +314,8 @@
     "cookieEssential": "Mahahalaga Lang",
     "privacyPolicy": "Patakaran sa Privacy",
     "notFoundDesc": "Wala ang pahinang hinahanap mo o nailipat na ito.",
-    "photoN": "Larawan {{n}}"
+    "photoN": "Larawan {{n}}",
+    "loadFailed": "Hindi ma-load — tingnan ang iyong koneksyon."
   },
   "clubs": {
     "title": "Mga Club",
@@ -421,7 +444,10 @@
     "createFailed": "Hindi naisumite ang event — pakisubukang muli",
     "pendingReview": "Nire-review",
     "pendingReviewDesc": "Ikaw lang ang nakakakita sa event na ito hangga't hindi ito inaaprubahan ng admin.",
-    "noSavedDesc": "I-tap ang star icon sa mga event na interesado ka para i-save ang mga ito rito."
+    "noSavedDesc": "I-tap ang star icon sa mga event na interesado ka para i-save ang mga ito rito.",
+    "ended": "Tapos na ang event na ito",
+    "feedbackFailed": "Hindi maipadala ang iyong feedback — pakisubukang muli",
+    "thanksFeedbackSaved": "Salamat sa iyong feedback!"
   },
   "video": {
     "connecting": "Kumokonekta...",
@@ -523,7 +549,11 @@
     "donating": "Pinoproseso…",
     "supportUnavailable": "Hindi pa naka-set up ang suporta",
     "donateAmount": "Mag-donate ng {{amount}} Pi",
-    "settingSaveFailed": "Hindi ma-save ang setting — pakisubukang muli"
+    "settingSaveFailed": "Hindi ma-save ang setting — pakisubukang muli",
+    "payCompleted": "Tapos na",
+    "payCancelled": "Kinansela",
+    "payProcessing": "Pinoproseso",
+    "unblockFailed": "Hindi ma-unblock — pakisubukang muli"
   },
   "profile2": {
     "addBioHint": "Magdagdag ng bio para makilala ka ng mga tao",
@@ -570,7 +600,13 @@
     "sparksAmount_other": "+{{count}} Spark",
     "sparksPerDay": "+{{count}} Spark/araw",
     "photoDeleteFailed": "Hindi nabura ang larawan",
-    "profileAlt": "Profile ni {{name}}"
+    "profileAlt": "Profile ni {{name}}",
+    "bioSaveFailed": "Hindi ma-save ang iyong bio — pakisubukang muli",
+    "scoreStart": "Simula",
+    "scoreStartDesc": "Dito nagsisimula ang lahat",
+    "scoreVerifiedDone": "Na-verify",
+    "scoreWarnings": "Mga babala",
+    "scoreWarningsDesc": "Bawat babala"
   },
   "admin": {
     "panel": "Admin Panel",
@@ -661,7 +697,9 @@
     "eventMaxAttendees": "Max na Dadalo",
     "eventUpdated": "Na-update ang event",
     "eventApproved": "Naaprubahan ang event — nakikita na ng lahat",
-    "eventRejected": "Tinanggihan ang event"
+    "eventRejected": "Tinanggihan ang event",
+    "joinedOn": "Sumali noong {{date}}",
+    "loadFailedRetry": "Hindi ma-load ang mga transaksyon — i-tap para subukang muli"
   },
   "legal": {
     "termsTitle": "Mga Tuntunin ng Serbisyo",
@@ -831,7 +869,12 @@
       "q30": "Kung pwede kang maging master sa isang kasanayan sa isang gabi, ano ito?"
     },
     "voiceGate": "Mag-record ng voice intro para sumali sa Daily Match — hindi tinutugma ang mga profile na wala nito.",
-    "tooFast": "Napakabilis — maghintay ng 5 segundo."
+    "tooFast": "Napakabilis — maghintay ng 5 segundo.",
+    "extraFailed": "Walang available ngayon — subukang muli mamaya",
+    "extraNeedsVoice": "Mag-record muna ng voice intro — ipinapares lang ng Daily Match ang mga profile na mayroon nito.",
+    "extraSaved": "Nai-save ang iyong bayad — kunin ang extra na match mamaya nang hindi na muling nagbabayad.",
+    "claimExtra": "Kunin ang bayad mong extra na match",
+    "arrivesToday": "Darating ang bagong match mo ngayon ng {{time}}"
   },
   "truthOrDare": {
     "truth": {

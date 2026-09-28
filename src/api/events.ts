@@ -43,6 +43,11 @@ export async function getEvent(eventId: string): Promise<Event> {
   return data;
 }
 
+/** "How was the event?" — accepted only from attendees, after the event. */
+export async function submitEventFeedback(eventId: string, rating: 'great' | 'okay' | 'missed'): Promise<void> {
+  await api.post(`/events/${encodeURIComponent(eventId)}/feedback`, { rating });
+}
+
 /**
  * RSVP to an event.
  *

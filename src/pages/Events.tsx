@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getEvents, rsvp, createEvent } from '@/api/events';
+import { getEvents, rsvp, createEvent, submitEventFeedback } from '@/api/events';
 import type { CreateEventRequest } from '@/api/events';
 import { usePiPayment } from '@/hooks/usePiPayment';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -18,6 +18,7 @@ import Layout from '@/components/Layout';
 import { useToast } from '@/hooks/useToast';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { formatDate, formatTime } from '@/lib/format';
 
 /* ------------------------------------------------------------------ */
 /*  TYPES                                                              */
@@ -50,6 +51,8 @@ interface EventItem {
   featured?: boolean;
   /** Submitted by this user and not yet approved — only its author ever receives it. */
   pending?: boolean;
+  /** This user's saved answer to "How was the event?", if any. */
+  myFeedback?: 'great' | 'okay' | 'missed' | null;
 }
 
 /* ------------------------------------------------------------------ */
@@ -262,6 +265,7 @@ function EventDetailSheet({
   isInterested,
   onToggleGoing,
   onToggleInterested,
+  onFeedbackSaved,
 }: {
   event: EventItem | null;
   isOpen: boolean;
@@ -270,30 +274,51 @@ function EventDetailSheet({
   isInterested: boolean;
   onToggleGoing: () => void;
   onToggleInterested: () => void;
+  onFeedbackSaved: (eventId: string, rating: 'great' | 'okay' | 'missed') => void;
 }) {
   const { t } = useTranslation();
+  const { showToast } = useToast();
   const [feedback, setFeedback] = useState<'great' | 'okay' | 'missed' | null>(null);
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
+  const [savingFeedback, setSavingFeedback] = useState(false);
+
+  // Show an answer given earlier as already sent, instead of asking again.
+  useEffect(() => {
+    setFeedback(event?.myFeedback ?? null);
+    setFeedbackSubmitted(!!event?.myFeedback);
+  }, [event?.id, event?.myFeedback]);
 
   if (!event) return null;
+  // Signing up for an event that is over, or asking how it went before it
+  // started, made no sense — the sheet did both.
+  const isOver = event.startsAt != null && event.startsAt < Date.now();
 
   const catColor = categoryColors[event.category] || '#BB83C9';
   const hasTicket = isGoing && event.price > 0;
 
-  const handleFeedbackSubmit = () => {
-    if (!feedback) return;
-    setFeedbackSubmitted(true);
+  // Used to only flip local state; the answer went nowhere.
+  const handleFeedbackSubmit = async () => {
+    if (!feedback || savingFeedback) return;
+    setSavingFeedback(true);
+    try {
+      await submitEventFeedback(event.id, feedback);
+      setFeedbackSubmitted(true);
+      onFeedbackSaved(event.id, feedback);
+    } catch (e: unknown) {
+      console.error('[events] feedback failed:', e);
+      showToast('error', t('events.feedbackFailed'));
+    } finally {
+      setSavingFeedback(false);
+    }
   };
 
   const handleClose = () => {
     onClose();
-    setFeedback(null);
-    setFeedbackSubmitted(false);
   };
 
   return (
     <Sheet open={isOpen} onOpenChange={(open) => !open && handleClose()}>
-      <SheetContent side="bottom" className="rounded-t-[24px] p-0 max-h-[90vh] overflow-y-auto" style={{ backgroundColor: 'var(--card-bg)' }}>
+      <SheetContent side="bottom" showCloseButton={false} className="rounded-t-[24px] p-0 max-h-[90vh] overflow-y-auto" style={{ backgroundColor: 'var(--card-bg)' }}>
         {/* Hero Image */}
         <div className="relative w-full h-[200px] flex-shrink-0">
           <img src={event.image} alt="" className="w-full h-full object-cover rounded-t-[24px]" />
@@ -439,8 +464,14 @@ function EventDetailSheet({
             </motion.div>
           )}
 
+          {isOver && !event.pending && (
+            <p className="mt-5 text-sm text-center font-medium" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>
+              {t('events.ended')}
+            </p>
+          )}
+
           {/* RSVP Actions */}
-          {!event.pending && (
+          {!event.pending && !isOver && (
           <div className="flex items-center gap-3 mt-5">
             <button
               onClick={onToggleGoing}
@@ -468,7 +499,7 @@ function EventDetailSheet({
           )}
 
           {/* Post-Event Feedback */}
-          {isGoing && (
+          {isGoing && isOver && (
             <div className="mt-5 p-4 rounded-2xl" style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.3)' }}>
               <h4 className="text-base font-semibold text-[var(--charcoal)]">{t('events.howWasEvent')}</h4>
               <p className="text-sm mt-1" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>{t('events.feedbackHelps')}</p>
@@ -511,7 +542,8 @@ function EventDetailSheet({
                       initial={{ opacity: 0, y: 5 }}
                       animate={{ opacity: 1, y: 0 }}
                       onClick={handleFeedbackSubmit}
-                      className="w-full mt-3 py-3 rounded-full text-sm font-semibold text-white"
+                      disabled={savingFeedback}
+                      className="w-full mt-3 py-3 rounded-full text-sm font-semibold text-white disabled:opacity-60"
                       style={{ backgroundColor: '#BB83C9' }}
                     >
                       {t('events.submitFeedback')}
@@ -525,7 +557,7 @@ function EventDetailSheet({
                   className="text-sm mt-2 font-medium"
                   style={{ color: '#5BC492' }}
                 >
-                  {t('events.thanksFeedback')}
+                  {t('events.thanksFeedbackSaved')}
                 </motion.p>
               )}
             </div>
@@ -572,13 +604,14 @@ export default function Events() {
           id: e.id ?? `srv-${i}`,
           title: e.title ?? '',
           description: e.description ?? '',
-          date: valid ? valid.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' }) : (e.date ?? ''),
+          // Past events can be a year old, so they carry the year; upcoming ones don't need it.
+          date: valid ? formatDate(valid, { weekday: 'short', month: 'short', day: 'numeric', ...(valid.getFullYear() !== new Date().getFullYear() ? { year: 'numeric' } : {}) }) : (e.date ?? ''),
           // Keep the machine-readable date too — "past" used to be the first
           // three rows of the upcoming list, which had nothing to do with time.
           startsAt: valid ? valid.getTime() : null,
           day: e.day ?? (valid ? String(valid.getDate()) : ''),
-          month: e.month ?? (valid ? valid.toLocaleString(undefined, { month: 'short' }).toUpperCase() : ''),
-          time: e.time ?? (valid ? valid.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' }) : ''),
+          month: e.month ?? (valid ? formatDate(valid, { month: 'short' }).toUpperCase() : ''),
+          time: e.time ?? (valid ? formatTime(valid) : ''),
           location: e.location ?? '',
           venue: e.venue ?? e.location ?? '',
           category: e.category ?? 'Social Mixers',
@@ -589,6 +622,7 @@ export default function Events() {
           maxAttendees: e.maxAttendees ?? 50,
           featured: e.featured,
           pending: (e as unknown as { status?: string }).status === 'PENDING',
+          myFeedback: (e as unknown as { myFeedback?: EventItem['myFeedback'] }).myFeedback ?? null,
         } as EventItem;
       }));
 
@@ -936,6 +970,10 @@ export default function Events() {
           isInterested={selectedEvent ? interestedEvents.has(selectedEvent.id) : false}
           onToggleGoing={() => selectedEvent && toggleGoing(selectedEvent.id)}
           onToggleInterested={() => selectedEvent && toggleInterested(selectedEvent.id)}
+          onFeedbackSaved={(id, rating) => {
+            setAllEvents((prev) => prev.map((e) => (e.id === id ? { ...e, myFeedback: rating } : e)));
+            setSelectedEvent((prev) => (prev && prev.id === id ? { ...prev, myFeedback: rating } : prev));
+          }}
         />
 
         {/* Create Event — same pattern as creating a club */}

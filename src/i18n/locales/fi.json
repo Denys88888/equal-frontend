@@ -77,7 +77,8 @@
     "undo": "Kumoa",
     "likeFailed": "Tykkäystä ei voitu lähettää",
     "alreadyLiked": "Jo tykätty",
-    "you": "Sinä"
+    "you": "Sinä",
+    "swipeFailed": "Tallennus epäonnistui – yritä uudelleen"
   },
   "matches": {
     "title": "Osumat",
@@ -101,7 +102,8 @@
     "message": "Viesti",
     "unmatchFailed": "Osumaa ei voitu poistaa — yritä uudelleen",
     "newCount": "Uusia: {{count}}",
-    "noSearchResults": "Haulla ”{{query}}” ei löytynyt keskusteluja"
+    "noSearchResults": "Haulla ”{{query}}” ei löytynyt keskusteluja",
+    "loadFailed": "Osumiasi ei voitu ladata."
   },
   "chat": {
     "typeMessage": "Kirjoita viesti...",
@@ -146,7 +148,26 @@
     "voicePreview": "Ääniviesti",
     "giftPreview": "Lähetti lahjan",
     "typing": "kirjoittaa",
-    "sendGift": "Lähetä lahja: {{gift}}"
+    "sendGift": "Lähetä lahja: {{gift}}",
+    "giftYouSent": "Lähetit käyttäjälle {{partner}} lahjan: {{gift}}",
+    "giftTheySent": "{{partner}} lähetti sinulle lahjan: {{gift}}",
+    "ib_hiking": "Lempivaellusreittisi?",
+    "ib_coffee": "Kaupunkisi paras kahvila?",
+    "ib_music": "Lempiartistisi juuri nyt?",
+    "ib_travel": "Mikä matkakohde on listasi kärjessä?",
+    "ib_photography": "Filmi vai digi?",
+    "ib_cooking": "Mikä on nimikkoruokasi?",
+    "ib_reading": "Viimeisin kirja, jota et voinut laskea käsistäsi?",
+    "ib_gaming": "Lempipelisi juuri nyt?",
+    "ib_yoga": "Joogaa aamulla vai illalla?",
+    "ib_fitness": "Lempitreenisi?",
+    "ib_art": "Teetkö itse taidetta?",
+    "ib_movies": "Viimeisin elokuva, joka teki sinuun vaikutuksen?",
+    "ib_generic": "Hei {{name}}! Mitä hauskaa olet tehnyt viime aikoina?",
+    "blockFailed": "Estäminen epäonnistui – yritä uudelleen",
+    "historyLoadFailed": "Keskustelua ei voitu ladata.",
+    "reportFailed": "Ilmoitusta ei voitu lähettää – yritä uudelleen",
+    "sendFailed": "Viestiä ei voitu lähettää"
   },
   "profile": {
     "edit": "Muokkaa profiilia",
@@ -156,7 +177,8 @@
     "bio": "Esittely",
     "interests": "Kiinnostuksen kohteet",
     "settings": "Asetukset",
-    "trustScoreHelp": "Luottamuspisteet auttavat meitä näyttämään sinut laadukkaille osumille. Ne kasvavat vahvistuksen, aktiivisuuden ja myönteisen palautteen myötä."
+    "trustScoreHelp": "Luottamuspisteet auttavat meitä näyttämään sinut laadukkaille osumille. Ne kasvavat vahvistuksen, aktiivisuuden ja myönteisen palautteen myötä.",
+    "trustScoreHow": "Luottamuspisteet auttavat meitä näyttämään sinut sopiville ihmisille. Kaikki aloittavat 50:stä, vahvistus lisää {{verified}} ja jokainen moderaattorin varoitus vähentää {{warning}}."
   },
   "settings": {
     "title": "Asetukset",
@@ -292,7 +314,8 @@
     "cookieEssential": "Vain välttämättömät",
     "privacyPolicy": "Tietosuojakäytäntö",
     "notFoundDesc": "Etsimääsi sivua ei ole olemassa tai se on siirretty.",
-    "photoN": "Kuva {{n}}"
+    "photoN": "Kuva {{n}}",
+    "loadFailed": "Lataus epäonnistui – tarkista yhteytesi."
   },
   "clubs": {
     "title": "Kerhot",
@@ -421,7 +444,10 @@
     "createFailed": "Tapahtuman lähettäminen epäonnistui — yritä uudelleen",
     "pendingReview": "Tarkistettavana",
     "pendingReviewDesc": "Vain sinä näet tämän tapahtuman, kunnes ylläpitäjä hyväksyy sen.",
-    "noSavedDesc": "Napauta kiinnostavien tapahtumien tähteä tallentaaksesi ne tänne."
+    "noSavedDesc": "Napauta kiinnostavien tapahtumien tähteä tallentaaksesi ne tänne.",
+    "ended": "Tapahtuma on päättynyt",
+    "feedbackFailed": "Palautetta ei voitu lähettää – yritä uudelleen",
+    "thanksFeedbackSaved": "Kiitos palautteestasi!"
   },
   "video": {
     "connecting": "Yhdistetään...",
@@ -523,7 +549,11 @@
     "donating": "Käsitellään…",
     "supportUnavailable": "Tukea ei ole vielä määritetty",
     "donateAmount": "Lahjoita {{amount}} Pi",
-    "settingSaveFailed": "Asetusta ei voitu tallentaa – yritä uudelleen"
+    "settingSaveFailed": "Asetusta ei voitu tallentaa – yritä uudelleen",
+    "payCompleted": "Valmis",
+    "payCancelled": "Peruttu",
+    "payProcessing": "Käsittelyssä",
+    "unblockFailed": "Eston poistaminen epäonnistui – yritä uudelleen"
   },
   "profile2": {
     "addBioHint": "Lisää esittely, jotta muut oppivat tuntemaan sinut",
@@ -570,7 +600,13 @@
     "sparksAmount_other": "+{{count}} kipinää",
     "sparksPerDay": "+{{count}} kipinä/päivä",
     "photoDeleteFailed": "Kuvaa ei voitu poistaa",
-    "profileAlt": "Käyttäjän {{name}} profiili"
+    "profileAlt": "Käyttäjän {{name}} profiili",
+    "bioSaveFailed": "Esittelyäsi ei voitu tallentaa – yritä uudelleen",
+    "scoreStart": "Lähtö",
+    "scoreStartDesc": "Tästä kaikki aloittavat",
+    "scoreVerifiedDone": "Vahvistettu",
+    "scoreWarnings": "Varoitukset",
+    "scoreWarningsDesc": "Per varoitus"
   },
   "admin": {
     "panel": "Ylläpitopaneeli",
@@ -661,7 +697,9 @@
     "eventMaxAttendees": "Enimmäisosallistujamäärä",
     "eventUpdated": "Tapahtuma päivitettiin",
     "eventApproved": "Tapahtuma hyväksytty — nyt kaikkien nähtävissä",
-    "eventRejected": "Tapahtuma hylätty"
+    "eventRejected": "Tapahtuma hylätty",
+    "joinedOn": "Liittynyt {{date}}",
+    "loadFailedRetry": "Tapahtumia ei voitu ladata – yritä uudelleen napauttamalla"
   },
   "legal": {
     "termsTitle": "Käyttöehdot",
@@ -831,7 +869,12 @@
       "q30": "Jos voisit oppia yhden taidon yhdessä yössä, minkä valitsisit?"
     },
     "voiceGate": "Tallenna ääniesittely osallistuaksesi Päivän osumaan — profiileja ilman sitä ei yhdistetä.",
-    "tooFast": "Liian nopeasti — odota 5 sekuntia."
+    "tooFast": "Liian nopeasti — odota 5 sekuntia.",
+    "extraFailed": "Ketään ei ole juuri nyt saatavilla – yritä myöhemmin",
+    "extraNeedsVoice": "Nauhoita ensin ääniesittely – Daily Match yhdistää vain profiileja, joilla sellainen on.",
+    "extraSaved": "Maksusi on tallessa – lunasta lisäosuma myöhemmin maksamatta uudelleen.",
+    "claimExtra": "Lunasta maksettu lisäosuma",
+    "arrivesToday": "Uusi osumasi saapuu tänään klo {{time}}"
   },
   "truthOrDare": {
     "truth": {

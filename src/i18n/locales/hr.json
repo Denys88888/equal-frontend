@@ -79,7 +79,8 @@
     "undo": "Poništi",
     "likeFailed": "Slanje sviđanja nije uspjelo",
     "alreadyLiked": "Već se sviđa",
-    "you": "Ti"
+    "you": "Ti",
+    "swipeFailed": "Spremanje nije uspjelo — pokušaj ponovno"
   },
   "matches": {
     "title": "Spojevi",
@@ -103,7 +104,8 @@
     "message": "Poruka",
     "unmatchFailed": "Nije uspjelo uklanjanje podudaranja — pokušaj ponovno",
     "newCount": "Novo: {{count}}",
-    "noSearchResults": "Nema razgovora koji odgovaraju „{{query}}”"
+    "noSearchResults": "Nema razgovora koji odgovaraju „{{query}}”",
+    "loadFailed": "Podudaranja se nisu mogla učitati."
   },
   "chat": {
     "typeMessage": "Napiši poruku...",
@@ -148,7 +150,26 @@
     "voicePreview": "Glasovna poruka",
     "giftPreview": "Poslao/la poklon",
     "typing": "piše",
-    "sendGift": "Pošalji poklon: {{gift}}"
+    "sendGift": "Pošalji poklon: {{gift}}",
+    "giftYouSent": "Poslao/la si {{partner}} poklon: {{gift}}",
+    "giftTheySent": "{{partner}} ti je poslao/la poklon: {{gift}}",
+    "ib_hiking": "Tvoja omiljena planinarska staza?",
+    "ib_coffee": "Najbolji kafić u tvom gradu?",
+    "ib_music": "Tvoj omiljeni izvođač trenutno?",
+    "ib_travel": "Koja je destinacija prva na tvom popisu?",
+    "ib_photography": "Film ili digitalno?",
+    "ib_cooking": "Koje je tvoje specijalno jelo?",
+    "ib_reading": "Zadnja knjiga koju nisi mogao/la ispustiti?",
+    "ib_gaming": "Tvoja omiljena igra trenutno?",
+    "ib_yoga": "Joga ujutro ili navečer?",
+    "ib_fitness": "Omiljeni trening?",
+    "ib_art": "Stvaraš li i sam/a umjetnost?",
+    "ib_movies": "Zadnji film koji te oduševio?",
+    "ib_generic": "Bok, {{name}}! Što si zabavno radio/la u zadnje vrijeme?",
+    "blockFailed": "Blokiranje nije uspjelo — pokušaj ponovno",
+    "historyLoadFailed": "Razgovor se nije mogao učitati.",
+    "reportFailed": "Prijava se nije mogla poslati — pokušaj ponovno",
+    "sendFailed": "Poruka se nije mogla poslati"
   },
   "profile": {
     "edit": "Uredi profil",
@@ -158,7 +179,8 @@
     "bio": "Biografija",
     "interests": "Interesi",
     "settings": "Postavke",
-    "trustScoreHelp": "Bodovi povjerenja nam pomažu da te prikažemo kvalitetnim podudaranjima. Rastu s provjerom, aktivnošću i pozitivnim povratnim informacijama."
+    "trustScoreHelp": "Bodovi povjerenja nam pomažu da te prikažemo kvalitetnim podudaranjima. Rastu s provjerom, aktivnošću i pozitivnim povratnim informacijama.",
+    "trustScoreHow": "Rezultat povjerenja pomaže nam da te pokažemo pravim ljudima. Svi počinju s 50, verifikacija dodaje {{verified}}, a svako upozorenje moderatora oduzima {{warning}}."
   },
   "settings": {
     "title": "Postavke",
@@ -294,7 +316,8 @@
     "cookieEssential": "Samo nužni",
     "privacyPolicy": "Politika privatnosti",
     "notFoundDesc": "Stranica koju tražiš ne postoji ili je premještena.",
-    "photoN": "Fotografija {{n}}"
+    "photoN": "Fotografija {{n}}",
+    "loadFailed": "Učitavanje nije uspjelo — provjeri vezu."
   },
   "clubs": {
     "title": "Klubovi",
@@ -427,7 +450,10 @@
     "createFailed": "Događaj nije moguće poslati — pokušajte ponovno",
     "pendingReview": "Na provjeri",
     "pendingReviewDesc": "Samo vi vidite ovaj događaj dok ga administrator ne odobri.",
-    "noSavedDesc": "Dodirni zvjezdicu na događanjima koja te zanimaju kako bi ih spremio ovdje."
+    "noSavedDesc": "Dodirni zvjezdicu na događanjima koja te zanimaju kako bi ih spremio ovdje.",
+    "ended": "Ovo događanje je završilo",
+    "feedbackFailed": "Povratna informacija se nije mogla poslati — pokušaj ponovno",
+    "thanksFeedbackSaved": "Hvala na povratnoj informaciji!"
   },
   "video": {
     "connecting": "Povezivanje...",
@@ -529,7 +555,11 @@
     "donating": "Obrada…",
     "supportUnavailable": "Podrška još nije postavljena",
     "donateAmount": "Doniraj {{amount}} Pi",
-    "settingSaveFailed": "Postavka nije spremljena — pokušaj ponovno"
+    "settingSaveFailed": "Postavka nije spremljena — pokušaj ponovno",
+    "payCompleted": "Dovršeno",
+    "payCancelled": "Otkazano",
+    "payProcessing": "U obradi",
+    "unblockFailed": "Deblokiranje nije uspjelo — pokušaj ponovno"
   },
   "profile2": {
     "addBioHint": "Dodaj opis da bi te ljudi upoznali",
@@ -577,7 +607,13 @@
     "sparksAmount_other": "+{{count}} iskri",
     "sparksPerDay": "+{{count}} iskra/dan",
     "photoDeleteFailed": "Brisanje fotografije nije uspjelo",
-    "profileAlt": "Profil: {{name}}"
+    "profileAlt": "Profil: {{name}}",
+    "bioSaveFailed": "Opis se nije mogao spremiti — pokušaj ponovno",
+    "scoreStart": "Start",
+    "scoreStartDesc": "Ovdje svi počinju",
+    "scoreVerifiedDone": "Verificirano",
+    "scoreWarnings": "Upozorenja",
+    "scoreWarningsDesc": "Po upozorenju"
   },
   "admin": {
     "panel": "Admin panel",
@@ -668,7 +704,9 @@
     "eventMaxAttendees": "Maks. sudionika",
     "eventUpdated": "Događanje ažurirano",
     "eventApproved": "Događaj odobren — sada ga svi vide",
-    "eventRejected": "Događaj odbijen"
+    "eventRejected": "Događaj odbijen",
+    "joinedOn": "Član od {{date}}",
+    "loadFailedRetry": "Transakcije se nisu mogle učitati — dodirni za ponovni pokušaj"
   },
   "legal": {
     "termsTitle": "Uvjeti korištenja",
@@ -838,7 +876,12 @@
       "q30": "Kad bi mogao/la savladati jednu vještinu preko noći, koja bi to bila?"
     },
     "voiceGate": "Snimi glasovno predstavljanje da bi sudjelovao/la u Dnevnom podudaranju — profili bez njega se ne podudaraju.",
-    "tooFast": "Prebrzo — pričekaj 5 sekundi."
+    "tooFast": "Prebrzo — pričekaj 5 sekundi.",
+    "extraFailed": "Trenutno nitko nije dostupan — pokušaj kasnije",
+    "extraNeedsVoice": "Najprije snimi glasovni uvod — Daily Match spaja samo profile koji ga imaju.",
+    "extraSaved": "Plaćanje je sačuvano — preuzmi dodatno podudaranje kasnije bez ponovnog plaćanja.",
+    "claimExtra": "Preuzmi plaćeno dodatno podudaranje",
+    "arrivesToday": "Tvoje novo podudaranje stiže danas u {{time}}"
   },
   "truthOrDare": {
     "truth": {

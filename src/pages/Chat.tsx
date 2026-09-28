@@ -22,7 +22,7 @@ import {
   Image as ImageIcon,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
+import type { TFunction } from 'i18next';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/useToast';
 import ReportDialog from '@/components/ReportDialog';
@@ -33,6 +33,8 @@ import type { Message as ApiMessage } from '@/api/types';
 import { useSocket, type IncomingMessage } from '@/hooks/useSocket';
 import { useAuth } from '@/context/AuthContext';
 import { usePiPayment } from '@/hooks/usePiPayment';
+import { formatDayLabel, formatTime } from '@/lib/format';
+import UserAvatar from '@/components/UserAvatar';
 
 // ── Types ────────────────────────────────────────────────
 
@@ -53,27 +55,13 @@ interface Message {
 
 // ── Helpers ──────────────────────────────────────────────
 
-function formatTime(date: Date): string {
-  return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-}
-
-function formatDateDivider(date: Date): string {
-  const now = new Date();
-  const d = new Date(date);
-  const isToday = d.toDateString() === now.toDateString();
-  const isYesterday = new Date(now.getTime() - 86400000).toDateString() === d.toDateString();
-  if (isToday) return i18next.t('chat.today');
-  if (isYesterday) return i18next.t('chat.yesterday');
-  return d.toLocaleDateString([], { weekday: 'long', month: 'short', day: 'numeric' });
-}
-
 function groupMessagesByDate(messages: Message[]): { date: string; items: Message[] }[] {
   const groups: { date: string; items: Message[] }[] = [];
   let currentDate = '';
   let currentItems: Message[] = [];
 
   messages.forEach((msg) => {
-    const dateStr = formatDateDivider(msg.timestamp);
+    const dateStr = formatDayLabel(msg.timestamp);
     if (dateStr !== currentDate) {
       if (currentItems.length > 0) groups.push({ date: currentDate, items: currentItems });
       currentDate = dateStr;
@@ -154,7 +142,11 @@ const Waveform = React.memo(function Waveform({ isPlaying, sent }: { isPlaying: 
 
 // ── ChatBubble ───────────────────────────────────────────
 
-function ChatBubble({ message }: { message: Message }) {
+const GIFT_EMOJI: Record<string, string> = { coffee: '\u2615', rose: '\ud83c\udf39', song: '\ud83c\udfb5', spark: '\u2728' };
+const GIFT_NAME_KEY: Record<string, string> = { coffee: 'chat.giftCoffee', rose: 'chat.giftRose', song: 'chat.giftSong', spark: 'chat.giftSpark' };
+
+function ChatBubble({ message, partnerName }: { message: Message; partnerName: string }) {
+  const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
   const isSent = message.sender === 'me';
 
@@ -183,7 +175,15 @@ function ChatBubble({ message }: { message: Message }) {
             <GiftIconComponent type={message.giftType || 'coffee'} size={28} />
           </motion.div>
           <p className="text-sm font-medium mt-1.5 text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-            {message.content}
+            {/* Built from who sent what, in the reader's language. The stored
+                content is the sender's own sentence ("You sent Anna a rose"),
+                so the recipient used to read it as if they had sent it. */}
+            {message.giftType && GIFT_NAME_KEY[message.giftType]
+              ? t(isSent ? 'chat.giftYouSent' : 'chat.giftTheySent', {
+                  partner: partnerName,
+                  gift: `${t(GIFT_NAME_KEY[message.giftType])} ${GIFT_EMOJI[message.giftType]}`,
+                })
+              : message.content}
           </p>
           {message.giftPrice && (
             <span className="text-xs mt-1 font-medium" style={{ color: '#BB83C9', fontFamily: "'Outfit', system-ui, sans-serif" }}>
@@ -347,6 +347,26 @@ function DateDivider({ date }: { date: string }) {
 }
 
 // ── IcebreakerChips ──────────────────────────────────────
+
+/**
+ * Interests with a conversation starter. The server used to send the
+ * starters as English sentences, so every chat opened with an English prompt
+ * whatever language the app was in; they are now built here from the shared
+ * interests it returns, in the reader's language.
+ */
+const ICEBREAKER_INTERESTS = [
+  'Hiking', 'Coffee', 'Music', 'Travel', 'Photography', 'Cooking',
+  'Reading', 'Gaming', 'Yoga', 'Fitness', 'Art', 'Movies',
+];
+
+function buildIcebreakers(t: TFunction, sharedInterests: string[], partnerName: string): string[] {
+  const chips = sharedInterests
+    .filter((i) => ICEBREAKER_INTERESTS.includes(i))
+    .slice(0, 3)
+    .map((i) => t(`chat.ib_${i.toLowerCase()}`));
+  if (chips.length === 0 && partnerName) chips.push(t('chat.ib_generic', { name: partnerName }));
+  return chips;
+}
 
 function IcebreakerChips({ chips, onSend }: { chips: string[]; onSend: (text: string) => void }) {
   const { t } = useTranslation();
@@ -767,8 +787,12 @@ export default function Chat() {
     isOnline: false,
     isVerified: false,
     sharedInterests: [] as string[],
-    icebreakers: [] as string[],
   });
+  // Derived, not stored, so switching language re-renders them in it.
+  const icebreakers = useMemo(
+    () => buildIcebreakers(t, matchInfo.sharedInterests, matchInfo.matchName),
+    [t, matchInfo.sharedInterests, matchInfo.matchName],
+  );
 
   // Real-time socket — receive messages from partner
   const { sendTypingStart, sendTypingStop } = useSocket(
@@ -827,7 +851,6 @@ export default function Chat() {
           isOnline: data.isOnline ?? false,
           isVerified: data.isVerified ?? false,
           sharedInterests: data.sharedInterests ?? [],
-          icebreakers: data.icebreakers ?? [],
         });
         setIsLoading(false);
       })
@@ -1109,14 +1132,11 @@ export default function Chat() {
               className="flex items-center gap-2 min-w-0"
             >
               <div className="relative flex-shrink-0">
-                <img
+                <UserAvatar
                   src={matchInfo.matchAvatar}
-                  alt={matchInfo.matchName}
-                  className="w-10 h-10 rounded-full object-cover"
+                  name={matchInfo.matchName}
+                  className="w-10 h-10 text-base"
                   style={{ border: matchInfo.isOnline ? '2px solid #BB83C9' : '2px solid transparent' }}
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${matchInfo.matchName}&background=BB83C9&color=fff`;
-                  }}
                 />
                 {matchInfo.isOnline && (
                   <div
@@ -1213,7 +1233,7 @@ export default function Chat() {
                 <DateDivider date={group.date} />
                 {group.items.map((msg) => (
                   <div key={msg.id} className="px-4">
-                    <ChatBubble message={msg} />
+                    <ChatBubble message={msg} partnerName={matchInfo.matchName} />
                   </div>
                 ))}
               </div>
@@ -1238,7 +1258,7 @@ export default function Chat() {
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.3 }}
             >
-              <IcebreakerChips chips={matchInfo.icebreakers} onSend={handleIcebreakerSend} />
+              <IcebreakerChips chips={icebreakers} onSend={handleIcebreakerSend} />
             </motion.div>
           )}
         </AnimatePresence>

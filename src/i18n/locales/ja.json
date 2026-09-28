@@ -75,7 +75,8 @@
     "undo": "取り消す",
     "likeFailed": "いいねを送れませんでした",
     "alreadyLiked": "すでにいいね済みです",
-    "you": "あなた"
+    "you": "あなた",
+    "swipeFailed": "保存できませんでした。もう一度お試しください"
   },
   "matches": {
     "title": "マッチ一覧",
@@ -99,7 +100,8 @@
     "message": "メッセージ",
     "unmatchFailed": "マッチを解除できませんでした。もう一度お試しください",
     "newCount": "新着 {{count}}件",
-    "noSearchResults": "「{{query}}」に一致する会話はありません"
+    "noSearchResults": "「{{query}}」に一致する会話はありません",
+    "loadFailed": "マッチを読み込めませんでした。"
   },
   "chat": {
     "typeMessage": "メッセージを入力...",
@@ -144,7 +146,26 @@
     "voicePreview": "音声メッセージ",
     "giftPreview": "ギフトを贈りました",
     "typing": "入力中",
-    "sendGift": "{{gift}}を贈る"
+    "sendGift": "{{gift}}を贈る",
+    "giftYouSent": "{{partner}}さんにギフトを贈りました：{{gift}}",
+    "giftTheySent": "{{partner}}さんからギフトが届きました：{{gift}}",
+    "ib_hiking": "お気に入りのハイキングコースは？",
+    "ib_coffee": "あなたの街でいちばんのカフェは？",
+    "ib_music": "今いちばん好きなアーティストは？",
+    "ib_travel": "行きたい場所リストの1位は？",
+    "ib_photography": "フィルム派？デジタル派？",
+    "ib_cooking": "得意料理は？",
+    "ib_reading": "最近、止まらなくなった本は？",
+    "ib_gaming": "今ハマっているゲームは？",
+    "ib_yoga": "ヨガは朝派？夜派？",
+    "ib_fitness": "好きなトレーニングは？",
+    "ib_art": "自分でも作品をつくる？",
+    "ib_movies": "最近いちばん衝撃を受けた映画は？",
+    "ib_generic": "こんにちは、{{name}}さん！最近楽しかったことは？",
+    "blockFailed": "ブロックできませんでした。もう一度お試しください",
+    "historyLoadFailed": "この会話を読み込めませんでした。",
+    "reportFailed": "報告を送信できませんでした。もう一度お試しください",
+    "sendFailed": "メッセージを送信できませんでした"
   },
   "profile": {
     "edit": "プロフィールを編集",
@@ -154,7 +175,8 @@
     "bio": "自己紹介",
     "interests": "興味・関心",
     "settings": "設定",
-    "trustScoreHelp": "信頼スコアは、あなたを相性の良い相手に紹介するのに役立ちます。本人認証、活動、良い評価で上がります。"
+    "trustScoreHelp": "信頼スコアは、あなたを相性の良い相手に紹介するのに役立ちます。本人認証、活動、良い評価で上がります。",
+    "trustScoreHow": "トラストスコアは、あなたを相性の良い人に表示するために使われます。全員50から始まり、本人確認で{{verified}}加算、モデレーターからの警告1回ごとに{{warning}}減点されます。"
   },
   "settings": {
     "title": "設定",
@@ -290,7 +312,8 @@
     "cookieEssential": "必須のみ",
     "privacyPolicy": "プライバシーポリシー",
     "notFoundDesc": "お探しのページは存在しないか、移動した可能性があります。",
-    "photoN": "写真 {{n}}"
+    "photoN": "写真 {{n}}",
+    "loadFailed": "読み込めませんでした。接続を確認してください。"
   },
   "clubs": {
     "title": "クラブ",
@@ -415,7 +438,10 @@
     "createFailed": "イベントを送信できませんでした。もう一度お試しください",
     "pendingReview": "審査中",
     "pendingReviewDesc": "管理者が承認するまで、このイベントはあなたにしか表示されません。",
-    "noSavedDesc": "気になるイベントの星アイコンをタップすると、ここに保存されます。"
+    "noSavedDesc": "気になるイベントの星アイコンをタップすると、ここに保存されます。",
+    "ended": "このイベントは終了しました",
+    "feedbackFailed": "フィードバックを送信できませんでした。もう一度お試しください",
+    "thanksFeedbackSaved": "フィードバックありがとうございます！"
   },
   "video": {
     "connecting": "接続中...",
@@ -517,7 +543,11 @@
     "donating": "処理中…",
     "supportUnavailable": "サポート窓口はまだ設定されていません",
     "donateAmount": "{{amount}} Pi を寄付する",
-    "settingSaveFailed": "設定を保存できませんでした。もう一度お試しください"
+    "settingSaveFailed": "設定を保存できませんでした。もう一度お試しください",
+    "payCompleted": "完了",
+    "payCancelled": "キャンセル済み",
+    "payProcessing": "処理中",
+    "unblockFailed": "ブロックを解除できませんでした。もう一度お試しください"
   },
   "profile2": {
     "addBioHint": "自己紹介を追加して、あなたのことを知ってもらいましょう",
@@ -563,7 +593,13 @@
     "sparksAmount_other": "+{{count}} スパーク",
     "sparksPerDay": "1日 +{{count}} スパーク",
     "photoDeleteFailed": "写真を削除できませんでした",
-    "profileAlt": "{{name}}さんのプロフィール"
+    "profileAlt": "{{name}}さんのプロフィール",
+    "bioSaveFailed": "自己紹介を保存できませんでした。もう一度お試しください",
+    "scoreStart": "スタート",
+    "scoreStartDesc": "全員ここから始まります",
+    "scoreVerifiedDone": "確認済み",
+    "scoreWarnings": "警告",
+    "scoreWarningsDesc": "警告1回ごと"
   },
   "admin": {
     "panel": "管理パネル",
@@ -654,7 +690,9 @@
     "eventMaxAttendees": "最大参加人数",
     "eventUpdated": "イベントを更新しました",
     "eventApproved": "イベントを承認しました。全員に表示されます",
-    "eventRejected": "イベントを却下しました"
+    "eventRejected": "イベントを却下しました",
+    "joinedOn": "{{date}}に登録",
+    "loadFailedRetry": "取引を読み込めませんでした。タップして再試行"
   },
   "legal": {
     "termsTitle": "利用規約",
@@ -824,7 +862,12 @@
       "q30": "一晩で身につくなら、どんなスキルを選びますか？"
     },
     "voiceGate": "デイリーマッチに参加するには音声プロフィールを録音してください。ない方はマッチ対象になりません。",
-    "tooFast": "速すぎます。5秒お待ちください。"
+    "tooFast": "速すぎます。5秒お待ちください。",
+    "extraFailed": "現在マッチできる人がいません。後でもう一度お試しください",
+    "extraNeedsVoice": "先にボイス紹介を録音してください。Daily Matchはボイス紹介のあるプロフィールだけをマッチングします。",
+    "extraSaved": "お支払いは保存されています。追加マッチは後から再度支払うことなく受け取れます。",
+    "claimExtra": "支払い済みの追加マッチを受け取る",
+    "arrivesToday": "新しいマッチは今日{{time}}に届きます"
   },
   "truthOrDare": {
     "truth": {

@@ -68,6 +68,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { formatDate } from '@/lib/format';
 
 // ── Types ──────────────────────────────────────────────
 
@@ -330,7 +331,7 @@ function RecentRevenue() {
                 <div className="min-w-0 flex-1">
                   <p className="font-medium text-[var(--charcoal)] truncate">{tx.memo}</p>
                   <p className="text-[var(--charcoal)]/40">
-                    {tx.user.name} · {new Date(tx.createdAt).toLocaleDateString()}
+                    {tx.user.name} · {formatDate(tx.createdAt)}
                   </p>
                 </div>
                 <span className="font-semibold text-[var(--charcoal)] flex-shrink-0 ml-2">
@@ -615,7 +616,7 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
                 >
                   TS {user.trustScore}
                 </span>
-                <span className="text-xs text-[var(--charcoal)]/30">{user.joinDate}</span>
+                <span className="text-xs text-[var(--charcoal)]/30">{formatDate(user.joinDate)}</span>
               </div>
             </div>
             <ChevronDown size={16} className="text-[var(--charcoal)]/20 -rotate-90" />
@@ -638,7 +639,7 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
                       {selectedUser.name}
                     </DialogTitle>
                     <DialogDescription className="text-xs text-[var(--charcoal)]/40 mt-1">
-                      Joined {selectedUser.joinDate}
+                      {t('admin.joinedOn', { date: formatDate(selectedUser.joinDate) })}
                     </DialogDescription>
                     <div className="flex items-center gap-2 mt-2">
                       {getStatusBadge(selectedUser.status)}
@@ -886,7 +887,7 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
         setEvents(data.map((e) => ({
           id: e.id,
           name: e.name,
-          date: new Date(e.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }),
+          date: formatDate(e.date),
           rawDate: e.date,
           attendees: e.attendees,
           status: e.status,
@@ -952,7 +953,7 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
         ...e,
         name: editForm.name,
         description: editForm.description,
-        date: date ? new Date(date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : e.date,
+        date: date ? formatDate(date) : e.date,
         rawDate: date ?? e.rawDate,
         location: editForm.location,
         city: editForm.city,

@@ -79,7 +79,8 @@
     "undo": "Annulla",
     "likeFailed": "Impossibile inviare il mi piace",
     "alreadyLiked": "Già piaciuto",
-    "you": "Tu"
+    "you": "Tu",
+    "swipeFailed": "Impossibile salvare — riprova"
   },
   "matches": {
     "title": "Match",
@@ -103,7 +104,8 @@
     "message": "Messaggio",
     "unmatchFailed": "Impossibile annullare il match — riprova",
     "newCount": "Nuovi: {{count}}",
-    "noSearchResults": "Nessuna conversazione corrisponde a “{{query}}”"
+    "noSearchResults": "Nessuna conversazione corrisponde a “{{query}}”",
+    "loadFailed": "Impossibile caricare i tuoi match."
   },
   "chat": {
     "typeMessage": "Scrivi un messaggio...",
@@ -148,7 +150,26 @@
     "voicePreview": "Messaggio vocale",
     "giftPreview": "Ha inviato un regalo",
     "typing": "sta scrivendo",
-    "sendGift": "Invia {{gift}}"
+    "sendGift": "Invia {{gift}}",
+    "giftYouSent": "Hai inviato un regalo a {{partner}}: {{gift}}",
+    "giftTheySent": "{{partner}} ti ha inviato un regalo: {{gift}}",
+    "ib_hiking": "Il tuo sentiero preferito?",
+    "ib_coffee": "Il miglior bar per il caffè nella tua città?",
+    "ib_music": "Il tuo artista preferito in questo momento?",
+    "ib_travel": "La meta in cima alla tua lista?",
+    "ib_photography": "Pellicola o digitale?",
+    "ib_cooking": "Qual è il tuo piatto forte?",
+    "ib_reading": "L'ultimo libro che non riuscivi a mollare?",
+    "ib_gaming": "Il tuo gioco preferito del momento?",
+    "ib_yoga": "Yoga al mattino o alla sera?",
+    "ib_fitness": "Il tuo allenamento preferito?",
+    "ib_art": "Crei arte anche tu?",
+    "ib_movies": "L'ultimo film che ti ha lasciato senza parole?",
+    "ib_generic": "Ciao {{name}}! Cosa hai fatto di bello ultimamente?",
+    "blockFailed": "Impossibile bloccare — riprova",
+    "historyLoadFailed": "Impossibile caricare questa conversazione.",
+    "reportFailed": "Impossibile inviare la segnalazione — riprova",
+    "sendFailed": "Impossibile inviare il messaggio"
   },
   "profile": {
     "edit": "Modifica Profilo",
@@ -158,7 +179,8 @@
     "bio": "Bio",
     "interests": "Interessi",
     "settings": "Impostazioni",
-    "trustScoreHelp": "Il Punteggio di fiducia ci aiuta a mostrarti a match di qualità. Cresce con la verifica, l'attività e i riscontri positivi."
+    "trustScoreHelp": "Il Punteggio di fiducia ci aiuta a mostrarti a match di qualità. Cresce con la verifica, l'attività e i riscontri positivi.",
+    "trustScoreHow": "Il tuo Punteggio di fiducia ci aiuta a mostrarti alle persone giuste. Tutti partono da 50, la verifica aggiunge {{verified}} e ogni avvertimento di un moderatore toglie {{warning}}."
   },
   "settings": {
     "title": "Impostazioni",
@@ -294,7 +316,8 @@
     "cookieEssential": "Solo essenziali",
     "privacyPolicy": "Informativa sulla privacy",
     "notFoundDesc": "La pagina che cerchi non esiste o è stata spostata.",
-    "photoN": "Foto {{n}}"
+    "photoN": "Foto {{n}}",
+    "loadFailed": "Impossibile caricare — controlla la connessione."
   },
   "clubs": {
     "title": "Club",
@@ -427,7 +450,10 @@
     "createFailed": "Impossibile inviare l’evento — riprova",
     "pendingReview": "In revisione",
     "pendingReviewDesc": "Solo tu vedi questo evento finché un amministratore non lo approva.",
-    "noSavedDesc": "Tocca la stella sugli eventi che ti interessano per salvarli qui."
+    "noSavedDesc": "Tocca la stella sugli eventi che ti interessano per salvarli qui.",
+    "ended": "Questo evento è terminato",
+    "feedbackFailed": "Impossibile inviare il tuo feedback — riprova",
+    "thanksFeedbackSaved": "Grazie per il tuo feedback!"
   },
   "video": {
     "connecting": "Connessione...",
@@ -529,7 +555,11 @@
     "donating": "Elaborazione…",
     "supportUnavailable": "L'assistenza non è ancora configurata",
     "donateAmount": "Dona {{amount}} Pi",
-    "settingSaveFailed": "Impossibile salvare l’impostazione — riprova"
+    "settingSaveFailed": "Impossibile salvare l’impostazione — riprova",
+    "payCompleted": "Completato",
+    "payCancelled": "Annullato",
+    "payProcessing": "In elaborazione",
+    "unblockFailed": "Impossibile sbloccare — riprova"
   },
   "profile2": {
     "addBioHint": "Aggiungi una bio per farti conoscere",
@@ -577,7 +607,13 @@
     "sparksAmount_other": "+{{count}} Scintille",
     "sparksPerDay": "+{{count}} Scintilla/giorno",
     "photoDeleteFailed": "Impossibile eliminare la foto",
-    "profileAlt": "Profilo di {{name}}"
+    "profileAlt": "Profilo di {{name}}",
+    "bioSaveFailed": "Impossibile salvare la tua bio — riprova",
+    "scoreStart": "Partenza",
+    "scoreStartDesc": "Tutti partono da qui",
+    "scoreVerifiedDone": "Verificato",
+    "scoreWarnings": "Avvertimenti",
+    "scoreWarningsDesc": "Per ogni avvertimento"
   },
   "admin": {
     "panel": "Pannello di amministrazione",
@@ -668,7 +704,9 @@
     "eventMaxAttendees": "Partecipanti max",
     "eventUpdated": "Evento aggiornato",
     "eventApproved": "Evento approvato — ora visibile a tutti",
-    "eventRejected": "Evento rifiutato"
+    "eventRejected": "Evento rifiutato",
+    "joinedOn": "Iscritto dal {{date}}",
+    "loadFailedRetry": "Impossibile caricare le transazioni — tocca per riprovare"
   },
   "legal": {
     "termsTitle": "Termini di servizio",
@@ -838,7 +876,12 @@
       "q30": "Se potessi padroneggiare un'abilità in una notte, quale sarebbe?"
     },
     "voiceGate": "Registra una presentazione vocale per partecipare al Match del giorno: i profili che ne sono privi non vengono abbinati.",
-    "tooFast": "Troppo veloce — aspetta 5 secondi."
+    "tooFast": "Troppo veloce — aspetta 5 secondi.",
+    "extraFailed": "Nessuno disponibile al momento — riprova più tardi",
+    "extraNeedsVoice": "Registra prima una presentazione vocale — Daily Match abbina solo i profili che ce l'hanno.",
+    "extraSaved": "Il pagamento è salvato — ritira il match extra più tardi senza pagare di nuovo.",
+    "claimExtra": "Ritira il tuo match extra pagato",
+    "arrivesToday": "Il tuo nuovo match arriva oggi alle {{time}}"
   },
   "truthOrDare": {
     "truth": {

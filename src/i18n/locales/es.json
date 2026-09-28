@@ -79,7 +79,8 @@
     "undo": "Deshacer",
     "likeFailed": "No se pudo enviar el me gusta",
     "alreadyLiked": "Ya te gustó",
-    "you": "Tú"
+    "you": "Tú",
+    "swipeFailed": "No se pudo guardar; inténtalo de nuevo"
   },
   "matches": {
     "title": "Coincidencias",
@@ -103,7 +104,8 @@
     "message": "Mensaje",
     "unmatchFailed": "No se pudo deshacer la coincidencia: inténtalo de nuevo",
     "newCount": "Nuevos: {{count}}",
-    "noSearchResults": "Ninguna conversación coincide con «{{query}}»"
+    "noSearchResults": "Ninguna conversación coincide con «{{query}}»",
+    "loadFailed": "No se pudieron cargar tus coincidencias."
   },
   "chat": {
     "typeMessage": "Escribe un mensaje...",
@@ -148,7 +150,26 @@
     "voicePreview": "Mensaje de voz",
     "giftPreview": "Envió un regalo",
     "typing": "escribiendo",
-    "sendGift": "Enviar {{gift}}"
+    "sendGift": "Enviar {{gift}}",
+    "giftYouSent": "Le enviaste a {{partner}} un regalo: {{gift}}",
+    "giftTheySent": "{{partner}} te envió un regalo: {{gift}}",
+    "ib_hiking": "¿Tu ruta de senderismo favorita?",
+    "ib_coffee": "¿La mejor cafetería de tu ciudad?",
+    "ib_music": "¿Tu artista favorito ahora mismo?",
+    "ib_travel": "¿Qué destino está primero en tu lista?",
+    "ib_photography": "¿Analógico o digital?",
+    "ib_cooking": "¿Cuál es tu plato estrella?",
+    "ib_reading": "¿El último libro que no pudiste soltar?",
+    "ib_gaming": "¿Tu juego favorito ahora mismo?",
+    "ib_yoga": "¿Yoga por la mañana o por la noche?",
+    "ib_fitness": "¿Tu entrenamiento favorito?",
+    "ib_art": "¿Haces arte tú mismo?",
+    "ib_movies": "¿La última película que te dejó sin palabras?",
+    "ib_generic": "¡Hola, {{name}}! ¿Qué has hecho de divertido últimamente?",
+    "blockFailed": "No se pudo bloquear; inténtalo de nuevo",
+    "historyLoadFailed": "No se pudo cargar esta conversación.",
+    "reportFailed": "No se pudo enviar la denuncia; inténtalo de nuevo",
+    "sendFailed": "No se pudo enviar el mensaje"
   },
   "profile": {
     "edit": "Editar Perfil",
@@ -158,7 +179,8 @@
     "bio": "Biografía",
     "interests": "Intereses",
     "settings": "Configuración",
-    "trustScoreHelp": "Tu Puntuación de confianza nos ayuda a mostrarte a coincidencias de calidad. Aumenta con la verificación, la actividad y las valoraciones positivas."
+    "trustScoreHelp": "Tu Puntuación de confianza nos ayuda a mostrarte a coincidencias de calidad. Aumenta con la verificación, la actividad y las valoraciones positivas.",
+    "trustScoreHow": "Tu puntuación de confianza nos ayuda a mostrarte a personas afines. Todos empiezan en 50, verificarte suma {{verified}} y cada advertencia de un moderador resta {{warning}}."
   },
   "settings": {
     "title": "Configuración",
@@ -294,7 +316,8 @@
     "cookieEssential": "Solo esenciales",
     "privacyPolicy": "Política de privacidad",
     "notFoundDesc": "La página que buscas no existe o se ha movido.",
-    "photoN": "Foto {{n}}"
+    "photoN": "Foto {{n}}",
+    "loadFailed": "No se pudo cargar; revisa tu conexión."
   },
   "clubs": {
     "title": "Clubes",
@@ -427,7 +450,10 @@
     "createFailed": "No se pudo enviar el evento — inténtalo de nuevo",
     "pendingReview": "En revisión",
     "pendingReviewDesc": "Solo tú puedes ver este evento hasta que un administrador lo apruebe.",
-    "noSavedDesc": "Toca la estrella en los eventos que te interesen para guardarlos aquí."
+    "noSavedDesc": "Toca la estrella en los eventos que te interesen para guardarlos aquí.",
+    "ended": "Este evento ya terminó",
+    "feedbackFailed": "No se pudo enviar tu opinión; inténtalo de nuevo",
+    "thanksFeedbackSaved": "¡Gracias por tu opinión!"
   },
   "video": {
     "connecting": "Conectando...",
@@ -529,7 +555,11 @@
     "donating": "Procesando…",
     "supportUnavailable": "El soporte aún no está configurado",
     "donateAmount": "Donar {{amount}} Pi",
-    "settingSaveFailed": "No se pudo guardar el ajuste; inténtalo de nuevo"
+    "settingSaveFailed": "No se pudo guardar el ajuste; inténtalo de nuevo",
+    "payCompleted": "Completado",
+    "payCancelled": "Cancelado",
+    "payProcessing": "En proceso",
+    "unblockFailed": "No se pudo desbloquear; inténtalo de nuevo"
   },
   "profile2": {
     "addBioHint": "Añade una bio para que la gente te conozca",
@@ -577,7 +607,13 @@
     "sparksAmount_other": "+{{count}} chispas",
     "sparksPerDay": "+{{count}} chispa/día",
     "photoDeleteFailed": "No se pudo eliminar la foto",
-    "profileAlt": "Perfil de {{name}}"
+    "profileAlt": "Perfil de {{name}}",
+    "bioSaveFailed": "No se pudo guardar tu biografía; inténtalo de nuevo",
+    "scoreStart": "Inicio",
+    "scoreStartDesc": "Todos empiezan aquí",
+    "scoreVerifiedDone": "Verificado",
+    "scoreWarnings": "Advertencias",
+    "scoreWarningsDesc": "Por cada advertencia"
   },
   "admin": {
     "panel": "Panel de admin",
@@ -668,7 +704,9 @@
     "eventMaxAttendees": "Máximo de asistentes",
     "eventUpdated": "Evento actualizado",
     "eventApproved": "Evento aprobado — ahora visible para todos",
-    "eventRejected": "Evento rechazado"
+    "eventRejected": "Evento rechazado",
+    "joinedOn": "Se unió el {{date}}",
+    "loadFailedRetry": "No se pudieron cargar las transacciones; toca para reintentar"
   },
   "legal": {
     "termsTitle": "Términos de servicio",
@@ -838,7 +876,12 @@
       "q30": "Si pudieras dominar una habilidad de la noche a la mañana, ¿cuál sería?"
     },
     "voiceGate": "Graba una intro de voz para unirte a Daily Match: los perfiles sin ella no se emparejan.",
-    "tooFast": "Demasiado rápido: espera 5 segundos."
+    "tooFast": "Demasiado rápido: espera 5 segundos.",
+    "extraFailed": "No hay nadie disponible ahora; inténtalo más tarde",
+    "extraNeedsVoice": "Primero graba una presentación de voz: Daily Match solo empareja perfiles que la tienen.",
+    "extraSaved": "Tu pago está guardado: reclama la coincidencia extra más tarde sin volver a pagar.",
+    "claimExtra": "Obtener tu coincidencia extra pagada",
+    "arrivesToday": "Tu nueva coincidencia llega hoy a las {{time}}"
   },
   "truthOrDare": {
     "truth": {

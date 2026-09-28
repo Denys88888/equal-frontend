@@ -81,7 +81,8 @@
     "undo": "Zpět",
     "likeFailed": "Nepodařilo se odeslat lajk",
     "alreadyLiked": "Už jsi dal(a) lajk",
-    "you": "Ty"
+    "you": "Ty",
+    "swipeFailed": "Nepodařilo se uložit — zkus to znovu"
   },
   "matches": {
     "title": "Shody",
@@ -105,7 +106,8 @@
     "message": "Zpráva",
     "unmatchFailed": "Shodu se nepodařilo zrušit — zkus to znovu",
     "newCount": "Nové: {{count}}",
-    "noSearchResults": "Žádné konverzace neodpovídají „{{query}}“"
+    "noSearchResults": "Žádné konverzace neodpovídají „{{query}}“",
+    "loadFailed": "Shody se nepodařilo načíst."
   },
   "chat": {
     "typeMessage": "Napiš zprávu...",
@@ -150,7 +152,26 @@
     "voicePreview": "Hlasová zpráva",
     "giftPreview": "Poslal(a) dárek",
     "typing": "píše",
-    "sendGift": "Poslat dárek: {{gift}}"
+    "sendGift": "Poslat dárek: {{gift}}",
+    "giftYouSent": "Poslal(a) jsi {{partner}} dárek: {{gift}}",
+    "giftTheySent": "{{partner}} ti poslal(a) dárek: {{gift}}",
+    "ib_hiking": "Tvoje oblíbená turistická trasa?",
+    "ib_coffee": "Nejlepší kavárna ve tvém městě?",
+    "ib_music": "Tvůj oblíbený interpret právě teď?",
+    "ib_travel": "Jaká destinace je na tvém seznamu první?",
+    "ib_photography": "Film, nebo digitál?",
+    "ib_cooking": "Jaká je tvoje specialita?",
+    "ib_reading": "Poslední kniha, od které ses nemohl(a) odtrhnout?",
+    "ib_gaming": "Tvoje oblíbená hra právě teď?",
+    "ib_yoga": "Jóga ráno, nebo večer?",
+    "ib_fitness": "Oblíbený trénink?",
+    "ib_art": "Tvoříš sám/sama umění?",
+    "ib_movies": "Poslední film, který tě ohromil?",
+    "ib_generic": "Ahoj {{name}}! Co zábavného jsi v poslední době dělal(a)?",
+    "blockFailed": "Zablokování se nezdařilo — zkus to znovu",
+    "historyLoadFailed": "Konverzaci se nepodařilo načíst.",
+    "reportFailed": "Nahlášení se nepodařilo odeslat — zkus to znovu",
+    "sendFailed": "Zprávu se nepodařilo odeslat"
   },
   "profile": {
     "edit": "Upravit profil",
@@ -160,7 +181,8 @@
     "bio": "O mně",
     "interests": "Zájmy",
     "settings": "Nastavení",
-    "trustScoreHelp": "Skóre důvěry nám pomáhá ukazovat tě kvalitním shodám. Roste s ověřením, aktivitou a pozitivními ohlasy."
+    "trustScoreHelp": "Skóre důvěry nám pomáhá ukazovat tě kvalitním shodám. Roste s ověřením, aktivitou a pozitivními ohlasy.",
+    "trustScoreHow": "Skóre důvěry nám pomáhá ukazovat tě vhodným lidem. Všichni začínají na 50, ověření přidá {{verified}} a každé varování od moderátora ubere {{warning}}."
   },
   "settings": {
     "title": "Nastavení",
@@ -296,7 +318,8 @@
     "cookieEssential": "Jen nezbytné",
     "privacyPolicy": "Zásady ochrany soukromí",
     "notFoundDesc": "Stránka, kterou hledáš, neexistuje nebo byla přesunuta.",
-    "photoN": "Fotka {{n}}"
+    "photoN": "Fotka {{n}}",
+    "loadFailed": "Nepodařilo se načíst — zkontroluj připojení."
   },
   "clubs": {
     "title": "Kluby",
@@ -433,7 +456,10 @@
     "createFailed": "Událost se nepodařilo odeslat — zkuste to znovu",
     "pendingReview": "Ve schvalování",
     "pendingReviewDesc": "Tuto událost vidíte jen vy, dokud ji administrátor neschválí.",
-    "noSavedDesc": "Klepni na hvězdičku u událostí, které tě zajímají, a ulož si je sem."
+    "noSavedDesc": "Klepni na hvězdičku u událostí, které tě zajímají, a ulož si je sem.",
+    "ended": "Tato událost už skončila",
+    "feedbackFailed": "Zpětnou vazbu se nepodařilo odeslat — zkus to znovu",
+    "thanksFeedbackSaved": "Díky za zpětnou vazbu!"
   },
   "video": {
     "connecting": "Připojuje se...",
@@ -535,7 +561,11 @@
     "donating": "Zpracovává se…",
     "supportUnavailable": "Podpora zatím není nastavena",
     "donateAmount": "Darovat {{amount}} Pi",
-    "settingSaveFailed": "Nastavení se nepodařilo uložit — zkus to znovu"
+    "settingSaveFailed": "Nastavení se nepodařilo uložit — zkus to znovu",
+    "payCompleted": "Dokončeno",
+    "payCancelled": "Zrušeno",
+    "payProcessing": "Zpracovává se",
+    "unblockFailed": "Odblokování se nezdařilo — zkus to znovu"
   },
   "profile2": {
     "addBioHint": "Přidej popis, ať tě lidé lépe poznají",
@@ -584,7 +614,13 @@
     "sparksAmount_other": "+{{count}} jisker",
     "sparksPerDay": "+{{count}} jiskra denně",
     "photoDeleteFailed": "Fotku se nepodařilo smazat",
-    "profileAlt": "Profil: {{name}}"
+    "profileAlt": "Profil: {{name}}",
+    "bioSaveFailed": "Popis se nepodařilo uložit — zkus to znovu",
+    "scoreStart": "Start",
+    "scoreStartDesc": "Tady začíná každý",
+    "scoreVerifiedDone": "Ověřeno",
+    "scoreWarnings": "Varování",
+    "scoreWarningsDesc": "Za každé varování"
   },
   "admin": {
     "panel": "Panel správce",
@@ -675,7 +711,9 @@
     "eventMaxAttendees": "Max. účastníků",
     "eventUpdated": "Událost aktualizována",
     "eventApproved": "Událost schválena — nyní ji vidí všichni",
-    "eventRejected": "Událost zamítnuta"
+    "eventRejected": "Událost zamítnuta",
+    "joinedOn": "Členem od {{date}}",
+    "loadFailedRetry": "Transakce se nepodařilo načíst — klepnutím to zkus znovu"
   },
   "legal": {
     "termsTitle": "Podmínky služby",
@@ -845,7 +883,12 @@
       "q30": "Kdybys mohl(a) přes noc zvládnout jednu dovednost, která by to byla?"
     },
     "voiceGate": "Nahraj hlasové představení, aby ses mohl(a) zapojit do Denní shody — profily bez něj se nepárují.",
-    "tooFast": "Příliš rychle — počkej 5 sekund."
+    "tooFast": "Příliš rychle — počkej 5 sekund.",
+    "extraFailed": "Teď nikdo není k dispozici — zkus to později",
+    "extraNeedsVoice": "Nejdřív nahraj hlasové intro — Daily Match páruje jen profily, které ho mají.",
+    "extraSaved": "Platba je uložená — shodu navíc si vyzvedni později bez další platby.",
+    "claimExtra": "Vyzvednout zaplacenou shodu navíc",
+    "arrivesToday": "Tvá nová shoda přijde dnes v {{time}}"
   },
   "truthOrDare": {
     "truth": {

@@ -183,6 +183,12 @@ export async function getVerificationStatus(): Promise<{
 // NAMESPACE EXPORT
 // ───────────────────────────────────────────────────────────
 
+/** Profile badges earned from real activity, keyed by badge id. */
+export async function getAchievements(): Promise<Record<string, boolean>> {
+  const { data } = await api.get<Record<string, boolean>>('/users/me/achievements');
+  return data;
+}
+
 /** Server defaults, used until /users/me answers. */
 export const DEFAULT_SETTINGS: UserSettings = {
   ghostMode: false,
@@ -194,7 +200,7 @@ export const DEFAULT_SETTINGS: UserSettings = {
 };
 
 /** Save one or more Settings toggles; resolves with every saved value. */
-export async function updateSettings(patch: Partial<UserSettings>): Promise<UserSettings> {
+export async function updateSettings(patch: Partial<UserSettings> & { locale?: string }): Promise<UserSettings> {
   const { data } = await api.patch<UserSettings>('/users/me/settings', patch);
   return data;
 }

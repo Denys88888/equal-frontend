@@ -105,7 +105,21 @@ export async function skipIcebreaker(matchId: string): Promise<DailyMatch> {
   return data;
 }
 
-/** Call only after the Pi payment has completed. */
+export interface ExtraMatchStatus {
+  /** A completed extra-match payment not yet turned into a match: claim it, don't pay again. */
+  hasCredit: boolean;
+  /** Whether a match could be made right now at all. */
+  available: boolean;
+  reason: 'voice_intro' | 'no_candidates' | null;
+}
+
+/** Asked before paying, so 0.2 Pi is never taken for a match that can't be made. */
+export async function getExtraMatchStatus(): Promise<ExtraMatchStatus> {
+  const { data } = await api.get<ExtraMatchStatus>('/daily-match/extra/status');
+  return data;
+}
+
+/** Call only after the Pi payment has completed (or with an unused one). */
 export async function claimExtraMatch(): Promise<DailyMatch> {
   const { data } = await api.post<DailyMatch>('/daily-match/extra', {});
   return data;

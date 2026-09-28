@@ -75,7 +75,8 @@
     "undo": "Buat asal",
     "likeFailed": "Gagal menghantar suka",
     "alreadyLiked": "Sudah disukai",
-    "you": "Anda"
+    "you": "Anda",
+    "swipeFailed": "Tidak dapat disimpan — cuba lagi"
   },
   "matches": {
     "title": "Padanan",
@@ -99,7 +100,8 @@
     "message": "Mesej",
     "unmatchFailed": "Gagal batalkan padanan — cuba lagi",
     "newCount": "{{count}} baharu",
-    "noSearchResults": "Tiada perbualan yang sepadan dengan “{{query}}”"
+    "noSearchResults": "Tiada perbualan yang sepadan dengan “{{query}}”",
+    "loadFailed": "Padanan anda tidak dapat dimuatkan."
   },
   "chat": {
     "typeMessage": "Taip mesej...",
@@ -144,7 +146,26 @@
     "voicePreview": "Mesej suara",
     "giftPreview": "Menghantar hadiah",
     "typing": "sedang menaip",
-    "sendGift": "Hantar {{gift}}"
+    "sendGift": "Hantar {{gift}}",
+    "giftYouSent": "Anda menghantar hadiah kepada {{partner}}: {{gift}}",
+    "giftTheySent": "{{partner}} menghantar hadiah kepada anda: {{gift}}",
+    "ib_hiking": "Laluan mendaki kegemaran anda?",
+    "ib_coffee": "Kedai kopi terbaik di bandar anda?",
+    "ib_music": "Artis kegemaran anda sekarang?",
+    "ib_travel": "Destinasi teratas dalam senarai anda?",
+    "ib_photography": "Filem atau digital?",
+    "ib_cooking": "Apakah hidangan istimewa anda?",
+    "ib_reading": "Buku terakhir yang anda tidak dapat letak?",
+    "ib_gaming": "Permainan kegemaran anda sekarang?",
+    "ib_yoga": "Yoga pagi atau petang?",
+    "ib_fitness": "Senaman kegemaran?",
+    "ib_art": "Adakah anda sendiri berkarya seni?",
+    "ib_movies": "Filem terakhir yang benar-benar memukau anda?",
+    "ib_generic": "Hai {{name}}! Apa perkara seronok yang anda buat baru-baru ini?",
+    "blockFailed": "Tidak dapat menyekat — sila cuba lagi",
+    "historyLoadFailed": "Perbualan ini tidak dapat dimuatkan.",
+    "reportFailed": "Laporan tidak dapat dihantar — sila cuba lagi",
+    "sendFailed": "Mesej tidak dapat dihantar"
   },
   "profile": {
     "edit": "Edit Profil",
@@ -154,7 +175,8 @@
     "bio": "Bio",
     "interests": "Minat",
     "settings": "Tetapan",
-    "trustScoreHelp": "Skor Kepercayaan anda membantu kami menunjukkan anda kepada padanan berkualiti. Ia meningkat dengan pengesahan, aktiviti dan maklum balas positif."
+    "trustScoreHelp": "Skor Kepercayaan anda membantu kami menunjukkan anda kepada padanan berkualiti. Ia meningkat dengan pengesahan, aktiviti dan maklum balas positif.",
+    "trustScoreHow": "Skor Kepercayaan membantu kami menunjukkan anda kepada orang yang sesuai. Semua bermula pada 50, pengesahan menambah {{verified}}, dan setiap amaran moderator menolak {{warning}}."
   },
   "settings": {
     "title": "Tetapan",
@@ -290,7 +312,8 @@
     "cookieEssential": "Penting Sahaja",
     "privacyPolicy": "Dasar Privasi",
     "notFoundDesc": "Halaman yang anda cari tidak wujud atau telah dialihkan.",
-    "photoN": "Foto {{n}}"
+    "photoN": "Foto {{n}}",
+    "loadFailed": "Tidak dapat dimuatkan — semak sambungan anda."
   },
   "clubs": {
     "title": "Kelab",
@@ -415,7 +438,10 @@
     "createFailed": "Tidak dapat menghantar acara — sila cuba lagi",
     "pendingReview": "Dalam semakan",
     "pendingReviewDesc": "Hanya anda boleh melihat acara ini sehingga admin meluluskannya.",
-    "noSavedDesc": "Ketik ikon bintang pada acara yang anda minati untuk menyimpannya di sini."
+    "noSavedDesc": "Ketik ikon bintang pada acara yang anda minati untuk menyimpannya di sini.",
+    "ended": "Acara ini telah tamat",
+    "feedbackFailed": "Maklum balas anda tidak dapat dihantar — sila cuba lagi",
+    "thanksFeedbackSaved": "Terima kasih atas maklum balas anda!"
   },
   "video": {
     "connecting": "Menyambung...",
@@ -517,7 +543,11 @@
     "donating": "Sedang memproses…",
     "supportUnavailable": "Sokongan belum disediakan lagi",
     "donateAmount": "Derma {{amount}} Pi",
-    "settingSaveFailed": "Tidak dapat menyimpan tetapan — sila cuba lagi"
+    "settingSaveFailed": "Tidak dapat menyimpan tetapan — sila cuba lagi",
+    "payCompleted": "Selesai",
+    "payCancelled": "Dibatalkan",
+    "payProcessing": "Sedang diproses",
+    "unblockFailed": "Tidak dapat menyahsekat — sila cuba lagi"
   },
   "profile2": {
     "addBioHint": "Tambah bio supaya orang mengenali anda",
@@ -563,7 +593,13 @@
     "sparksAmount_other": "+{{count}} Percikan",
     "sparksPerDay": "+{{count}} Percikan/hari",
     "photoDeleteFailed": "Gagal memadam foto",
-    "profileAlt": "Profil {{name}}"
+    "profileAlt": "Profil {{name}}",
+    "bioSaveFailed": "Bio anda tidak dapat disimpan — sila cuba lagi",
+    "scoreStart": "Mula",
+    "scoreStartDesc": "Semua orang bermula di sini",
+    "scoreVerifiedDone": "Disahkan",
+    "scoreWarnings": "Amaran",
+    "scoreWarningsDesc": "Bagi setiap amaran"
   },
   "admin": {
     "panel": "Panel Pentadbir",
@@ -654,7 +690,9 @@
     "eventMaxAttendees": "Maks. peserta",
     "eventUpdated": "Acara dikemas kini",
     "eventApproved": "Acara diluluskan — kini kelihatan kepada semua",
-    "eventRejected": "Acara ditolak"
+    "eventRejected": "Acara ditolak",
+    "joinedOn": "Menyertai pada {{date}}",
+    "loadFailedRetry": "Transaksi tidak dapat dimuatkan — ketik untuk cuba lagi"
   },
   "legal": {
     "termsTitle": "Terma Perkhidmatan",
@@ -824,7 +862,12 @@
       "q30": "Jika anda boleh menguasai satu kemahiran dalam semalaman, apakah itu?"
     },
     "voiceGate": "Rakam pengenalan suara untuk menyertai Padanan Harian — profil tanpanya tidak dipadankan.",
-    "tooFast": "Terlalu pantas — tunggu 5 saat."
+    "tooFast": "Terlalu pantas — tunggu 5 saat.",
+    "extraFailed": "Tiada sesiapa tersedia sekarang — cuba lagi nanti",
+    "extraNeedsVoice": "Rakam intro suara dahulu — Daily Match hanya memadankan profil yang mempunyainya.",
+    "extraSaved": "Bayaran anda disimpan — tuntut padanan tambahan kemudian tanpa membayar lagi.",
+    "claimExtra": "Tuntut padanan tambahan yang telah dibayar",
+    "arrivesToday": "Padanan baharu anda tiba hari ini pada {{time}}"
   },
   "truthOrDare": {
     "truth": {

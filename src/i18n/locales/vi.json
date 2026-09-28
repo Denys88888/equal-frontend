@@ -75,7 +75,8 @@
     "undo": "Hoàn tác",
     "likeFailed": "Không gửi được lượt thích",
     "alreadyLiked": "Đã thích rồi",
-    "you": "Bạn"
+    "you": "Bạn",
+    "swipeFailed": "Không thể lưu — hãy thử lại"
   },
   "matches": {
     "title": "Ghép đôi",
@@ -99,7 +100,8 @@
     "message": "Tin nhắn",
     "unmatchFailed": "Không hủy ghép đôi được — vui lòng thử lại",
     "newCount": "{{count}} mới",
-    "noSearchResults": "Không có cuộc trò chuyện nào khớp với “{{query}}”"
+    "noSearchResults": "Không có cuộc trò chuyện nào khớp với “{{query}}”",
+    "loadFailed": "Không thể tải danh sách ghép đôi."
   },
   "chat": {
     "typeMessage": "Nhập tin nhắn...",
@@ -144,7 +146,26 @@
     "voicePreview": "Tin nhắn thoại",
     "giftPreview": "Đã gửi một món quà",
     "typing": "đang nhập",
-    "sendGift": "Gửi {{gift}}"
+    "sendGift": "Gửi {{gift}}",
+    "giftYouSent": "Bạn đã gửi quà cho {{partner}}: {{gift}}",
+    "giftTheySent": "{{partner}} đã gửi quà cho bạn: {{gift}}",
+    "ib_hiking": "Cung đường leo núi yêu thích của bạn?",
+    "ib_coffee": "Quán cà phê ngon nhất trong thành phố của bạn?",
+    "ib_music": "Nghệ sĩ bạn thích nhất hiện nay?",
+    "ib_travel": "Điểm đến đứng đầu danh sách của bạn?",
+    "ib_photography": "Phim hay kỹ thuật số?",
+    "ib_cooking": "Món tủ của bạn là gì?",
+    "ib_reading": "Cuốn sách gần nhất khiến bạn không thể rời mắt?",
+    "ib_gaming": "Trò chơi bạn thích nhất hiện nay?",
+    "ib_yoga": "Yoga buổi sáng hay buổi tối?",
+    "ib_fitness": "Bài tập yêu thích?",
+    "ib_art": "Bạn có tự sáng tác nghệ thuật không?",
+    "ib_movies": "Bộ phim gần nhất khiến bạn choáng ngợp?",
+    "ib_generic": "Chào {{name}}! Gần đây bạn đã làm điều gì thú vị?",
+    "blockFailed": "Không thể chặn — vui lòng thử lại",
+    "historyLoadFailed": "Không thể tải cuộc trò chuyện này.",
+    "reportFailed": "Không thể gửi báo cáo — vui lòng thử lại",
+    "sendFailed": "Không thể gửi tin nhắn"
   },
   "profile": {
     "edit": "Chỉnh sửa hồ sơ",
@@ -154,7 +175,8 @@
     "bio": "Giới thiệu",
     "interests": "Sở thích",
     "settings": "Cài đặt",
-    "trustScoreHelp": "Điểm tin cậy giúp chúng tôi giới thiệu bạn tới những ghép đôi chất lượng. Điểm tăng nhờ xác minh, hoạt động và phản hồi tích cực."
+    "trustScoreHelp": "Điểm tin cậy giúp chúng tôi giới thiệu bạn tới những ghép đôi chất lượng. Điểm tăng nhờ xác minh, hoạt động và phản hồi tích cực.",
+    "trustScoreHow": "Điểm tin cậy giúp chúng tôi giới thiệu bạn với người phù hợp. Mọi người đều bắt đầu từ 50, xác minh cộng {{verified}} và mỗi cảnh cáo của người kiểm duyệt trừ {{warning}}."
   },
   "settings": {
     "title": "Cài đặt",
@@ -290,7 +312,8 @@
     "cookieEssential": "Chỉ thiết yếu",
     "privacyPolicy": "Chính sách bảo mật",
     "notFoundDesc": "Trang bạn đang tìm không tồn tại hoặc đã được di chuyển.",
-    "photoN": "Ảnh {{n}}"
+    "photoN": "Ảnh {{n}}",
+    "loadFailed": "Không thể tải — hãy kiểm tra kết nối."
   },
   "clubs": {
     "title": "Câu lạc bộ",
@@ -415,7 +438,10 @@
     "createFailed": "Không thể gửi sự kiện — vui lòng thử lại",
     "pendingReview": "Đang chờ duyệt",
     "pendingReviewDesc": "Chỉ bạn nhìn thấy sự kiện này cho đến khi quản trị viên duyệt.",
-    "noSavedDesc": "Chạm vào biểu tượng ngôi sao trên các sự kiện bạn quan tâm để lưu chúng tại đây."
+    "noSavedDesc": "Chạm vào biểu tượng ngôi sao trên các sự kiện bạn quan tâm để lưu chúng tại đây.",
+    "ended": "Sự kiện này đã kết thúc",
+    "feedbackFailed": "Không thể gửi phản hồi — vui lòng thử lại",
+    "thanksFeedbackSaved": "Cảm ơn phản hồi của bạn!"
   },
   "video": {
     "connecting": "Đang kết nối...",
@@ -517,7 +543,11 @@
     "donating": "Đang xử lý…",
     "supportUnavailable": "Hỗ trợ chưa được thiết lập",
     "donateAmount": "Quyên góp {{amount}} Pi",
-    "settingSaveFailed": "Không thể lưu cài đặt — vui lòng thử lại"
+    "settingSaveFailed": "Không thể lưu cài đặt — vui lòng thử lại",
+    "payCompleted": "Hoàn tất",
+    "payCancelled": "Đã hủy",
+    "payProcessing": "Đang xử lý",
+    "unblockFailed": "Không thể bỏ chặn — vui lòng thử lại"
   },
   "profile2": {
     "addBioHint": "Thêm phần giới thiệu để mọi người hiểu bạn hơn",
@@ -563,7 +593,13 @@
     "sparksAmount_other": "+{{count}} Tia lửa",
     "sparksPerDay": "+{{count}} Tia lửa/ngày",
     "photoDeleteFailed": "Không xóa được ảnh",
-    "profileAlt": "Hồ sơ của {{name}}"
+    "profileAlt": "Hồ sơ của {{name}}",
+    "bioSaveFailed": "Không thể lưu phần giới thiệu — vui lòng thử lại",
+    "scoreStart": "Khởi đầu",
+    "scoreStartDesc": "Mọi người đều bắt đầu từ đây",
+    "scoreVerifiedDone": "Đã xác minh",
+    "scoreWarnings": "Cảnh cáo",
+    "scoreWarningsDesc": "Mỗi cảnh cáo"
   },
   "admin": {
     "panel": "Bảng quản trị",
@@ -654,7 +690,9 @@
     "eventMaxAttendees": "Số người tối đa",
     "eventUpdated": "Đã cập nhật sự kiện",
     "eventApproved": "Đã duyệt sự kiện — giờ mọi người đều thấy",
-    "eventRejected": "Đã từ chối sự kiện"
+    "eventRejected": "Đã từ chối sự kiện",
+    "joinedOn": "Tham gia ngày {{date}}",
+    "loadFailedRetry": "Không thể tải giao dịch — chạm để thử lại"
   },
   "legal": {
     "termsTitle": "Điều khoản dịch vụ",
@@ -824,7 +862,12 @@
       "q30": "Kỹ năng nào bạn muốn thành thạo sau một đêm?"
     },
     "voiceGate": "Ghi âm lời giới thiệu để tham gia Daily Match — hồ sơ không có sẽ không được ghép đôi.",
-    "tooFast": "Quá nhanh — đợi 5 giây."
+    "tooFast": "Quá nhanh — đợi 5 giây.",
+    "extraFailed": "Hiện không có ai — hãy thử lại sau",
+    "extraNeedsVoice": "Hãy ghi âm phần giới thiệu trước — Daily Match chỉ ghép những hồ sơ có phần này.",
+    "extraSaved": "Khoản thanh toán đã được lưu — hãy nhận ghép đôi thêm sau mà không phải trả lại.",
+    "claimExtra": "Nhận ghép đôi thêm đã thanh toán",
+    "arrivesToday": "Ghép đôi mới của bạn sẽ đến vào {{time}} hôm nay"
   },
   "truthOrDare": {
     "truth": {

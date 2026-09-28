@@ -77,7 +77,8 @@
     "undo": "Undo",
     "likeFailed": "Could not send like",
     "alreadyLiked": "Already liked",
-    "you": "You"
+    "you": "You",
+    "swipeFailed": "Could not save that — try again"
   },
   "matches": {
     "title": "Matches",
@@ -101,7 +102,8 @@
     "message": "Message",
     "unmatchFailed": "Could not unmatch — please try again",
     "newCount": "{{count}} new",
-    "noSearchResults": "No conversations match “{{query}}”"
+    "noSearchResults": "No conversations match “{{query}}”",
+    "loadFailed": "Couldn't load your matches."
   },
   "chat": {
     "typeMessage": "Type a message...",
@@ -146,7 +148,26 @@
     "voicePreview": "Voice message",
     "giftPreview": "Sent a gift",
     "typing": "typing",
-    "sendGift": "Send {{gift}}"
+    "sendGift": "Send {{gift}}",
+    "giftYouSent": "You sent {{partner}} a gift: {{gift}}",
+    "giftTheySent": "{{partner}} sent you a gift: {{gift}}",
+    "ib_hiking": "Favorite trail you've hiked?",
+    "ib_coffee": "Best coffee spot in your city?",
+    "ib_music": "Favorite artist right now?",
+    "ib_travel": "Top destination on your list?",
+    "ib_photography": "Film or digital?",
+    "ib_cooking": "What's your signature dish?",
+    "ib_reading": "Last book you couldn't put down?",
+    "ib_gaming": "Favorite game right now?",
+    "ib_yoga": "Morning or evening yoga?",
+    "ib_fitness": "Favorite workout?",
+    "ib_art": "Do you create art yourself?",
+    "ib_movies": "Last movie that blew you away?",
+    "ib_generic": "Hey {{name}}! What's something fun you did recently?",
+    "blockFailed": "Could not block — please try again",
+    "historyLoadFailed": "Couldn't load this conversation.",
+    "reportFailed": "Could not send the report — please try again",
+    "sendFailed": "Could not send message"
   },
   "profile": {
     "edit": "Edit Profile",
@@ -156,7 +177,8 @@
     "bio": "Bio",
     "interests": "Interests",
     "settings": "Settings",
-    "trustScoreHelp": "Your Trust Score helps us show you to quality matches. It increases with verification, activity, and positive feedback."
+    "trustScoreHelp": "Your Trust Score helps us show you to quality matches. It increases with verification, activity, and positive feedback.",
+    "trustScoreHow": "Your Trust Score helps us show you to quality matches. Everyone starts at 50, getting verified adds {{verified}}, and each moderator warning takes {{warning}}."
   },
   "settings": {
     "title": "Settings",
@@ -292,7 +314,8 @@
     "cookieEssential": "Essential Only",
     "privacyPolicy": "Privacy Policy",
     "notFoundDesc": "The page you're looking for doesn't exist or has been moved.",
-    "photoN": "Photo {{n}}"
+    "photoN": "Photo {{n}}",
+    "loadFailed": "Couldn't load this — check your connection."
   },
   "clubs": {
     "title": "Clubs",
@@ -421,7 +444,10 @@
     "createFailed": "Could not submit the event — please try again",
     "pendingReview": "On review",
     "pendingReviewDesc": "Only you can see this event until an admin approves it.",
-    "noSavedDesc": "Tap the star icon on events you're interested in to save them here."
+    "noSavedDesc": "Tap the star icon on events you're interested in to save them here.",
+    "ended": "This event has ended",
+    "feedbackFailed": "Could not send your feedback — please try again",
+    "thanksFeedbackSaved": "Thanks for your feedback!"
   },
   "video": {
     "connecting": "Connecting...",
@@ -523,7 +549,11 @@
     "donating": "Processing…",
     "supportUnavailable": "Support isn't configured yet",
     "donateAmount": "Donate {{amount}} Pi",
-    "settingSaveFailed": "Could not save this setting — please try again"
+    "settingSaveFailed": "Could not save this setting — please try again",
+    "payCompleted": "Completed",
+    "payCancelled": "Cancelled",
+    "payProcessing": "Processing",
+    "unblockFailed": "Could not unblock — please try again"
   },
   "profile2": {
     "addBioHint": "Add a bio to help people get to know you",
@@ -570,7 +600,13 @@
     "sparksAmount_other": "+{{count}} Sparks",
     "sparksPerDay": "+{{count}} Spark/day",
     "photoDeleteFailed": "Could not delete photo",
-    "profileAlt": "{{name}}'s profile"
+    "profileAlt": "{{name}}'s profile",
+    "bioSaveFailed": "Could not save your bio — please try again",
+    "scoreStart": "Start",
+    "scoreStartDesc": "Everyone begins here",
+    "scoreVerifiedDone": "Verified",
+    "scoreWarnings": "Warnings",
+    "scoreWarningsDesc": "Per moderator warning"
   },
   "admin": {
     "panel": "Admin Panel",
@@ -661,7 +697,9 @@
     "eventMaxAttendees": "Max attendees",
     "eventUpdated": "Event updated",
     "eventApproved": "Event approved — now visible to everyone",
-    "eventRejected": "Event rejected"
+    "eventRejected": "Event rejected",
+    "joinedOn": "Joined {{date}}",
+    "loadFailedRetry": "Couldn't load transactions — tap to retry"
   },
   "legal": {
     "termsTitle": "Terms of Service",
@@ -831,7 +869,12 @@
       "q30": "If you could master one skill overnight, what would it be?"
     },
     "voiceGate": "Record a voice intro to join Daily Match — profiles without one are not matched.",
-    "tooFast": "Too fast — wait 5 seconds."
+    "tooFast": "Too fast — wait 5 seconds.",
+    "extraFailed": "No one available right now — try again later",
+    "extraNeedsVoice": "Record a voice intro first — Daily Match only pairs profiles that have one.",
+    "extraSaved": "Your payment is saved — claim the extra match later without paying again.",
+    "claimExtra": "Get your paid extra match",
+    "arrivesToday": "Your new match arrives today at {{time}}"
   },
   "truthOrDare": {
     "truth": {

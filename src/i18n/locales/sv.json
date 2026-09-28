@@ -77,7 +77,8 @@
     "undo": "Ångra",
     "likeFailed": "Kunde inte skicka gillamarkeringen",
     "alreadyLiked": "Redan gillad",
-    "you": "Du"
+    "you": "Du",
+    "swipeFailed": "Det gick inte att spara – försök igen"
   },
   "matches": {
     "title": "Matchningar",
@@ -101,7 +102,8 @@
     "message": "Meddelande",
     "unmatchFailed": "Kunde inte ta bort matchningen — försök igen",
     "newCount": "Nya: {{count}}",
-    "noSearchResults": "Inga konversationer matchar ”{{query}}”"
+    "noSearchResults": "Inga konversationer matchar ”{{query}}”",
+    "loadFailed": "Det gick inte att läsa in dina matchningar."
   },
   "chat": {
     "typeMessage": "Skriv ett meddelande...",
@@ -146,7 +148,26 @@
     "voicePreview": "Röstmeddelande",
     "giftPreview": "Skickade en present",
     "typing": "skriver",
-    "sendGift": "Skicka {{gift}}"
+    "sendGift": "Skicka {{gift}}",
+    "giftYouSent": "Du skickade en gåva till {{partner}}: {{gift}}",
+    "giftTheySent": "{{partner}} skickade en gåva till dig: {{gift}}",
+    "ib_hiking": "Din favoritled att vandra?",
+    "ib_coffee": "Bästa kaféet i din stad?",
+    "ib_music": "Din favoritartist just nu?",
+    "ib_travel": "Vilket resmål står överst på din lista?",
+    "ib_photography": "Analogt eller digitalt?",
+    "ib_cooking": "Vilken är din specialrätt?",
+    "ib_reading": "Senaste boken du inte kunde lägga ifrån dig?",
+    "ib_gaming": "Ditt favoritspel just nu?",
+    "ib_yoga": "Yoga på morgonen eller kvällen?",
+    "ib_fitness": "Favoritträning?",
+    "ib_art": "Skapar du konst själv?",
+    "ib_movies": "Senaste filmen som tog andan ur dig?",
+    "ib_generic": "Hej {{name}}! Vad har du gjort för kul på sistone?",
+    "blockFailed": "Det gick inte att blockera – försök igen",
+    "historyLoadFailed": "Det gick inte att läsa in konversationen.",
+    "reportFailed": "Det gick inte att skicka anmälan – försök igen",
+    "sendFailed": "Det gick inte att skicka meddelandet"
   },
   "profile": {
     "edit": "Redigera profil",
@@ -156,7 +177,8 @@
     "bio": "Presentation",
     "interests": "Intressen",
     "settings": "Inställningar",
-    "trustScoreHelp": "Dina förtroendepoäng hjälper oss att visa dig för bra matchningar. De ökar med verifiering, aktivitet och positiv återkoppling."
+    "trustScoreHelp": "Dina förtroendepoäng hjälper oss att visa dig för bra matchningar. De ökar med verifiering, aktivitet och positiv återkoppling.",
+    "trustScoreHow": "Förtroendepoängen hjälper oss att visa dig för rätt personer. Alla börjar på 50, verifiering ger {{verified}} och varje varning från en moderator drar av {{warning}}."
   },
   "settings": {
     "title": "Inställningar",
@@ -292,7 +314,8 @@
     "cookieEssential": "Endast nödvändiga",
     "privacyPolicy": "Integritetspolicy",
     "notFoundDesc": "Sidan du letar efter finns inte eller har flyttats.",
-    "photoN": "Foto {{n}}"
+    "photoN": "Foto {{n}}",
+    "loadFailed": "Det gick inte att läsa in – kontrollera anslutningen."
   },
   "clubs": {
     "title": "Klubbar",
@@ -421,7 +444,10 @@
     "createFailed": "Det gick inte att skicka evenemanget — försök igen",
     "pendingReview": "Granskas",
     "pendingReviewDesc": "Bara du ser det här evenemanget tills en admin godkänner det.",
-    "noSavedDesc": "Tryck på stjärnan på evenemang som intresserar dig för att spara dem här."
+    "noSavedDesc": "Tryck på stjärnan på evenemang som intresserar dig för att spara dem här.",
+    "ended": "Evenemanget är över",
+    "feedbackFailed": "Det gick inte att skicka din feedback – försök igen",
+    "thanksFeedbackSaved": "Tack för din feedback!"
   },
   "video": {
     "connecting": "Ansluter...",
@@ -523,7 +549,11 @@
     "donating": "Bearbetar…",
     "supportUnavailable": "Supporten är inte konfigurerad än",
     "donateAmount": "Donera {{amount}} Pi",
-    "settingSaveFailed": "Det gick inte att spara inställningen – försök igen"
+    "settingSaveFailed": "Det gick inte att spara inställningen – försök igen",
+    "payCompleted": "Slutförd",
+    "payCancelled": "Avbruten",
+    "payProcessing": "Behandlas",
+    "unblockFailed": "Det gick inte att avblockera – försök igen"
   },
   "profile2": {
     "addBioHint": "Lägg till en presentation så att andra lär känna dig",
@@ -570,7 +600,13 @@
     "sparksAmount_other": "+{{count}} gnistor",
     "sparksPerDay": "+{{count}} gnista/dag",
     "photoDeleteFailed": "Kunde inte ta bort fotot",
-    "profileAlt": "{{name}}s profil"
+    "profileAlt": "{{name}}s profil",
+    "bioSaveFailed": "Det gick inte att spara din presentation – försök igen",
+    "scoreStart": "Start",
+    "scoreStartDesc": "Här börjar alla",
+    "scoreVerifiedDone": "Verifierad",
+    "scoreWarnings": "Varningar",
+    "scoreWarningsDesc": "Per varning"
   },
   "admin": {
     "panel": "Adminpanel",
@@ -661,7 +697,9 @@
     "eventMaxAttendees": "Max antal deltagare",
     "eventUpdated": "Evenemanget uppdaterat",
     "eventApproved": "Evenemanget godkänt — nu synligt för alla",
-    "eventRejected": "Evenemanget avvisat"
+    "eventRejected": "Evenemanget avvisat",
+    "joinedOn": "Medlem sedan {{date}}",
+    "loadFailedRetry": "Det gick inte att läsa in transaktioner – tryck för att försöka igen"
   },
   "legal": {
     "termsTitle": "Användarvillkor",
@@ -831,7 +869,12 @@
       "q30": "Om du kunde bemästra en färdighet över en natt, vilken skulle det vara?"
     },
     "voiceGate": "Spela in en röstpresentation för att delta i Dagens matchning — profiler utan den matchas inte.",
-    "tooFast": "För snabbt — vänta 5 sekunder."
+    "tooFast": "För snabbt — vänta 5 sekunder.",
+    "extraFailed": "Ingen är tillgänglig just nu – försök igen senare",
+    "extraNeedsVoice": "Spela först in ett röstintro – Daily Match parar bara ihop profiler som har ett.",
+    "extraSaved": "Din betalning är sparad – hämta den extra matchningen senare utan att betala igen.",
+    "claimExtra": "Hämta din betalda extra matchning",
+    "arrivesToday": "Din nya matchning kommer i dag kl. {{time}}"
   },
   "truthOrDare": {
     "truth": {

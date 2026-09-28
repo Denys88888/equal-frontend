@@ -77,7 +77,8 @@
     "undo": "Geri al",
     "likeFailed": "Beğeni gönderilemedi",
     "alreadyLiked": "Zaten beğenildi",
-    "you": "Siz"
+    "you": "Siz",
+    "swipeFailed": "Kaydedilemedi — tekrar deneyin"
   },
   "matches": {
     "title": "Eşleşmeler",
@@ -101,7 +102,8 @@
     "message": "Mesaj",
     "unmatchFailed": "Eşleşme kaldırılamadı — lütfen tekrar dene",
     "newCount": "{{count}} yeni",
-    "noSearchResults": "“{{query}}” ile eşleşen sohbet yok"
+    "noSearchResults": "“{{query}}” ile eşleşen sohbet yok",
+    "loadFailed": "Eşleşmeleriniz yüklenemedi."
   },
   "chat": {
     "typeMessage": "Bir mesaj yaz...",
@@ -146,7 +148,26 @@
     "voicePreview": "Sesli mesaj",
     "giftPreview": "Bir hediye gönderdi",
     "typing": "yazıyor",
-    "sendGift": "{{gift}} gönder"
+    "sendGift": "{{gift}} gönder",
+    "giftYouSent": "{{partner}} kişisine hediye gönderdin: {{gift}}",
+    "giftTheySent": "{{partner}} sana hediye gönderdi: {{gift}}",
+    "ib_hiking": "En sevdiğin yürüyüş rotası?",
+    "ib_coffee": "Şehrindeki en iyi kahveci?",
+    "ib_music": "Şu an en sevdiğin sanatçı?",
+    "ib_travel": "Listendeki bir numaralı rota?",
+    "ib_photography": "Film mi dijital mi?",
+    "ib_cooking": "Senin imza yemeğin ne?",
+    "ib_reading": "Elinden bırakamadığın son kitap?",
+    "ib_gaming": "Şu an en sevdiğin oyun?",
+    "ib_yoga": "Sabah yogası mı akşam yogası mı?",
+    "ib_fitness": "En sevdiğin antrenman?",
+    "ib_art": "Kendin de sanat yapıyor musun?",
+    "ib_movies": "Seni en son büyüleyen film?",
+    "ib_generic": "Selam {{name}}! Son zamanlarda eğlenceli ne yaptın?",
+    "blockFailed": "Engellenemedi — lütfen tekrar deneyin",
+    "historyLoadFailed": "Bu sohbet yüklenemedi.",
+    "reportFailed": "Şikâyet gönderilemedi — lütfen tekrar deneyin",
+    "sendFailed": "Mesaj gönderilemedi"
   },
   "profile": {
     "edit": "Profili Düzenle",
@@ -156,7 +177,8 @@
     "bio": "Biyografi",
     "interests": "İlgi Alanları",
     "settings": "Ayarlar",
-    "trustScoreHelp": "Güven Puanın, seni kaliteli eşleşmelere göstermemize yardımcı olur. Doğrulama, aktiflik ve olumlu geri bildirimlerle artar."
+    "trustScoreHelp": "Güven Puanın, seni kaliteli eşleşmelere göstermemize yardımcı olur. Doğrulama, aktiflik ve olumlu geri bildirimlerle artar.",
+    "trustScoreHow": "Güven Skoru seni uygun kişilere göstermemize yardımcı olur. Herkes 50 ile başlar, doğrulama {{verified}} ekler ve her moderatör uyarısı {{warning}} düşürür."
   },
   "settings": {
     "title": "Ayarlar",
@@ -292,7 +314,8 @@
     "cookieEssential": "Yalnızca zorunlu",
     "privacyPolicy": "Gizlilik Politikası",
     "notFoundDesc": "Aradığınız sayfa mevcut değil veya taşınmış.",
-    "photoN": "Fotoğraf {{n}}"
+    "photoN": "Fotoğraf {{n}}",
+    "loadFailed": "Yüklenemedi — bağlantınızı kontrol edin."
   },
   "clubs": {
     "title": "Kulüpler",
@@ -421,7 +444,10 @@
     "createFailed": "Etkinlik gönderilemedi — lütfen tekrar deneyin",
     "pendingReview": "İncelemede",
     "pendingReviewDesc": "Bir yönetici onaylayana kadar bu etkinliği yalnızca siz görürsünüz.",
-    "noSavedDesc": "İlgilendiğiniz etkinliklerdeki yıldıza dokunarak onları buraya kaydedin."
+    "noSavedDesc": "İlgilendiğiniz etkinliklerdeki yıldıza dokunarak onları buraya kaydedin.",
+    "ended": "Bu etkinlik sona erdi",
+    "feedbackFailed": "Geri bildiriminiz gönderilemedi — lütfen tekrar deneyin",
+    "thanksFeedbackSaved": "Geri bildiriminiz için teşekkürler!"
   },
   "video": {
     "connecting": "Bağlanıyor...",
@@ -523,7 +549,11 @@
     "donating": "İşleniyor…",
     "supportUnavailable": "Destek henüz yapılandırılmadı",
     "donateAmount": "{{amount}} Pi bağışla",
-    "settingSaveFailed": "Ayar kaydedilemedi — lütfen tekrar deneyin"
+    "settingSaveFailed": "Ayar kaydedilemedi — lütfen tekrar deneyin",
+    "payCompleted": "Tamamlandı",
+    "payCancelled": "İptal edildi",
+    "payProcessing": "İşleniyor",
+    "unblockFailed": "Engel kaldırılamadı — lütfen tekrar deneyin"
   },
   "profile2": {
     "addBioHint": "İnsanların seni tanıması için bir biyografi ekle",
@@ -570,7 +600,13 @@
     "sparksAmount_other": "+{{count}} Kıvılcım",
     "sparksPerDay": "Günde +{{count}} Kıvılcım",
     "photoDeleteFailed": "Fotoğraf silinemedi",
-    "profileAlt": "{{name}} profili"
+    "profileAlt": "{{name}} profili",
+    "bioSaveFailed": "Biyografiniz kaydedilemedi — lütfen tekrar deneyin",
+    "scoreStart": "Başlangıç",
+    "scoreStartDesc": "Herkes buradan başlar",
+    "scoreVerifiedDone": "Doğrulandı",
+    "scoreWarnings": "Uyarılar",
+    "scoreWarningsDesc": "Uyarı başına"
   },
   "admin": {
     "panel": "Yönetim paneli",
@@ -661,7 +697,9 @@
     "eventMaxAttendees": "Maks. katılımcı",
     "eventUpdated": "Etkinlik güncellendi",
     "eventApproved": "Etkinlik onaylandı — artık herkese görünür",
-    "eventRejected": "Etkinlik reddedildi"
+    "eventRejected": "Etkinlik reddedildi",
+    "joinedOn": "Katılım: {{date}}",
+    "loadFailedRetry": "İşlemler yüklenemedi — tekrar denemek için dokunun"
   },
   "legal": {
     "termsTitle": "Kullanım Koşulları",
@@ -831,7 +869,12 @@
       "q30": "Bir gecede bir beceriyi ustalıkla öğrenebilseydin hangisi olurdu?"
     },
     "voiceGate": "Günlük Eşleşme'ye katılmak için sesli tanıtım kaydet — tanıtımı olmayan profiller eşleştirilmez.",
-    "tooFast": "Çok hızlı — 5 saniye bekle."
+    "tooFast": "Çok hızlı — 5 saniye bekle.",
+    "extraFailed": "Şu an kimse müsait değil — daha sonra tekrar deneyin",
+    "extraNeedsVoice": "Önce bir sesli tanıtım kaydet — Daily Match yalnızca tanıtımı olan profilleri eşleştirir.",
+    "extraSaved": "Ödemen kaydedildi — ekstra eşleşmeyi daha sonra tekrar ödemeden al.",
+    "claimExtra": "Ödenmiş ekstra eşleşmeni al",
+    "arrivesToday": "Yeni eşleşmen bugün {{time}} saatinde geliyor"
   },
   "truthOrDare": {
     "truth": {

@@ -77,7 +77,8 @@
     "undo": "Tengua",
     "likeFailed": "Kutuma kupenda hakukufaulu",
     "alreadyLiked": "Tayari umependa",
-    "you": "Wewe"
+    "you": "Wewe",
+    "swipeFailed": "Imeshindwa kuhifadhi — jaribu tena"
   },
   "matches": {
     "title": "Linganifu",
@@ -101,7 +102,8 @@
     "message": "Ujumbe",
     "unmatchFailed": "Kuondoa mechi hakukufaulu — jaribu tena",
     "newCount": "Mpya: {{count}}",
-    "noSearchResults": "Hakuna mazungumzo yanayolingana na “{{query}}”"
+    "noSearchResults": "Hakuna mazungumzo yanayolingana na “{{query}}”",
+    "loadFailed": "Mechi zako hazikuweza kupakiwa."
   },
   "chat": {
     "typeMessage": "Andika ujumbe...",
@@ -146,7 +148,26 @@
     "voicePreview": "Ujumbe wa sauti",
     "giftPreview": "Alituma zawadi",
     "typing": "anaandika",
-    "sendGift": "Tuma {{gift}}"
+    "sendGift": "Tuma {{gift}}",
+    "giftYouSent": "Umemtumia {{partner}} zawadi: {{gift}}",
+    "giftTheySent": "{{partner}} amekutumia zawadi: {{gift}}",
+    "ib_hiking": "Njia yako unayoipenda ya kutembea milimani?",
+    "ib_coffee": "Mkahawa bora wa kahawa katika jiji lako?",
+    "ib_music": "Msanii unayempenda zaidi sasa?",
+    "ib_travel": "Mahali unapotaka kwenda zaidi kwenye orodha yako?",
+    "ib_photography": "Filamu au dijitali?",
+    "ib_cooking": "Chakula chako maalum ni kipi?",
+    "ib_reading": "Kitabu cha mwisho ambacho hukuweza kukiweka chini?",
+    "ib_gaming": "Mchezo unaoupenda zaidi sasa?",
+    "ib_yoga": "Yoga asubuhi au jioni?",
+    "ib_fitness": "Mazoezi unayoyapenda?",
+    "ib_art": "Je, unaunda sanaa mwenyewe?",
+    "ib_movies": "Filamu ya mwisho iliyokushangaza?",
+    "ib_generic": "Habari {{name}}! Ni jambo gani la kufurahisha ulilofanya hivi karibuni?",
+    "blockFailed": "Imeshindwa kuzuia — tafadhali jaribu tena",
+    "historyLoadFailed": "Mazungumzo haya hayakuweza kupakiwa.",
+    "reportFailed": "Ripoti haikuweza kutumwa — tafadhali jaribu tena",
+    "sendFailed": "Ujumbe haukuweza kutumwa"
   },
   "profile": {
     "edit": "Hariri Wasifu",
@@ -156,7 +177,8 @@
     "bio": "Wasifu",
     "interests": "Masuala ya Kibinafsi",
     "settings": "Mipangilio",
-    "trustScoreHelp": "Kiwango chako cha Uaminifu kinatusaidia kukuonyesha kwa mechi bora. Kinapanda kwa uthibitisho, shughuli, na maoni chanya."
+    "trustScoreHelp": "Kiwango chako cha Uaminifu kinatusaidia kukuonyesha kwa mechi bora. Kinapanda kwa uthibitisho, shughuli, na maoni chanya.",
+    "trustScoreHow": "Alama ya Imani hutusaidia kukuonyesha kwa watu wanaokufaa. Kila mtu huanzia 50, uthibitishaji huongeza {{verified}}, na kila onyo la msimamizi hupunguza {{warning}}."
   },
   "settings": {
     "title": "Mipangilio",
@@ -292,7 +314,8 @@
     "cookieEssential": "Muhimu Pekee",
     "privacyPolicy": "Sera ya Faragha",
     "notFoundDesc": "Ukurasa unaoutafuta haupo au umehamishwa.",
-    "photoN": "Picha {{n}}"
+    "photoN": "Picha {{n}}",
+    "loadFailed": "Imeshindwa kupakia — angalia muunganisho wako."
   },
   "clubs": {
     "title": "Vilabu",
@@ -421,7 +444,10 @@
     "createFailed": "Imeshindwa kutuma tukio — tafadhali jaribu tena",
     "pendingReview": "Linakaguliwa",
     "pendingReviewDesc": "Ni wewe pekee unayeona tukio hili hadi msimamizi aliidhinishe.",
-    "noSavedDesc": "Gusa aikoni ya nyota kwenye matukio yanayokuvutia ili kuyahifadhi hapa."
+    "noSavedDesc": "Gusa aikoni ya nyota kwenye matukio yanayokuvutia ili kuyahifadhi hapa.",
+    "ended": "Tukio hili limekwisha",
+    "feedbackFailed": "Maoni yako hayakuweza kutumwa — tafadhali jaribu tena",
+    "thanksFeedbackSaved": "Asante kwa maoni yako!"
   },
   "video": {
     "connecting": "Inaunganisha...",
@@ -523,7 +549,11 @@
     "donating": "Inachakata…",
     "supportUnavailable": "Usaidizi bado haujawekwa",
     "donateAmount": "Changia Pi {{amount}}",
-    "settingSaveFailed": "Imeshindwa kuhifadhi mpangilio huu — tafadhali jaribu tena"
+    "settingSaveFailed": "Imeshindwa kuhifadhi mpangilio huu — tafadhali jaribu tena",
+    "payCompleted": "Imekamilika",
+    "payCancelled": "Imeghairiwa",
+    "payProcessing": "Inashughulikiwa",
+    "unblockFailed": "Imeshindwa kuondoa kizuizi — tafadhali jaribu tena"
   },
   "profile2": {
     "addBioHint": "Ongeza wasifu ili watu wakujue",
@@ -570,7 +600,13 @@
     "sparksAmount_other": "Cheche +{{count}}",
     "sparksPerDay": "Cheche +{{count}}/siku",
     "photoDeleteFailed": "Kufuta picha hakukufaulu",
-    "profileAlt": "Wasifu wa {{name}}"
+    "profileAlt": "Wasifu wa {{name}}",
+    "bioSaveFailed": "Wasifu wako haukuweza kuhifadhiwa — tafadhali jaribu tena",
+    "scoreStart": "Mwanzo",
+    "scoreStartDesc": "Kila mtu huanzia hapa",
+    "scoreVerifiedDone": "Imethibitishwa",
+    "scoreWarnings": "Maonyo",
+    "scoreWarningsDesc": "Kwa kila onyo"
   },
   "admin": {
     "panel": "Kidhibiti cha Msimamizi",
@@ -661,7 +697,9 @@
     "eventMaxAttendees": "Idadi ya Juu ya Wahudhuriaji",
     "eventUpdated": "Tukio limesasishwa",
     "eventApproved": "Tukio limeidhinishwa — sasa linaonekana kwa wote",
-    "eventRejected": "Tukio limekataliwa"
+    "eventRejected": "Tukio limekataliwa",
+    "joinedOn": "Alijiunga {{date}}",
+    "loadFailedRetry": "Miamala haikuweza kupakiwa — gusa ili kujaribu tena"
   },
   "legal": {
     "termsTitle": "Masharti ya Huduma",
@@ -831,7 +869,12 @@
       "q30": "Kama ungeweza kuwa bingwa wa ujuzi mmoja usiku mmoja, ungechagua upi?"
     },
     "voiceGate": "Rekodi utangulizi wa sauti ili kujiunga na Mechi ya Kila Siku — wasifu bila hiyo hazitalinganishwa.",
-    "tooFast": "Haraka mno — subiri sekunde 5."
+    "tooFast": "Haraka mno — subiri sekunde 5.",
+    "extraFailed": "Hakuna anayepatikana sasa — jaribu tena baadaye",
+    "extraNeedsVoice": "Rekodi utangulizi wa sauti kwanza — Daily Match huunganisha tu wasifu ulio nao.",
+    "extraSaved": "Malipo yako yamehifadhiwa — pata mechi ya ziada baadaye bila kulipa tena.",
+    "claimExtra": "Pata mechi yako ya ziada uliyolipia",
+    "arrivesToday": "Mechi yako mpya inafika leo saa {{time}}"
   },
   "truthOrDare": {
     "truth": {

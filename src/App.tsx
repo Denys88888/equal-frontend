@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router'
 import ErrorBoundary from './components/ErrorBoundary'
 import CookieConsent from './components/CookieConsent'
@@ -29,6 +29,11 @@ const PageSpinner = () => (
 
 function AnimatedRoutes() {
   const location = useLocation()
+  // A new screen opens at its top. The document scroll used to carry over, so
+  // Settings opened halfway down after scrolling the Profile that links to it.
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location.pathname])
   return (
     <Routes location={location} key={location.pathname}>
       <Route path="/" element={<Welcome />} />

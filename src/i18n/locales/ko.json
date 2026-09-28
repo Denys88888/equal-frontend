@@ -75,7 +75,8 @@
     "undo": "실행 취소",
     "likeFailed": "좋아요를 보내지 못했습니다",
     "alreadyLiked": "이미 좋아요를 눌렀습니다",
-    "you": "나"
+    "you": "나",
+    "swipeFailed": "저장하지 못했어요. 다시 시도해 주세요"
   },
   "matches": {
     "title": "매칭",
@@ -99,7 +100,8 @@
     "message": "메시지",
     "unmatchFailed": "매칭을 해제하지 못했습니다. 다시 시도해 주세요",
     "newCount": "새 메시지 {{count}}개",
-    "noSearchResults": "“{{query}}”와(과) 일치하는 대화가 없습니다"
+    "noSearchResults": "“{{query}}”와(과) 일치하는 대화가 없습니다",
+    "loadFailed": "매칭 목록을 불러오지 못했어요."
   },
   "chat": {
     "typeMessage": "메시지를 입력하세요...",
@@ -144,7 +146,26 @@
     "voicePreview": "음성 메시지",
     "giftPreview": "선물을 보냈습니다",
     "typing": "입력 중",
-    "sendGift": "{{gift}} 보내기"
+    "sendGift": "{{gift}} 보내기",
+    "giftYouSent": "{{partner}}님에게 선물을 보냈어요: {{gift}}",
+    "giftTheySent": "{{partner}}님이 선물을 보냈어요: {{gift}}",
+    "ib_hiking": "가장 좋아하는 등산 코스는?",
+    "ib_coffee": "당신 도시에서 제일 좋은 카페는?",
+    "ib_music": "요즘 가장 좋아하는 아티스트는?",
+    "ib_travel": "가고 싶은 여행지 1순위는?",
+    "ib_photography": "필름? 디지털?",
+    "ib_cooking": "당신의 자신 있는 요리는?",
+    "ib_reading": "최근 손에서 놓을 수 없었던 책은?",
+    "ib_gaming": "요즘 가장 좋아하는 게임은?",
+    "ib_yoga": "요가는 아침에? 저녁에?",
+    "ib_fitness": "가장 좋아하는 운동은?",
+    "ib_art": "직접 작품 활동도 하세요?",
+    "ib_movies": "최근 가장 인상 깊었던 영화는?",
+    "ib_generic": "안녕하세요, {{name}}님! 요즘 재미있게 한 일이 있나요?",
+    "blockFailed": "차단하지 못했어요. 다시 시도해 주세요",
+    "historyLoadFailed": "이 대화를 불러오지 못했어요.",
+    "reportFailed": "신고를 보내지 못했어요. 다시 시도해 주세요",
+    "sendFailed": "메시지를 보내지 못했어요"
   },
   "profile": {
     "edit": "프로필 수정",
@@ -154,7 +175,8 @@
     "bio": "자기소개",
     "interests": "관심사",
     "settings": "설정",
-    "trustScoreHelp": "신뢰 점수는 회원님을 좋은 매칭 상대에게 보여 주는 데 도움이 됩니다. 인증, 활동, 긍정적인 평가로 점수가 올라갑니다."
+    "trustScoreHelp": "신뢰 점수는 회원님을 좋은 매칭 상대에게 보여 주는 데 도움이 됩니다. 인증, 활동, 긍정적인 평가로 점수가 올라갑니다.",
+    "trustScoreHow": "신뢰 점수는 당신을 잘 맞는 사람에게 보여 주는 데 쓰여요. 모두 50점에서 시작하고, 인증하면 {{verified}}점이 더해지며, 운영자 경고를 받을 때마다 {{warning}}점이 깎여요."
   },
   "settings": {
     "title": "설정",
@@ -290,7 +312,8 @@
     "cookieEssential": "필수만 허용",
     "privacyPolicy": "개인정보 처리방침",
     "notFoundDesc": "찾으시는 페이지가 없거나 이동되었습니다.",
-    "photoN": "사진 {{n}}"
+    "photoN": "사진 {{n}}",
+    "loadFailed": "불러오지 못했어요. 연결을 확인해 주세요."
   },
   "clubs": {
     "title": "클럽",
@@ -415,7 +438,10 @@
     "createFailed": "이벤트를 제출하지 못했어요 — 다시 시도해 주세요",
     "pendingReview": "검토 중",
     "pendingReviewDesc": "관리자가 승인할 때까지 이 이벤트는 나만 볼 수 있어요.",
-    "noSavedDesc": "관심 있는 이벤트의 별 아이콘을 탭하면 여기에 저장됩니다."
+    "noSavedDesc": "관심 있는 이벤트의 별 아이콘을 탭하면 여기에 저장됩니다.",
+    "ended": "종료된 이벤트예요",
+    "feedbackFailed": "피드백을 보내지 못했어요. 다시 시도해 주세요",
+    "thanksFeedbackSaved": "피드백 감사합니다!"
   },
   "video": {
     "connecting": "연결 중...",
@@ -517,7 +543,11 @@
     "donating": "처리 중…",
     "supportUnavailable": "지원 채널이 아직 설정되지 않았습니다",
     "donateAmount": "{{amount}} Pi 기부하기",
-    "settingSaveFailed": "설정을 저장하지 못했습니다. 다시 시도해 주세요"
+    "settingSaveFailed": "설정을 저장하지 못했습니다. 다시 시도해 주세요",
+    "payCompleted": "완료",
+    "payCancelled": "취소됨",
+    "payProcessing": "처리 중",
+    "unblockFailed": "차단을 해제하지 못했어요. 다시 시도해 주세요"
   },
   "profile2": {
     "addBioHint": "소개를 추가해 사람들이 당신을 알 수 있게 하세요",
@@ -563,7 +593,13 @@
     "sparksAmount_other": "+{{count}} 스파크",
     "sparksPerDay": "하루 +{{count}} 스파크",
     "photoDeleteFailed": "사진을 삭제하지 못했습니다",
-    "profileAlt": "{{name}}님의 프로필"
+    "profileAlt": "{{name}}님의 프로필",
+    "bioSaveFailed": "자기소개를 저장하지 못했어요. 다시 시도해 주세요",
+    "scoreStart": "시작",
+    "scoreStartDesc": "모두 여기서 시작해요",
+    "scoreVerifiedDone": "인증됨",
+    "scoreWarnings": "경고",
+    "scoreWarningsDesc": "경고 1회당"
   },
   "admin": {
     "panel": "관리자 패널",
@@ -654,7 +690,9 @@
     "eventMaxAttendees": "최대 참석 인원",
     "eventUpdated": "이벤트가 업데이트되었습니다",
     "eventApproved": "이벤트 승인됨 — 이제 모두에게 표시됩니다",
-    "eventRejected": "이벤트 거절됨"
+    "eventRejected": "이벤트 거절됨",
+    "joinedOn": "{{date}} 가입",
+    "loadFailedRetry": "거래 내역을 불러오지 못했어요. 탭하여 다시 시도"
   },
   "legal": {
     "termsTitle": "이용약관",
@@ -824,7 +862,12 @@
       "q30": "하룻밤 만에 한 가지 기술을 익힐 수 있다면 무엇을 고르시겠어요?"
     },
     "voiceGate": "데일리 매칭에 참여하려면 음성 소개를 녹음하세요. 음성 소개가 없는 프로필은 매칭되지 않습니다.",
-    "tooFast": "너무 빠릅니다. 5초만 기다려 주세요."
+    "tooFast": "너무 빠릅니다. 5초만 기다려 주세요.",
+    "extraFailed": "지금은 매칭 가능한 사람이 없어요. 나중에 다시 시도해 주세요",
+    "extraNeedsVoice": "먼저 음성 소개를 녹음하세요. Daily Match는 음성 소개가 있는 프로필만 매칭해요.",
+    "extraSaved": "결제가 저장되어 있어요. 추가 매칭은 다시 결제하지 않고 나중에 받을 수 있어요.",
+    "claimExtra": "결제한 추가 매칭 받기",
+    "arrivesToday": "새 매칭은 오늘 {{time}}에 도착해요"
   },
   "truthOrDare": {
     "truth": {

@@ -81,7 +81,8 @@
     "undo": "Cofnij",
     "likeFailed": "Nie udało się wysłać polubienia",
     "alreadyLiked": "Już polubione",
-    "you": "Ty"
+    "you": "Ty",
+    "swipeFailed": "Nie udało się zapisać — spróbuj ponownie"
   },
   "matches": {
     "title": "Pary",
@@ -105,7 +106,8 @@
     "message": "Wiadomość",
     "unmatchFailed": "Nie udało się usunąć dopasowania — spróbuj ponownie",
     "newCount": "Nowe: {{count}}",
-    "noSearchResults": "Brak rozmów pasujących do „{{query}}”"
+    "noSearchResults": "Brak rozmów pasujących do „{{query}}”",
+    "loadFailed": "Nie udało się wczytać dopasowań."
   },
   "chat": {
     "typeMessage": "Napisz wiadomość...",
@@ -150,7 +152,26 @@
     "voicePreview": "Wiadomość głosowa",
     "giftPreview": "Wysłał(a) prezent",
     "typing": "pisze",
-    "sendGift": "Wyślij prezent: {{gift}}"
+    "sendGift": "Wyślij prezent: {{gift}}",
+    "giftYouSent": "Wysłałeś(-aś) {{partner}} prezent: {{gift}}",
+    "giftTheySent": "{{partner}} wysłał(a) ci prezent: {{gift}}",
+    "ib_hiking": "Twój ulubiony szlak?",
+    "ib_coffee": "Najlepsza kawiarnia w twoim mieście?",
+    "ib_music": "Twój ulubiony wykonawca teraz?",
+    "ib_travel": "Jaki kierunek jest na szczycie twojej listy?",
+    "ib_photography": "Analog czy cyfra?",
+    "ib_cooking": "Jakie jest twoje popisowe danie?",
+    "ib_reading": "Ostatnia książka, od której nie mogłeś(-aś) się oderwać?",
+    "ib_gaming": "Twoja ulubiona gra teraz?",
+    "ib_yoga": "Joga rano czy wieczorem?",
+    "ib_fitness": "Ulubiony trening?",
+    "ib_art": "Sam(a) tworzysz sztukę?",
+    "ib_movies": "Ostatni film, który cię zachwycił?",
+    "ib_generic": "Cześć, {{name}}! Co fajnego ostatnio robiłeś(-aś)?",
+    "blockFailed": "Nie udało się zablokować — spróbuj ponownie",
+    "historyLoadFailed": "Nie udało się wczytać tej rozmowy.",
+    "reportFailed": "Nie udało się wysłać zgłoszenia — spróbuj ponownie",
+    "sendFailed": "Nie udało się wysłać wiadomości"
   },
   "profile": {
     "edit": "Edytuj profil",
@@ -160,7 +181,8 @@
     "bio": "Opis",
     "interests": "Zainteresowania",
     "settings": "Ustawienia",
-    "trustScoreHelp": "Wskaźnik zaufania pomaga nam pokazywać Cię wartościowym dopasowaniom. Rośnie dzięki weryfikacji, aktywności i pozytywnym opiniom."
+    "trustScoreHelp": "Wskaźnik zaufania pomaga nam pokazywać Cię wartościowym dopasowaniom. Rośnie dzięki weryfikacji, aktywności i pozytywnym opiniom.",
+    "trustScoreHow": "Wskaźnik zaufania pomaga nam pokazywać cię odpowiednim osobom. Każdy zaczyna od 50, weryfikacja dodaje {{verified}}, a każde ostrzeżenie moderatora odejmuje {{warning}}."
   },
   "settings": {
     "title": "Ustawienia",
@@ -296,7 +318,8 @@
     "cookieEssential": "Tylko niezbędne",
     "privacyPolicy": "Polityka prywatności",
     "notFoundDesc": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
-    "photoN": "Zdjęcie {{n}}"
+    "photoN": "Zdjęcie {{n}}",
+    "loadFailed": "Nie udało się wczytać — sprawdź połączenie."
   },
   "clubs": {
     "title": "Kluby",
@@ -433,7 +456,10 @@
     "createFailed": "Nie udało się wysłać wydarzenia — spróbuj ponownie",
     "pendingReview": "W weryfikacji",
     "pendingReviewDesc": "Tylko ty widzisz to wydarzenie, dopóki administrator go nie zatwierdzi.",
-    "noSavedDesc": "Stuknij gwiazdkę przy wydarzeniach, które cię interesują, aby zapisać je tutaj."
+    "noSavedDesc": "Stuknij gwiazdkę przy wydarzeniach, które cię interesują, aby zapisać je tutaj.",
+    "ended": "To wydarzenie już się odbyło",
+    "feedbackFailed": "Nie udało się wysłać opinii — spróbuj ponownie",
+    "thanksFeedbackSaved": "Dzięki za opinię!"
   },
   "video": {
     "connecting": "Łączenie...",
@@ -535,7 +561,11 @@
     "donating": "Przetwarzanie…",
     "supportUnavailable": "Pomoc nie została jeszcze skonfigurowana",
     "donateAmount": "Przekaż {{amount}} Pi",
-    "settingSaveFailed": "Nie udało się zapisać ustawienia — spróbuj ponownie"
+    "settingSaveFailed": "Nie udało się zapisać ustawienia — spróbuj ponownie",
+    "payCompleted": "Zakończona",
+    "payCancelled": "Anulowana",
+    "payProcessing": "W toku",
+    "unblockFailed": "Nie udało się odblokować — spróbuj ponownie"
   },
   "profile2": {
     "addBioHint": "Dodaj opis, aby inni mogli Cię poznać",
@@ -584,7 +614,13 @@
     "sparksAmount_other": "+{{count}} Iskry",
     "sparksPerDay": "+{{count}} Iskra dziennie",
     "photoDeleteFailed": "Nie udało się usunąć zdjęcia",
-    "profileAlt": "Profil: {{name}}"
+    "profileAlt": "Profil: {{name}}",
+    "bioSaveFailed": "Nie udało się zapisać opisu — spróbuj ponownie",
+    "scoreStart": "Start",
+    "scoreStartDesc": "Tu zaczyna każdy",
+    "scoreVerifiedDone": "Zweryfikowano",
+    "scoreWarnings": "Ostrzeżenia",
+    "scoreWarningsDesc": "Za każde ostrzeżenie"
   },
   "admin": {
     "panel": "Panel administratora",
@@ -675,7 +711,9 @@
     "eventMaxAttendees": "Maks. uczestników",
     "eventUpdated": "Wydarzenie zaktualizowane",
     "eventApproved": "Wydarzenie zatwierdzone — teraz widzą je wszyscy",
-    "eventRejected": "Wydarzenie odrzucone"
+    "eventRejected": "Wydarzenie odrzucone",
+    "joinedOn": "Dołączył(a) {{date}}",
+    "loadFailedRetry": "Nie udało się wczytać transakcji — stuknij, aby ponowić"
   },
   "legal": {
     "termsTitle": "Regulamin",
@@ -845,7 +883,12 @@
       "q30": "Jaką umiejętność opanowałbyś w jedną noc?"
     },
     "voiceGate": "Nagraj intro głosowe, aby dołączyć do Daily Match — profile bez niego nie są dopasowywane.",
-    "tooFast": "Za szybko — poczekaj 5 sekund."
+    "tooFast": "Za szybko — poczekaj 5 sekund.",
+    "extraFailed": "Nikt nie jest teraz dostępny — spróbuj później",
+    "extraNeedsVoice": "Najpierw nagraj głosowe intro — Daily Match łączy tylko profile, które je mają.",
+    "extraSaved": "Płatność jest zapisana — odbierz dodatkowe dopasowanie później, bez ponownej opłaty.",
+    "claimExtra": "Odbierz opłacone dopasowanie",
+    "arrivesToday": "Nowe dopasowanie pojawi się dziś o {{time}}"
   },
   "truthOrDare": {
     "truth": {

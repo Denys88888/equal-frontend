@@ -75,7 +75,8 @@
     "undo": "撤销",
     "likeFailed": "无法发送喜欢",
     "alreadyLiked": "已经喜欢过了",
-    "you": "你"
+    "you": "你",
+    "swipeFailed": "无法保存，请重试"
   },
   "matches": {
     "title": "配对",
@@ -99,7 +100,8 @@
     "message": "消息",
     "unmatchFailed": "无法取消配对，请重试",
     "newCount": "{{count}} 条新消息",
-    "noSearchResults": "没有与“{{query}}”匹配的对话"
+    "noSearchResults": "没有与“{{query}}”匹配的对话",
+    "loadFailed": "无法加载你的配对。"
   },
   "chat": {
     "typeMessage": "输入消息...",
@@ -144,7 +146,26 @@
     "voicePreview": "语音消息",
     "giftPreview": "送出了一份礼物",
     "typing": "正在输入",
-    "sendGift": "赠送{{gift}}"
+    "sendGift": "赠送{{gift}}",
+    "giftYouSent": "你送给 {{partner}} 一份礼物：{{gift}}",
+    "giftTheySent": "{{partner}} 送给你一份礼物：{{gift}}",
+    "ib_hiking": "你最喜欢的徒步路线是？",
+    "ib_coffee": "你所在城市最好的咖啡店是？",
+    "ib_music": "你现在最喜欢的歌手是？",
+    "ib_travel": "你心愿清单上排第一的目的地是？",
+    "ib_photography": "胶片还是数码？",
+    "ib_cooking": "你的拿手菜是什么？",
+    "ib_reading": "最近一本让你放不下的书是？",
+    "ib_gaming": "你现在最喜欢的游戏是？",
+    "ib_yoga": "早上练瑜伽还是晚上？",
+    "ib_fitness": "你最喜欢的运动方式？",
+    "ib_art": "你自己也做艺术创作吗？",
+    "ib_movies": "最近一部让你惊艳的电影是？",
+    "ib_generic": "嗨 {{name}}！你最近做了什么有趣的事？",
+    "blockFailed": "无法屏蔽，请重试",
+    "historyLoadFailed": "无法加载此对话。",
+    "reportFailed": "无法提交举报，请重试",
+    "sendFailed": "无法发送消息"
   },
   "profile": {
     "edit": "编辑资料",
@@ -154,7 +175,8 @@
     "bio": "个人简介",
     "interests": "兴趣爱好",
     "settings": "设置",
-    "trustScoreHelp": "信任分帮助我们把你推荐给优质配对。完成验证、保持活跃并获得正面评价都会提升它。"
+    "trustScoreHelp": "信任分帮助我们把你推荐给优质配对。完成验证、保持活跃并获得正面评价都会提升它。",
+    "trustScoreHow": "信任分帮助我们把你推荐给合适的人。每个人都从 50 分开始，完成认证加 {{verified}} 分，每次被管理员警告扣 {{warning}} 分。"
   },
   "settings": {
     "title": "设置",
@@ -290,7 +312,8 @@
     "cookieEssential": "仅必要项",
     "privacyPolicy": "隐私政策",
     "notFoundDesc": "你要找的页面不存在或已被移动。",
-    "photoN": "照片 {{n}}"
+    "photoN": "照片 {{n}}",
+    "loadFailed": "加载失败，请检查网络连接。"
   },
   "clubs": {
     "title": "俱乐部",
@@ -415,7 +438,10 @@
     "createFailed": "无法提交活动——请重试",
     "pendingReview": "审核中",
     "pendingReviewDesc": "在管理员批准之前，只有你能看到此活动。",
-    "noSavedDesc": "点击你感兴趣的活动上的星标，即可将其保存在这里。"
+    "noSavedDesc": "点击你感兴趣的活动上的星标，即可将其保存在这里。",
+    "ended": "此活动已结束",
+    "feedbackFailed": "无法提交你的反馈，请重试",
+    "thanksFeedbackSaved": "感谢你的反馈！"
   },
   "video": {
     "connecting": "连接中...",
@@ -517,7 +543,11 @@
     "donating": "处理中…",
     "supportUnavailable": "客服支持尚未配置",
     "donateAmount": "捐赠 {{amount}} Pi",
-    "settingSaveFailed": "无法保存此设置，请重试"
+    "settingSaveFailed": "无法保存此设置，请重试",
+    "payCompleted": "已完成",
+    "payCancelled": "已取消",
+    "payProcessing": "处理中",
+    "unblockFailed": "无法解除屏蔽，请重试"
   },
   "profile2": {
     "addBioHint": "添加简介，让别人更了解你",
@@ -563,7 +593,13 @@
     "sparksAmount_other": "+{{count}} 火花",
     "sparksPerDay": "每天 +{{count}} 火花",
     "photoDeleteFailed": "无法删除照片",
-    "profileAlt": "{{name}}的个人资料"
+    "profileAlt": "{{name}}的个人资料",
+    "bioSaveFailed": "无法保存你的简介，请重试",
+    "scoreStart": "起点",
+    "scoreStartDesc": "每个人都从这里开始",
+    "scoreVerifiedDone": "已认证",
+    "scoreWarnings": "警告",
+    "scoreWarningsDesc": "每次警告"
   },
   "admin": {
     "panel": "管理面板",
@@ -654,7 +690,9 @@
     "eventMaxAttendees": "人数上限",
     "eventUpdated": "活动已更新",
     "eventApproved": "活动已通过——现在所有人都能看到",
-    "eventRejected": "活动已被拒绝"
+    "eventRejected": "活动已被拒绝",
+    "joinedOn": "{{date}} 加入",
+    "loadFailedRetry": "无法加载交易记录，点击重试"
   },
   "legal": {
     "termsTitle": "服务条款",
@@ -824,7 +862,12 @@
       "q30": "如果一夜之间能精通一项技能，你选什么？"
     },
     "voiceGate": "录制语音介绍才能参与 Daily Match — 没有语音介绍的资料不会被配对。",
-    "tooFast": "太快了 — 请等 5 秒。"
+    "tooFast": "太快了 — 请等 5 秒。",
+    "extraFailed": "目前没有可配对的人，请稍后再试",
+    "extraNeedsVoice": "请先录制语音介绍——Daily Match 只为有语音介绍的资料配对。",
+    "extraSaved": "你的付款已保留——稍后可直接领取额外配对，无需再次付款。",
+    "claimExtra": "领取已付费的额外配对",
+    "arrivesToday": "你的新配对将于今天 {{time}} 到来"
   },
   "truthOrDare": {
     "truth": {

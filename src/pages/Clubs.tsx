@@ -33,6 +33,7 @@ import {
 import Layout from '@/components/Layout';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { formatListStamp, formatTime } from '@/lib/format';
 
 /* ------------------------------------------------------------------ */
 /*  TYPES                                                              */
@@ -246,7 +247,7 @@ function DiscoverClubCard({ club, onClick, onJoin }: { club: Club; onClick: () =
 /*  POST CARD                                                          */
 /* ------------------------------------------------------------------ */
 
-function PostCard({ post, onLike, onMeet, onComment, onDelete }: { post: Post; onLike: () => void; onMeet: () => void; onComment: () => void; onDelete?: () => void }) {
+function PostCard({ post, onLike, onMeet, onComment, onDelete }: { post: Post; onLike: () => void; onMeet?: () => void; onComment: () => void; onDelete?: () => void }) {
   const { t } = useTranslation();
   const [animating, setAnimating] = useState(false);
 
@@ -266,13 +267,15 @@ function PostCard({ post, onLike, onMeet, onComment, onDelete }: { post: Post; o
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
             <span className="text-sm font-semibold text-[var(--charcoal)]">{post.authorName}</span>
-            <button
-              onClick={onMeet}
-              className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-white"
-              style={{ backgroundColor: '#BB83C9' }}
-            >
-              {t('clubs.meet')}
-            </button>
+            {onMeet && (
+              <button
+                onClick={onMeet}
+                className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-white"
+                style={{ backgroundColor: '#BB83C9' }}
+              >
+                {t('clubs.meet')}
+              </button>
+            )}
           </div>
           <span className="text-xs" style={{ color: 'rgba(var(--charcoal-rgb), 0.3)', fontFamily: "'JetBrains Mono', monospace" }}>
             {post.timestamp}
@@ -443,11 +446,11 @@ function ClubDetail({
     setChatInput('');
     const optimistic: ChatMessage = {
       id: `ch-${Date.now()}`,
-      authorId: 'me',
-      authorName: 'You',
-      authorAvatar: 'YO',
+      authorId: user?.id ?? 'me',
+      authorName: user?.name || t('discover.you'),
+      authorAvatar: (user?.name || t('discover.you')).slice(0, 2).toUpperCase(),
       content: text,
-      timestamp: 'Just now',
+      timestamp: formatTime(new Date()),
     };
     setChatMessages((prev) => [...prev, optimistic]);
     try {
@@ -473,14 +476,14 @@ function ClubDetail({
       // post.authorId to the signed-in user — works immediately, not just
       // after a reload re-fetches from the API with the real authorId.
       authorId: user?.id ?? 'me',
-      authorName: 'You',
-      authorAvatar: 'YO',
+      authorName: user?.name || t('discover.you'),
+      authorAvatar: (user?.name || t('discover.you')).slice(0, 2).toUpperCase(),
       content: text,
       image: postImagePreview ?? undefined,
       likes: 0,
       comments: 0,
       liked: false,
-      timestamp: 'Just now',
+      timestamp: formatListStamp(new Date()),
     };
     setPosts((prev) => [optimistic, ...prev]);
     setNewPostText('');
@@ -531,7 +534,7 @@ function ClubDetail({
           // of how many comments actually existed.
           comments: p.comments ?? 0,
           liked: p.likedByMe ?? false,
-          timestamp: new Date(p.createdAt).toLocaleDateString(),
+          timestamp: formatListStamp(p.createdAt),
         } as Post)));
       })
       .catch(() => {});
@@ -570,7 +573,7 @@ function ClubDetail({
           authorName: m.authorName,
           authorAvatar: (m.authorName || '?').slice(0, 2).toUpperCase(),
           content: m.content,
-          timestamp: new Date(m.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          timestamp: formatTime(m.createdAt),
         } as ChatMessage)));
       })
       .catch(() => {});
@@ -586,7 +589,7 @@ function ClubDetail({
         authorName: msg.authorName,
         authorAvatar: (msg.authorName || '?').slice(0, 2).toUpperCase(),
         content: msg.content,
-        timestamp: new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        timestamp: formatTime(msg.createdAt),
       } as ChatMessage];
     });
   }, []));
@@ -683,7 +686,8 @@ function ClubDetail({
                   key={post.id}
                   post={post}
                   onLike={() => handleLike(post.id)}
-                  onMeet={() => goToProfile(post.authorId)}
+                  // No "Meet" on your own posts — it opened your own profile as a stranger's.
+                  onMeet={post.authorId === user?.id ? undefined : () => goToProfile(post.authorId)}
                   onComment={() => openComments(post.id)}
                   onDelete={post.authorId === user?.id || isAdmin ? () => handleDeletePost(post.id) : undefined}
                 />
@@ -793,13 +797,15 @@ function ClubDetail({
                       {t(`clubs.role_${member.role}`, { defaultValue: member.role })}
                     </span>
                   </div>
-                  <button
-                    onClick={() => goToProfile(member.id)}
-                    className="px-3 py-1.5 rounded-full text-xs font-semibold text-white"
-                    style={{ backgroundColor: '#BB83C9' }}
-                  >
-                    {t('clubs.meet')}
-                  </button>
+                  {member.id !== user?.id && (
+                    <button
+                      onClick={() => goToProfile(member.id)}
+                      className="px-3 py-1.5 rounded-full text-xs font-semibold text-white"
+                      style={{ backgroundColor: '#BB83C9' }}
+                    >
+                      {t('clubs.meet')}
+                    </button>
+                  )}
                 </div>
               ))}
             </motion.div>
@@ -907,7 +913,7 @@ function ClubDetail({
                     <div className="flex items-baseline gap-2">
                       <span className="text-sm font-semibold text-[var(--charcoal)]">{c.authorName}</span>
                       <span className="text-[10px]" style={{ color: 'rgba(var(--charcoal-rgb), 0.3)' }}>
-                        {new Date(c.createdAt).toLocaleDateString()}
+                        {formatListStamp(c.createdAt)}
                       </span>
                     </div>
                     <p className="text-sm text-[var(--charcoal)]" style={{ opacity: 0.85 }}>{c.content}</p>

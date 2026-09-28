@@ -79,7 +79,8 @@
     "undo": "Annuler",
     "likeFailed": "Impossible d'envoyer le like",
     "alreadyLiked": "Déjà liké",
-    "you": "Vous"
+    "you": "Vous",
+    "swipeFailed": "Impossible d'enregistrer — réessaie"
   },
   "matches": {
     "title": "Matchs",
@@ -103,7 +104,8 @@
     "message": "Message",
     "unmatchFailed": "Impossible d'annuler le match — réessaie",
     "newCount": "Nouveaux : {{count}}",
-    "noSearchResults": "Aucune conversation ne correspond à « {{query}} »"
+    "noSearchResults": "Aucune conversation ne correspond à « {{query}} »",
+    "loadFailed": "Impossible de charger tes matchs."
   },
   "chat": {
     "typeMessage": "Écris un message...",
@@ -148,7 +150,26 @@
     "voicePreview": "Message vocal",
     "giftPreview": "A envoyé un cadeau",
     "typing": "écrit",
-    "sendGift": "Envoyer {{gift}}"
+    "sendGift": "Envoyer {{gift}}",
+    "giftYouSent": "Tu as envoyé un cadeau à {{partner}} : {{gift}}",
+    "giftTheySent": "{{partner}} t'a envoyé un cadeau : {{gift}}",
+    "ib_hiking": "Ton sentier de randonnée préféré ?",
+    "ib_coffee": "Le meilleur café de ta ville ?",
+    "ib_music": "Ton artiste préféré en ce moment ?",
+    "ib_travel": "La destination en tête de ta liste ?",
+    "ib_photography": "Argentique ou numérique ?",
+    "ib_cooking": "Quel est ton plat signature ?",
+    "ib_reading": "Le dernier livre que tu n'as pas pu lâcher ?",
+    "ib_gaming": "Ton jeu préféré du moment ?",
+    "ib_yoga": "Yoga le matin ou le soir ?",
+    "ib_fitness": "Ton entraînement préféré ?",
+    "ib_art": "Tu fais de l'art toi-même ?",
+    "ib_movies": "Le dernier film qui t'a bluffé ?",
+    "ib_generic": "Salut {{name}} ! Qu'as-tu fait de sympa récemment ?",
+    "blockFailed": "Impossible de bloquer — réessaie",
+    "historyLoadFailed": "Impossible de charger cette conversation.",
+    "reportFailed": "Impossible d'envoyer le signalement — réessaie",
+    "sendFailed": "Impossible d'envoyer le message"
   },
   "profile": {
     "edit": "Modifier le Profil",
@@ -158,7 +179,8 @@
     "bio": "Bio",
     "interests": "Centres d'intérêt",
     "settings": "Paramètres",
-    "trustScoreHelp": "Ton Score de confiance nous aide à te présenter à des matchs de qualité. Il augmente avec la vérification, l'activité et les retours positifs."
+    "trustScoreHelp": "Ton Score de confiance nous aide à te présenter à des matchs de qualité. Il augmente avec la vérification, l'activité et les retours positifs.",
+    "trustScoreHow": "Ton score de confiance nous aide à te montrer aux bonnes personnes. Tout le monde commence à 50, la vérification ajoute {{verified}} et chaque avertissement d'un modérateur retire {{warning}}."
   },
   "settings": {
     "title": "Paramètres",
@@ -294,7 +316,8 @@
     "cookieEssential": "Essentiels uniquement",
     "privacyPolicy": "Politique de confidentialité",
     "notFoundDesc": "La page que vous recherchez n’existe pas ou a été déplacée.",
-    "photoN": "Photo {{n}}"
+    "photoN": "Photo {{n}}",
+    "loadFailed": "Chargement impossible — vérifie ta connexion."
   },
   "clubs": {
     "title": "Clubs",
@@ -427,7 +450,10 @@
     "createFailed": "Impossible d’envoyer l’événement — veuillez réessayer",
     "pendingReview": "En validation",
     "pendingReviewDesc": "Vous seul voyez cet événement jusqu’à ce qu’un administrateur l’approuve.",
-    "noSavedDesc": "Touchez l’étoile sur les événements qui vous intéressent pour les enregistrer ici."
+    "noSavedDesc": "Touchez l’étoile sur les événements qui vous intéressent pour les enregistrer ici.",
+    "ended": "Cet événement est terminé",
+    "feedbackFailed": "Impossible d'envoyer ton avis — réessaie",
+    "thanksFeedbackSaved": "Merci pour ton avis !"
   },
   "video": {
     "connecting": "Connexion...",
@@ -529,7 +555,11 @@
     "donating": "Traitement…",
     "supportUnavailable": "L'assistance n'est pas encore configurée",
     "donateAmount": "Faire un don de {{amount}} Pi",
-    "settingSaveFailed": "Impossible d’enregistrer ce réglage — veuillez réessayer"
+    "settingSaveFailed": "Impossible d’enregistrer ce réglage — veuillez réessayer",
+    "payCompleted": "Terminé",
+    "payCancelled": "Annulé",
+    "payProcessing": "En cours",
+    "unblockFailed": "Impossible de débloquer — réessaie"
   },
   "profile2": {
     "addBioHint": "Ajoutez une bio pour aider les gens à vous connaître",
@@ -577,7 +607,13 @@
     "sparksAmount_other": "+{{count}} étincelles",
     "sparksPerDay": "+{{count}} étincelle/jour",
     "photoDeleteFailed": "Impossible de supprimer la photo",
-    "profileAlt": "Profil de {{name}}"
+    "profileAlt": "Profil de {{name}}",
+    "bioSaveFailed": "Impossible d'enregistrer ta bio — réessaie",
+    "scoreStart": "Départ",
+    "scoreStartDesc": "Tout le monde commence ici",
+    "scoreVerifiedDone": "Vérifié",
+    "scoreWarnings": "Avertissements",
+    "scoreWarningsDesc": "Par avertissement"
   },
   "admin": {
     "panel": "Panneau admin",
@@ -668,7 +704,9 @@
     "eventMaxAttendees": "Participants max",
     "eventUpdated": "Événement mis à jour",
     "eventApproved": "Événement approuvé — désormais visible par tous",
-    "eventRejected": "Événement refusé"
+    "eventRejected": "Événement refusé",
+    "joinedOn": "Inscrit depuis le {{date}}",
+    "loadFailedRetry": "Impossible de charger les transactions — touche pour réessayer"
   },
   "legal": {
     "termsTitle": "Conditions d'utilisation",
@@ -838,7 +876,12 @@
       "q30": "Si tu pouvais maîtriser une compétence du jour au lendemain, laquelle ?"
     },
     "voiceGate": "Enregistre une intro vocale pour rejoindre Daily Match — les profils sans intro ne sont pas jumelés.",
-    "tooFast": "Trop vite — attends 5 secondes."
+    "tooFast": "Trop vite — attends 5 secondes.",
+    "extraFailed": "Personne n'est disponible pour l'instant — réessaie plus tard",
+    "extraNeedsVoice": "Enregistre d'abord une présentation vocale — Daily Match n'associe que les profils qui en ont une.",
+    "extraSaved": "Ton paiement est conservé — récupère le match supplémentaire plus tard sans repayer.",
+    "claimExtra": "Récupérer ton match supplémentaire payé",
+    "arrivesToday": "Ton nouveau match arrive aujourd'hui à {{time}}"
   },
   "truthOrDare": {
     "truth": {

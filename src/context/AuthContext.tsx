@@ -25,6 +25,7 @@ import { useUserSocket, type MatchNewEvent } from '@/hooks/useSocket';
 import { usePushSubscription } from '@/hooks/usePushSubscription';
 import { useNotifications, type AppNotification } from '@/hooks/useNotifications';
 import { useMatchPrefsSync } from '@/hooks/useMatchPrefsSync';
+import { useLocaleSync } from '@/hooks/useLocaleSync';
 
 // ───────────────────────────────────────────────────────────
 // AUTH STATE SHAPE
@@ -300,6 +301,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
   usePushSubscription(user?.id);
   // Seed Daily Match language/timezone from the device once per signed-in user
   useMatchPrefsSync(user?.id);
+  // Push notifications are written in the interface language
+  useLocaleSync(user?.id);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
