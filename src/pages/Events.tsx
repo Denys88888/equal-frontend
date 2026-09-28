@@ -964,6 +964,11 @@ export default function Events() {
                 className="w-full rounded-xl px-4 py-3 text-base outline-none border-2 border-transparent focus:border-[#BB83C9] transition-colors resize-none"
                 style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.3)', minHeight: 72, color: 'var(--charcoal)' }}
               />
+              {/* Android WebView shows no placeholder in a datetime-local field — it
+                  rendered as an unlabelled blank box, so the label has to be visible. */}
+              <label className="text-xs font-semibold uppercase tracking-wider -mb-2" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>
+                {t('events.date')}
+              </label>
               <input
                 type="datetime-local"
                 value={draft.date}
