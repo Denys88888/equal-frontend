@@ -82,7 +82,8 @@
     "likeFailed": "Nie udało się wysłać polubienia",
     "alreadyLiked": "Już polubione",
     "you": "Ty",
-    "swipeFailed": "Nie udało się zapisać — spróbuj ponownie"
+    "swipeFailed": "Nie udało się zapisać — spróbuj ponownie",
+    "fakeBadge": "Fałszywy"
   },
   "matches": {
     "title": "Pary",
@@ -962,6 +963,7 @@
     "ogTitle": "Zapytaj {{name}} o cokolwiek w Equal",
     "ogDescription": "Odpowiedzi: {{answered}}. Co chcesz wiedzieć?",
     "newQuestionPush": "Nowe pytanie! 💜 Ktoś chce Cię lepiej poznać",
-    "answerPush": "Twoje pytanie ma odpowiedź! 🎉"
+    "answerPush": "Twoje pytanie ma odpowiedź! 🎉",
+    "fakeProfileNote": "To fałszywy profil — nie można mu zadawać pytań."
   }
 }

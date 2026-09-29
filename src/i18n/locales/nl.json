@@ -78,7 +78,8 @@
     "likeFailed": "Kon 'leuk' niet versturen",
     "alreadyLiked": "Al leuk gevonden",
     "you": "Jij",
-    "swipeFailed": "Opslaan mislukt — probeer het opnieuw"
+    "swipeFailed": "Opslaan mislukt — probeer het opnieuw",
+    "fakeBadge": "Nep"
   },
   "matches": {
     "title": "Matches",
@@ -948,6 +949,7 @@
     "ogTitle": "Vraag {{name}} alles op Equal",
     "ogDescription": "{{answered}} vragen beantwoord. Wat wil je weten?",
     "newQuestionPush": "Nieuwe vraag! 💜 Iemand wil je beter leren kennen",
-    "answerPush": "Je vraag is beantwoord! 🎉"
+    "answerPush": "Je vraag is beantwoord! 🎉",
+    "fakeProfileNote": "Dit is een nepprofiel — het kan geen vragen ontvangen."
   }
 }

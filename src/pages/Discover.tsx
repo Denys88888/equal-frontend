@@ -29,6 +29,8 @@ interface Profile {
   activeNow: boolean;
   isNew: boolean;
   badges?: string[];
+  /** Team-made fake profile — always shown with a "Fake" badge. */
+  isDemo?: boolean;
 }
 
 interface Filters {
@@ -441,6 +443,12 @@ function SwipeCard({
         <div className="absolute bottom-0 left-0 right-0 p-5">
           {/* Badges row */}
           <div className="flex items-center gap-1.5 mb-2">
+            {/* Seeded team profiles are not real people and say so. */}
+            {profile.isDemo && (
+              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold text-white" style={{ backgroundColor: 'rgba(40,40,48,0.72)' }}>
+                {t('discover.fakeBadge')}
+              </span>
+            )}
             {profile.verified && (
               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold text-white" style={{ backgroundColor: '#7DE0B3' }}>
                 <Shield size={10} /> {t('discover.verified')}
@@ -746,6 +754,11 @@ function CompatibilityCard({ profile, onLike }: { profile: Profile; onLike: () =
           <h3 className="text-lg font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
             {profile.name}, {profile.age}
           </h3>
+          {profile.isDemo && (
+            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold text-white" style={{ backgroundColor: 'rgba(40,40,48,0.72)' }}>
+              {t('discover.fakeBadge')}
+            </span>
+          )}
         </div>
         <span
           className="inline-block px-2 py-0.5 rounded-full text-xs font-semibold mb-1.5"

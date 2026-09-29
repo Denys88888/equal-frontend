@@ -80,7 +80,8 @@
     "likeFailed": "שליחת הלייק נכשלה",
     "alreadyLiked": "כבר סימנת לייק",
     "you": "את/ה",
-    "swipeFailed": "השמירה נכשלה — נסו שוב"
+    "swipeFailed": "השמירה נכשלה — נסו שוב",
+    "fakeBadge": "מזויף"
   },
   "matches": {
     "title": "התאמות",
@@ -955,6 +956,7 @@
     "ogTitle": "שאל את {{name}} כל דבר ב-Equal",
     "ogDescription": "{{answered}} שאלות נענו. מה תרצה לדעת?",
     "newQuestionPush": "שאלה חדשה! 💜 מישהו רוצה להכיר אותך טוב יותר",
-    "answerPush": "השאלה שלך נענתה! 🎉"
+    "answerPush": "השאלה שלך נענתה! 🎉",
+    "fakeProfileNote": "זה פרופיל מזויף — אי אפשר לשלוח אליו שאלות."
   }
 }

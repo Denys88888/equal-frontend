@@ -76,7 +76,8 @@
     "likeFailed": "Gagal menghantar suka",
     "alreadyLiked": "Sudah disukai",
     "you": "Anda",
-    "swipeFailed": "Tidak dapat disimpan — cuba lagi"
+    "swipeFailed": "Tidak dapat disimpan — cuba lagi",
+    "fakeBadge": "Palsu"
   },
   "matches": {
     "title": "Padanan",
@@ -941,6 +942,7 @@
     "ogTitle": "Tanya {{name}} apa sahaja di Equal",
     "ogDescription": "{{answered}} soalan dijawab. Apa yang anda ingin tahu?",
     "newQuestionPush": "Soalan baharu! 💜 Seseorang ingin mengenali anda dengan lebih baik",
-    "answerPush": "Soalan anda telah dijawab! 🎉"
+    "answerPush": "Soalan anda telah dijawab! 🎉",
+    "fakeProfileNote": "Ini profil palsu — ia tidak boleh menerima soalan."
   }
 }

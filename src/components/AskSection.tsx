@@ -53,6 +53,9 @@ export default function AskSection({
   const [isUrgent, setIsUrgent] = useState(false);
   const [quote, setQuote] = useState<AskQuote | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  // A fake (demo) profile never answers and the server refuses questions to
+  // it — some of which cost Pi — so the form is replaced by a note.
+  const [targetIsDemo, setTargetIsDemo] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
 
   // ── Feed ────────────────────────────────────────────────
@@ -65,6 +68,7 @@ export default function AskSection({
       setTotalCount(feed.totalCount);
       onCountsChange?.({ answered: feed.answeredCount, total: feed.totalCount });
       onTargetResolved?.(feed.target);
+      setTargetIsDemo(!!feed.target.isDemo);
     } catch {
       // A profile with no Q&A yet is not an error state — show the empty view.
     } finally {
@@ -81,14 +85,14 @@ export default function AskSection({
   // the amount the server will actually demand.
 
   useEffect(() => {
-    if (!isAuthenticated) return;
+    if (!isAuthenticated || targetIsDemo) return;
     let cancelled = false;
     askApi
       .getQuote(targetIdOrUsername, { isAnonymous, isUrgent })
       .then((q) => { if (!cancelled) setQuote(q); })
       .catch(() => { if (!cancelled) setQuote(null); });
     return () => { cancelled = true; };
-  }, [targetIdOrUsername, isAnonymous, isUrgent, isAuthenticated]);
+  }, [targetIdOrUsername, isAnonymous, isUrgent, isAuthenticated, targetIsDemo]);
 
   // ── Submit ──────────────────────────────────────────────
 
@@ -196,7 +200,11 @@ export default function AskSection({
       </div>
 
       {/* Ask form */}
-      {isAuthenticated ? (
+      {targetIsDemo ? (
+        <p className="text-sm text-[var(--charcoal)] opacity-60 rounded-2xl p-4" style={{ backgroundColor: 'var(--card-bg)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
+          {t('ask.fakeProfileNote')}
+        </p>
+      ) : isAuthenticated ? (
         <div
           className="rounded-2xl p-4"
           style={{ backgroundColor: 'var(--card-bg)', border: '1px solid var(--linen-dark)' }}

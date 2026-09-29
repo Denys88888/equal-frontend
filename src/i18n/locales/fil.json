@@ -78,7 +78,8 @@
     "likeFailed": "Hindi naipadala ang like",
     "alreadyLiked": "Na-like na",
     "you": "Ikaw",
-    "swipeFailed": "Hindi ma-save — subukang muli"
+    "swipeFailed": "Hindi ma-save — subukang muli",
+    "fakeBadge": "Peke"
   },
   "matches": {
     "title": "Mga Pares",
@@ -948,6 +949,7 @@
     "ogTitle": "Magtanong kay {{name}} ng kahit ano sa Equal",
     "ogDescription": "{{answered}} tanong ang nasagot. Ano ang gusto mong malaman?",
     "newQuestionPush": "Bagong tanong! 💜 May gustong makilala ka pa nang mas mabuti",
-    "answerPush": "Nasagot na ang tanong mo! 🎉"
+    "answerPush": "Nasagot na ang tanong mo! 🎉",
+    "fakeProfileNote": "Pekeng profile ito — hindi ito makakatanggap ng mga tanong."
   }
 }

@@ -78,7 +78,8 @@
     "likeFailed": "Tykkäystä ei voitu lähettää",
     "alreadyLiked": "Jo tykätty",
     "you": "Sinä",
-    "swipeFailed": "Tallennus epäonnistui – yritä uudelleen"
+    "swipeFailed": "Tallennus epäonnistui – yritä uudelleen",
+    "fakeBadge": "Feikki"
   },
   "matches": {
     "title": "Osumat",
@@ -948,6 +949,7 @@
     "ogTitle": "Kysy {{name}}lta mitä tahansa Equalissa",
     "ogDescription": "{{answered}} kysymykseen vastattu. Mitä haluaisit tietää?",
     "newQuestionPush": "Uusi kysymys! 💜 Joku haluaa tutustua sinuun paremmin",
-    "answerPush": "Kysymykseesi on vastattu! 🎉"
+    "answerPush": "Kysymykseesi on vastattu! 🎉",
+    "fakeProfileNote": "Tämä on feikkiprofiili – sille ei voi esittää kysymyksiä."
   }
 }

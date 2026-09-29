@@ -76,7 +76,8 @@
     "likeFailed": "无法发送喜欢",
     "alreadyLiked": "已经喜欢过了",
     "you": "你",
-    "swipeFailed": "无法保存，请重试"
+    "swipeFailed": "无法保存，请重试",
+    "fakeBadge": "虚假"
   },
   "matches": {
     "title": "配对",
@@ -941,6 +942,7 @@
     "ogTitle": "在 Equal 上向 {{name}} 提问",
     "ogDescription": "已回答 {{answered}} 个提问。你想知道什么？",
     "newQuestionPush": "新提问！💜 有人想更了解你",
-    "answerPush": "你的提问有回答了！🎉"
+    "answerPush": "你的提问有回答了！🎉",
+    "fakeProfileNote": "这是虚假资料，无法接收提问。"
   }
 }

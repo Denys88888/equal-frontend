@@ -78,7 +78,8 @@
     "likeFailed": "Kunne ikke sende dit like",
     "alreadyLiked": "Allerede liket",
     "you": "Dig",
-    "swipeFailed": "Kunne ikke gemmes – prøv igen"
+    "swipeFailed": "Kunne ikke gemmes – prøv igen",
+    "fakeBadge": "Falsk"
   },
   "matches": {
     "title": "Match",
@@ -948,6 +949,7 @@
     "ogTitle": "Spørg {{name}} om hvad som helst på Equal",
     "ogDescription": "{{answered}} spørgsmål besvaret. Hvad vil du gerne vide?",
     "newQuestionPush": "Nyt spørgsmål! 💜 Nogen vil lære dig bedre at kende",
-    "answerPush": "Dit spørgsmål har fået et svar! 🎉"
+    "answerPush": "Dit spørgsmål har fået et svar! 🎉",
+    "fakeProfileNote": "Dette er en falsk profil – den kan ikke modtage spørgsmål."
   }
 }

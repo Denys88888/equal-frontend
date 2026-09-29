@@ -76,7 +76,8 @@
     "likeFailed": "いいねを送れませんでした",
     "alreadyLiked": "すでにいいね済みです",
     "you": "あなた",
-    "swipeFailed": "保存できませんでした。もう一度お試しください"
+    "swipeFailed": "保存できませんでした。もう一度お試しください",
+    "fakeBadge": "架空"
   },
   "matches": {
     "title": "マッチ一覧",
@@ -941,6 +942,7 @@
     "ogTitle": "Equalで{{name}}さんに何でも質問しよう",
     "ogDescription": "{{answered}}件の質問に回答済み。何が知りたいですか？",
     "newQuestionPush": "新しい質問！ 💜 あなたをもっと知りたい人がいます",
-    "answerPush": "あなたの質問に回答がつきました！ 🎉"
+    "answerPush": "あなたの質問に回答がつきました！ 🎉",
+    "fakeProfileNote": "これは架空のプロフィールです。質問は送れません。"
   }
 }

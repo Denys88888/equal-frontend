@@ -80,7 +80,8 @@
     "likeFailed": "Slanje sviđanja nije uspjelo",
     "alreadyLiked": "Već se sviđa",
     "you": "Ti",
-    "swipeFailed": "Spremanje nije uspjelo — pokušaj ponovno"
+    "swipeFailed": "Spremanje nije uspjelo — pokušaj ponovno",
+    "fakeBadge": "Lažni"
   },
   "matches": {
     "title": "Spojevi",
@@ -955,6 +956,7 @@
     "ogTitle": "Pitaj {{name}} bilo što na Equalu",
     "ogDescription": "{{answered}} pitanja odgovoreno. Što bi želio/la znati?",
     "newQuestionPush": "Novo pitanje! 💜 Netko te želi bolje upoznati",
-    "answerPush": "Tvoje pitanje je dobilo odgovor! 🎉"
+    "answerPush": "Tvoje pitanje je dobilo odgovor! 🎉",
+    "fakeProfileNote": "Ovo je lažni profil — ne može primati pitanja."
   }
 }

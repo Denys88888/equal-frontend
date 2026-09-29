@@ -78,7 +78,8 @@
     "likeFailed": "Like konnte nicht gesendet werden",
     "alreadyLiked": "Bereits geliked",
     "you": "Du",
-    "swipeFailed": "Konnte nicht gespeichert werden – versuche es erneut"
+    "swipeFailed": "Konnte nicht gespeichert werden – versuche es erneut",
+    "fakeBadge": "Fake"
   },
   "matches": {
     "title": "Matches",
@@ -948,6 +949,7 @@
     "ogTitle": "Stell {{name}} auf Equal jede Frage",
     "ogDescription": "{{answered}} Fragen beantwortet. Was möchtest du wissen?",
     "newQuestionPush": "Neue Frage! 💜 Jemand möchte dich besser kennenlernen",
-    "answerPush": "Deine Frage wurde beantwortet! 🎉"
+    "answerPush": "Deine Frage wurde beantwortet! 🎉",
+    "fakeProfileNote": "Das ist ein Fake-Profil – es kann keine Fragen erhalten."
   }
 }

@@ -78,7 +78,8 @@
     "likeFailed": "Beğeni gönderilemedi",
     "alreadyLiked": "Zaten beğenildi",
     "you": "Siz",
-    "swipeFailed": "Kaydedilemedi — tekrar deneyin"
+    "swipeFailed": "Kaydedilemedi — tekrar deneyin",
+    "fakeBadge": "Sahte"
   },
   "matches": {
     "title": "Eşleşmeler",
@@ -948,6 +949,7 @@
     "ogTitle": "Equal'da {{name}} kişisine istediğini sor",
     "ogDescription": "{{answered}} soru cevaplandı. Ne öğrenmek istersin?",
     "newQuestionPush": "Yeni soru! 💜 Biri seni daha yakından tanımak istiyor",
-    "answerPush": "Sorun cevaplandı! 🎉"
+    "answerPush": "Sorun cevaplandı! 🎉",
+    "fakeProfileNote": "Bu sahte bir profil — soru alamaz."
   }
 }

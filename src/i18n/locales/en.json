@@ -78,7 +78,8 @@
     "likeFailed": "Could not send like",
     "alreadyLiked": "Already liked",
     "you": "You",
-    "swipeFailed": "Could not save that — try again"
+    "swipeFailed": "Could not save that — try again",
+    "fakeBadge": "Fake"
   },
   "matches": {
     "title": "Matches",
@@ -948,6 +949,7 @@
     "ogTitle": "Ask {{name}} anything on Equal",
     "ogDescription": "{{answered}} questions answered. What would you like to know?",
     "newQuestionPush": "New question! 💜 Someone wants to know you better",
-    "answerPush": "Your question got an answer! 🎉"
+    "answerPush": "Your question got an answer! 🎉",
+    "fakeProfileNote": "This is a fake profile — it can't receive questions."
   }
 }

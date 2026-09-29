@@ -76,7 +76,8 @@
     "likeFailed": "Tidak dapat mengirim suka",
     "alreadyLiked": "Sudah disukai",
     "you": "Kamu",
-    "swipeFailed": "Gagal menyimpan — coba lagi"
+    "swipeFailed": "Gagal menyimpan — coba lagi",
+    "fakeBadge": "Palsu"
   },
   "matches": {
     "title": "Kecocokan",
@@ -941,6 +942,7 @@
     "ogTitle": "Tanya {{name}} apa saja di Equal",
     "ogDescription": "{{answered}} pertanyaan dijawab. Apa yang ingin kamu tahu?",
     "newQuestionPush": "Pertanyaan baru! 💜 Seseorang ingin mengenalmu",
-    "answerPush": "Pertanyaanmu sudah dijawab! 🎉"
+    "answerPush": "Pertanyaanmu sudah dijawab! 🎉",
+    "fakeProfileNote": "Ini profil palsu — tidak bisa menerima pertanyaan."
   }
 }

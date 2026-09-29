@@ -78,7 +78,8 @@
     "likeFailed": "A kedvelés küldése nem sikerült",
     "alreadyLiked": "Már kedvelted",
     "you": "Te",
-    "swipeFailed": "Nem sikerült menteni – próbáld újra"
+    "swipeFailed": "Nem sikerült menteni – próbáld újra",
+    "fakeBadge": "Kamu"
   },
   "matches": {
     "title": "Egyezések",
@@ -948,6 +949,7 @@
     "ogTitle": "Kérdezz {{name}}-tól bármit az Equalon",
     "ogDescription": "{{answered}} kérdés megválaszolva. Mit szeretnél tudni?",
     "newQuestionPush": "Új kérdés! 💜 Valaki jobban meg akar ismerni",
-    "answerPush": "A kérdésedre válasz érkezett! 🎉"
+    "answerPush": "A kérdésedre válasz érkezett! 🎉",
+    "fakeProfileNote": "Ez egy kamu profil – nem lehet neki kérdést feltenni."
   }
 }

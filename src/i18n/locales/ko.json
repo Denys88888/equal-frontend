@@ -76,7 +76,8 @@
     "likeFailed": "좋아요를 보내지 못했습니다",
     "alreadyLiked": "이미 좋아요를 눌렀습니다",
     "you": "나",
-    "swipeFailed": "저장하지 못했어요. 다시 시도해 주세요"
+    "swipeFailed": "저장하지 못했어요. 다시 시도해 주세요",
+    "fakeBadge": "가짜"
   },
   "matches": {
     "title": "매칭",
@@ -941,6 +942,7 @@
     "ogTitle": "Equal에서 {{name}}님에게 무엇이든 물어보세요",
     "ogDescription": "{{answered}}개의 질문에 답했습니다. 무엇이 궁금하신가요?",
     "newQuestionPush": "새 질문이 왔어요! 💜 누군가 당신을 더 알고 싶어 합니다",
-    "answerPush": "질문에 답변이 달렸어요! 🎉"
+    "answerPush": "질문에 답변이 달렸어요! 🎉",
+    "fakeProfileNote": "가짜 프로필이에요. 질문을 받을 수 없어요."
   }
 }

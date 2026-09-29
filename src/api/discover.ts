@@ -55,6 +55,8 @@ export interface PublicProfile {
   bio: string;
   interests: string[];
   verified: boolean;
+  /** Team-made fake profile — always shown with a "Fake" badge. */
+  isDemo?: boolean;
   activeNow: boolean;
   isMatch: boolean;
   matchId: string | null;

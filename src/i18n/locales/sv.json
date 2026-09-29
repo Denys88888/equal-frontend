@@ -78,7 +78,8 @@
     "likeFailed": "Kunde inte skicka gillamarkeringen",
     "alreadyLiked": "Redan gillad",
     "you": "Du",
-    "swipeFailed": "Det gick inte att spara – försök igen"
+    "swipeFailed": "Det gick inte att spara – försök igen",
+    "fakeBadge": "Fejk"
   },
   "matches": {
     "title": "Matchningar",
@@ -948,6 +949,7 @@
     "ogTitle": "Fråga {{name}} vad som helst på Equal",
     "ogDescription": "{{answered}} frågor besvarade. Vad vill du veta?",
     "newQuestionPush": "Ny fråga! 💜 Någon vill lära känna dig bättre",
-    "answerPush": "Din fråga har fått ett svar! 🎉"
+    "answerPush": "Din fråga har fått ett svar! 🎉",
+    "fakeProfileNote": "Det här är en fejkprofil – den kan inte ta emot frågor."
   }
 }

@@ -78,7 +78,8 @@
     "likeFailed": "Kutuma kupenda hakukufaulu",
     "alreadyLiked": "Tayari umependa",
     "you": "Wewe",
-    "swipeFailed": "Imeshindwa kuhifadhi — jaribu tena"
+    "swipeFailed": "Imeshindwa kuhifadhi — jaribu tena",
+    "fakeBadge": "Bandia"
   },
   "matches": {
     "title": "Linganifu",
@@ -948,6 +949,7 @@
     "ogTitle": "Muulize {{name}} chochote kwenye Equal",
     "ogDescription": "Maswali {{answered}} yamejibiwa. Ungependa kujua nini?",
     "newQuestionPush": "Swali jipya! 💜 Mtu anataka kukujua vizuri zaidi",
-    "answerPush": "Swali lako limejibiwa! 🎉"
+    "answerPush": "Swali lako limejibiwa! 🎉",
+    "fakeProfileNote": "Huu ni wasifu bandia — hauwezi kupokea maswali."
   }
 }

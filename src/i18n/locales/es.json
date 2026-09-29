@@ -80,7 +80,8 @@
     "likeFailed": "No se pudo enviar el me gusta",
     "alreadyLiked": "Ya te gustó",
     "you": "Tú",
-    "swipeFailed": "No se pudo guardar; inténtalo de nuevo"
+    "swipeFailed": "No se pudo guardar; inténtalo de nuevo",
+    "fakeBadge": "Falso"
   },
   "matches": {
     "title": "Coincidencias",
@@ -955,6 +956,7 @@
     "ogTitle": "Pregunta lo que quieras a {{name}} en Equal",
     "ogDescription": "{{answered}} preguntas respondidas. ¿Qué te gustaría saber?",
     "newQuestionPush": "¡Nueva pregunta! 💜 Alguien quiere conocerte mejor",
-    "answerPush": "¡Tu pregunta tiene respuesta! 🎉"
+    "answerPush": "¡Tu pregunta tiene respuesta! 🎉",
+    "fakeProfileNote": "Este es un perfil falso: no puede recibir preguntas."
   }
 }

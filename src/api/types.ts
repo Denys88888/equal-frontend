@@ -97,6 +97,8 @@ export interface ProfileCard {
   activeNow: boolean;
   isNew: boolean;
   badges?: string[];
+  /** Team-made fake profile — always shown with a "Fake" badge. */
+  isDemo?: boolean;
 }
 
 export interface DiscoverResponse {

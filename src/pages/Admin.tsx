@@ -92,6 +92,8 @@ interface AppUser {
   bio: string;
   matches: number;
   badges: string[];
+  /** Seeded fake profile, not a person. */
+  isDemo?: boolean;
 }
 
 interface Club {
@@ -608,6 +610,11 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
               <div className="flex items-center gap-2">
                 <span className="text-sm font-semibold text-[var(--charcoal)] truncate">{user.name}</span>
                 {getStatusBadge(user.status)}
+                {user.isDemo && (
+                  <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full text-white" style={{ backgroundColor: 'rgba(40,40,48,0.72)' }}>
+                    {t('discover.fakeBadge')}
+                  </span>
+                )}
               </div>
               <div className="flex items-center gap-2 mt-0.5">
                 <span

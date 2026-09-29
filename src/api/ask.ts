@@ -29,7 +29,7 @@ export interface AskItem {
 }
 
 export interface AskFeed {
-  target: { id: string; name: string; username: string };
+  target: { id: string; name: string; username: string; isDemo?: boolean };
   questions: AskItem[];
   answeredCount: number;
   totalCount: number;

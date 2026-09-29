@@ -82,7 +82,8 @@
     "likeFailed": "Nepodařilo se odeslat lajk",
     "alreadyLiked": "Už jsi dal(a) lajk",
     "you": "Ty",
-    "swipeFailed": "Nepodařilo se uložit — zkus to znovu"
+    "swipeFailed": "Nepodařilo se uložit — zkus to znovu",
+    "fakeBadge": "Falešný"
   },
   "matches": {
     "title": "Shody",
@@ -962,6 +963,7 @@
     "ogTitle": "Zeptej se {{name}} na cokoli na Equalu",
     "ogDescription": "Zodpovězeno {{answered}} otázek. Co by ses chtěl(a) dozvědět?",
     "newQuestionPush": "Nová otázka! 💜 Někdo tě chce lépe poznat",
-    "answerPush": "Tvoje otázka má odpověď! 🎉"
+    "answerPush": "Tvoje otázka má odpověď! 🎉",
+    "fakeProfileNote": "Toto je falešný profil — nelze mu klást otázky."
   }
 }

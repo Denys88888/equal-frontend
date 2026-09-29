@@ -76,7 +76,8 @@
     "likeFailed": "Không gửi được lượt thích",
     "alreadyLiked": "Đã thích rồi",
     "you": "Bạn",
-    "swipeFailed": "Không thể lưu — hãy thử lại"
+    "swipeFailed": "Không thể lưu — hãy thử lại",
+    "fakeBadge": "Giả"
   },
   "matches": {
     "title": "Ghép đôi",
@@ -941,6 +942,7 @@
     "ogTitle": "Hỏi {{name}} bất cứ điều gì trên Equal",
     "ogDescription": "Đã trả lời {{answered}} câu hỏi. Bạn muốn biết gì?",
     "newQuestionPush": "Câu hỏi mới! 💜 Ai đó muốn hiểu bạn hơn",
-    "answerPush": "Câu hỏi của bạn đã có trả lời! 🎉"
+    "answerPush": "Câu hỏi của bạn đã có trả lời! 🎉",
+    "fakeProfileNote": "Đây là hồ sơ giả — không thể nhận câu hỏi."
   }
 }

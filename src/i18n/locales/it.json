@@ -80,7 +80,8 @@
     "likeFailed": "Impossibile inviare il mi piace",
     "alreadyLiked": "Già piaciuto",
     "you": "Tu",
-    "swipeFailed": "Impossibile salvare — riprova"
+    "swipeFailed": "Impossibile salvare — riprova",
+    "fakeBadge": "Falso"
   },
   "matches": {
     "title": "Match",
@@ -955,6 +956,7 @@
     "ogTitle": "Chiedi a {{name}} quello che vuoi su Equal",
     "ogDescription": "{{answered}} domande con risposta. Cosa vorresti sapere?",
     "newQuestionPush": "Nuova domanda! 💜 Qualcuno vuole conoscerti meglio",
-    "answerPush": "La tua domanda ha ricevuto una risposta! 🎉"
+    "answerPush": "La tua domanda ha ricevuto una risposta! 🎉",
+    "fakeProfileNote": "Questo è un profilo falso: non può ricevere domande."
   }
 }

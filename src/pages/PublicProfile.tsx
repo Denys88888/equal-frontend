@@ -308,6 +308,11 @@ export default function PublicProfile() {
                   <Check size={12} className="text-white" strokeWidth={3} />
                 </div>
               )}
+              {profile.isDemo && (
+                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold text-white" style={{ backgroundColor: 'rgba(40,40,48,0.72)' }}>
+                  {t('discover.fakeBadge')}
+                </span>
+              )}
             </div>
             <div className="flex items-center gap-2 mt-1">
               <span

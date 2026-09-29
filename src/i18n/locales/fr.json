@@ -80,7 +80,8 @@
     "likeFailed": "Impossible d'envoyer le like",
     "alreadyLiked": "Déjà liké",
     "you": "Vous",
-    "swipeFailed": "Impossible d'enregistrer — réessaie"
+    "swipeFailed": "Impossible d'enregistrer — réessaie",
+    "fakeBadge": "Faux"
   },
   "matches": {
     "title": "Matchs",
@@ -955,6 +956,7 @@
     "ogTitle": "Pose n'importe quelle question à {{name}} sur Equal",
     "ogDescription": "{{answered}} questions répondues. Que voudrais-tu savoir ?",
     "newQuestionPush": "Nouvelle question ! 💜 Quelqu'un veut mieux te connaître",
-    "answerPush": "Ta question a une réponse ! 🎉"
+    "answerPush": "Ta question a une réponse ! 🎉",
+    "fakeProfileNote": "Ceci est un faux profil — il ne peut pas recevoir de questions."
   }
 }

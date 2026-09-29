@@ -80,7 +80,8 @@
     "likeFailed": "Não foi possível enviar o gosto",
     "alreadyLiked": "Já gostaste",
     "you": "Você",
-    "swipeFailed": "Não foi possível salvar — tente novamente"
+    "swipeFailed": "Não foi possível salvar — tente novamente",
+    "fakeBadge": "Falso"
   },
   "matches": {
     "title": "Combinações",
@@ -955,6 +956,7 @@
     "ogTitle": "Pergunta o que quiseres a {{name}} no Equal",
     "ogDescription": "{{answered}} perguntas respondidas. O que gostarias de saber?",
     "newQuestionPush": "Nova pergunta! 💜 Alguém quer conhecer-te melhor",
-    "answerPush": "A tua pergunta foi respondida! 🎉"
+    "answerPush": "A tua pergunta foi respondida! 🎉",
+    "fakeProfileNote": "Este é um perfil falso — ele não pode receber perguntas."
   }
 }

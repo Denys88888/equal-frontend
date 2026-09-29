@@ -80,7 +80,8 @@
     "likeFailed": "Trimiterea aprecierii a eșuat",
     "alreadyLiked": "Deja apreciat",
     "you": "Tu",
-    "swipeFailed": "Nu s-a putut salva — încearcă din nou"
+    "swipeFailed": "Nu s-a putut salva — încearcă din nou",
+    "fakeBadge": "Fals"
   },
   "matches": {
     "title": "Potriviri",
@@ -955,6 +956,7 @@
     "ogTitle": "Întreabă-l/-o pe {{name}} orice pe Equal",
     "ogDescription": "{{answered}} întrebări cu răspuns. Ce ai vrea să afli?",
     "newQuestionPush": "Întrebare nouă! 💜 Cineva vrea să te cunoască mai bine",
-    "answerPush": "Întrebarea ta a primit un răspuns! 🎉"
+    "answerPush": "Întrebarea ta a primit un răspuns! 🎉",
+    "fakeProfileNote": "Acesta este un profil fals — nu poate primi întrebări."
   }
 }
