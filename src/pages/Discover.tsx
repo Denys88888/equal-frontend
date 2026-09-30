@@ -10,6 +10,7 @@ import { useToast } from '@/hooks/useToast';
 import { useAuth } from '@/context/AuthContext';
 import { discoverApi } from '@/api/discover';
 import { sparksApi } from '@/api/sparks';
+import UserAvatar from '@/components/UserAvatar';
 import { getMe } from '@/api/users';
 import type { ProfileCard } from '@/api/types';
 
@@ -604,11 +605,13 @@ function ActionButtons({
 function MatchOverlay({
   matchProfile,
   userPhoto,
+  userName,
   onDismiss,
   onMessage,
 }: {
   matchProfile: Profile;
   userPhoto: string;
+  userName: string;
   onDismiss: () => void;
   onMessage: () => void;
 }) {
@@ -633,11 +636,7 @@ function MatchOverlay({
           transition={{ type: 'spring', stiffness: 300, damping: 20, delay: 0.1 }}
           className="w-24 h-24 rounded-full overflow-hidden border-[3px] border-[#BB83C9] -mr-4 z-10"
         >
-          <img
-            src={userPhoto}
-            alt={t('discover.you')}
-            className="w-full h-full object-cover"
-          />
+          <UserAvatar src={userPhoto} name={userName || t('discover.you')} className="text-3xl" />
         </motion.div>
         <motion.div
           initial={{ scale: 0 }}
@@ -645,11 +644,7 @@ function MatchOverlay({
           transition={{ type: 'spring', stiffness: 300, damping: 20, delay: 0.2 }}
           className="w-24 h-24 rounded-full overflow-hidden border-[3px] border-[#7DE0B3] -ml-4"
         >
-          <img
-            src={matchProfile.photo}
-            alt={matchProfile.name}
-            className="w-full h-full object-cover"
-          />
+          <UserAvatar src={matchProfile.photo} name={matchProfile.name} className="text-3xl" />
         </motion.div>
       </div>
 
@@ -797,7 +792,10 @@ export default function Discover() {
   const { t } = useTranslation();
   const { showToast } = useToast();
   const { profile: authProfile } = useAuth();
-  const userPhoto = authProfile?.photos?.[0]?.url ?? './avatar-ava.jpg';
+  // No fallback image: it used to be './avatar-ava.jpg', so anyone without a
+  // photo was shown as a stranger's face in their own match celebration.
+  const userPhoto = authProfile?.photos?.[0]?.url ?? '';
+  const userName = authProfile?.name ?? '';
   const [activeTab, setActiveTab] = useState<'discover' | 'compatibility'>('discover');
   const [allProfiles, setAllProfiles] = useState<Profile[]>([]);
   const [profiles, setProfiles] = useState<Profile[]>([]);
@@ -1116,6 +1114,7 @@ export default function Discover() {
           <MatchOverlay
             matchProfile={matchProfile}
             userPhoto={userPhoto}
+            userName={userName}
             onDismiss={() => { setMatchProfile(null); setMatchId(null); }}
             onMessage={() => {
               const id = matchId ?? matchProfile.id;
