@@ -542,7 +542,11 @@
     "payCompleted": "Zakończona",
     "payCancelled": "Anulowana",
     "payProcessing": "W toku",
-    "unblockFailed": "Nie udało się odblokować — spróbuj ponownie"
+    "unblockFailed": "Nie udało się odblokować — spróbuj ponownie",
+    "supportDialogText": "Napisz do nas — odpowiemy:",
+    "copyEmail": "Kopiuj adres",
+    "emailCopied": "Adres skopiowany",
+    "openMailApp": "Otwórz pocztę"
   },
   "profile2": {
     "addBioHint": "Dodaj opis, aby inni mogli Cię poznać",

@@ -36,6 +36,8 @@ import {
   Palette,
   Cookie,
   Receipt,
+  Mail,
+  Copy,
 } from 'lucide-react';
 import ThemeToggle from '@/components/ThemeToggle';
 import LanguageSelector from '@/components/LanguageSelector';
@@ -252,12 +254,25 @@ export default function Settings() {
   const [showVerification, setShowVerification] = useState(false);
   const [supportEmail, setSupportEmail] = useState<string | null>(null);
   useEffect(() => { getSupportEmail().then(setSupportEmail).catch(() => {}); }, []);
+  // A bare mailto: navigation does nothing visible in Pi Browser, so the rows
+  // looked dead. They open a small sheet with the address, a copy button and
+  // a mail-app link instead.
+  const [supportSubject, setSupportSubject] = useState<string | null>(null);
+  const copySupportEmail = async () => {
+    if (!supportEmail) return;
+    try {
+      await navigator.clipboard.writeText(supportEmail);
+      showToast('success', t('settings2.emailCopied'));
+    } catch {
+      showToast('info', supportEmail);
+    }
+  };
   const openSupportEmail = (subject: string) => {
     if (!supportEmail) {
       showToast('info', t('settings2.supportUnavailable', { defaultValue: 'Support isn\'t configured yet' }));
       return;
     }
-    window.location.href = `mailto:${supportEmail}?subject=${encodeURIComponent(subject)}`;
+    setSupportSubject(subject);
   };
   const [blockedUsers, setBlockedUsers] = useState<BlockedUser[]>([]);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
@@ -925,6 +940,39 @@ export default function Settings() {
                 </div>
               ))
             )}
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* ── Support Dialog ── */}
+      <Dialog open={!!supportSubject} onOpenChange={(open) => !open && setSupportSubject(null)}>
+        <DialogContent className="rounded-[20px] max-w-[320px] bg-white dark:bg-[#22293B] border-0" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
+          <DialogHeader>
+            <DialogTitle className="text-lg font-bold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              {supportSubject?.startsWith('Problem') ? t('settings2.reportProblem') : t('settings2.helpCenter')}
+            </DialogTitle>
+          </DialogHeader>
+          <p className="text-sm text-[var(--charcoal)] opacity-60" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+            {t('settings2.supportDialogText')}
+          </p>
+          <p className="text-base font-semibold text-[var(--charcoal)] select-all break-all px-4 py-3 rounded-[14px] bg-[var(--linen)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+            {supportEmail}
+          </p>
+          <div className="flex flex-col gap-2">
+            <button
+              onClick={copySupportEmail}
+              className="w-full h-11 rounded-full text-sm font-semibold text-white flex items-center justify-center gap-2"
+              style={{ backgroundColor: '#BB83C9', fontFamily: "'Outfit', system-ui, sans-serif" }}
+            >
+              <Copy size={16} /> {t('settings2.copyEmail')}
+            </button>
+            <a
+              href={`mailto:${supportEmail}?subject=${encodeURIComponent(supportSubject ?? '')}`}
+              className="w-full h-11 rounded-full text-sm font-semibold flex items-center justify-center gap-2 text-[var(--charcoal)] bg-[var(--linen)]"
+              style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
+            >
+              <Mail size={16} /> {t('settings2.openMailApp')}
+            </a>
           </div>
         </DialogContent>
       </Dialog>

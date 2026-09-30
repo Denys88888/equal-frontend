@@ -530,7 +530,11 @@
     "payCompleted": "Tapos na",
     "payCancelled": "Kinansela",
     "payProcessing": "Pinoproseso",
-    "unblockFailed": "Hindi ma-unblock — pakisubukang muli"
+    "unblockFailed": "Hindi ma-unblock — pakisubukang muli",
+    "supportDialogText": "Sumulat sa amin at sasagot kami:",
+    "copyEmail": "Kopyahin ang email",
+    "emailCopied": "Nakopya ang email",
+    "openMailApp": "Buksan ang mail app"
   },
   "profile2": {
     "addBioHint": "Magdagdag ng bio para makilala ka ng mga tao",

@@ -536,7 +536,11 @@
     "payCompleted": "Completato",
     "payCancelled": "Annullato",
     "payProcessing": "In elaborazione",
-    "unblockFailed": "Impossibile sbloccare — riprova"
+    "unblockFailed": "Impossibile sbloccare — riprova",
+    "supportDialogText": "Scrivici e ti risponderemo:",
+    "copyEmail": "Copia email",
+    "emailCopied": "Email copiata",
+    "openMailApp": "Apri l'app di posta"
   },
   "profile2": {
     "addBioHint": "Aggiungi una bio per farti conoscere",

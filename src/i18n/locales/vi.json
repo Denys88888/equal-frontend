@@ -524,7 +524,11 @@
     "payCompleted": "Hoàn tất",
     "payCancelled": "Đã hủy",
     "payProcessing": "Đang xử lý",
-    "unblockFailed": "Không thể bỏ chặn — vui lòng thử lại"
+    "unblockFailed": "Không thể bỏ chặn — vui lòng thử lại",
+    "supportDialogText": "Hãy viết cho chúng tôi, chúng tôi sẽ phản hồi:",
+    "copyEmail": "Sao chép email",
+    "emailCopied": "Đã sao chép email",
+    "openMailApp": "Mở ứng dụng thư"
   },
   "profile2": {
     "addBioHint": "Thêm phần giới thiệu để mọi người hiểu bạn hơn",

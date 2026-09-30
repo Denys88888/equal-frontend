@@ -530,7 +530,11 @@
     "payCompleted": "Completed",
     "payCancelled": "Cancelled",
     "payProcessing": "Processing",
-    "unblockFailed": "Could not unblock — please try again"
+    "unblockFailed": "Could not unblock — please try again",
+    "supportDialogText": "Write to us and we'll get back to you:",
+    "copyEmail": "Copy email",
+    "emailCopied": "Email copied",
+    "openMailApp": "Open mail app"
   },
   "profile2": {
     "addBioHint": "Add a bio to help people get to know you",

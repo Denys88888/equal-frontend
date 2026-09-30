@@ -524,7 +524,11 @@
     "payCompleted": "สำเร็จ",
     "payCancelled": "ยกเลิกแล้ว",
     "payProcessing": "กำลังดำเนินการ",
-    "unblockFailed": "เลิกบล็อกไม่สำเร็จ — โปรดลองอีกครั้ง"
+    "unblockFailed": "เลิกบล็อกไม่สำเร็จ — โปรดลองอีกครั้ง",
+    "supportDialogText": "เขียนถึงเรา แล้วเราจะตอบกลับ:",
+    "copyEmail": "คัดลอกอีเมล",
+    "emailCopied": "คัดลอกอีเมลแล้ว",
+    "openMailApp": "เปิดแอปอีเมล"
   },
   "profile2": {
     "addBioHint": "เพิ่มคำแนะนำตัวเพื่อให้คนอื่นรู้จักคุณ",

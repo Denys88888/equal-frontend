@@ -542,7 +542,11 @@
     "payCompleted": "Завершено",
     "payCancelled": "Скасовано",
     "payProcessing": "Обробляється",
-    "unblockFailed": "Не вдалося розблокувати — спробуйте ще раз"
+    "unblockFailed": "Не вдалося розблокувати — спробуйте ще раз",
+    "supportDialogText": "Напишіть нам — ми відповімо:",
+    "copyEmail": "Скопіювати адресу",
+    "emailCopied": "Адресу скопійовано",
+    "openMailApp": "Відкрити пошту"
   },
   "profile2": {
     "addBioHint": "Додай опис, щоб люди тебе краще знали",

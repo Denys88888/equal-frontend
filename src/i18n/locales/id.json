@@ -524,7 +524,11 @@
     "payCompleted": "Selesai",
     "payCancelled": "Dibatalkan",
     "payProcessing": "Diproses",
-    "unblockFailed": "Gagal membuka blokir — coba lagi"
+    "unblockFailed": "Gagal membuka blokir — coba lagi",
+    "supportDialogText": "Tulis ke kami, kami akan membalas:",
+    "copyEmail": "Salin email",
+    "emailCopied": "Email disalin",
+    "openMailApp": "Buka aplikasi email"
   },
   "profile2": {
     "addBioHint": "Tambahkan bio agar orang lain mengenalmu",

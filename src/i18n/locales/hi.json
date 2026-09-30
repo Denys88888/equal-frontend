@@ -530,7 +530,11 @@
     "payCompleted": "पूरा हुआ",
     "payCancelled": "रद्द",
     "payProcessing": "प्रक्रिया में",
-    "unblockFailed": "अनब्लॉक नहीं हो सका — कृपया फिर से कोशिश करें"
+    "unblockFailed": "अनब्लॉक नहीं हो सका — कृपया फिर से कोशिश करें",
+    "supportDialogText": "हमें लिखें, हम जवाब देंगे:",
+    "copyEmail": "ईमेल कॉपी करें",
+    "emailCopied": "ईमेल कॉपी हो गया",
+    "openMailApp": "मेल ऐप खोलें"
   },
   "profile2": {
     "addBioHint": "परिचय जोड़ें ताकि लोग आपको जान सकें",

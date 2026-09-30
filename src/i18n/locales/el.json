@@ -530,7 +530,11 @@
     "payCompleted": "Ολοκληρώθηκε",
     "payCancelled": "Ακυρώθηκε",
     "payProcessing": "Σε επεξεργασία",
-    "unblockFailed": "Δεν ήταν δυνατή η άρση αποκλεισμού — δοκίμασε ξανά"
+    "unblockFailed": "Δεν ήταν δυνατή η άρση αποκλεισμού — δοκίμασε ξανά",
+    "supportDialogText": "Γράψε μας και θα σου απαντήσουμε:",
+    "copyEmail": "Αντιγραφή email",
+    "emailCopied": "Το email αντιγράφηκε",
+    "openMailApp": "Άνοιγμα εφαρμογής email"
   },
   "profile2": {
     "addBioHint": "Πρόσθεσε λίγα λόγια για να σε γνωρίσουν οι άλλοι",

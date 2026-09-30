@@ -530,7 +530,11 @@
     "payCompleted": "Valmis",
     "payCancelled": "Peruttu",
     "payProcessing": "Käsittelyssä",
-    "unblockFailed": "Eston poistaminen epäonnistui – yritä uudelleen"
+    "unblockFailed": "Eston poistaminen epäonnistui – yritä uudelleen",
+    "supportDialogText": "Kirjoita meille, niin vastaamme:",
+    "copyEmail": "Kopioi sähköposti",
+    "emailCopied": "Sähköposti kopioitu",
+    "openMailApp": "Avaa sähköpostisovellus"
   },
   "profile2": {
     "addBioHint": "Lisää esittely, jotta muut oppivat tuntemaan sinut",

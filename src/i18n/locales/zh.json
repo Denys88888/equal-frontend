@@ -524,7 +524,11 @@
     "payCompleted": "已完成",
     "payCancelled": "已取消",
     "payProcessing": "处理中",
-    "unblockFailed": "无法解除屏蔽，请重试"
+    "unblockFailed": "无法解除屏蔽，请重试",
+    "supportDialogText": "写信给我们，我们会回复你：",
+    "copyEmail": "复制邮箱",
+    "emailCopied": "邮箱已复制",
+    "openMailApp": "打开邮件应用"
   },
   "profile2": {
     "addBioHint": "添加简介，让别人更了解你",

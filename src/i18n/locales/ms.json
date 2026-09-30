@@ -524,7 +524,11 @@
     "payCompleted": "Selesai",
     "payCancelled": "Dibatalkan",
     "payProcessing": "Sedang diproses",
-    "unblockFailed": "Tidak dapat menyahsekat — sila cuba lagi"
+    "unblockFailed": "Tidak dapat menyahsekat — sila cuba lagi",
+    "supportDialogText": "Tulis kepada kami, kami akan membalas:",
+    "copyEmail": "Salin e-mel",
+    "emailCopied": "E-mel disalin",
+    "openMailApp": "Buka aplikasi e-mel"
   },
   "profile2": {
     "addBioHint": "Tambah bio supaya orang mengenali anda",

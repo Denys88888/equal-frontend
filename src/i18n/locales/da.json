@@ -530,7 +530,11 @@
     "payCompleted": "Gennemført",
     "payCancelled": "Annulleret",
     "payProcessing": "Behandles",
-    "unblockFailed": "Kunne ikke fjerne blokeringen – prøv igen"
+    "unblockFailed": "Kunne ikke fjerne blokeringen – prøv igen",
+    "supportDialogText": "Skriv til os, så svarer vi:",
+    "copyEmail": "Kopiér e-mail",
+    "emailCopied": "E-mail kopieret",
+    "openMailApp": "Åbn mailappen"
   },
   "profile2": {
     "addBioHint": "Tilføj en profiltekst, så andre lærer dig at kende",

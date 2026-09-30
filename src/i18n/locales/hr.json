@@ -536,7 +536,11 @@
     "payCompleted": "Dovršeno",
     "payCancelled": "Otkazano",
     "payProcessing": "U obradi",
-    "unblockFailed": "Deblokiranje nije uspjelo — pokušaj ponovno"
+    "unblockFailed": "Deblokiranje nije uspjelo — pokušaj ponovno",
+    "supportDialogText": "Pišite nam i odgovorit ćemo:",
+    "copyEmail": "Kopiraj e-poštu",
+    "emailCopied": "E-pošta kopirana",
+    "openMailApp": "Otvori aplikaciju za poštu"
   },
   "profile2": {
     "addBioHint": "Dodaj opis da bi te ljudi upoznali",

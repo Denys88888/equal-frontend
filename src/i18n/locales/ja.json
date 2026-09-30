@@ -524,7 +524,11 @@
     "payCompleted": "完了",
     "payCancelled": "キャンセル済み",
     "payProcessing": "処理中",
-    "unblockFailed": "ブロックを解除できませんでした。もう一度お試しください"
+    "unblockFailed": "ブロックを解除できませんでした。もう一度お試しください",
+    "supportDialogText": "メールでお問い合わせください：",
+    "copyEmail": "アドレスをコピー",
+    "emailCopied": "アドレスをコピーしました",
+    "openMailApp": "メールアプリを開く"
   },
   "profile2": {
     "addBioHint": "自己紹介を追加して、あなたのことを知ってもらいましょう",

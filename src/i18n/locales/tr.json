@@ -530,7 +530,11 @@
     "payCompleted": "Tamamlandı",
     "payCancelled": "İptal edildi",
     "payProcessing": "İşleniyor",
-    "unblockFailed": "Engel kaldırılamadı — lütfen tekrar deneyin"
+    "unblockFailed": "Engel kaldırılamadı — lütfen tekrar deneyin",
+    "supportDialogText": "Bize yazın, size dönelim:",
+    "copyEmail": "E-postayı kopyala",
+    "emailCopied": "E-posta kopyalandı",
+    "openMailApp": "E-posta uygulamasını aç"
   },
   "profile2": {
     "addBioHint": "İnsanların seni tanıması için bir biyografi ekle",

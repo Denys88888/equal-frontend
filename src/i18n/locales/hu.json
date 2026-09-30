@@ -530,7 +530,11 @@
     "payCompleted": "Teljesítve",
     "payCancelled": "Törölve",
     "payProcessing": "Feldolgozás alatt",
-    "unblockFailed": "Nem sikerült feloldani a letiltást – próbáld újra"
+    "unblockFailed": "Nem sikerült feloldani a letiltást – próbáld újra",
+    "supportDialogText": "Írj nekünk, és válaszolunk:",
+    "copyEmail": "E-mail másolása",
+    "emailCopied": "E-mail kimásolva",
+    "openMailApp": "Levelezőapp megnyitása"
   },
   "profile2": {
     "addBioHint": "Adj hozzá egy bemutatkozást, hogy jobban megismerjenek",

@@ -524,7 +524,11 @@
     "payCompleted": "완료",
     "payCancelled": "취소됨",
     "payProcessing": "처리 중",
-    "unblockFailed": "차단을 해제하지 못했어요. 다시 시도해 주세요"
+    "unblockFailed": "차단을 해제하지 못했어요. 다시 시도해 주세요",
+    "supportDialogText": "이메일을 보내주시면 답장드릴게요:",
+    "copyEmail": "이메일 복사",
+    "emailCopied": "이메일을 복사했어요",
+    "openMailApp": "메일 앱 열기"
   },
   "profile2": {
     "addBioHint": "소개를 추가해 사람들이 당신을 알 수 있게 하세요",

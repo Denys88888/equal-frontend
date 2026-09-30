@@ -530,7 +530,11 @@
     "payCompleted": "Slutförd",
     "payCancelled": "Avbruten",
     "payProcessing": "Behandlas",
-    "unblockFailed": "Det gick inte att avblockera – försök igen"
+    "unblockFailed": "Det gick inte att avblockera – försök igen",
+    "supportDialogText": "Skriv till oss så svarar vi:",
+    "copyEmail": "Kopiera e-post",
+    "emailCopied": "E-post kopierad",
+    "openMailApp": "Öppna e-postappen"
   },
   "profile2": {
     "addBioHint": "Lägg till en presentation så att andra lär känna dig",

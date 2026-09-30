@@ -536,7 +536,11 @@
     "payCompleted": "Terminé",
     "payCancelled": "Annulé",
     "payProcessing": "En cours",
-    "unblockFailed": "Impossible de débloquer — réessaie"
+    "unblockFailed": "Impossible de débloquer — réessaie",
+    "supportDialogText": "Écris-nous, nous te répondrons :",
+    "copyEmail": "Copier l'adresse",
+    "emailCopied": "Adresse copiée",
+    "openMailApp": "Ouvrir la messagerie"
   },
   "profile2": {
     "addBioHint": "Ajoutez une bio pour aider les gens à vous connaître",

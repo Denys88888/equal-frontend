@@ -530,7 +530,11 @@
     "payCompleted": "Fullført",
     "payCancelled": "Avbrutt",
     "payProcessing": "Behandles",
-    "unblockFailed": "Kunne ikke oppheve blokkeringen – prøv igjen"
+    "unblockFailed": "Kunne ikke oppheve blokkeringen – prøv igjen",
+    "supportDialogText": "Skriv til oss, så svarer vi:",
+    "copyEmail": "Kopier e-post",
+    "emailCopied": "E-post kopiert",
+    "openMailApp": "Åpne e-postappen"
   },
   "profile2": {
     "addBioHint": "Legg til en presentasjon så andre blir kjent med deg",

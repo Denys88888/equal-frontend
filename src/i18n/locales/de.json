@@ -530,7 +530,11 @@
     "payCompleted": "Abgeschlossen",
     "payCancelled": "Storniert",
     "payProcessing": "In Bearbeitung",
-    "unblockFailed": "Entsperren fehlgeschlagen – bitte versuche es erneut"
+    "unblockFailed": "Entsperren fehlgeschlagen – bitte versuche es erneut",
+    "supportDialogText": "Schreib uns, wir melden uns:",
+    "copyEmail": "E-Mail kopieren",
+    "emailCopied": "E-Mail kopiert",
+    "openMailApp": "Mail-App öffnen"
   },
   "profile2": {
     "addBioHint": "Füge eine Bio hinzu, damit die Leute dich kennenlernen",

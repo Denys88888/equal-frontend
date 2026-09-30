@@ -554,7 +554,11 @@
     "payCompleted": "مكتملة",
     "payCancelled": "ملغاة",
     "payProcessing": "قيد المعالجة",
-    "unblockFailed": "تعذّر إلغاء الحظر — حاول مرة أخرى"
+    "unblockFailed": "تعذّر إلغاء الحظر — حاول مرة أخرى",
+    "supportDialogText": "راسلنا وسنرد عليك:",
+    "copyEmail": "نسخ البريد",
+    "emailCopied": "تم نسخ البريد",
+    "openMailApp": "فتح تطبيق البريد"
   },
   "profile2": {
     "addBioHint": "أضف نبذة ليتعرّف عليك الناس",

@@ -530,7 +530,11 @@
     "payCompleted": "تکمیل‌شده",
     "payCancelled": "لغوشده",
     "payProcessing": "در حال پردازش",
-    "unblockFailed": "رفع مسدودیت انجام نشد — دوباره امتحان کنید"
+    "unblockFailed": "رفع مسدودیت انجام نشد — دوباره امتحان کنید",
+    "supportDialogText": "برای ما بنویسید، پاسخ می‌دهیم:",
+    "copyEmail": "کپی ایمیل",
+    "emailCopied": "ایمیل کپی شد",
+    "openMailApp": "باز کردن برنامه ایمیل"
   },
   "profile2": {
     "addBioHint": "بیوگرافی اضافه کنید تا افراد شما را بهتر بشناسند",

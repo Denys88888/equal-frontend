@@ -530,7 +530,11 @@
     "payCompleted": "Voltooid",
     "payCancelled": "Geannuleerd",
     "payProcessing": "Bezig",
-    "unblockFailed": "Deblokkeren mislukt — probeer het opnieuw"
+    "unblockFailed": "Deblokkeren mislukt — probeer het opnieuw",
+    "supportDialogText": "Schrijf ons, we reageren snel:",
+    "copyEmail": "E-mail kopiëren",
+    "emailCopied": "E-mail gekopieerd",
+    "openMailApp": "Mail-app openen"
   },
   "profile2": {
     "addBioHint": "Voeg een bio toe zodat mensen je leren kennen",

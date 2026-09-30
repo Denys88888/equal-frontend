@@ -530,7 +530,11 @@
     "payCompleted": "সম্পন্ন",
     "payCancelled": "বাতিল",
     "payProcessing": "প্রক্রিয়াধীন",
-    "unblockFailed": "আনব্লক করা যায়নি — আবার চেষ্টা করুন"
+    "unblockFailed": "আনব্লক করা যায়নি — আবার চেষ্টা করুন",
+    "supportDialogText": "আমাদের লিখুন, আমরা উত্তর দেব:",
+    "copyEmail": "ইমেল কপি করুন",
+    "emailCopied": "ইমেল কপি হয়েছে",
+    "openMailApp": "মেইল অ্যাপ খুলুন"
   },
   "profile2": {
     "addBioHint": "মানুষকে আপনাকে জানতে একটি বায়ো যোগ করুন",

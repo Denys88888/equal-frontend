@@ -536,7 +536,11 @@
     "payCompleted": "הושלם",
     "payCancelled": "בוטל",
     "payProcessing": "בעיבוד",
-    "unblockFailed": "לא ניתן היה לבטל את החסימה — נסו שוב"
+    "unblockFailed": "לא ניתן היה לבטל את החסימה — נסו שוב",
+    "supportDialogText": "כתבו לנו ונחזור אליכם:",
+    "copyEmail": "העתקת האימייל",
+    "emailCopied": "האימייל הועתק",
+    "openMailApp": "פתיחת אפליקציית הדואר"
   },
   "profile2": {
     "addBioHint": "הוסף תיאור כדי שאנשים יכירו אותך",

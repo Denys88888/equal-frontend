@@ -536,7 +536,11 @@
     "payCompleted": "Finalizată",
     "payCancelled": "Anulată",
     "payProcessing": "În procesare",
-    "unblockFailed": "Deblocarea nu a reușit — încearcă din nou"
+    "unblockFailed": "Deblocarea nu a reușit — încearcă din nou",
+    "supportDialogText": "Scrie-ne și îți răspundem:",
+    "copyEmail": "Copiază emailul",
+    "emailCopied": "Email copiat",
+    "openMailApp": "Deschide aplicația de email"
   },
   "profile2": {
     "addBioHint": "Adaugă o descriere pentru ca oamenii să te cunoască",

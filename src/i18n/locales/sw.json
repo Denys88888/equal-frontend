@@ -530,7 +530,11 @@
     "payCompleted": "Imekamilika",
     "payCancelled": "Imeghairiwa",
     "payProcessing": "Inashughulikiwa",
-    "unblockFailed": "Imeshindwa kuondoa kizuizi — tafadhali jaribu tena"
+    "unblockFailed": "Imeshindwa kuondoa kizuizi — tafadhali jaribu tena",
+    "supportDialogText": "Tuandikie nasi tutakujibu:",
+    "copyEmail": "Nakili barua pepe",
+    "emailCopied": "Barua pepe imenakiliwa",
+    "openMailApp": "Fungua programu ya barua"
   },
   "profile2": {
     "addBioHint": "Ongeza wasifu ili watu wakujue",

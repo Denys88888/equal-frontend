@@ -542,7 +542,11 @@
     "payCompleted": "Dokončeno",
     "payCancelled": "Zrušeno",
     "payProcessing": "Zpracovává se",
-    "unblockFailed": "Odblokování se nezdařilo — zkus to znovu"
+    "unblockFailed": "Odblokování se nezdařilo — zkus to znovu",
+    "supportDialogText": "Napiš nám a ozveme se:",
+    "copyEmail": "Kopírovat e-mail",
+    "emailCopied": "E-mail zkopírován",
+    "openMailApp": "Otevřít poštu"
   },
   "profile2": {
     "addBioHint": "Přidej popis, ať tě lidé lépe poznají",
