@@ -820,7 +820,7 @@ function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
             <div className="flex items-start justify-between mb-2">
               <div>
                 <h3 className="text-sm font-semibold text-[var(--charcoal)]">{club.name}</h3>
-                <p className="text-xs text-[var(--charcoal)]/40 mt-0.5">{t(`clubs.club_cat_${club.category.toLowerCase()}`, { defaultValue: club.category })} &middot; {t('admin.byAuthor', { name: club.createdBy })}</p>
+                <p className="text-xs text-[var(--charcoal)]/40 mt-0.5">{t(`clubs.club_cat_${club.category.toLowerCase()}`, { defaultValue: club.category })}{club.createdBy ? <> &middot; {t('admin.byAuthor', { name: club.createdBy })}</> : null}</p>
               </div>
               {club.status === 'Pending Review' ? (
                 <Badge className="bg-[rgba(240,184,74,0.15)] text-[#F0B84A] hover:bg-[rgba(240,184,74,0.15)] text-[10px]">{t('admin.pending')}</Badge>
