@@ -35,6 +35,7 @@ import { useAuth } from '@/context/AuthContext';
 import { usePiPayment } from '@/hooks/usePiPayment';
 import { formatDayLabel, formatTime } from '@/lib/format';
 import UserAvatar from '@/components/UserAvatar';
+import { recordedAudioType } from '@/lib/audio';
 
 // ── Types ────────────────────────────────────────────────
 
@@ -1015,7 +1016,7 @@ export default function Chat() {
       rec.onstop = async () => {
         stopTracks();
         const seconds = Math.round((Date.now() - recordStartRef.current) / 1000);
-        const blob = new Blob(chunksRef.current, { type: rec.mimeType || 'audio/webm' });
+        const blob = new Blob(chunksRef.current, { type: recordedAudioType(rec.mimeType) });
         if (cancelledRef.current || !matchId || blob.size === 0 || seconds < 1) return;
         const optimistic: Message = {
           id: `voice-${Date.now()}`,

@@ -6,6 +6,7 @@
  */
 
 import { api } from './client';
+import { audioExtension } from '@/lib/audio';
 
 export type DailyMatchStatus = 'PENDING' | 'ACTIVE' | 'EXPIRED' | 'MUTUAL' | 'REJECTED';
 
@@ -143,7 +144,7 @@ export async function setMyVibe(vibe: Vibe): Promise<{ vibe: Vibe }> {
 
 export async function uploadVoiceIntro(blob: Blob): Promise<{ voiceIntroUrl: string }> {
   const form = new FormData();
-  form.append('voice', blob, `voice-intro-${Date.now()}.webm`);
+  form.append('voice', blob, `voice-intro-${Date.now()}.${audioExtension(blob.type)}`);
   const { data } = await api.post<{ voiceIntroUrl: string }>('/users/me/voice-intro', form);
   return data;
 }

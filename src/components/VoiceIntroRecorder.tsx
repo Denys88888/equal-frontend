@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Mic, Play, Save, RotateCcw, Square } from 'lucide-react';
 import { uploadVoiceIntro } from '@/api/dailyMatch';
 import { useToast } from '@/hooks/useToast';
+import { recordedAudioType } from '@/lib/audio';
 
 /** Fixed clip length, per spec. */
 const CLIP_MS = 10_000;
@@ -75,7 +76,7 @@ export default function VoiceIntroRecorder({
       rec.ondataavailable = (e) => { if (e.data.size > 0) chunksRef.current.push(e.data); };
       rec.onstop = () => {
         stream.getTracks().forEach((tr) => tr.stop());
-        const recorded = new Blob(chunksRef.current, { type: rec.mimeType || 'audio/webm' });
+        const recorded = new Blob(chunksRef.current, { type: recordedAudioType(rec.mimeType) });
         setRecording(false);
         setSecondsLeft(0);
         if (recorded.size === 0) {
@@ -113,7 +114,8 @@ export default function VoiceIntroRecorder({
       showToast('success', t('dailyMatch.voiceSaved', { defaultValue: 'Voice intro saved' }));
       onSaved?.(voiceIntroUrl);
       setBlob(null);
-    } catch {
+    } catch (e: unknown) {
+      console.error('[voice-intro] save failed:', e);
       showToast('error', t('dailyMatch.voiceFailed', { defaultValue: "Couldn't save voice intro" }));
     } finally {
       setSaving(false);

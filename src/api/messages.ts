@@ -1,5 +1,6 @@
 import { api } from './client';
 import type { MessagesResponse, SendMessageResponse } from './types';
+import { audioExtension } from '@/lib/audio';
 
 export const messagesApi = {
   getMessages: async (matchId: string): Promise<MessagesResponse> => {
@@ -34,8 +35,7 @@ export const messagesApi = {
 
   sendVoice: async (matchId: string, audio: Blob): Promise<SendMessageResponse> => {
     const form = new FormData();
-    const ext = audio.type.includes('mp4') ? 'm4a' : audio.type.includes('ogg') ? 'ogg' : 'webm';
-    form.append('audio', audio, `voice-${Date.now()}.${ext}`);
+    form.append('audio', audio, `voice-${Date.now()}.${audioExtension(audio.type)}`);
     const { data } = await api.post<SendMessageResponse>(
       `/matches/${matchId}/messages/voice`,
       form,
