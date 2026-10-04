@@ -166,7 +166,8 @@
     "blockFailed": "Nu s-a putut bloca — încearcă din nou",
     "historyLoadFailed": "Conversația nu a putut fi încărcată.",
     "reportFailed": "Raportul nu a putut fi trimis — încearcă din nou",
-    "sendFailed": "Mesajul nu a putut fi trimis"
+    "sendFailed": "Mesajul nu a putut fi trimis",
+    "voiceUnavailable": "Nu se poate reda"
   },
   "profile": {
     "edit": "Editează profilul",
@@ -457,7 +458,23 @@
     "callEnded": "Apel încheiat",
     "callFailed": "Apelul a eșuat",
     "backToChat": "Înapoi la chat",
-    "duration": "Durată: {{time}}"
+    "duration": "Durată: {{time}}",
+    "calling": "Se apelează…",
+    "incoming": "Apel video primit",
+    "accept": "Acceptă",
+    "decline": "Respinge",
+    "noAnswer": "Niciun răspuns",
+    "declined": "Apel respins",
+    "unavailable": "Această persoană nu poate primi apeluri acum",
+    "permissionDenied": "Permite accesul la cameră și microfon pentru apeluri video",
+    "unsupported": "Apelurile video nu sunt acceptate în acest browser",
+    "connectionFailed": "Conectarea a eșuat. Verifică internetul și încearcă din nou.",
+    "reconnecting": "Se reconectează…",
+    "mute": "Dezactivează microfonul",
+    "unmute": "Activează microfonul",
+    "hangUp": "Închide apelul",
+    "cameraOff": "Oprește camera",
+    "cameraOn": "Pornește camera"
   },
   "report": {
     "title": "Raportează {{name}}",

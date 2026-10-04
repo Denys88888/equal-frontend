@@ -164,7 +164,8 @@
     "blockFailed": "Kunne ikke blokkere – prøv igjen",
     "historyLoadFailed": "Kunne ikke laste inn samtalen.",
     "reportFailed": "Kunne ikke sende rapporten – prøv igjen",
-    "sendFailed": "Kunne ikke sende meldingen"
+    "sendFailed": "Kunne ikke sende meldingen",
+    "voiceUnavailable": "Kan ikke spilles av"
   },
   "profile": {
     "edit": "Rediger profil",
@@ -451,7 +452,23 @@
     "callEnded": "Samtalen er avsluttet",
     "callFailed": "Samtalen mislyktes",
     "backToChat": "Tilbake til chatten",
-    "duration": "Varighet: {{time}}"
+    "duration": "Varighet: {{time}}",
+    "calling": "Ringer…",
+    "incoming": "Innkommende videosamtale",
+    "accept": "Svar",
+    "decline": "Avvis",
+    "noAnswer": "Ikke noe svar",
+    "declined": "Samtalen ble avvist",
+    "unavailable": "Denne personen kan ikke ta imot samtaler nå",
+    "permissionDenied": "Gi tilgang til kamera og mikrofon for å ringe med video",
+    "unsupported": "Videosamtaler støttes ikke i denne nettleseren",
+    "connectionFailed": "Kunne ikke koble til. Sjekk internett og prøv igjen.",
+    "reconnecting": "Kobler til på nytt…",
+    "mute": "Slå av mikrofonen",
+    "unmute": "Slå på mikrofonen",
+    "hangUp": "Avslutt samtalen",
+    "cameraOff": "Slå av kameraet",
+    "cameraOn": "Slå på kameraet"
   },
   "report": {
     "title": "Rapporter {{name}}",

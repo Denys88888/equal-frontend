@@ -23,6 +23,7 @@ import {
   answerIcebreaker, skipIcebreaker, claimExtraMatch, getExtraMatchStatus, getMyVibe, setMyVibe,
   type DailyMatch as DailyMatchModel, type DailyMatchMessage, type Vibe, type ExtraMatchStatus,
 } from '@/api/dailyMatch';
+import { playableAudioUrl } from '@/lib/audio';
 
 const EXTRA_MATCH_PRICE = 0.2;
 /** Composer cap: roughly three lines at the current font size. */
@@ -565,7 +566,7 @@ function MatchCard({
               <Play size={16} />
               {t('dailyMatch.listenVoice', { defaultValue: 'Listen to voice' })}
             </button>
-            <audio ref={audioRef} src={p.voiceIntroUrl} preload="none" />
+            <audio ref={audioRef} src={playableAudioUrl(p.voiceIntroUrl)} preload="none" />
           </>
         )}
 

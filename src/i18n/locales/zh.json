@@ -162,7 +162,8 @@
     "blockFailed": "无法屏蔽，请重试",
     "historyLoadFailed": "无法加载此对话。",
     "reportFailed": "无法提交举报，请重试",
-    "sendFailed": "无法发送消息"
+    "sendFailed": "无法发送消息",
+    "voiceUnavailable": "无法播放"
   },
   "profile": {
     "edit": "编辑资料",
@@ -445,7 +446,23 @@
     "callEnded": "通话已结束",
     "callFailed": "通话失败",
     "backToChat": "返回聊天",
-    "duration": "时长：{{time}}"
+    "duration": "时长：{{time}}",
+    "calling": "正在呼叫…",
+    "incoming": "视频来电",
+    "accept": "接听",
+    "decline": "拒绝",
+    "noAnswer": "无人接听",
+    "declined": "通话被拒绝",
+    "unavailable": "对方暂时无法接听电话",
+    "permissionDenied": "请允许使用摄像头和麦克风以进行视频通话",
+    "unsupported": "此浏览器不支持视频通话",
+    "connectionFailed": "无法连接。请检查网络后重试。",
+    "reconnecting": "正在重新连接…",
+    "mute": "静音",
+    "unmute": "取消静音",
+    "hangUp": "挂断",
+    "cameraOff": "关闭摄像头",
+    "cameraOn": "开启摄像头"
   },
   "report": {
     "title": "举报 {{name}}",

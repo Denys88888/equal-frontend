@@ -168,7 +168,8 @@
     "blockFailed": "Nie udało się zablokować — spróbuj ponownie",
     "historyLoadFailed": "Nie udało się wczytać tej rozmowy.",
     "reportFailed": "Nie udało się wysłać zgłoszenia — spróbuj ponownie",
-    "sendFailed": "Nie udało się wysłać wiadomości"
+    "sendFailed": "Nie udało się wysłać wiadomości",
+    "voiceUnavailable": "Nie można odtworzyć"
   },
   "profile": {
     "edit": "Edytuj profil",
@@ -463,7 +464,23 @@
     "callEnded": "Rozmowa zakończona",
     "callFailed": "Połączenie nie powiodło się",
     "backToChat": "Wróć do czatu",
-    "duration": "Czas trwania: {{time}}"
+    "duration": "Czas trwania: {{time}}",
+    "calling": "Dzwonię…",
+    "incoming": "Przychodząca rozmowa wideo",
+    "accept": "Odbierz",
+    "decline": "Odrzuć",
+    "noAnswer": "Brak odpowiedzi",
+    "declined": "Połączenie odrzucone",
+    "unavailable": "Ta osoba nie może teraz odbierać połączeń",
+    "permissionDenied": "Zezwól na dostęp do kamery i mikrofonu, aby prowadzić rozmowy wideo",
+    "unsupported": "Rozmowy wideo nie są obsługiwane w tej przeglądarce",
+    "connectionFailed": "Nie udało się połączyć. Sprawdź internet i spróbuj ponownie.",
+    "reconnecting": "Ponowne łączenie…",
+    "mute": "Wycisz",
+    "unmute": "Wyłącz wyciszenie",
+    "hangUp": "Zakończ rozmowę",
+    "cameraOff": "Wyłącz kamerę",
+    "cameraOn": "Włącz kamerę"
   },
   "report": {
     "title": "Zgłoś: {{name}}",

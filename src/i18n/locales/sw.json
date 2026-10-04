@@ -164,7 +164,8 @@
     "blockFailed": "Imeshindwa kuzuia — tafadhali jaribu tena",
     "historyLoadFailed": "Mazungumzo haya hayakuweza kupakiwa.",
     "reportFailed": "Ripoti haikuweza kutumwa — tafadhali jaribu tena",
-    "sendFailed": "Ujumbe haukuweza kutumwa"
+    "sendFailed": "Ujumbe haukuweza kutumwa",
+    "voiceUnavailable": "Haiwezi kuchezwa"
   },
   "profile": {
     "edit": "Hariri Wasifu",
@@ -451,7 +452,23 @@
     "callEnded": "Simu imekwisha",
     "callFailed": "Simu haikufaulu",
     "backToChat": "Rudi kwenye mazungumzo",
-    "duration": "Muda: {{time}}"
+    "duration": "Muda: {{time}}",
+    "calling": "Inapiga…",
+    "incoming": "Simu ya video inayoingia",
+    "accept": "Pokea",
+    "decline": "Kataa",
+    "noAnswer": "Hakuna jibu",
+    "declined": "Simu imekataliwa",
+    "unavailable": "Mtu huyu hawezi kupokea simu kwa sasa",
+    "permissionDenied": "Ruhusu ufikiaji wa kamera na maikrofoni ili kupiga simu za video",
+    "unsupported": "Simu za video hazitumiki kwenye kivinjari hiki",
+    "connectionFailed": "Imeshindwa kuunganisha. Angalia intaneti yako kisha ujaribu tena.",
+    "reconnecting": "Inaunganisha upya…",
+    "mute": "Zima sauti",
+    "unmute": "Washa sauti",
+    "hangUp": "Kata simu",
+    "cameraOff": "Zima kamera",
+    "cameraOn": "Washa kamera"
   },
   "report": {
     "title": "Ripoti {{name}}",

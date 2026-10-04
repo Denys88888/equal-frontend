@@ -164,7 +164,8 @@
     "blockFailed": "Engellenemedi — lütfen tekrar deneyin",
     "historyLoadFailed": "Bu sohbet yüklenemedi.",
     "reportFailed": "Şikâyet gönderilemedi — lütfen tekrar deneyin",
-    "sendFailed": "Mesaj gönderilemedi"
+    "sendFailed": "Mesaj gönderilemedi",
+    "voiceUnavailable": "Oynatılamıyor"
   },
   "profile": {
     "edit": "Profili Düzenle",
@@ -451,7 +452,23 @@
     "callEnded": "Görüşme sona erdi",
     "callFailed": "Görüşme başarısız",
     "backToChat": "Sohbete dön",
-    "duration": "Süre: {{time}}"
+    "duration": "Süre: {{time}}",
+    "calling": "Aranıyor…",
+    "incoming": "Gelen görüntülü arama",
+    "accept": "Kabul et",
+    "decline": "Reddet",
+    "noAnswer": "Yanıt yok",
+    "declined": "Arama reddedildi",
+    "unavailable": "Bu kişi şu anda arama kabul edemiyor",
+    "permissionDenied": "Görüntülü arama için kamera ve mikrofon erişimine izin ver",
+    "unsupported": "Görüntülü arama bu tarayıcıda desteklenmiyor",
+    "connectionFailed": "Bağlanılamadı. İnternetini kontrol edip tekrar dene.",
+    "reconnecting": "Yeniden bağlanıyor…",
+    "mute": "Sesi kapat",
+    "unmute": "Sesi aç",
+    "hangUp": "Aramayı bitir",
+    "cameraOff": "Kamerayı kapat",
+    "cameraOn": "Kamerayı aç"
   },
   "report": {
     "title": "{{name}} kişisini bildir",

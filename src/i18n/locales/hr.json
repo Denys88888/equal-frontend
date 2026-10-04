@@ -166,7 +166,8 @@
     "blockFailed": "Blokiranje nije uspjelo — pokušaj ponovno",
     "historyLoadFailed": "Razgovor se nije mogao učitati.",
     "reportFailed": "Prijava se nije mogla poslati — pokušaj ponovno",
-    "sendFailed": "Poruka se nije mogla poslati"
+    "sendFailed": "Poruka se nije mogla poslati",
+    "voiceUnavailable": "Reprodukcija nije moguća"
   },
   "profile": {
     "edit": "Uredi profil",
@@ -457,7 +458,23 @@
     "callEnded": "Poziv je završen",
     "callFailed": "Poziv nije uspio",
     "backToChat": "Natrag na chat",
-    "duration": "Trajanje: {{time}}"
+    "duration": "Trajanje: {{time}}",
+    "calling": "Zovem…",
+    "incoming": "Dolazni videopoziv",
+    "accept": "Prihvati",
+    "decline": "Odbij",
+    "noAnswer": "Nema odgovora",
+    "declined": "Poziv je odbijen",
+    "unavailable": "Ova osoba trenutačno ne može primati pozive",
+    "permissionDenied": "Dopusti pristup kameri i mikrofonu za videopozive",
+    "unsupported": "Videopozivi nisu podržani u ovom pregledniku",
+    "connectionFailed": "Povezivanje nije uspjelo. Provjeri internet i pokušaj ponovno.",
+    "reconnecting": "Ponovno povezivanje…",
+    "mute": "Isključi mikrofon",
+    "unmute": "Uključi mikrofon",
+    "hangUp": "Završi poziv",
+    "cameraOff": "Isključi kameru",
+    "cameraOn": "Uključi kameru"
   },
   "report": {
     "title": "Prijavi {{name}}",

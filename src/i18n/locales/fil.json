@@ -164,7 +164,8 @@
     "blockFailed": "Hindi ma-block — pakisubukang muli",
     "historyLoadFailed": "Hindi ma-load ang usapang ito.",
     "reportFailed": "Hindi maipadala ang ulat — pakisubukang muli",
-    "sendFailed": "Hindi maipadala ang mensahe"
+    "sendFailed": "Hindi maipadala ang mensahe",
+    "voiceUnavailable": "Hindi ma-play"
   },
   "profile": {
     "edit": "I-edit ang Profile",
@@ -451,7 +452,23 @@
     "callEnded": "Natapos ang tawag",
     "callFailed": "Nabigo ang tawag",
     "backToChat": "Bumalik sa chat",
-    "duration": "Tagal: {{time}}"
+    "duration": "Tagal: {{time}}",
+    "calling": "Tumatawag…",
+    "incoming": "Papasok na video call",
+    "accept": "Sagutin",
+    "decline": "Tanggihan",
+    "noAnswer": "Walang sumasagot",
+    "declined": "Tinanggihan ang tawag",
+    "unavailable": "Hindi makakatanggap ng tawag ang taong ito ngayon",
+    "permissionDenied": "Payagan ang access sa camera at mikropono para makapag-video call",
+    "unsupported": "Hindi suportado ang video call sa browser na ito",
+    "connectionFailed": "Hindi makakonekta. Tingnan ang internet mo at subukang muli.",
+    "reconnecting": "Kumokonekta muli…",
+    "mute": "I-mute",
+    "unmute": "I-unmute",
+    "hangUp": "Tapusin ang tawag",
+    "cameraOff": "I-off ang camera",
+    "cameraOn": "I-on ang camera"
   },
   "report": {
     "title": "I-report si {{name}}",

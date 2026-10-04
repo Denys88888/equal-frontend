@@ -162,7 +162,8 @@
     "blockFailed": "ブロックできませんでした。もう一度お試しください",
     "historyLoadFailed": "この会話を読み込めませんでした。",
     "reportFailed": "報告を送信できませんでした。もう一度お試しください",
-    "sendFailed": "メッセージを送信できませんでした"
+    "sendFailed": "メッセージを送信できませんでした",
+    "voiceUnavailable": "再生できません"
   },
   "profile": {
     "edit": "プロフィールを編集",
@@ -445,7 +446,23 @@
     "callEnded": "通話が終了しました",
     "callFailed": "通話に失敗しました",
     "backToChat": "チャットに戻る",
-    "duration": "通話時間：{{time}}"
+    "duration": "通話時間：{{time}}",
+    "calling": "発信中…",
+    "incoming": "ビデオ通話の着信",
+    "accept": "応答",
+    "decline": "拒否",
+    "noAnswer": "応答がありません",
+    "declined": "通話が拒否されました",
+    "unavailable": "この相手は現在通話を受けられません",
+    "permissionDenied": "ビデオ通話にはカメラとマイクへのアクセスを許可してください",
+    "unsupported": "このブラウザはビデオ通話に対応していません",
+    "connectionFailed": "接続できませんでした。インターネット接続を確認して、もう一度お試しください。",
+    "reconnecting": "再接続中…",
+    "mute": "ミュート",
+    "unmute": "ミュート解除",
+    "hangUp": "通話を終了",
+    "cameraOff": "カメラをオフ",
+    "cameraOn": "カメラをオン"
   },
   "report": {
     "title": "{{name}}さんを通報",

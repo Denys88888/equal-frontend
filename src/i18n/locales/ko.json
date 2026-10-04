@@ -162,7 +162,8 @@
     "blockFailed": "차단하지 못했어요. 다시 시도해 주세요",
     "historyLoadFailed": "이 대화를 불러오지 못했어요.",
     "reportFailed": "신고를 보내지 못했어요. 다시 시도해 주세요",
-    "sendFailed": "메시지를 보내지 못했어요"
+    "sendFailed": "메시지를 보내지 못했어요",
+    "voiceUnavailable": "재생할 수 없음"
   },
   "profile": {
     "edit": "프로필 수정",
@@ -445,7 +446,23 @@
     "callEnded": "통화가 종료되었습니다",
     "callFailed": "통화에 실패했습니다",
     "backToChat": "채팅으로 돌아가기",
-    "duration": "통화 시간: {{time}}"
+    "duration": "통화 시간: {{time}}",
+    "calling": "전화 거는 중…",
+    "incoming": "영상 통화 수신",
+    "accept": "받기",
+    "decline": "거절",
+    "noAnswer": "응답 없음",
+    "declined": "통화가 거절되었습니다",
+    "unavailable": "이 사람은 지금 전화를 받을 수 없어요",
+    "permissionDenied": "영상 통화를 하려면 카메라와 마이크 접근을 허용해 주세요",
+    "unsupported": "이 브라우저에서는 영상 통화를 지원하지 않아요",
+    "connectionFailed": "연결하지 못했어요. 인터넷을 확인하고 다시 시도해 주세요.",
+    "reconnecting": "다시 연결 중…",
+    "mute": "음소거",
+    "unmute": "음소거 해제",
+    "hangUp": "통화 종료",
+    "cameraOff": "카메라 끄기",
+    "cameraOn": "카메라 켜기"
   },
   "report": {
     "title": "{{name}}님 신고",

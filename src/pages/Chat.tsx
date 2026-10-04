@@ -20,6 +20,7 @@ import {
   Sparkles,
   Rose,
   Image as ImageIcon,
+  AlertCircle,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { TFunction } from 'i18next';
@@ -35,7 +36,7 @@ import { useAuth } from '@/context/AuthContext';
 import { usePiPayment } from '@/hooks/usePiPayment';
 import { formatDayLabel, formatTime } from '@/lib/format';
 import UserAvatar from '@/components/UserAvatar';
-import { recordedAudioType } from '@/lib/audio';
+import { recordedAudioType, playableAudioUrl } from '@/lib/audio';
 
 // ── Types ────────────────────────────────────────────────
 
@@ -141,6 +142,107 @@ const Waveform = React.memo(function Waveform({ isPlaying, sent }: { isPlaying: 
   );
 });
 
+// ── VoicePlayer ──────────────────────────────────────────
+
+/** Only one voice message plays at a time, like every messenger. */
+let activeVoice: HTMLAudioElement | null = null;
+
+function formatClip(seconds: number) {
+  const s = Math.max(0, Math.round(seconds));
+  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+}
+
+/**
+ * Plays a voice message. The play button used to only animate the waveform —
+ * there was no audio element at all, so every voice message, sent or
+ * received, played silence.
+ */
+function VoicePlayer({ src, sent, fallbackDuration }: { src: string; sent: boolean; fallbackDuration?: string }) {
+  const { t } = useTranslation();
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [duration, setDuration] = useState<number | null>(null);
+  const [position, setPosition] = useState(0);
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => () => {
+    if (activeVoice === audioRef.current) activeVoice = null;
+  }, []);
+
+  const toggle = () => {
+    const audio = audioRef.current;
+    if (!audio || failed) return;
+    if (!audio.paused) {
+      audio.pause();
+      return;
+    }
+    if (activeVoice && activeVoice !== audio) activeVoice.pause();
+    activeVoice = audio;
+    audio.play().catch(() => {
+      setFailed(true);
+      setIsPlaying(false);
+    });
+  };
+
+  const known = (d: number) => Number.isFinite(d) && d > 0;
+  const label = failed
+    ? ''
+    : isPlaying || position > 0
+      ? formatClip(position)
+      : duration !== null
+        ? formatClip(duration)
+        : fallbackDuration ?? '';
+  const accent = sent ? '#BB83C9' : '#fff';
+
+  return (
+    <>
+      <audio
+        ref={audioRef}
+        src={src}
+        preload="metadata"
+        onLoadedMetadata={(e) => { if (known(e.currentTarget.duration)) setDuration(e.currentTarget.duration); }}
+        onDurationChange={(e) => { if (known(e.currentTarget.duration)) setDuration(e.currentTarget.duration); }}
+        onTimeUpdate={(e) => setPosition(e.currentTarget.currentTime)}
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+        onEnded={() => { setIsPlaying(false); setPosition(0); }}
+        onError={() => { setFailed(true); setIsPlaying(false); }}
+      />
+      <button
+        onClick={toggle}
+        disabled={failed}
+        aria-label={failed ? t('chat.voiceUnavailable') : undefined}
+        className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+        style={{ backgroundColor: sent ? 'var(--card-bg)' : '#BB83C9', opacity: failed ? 0.6 : 1 }}
+      >
+        {failed ? (
+          <AlertCircle size={14} style={{ color: accent }} />
+        ) : isPlaying ? (
+          <Pause size={14} style={{ color: accent }} />
+        ) : (
+          <Play size={14} style={{ color: accent }} className="ml-0.5" />
+        )}
+      </button>
+      {failed ? (
+        <span className="text-xs" style={{ color: sent ? 'rgba(255,255,255,0.85)' : 'rgba(var(--charcoal-rgb), 0.6)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
+          {t('chat.voiceUnavailable')}
+        </span>
+      ) : (
+        <Waveform isPlaying={isPlaying} sent={sent} />
+      )}
+      <span
+        className="text-xs flex-shrink-0 tabular-nums"
+        style={{
+          color: sent ? 'rgba(255,255,255,0.8)' : 'rgba(var(--charcoal-rgb), 0.5)',
+          fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+        }}
+      >
+        {label}
+      </span>
+    </>
+  );
+}
+
 // ── ChatBubble ───────────────────────────────────────────
 
 const GIFT_EMOJI: Record<string, string> = { coffee: '\u2615', rose: '\ud83c\udf39', song: '\ud83c\udfb5', spark: '\u2728' };
@@ -148,7 +250,6 @@ const GIFT_NAME_KEY: Record<string, string> = { coffee: 'chat.giftCoffee', rose:
 
 function ChatBubble({ message, partnerName }: { message: Message; partnerName: string }) {
   const { t } = useTranslation();
-  const [isPlaying, setIsPlaying] = useState(false);
   const isSent = message.sender === 'me';
 
   // Gift message
@@ -217,27 +318,7 @@ function ChatBubble({ message, partnerName }: { message: Message; partnerName: s
               boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
             }}
           >
-            <button
-              onClick={() => setIsPlaying(!isPlaying)}
-              className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
-              style={{ backgroundColor: isSent ? 'var(--card-bg)' : '#BB83C9' }}
-            >
-              {isPlaying ? (
-                <Pause size={14} style={{ color: isSent ? '#BB83C9' : '#fff' }} />
-              ) : (
-                <Play size={14} style={{ color: isSent ? '#BB83C9' : '#fff' }} className="ml-0.5" />
-              )}
-            </button>
-            <Waveform isPlaying={isPlaying} sent={isSent} />
-            <span
-              className="text-xs flex-shrink-0"
-              style={{
-                color: isSent ? 'rgba(255,255,255,0.8)' : 'rgba(var(--charcoal-rgb), 0.5)',
-                fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-              }}
-            >
-              {message.duration}
-            </span>
+            <VoicePlayer src={playableAudioUrl(message.content)} sent={isSent} fallbackDuration={message.duration} />
           </div>
           <div className={cn('flex items-center gap-1 mt-1', isSent ? 'justify-end' : 'justify-start')}>
             <span style={{ color: 'rgba(var(--charcoal-rgb), 0.3)', fontFamily: "'JetBrains Mono', ui-monospace, monospace", fontSize: 11 }}>

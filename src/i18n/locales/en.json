@@ -164,7 +164,8 @@
     "blockFailed": "Could not block — please try again",
     "historyLoadFailed": "Couldn't load this conversation.",
     "reportFailed": "Could not send the report — please try again",
-    "sendFailed": "Could not send message"
+    "sendFailed": "Could not send message",
+    "voiceUnavailable": "Can't play"
   },
   "profile": {
     "edit": "Edit Profile",
@@ -451,7 +452,23 @@
     "callEnded": "Call ended",
     "callFailed": "Call failed",
     "backToChat": "Back to chat",
-    "duration": "Duration: {{time}}"
+    "duration": "Duration: {{time}}",
+    "calling": "Calling…",
+    "incoming": "Incoming video call",
+    "accept": "Accept",
+    "decline": "Decline",
+    "noAnswer": "No answer",
+    "declined": "Call declined",
+    "unavailable": "This person can't take calls",
+    "permissionDenied": "Allow camera and microphone access to make video calls",
+    "unsupported": "Video calls aren't supported in this browser",
+    "connectionFailed": "Couldn't connect. Check your internet and try again.",
+    "reconnecting": "Reconnecting…",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "hangUp": "End call",
+    "cameraOff": "Turn camera off",
+    "cameraOn": "Turn camera on"
   },
   "report": {
     "title": "Report {{name}}",

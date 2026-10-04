@@ -164,7 +164,8 @@
     "blockFailed": "Blockieren fehlgeschlagen – bitte versuche es erneut",
     "historyLoadFailed": "Unterhaltung konnte nicht geladen werden.",
     "reportFailed": "Meldung konnte nicht gesendet werden – bitte versuche es erneut",
-    "sendFailed": "Nachricht konnte nicht gesendet werden"
+    "sendFailed": "Nachricht konnte nicht gesendet werden",
+    "voiceUnavailable": "Wiedergabe nicht möglich"
   },
   "profile": {
     "edit": "Profil bearbeiten",
@@ -451,7 +452,23 @@
     "callEnded": "Anruf beendet",
     "callFailed": "Anruf fehlgeschlagen",
     "backToChat": "Zurück zum Chat",
-    "duration": "Dauer: {{time}}"
+    "duration": "Dauer: {{time}}",
+    "calling": "Ruft an…",
+    "incoming": "Eingehender Videoanruf",
+    "accept": "Annehmen",
+    "decline": "Ablehnen",
+    "noAnswer": "Keine Antwort",
+    "declined": "Anruf abgelehnt",
+    "unavailable": "Diese Person kann gerade keine Anrufe annehmen",
+    "permissionDenied": "Erlaube den Zugriff auf Kamera und Mikrofon, um Videoanrufe zu führen",
+    "unsupported": "Videoanrufe werden in diesem Browser nicht unterstützt",
+    "connectionFailed": "Verbindung fehlgeschlagen. Prüfe dein Internet und versuche es erneut.",
+    "reconnecting": "Verbindung wird wiederhergestellt…",
+    "mute": "Stummschalten",
+    "unmute": "Stummschaltung aufheben",
+    "hangUp": "Anruf beenden",
+    "cameraOff": "Kamera ausschalten",
+    "cameraOn": "Kamera einschalten"
   },
   "report": {
     "title": "{{name}} melden",

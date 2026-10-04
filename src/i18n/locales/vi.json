@@ -162,7 +162,8 @@
     "blockFailed": "Không thể chặn — vui lòng thử lại",
     "historyLoadFailed": "Không thể tải cuộc trò chuyện này.",
     "reportFailed": "Không thể gửi báo cáo — vui lòng thử lại",
-    "sendFailed": "Không thể gửi tin nhắn"
+    "sendFailed": "Không thể gửi tin nhắn",
+    "voiceUnavailable": "Không thể phát"
   },
   "profile": {
     "edit": "Chỉnh sửa hồ sơ",
@@ -445,7 +446,23 @@
     "callEnded": "Cuộc gọi đã kết thúc",
     "callFailed": "Cuộc gọi thất bại",
     "backToChat": "Quay lại trò chuyện",
-    "duration": "Thời lượng: {{time}}"
+    "duration": "Thời lượng: {{time}}",
+    "calling": "Đang gọi…",
+    "incoming": "Cuộc gọi video đến",
+    "accept": "Chấp nhận",
+    "decline": "Từ chối",
+    "noAnswer": "Không trả lời",
+    "declined": "Cuộc gọi bị từ chối",
+    "unavailable": "Người này hiện không thể nhận cuộc gọi",
+    "permissionDenied": "Cho phép truy cập camera và micro để gọi video",
+    "unsupported": "Trình duyệt này không hỗ trợ gọi video",
+    "connectionFailed": "Không thể kết nối. Kiểm tra internet và thử lại.",
+    "reconnecting": "Đang kết nối lại…",
+    "mute": "Tắt tiếng",
+    "unmute": "Bật tiếng",
+    "hangUp": "Kết thúc cuộc gọi",
+    "cameraOff": "Tắt camera",
+    "cameraOn": "Bật camera"
   },
   "report": {
     "title": "Báo cáo {{name}}",

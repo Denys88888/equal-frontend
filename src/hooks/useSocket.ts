@@ -21,11 +21,18 @@ export interface MatchNewEvent {
   withUserId: string;
 }
 
-// Singleton socket shared across the app so all hooks share one connection
+// Singleton socket shared across the app so all hooks share one connection.
+// It used to be replaced whenever it was not connected *yet*, so every hook
+// mounting during the first handshake opened another socket, and listeners
+// ended up on sockets nobody used. Socket.io reconnects on its own; a new one
+// is made only when the login token changes.
 let _socket: Socket | null = null;
-function getSocket(): Socket {
-  if (!_socket || !_socket.connected) {
-    const token = localStorage.getItem(TOKEN_KEY);
+let _socketToken: string | null = null;
+export function getSocket(): Socket {
+  const token = localStorage.getItem(TOKEN_KEY);
+  if (!_socket || token !== _socketToken) {
+    _socket?.disconnect();
+    _socketToken = token;
     _socket = io(BACKEND_URL, { auth: { token }, transports: ['websocket'] });
   }
   return _socket;

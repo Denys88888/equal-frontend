@@ -166,7 +166,8 @@
     "blockFailed": "Impossibile bloccare — riprova",
     "historyLoadFailed": "Impossibile caricare questa conversazione.",
     "reportFailed": "Impossibile inviare la segnalazione — riprova",
-    "sendFailed": "Impossibile inviare il messaggio"
+    "sendFailed": "Impossibile inviare il messaggio",
+    "voiceUnavailable": "Impossibile riprodurre"
   },
   "profile": {
     "edit": "Modifica Profilo",
@@ -457,7 +458,23 @@
     "callEnded": "Chiamata terminata",
     "callFailed": "Chiamata non riuscita",
     "backToChat": "Torna alla chat",
-    "duration": "Durata: {{time}}"
+    "duration": "Durata: {{time}}",
+    "calling": "Chiamata in corso…",
+    "incoming": "Videochiamata in arrivo",
+    "accept": "Accetta",
+    "decline": "Rifiuta",
+    "noAnswer": "Nessuna risposta",
+    "declined": "Chiamata rifiutata",
+    "unavailable": "Questa persona non può ricevere chiamate ora",
+    "permissionDenied": "Consenti l'accesso a fotocamera e microfono per fare videochiamate",
+    "unsupported": "Le videochiamate non sono supportate da questo browser",
+    "connectionFailed": "Impossibile connettersi. Controlla la connessione e riprova.",
+    "reconnecting": "Riconnessione…",
+    "mute": "Disattiva microfono",
+    "unmute": "Attiva microfono",
+    "hangUp": "Termina chiamata",
+    "cameraOff": "Disattiva fotocamera",
+    "cameraOn": "Attiva fotocamera"
   },
   "report": {
     "title": "Segnala {{name}}",

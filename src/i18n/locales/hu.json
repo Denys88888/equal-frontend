@@ -164,7 +164,8 @@
     "blockFailed": "Nem sikerült letiltani – próbáld újra",
     "historyLoadFailed": "Nem sikerült betölteni a beszélgetést.",
     "reportFailed": "Nem sikerült elküldeni a bejelentést – próbáld újra",
-    "sendFailed": "Nem sikerült elküldeni az üzenetet"
+    "sendFailed": "Nem sikerült elküldeni az üzenetet",
+    "voiceUnavailable": "Nem lejátszható"
   },
   "profile": {
     "edit": "Profil szerkesztése",
@@ -451,7 +452,23 @@
     "callEnded": "A hívás véget ért",
     "callFailed": "A hívás sikertelen",
     "backToChat": "Vissza a chathez",
-    "duration": "Időtartam: {{time}}"
+    "duration": "Időtartam: {{time}}",
+    "calling": "Hívás…",
+    "incoming": "Bejövő videohívás",
+    "accept": "Fogadás",
+    "decline": "Elutasítás",
+    "noAnswer": "Nincs válasz",
+    "declined": "A hívást elutasították",
+    "unavailable": "Ez a személy most nem tud hívást fogadni",
+    "permissionDenied": "Engedélyezd a kamera és a mikrofon használatát a videohívásokhoz",
+    "unsupported": "A videohívás nem támogatott ebben a böngészőben",
+    "connectionFailed": "Nem sikerült kapcsolódni. Ellenőrizd az internetet, és próbáld újra.",
+    "reconnecting": "Újracsatlakozás…",
+    "mute": "Némítás",
+    "unmute": "Némítás feloldása",
+    "hangUp": "Hívás befejezése",
+    "cameraOff": "Kamera kikapcsolása",
+    "cameraOn": "Kamera bekapcsolása"
   },
   "report": {
     "title": "{{name}} bejelentése",

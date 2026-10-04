@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router'
 import ErrorBoundary from './components/ErrorBoundary'
 import CookieConsent from './components/CookieConsent'
+import IncomingCall from './components/IncomingCall'
 
 const Welcome = lazy(() => import('./pages/Welcome'))
 const Onboarding = lazy(() => import('./pages/Onboarding'))
@@ -65,6 +66,7 @@ export default function App() {
     <ErrorBoundary>
       <Suspense fallback={<PageSpinner />}>
         <AnimatedRoutes />
+        <IncomingCall />
         <CookieConsent />
       </Suspense>
     </ErrorBoundary>

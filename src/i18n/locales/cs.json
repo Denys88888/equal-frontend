@@ -168,7 +168,8 @@
     "blockFailed": "Zablokování se nezdařilo — zkus to znovu",
     "historyLoadFailed": "Konverzaci se nepodařilo načíst.",
     "reportFailed": "Nahlášení se nepodařilo odeslat — zkus to znovu",
-    "sendFailed": "Zprávu se nepodařilo odeslat"
+    "sendFailed": "Zprávu se nepodařilo odeslat",
+    "voiceUnavailable": "Nelze přehrát"
   },
   "profile": {
     "edit": "Upravit profil",
@@ -463,7 +464,23 @@
     "callEnded": "Hovor ukončen",
     "callFailed": "Hovor se nezdařil",
     "backToChat": "Zpět do chatu",
-    "duration": "Délka: {{time}}"
+    "duration": "Délka: {{time}}",
+    "calling": "Volám…",
+    "incoming": "Příchozí videohovor",
+    "accept": "Přijmout",
+    "decline": "Odmítnout",
+    "noAnswer": "Bez odpovědi",
+    "declined": "Hovor byl odmítnut",
+    "unavailable": "Tento člověk teď nemůže přijímat hovory",
+    "permissionDenied": "Pro videohovory povol přístup ke kameře a mikrofonu",
+    "unsupported": "Videohovory nejsou v tomto prohlížeči podporované",
+    "connectionFailed": "Nepodařilo se připojit. Zkontroluj internet a zkus to znovu.",
+    "reconnecting": "Obnovuji spojení…",
+    "mute": "Ztlumit",
+    "unmute": "Zrušit ztlumení",
+    "hangUp": "Ukončit hovor",
+    "cameraOff": "Vypnout kameru",
+    "cameraOn": "Zapnout kameru"
   },
   "report": {
     "title": "Nahlásit uživatele {{name}}",

@@ -162,7 +162,8 @@
     "blockFailed": "Tidak dapat menyekat — sila cuba lagi",
     "historyLoadFailed": "Perbualan ini tidak dapat dimuatkan.",
     "reportFailed": "Laporan tidak dapat dihantar — sila cuba lagi",
-    "sendFailed": "Mesej tidak dapat dihantar"
+    "sendFailed": "Mesej tidak dapat dihantar",
+    "voiceUnavailable": "Tidak dapat dimainkan"
   },
   "profile": {
     "edit": "Edit Profil",
@@ -445,7 +446,23 @@
     "callEnded": "Panggilan tamat",
     "callFailed": "Panggilan gagal",
     "backToChat": "Kembali ke sembang",
-    "duration": "Tempoh: {{time}}"
+    "duration": "Tempoh: {{time}}",
+    "calling": "Memanggil…",
+    "incoming": "Panggilan video masuk",
+    "accept": "Terima",
+    "decline": "Tolak",
+    "noAnswer": "Tiada jawapan",
+    "declined": "Panggilan ditolak",
+    "unavailable": "Orang ini tidak dapat menerima panggilan sekarang",
+    "permissionDenied": "Benarkan akses kamera dan mikrofon untuk membuat panggilan video",
+    "unsupported": "Panggilan video tidak disokong dalam pelayar ini",
+    "connectionFailed": "Gagal menyambung. Semak internet anda dan cuba lagi.",
+    "reconnecting": "Menyambung semula…",
+    "mute": "Senyapkan",
+    "unmute": "Nyahsenyap",
+    "hangUp": "Tamatkan panggilan",
+    "cameraOff": "Matikan kamera",
+    "cameraOn": "Hidupkan kamera"
   },
   "report": {
     "title": "Laporkan {{name}}",

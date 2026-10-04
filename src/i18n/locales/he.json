@@ -166,7 +166,8 @@
     "blockFailed": "לא ניתן היה לחסום — נסו שוב",
     "historyLoadFailed": "לא ניתן היה לטעון את השיחה.",
     "reportFailed": "לא ניתן היה לשלוח את הדיווח — נסו שוב",
-    "sendFailed": "לא ניתן היה לשלוח את ההודעה"
+    "sendFailed": "לא ניתן היה לשלוח את ההודעה",
+    "voiceUnavailable": "לא ניתן להשמיע"
   },
   "profile": {
     "edit": "ערוך פרופיל",
@@ -457,7 +458,23 @@
     "callEnded": "השיחה הסתיימה",
     "callFailed": "השיחה נכשלה",
     "backToChat": "חזרה לצ'אט",
-    "duration": "משך: {{time}}"
+    "duration": "משך: {{time}}",
+    "calling": "מתקשר…",
+    "incoming": "שיחת וידאו נכנסת",
+    "accept": "לענות",
+    "decline": "לדחות",
+    "noAnswer": "אין מענה",
+    "declined": "השיחה נדחתה",
+    "unavailable": "האדם הזה לא יכול לקבל שיחות כרגע",
+    "permissionDenied": "יש לאפשר גישה למצלמה ולמיקרופון כדי לבצע שיחות וידאו",
+    "unsupported": "שיחות וידאו לא נתמכות בדפדפן הזה",
+    "connectionFailed": "ההתחברות נכשלה. כדאי לבדוק את האינטרנט ולנסות שוב.",
+    "reconnecting": "מתחבר מחדש…",
+    "mute": "השתקה",
+    "unmute": "ביטול השתקה",
+    "hangUp": "סיום שיחה",
+    "cameraOff": "כיבוי מצלמה",
+    "cameraOn": "הפעלת מצלמה"
   },
   "report": {
     "title": "דווח על {{name}}",

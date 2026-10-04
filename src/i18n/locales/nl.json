@@ -164,7 +164,8 @@
     "blockFailed": "Blokkeren mislukt — probeer het opnieuw",
     "historyLoadFailed": "Dit gesprek kon niet worden geladen.",
     "reportFailed": "Melding kon niet worden verstuurd — probeer het opnieuw",
-    "sendFailed": "Bericht kon niet worden verstuurd"
+    "sendFailed": "Bericht kon niet worden verstuurd",
+    "voiceUnavailable": "Kan niet afspelen"
   },
   "profile": {
     "edit": "Profiel bewerken",
@@ -451,7 +452,23 @@
     "callEnded": "Gesprek beëindigd",
     "callFailed": "Gesprek mislukt",
     "backToChat": "Terug naar chat",
-    "duration": "Duur: {{time}}"
+    "duration": "Duur: {{time}}",
+    "calling": "Bellen…",
+    "incoming": "Inkomend videogesprek",
+    "accept": "Opnemen",
+    "decline": "Weigeren",
+    "noAnswer": "Geen antwoord",
+    "declined": "Gesprek geweigerd",
+    "unavailable": "Deze persoon kan nu geen gesprekken aannemen",
+    "permissionDenied": "Geef toegang tot camera en microfoon om te videobellen",
+    "unsupported": "Videobellen wordt niet ondersteund in deze browser",
+    "connectionFailed": "Verbinden mislukt. Controleer je internet en probeer het opnieuw.",
+    "reconnecting": "Opnieuw verbinden…",
+    "mute": "Dempen",
+    "unmute": "Dempen opheffen",
+    "hangUp": "Ophangen",
+    "cameraOff": "Camera uitzetten",
+    "cameraOn": "Camera aanzetten"
   },
   "report": {
     "title": "{{name}} melden",

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Mic, Play, Save, RotateCcw, Square } from 'lucide-react';
 import { uploadVoiceIntro } from '@/api/dailyMatch';
 import { useToast } from '@/hooks/useToast';
-import { recordedAudioType } from '@/lib/audio';
+import { recordedAudioType, playableAudioUrl } from '@/lib/audio';
 
 /** Fixed clip length, per spec. */
 const CLIP_MS = 10_000;
@@ -137,7 +137,7 @@ export default function VoiceIntroRecorder({
   };
 
   saveRef.current = (clip: Blob) => handleSave(clip);
-  const playbackSrc = previewUrl ?? savedUrl ?? existingUrl ?? null;
+  const playbackSrc = previewUrl ?? (playableAudioUrl(savedUrl ?? existingUrl) || null);
 
   return (
     <div

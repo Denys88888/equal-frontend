@@ -1,236 +1,339 @@
 import { useTranslation } from 'react-i18next';
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { useParams, useNavigate } from 'react-router';
+import { useState, useEffect, useRef } from 'react';
+import { useParams, useNavigate, useSearchParams } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mic, MicOff, Video as VideoIcon, VideoOff, PhoneOff, CameraOff } from 'lucide-react';
-import { io, Socket } from 'socket.io-client';
-import { TOKEN_KEY } from '@/api/client';
 import { messagesApi } from '@/api/messages';
+import { callsApi } from '@/api/calls';
+import { getSocket } from '@/hooks/useSocket';
 import { useAuth } from '@/context/AuthContext';
-
-const BACKEND_URL = import.meta.env.VITE_API_URL?.replace('/v1', '') || 'https://equal-backend.onrender.com';
+import UserAvatar from '@/components/UserAvatar';
+import { callState as deviceCall } from '@/lib/callState';
 
 /**
- * STUN alone cannot traverse symmetric NAT, which is what most mobile carriers
- * use — those calls simply never connect without a TURN relay.
+ * One-to-one video call.
  *
- * Priority: VITE_TURN_URL (+ username/credential), if the app ever gets its own
- * TURN server (self-hosted coturn or a paid relay — real bandwidth, real cost,
- * but private and reliable), takes over automatically. Until then, this falls
- * back to Metered's "Open Relay Project" (https://www.metered.ca/tools/openrelay) —
- * a genuinely free, no-signup public TURN server published exactly for this
- * use case. It is a shared community resource with no SLA and no reliability
- * guarantee (Metered's own docs frame it as fine for testing/small projects,
- * not for guaranteed production scale) — it's a real working default, not a
- * substitute for a dedicated relay if call volume grows or it becomes flaky.
+ * The caller opens /video/:matchId from the chat; the person being called gets
+ * an incoming-call screen (IncomingCall) or a push, and accepting opens
+ * /video/:matchId?answer=1. Signaling goes through the server to the other
+ * person's own socket room:
+ *
+ *   caller  call:invite ─▶ callee sees it, taps Accept
+ *   callee  call:accept ─▶ caller creates the offer
+ *   caller  call:offer  ─▶ callee  call:answer ─▶ both trade call:ice
+ *
+ * The previous version had no incoming call at all and picked the caller by
+ * comparing a user id with the match id, so for many pairs both sides waited
+ * for an offer (or both sent one) and the call could never connect.
  */
-const TURN_URL = import.meta.env.VITE_TURN_URL as string | undefined;
-const TURN_USERNAME = import.meta.env.VITE_TURN_USERNAME as string | undefined;
-const TURN_CREDENTIAL = import.meta.env.VITE_TURN_CREDENTIAL as string | undefined;
 
-// Verified directly (raw TCP connect from this session's network): port 80
-// accepts connections, port 443 refuses them — the :443 endpoints published in
-// most tutorials for this service are not reachable right now, so they're
-// deliberately left out rather than shipped on faith.
-const OPEN_RELAY_TURN = {
-  urls: ['turn:openrelay.metered.ca:80'],
-  username: 'openrelayproject',
-  credential: 'openrelayproject',
-};
+const FALLBACK_ICE: RTCIceServer[] = [{ urls: ['stun:stun.l.google.com:19302', 'stun:stun1.l.google.com:19302'] }];
+const RING_TIMEOUT_MS = 45_000;
+/** Callee side: how long to wait for the caller's offer after accepting. */
+const OFFER_TIMEOUT_MS = 20_000;
+/** A dropped connection gets this long to recover before the call ends. */
+const RECONNECT_GRACE_MS = 10_000;
 
-const ICE_SERVERS: RTCConfiguration = {
-  iceServers: [
-    { urls: 'stun:stun.l.google.com:19302' },
-    { urls: 'stun:stun1.l.google.com:19302' },
-    TURN_URL
-      ? {
-          urls: TURN_URL.split(',').map((u) => u.trim()).filter(Boolean),
-          username: TURN_USERNAME,
-          credential: TURN_CREDENTIAL,
-        }
-      : OPEN_RELAY_TURN,
-  ],
-};
-
-if (!TURN_URL && import.meta.env.PROD) {
-  console.warn('[VideoCall] No dedicated TURN configured — using the free Open Relay Project as a fallback. Fine for now; move to a dedicated relay (self-hosted coturn or a paid provider) if call volume grows or connections start failing.');
-}
-
-type CallState = 'connecting' | 'ringing' | 'connected' | 'ended' | 'error';
+type CallState = 'starting' | 'ringing' | 'connecting' | 'connected' | 'reconnecting' | 'ended';
+type EndReason =
+  | 'hangup' | 'remoteHangup' | 'noAnswer' | 'declined' | 'busy'
+  | 'unavailable' | 'missed' | 'failed' | 'permission' | 'unsupported';
 
 function formatTimer(s: number) {
   return `${Math.floor(s / 60).toString().padStart(2, '0')}:${(s % 60).toString().padStart(2, '0')}`;
 }
 
+async function getMedia(): Promise<MediaStream> {
+  const audio = { echoCancellation: true, noiseSuppression: true };
+  try {
+    return await navigator.mediaDevices.getUserMedia({
+      audio,
+      video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 480 } },
+    });
+  } catch (err) {
+    // No camera (or it is busy): still let the person talk.
+    const name = (err as DOMException)?.name;
+    if (name === 'NotFoundError' || name === 'NotReadableError' || name === 'OverconstrainedError') {
+      return navigator.mediaDevices.getUserMedia({ audio });
+    }
+    throw err;
+  }
+}
+
 export default function VideoCall() {
   const { t } = useTranslation();
   const { matchId } = useParams<{ matchId: string }>();
+  const [searchParams] = useSearchParams();
+  const isCallee = searchParams.get('answer') === '1';
   const navigate = useNavigate();
   const { user } = useAuth();
 
-  const [callState, setCallState] = useState<CallState>('connecting');
+  const [callState, setCallState] = useState<CallState>('starting');
+  const [endReason, setEndReason] = useState<EndReason | null>(null);
   const [isMuted, setIsMuted] = useState(false);
   const [isCameraOff, setIsCameraOff] = useState(false);
+  const [hasVideo, setHasVideo] = useState(true);
   const [elapsed, setElapsed] = useState(0);
-  const [totalDuration, setTotalDuration] = useState(0);
-  const [matchName, setMatchName] = useState('');
-  const [errorMsg, setErrorMsg] = useState('');
+  const [wasConnected, setWasConnected] = useState(false);
+  const [partner, setPartner] = useState<{ name: string; photo: string | null }>({ name: '', photo: null });
 
   const localVideoRef = useRef<HTMLVideoElement>(null);
   const remoteVideoRef = useRef<HTMLVideoElement>(null);
-  const pcRef = useRef<RTCPeerConnection | null>(null);
   const localStreamRef = useRef<MediaStream | null>(null);
-  const socketRef = useRef<Socket | null>(null);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const isCallerRef = useRef(false);
+  const connectedAtRef = useRef<number | null>(null);
+  /** Hang-up from the button: set by the call effect, which owns the state it needs. */
+  const hangUpRef = useRef<() => void>(() => {});
 
-  // Load match name
   useEffect(() => {
     if (!matchId) return;
-    messagesApi.getMessages(matchId).then(d => setMatchName(d.matchName || '')).catch(() => {});
+    messagesApi.getMessages(matchId)
+      .then((d) => setPartner({ name: d.matchName || '', photo: d.matchAvatar || null }))
+      .catch(() => {});
   }, [matchId]);
 
-  // Timer
+  // Call timer, counted from the moment media connected.
   useEffect(() => {
-    if (callState === 'connected') {
-      timerRef.current = setInterval(() => setElapsed(s => s + 1), 1000);
-    } else if (timerRef.current) {
-      clearInterval(timerRef.current);
-    }
-    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+    if (callState !== 'connected' && callState !== 'reconnecting') return;
+    const id = setInterval(() => {
+      if (connectedAtRef.current) setElapsed(Math.floor((Date.now() - connectedAtRef.current) / 1000));
+    }, 1000);
+    return () => clearInterval(id);
   }, [callState]);
 
-  const cleanUp = useCallback(() => {
-    localStreamRef.current?.getTracks().forEach(t => t.stop());
-    pcRef.current?.close();
-    socketRef.current?.disconnect();
-    pcRef.current = null;
-    localStreamRef.current = null;
-  }, []);
-
-  const handleEndCall = useCallback(() => {
-    socketRef.current?.emit('call:end', { matchId });
-    setTotalDuration(elapsed);
-    setCallState('ended');
-    cleanUp();
-  }, [elapsed, matchId, cleanUp]);
-
-  // WebRTC setup
   useEffect(() => {
     if (!matchId || !user?.id) return;
+    const socket = getSocket();
+    let pc: RTCPeerConnection | null = null;
+    let finished = false;
+    let accepted = false;
+    const pendingIce: RTCIceCandidateInit[] = [];
+    const timers = new Set<ReturnType<typeof setTimeout>>();
+    const later = (fn: () => void, ms: number) => {
+      const id = setTimeout(() => { timers.delete(id); fn(); }, ms);
+      timers.add(id);
+      return id;
+    };
+    const clearTimer = (id?: ReturnType<typeof setTimeout>) => {
+      if (id) { clearTimeout(id); timers.delete(id); }
+    };
+    let ringTimer: ReturnType<typeof setTimeout> | undefined;
+    let offerTimer: ReturnType<typeof setTimeout> | undefined;
+    let dropTimer: ReturnType<typeof setTimeout> | undefined;
 
-    const socket = io(BACKEND_URL, { auth: { token: localStorage.getItem(TOKEN_KEY) }, transports: ['websocket'] });
-    socketRef.current = socket;
+    const mine = (p: { matchId?: string } | undefined) => p?.matchId === matchId;
+    deviceCall.active = true;
 
-    const createPeerConnection = () => {
-      const pc = new RTCPeerConnection(ICE_SERVERS);
-      pcRef.current = pc;
+    const finish = (reason: EndReason, signal?: 'call:end' | 'call:cancel' | 'call:decline') => {
+      if (finished) return;
+      finished = true;
+      deviceCall.active = false;
+      if (signal) socket.emit(signal, { matchId });
+      timers.forEach(clearTimeout);
+      timers.clear();
+      localStreamRef.current?.getTracks().forEach((tr) => tr.stop());
+      localStreamRef.current = null;
+      pc?.close();
+      pc = null;
+      if (connectedAtRef.current) setElapsed(Math.floor((Date.now() - connectedAtRef.current) / 1000));
+      setEndReason(reason);
+      setCallState('ended');
+    };
 
-      pc.onicecandidate = e => {
-        if (e.candidate) socket.emit('call:ice', { matchId, candidate: e.candidate });
+    hangUpRef.current = () => {
+      if (pc && accepted) finish('hangup', 'call:end');
+      else if (isCallee) finish('hangup', 'call:end');
+      else finish('hangup', 'call:cancel');
+    };
+
+    const flushIce = async () => {
+      while (pc?.remoteDescription && pendingIce.length) {
+        const c = pendingIce.shift()!;
+        try { await pc.addIceCandidate(c); } catch { /* a stale candidate is harmless */ }
+      }
+    };
+
+    const makePeer = (iceServers: RTCIceServer[], stream: MediaStream) => {
+      const conn = new RTCPeerConnection({ iceServers });
+      stream.getTracks().forEach((tr) => conn.addTrack(tr, stream));
+      conn.onicecandidate = (e) => {
+        if (e.candidate) socket.emit('call:ice', { matchId, candidate: e.candidate.toJSON() });
       };
-
-      pc.ontrack = e => {
-        if (remoteVideoRef.current) remoteVideoRef.current.srcObject = e.streams[0];
-        setCallState('connected');
-      };
-
-      pc.onconnectionstatechange = () => {
-        if (pc.connectionState === 'disconnected' || pc.connectionState === 'failed') {
-          setTotalDuration(elapsed);
-          setCallState('ended');
-          cleanUp();
+      conn.ontrack = (e) => {
+        const remote = e.streams[0] ?? new MediaStream([e.track]);
+        const el = remoteVideoRef.current;
+        if (el && el.srcObject !== remote) {
+          el.srcObject = remote;
+          el.play().catch(() => {});
         }
       };
-
-      return pc;
+      const onState = () => {
+        // Older WebKit has no connectionState; ICE state says the same thing.
+        const state = conn.connectionState ?? (
+          conn.iceConnectionState === 'completed' ? 'connected' : conn.iceConnectionState
+        );
+        if (state === 'connected') {
+          clearTimer(dropTimer);
+          if (!connectedAtRef.current) connectedAtRef.current = Date.now();
+          setWasConnected(true);
+          setCallState('connected');
+        } else if (state === 'disconnected') {
+          setCallState('reconnecting');
+          clearTimer(dropTimer);
+          dropTimer = later(() => finish('failed', 'call:end'), RECONNECT_GRACE_MS);
+        } else if (state === 'failed') {
+          finish('failed', 'call:end');
+        }
+      };
+      conn.onconnectionstatechange = onState;
+      conn.oniceconnectionstatechange = onState;
+      return conn;
     };
 
-    const startLocalStream = async () => {
+    const onIce = async (p: { matchId: string; candidate: RTCIceCandidateInit }) => {
+      if (!mine(p) || !p.candidate) return;
+      pendingIce.push(p.candidate);
+      await flushIce();
+    };
+    const onRemoteEnd = (p: { matchId: string }) => { if (mine(p)) finish('remoteHangup'); };
+
+    // Caller side
+    const onAccepted = async (p: { matchId: string }) => {
+      if (!mine(p) || isCallee || finished || accepted || !pc) return;
+      accepted = true;
+      clearTimer(ringTimer);
+      setCallState('connecting');
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-        localStreamRef.current = stream;
-        if (localVideoRef.current) localVideoRef.current.srcObject = stream;
-        return stream;
+        await pc.setLocalDescription(await pc.createOffer());
+        socket.emit('call:offer', { matchId, offer: pc.localDescription });
       } catch {
-        setErrorMsg('Camera/microphone access denied');
-        setCallState('error');
-        return null;
+        finish('failed', 'call:end');
+      }
+    };
+    const onAnswer = async (p: { matchId: string; answer: RTCSessionDescriptionInit }) => {
+      if (!mine(p) || !pc || pc.signalingState !== 'have-local-offer') return;
+      try {
+        await pc.setRemoteDescription(p.answer);
+        await flushIce();
+      } catch {
+        finish('failed', 'call:end');
+      }
+    };
+    const onDeclined = (p: { matchId: string; reason?: string }) => {
+      if (mine(p) && !isCallee) finish(p.reason === 'busy' ? 'busy' : 'declined');
+    };
+
+    // Callee side
+    const onOffer = async (p: { matchId: string; offer: RTCSessionDescriptionInit }) => {
+      if (!mine(p) || !isCallee || !pc || finished) return;
+      clearTimer(offerTimer);
+      accepted = true;
+      try {
+        await pc.setRemoteDescription(p.offer);
+        await flushIce();
+        await pc.setLocalDescription(await pc.createAnswer());
+        socket.emit('call:answer', { matchId, answer: pc.localDescription });
+      } catch {
+        finish('failed', 'call:end');
       }
     };
 
-    socket.on('connect', async () => {
-      socket.emit('join:match', matchId);
+    socket.on('call:ice', onIce);
+    socket.on('call:end', onRemoteEnd);
+    socket.on('call:cancelled', onRemoteEnd);
+    socket.on('call:accepted', onAccepted);
+    socket.on('call:answer', onAnswer);
+    socket.on('call:declined', onDeclined);
+    socket.on('call:offer', onOffer);
 
-      // Determine caller: lower userId string initiates
-      isCallerRef.current = (user.id || '') < matchId;
-
-      const stream = await startLocalStream();
-      if (!stream) return;
-
-      const pc = createPeerConnection();
-      stream.getTracks().forEach(t => pc.addTrack(t, stream));
-
-      if (isCallerRef.current) {
-        setCallState('ringing');
-        const offer = await pc.createOffer();
-        await pc.setLocalDescription(offer);
-        socket.emit('call:offer', { matchId, offer, callerId: user.id });
+    (async () => {
+      if (!navigator.mediaDevices?.getUserMedia || typeof RTCPeerConnection === 'undefined') {
+        finish('unsupported', isCallee ? 'call:decline' : undefined);
+        return;
       }
-    });
+      const icePromise = callsApi.iceServers().catch(() => FALLBACK_ICE);
+      let stream: MediaStream;
+      try {
+        stream = await getMedia();
+      } catch {
+        finish('permission', isCallee ? 'call:decline' : undefined);
+        return;
+      }
+      if (finished) { stream.getTracks().forEach((tr) => tr.stop()); return; }
+      localStreamRef.current = stream;
+      setHasVideo(stream.getVideoTracks().length > 0);
+      if (localVideoRef.current) localVideoRef.current.srcObject = stream;
+      const iceServers = await icePromise;
+      if (finished) return;
+      pc = makePeer(iceServers, stream);
 
-    socket.on('call:offer', async ({ offer }: { offer: RTCSessionDescriptionInit }) => {
-      if (isCallerRef.current) return; // we are caller, ignore
+      if (isCallee) {
+        setCallState('connecting');
+        socket.emit('call:accept', { matchId });
+        // The caller may have hung up while this screen was opening.
+        offerTimer = later(() => finish('missed'), OFFER_TIMEOUT_MS);
+        return;
+      }
+
       setCallState('ringing');
-      const stream = localStreamRef.current || await startLocalStream();
-      if (!stream) return;
-      const pc = pcRef.current || createPeerConnection();
-      if (!pcRef.current) stream.getTracks().forEach(t => pc.addTrack(t, stream));
-      await pc.setRemoteDescription(offer);
-      const answer = await pc.createAnswer();
-      await pc.setLocalDescription(answer);
-      socket.emit('call:answer', { matchId, answer });
-    });
-
-    socket.on('call:answer', async ({ answer }: { answer: RTCSessionDescriptionInit }) => {
-      await pcRef.current?.setRemoteDescription(answer);
-    });
-
-    socket.on('call:ice', async ({ candidate }: { candidate: RTCIceCandidateInit }) => {
-      try { await pcRef.current?.addIceCandidate(candidate); } catch { /* ignore */ }
-    });
-
-    socket.on('call:end', () => {
-      setTotalDuration(elapsed);
-      setCallState('ended');
-      cleanUp();
-    });
+      try {
+        const ack = await socket.timeout(10_000).emitWithAck('call:invite', { matchId }) as { ok: boolean; reason?: string };
+        if (!ack?.ok) {
+          finish(ack?.reason === 'unavailable' ? 'unavailable' : 'failed');
+          return;
+        }
+      } catch {
+        finish('failed');
+        return;
+      }
+      if (!accepted) ringTimer = later(() => finish('noAnswer', 'call:cancel'), RING_TIMEOUT_MS);
+    })();
 
     return () => {
-      cleanUp();
+      socket.off('call:ice', onIce);
+      socket.off('call:end', onRemoteEnd);
+      socket.off('call:cancelled', onRemoteEnd);
+      socket.off('call:accepted', onAccepted);
+      socket.off('call:answer', onAnswer);
+      socket.off('call:declined', onDeclined);
+      socket.off('call:offer', onOffer);
+      // Leaving the screen any other way (back gesture) still hangs up.
+      if (!finished) hangUpRef.current();
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [matchId, user?.id]);
+  }, [matchId, user?.id, isCallee]);
 
   const toggleMute = () => {
-    localStreamRef.current?.getAudioTracks().forEach(t => { t.enabled = !t.enabled; });
-    setIsMuted(m => !m);
+    localStreamRef.current?.getAudioTracks().forEach((tr) => { tr.enabled = !tr.enabled; });
+    setIsMuted((m) => !m);
   };
 
   const toggleCamera = () => {
-    localStreamRef.current?.getVideoTracks().forEach(t => { t.enabled = !t.enabled; });
-    setIsCameraOff(c => !c);
+    localStreamRef.current?.getVideoTracks().forEach((tr) => { tr.enabled = !tr.enabled; });
+    setIsCameraOff((c) => !c);
   };
 
-  const statusText = callState === 'connecting' ? t('video.connecting')
-    : callState === 'ringing' ? t('video.ringing')
-    : callState === 'connected' ? t('video.inCall')
-    : callState === 'error' ? errorMsg
-    : t('video.callEnded');
+  const live = callState === 'connected' || callState === 'reconnecting';
+  const statusText =
+    callState === 'ringing' ? t('video.calling')
+      : callState === 'reconnecting' ? t('video.reconnecting')
+        : t('video.connecting');
+
+  const endText: Record<EndReason, string> = {
+    hangup: t('video.callEnded'),
+    remoteHangup: t('video.callEnded'),
+    noAnswer: t('video.noAnswer'),
+    declined: t('video.declined'),
+    busy: t('video.declined'),
+    unavailable: t('video.unavailable'),
+    missed: t('video.callEnded'),
+    failed: t('video.connectionFailed'),
+    permission: t('video.permissionDenied'),
+    unsupported: t('video.unsupported'),
+  };
+  const isProblem = endReason === 'failed' || endReason === 'permission' || endReason === 'unsupported' || endReason === 'unavailable';
 
   return (
     <div className="min-h-[100dvh] w-full flex justify-center" style={{ backgroundColor: '#000' }}>
-      <div className="w-full max-w-[430px] relative flex flex-col" style={{ backgroundColor: '#000' }}>
+      <div className="w-full max-w-[430px] min-h-[100dvh] relative flex flex-col overflow-hidden" style={{ backgroundColor: '#000' }}>
 
         {/* Remote video (full screen) */}
         <video
@@ -238,24 +341,26 @@ export default function VideoCall() {
           autoPlay
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ display: callState === 'connected' ? 'block' : 'none' }}
+          style={{ display: live ? 'block' : 'none' }}
         />
 
-        {/* Connecting/ringing overlay */}
-        {callState !== 'connected' && callState !== 'ended' && (
+        {/* Ringing / connecting */}
+        {!live && callState !== 'ended' && (
           <div className="flex-1 flex flex-col items-center justify-center relative z-10"
             style={{ background: 'radial-gradient(circle at 50% 40%, rgba(187,131,201,0.2) 0%, transparent 60%)' }}>
-            <div className="w-28 h-28 rounded-full flex items-center justify-center mb-4"
-              style={{ backgroundColor: 'rgba(187,131,201,0.25)', border: '2px solid rgba(187,131,201,0.4)' }}>
-              <span className="text-5xl font-bold text-white" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                {matchName.charAt(0).toUpperCase() || '?'}
-              </span>
-            </div>
+            <motion.div
+              className="w-28 h-28 rounded-full overflow-hidden mb-4"
+              style={{ border: '2px solid rgba(187,131,201,0.5)' }}
+              animate={callState === 'ringing' ? { scale: [1, 1.06, 1] } : { scale: 1 }}
+              transition={{ duration: 1.4, repeat: callState === 'ringing' ? Infinity : 0, ease: 'easeInOut' }}
+            >
+              <UserAvatar src={partner.photo} name={partner.name} className="text-5xl" />
+            </motion.div>
             <h2 className="text-2xl font-semibold text-white mb-2" style={{ fontFamily: "'Outfit', sans-serif" }}>
-              {matchName || t('video.connecting')}
+              {partner.name}
             </h2>
             <AnimatePresence mode="wait">
-              <motion.p key={callState}
+              <motion.p key={statusText}
                 initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }}
                 className="text-sm" style={{ color: 'rgba(255,255,255,0.65)', fontFamily: "'Outfit', sans-serif" }}>
                 {statusText}
@@ -264,77 +369,83 @@ export default function VideoCall() {
           </div>
         )}
 
-        {/* Timer while connected */}
-        {callState === 'connected' && (
+        {/* Name, timer and reconnecting state while in the call */}
+        {live && (
           <div className="absolute top-12 left-0 right-0 flex justify-center z-20">
             <span className="text-white text-sm font-medium tabular-nums px-3 py-1 rounded-full"
-              style={{ backgroundColor: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(8px)', fontFamily: "ui-monospace, monospace" }}>
-              {matchName} · {formatTimer(elapsed)}
+              style={{ backgroundColor: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(8px)', fontFamily: 'ui-monospace, monospace' }}>
+              {partner.name} · {callState === 'reconnecting' ? t('video.reconnecting') : formatTimer(elapsed)}
             </span>
           </div>
         )}
 
-        {/* Local video PIP */}
-        <div className="absolute z-20 rounded-2xl overflow-hidden"
-          style={{ width: 100, height: 140, bottom: 100, right: 16, border: '2px solid rgba(255,255,255,0.8)', boxShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
-          {isCameraOff ? (
-            <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#1a1a1a' }}>
-              <CameraOff size={24} style={{ color: 'rgba(255,255,255,0.5)' }} />
-            </div>
-          ) : (
-            <video ref={localVideoRef} autoPlay playsInline muted className="w-full h-full object-cover" />
-          )}
-        </div>
+        {/* Own camera. The video element stays mounted: it used to be removed
+            when the camera was switched off, and came back black. */}
+        {callState !== 'ended' && (
+          <div className="absolute z-20 rounded-2xl overflow-hidden"
+            style={{ width: 100, height: 140, bottom: 'calc(120px + env(safe-area-inset-bottom))', right: 16, border: '2px solid rgba(255,255,255,0.8)', boxShadow: '0 4px 20px rgba(0,0,0,0.3)', backgroundColor: '#1a1a1a' }}>
+            <video ref={localVideoRef} autoPlay playsInline muted className="w-full h-full object-cover" style={{ transform: 'scaleX(-1)' }} />
+            {(isCameraOff || !hasVideo) && (
+              <div className="absolute inset-0 flex items-center justify-center" style={{ backgroundColor: '#1a1a1a' }}>
+                <CameraOff size={24} style={{ color: 'rgba(255,255,255,0.5)' }} />
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Controls */}
-        {callState !== 'ended' && callState !== 'error' && (
-          <div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-center gap-6 pb-8"
+        {callState !== 'ended' && (
+          <div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-center gap-6"
             style={{ paddingBottom: 'calc(32px + env(safe-area-inset-bottom))' }}>
             <motion.button whileTap={{ scale: 0.9 }} transition={{ duration: 0.12 }} onClick={toggleMute}
+              aria-label={isMuted ? t('video.unmute') : t('video.mute')}
               className="rounded-full flex items-center justify-center"
               style={{ width: 64, height: 64, backgroundColor: isMuted ? '#E86A6A' : '#FFF', boxShadow: '0 4px 20px rgba(0,0,0,0.25)' }}>
               {isMuted ? <MicOff size={26} className="text-white" /> : <Mic size={26} className="text-[var(--charcoal)]" />}
             </motion.button>
-            <motion.button whileTap={{ scale: 0.9 }} transition={{ duration: 0.12 }} onClick={handleEndCall}
+            <motion.button whileTap={{ scale: 0.9 }} transition={{ duration: 0.12 }} onClick={() => hangUpRef.current()}
+              aria-label={t('video.hangUp')}
               className="rounded-full flex items-center justify-center"
               style={{ width: 72, height: 72, backgroundColor: '#E86A6A', boxShadow: '0 4px 24px rgba(232,106,106,0.4)' }}>
               <PhoneOff size={30} className="text-white" />
             </motion.button>
             <motion.button whileTap={{ scale: 0.9 }} transition={{ duration: 0.12 }} onClick={toggleCamera}
+              disabled={!hasVideo}
+              aria-label={isCameraOff ? t('video.cameraOn') : t('video.cameraOff')}
               className="rounded-full flex items-center justify-center"
-              style={{ width: 64, height: 64, backgroundColor: isCameraOff ? '#E86A6A' : '#FFF', boxShadow: '0 4px 20px rgba(0,0,0,0.25)' }}>
-              {isCameraOff ? <VideoOff size={26} className="text-white" /> : <VideoIcon size={26} className="text-[var(--charcoal)]" />}
+              style={{ width: 64, height: 64, backgroundColor: isCameraOff || !hasVideo ? '#E86A6A' : '#FFF', opacity: hasVideo ? 1 : 0.6, boxShadow: '0 4px 20px rgba(0,0,0,0.25)' }}>
+              {isCameraOff || !hasVideo ? <VideoOff size={26} className="text-white" /> : <VideoIcon size={26} className="text-[var(--charcoal)]" />}
             </motion.button>
           </div>
         )}
 
-        {/* Call ended overlay */}
+        {/* Call ended */}
         <AnimatePresence>
-          {(callState === 'ended' || callState === 'error') && (
+          {callState === 'ended' && endReason && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               className="absolute inset-0 z-30 flex flex-col items-center justify-center px-8"
               style={{ backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(8px)' }}>
               <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
-                className="flex flex-col items-center gap-5">
+                className="flex flex-col items-center gap-5 text-center">
                 <div className="w-20 h-20 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: callState === 'error' ? '#F0B84A' : '#E86A6A' }}>
+                  style={{ backgroundColor: isProblem ? '#F0B84A' : '#E86A6A' }}>
                   <PhoneOff size={32} className="text-white" />
                 </div>
                 <h3 className="text-2xl font-semibold text-white" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                  {callState === 'error' ? t('video.callFailed') : t('video.callEnded')}
+                  {isProblem ? t('video.callFailed') : t('video.callEnded')}
                 </h3>
-                {callState === 'ended' && (
-                  <p className="text-sm" style={{ color: 'rgba(255,255,255,0.6)', fontFamily: "ui-monospace, monospace" }}>
-                    {t('video.duration', { time: formatTimer(totalDuration || elapsed) })}
+                {wasConnected ? (
+                  <p className="text-sm" style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'ui-monospace, monospace' }}>
+                    {t('video.duration', { time: formatTimer(elapsed) })}
+                  </p>
+                ) : null}
+                {endReason !== 'hangup' && endReason !== 'remoteHangup' && (
+                  <p className="text-sm" style={{ color: 'rgba(255,255,255,0.7)', fontFamily: "'Outfit', sans-serif" }}>
+                    {endText[endReason]}
                   </p>
                 )}
-                {callState === 'error' && (
-                  <p className="text-sm text-center" style={{ color: 'rgba(255,255,255,0.6)', fontFamily: "'Outfit', sans-serif" }}>
-                    {errorMsg}
-                  </p>
-                )}
-                <motion.button whileTap={{ scale: 0.97 }} onClick={() => navigate(`/chat/${matchId}`)}
+                <motion.button whileTap={{ scale: 0.97 }} onClick={() => navigate(`/chat/${matchId}`, { replace: true })}
                   className="mt-4 px-8 py-3 rounded-full text-base font-semibold"
                   style={{ backgroundColor: '#BB83C9', color: '#FFF', fontFamily: "'Outfit', sans-serif", boxShadow: '0 4px 16px rgba(187,131,201,0.4)' }}>
                   {t('video.backToChat')}

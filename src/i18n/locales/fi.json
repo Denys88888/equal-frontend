@@ -164,7 +164,8 @@
     "blockFailed": "Estäminen epäonnistui – yritä uudelleen",
     "historyLoadFailed": "Keskustelua ei voitu ladata.",
     "reportFailed": "Ilmoitusta ei voitu lähettää – yritä uudelleen",
-    "sendFailed": "Viestiä ei voitu lähettää"
+    "sendFailed": "Viestiä ei voitu lähettää",
+    "voiceUnavailable": "Toisto ei onnistu"
   },
   "profile": {
     "edit": "Muokkaa profiilia",
@@ -451,7 +452,23 @@
     "callEnded": "Puhelu päättyi",
     "callFailed": "Puhelu epäonnistui",
     "backToChat": "Takaisin keskusteluun",
-    "duration": "Kesto: {{time}}"
+    "duration": "Kesto: {{time}}",
+    "calling": "Soitetaan…",
+    "incoming": "Saapuva videopuhelu",
+    "accept": "Vastaa",
+    "decline": "Hylkää",
+    "noAnswer": "Ei vastausta",
+    "declined": "Puhelu hylättiin",
+    "unavailable": "Tämä henkilö ei voi vastaanottaa puheluita juuri nyt",
+    "permissionDenied": "Salli kameran ja mikrofonin käyttö videopuheluita varten",
+    "unsupported": "Videopuhelut eivät toimi tässä selaimessa",
+    "connectionFailed": "Yhteyden muodostaminen epäonnistui. Tarkista internetyhteys ja yritä uudelleen.",
+    "reconnecting": "Yhdistetään uudelleen…",
+    "mute": "Mykistä",
+    "unmute": "Poista mykistys",
+    "hangUp": "Lopeta puhelu",
+    "cameraOff": "Sammuta kamera",
+    "cameraOn": "Käynnistä kamera"
   },
   "report": {
     "title": "Ilmianna {{name}}",

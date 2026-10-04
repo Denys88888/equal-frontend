@@ -166,7 +166,8 @@
     "blockFailed": "Impossible de bloquer — réessaie",
     "historyLoadFailed": "Impossible de charger cette conversation.",
     "reportFailed": "Impossible d'envoyer le signalement — réessaie",
-    "sendFailed": "Impossible d'envoyer le message"
+    "sendFailed": "Impossible d'envoyer le message",
+    "voiceUnavailable": "Lecture impossible"
   },
   "profile": {
     "edit": "Modifier le Profil",
@@ -457,7 +458,23 @@
     "callEnded": "Appel terminé",
     "callFailed": "Appel échoué",
     "backToChat": "Retour au chat",
-    "duration": "Durée : {{time}}"
+    "duration": "Durée : {{time}}",
+    "calling": "Appel en cours…",
+    "incoming": "Appel vidéo entrant",
+    "accept": "Accepter",
+    "decline": "Refuser",
+    "noAnswer": "Pas de réponse",
+    "declined": "Appel refusé",
+    "unavailable": "Cette personne ne peut pas prendre d'appels pour le moment",
+    "permissionDenied": "Autorisez l'accès à la caméra et au micro pour passer des appels vidéo",
+    "unsupported": "Les appels vidéo ne sont pas pris en charge par ce navigateur",
+    "connectionFailed": "Connexion impossible. Vérifiez votre connexion et réessayez.",
+    "reconnecting": "Reconnexion…",
+    "mute": "Couper le micro",
+    "unmute": "Réactiver le micro",
+    "hangUp": "Raccrocher",
+    "cameraOff": "Désactiver la caméra",
+    "cameraOn": "Activer la caméra"
   },
   "report": {
     "title": "Signaler {{name}}",

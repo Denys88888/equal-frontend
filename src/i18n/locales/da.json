@@ -164,7 +164,8 @@
     "blockFailed": "Kunne ikke blokere – prøv igen",
     "historyLoadFailed": "Samtalen kunne ikke indlæses.",
     "reportFailed": "Anmeldelsen kunne ikke sendes – prøv igen",
-    "sendFailed": "Beskeden kunne ikke sendes"
+    "sendFailed": "Beskeden kunne ikke sendes",
+    "voiceUnavailable": "Kan ikke afspilles"
   },
   "profile": {
     "edit": "Rediger profil",
@@ -451,7 +452,23 @@
     "callEnded": "Opkaldet er afsluttet",
     "callFailed": "Opkaldet mislykkedes",
     "backToChat": "Tilbage til chatten",
-    "duration": "Varighed: {{time}}"
+    "duration": "Varighed: {{time}}",
+    "calling": "Ringer op…",
+    "incoming": "Indgående videoopkald",
+    "accept": "Besvar",
+    "decline": "Afvis",
+    "noAnswer": "Intet svar",
+    "declined": "Opkaldet blev afvist",
+    "unavailable": "Denne person kan ikke tage imod opkald lige nu",
+    "permissionDenied": "Giv adgang til kamera og mikrofon for at foretage videoopkald",
+    "unsupported": "Videoopkald understøttes ikke i denne browser",
+    "connectionFailed": "Kunne ikke forbinde. Tjek din internetforbindelse, og prøv igen.",
+    "reconnecting": "Genopretter forbindelse…",
+    "mute": "Slå lyd fra",
+    "unmute": "Slå lyd til",
+    "hangUp": "Afslut opkald",
+    "cameraOff": "Slå kamera fra",
+    "cameraOn": "Slå kamera til"
   },
   "report": {
     "title": "Anmeld {{name}}",

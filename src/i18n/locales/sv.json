@@ -164,7 +164,8 @@
     "blockFailed": "Det gick inte att blockera – försök igen",
     "historyLoadFailed": "Det gick inte att läsa in konversationen.",
     "reportFailed": "Det gick inte att skicka anmälan – försök igen",
-    "sendFailed": "Det gick inte att skicka meddelandet"
+    "sendFailed": "Det gick inte att skicka meddelandet",
+    "voiceUnavailable": "Kan inte spelas upp"
   },
   "profile": {
     "edit": "Redigera profil",
@@ -451,7 +452,23 @@
     "callEnded": "Samtalet avslutat",
     "callFailed": "Samtalet misslyckades",
     "backToChat": "Tillbaka till chatten",
-    "duration": "Längd: {{time}}"
+    "duration": "Längd: {{time}}",
+    "calling": "Ringer…",
+    "incoming": "Inkommande videosamtal",
+    "accept": "Svara",
+    "decline": "Avvisa",
+    "noAnswer": "Inget svar",
+    "declined": "Samtalet avvisades",
+    "unavailable": "Den här personen kan inte ta emot samtal just nu",
+    "permissionDenied": "Ge åtkomst till kamera och mikrofon för att videosamtala",
+    "unsupported": "Videosamtal stöds inte i den här webbläsaren",
+    "connectionFailed": "Kunde inte ansluta. Kontrollera internet och försök igen.",
+    "reconnecting": "Återansluter…",
+    "mute": "Stäng av mikrofonen",
+    "unmute": "Slå på mikrofonen",
+    "hangUp": "Avsluta samtalet",
+    "cameraOff": "Stäng av kameran",
+    "cameraOn": "Slå på kameran"
   },
   "report": {
     "title": "Anmäl {{name}}",

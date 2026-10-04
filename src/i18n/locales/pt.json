@@ -166,7 +166,8 @@
     "blockFailed": "Não foi possível bloquear — tente novamente",
     "historyLoadFailed": "Não foi possível carregar esta conversa.",
     "reportFailed": "Não foi possível enviar a denúncia — tente novamente",
-    "sendFailed": "Não foi possível enviar a mensagem"
+    "sendFailed": "Não foi possível enviar a mensagem",
+    "voiceUnavailable": "Não é possível reproduzir"
   },
   "profile": {
     "edit": "Editar Perfil",
@@ -457,7 +458,23 @@
     "callEnded": "Chamada terminada",
     "callFailed": "Chamada falhada",
     "backToChat": "Voltar ao chat",
-    "duration": "Duração: {{time}}"
+    "duration": "Duração: {{time}}",
+    "calling": "Chamando…",
+    "incoming": "Chamada de vídeo recebida",
+    "accept": "Atender",
+    "decline": "Recusar",
+    "noAnswer": "Sem resposta",
+    "declined": "Chamada recusada",
+    "unavailable": "Esta pessoa não pode receber chamadas agora",
+    "permissionDenied": "Permita o acesso à câmera e ao microfone para fazer chamadas de vídeo",
+    "unsupported": "Chamadas de vídeo não são compatíveis com este navegador",
+    "connectionFailed": "Não foi possível conectar. Verifique sua internet e tente novamente.",
+    "reconnecting": "Reconectando…",
+    "mute": "Silenciar",
+    "unmute": "Ativar som",
+    "hangUp": "Encerrar chamada",
+    "cameraOff": "Desligar câmera",
+    "cameraOn": "Ligar câmera"
   },
   "report": {
     "title": "Reportar {{name}}",
