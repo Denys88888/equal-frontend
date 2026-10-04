@@ -295,8 +295,8 @@
     "seeking_everyone": "Sve",
     "saveFailed": "Spremanje profila nije uspjelo — pokušaj ponovno",
     "title6": "Tvoj glas",
-    "sub6": "10-sekundno predstavljanje. Obavezno za sudjelovanje u Dnevnom podudaranju.",
-    "photoTipsAlt": "Savjeti za fotografije"
+    "photoTipsAlt": "Savjeti za fotografije",
+    "sub6Optional": "Pozdrav od 10 sekundi. Neobavezno — preskoči i dodaj kasnije u profilu."
   },
   "common": {
     "cancel": "Odustani",
@@ -803,7 +803,6 @@
     "accept": "Prihvati",
     "nextCard": "Sljedeća kartica",
     "voiceIntroTitle": "Glasovno predstavljanje",
-    "voiceIntroRequired": "Obavezno — profili bez glasovnog predstavljanja se ne podudaraju",
     "record": "Snimi 10 s",
     "recording": "Snimanje…",
     "playback": "Reproduciraj",
@@ -855,13 +854,12 @@
       "q29": "Što ljudi obično krivo shvate o tebi?",
       "q30": "Kad bi mogao/la savladati jednu vještinu preko noći, koja bi to bila?"
     },
-    "voiceGate": "Snimi glasovno predstavljanje da bi sudjelovao/la u Dnevnom podudaranju — profili bez njega se ne podudaraju.",
     "tooFast": "Prebrzo — pričekaj 5 sekundi.",
     "extraFailed": "Trenutno nitko nije dostupan — pokušaj kasnije",
-    "extraNeedsVoice": "Najprije snimi glasovni uvod — Daily Match spaja samo profile koji ga imaju.",
     "extraSaved": "Plaćanje je sačuvano — preuzmi dodatno podudaranje kasnije bez ponovnog plaćanja.",
     "claimExtra": "Preuzmi plaćeno dodatno podudaranje",
-    "arrivesToday": "Tvoje novo podudaranje stiže danas u {{time}}"
+    "arrivesToday": "Tvoje novo podudaranje stiže danas u {{time}}",
+    "voiceIntroOptional": "Neobavezno — pozdrav od 10 sekundi za tvoja podudaranja"
   },
   "truthOrDare": {
     "truth": {

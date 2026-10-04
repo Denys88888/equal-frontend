@@ -293,8 +293,8 @@
     "seeking_everyone": "Alle",
     "saveFailed": "Dein Profil konnte nicht gespeichert werden — bitte versuche es erneut",
     "title6": "Deine Stimme",
-    "sub6": "Ein 10-Sekunden-Intro. Für Daily Match erforderlich.",
-    "photoTipsAlt": "Foto-Tipps"
+    "photoTipsAlt": "Foto-Tipps",
+    "sub6Optional": "Ein 10-Sekunden-Hallo. Optional – überspringen und später im Profil hinzufügen."
   },
   "common": {
     "cancel": "Abbrechen",
@@ -796,7 +796,6 @@
     "accept": "Annehmen",
     "nextCard": "Nächste Karte",
     "voiceIntroTitle": "Sprach-Intro",
-    "voiceIntroRequired": "Erforderlich – Profile ohne Sprach-Intro werden nicht gematcht",
     "record": "10 s aufnehmen",
     "recording": "Aufnahme läuft…",
     "playback": "Abspielen",
@@ -848,13 +847,12 @@
       "q29": "Was verstehen Leute an dir meistens falsch?",
       "q30": "Wenn du über Nacht eine Fähigkeit meistern könntest, welche wäre es?"
     },
-    "voiceGate": "Nimm ein Voice-Intro auf, um bei Daily Match mitzumachen — Profile ohne werden nicht gematcht.",
     "tooFast": "Zu schnell — warte 5 Sekunden.",
     "extraFailed": "Gerade ist niemand verfügbar – versuche es später erneut",
-    "extraNeedsVoice": "Nimm zuerst ein Sprach-Intro auf – Daily Match verbindet nur Profile mit Intro.",
     "extraSaved": "Deine Zahlung ist gespeichert – hol dir das Extra-Match später, ohne erneut zu zahlen.",
     "claimExtra": "Bezahltes Extra-Match abholen",
-    "arrivesToday": "Dein neues Match kommt heute um {{time}}"
+    "arrivesToday": "Dein neues Match kommt heute um {{time}}",
+    "voiceIntroOptional": "Optional – ein 10-Sekunden-Hallo, das deine Matches hören können"
   },
   "truthOrDare": {
     "truth": {

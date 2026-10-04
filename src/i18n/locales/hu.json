@@ -293,8 +293,8 @@
     "seeking_everyone": "Mindenkit",
     "saveFailed": "A profilod mentése nem sikerült — próbáld újra",
     "title6": "A hangod",
-    "sub6": "Egy 10 másodperces bemutatkozás. Szükséges a Napi találathoz való csatlakozáshoz.",
-    "photoTipsAlt": "Fotótippek"
+    "photoTipsAlt": "Fotótippek",
+    "sub6Optional": "10 másodperces köszönés. Nem kötelező – hagyd ki, és add hozzá később a profilodban."
   },
   "common": {
     "cancel": "Mégse",
@@ -796,7 +796,6 @@
     "accept": "Elfogadás",
     "nextCard": "Következő kártya",
     "voiceIntroTitle": "Hangos bemutatkozás",
-    "voiceIntroRequired": "Kötelező — a hangos bemutatkozás nélküli profilok nem kerülnek párosításra",
     "record": "10 mp felvétele",
     "recording": "Felvétel…",
     "playback": "Lejátszás",
@@ -848,13 +847,12 @@
       "q29": "Mit értenek félre az emberek rólad?",
       "q30": "Ha egyetlen éjszaka alatt elsajátíthatnál egy készséget, melyik lenne az?"
     },
-    "voiceGate": "Vegyél fel egy hangos bemutatkozást, hogy csatlakozhass a Napi találathoz — a nélküle lévő profilok nem kerülnek párosításra.",
     "tooFast": "Túl gyors — várj 5 másodpercet.",
     "extraFailed": "Most senki sem elérhető – próbáld később",
-    "extraNeedsVoice": "Előbb vegyél fel egy hangos bemutatkozást – a Daily Match csak az ilyen profilokat párosítja.",
     "extraSaved": "A fizetésed megmaradt – az extra találatot később, újabb fizetés nélkül is megkaphatod.",
     "claimExtra": "Kifizetett extra találat átvétele",
-    "arrivesToday": "Az új találatod ma {{time}}-kor érkezik"
+    "arrivesToday": "Az új találatod ma {{time}}-kor érkezik",
+    "voiceIntroOptional": "Nem kötelező – 10 másodperces köszönés a találataidnak"
   },
   "truthOrDare": {
     "truth": {

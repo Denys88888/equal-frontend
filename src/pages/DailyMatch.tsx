@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import {
   MessageCircle, SkipForward, Play, ShieldCheck, Star, Clock,
-  Send, Gamepad2, HeartCrack, Heart, Sparkles, Mic,
+  Send, Gamepad2, HeartCrack, Heart, Sparkles,
 } from 'lucide-react';
 import Layout from '@/components/Layout';
 import SkeletonLoader from '@/components/SkeletonLoader';
@@ -240,9 +240,7 @@ export default function DailyMatchPage() {
       setExtraStatus(status);
       if (!status.hasCredit) {
         if (!status.available) {
-          showToast('info', status.reason === 'voice_intro'
-            ? t('dailyMatch.extraNeedsVoice')
-            : t('dailyMatch.extraFailed', { defaultValue: 'No one available right now — try again later' }));
+          showToast('info', t('dailyMatch.extraFailed', { defaultValue: 'No one available right now — try again later' }));
           return;
         }
         // The Pi payment must clear before the server hands out a match.
@@ -319,31 +317,14 @@ export default function DailyMatchPage() {
   return (
     <Layout title={t('dailyMatch.title', { defaultValue: 'Daily Match' })} showNotifications>
       <div className="flex-1 overflow-y-auto px-5 pt-4 pb-6 space-y-4">
-        {/* A profile with no voice intro is excluded from matching server-side.
-            Without saying so here, a new user would just see "no match yet"
-            forever with nothing indicating why or what to do about it. */}
+        {/* Optional: offered to people who haven't recorded one yet. */}
         {hasVoiceIntro === false && (
-          <>
-            <div
-              className="rounded-2xl p-4 flex items-start gap-3"
-              style={{ backgroundColor: 'rgba(240,184,74,0.12)', border: '1.5px solid rgba(240,184,74,0.35)' }}
-            >
-              <Mic size={18} className="text-[#B8860B] flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-[var(--charcoal)]" style={{ lineHeight: 1.5 }}>
-                {t('dailyMatch.voiceGate', {
-                  defaultValue: 'Record a voice intro to join Daily Match — profiles without one are not matched.',
-                })}
-              </p>
-            </div>
-            <VoiceIntroRecorder onSaved={() => { setHasVoiceIntro(true); load(); }} />
-          </>
+          <VoiceIntroRecorder onSaved={() => { setHasVoiceIntro(true); load(); }} />
         )}
 
         <VibeCheck current={vibe} matchTime={matchTime} onSelect={handleVibe} saving={savingVibe} />
 
-        {/* Without a voice intro there is no match to wait for or buy — the
-            banner and recorder above already say what to do. */}
-        {isTerminal && hasVoiceIntro !== false && (
+        {isTerminal && (
           <div
             className="rounded-2xl p-6 text-center"
             style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}

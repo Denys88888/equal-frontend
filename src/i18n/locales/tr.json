@@ -293,8 +293,8 @@
     "seeking_everyone": "Herkes",
     "saveFailed": "Profilin kaydedilemedi — lütfen tekrar dene",
     "title6": "Sesin",
-    "sub6": "10 saniyelik bir tanıtım. Günlük Eşleşme'ye katılmak için zorunlu.",
-    "photoTipsAlt": "Fotoğraf ipuçları"
+    "photoTipsAlt": "Fotoğraf ipuçları",
+    "sub6Optional": "10 saniyelik bir merhaba. İsteğe bağlı — atla ve sonra profiline ekle."
   },
   "common": {
     "cancel": "İptal",
@@ -796,7 +796,6 @@
     "accept": "Kabul et",
     "nextCard": "Sonraki kart",
     "voiceIntroTitle": "Sesli tanıtım",
-    "voiceIntroRequired": "Zorunlu — sesli tanıtımı olmayan profiller eşleştirilmez",
     "record": "10 sn kaydet",
     "recording": "Kaydediliyor…",
     "playback": "Oynat",
@@ -848,13 +847,12 @@
       "q29": "İnsanlar seninle ilgili genelde neyi yanlış anlıyor?",
       "q30": "Bir gecede bir beceriyi ustalıkla öğrenebilseydin hangisi olurdu?"
     },
-    "voiceGate": "Günlük Eşleşme'ye katılmak için sesli tanıtım kaydet — tanıtımı olmayan profiller eşleştirilmez.",
     "tooFast": "Çok hızlı — 5 saniye bekle.",
     "extraFailed": "Şu an kimse müsait değil — daha sonra tekrar deneyin",
-    "extraNeedsVoice": "Önce bir sesli tanıtım kaydet — Daily Match yalnızca tanıtımı olan profilleri eşleştirir.",
     "extraSaved": "Ödemen kaydedildi — ekstra eşleşmeyi daha sonra tekrar ödemeden al.",
     "claimExtra": "Ödenmiş ekstra eşleşmeni al",
-    "arrivesToday": "Yeni eşleşmen bugün {{time}} saatinde geliyor"
+    "arrivesToday": "Yeni eşleşmen bugün {{time}} saatinde geliyor",
+    "voiceIntroOptional": "İsteğe bağlı — eşleşmelerinin dinleyebileceği 10 saniyelik bir merhaba"
   },
   "truthOrDare": {
     "truth": {

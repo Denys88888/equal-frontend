@@ -293,8 +293,8 @@
     "seeking_everyone": "Lahat",
     "saveFailed": "Hindi na-save ang profile mo — subukan muli",
     "title6": "Boses mo",
-    "sub6": "10 segundong intro. Kailangan para sumali sa Daily Match.",
-    "photoTipsAlt": "Mga tip sa larawan"
+    "photoTipsAlt": "Mga tip sa larawan",
+    "sub6Optional": "10-segundong pagbati. Opsyonal — laktawan at idagdag mamaya sa profile mo."
   },
   "common": {
     "cancel": "Kanselahin",
@@ -796,7 +796,6 @@
     "accept": "Tanggapin",
     "nextCard": "Susunod na card",
     "voiceIntroTitle": "Voice Intro",
-    "voiceIntroRequired": "Kinakailangan — hindi tinutugma ang mga profile na walang voice intro",
     "record": "I-record ng 10s",
     "recording": "Nagre-record…",
     "playback": "I-play",
@@ -848,13 +847,12 @@
       "q29": "Ano ang madalas na maling naiintindihan ng tao tungkol sa'yo?",
       "q30": "Kung pwede kang maging master sa isang kasanayan sa isang gabi, ano ito?"
     },
-    "voiceGate": "Mag-record ng voice intro para sumali sa Daily Match — hindi tinutugma ang mga profile na wala nito.",
     "tooFast": "Napakabilis — maghintay ng 5 segundo.",
     "extraFailed": "Walang available ngayon — subukang muli mamaya",
-    "extraNeedsVoice": "Mag-record muna ng voice intro — ipinapares lang ng Daily Match ang mga profile na mayroon nito.",
     "extraSaved": "Nai-save ang iyong bayad — kunin ang extra na match mamaya nang hindi na muling nagbabayad.",
     "claimExtra": "Kunin ang bayad mong extra na match",
-    "arrivesToday": "Darating ang bagong match mo ngayon ng {{time}}"
+    "arrivesToday": "Darating ang bagong match mo ngayon ng {{time}}",
+    "voiceIntroOptional": "Opsyonal — 10-segundong pagbati na maririnig ng mga match mo"
   },
   "truthOrDare": {
     "truth": {

@@ -291,8 +291,8 @@
     "seeking_everyone": "Tất cả mọi người",
     "saveFailed": "Không lưu được hồ sơ — vui lòng thử lại",
     "title6": "Giọng nói của bạn",
-    "sub6": "Lời giới thiệu 10 giây. Bắt buộc để tham gia Daily Match.",
-    "photoTipsAlt": "Mẹo chụp ảnh"
+    "photoTipsAlt": "Mẹo chụp ảnh",
+    "sub6Optional": "Lời chào 10 giây. Không bắt buộc — bỏ qua và thêm sau trong hồ sơ."
   },
   "common": {
     "cancel": "Hủy",
@@ -789,7 +789,6 @@
     "accept": "Chấp nhận",
     "nextCard": "Thẻ tiếp theo",
     "voiceIntroTitle": "Lời giới thiệu bằng giọng nói",
-    "voiceIntroRequired": "Bắt buộc — hồ sơ không có lời giới thiệu bằng giọng nói sẽ không được ghép đôi",
     "record": "Ghi 10 giây",
     "recording": "Đang ghi…",
     "playback": "Phát",
@@ -841,13 +840,12 @@
       "q29": "Mọi người thường hiểu sai điều gì về bạn?",
       "q30": "Kỹ năng nào bạn muốn thành thạo sau một đêm?"
     },
-    "voiceGate": "Ghi âm lời giới thiệu để tham gia Daily Match — hồ sơ không có sẽ không được ghép đôi.",
     "tooFast": "Quá nhanh — đợi 5 giây.",
     "extraFailed": "Hiện không có ai — hãy thử lại sau",
-    "extraNeedsVoice": "Hãy ghi âm phần giới thiệu trước — Daily Match chỉ ghép những hồ sơ có phần này.",
     "extraSaved": "Khoản thanh toán đã được lưu — hãy nhận ghép đôi thêm sau mà không phải trả lại.",
     "claimExtra": "Nhận ghép đôi thêm đã thanh toán",
-    "arrivesToday": "Ghép đôi mới của bạn sẽ đến vào {{time}} hôm nay"
+    "arrivesToday": "Ghép đôi mới của bạn sẽ đến vào {{time}} hôm nay",
+    "voiceIntroOptional": "Không bắt buộc — lời chào 10 giây để người ghép đôi nghe"
   },
   "truthOrDare": {
     "truth": {

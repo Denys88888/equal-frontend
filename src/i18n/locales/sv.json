@@ -293,8 +293,8 @@
     "seeking_everyone": "Alla",
     "saveFailed": "Kunde inte spara din profil — försök igen",
     "title6": "Din röst",
-    "sub6": "En presentation på 10 sekunder. Krävs för att delta i Dagens matchning.",
-    "photoTipsAlt": "Fototips"
+    "photoTipsAlt": "Fototips",
+    "sub6Optional": "Ett 10-sekunders hej. Valfritt – hoppa över och lägg till senare i profilen."
   },
   "common": {
     "cancel": "Avbryt",
@@ -796,7 +796,6 @@
     "accept": "Anta",
     "nextCard": "Nästa kort",
     "voiceIntroTitle": "Röstpresentation",
-    "voiceIntroRequired": "Krävs — profiler utan röstpresentation matchas inte",
     "record": "Spela in 10 s",
     "recording": "Spelar in…",
     "playback": "Spela upp",
@@ -848,13 +847,12 @@
       "q29": "Vad brukar folk missförstå om dig?",
       "q30": "Om du kunde bemästra en färdighet över en natt, vilken skulle det vara?"
     },
-    "voiceGate": "Spela in en röstpresentation för att delta i Dagens matchning — profiler utan den matchas inte.",
     "tooFast": "För snabbt — vänta 5 sekunder.",
     "extraFailed": "Ingen är tillgänglig just nu – försök igen senare",
-    "extraNeedsVoice": "Spela först in ett röstintro – Daily Match parar bara ihop profiler som har ett.",
     "extraSaved": "Din betalning är sparad – hämta den extra matchningen senare utan att betala igen.",
     "claimExtra": "Hämta din betalda extra matchning",
-    "arrivesToday": "Din nya matchning kommer i dag kl. {{time}}"
+    "arrivesToday": "Din nya matchning kommer i dag kl. {{time}}",
+    "voiceIntroOptional": "Valfritt – ett 10-sekunders hej som dina matchningar kan lyssna på"
   },
   "truthOrDare": {
     "truth": {

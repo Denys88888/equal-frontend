@@ -295,8 +295,8 @@
     "seeking_everyone": "Tout le monde",
     "saveFailed": "Impossible d'enregistrer votre profil — veuillez réessayer",
     "title6": "Ta voix",
-    "sub6": "Une intro de 10 secondes. Requise pour Daily Match.",
-    "photoTipsAlt": "Conseils photo"
+    "photoTipsAlt": "Conseils photo",
+    "sub6Optional": "Un bonjour de 10 secondes. Facultatif — passe et ajoute-le plus tard dans ton profil."
   },
   "common": {
     "cancel": "Annuler",
@@ -803,7 +803,6 @@
     "accept": "Accepter",
     "nextCard": "Carte suivante",
     "voiceIntroTitle": "Présentation vocale",
-    "voiceIntroRequired": "Obligatoire — les profils sans présentation vocale ne sont pas mis en relation",
     "record": "Enregistrer 10 s",
     "recording": "Enregistrement…",
     "playback": "Lire",
@@ -855,13 +854,12 @@
       "q29": "Qu'est-ce que les gens comprennent souvent de travers chez toi ?",
       "q30": "Si tu pouvais maîtriser une compétence du jour au lendemain, laquelle ?"
     },
-    "voiceGate": "Enregistre une intro vocale pour rejoindre Daily Match — les profils sans intro ne sont pas jumelés.",
     "tooFast": "Trop vite — attends 5 secondes.",
     "extraFailed": "Personne n'est disponible pour l'instant — réessaie plus tard",
-    "extraNeedsVoice": "Enregistre d'abord une présentation vocale — Daily Match n'associe que les profils qui en ont une.",
     "extraSaved": "Ton paiement est conservé — récupère le match supplémentaire plus tard sans repayer.",
     "claimExtra": "Récupérer ton match supplémentaire payé",
-    "arrivesToday": "Ton nouveau match arrive aujourd'hui à {{time}}"
+    "arrivesToday": "Ton nouveau match arrive aujourd'hui à {{time}}",
+    "voiceIntroOptional": "Facultatif — un bonjour de 10 secondes que tes matchs peuvent écouter"
   },
   "truthOrDare": {
     "truth": {

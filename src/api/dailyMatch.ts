@@ -111,7 +111,7 @@ export interface ExtraMatchStatus {
   hasCredit: boolean;
   /** Whether a match could be made right now at all. */
   available: boolean;
-  reason: 'voice_intro' | 'no_candidates' | null;
+  reason: 'no_candidates' | null;
 }
 
 /** Asked before paying, so 0.2 Pi is never taken for a match that can't be made. */

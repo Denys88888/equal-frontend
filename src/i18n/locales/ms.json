@@ -291,8 +291,8 @@
     "seeking_everyone": "Semua orang",
     "saveFailed": "Gagal menyimpan profil anda — cuba lagi",
     "title6": "Suara anda",
-    "sub6": "Pengenalan 10 saat. Diperlukan untuk menyertai Padanan Harian.",
-    "photoTipsAlt": "Tip foto"
+    "photoTipsAlt": "Tip foto",
+    "sub6Optional": "Ucapan 10 saat. Pilihan — langkau dan tambah kemudian dalam profil."
   },
   "common": {
     "cancel": "Batal",
@@ -789,7 +789,6 @@
     "accept": "Terima",
     "nextCard": "Kad seterusnya",
     "voiceIntroTitle": "Pengenalan Suara",
-    "voiceIntroRequired": "Diperlukan — profil tanpa pengenalan suara tidak dipadankan",
     "record": "Rakam 10s",
     "recording": "Sedang merakam…",
     "playback": "Main",
@@ -841,13 +840,12 @@
       "q29": "Apa yang selalu disalah faham orang tentang anda?",
       "q30": "Jika anda boleh menguasai satu kemahiran dalam semalaman, apakah itu?"
     },
-    "voiceGate": "Rakam pengenalan suara untuk menyertai Padanan Harian — profil tanpanya tidak dipadankan.",
     "tooFast": "Terlalu pantas — tunggu 5 saat.",
     "extraFailed": "Tiada sesiapa tersedia sekarang — cuba lagi nanti",
-    "extraNeedsVoice": "Rakam intro suara dahulu — Daily Match hanya memadankan profil yang mempunyainya.",
     "extraSaved": "Bayaran anda disimpan — tuntut padanan tambahan kemudian tanpa membayar lagi.",
     "claimExtra": "Tuntut padanan tambahan yang telah dibayar",
-    "arrivesToday": "Padanan baharu anda tiba hari ini pada {{time}}"
+    "arrivesToday": "Padanan baharu anda tiba hari ini pada {{time}}",
+    "voiceIntroOptional": "Pilihan — ucapan 10 saat untuk padanan anda"
   },
   "truthOrDare": {
     "truth": {

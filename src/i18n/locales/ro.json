@@ -295,8 +295,8 @@
     "seeking_everyone": "Toți",
     "saveFailed": "Salvarea profilului tău a eșuat — încearcă din nou",
     "title6": "Vocea ta",
-    "sub6": "O prezentare de 10 secunde. Obligatorie pentru a participa la Potrivirea zilei.",
-    "photoTipsAlt": "Sfaturi pentru fotografii"
+    "photoTipsAlt": "Sfaturi pentru fotografii",
+    "sub6Optional": "Un salut de 10 secunde. Opțional — sari peste și adaugă-l mai târziu în profil."
   },
   "common": {
     "cancel": "Anulează",
@@ -803,7 +803,6 @@
     "accept": "Acceptă",
     "nextCard": "Cartea următoare",
     "voiceIntroTitle": "Prezentare vocală",
-    "voiceIntroRequired": "Obligatoriu — profilurile fără prezentare vocală nu sunt potrivite",
     "record": "Înregistrează 10 s",
     "recording": "Se înregistrează…",
     "playback": "Redă",
@@ -855,13 +854,12 @@
       "q29": "Ce înțeleg de obicei greșit oamenii despre tine?",
       "q30": "Dacă ai putea stăpâni o abilitate peste noapte, care ar fi aceea?"
     },
-    "voiceGate": "Înregistrează o prezentare vocală pentru a te alătura Potrivirii zilei — profilurile fără ea nu sunt potrivite.",
     "tooFast": "Prea repede — așteaptă 5 secunde.",
     "extraFailed": "Nimeni nu e disponibil acum — încearcă mai târziu",
-    "extraNeedsVoice": "Înregistrează mai întâi o prezentare vocală — Daily Match potrivește doar profilurile care au una.",
     "extraSaved": "Plata ta e păstrată — revendică potrivirea suplimentară mai târziu, fără să plătești din nou.",
     "claimExtra": "Revendică potrivirea suplimentară plătită",
-    "arrivesToday": "Noua ta potrivire sosește azi la {{time}}"
+    "arrivesToday": "Noua ta potrivire sosește azi la {{time}}",
+    "voiceIntroOptional": "Opțional — un salut de 10 secunde pe care potrivirile tale îl pot asculta"
   },
   "truthOrDare": {
     "truth": {

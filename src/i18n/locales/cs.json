@@ -297,8 +297,8 @@
     "seeking_everyone": "Všechny",
     "saveFailed": "Profil se nepodařilo uložit — zkus to znovu",
     "title6": "Tvůj hlas",
-    "sub6": "10sekundové představení. Povinné pro zapojení do Denní shody.",
-    "photoTipsAlt": "Tipy k fotkám"
+    "photoTipsAlt": "Tipy k fotkám",
+    "sub6Optional": "10sekundový pozdrav. Nepovinné — přeskoč a přidej později v profilu."
   },
   "common": {
     "cancel": "Zrušit",
@@ -810,7 +810,6 @@
     "accept": "Přijmout",
     "nextCard": "Další karta",
     "voiceIntroTitle": "Hlasové představení",
-    "voiceIntroRequired": "Povinné — profily bez hlasového představení se nepárují",
     "record": "Nahrát 10 s",
     "recording": "Nahrává se…",
     "playback": "Přehrát",
@@ -862,13 +861,12 @@
       "q29": "Co si o tobě lidé obvykle vykládají špatně?",
       "q30": "Kdybys mohl(a) přes noc zvládnout jednu dovednost, která by to byla?"
     },
-    "voiceGate": "Nahraj hlasové představení, aby ses mohl(a) zapojit do Denní shody — profily bez něj se nepárují.",
     "tooFast": "Příliš rychle — počkej 5 sekund.",
     "extraFailed": "Teď nikdo není k dispozici — zkus to později",
-    "extraNeedsVoice": "Nejdřív nahraj hlasové intro — Daily Match páruje jen profily, které ho mají.",
     "extraSaved": "Platba je uložená — shodu navíc si vyzvedni později bez další platby.",
     "claimExtra": "Vyzvednout zaplacenou shodu navíc",
-    "arrivesToday": "Tvá nová shoda přijde dnes v {{time}}"
+    "arrivesToday": "Tvá nová shoda přijde dnes v {{time}}",
+    "voiceIntroOptional": "Nepovinné — 10sekundový pozdrav pro tvé shody"
   },
   "truthOrDare": {
     "truth": {

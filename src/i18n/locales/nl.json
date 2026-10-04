@@ -293,8 +293,8 @@
     "seeking_everyone": "Iedereen",
     "saveFailed": "Kon je profiel niet opslaan — probeer het opnieuw",
     "title6": "Jouw stem",
-    "sub6": "Een intro van 10 seconden. Verplicht om mee te doen aan de Dagelijkse match.",
-    "photoTipsAlt": "Fototips"
+    "photoTipsAlt": "Fototips",
+    "sub6Optional": "Een hallo van 10 seconden. Optioneel — sla over en voeg later toe in je profiel."
   },
   "common": {
     "cancel": "Annuleren",
@@ -796,7 +796,6 @@
     "accept": "Accepteren",
     "nextCard": "Volgende kaart",
     "voiceIntroTitle": "Stem-intro",
-    "voiceIntroRequired": "Verplicht — profielen zonder stem-intro worden niet gematcht",
     "record": "10 s opnemen",
     "recording": "Opnemen…",
     "playback": "Afspelen",
@@ -848,13 +847,12 @@
       "q29": "Wat begrijpen mensen meestal verkeerd aan jou?",
       "q30": "Als je één vaardigheid van de ene op de andere dag kon beheersen, welke zou dat zijn?"
     },
-    "voiceGate": "Neem een stem-intro op om mee te doen aan de Dagelijkse match — profielen zonder intro worden niet gematcht.",
     "tooFast": "Te snel — wacht 5 seconden.",
     "extraFailed": "Er is nu niemand beschikbaar — probeer het later opnieuw",
-    "extraNeedsVoice": "Neem eerst een spraakintro op — Daily Match koppelt alleen profielen die er een hebben.",
     "extraSaved": "Je betaling is bewaard — haal de extra match later op zonder opnieuw te betalen.",
     "claimExtra": "Haal je betaalde extra match op",
-    "arrivesToday": "Je nieuwe match komt vandaag om {{time}}"
+    "arrivesToday": "Je nieuwe match komt vandaag om {{time}}",
+    "voiceIntroOptional": "Optioneel — een hallo van 10 seconden voor je matches"
   },
   "truthOrDare": {
     "truth": {

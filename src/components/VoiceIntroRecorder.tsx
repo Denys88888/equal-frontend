@@ -20,9 +20,15 @@ const BAR_COUNT = 7;
 export default function VoiceIntroRecorder({
   existingUrl,
   onSaved,
+  autoSave = false,
 }: {
   existingUrl?: string | null;
   onSaved?: (url: string) => void;
+  /**
+   * Save as soon as the clip is recorded. Used in onboarding, where a separate
+   * Save button meant people recorded, pressed Finish and lost the clip.
+   */
+  autoSave?: boolean;
 }) {
   const { t } = useTranslation();
   const { showToast } = useToast();
@@ -38,6 +44,12 @@ export default function VoiceIntroRecorder({
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
+  const [savedUrl, setSavedUrl] = useState<string | null>(null);
+  // The recorder's onstop closure is created before a re-render, so it reads
+  // the latest save function and mode through refs.
+  const autoSaveRef = useRef(autoSave);
+  autoSaveRef.current = autoSave;
+  const saveRef = useRef<(clip: Blob) => Promise<void>>(async () => {});
 
   // Object URLs leak if not revoked; also stop any live mic track on unmount.
   useEffect(() => {
@@ -88,6 +100,7 @@ export default function VoiceIntroRecorder({
           if (old) URL.revokeObjectURL(old);
           return URL.createObjectURL(recorded);
         });
+        if (autoSaveRef.current) void saveRef.current(recorded);
       };
 
       rec.start();
@@ -106,14 +119,15 @@ export default function VoiceIntroRecorder({
     return () => clearInterval(tick);
   }, [recording]);
 
-  const handleSave = async () => {
-    if (!blob) return;
+  const handleSave = async (clip: Blob | null = blob) => {
+    if (!clip) return;
     setSaving(true);
     try {
-      const { voiceIntroUrl } = await uploadVoiceIntro(blob);
+      const { voiceIntroUrl } = await uploadVoiceIntro(clip);
       showToast('success', t('dailyMatch.voiceSaved', { defaultValue: 'Voice intro saved' }));
       onSaved?.(voiceIntroUrl);
       setBlob(null);
+      setSavedUrl(voiceIntroUrl);
     } catch (e: unknown) {
       console.error('[voice-intro] save failed:', e);
       showToast('error', t('dailyMatch.voiceFailed', { defaultValue: "Couldn't save voice intro" }));
@@ -122,7 +136,8 @@ export default function VoiceIntroRecorder({
     }
   };
 
-  const playbackSrc = previewUrl ?? existingUrl ?? null;
+  saveRef.current = (clip: Blob) => handleSave(clip);
+  const playbackSrc = previewUrl ?? savedUrl ?? existingUrl ?? null;
 
   return (
     <div
@@ -136,7 +151,7 @@ export default function VoiceIntroRecorder({
         </h3>
       </div>
       <p className="text-xs text-[var(--charcoal)]/50 mb-3">
-        {t('dailyMatch.voiceIntroRequired', { defaultValue: "Required — profiles without a voice intro aren't matched" })}
+        {t('dailyMatch.voiceIntroOptional')}
       </p>
 
       {/* Waveform: purely decorative, animated only while recording */}
@@ -165,14 +180,18 @@ export default function VoiceIntroRecorder({
       )}
 
       <div className="flex gap-2">
-        {!recording && !blob && (
+        {saving && autoSave && (
+          <p className="flex-1 text-center text-sm text-[var(--charcoal)]/60 py-3">{t('common.loading')}</p>
+        )}
+
+        {!recording && !blob && !saving && (
           <button
             onClick={startRecording}
             className="flex-1 h-11 rounded-full text-sm font-semibold text-white flex items-center justify-center gap-2"
             style={{ backgroundColor: '#BB83C9' }}
           >
             <Mic size={16} />
-            {existingUrl
+            {existingUrl || savedUrl
               ? t('dailyMatch.reRecord', { defaultValue: 'Re-record' })
               : t('dailyMatch.record', { defaultValue: 'Record 10s' })}
           </button>
@@ -189,7 +208,7 @@ export default function VoiceIntroRecorder({
           </button>
         )}
 
-        {blob && !recording && (
+        {blob && !recording && !autoSave && (
           <>
             <button
               onClick={() => audioRef.current?.play()}
@@ -200,7 +219,7 @@ export default function VoiceIntroRecorder({
               {t('dailyMatch.playback', { defaultValue: 'Play' })}
             </button>
             <button
-              onClick={handleSave}
+              onClick={() => handleSave()}
               disabled={saving}
               className="flex-1 h-11 rounded-full text-sm font-semibold text-white flex items-center justify-center gap-2"
               style={{ backgroundColor: '#7DE0B3', color: 'var(--charcoal)', opacity: saving ? 0.6 : 1 }}

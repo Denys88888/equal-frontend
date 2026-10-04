@@ -291,8 +291,8 @@
     "seeking_everyone": "所有人",
     "saveFailed": "无法保存你的资料，请重试",
     "title6": "你的声音",
-    "sub6": "10 秒介绍。参与 Daily Match 必需。",
-    "photoTipsAlt": "照片小贴士"
+    "photoTipsAlt": "照片小贴士",
+    "sub6Optional": "一段 10 秒的问候。可选——可以跳过，之后在个人资料中添加。"
   },
   "common": {
     "cancel": "取消",
@@ -789,7 +789,6 @@
     "accept": "接受",
     "nextCard": "下一张卡",
     "voiceIntroTitle": "语音介绍",
-    "voiceIntroRequired": "必填——没有语音介绍的资料不会参与配对",
     "record": "录制 10 秒",
     "recording": "录制中…",
     "playback": "播放",
@@ -841,13 +840,12 @@
       "q29": "人们通常对你有什么误解？",
       "q30": "如果一夜之间能精通一项技能，你选什么？"
     },
-    "voiceGate": "录制语音介绍才能参与 Daily Match — 没有语音介绍的资料不会被配对。",
     "tooFast": "太快了 — 请等 5 秒。",
     "extraFailed": "目前没有可配对的人，请稍后再试",
-    "extraNeedsVoice": "请先录制语音介绍——Daily Match 只为有语音介绍的资料配对。",
     "extraSaved": "你的付款已保留——稍后可直接领取额外配对，无需再次付款。",
     "claimExtra": "领取已付费的额外配对",
-    "arrivesToday": "你的新配对将于今天 {{time}} 到来"
+    "arrivesToday": "你的新配对将于今天 {{time}} 到来",
+    "voiceIntroOptional": "可选——一段 10 秒的问候，让你的配对听到你的声音"
   },
   "truthOrDare": {
     "truth": {

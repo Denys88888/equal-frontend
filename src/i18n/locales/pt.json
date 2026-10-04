@@ -295,8 +295,8 @@
     "seeking_everyone": "Toda a gente",
     "saveFailed": "Não foi possível salvar seu perfil — tente novamente",
     "title6": "Sua voz",
-    "sub6": "Uma intro de 10 segundos. Obrigatória para o Daily Match.",
-    "photoTipsAlt": "Dicas de foto"
+    "photoTipsAlt": "Dicas de foto",
+    "sub6Optional": "Um oi de 10 segundos. Opcional — pule e adicione depois no seu perfil."
   },
   "common": {
     "cancel": "Cancelar",
@@ -803,7 +803,6 @@
     "accept": "Aceitar",
     "nextCard": "Carta seguinte",
     "voiceIntroTitle": "Apresentação de voz",
-    "voiceIntroRequired": "Obrigatória — perfis sem apresentação de voz não são combinados",
     "record": "Gravar 10 s",
     "recording": "A gravar…",
     "playback": "Reproduzir",
@@ -855,13 +854,12 @@
       "q29": "O que é que as pessoas costumam entender mal sobre ti?",
       "q30": "Se pudesses dominar uma competência de um dia para o outro, qual seria?"
     },
-    "voiceGate": "Grave uma intro de voz para entrar no Daily Match — perfis sem ela não são combinados.",
     "tooFast": "Rápido demais — espere 5 segundos.",
     "extraFailed": "Ninguém disponível agora — tente mais tarde",
-    "extraNeedsVoice": "Grave primeiro uma apresentação em áudio — o Daily Match só combina perfis que têm uma.",
     "extraSaved": "Seu pagamento está guardado — pegue a combinação extra depois, sem pagar de novo.",
     "claimExtra": "Pegar sua combinação extra paga",
-    "arrivesToday": "Sua nova combinação chega hoje às {{time}}"
+    "arrivesToday": "Sua nova combinação chega hoje às {{time}}",
+    "voiceIntroOptional": "Opcional — um oi de 10 segundos que suas combinações podem ouvir"
   },
   "truthOrDare": {
     "truth": {

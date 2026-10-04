@@ -293,8 +293,8 @@
     "seeking_everyone": "Kila mtu",
     "saveFailed": "Kuhifadhi wasifu wako hakukufaulu — jaribu tena",
     "title6": "Sauti yako",
-    "sub6": "Utangulizi wa sekunde 10. Unahitajika kujiunga na Mechi ya Kila Siku.",
-    "photoTipsAlt": "Vidokezo vya picha"
+    "photoTipsAlt": "Vidokezo vya picha",
+    "sub6Optional": "Salamu ya sekunde 10. Si lazima — iruke na uiongeze baadaye kwenye wasifu."
   },
   "common": {
     "cancel": "Ghairi",
@@ -796,7 +796,6 @@
     "accept": "Kubali",
     "nextCard": "Kadi Inayofuata",
     "voiceIntroTitle": "Utangulizi wa Sauti",
-    "voiceIntroRequired": "Inahitajika — wasifu bila utangulizi wa sauti hazitalinganishwa",
     "record": "Rekodi sekunde 10",
     "recording": "Inarekodi…",
     "playback": "Cheza",
@@ -848,13 +847,12 @@
       "q29": "Watu kwa kawaida hukosea nini kukuhusu?",
       "q30": "Kama ungeweza kuwa bingwa wa ujuzi mmoja usiku mmoja, ungechagua upi?"
     },
-    "voiceGate": "Rekodi utangulizi wa sauti ili kujiunga na Mechi ya Kila Siku — wasifu bila hiyo hazitalinganishwa.",
     "tooFast": "Haraka mno — subiri sekunde 5.",
     "extraFailed": "Hakuna anayepatikana sasa — jaribu tena baadaye",
-    "extraNeedsVoice": "Rekodi utangulizi wa sauti kwanza — Daily Match huunganisha tu wasifu ulio nao.",
     "extraSaved": "Malipo yako yamehifadhiwa — pata mechi ya ziada baadaye bila kulipa tena.",
     "claimExtra": "Pata mechi yako ya ziada uliyolipia",
-    "arrivesToday": "Mechi yako mpya inafika leo saa {{time}}"
+    "arrivesToday": "Mechi yako mpya inafika leo saa {{time}}",
+    "voiceIntroOptional": "Si lazima — salamu ya sekunde 10 ambayo mechi zako wanaweza kusikiliza"
   },
   "truthOrDare": {
     "truth": {

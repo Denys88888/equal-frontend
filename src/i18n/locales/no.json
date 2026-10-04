@@ -293,8 +293,8 @@
     "seeking_everyone": "Alle",
     "saveFailed": "Kunne ikke lagre profilen din — prøv igjen",
     "title6": "Stemmen din",
-    "sub6": "En presentasjon på 10 sekunder. Påkrevd for å delta i Dagens treff.",
-    "photoTipsAlt": "Fototips"
+    "photoTipsAlt": "Fototips",
+    "sub6Optional": "Et 10-sekunders hei. Valgfritt – hopp over og legg det til senere i profilen."
   },
   "common": {
     "cancel": "Avbryt",
@@ -796,7 +796,6 @@
     "accept": "Ta imot",
     "nextCard": "Neste kort",
     "voiceIntroTitle": "Stemmepresentasjon",
-    "voiceIntroRequired": "Påkrevd — profiler uten stemmepresentasjon blir ikke matchet",
     "record": "Ta opp 10 s",
     "recording": "Tar opp…",
     "playback": "Spill av",
@@ -848,13 +847,12 @@
       "q29": "Hva misforstår folk vanligvis ved deg?",
       "q30": "Hvis du kunne mestret én ferdighet over natten, hvilken ville det vært?"
     },
-    "voiceGate": "Ta opp en stemmepresentasjon for å delta i Dagens treff — profiler uten blir ikke matchet.",
     "tooFast": "For raskt — vent 5 sekunder.",
     "extraFailed": "Ingen er tilgjengelige akkurat nå – prøv igjen senere",
-    "extraNeedsVoice": "Spill inn en taleintro først – Daily Match kobler bare profiler som har en.",
     "extraSaved": "Betalingen er lagret – hent det ekstra treffet senere uten å betale på nytt.",
     "claimExtra": "Hent det betalte ekstra treffet",
-    "arrivesToday": "Det nye treffet ditt kommer i dag kl. {{time}}"
+    "arrivesToday": "Det nye treffet ditt kommer i dag kl. {{time}}",
+    "voiceIntroOptional": "Valgfritt – et 10-sekunders hei som treffene dine kan høre"
   },
   "truthOrDare": {
     "truth": {

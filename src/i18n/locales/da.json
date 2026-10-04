@@ -293,8 +293,8 @@
     "seeking_everyone": "Alle",
     "saveFailed": "Kunne ikke gemme din profil — prøv igen",
     "title6": "Din stemme",
-    "sub6": "En præsentation på 10 sekunder. Påkrævet for at deltage i Dagens match.",
-    "photoTipsAlt": "Fototips"
+    "photoTipsAlt": "Fototips",
+    "sub6Optional": "Et 10-sekunders hej. Valgfrit – spring over og tilføj det senere i din profil."
   },
   "common": {
     "cancel": "Annuller",
@@ -796,7 +796,6 @@
     "accept": "Tag imod",
     "nextCard": "Næste kort",
     "voiceIntroTitle": "Stemmepræsentation",
-    "voiceIntroRequired": "Påkrævet — profiler uden stemmepræsentation bliver ikke matchet",
     "record": "Optag 10 sek.",
     "recording": "Optager…",
     "playback": "Afspil",
@@ -848,13 +847,12 @@
       "q29": "Hvad misforstår folk typisk ved dig?",
       "q30": "Hvis du kunne mestre én færdighed på én nat, hvilken skulle det være?"
     },
-    "voiceGate": "Optag en stemmepræsentation for at være med i Dagens match — profiler uden bliver ikke matchet.",
     "tooFast": "For hurtigt — vent 5 sekunder.",
     "extraFailed": "Ingen er tilgængelige lige nu – prøv igen senere",
-    "extraNeedsVoice": "Optag først en stemmeintro – Daily Match parrer kun profiler, der har en.",
     "extraSaved": "Din betaling er gemt – hent det ekstra match senere uden at betale igen.",
     "claimExtra": "Hent dit betalte ekstra match",
-    "arrivesToday": "Dit nye match kommer i dag kl. {{time}}"
+    "arrivesToday": "Dit nye match kommer i dag kl. {{time}}",
+    "voiceIntroOptional": "Valgfrit – et 10-sekunders hej, dine matches kan lytte til"
   },
   "truthOrDare": {
     "truth": {

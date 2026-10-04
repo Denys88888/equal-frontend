@@ -92,7 +92,7 @@ const GOALS = [
 
 const STEP_TITLES = ['onboarding.title1', 'onboarding.title2', 'onboarding.title3', 'onboarding.title4', 'onboarding.title5', 'onboarding.title6'];
 
-const STEP_SUBTITLES = ['onboarding.sub1', 'onboarding.sub2', 'onboarding.sub3', 'onboarding.sub4', 'onboarding.sub5', 'onboarding.sub6'];
+const STEP_SUBTITLES = ['onboarding.sub1', 'onboarding.sub2', 'onboarding.sub3', 'onboarding.sub4', 'onboarding.sub5', 'onboarding.sub6Optional'];
 
 /* ------------------------------------------------------------------ */
 /*  Animation helpers                                                  */
@@ -129,7 +129,6 @@ export default function Onboarding() {
   const [direction, setDirection] = useState(1);
   const [isCompleting, setIsCompleting] = useState(false);
   const [completeError, setCompleteError] = useState('');
-  const [voiceSaved, setVoiceSaved] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [activePhotoSlot, setActivePhotoSlot] = useState<number | null>(null);
 
@@ -188,10 +187,14 @@ export default function Onboarding() {
     window.scrollTo(0, 0);
   }, [step, navigate]);
 
-  const canSkip = step === 2 || step === 4;
+  // The voice intro is optional: its step can be skipped like photos and
+  // interests (skipping the last step finishes onboarding).
+  const canSkip = step === 2 || step === 4 || step === TOTAL_STEPS;
 
   const handleSkip = () => {
-    if (canSkip) goNext();
+    if (!canSkip) return;
+    if (step === TOTAL_STEPS) void handleComplete();
+    else goNext();
   };
 
   /* ---- photo handling ---- */
@@ -298,7 +301,7 @@ export default function Onboarding() {
     step === 3 ? basicsComplete :
     step === 4 ? interestsComplete :
     step === 5 ? goalSelected :
-    step === 6 ? voiceSaved :
+    step === 6 ? true : // optional — Finish works with or without a saved clip
     false;
 
   /* ---- render helpers ---- */
@@ -456,7 +459,7 @@ export default function Onboarding() {
                     // server already has it — nothing extra to send in
                     // handleComplete. Title/subtitle come from STEP_TITLES,
                     // like every other step.
-                    <VoiceIntroRecorder onSaved={() => setVoiceSaved(true)} />
+                    <VoiceIntroRecorder autoSave />
                   )}
                 </motion.div>
             </div>

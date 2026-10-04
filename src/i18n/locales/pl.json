@@ -297,8 +297,8 @@
     "seeking_everyone": "Wszystkich",
     "saveFailed": "Nie udało się zapisać profilu — spróbuj ponownie",
     "title6": "Twój głos",
-    "sub6": "Intro na 10 sekund. Wymagane, by dołączyć do Daily Match.",
-    "photoTipsAlt": "Wskazówki dotyczące zdjęć"
+    "photoTipsAlt": "Wskazówki dotyczące zdjęć",
+    "sub6Optional": "10-sekundowe powitanie. Opcjonalnie — pomiń i dodaj później w profilu."
   },
   "common": {
     "cancel": "Anuluj",
@@ -810,7 +810,6 @@
     "accept": "Przyjmij",
     "nextCard": "Następna karta",
     "voiceIntroTitle": "Przedstawienie głosowe",
-    "voiceIntroRequired": "Wymagane — profile bez przedstawienia głosowego nie są dopasowywane",
     "record": "Nagraj 10 s",
     "recording": "Nagrywanie…",
     "playback": "Odtwórz",
@@ -862,13 +861,12 @@
       "q29": "Co ludzie zwykle źle o tobie rozumieją?",
       "q30": "Jaką umiejętność opanowałbyś w jedną noc?"
     },
-    "voiceGate": "Nagraj intro głosowe, aby dołączyć do Daily Match — profile bez niego nie są dopasowywane.",
     "tooFast": "Za szybko — poczekaj 5 sekund.",
     "extraFailed": "Nikt nie jest teraz dostępny — spróbuj później",
-    "extraNeedsVoice": "Najpierw nagraj głosowe intro — Daily Match łączy tylko profile, które je mają.",
     "extraSaved": "Płatność jest zapisana — odbierz dodatkowe dopasowanie później, bez ponownej opłaty.",
     "claimExtra": "Odbierz opłacone dopasowanie",
-    "arrivesToday": "Nowe dopasowanie pojawi się dziś o {{time}}"
+    "arrivesToday": "Nowe dopasowanie pojawi się dziś o {{time}}",
+    "voiceIntroOptional": "Opcjonalnie — 10-sekundowe powitanie dla twoich dopasowań"
   },
   "truthOrDare": {
     "truth": {

@@ -295,8 +295,8 @@
     "seeking_everyone": "Todos",
     "saveFailed": "No se pudo guardar tu perfil. Inténtalo de nuevo",
     "title6": "Tu voz",
-    "sub6": "Una intro de 10 segundos. Obligatoria para Daily Match.",
-    "photoTipsAlt": "Consejos de fotos"
+    "photoTipsAlt": "Consejos de fotos",
+    "sub6Optional": "Un saludo de 10 segundos. Opcional: omítelo y añádelo luego en tu perfil."
   },
   "common": {
     "cancel": "Cancelar",
@@ -803,7 +803,6 @@
     "accept": "Aceptar",
     "nextCard": "Siguiente carta",
     "voiceIntroTitle": "Presentación de voz",
-    "voiceIntroRequired": "Obligatoria: los perfiles sin presentación de voz no se emparejan",
     "record": "Grabar 10 s",
     "recording": "Grabando…",
     "playback": "Reproducir",
@@ -855,13 +854,12 @@
       "q29": "¿Qué suele malinterpretar la gente de ti?",
       "q30": "Si pudieras dominar una habilidad de la noche a la mañana, ¿cuál sería?"
     },
-    "voiceGate": "Graba una intro de voz para unirte a Daily Match: los perfiles sin ella no se emparejan.",
     "tooFast": "Demasiado rápido: espera 5 segundos.",
     "extraFailed": "No hay nadie disponible ahora; inténtalo más tarde",
-    "extraNeedsVoice": "Primero graba una presentación de voz: Daily Match solo empareja perfiles que la tienen.",
     "extraSaved": "Tu pago está guardado: reclama la coincidencia extra más tarde sin volver a pagar.",
     "claimExtra": "Obtener tu coincidencia extra pagada",
-    "arrivesToday": "Tu nueva coincidencia llega hoy a las {{time}}"
+    "arrivesToday": "Tu nueva coincidencia llega hoy a las {{time}}",
+    "voiceIntroOptional": "Opcional: un saludo de 10 segundos que tus coincidencias pueden escuchar"
   },
   "truthOrDare": {
     "truth": {

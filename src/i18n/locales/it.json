@@ -295,8 +295,8 @@
     "seeking_everyone": "Tutti",
     "saveFailed": "Impossibile salvare il profilo — riprova",
     "title6": "La tua voce",
-    "sub6": "Una presentazione di 10 secondi. Obbligatoria per il Match del giorno.",
-    "photoTipsAlt": "Consigli per le foto"
+    "photoTipsAlt": "Consigli per le foto",
+    "sub6Optional": "Un saluto di 10 secondi. Facoltativo — saltalo e aggiungilo poi nel profilo."
   },
   "common": {
     "cancel": "Annulla",
@@ -803,7 +803,6 @@
     "accept": "Accetta",
     "nextCard": "Carta successiva",
     "voiceIntroTitle": "Presentazione vocale",
-    "voiceIntroRequired": "Obbligatoria — i profili senza presentazione vocale non vengono abbinati",
     "record": "Registra 10 s",
     "recording": "Registrazione…",
     "playback": "Riproduci",
@@ -855,13 +854,12 @@
       "q29": "Cosa fraintendono di solito su di te?",
       "q30": "Se potessi padroneggiare un'abilità in una notte, quale sarebbe?"
     },
-    "voiceGate": "Registra una presentazione vocale per partecipare al Match del giorno: i profili che ne sono privi non vengono abbinati.",
     "tooFast": "Troppo veloce — aspetta 5 secondi.",
     "extraFailed": "Nessuno disponibile al momento — riprova più tardi",
-    "extraNeedsVoice": "Registra prima una presentazione vocale — Daily Match abbina solo i profili che ce l'hanno.",
     "extraSaved": "Il pagamento è salvato — ritira il match extra più tardi senza pagare di nuovo.",
     "claimExtra": "Ritira il tuo match extra pagato",
-    "arrivesToday": "Il tuo nuovo match arriva oggi alle {{time}}"
+    "arrivesToday": "Il tuo nuovo match arriva oggi alle {{time}}",
+    "voiceIntroOptional": "Facoltativo — un saluto di 10 secondi che i tuoi match possono ascoltare"
   },
   "truthOrDare": {
     "truth": {

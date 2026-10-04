@@ -293,8 +293,8 @@
     "seeking_everyone": "Kaikkia",
     "saveFailed": "Profiiliasi ei voitu tallentaa — yritä uudelleen",
     "title6": "Äänesi",
-    "sub6": "10 sekunnin esittely. Pakollinen Päivän osumaan osallistumiseksi.",
-    "photoTipsAlt": "Kuvavinkit"
+    "photoTipsAlt": "Kuvavinkit",
+    "sub6Optional": "10 sekunnin tervehdys. Valinnainen – ohita ja lisää myöhemmin profiiliin."
   },
   "common": {
     "cancel": "Peruuta",
@@ -796,7 +796,6 @@
     "accept": "Hyväksy",
     "nextCard": "Seuraava kortti",
     "voiceIntroTitle": "Ääniesittely",
-    "voiceIntroRequired": "Pakollinen — profiileja ilman ääniesittelyä ei yhdistetä",
     "record": "Tallenna 10 s",
     "recording": "Tallennetaan…",
     "playback": "Toista",
@@ -848,13 +847,12 @@
       "q29": "Mitä sinusta yleensä ymmärretään väärin?",
       "q30": "Jos voisit oppia yhden taidon yhdessä yössä, minkä valitsisit?"
     },
-    "voiceGate": "Tallenna ääniesittely osallistuaksesi Päivän osumaan — profiileja ilman sitä ei yhdistetä.",
     "tooFast": "Liian nopeasti — odota 5 sekuntia.",
     "extraFailed": "Ketään ei ole juuri nyt saatavilla – yritä myöhemmin",
-    "extraNeedsVoice": "Nauhoita ensin ääniesittely – Daily Match yhdistää vain profiileja, joilla sellainen on.",
     "extraSaved": "Maksusi on tallessa – lunasta lisäosuma myöhemmin maksamatta uudelleen.",
     "claimExtra": "Lunasta maksettu lisäosuma",
-    "arrivesToday": "Uusi osumasi saapuu tänään klo {{time}}"
+    "arrivesToday": "Uusi osumasi saapuu tänään klo {{time}}",
+    "voiceIntroOptional": "Valinnainen – 10 sekunnin tervehdys, jonka osumasi voivat kuunnella"
   },
   "truthOrDare": {
     "truth": {
