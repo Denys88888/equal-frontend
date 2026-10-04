@@ -6,6 +6,7 @@
  */
 
 import { api } from './client';
+import { compressImage } from '@/lib/image';
 import type {
   UserProfile,
   UserSettings,
@@ -92,7 +93,7 @@ export async function updateMe(patch: Partial<UserProfile>): Promise<UserProfile
  */
 export async function uploadPhoto(file: File, isMain: boolean = false): Promise<Photo> {
   const form = new FormData();
-  form.append('photo', file);
+  form.append('photo', await compressImage(file));
   form.append('isMain', String(isMain));
 
   const { data } = await api.postForm<Photo>('/users/me/photos', form);

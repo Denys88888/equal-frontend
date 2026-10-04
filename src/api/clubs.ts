@@ -6,6 +6,7 @@
 
 import { api } from './client';
 import type { Club, ClubPost, CreateClubRequest, CreatePostRequest } from './types';
+import { compressImage } from '@/lib/image';
 
 /**
  * Fetch all clubs, optionally filtered by category or search query.
@@ -93,7 +94,7 @@ export async function getPosts(clubId: string): Promise<ClubPost[]> {
 export async function createPost(clubId: string, payload: CreatePostRequest): Promise<ClubPost> {
   const form = new FormData();
   form.append('content', payload.content ?? '');
-  if (payload.image) form.append('image', payload.image);
+  if (payload.image) form.append('image', payload.image instanceof File ? await compressImage(payload.image) : payload.image);
   const { data } = await api.postForm<ClubPost>(
     `/clubs/${encodeURIComponent(clubId)}/posts`,
     form,

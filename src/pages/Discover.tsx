@@ -370,13 +370,22 @@ function SwipeCard({
           aspectRatio: '3/4',
         }}
       >
-        {/* Photo */}
-        <img
-          src={profile.photo}
-          alt={profile.name}
-          className="w-full h-full object-cover"
-          draggable={false}
-        />
+        {/* Photo — someone without one gets their initial on the app
+            gradient instead of a broken-image icon with their name over it. */}
+        {profile.photo ? (
+          <img
+            src={profile.photo}
+            alt={profile.name}
+            className="w-full h-full object-cover"
+            draggable={false}
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #BB83C9 0%, #7DE0B3 100%)' }}>
+            <span className="text-white font-bold" style={{ fontSize: 120, fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              {(profile.name || '?').charAt(0).toUpperCase()}
+            </span>
+          </div>
+        )}
 
         {/* Gradient Overlay */}
         <div
@@ -470,7 +479,7 @@ function SwipeCard({
           {/* Name + Age + Compatibility */}
           <div className="flex items-start justify-between mb-1">
             <h3 className="text-2xl font-semibold text-white" style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.72px' }}>
-              {profile.name}, {profile.age}
+              {[profile.name, profile.age].filter((v) => v !== null && v !== undefined && v !== '').join(', ')}
             </h3>
             <span
               className="px-3 py-1 rounded-full text-xs font-semibold"
@@ -742,12 +751,12 @@ function CompatibilityCard({ profile, onLike }: { profile: Profile; onLike: () =
       style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
     >
       <div className="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0">
-        <img src={profile.photo} alt={profile.name} className="w-full h-full object-cover" />
+        <UserAvatar src={profile.photo} name={profile.name} className="rounded-none text-3xl" />
       </div>
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 mb-0.5">
           <h3 className="text-lg font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-            {profile.name}, {profile.age}
+            {[profile.name, profile.age].filter((v) => v !== null && v !== undefined && v !== '').join(', ')}
           </h3>
           {profile.isDemo && (
             <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold text-white" style={{ backgroundColor: 'rgba(40,40,48,0.72)' }}>

@@ -1,6 +1,7 @@
 import { api } from './client';
 import type { MessagesResponse, SendMessageResponse } from './types';
 import { audioExtension } from '@/lib/audio';
+import { compressImage } from '@/lib/image';
 
 export const messagesApi = {
   getMessages: async (matchId: string): Promise<MessagesResponse> => {
@@ -24,8 +25,9 @@ export const messagesApi = {
 
   sendImage: async (matchId: string, image: File | Blob): Promise<SendMessageResponse> => {
     const form = new FormData();
-    const name = image instanceof File ? image.name : `photo-${Date.now()}.jpg`;
-    form.append('image', image, name);
+    const file = image instanceof File ? await compressImage(image) : image;
+    const name = file instanceof File ? file.name : `photo-${Date.now()}.jpg`;
+    form.append('image', file, name);
     const { data } = await api.post<SendMessageResponse>(
       `/matches/${matchId}/messages/image`,
       form,
