@@ -11,7 +11,6 @@ import {
   Puzzle,
   Compass,
   MapPin,
-  PlayCircle,
   Info,
   Check,
 } from 'lucide-react';
@@ -19,6 +18,7 @@ import { useTranslation } from 'react-i18next';
 import { updateMe, uploadPhoto } from '@/api/users';
 import { useAuth } from '@/context/AuthContext';
 import VoiceIntroRecorder from '@/components/VoiceIntroRecorder';
+import VideoIntroRecorder from '@/components/VideoIntroRecorder';
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
 /* ------------------------------------------------------------------ */
@@ -52,7 +52,6 @@ interface ProfileData {
   goal: string;
   personalityAnswers: PersonalityAnswer[];
   photos: PhotoItem[];
-  videoIntro: string | null;
 }
 
 /* ------------------------------------------------------------------ */
@@ -145,7 +144,6 @@ export default function Onboarding() {
     goal: '',
     personalityAnswers: [],
     photos: [],
-    videoIntro: null,
   });
 
   useEffect(() => {
@@ -226,24 +224,6 @@ export default function Onboarding() {
     });
   };
 
-  const videoInputRef = useRef<HTMLInputElement>(null);
-  const handleVideoAdd = () => {
-    if (data.videoIntro) {
-      setData((prev) => ({ ...prev, videoIntro: null }));
-    } else {
-      videoInputRef.current?.click();
-    }
-  };
-  const handleVideoFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const url = URL.createObjectURL(file);
-    setData((prev) => ({ ...prev, videoIntro: url }));
-  };
-  // Revoke object URL on unmount
-  useEffect(() => {
-    return () => { if (data.videoIntro?.startsWith('blob:')) URL.revokeObjectURL(data.videoIntro); };
-  }, [data.videoIntro]);
 
   /* ---- completion ---- */
   const handleComplete = async () => {
@@ -431,9 +411,6 @@ export default function Onboarding() {
                       update={update}
                       onPhotoAdd={handlePhotoAdd}
                       onPhotoRemove={handlePhotoRemove}
-                      onVideoAdd={handleVideoAdd}
-                      videoInputRef={videoInputRef}
-                      onVideoFileChange={handleVideoFileChange}
                     />
                   )}
                   {step === 3 && (
@@ -655,17 +632,11 @@ function StepPhotos({
   data,
   onPhotoAdd,
   onPhotoRemove,
-  onVideoAdd,
-  videoInputRef,
-  onVideoFileChange,
 }: {
   data: ProfileData;
   update: <K extends keyof ProfileData>(key: K, value: ProfileData[K]) => void;
   onPhotoAdd: (slotIndex: number) => void;
   onPhotoRemove: (index: number) => void;
-  onVideoAdd: () => void;
-  videoInputRef: React.RefObject<HTMLInputElement | null>;
-  onVideoFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
   const { t } = useTranslation();
   const photos = data.photos;
@@ -765,65 +736,9 @@ function StepPhotos({
         ))}
       </Reorder.Group>
 
-      {/* Video intro toggle */}
-      <motion.button
-        whileTap={{ scale: 0.97 }}
-        transition={{ duration: 0.1 }}
-        onClick={onVideoAdd}
-        className="w-full h-12 rounded-full flex items-center justify-center gap-2 font-semibold text-base"
-        style={{
-          fontFamily: "'Outfit', system-ui, sans-serif",
-          backgroundColor: 'rgba(var(--card-rgb), 0.72)',
-          backdropFilter: 'blur(12px)',
-          border: '1.5px solid rgba(var(--charcoal-rgb), 0.1)',
-          color: 'var(--charcoal)',
-        }}
-      >
-        {data.videoIntro ? (
-          <>
-            <X size={20} strokeWidth={2} />
-            {t('onboarding.removeVideo')}
-          </>
-        ) : (
-          <>
-            <PlayCircle size={20} strokeWidth={2} />
-            {t('onboarding.addVideo')}
-          </>
-        )}
-      </motion.button>
-
-      {/* Hidden video file input */}
-      <input
-        ref={videoInputRef}
-        type="file"
-        accept="video/*"
-        capture="user"
-        style={{ display: 'none' }}
-        onChange={onVideoFileChange}
-      />
-
-      {data.videoIntro && (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="relative rounded-xl overflow-hidden"
-          style={{ backgroundColor: 'var(--charcoal)', aspectRatio: '16/9' }}
-        >
-          <video
-            src={data.videoIntro}
-            controls
-            playsInline
-            className="w-full h-full object-cover"
-          />
-          <button
-            onClick={onVideoAdd}
-            className="absolute top-2 right-2 w-6 h-6 rounded-full flex items-center justify-center"
-            style={{ backgroundColor: 'rgba(var(--charcoal-rgb), 0.6)' }}
-          >
-            <X size={14} className="text-white" strokeWidth={2.5} />
-          </button>
-        </motion.div>
-      )}
+      {/* Video intro: optional, saved to the profile as soon as it is recorded.
+          The old button only previewed a picked file on the phone. */}
+      <VideoIntroRecorder />
 
       {/* Onboarding illustration */}
       <div className="flex justify-center mt-2">

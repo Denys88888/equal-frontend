@@ -963,5 +963,26 @@
     "newQuestionPush": "新提问！💜 有人想更了解你",
     "answerPush": "你的提问有回答了！🎉",
     "fakeProfileNote": "这是虚假资料，无法接收提问。"
+  },
+  "videoIntro": {
+    "title": "视频介绍",
+    "subtitle": "可选 — 最长 15 秒，让大家看到真实的你",
+    "record": "录制视频",
+    "startRecording": "开始录制",
+    "stop": "停止",
+    "recording": "录制中… {{s}} 秒",
+    "retake": "重拍",
+    "save": "保存视频",
+    "saving": "上传中…",
+    "saved": "视频介绍已保存",
+    "rerecord": "重新录制",
+    "remove": "删除",
+    "removed": "视频介绍已删除",
+    "cancel": "取消",
+    "cameraDenied": "请允许使用摄像头和麦克风以录制视频",
+    "tooLong": "视频不能超过 30 秒",
+    "tooBig": "视频太大（最大 30 MB）",
+    "failed": "无法保存视频，请重试。",
+    "chooseFile": "选择视频"
   }
 }

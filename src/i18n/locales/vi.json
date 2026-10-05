@@ -963,5 +963,26 @@
     "newQuestionPush": "Câu hỏi mới! 💜 Ai đó muốn hiểu bạn hơn",
     "answerPush": "Câu hỏi của bạn đã có trả lời! 🎉",
     "fakeProfileNote": "Đây là hồ sơ giả — không thể nhận câu hỏi."
+  },
+  "videoIntro": {
+    "title": "Video giới thiệu",
+    "subtitle": "Không bắt buộc — tối đa 15 giây để mọi người thấy con người thật của bạn",
+    "record": "Quay video",
+    "startRecording": "Bắt đầu quay",
+    "stop": "Dừng",
+    "recording": "Đang quay… {{s}} giây",
+    "retake": "Quay lại",
+    "save": "Lưu video",
+    "saving": "Đang tải lên…",
+    "saved": "Đã lưu video giới thiệu",
+    "rerecord": "Quay lại từ đầu",
+    "remove": "Xóa",
+    "removed": "Đã xóa video giới thiệu",
+    "cancel": "Hủy",
+    "cameraDenied": "Cho phép truy cập camera và micro để quay video",
+    "tooLong": "Video phải dài tối đa 30 giây",
+    "tooBig": "Video quá lớn (tối đa 30 MB)",
+    "failed": "Không thể lưu video. Hãy thử lại.",
+    "chooseFile": "Chọn video"
   }
 }

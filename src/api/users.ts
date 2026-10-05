@@ -7,6 +7,7 @@
 
 import { api } from './client';
 import { compressImage } from '@/lib/image';
+import { videoExtension } from '@/lib/video';
 import type {
   UserProfile,
   UserSettings,
@@ -106,6 +107,19 @@ export async function uploadPhoto(file: File, isMain: boolean = false): Promise<
  * @param photoId — the photo's unique identifier
  * @throws {ApiError} 404 if photo not found or does not belong to user
  */
+/** Video intro (up to 15 s). The server converts it to MP4 and stores it. */
+export async function uploadVideoIntro(video: Blob): Promise<{ videoIntroUrl: string }> {
+  const form = new FormData();
+  const name = video instanceof File && video.name ? video.name : `video-intro-${Date.now()}.${videoExtension(video.type)}`;
+  form.append('video', video, name);
+  const { data } = await api.post<{ videoIntroUrl: string }>('/users/me/video-intro', form);
+  return data;
+}
+
+export async function deleteVideoIntro(): Promise<void> {
+  await api.delete<void>('/users/me/video-intro');
+}
+
 export async function deletePhoto(photoId: string): Promise<void> {
   await api.delete(`/users/me/photos?photoId=${encodeURIComponent(photoId)}`);
 }

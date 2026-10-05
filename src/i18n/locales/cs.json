@@ -984,5 +984,26 @@
     "newQuestionPush": "Nová otázka! 💜 Někdo tě chce lépe poznat",
     "answerPush": "Tvoje otázka má odpověď! 🎉",
     "fakeProfileNote": "Toto je falešný profil — nelze mu klást otázky."
+  },
+  "videoIntro": {
+    "title": "Videovizitka",
+    "subtitle": "Nepovinné — až 15 sekund, aby tě ostatní viděli takového, jaký jsi",
+    "record": "Natočit video",
+    "startRecording": "Začít nahrávat",
+    "stop": "Stop",
+    "recording": "Nahrávání… {{s}} s",
+    "retake": "Natočit znovu",
+    "save": "Uložit video",
+    "saving": "Nahrávání…",
+    "saved": "Videovizitka uložena",
+    "rerecord": "Nahrát znovu",
+    "remove": "Odstranit",
+    "removed": "Videovizitka odstraněna",
+    "cancel": "Zrušit",
+    "cameraDenied": "Pro natočení videa povol přístup ke kameře a mikrofonu",
+    "tooLong": "Video může mít nejvýše 30 sekund",
+    "tooBig": "Video je příliš velké (max. 30 MB)",
+    "failed": "Video se nepodařilo uložit. Zkus to znovu.",
+    "chooseFile": "Vybrat video"
   }
 }

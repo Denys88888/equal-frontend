@@ -53,6 +53,8 @@ export interface PublicProfile {
   photo: string;
   photos: string[];
   bio: string;
+  /** Up to 15 s, converted to MP4 by the server; null when there is none. */
+  videoIntroUrl?: string | null;
   interests: string[];
   verified: boolean;
   /** Team-made fake profile — always shown with a "Fake" badge. */

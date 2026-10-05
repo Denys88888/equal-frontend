@@ -963,5 +963,26 @@
     "newQuestionPush": "Pertanyaan baru! 💜 Seseorang ingin mengenalmu",
     "answerPush": "Pertanyaanmu sudah dijawab! 🎉",
     "fakeProfileNote": "Ini profil palsu — tidak bisa menerima pertanyaan."
+  },
+  "videoIntro": {
+    "title": "Video perkenalan",
+    "subtitle": "Opsional — hingga 15 detik agar orang melihat dirimu yang sebenarnya",
+    "record": "Rekam video",
+    "startRecording": "Mulai merekam",
+    "stop": "Berhenti",
+    "recording": "Merekam… {{s}} dtk",
+    "retake": "Ulangi",
+    "save": "Simpan video",
+    "saving": "Mengunggah…",
+    "saved": "Video perkenalan disimpan",
+    "rerecord": "Rekam ulang",
+    "remove": "Hapus",
+    "removed": "Video perkenalan dihapus",
+    "cancel": "Batal",
+    "cameraDenied": "Izinkan akses kamera dan mikrofon untuk merekam video",
+    "tooLong": "Video maksimal 30 detik",
+    "tooBig": "Video terlalu besar (maks. 30 MB)",
+    "failed": "Gagal menyimpan video. Coba lagi.",
+    "chooseFile": "Pilih video"
   }
 }

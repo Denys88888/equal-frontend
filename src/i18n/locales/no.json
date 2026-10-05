@@ -970,5 +970,26 @@
     "newQuestionPush": "Nytt spørsmål! 💜 Noen vil bli bedre kjent med deg",
     "answerPush": "Spørsmålet ditt har fått svar! 🎉",
     "fakeProfileNote": "Dette er en falsk profil – den kan ikke motta spørsmål."
+  },
+  "videoIntro": {
+    "title": "Videopresentasjon",
+    "subtitle": "Valgfritt – opptil 15 sekunder, så andre ser den ekte deg",
+    "record": "Ta opp video",
+    "startRecording": "Start opptak",
+    "stop": "Stopp",
+    "recording": "Tar opp… {{s}} s",
+    "retake": "Ta på nytt",
+    "save": "Lagre video",
+    "saving": "Laster opp…",
+    "saved": "Videopresentasjonen er lagret",
+    "rerecord": "Ta opp på nytt",
+    "remove": "Fjern",
+    "removed": "Videopresentasjonen er fjernet",
+    "cancel": "Avbryt",
+    "cameraDenied": "Gi tilgang til kamera og mikrofon for å ta opp en video",
+    "tooLong": "Videoen kan være maks 30 sekunder",
+    "tooBig": "Videoen er for stor (maks 30 MB)",
+    "failed": "Kunne ikke lagre videoen. Prøv igjen.",
+    "chooseFile": "Velg en video"
   }
 }

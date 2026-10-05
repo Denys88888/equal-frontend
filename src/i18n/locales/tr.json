@@ -970,5 +970,26 @@
     "newQuestionPush": "Yeni soru! 💜 Biri seni daha yakından tanımak istiyor",
     "answerPush": "Sorun cevaplandı! 🎉",
     "fakeProfileNote": "Bu sahte bir profil — soru alamaz."
+  },
+  "videoIntro": {
+    "title": "Video tanıtım",
+    "subtitle": "İsteğe bağlı — insanlar gerçek seni görsün diye 15 saniyeye kadar",
+    "record": "Video kaydet",
+    "startRecording": "Kaydı başlat",
+    "stop": "Durdur",
+    "recording": "Kaydediliyor… {{s}} sn",
+    "retake": "Yeniden çek",
+    "save": "Videoyu kaydet",
+    "saving": "Yükleniyor…",
+    "saved": "Video tanıtım kaydedildi",
+    "rerecord": "Yeniden kaydet",
+    "remove": "Kaldır",
+    "removed": "Video tanıtım kaldırıldı",
+    "cancel": "İptal",
+    "cameraDenied": "Video kaydetmek için kamera ve mikrofon erişimine izin ver",
+    "tooLong": "Video en fazla 30 saniye olmalı",
+    "tooBig": "Video çok büyük (en fazla 30 MB)",
+    "failed": "Video kaydedilemedi. Tekrar dene.",
+    "chooseFile": "Video seç"
   }
 }

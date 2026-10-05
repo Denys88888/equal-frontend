@@ -970,5 +970,26 @@
     "newQuestionPush": "Neue Frage! 💜 Jemand möchte dich besser kennenlernen",
     "answerPush": "Deine Frage wurde beantwortet! 🎉",
     "fakeProfileNote": "Das ist ein Fake-Profil – es kann keine Fragen erhalten."
+  },
+  "videoIntro": {
+    "title": "Video-Intro",
+    "subtitle": "Optional — bis zu 15 Sekunden, damit andere dich wirklich sehen",
+    "record": "Video aufnehmen",
+    "startRecording": "Aufnahme starten",
+    "stop": "Stopp",
+    "recording": "Aufnahme… {{s}} s",
+    "retake": "Neu aufnehmen",
+    "save": "Video speichern",
+    "saving": "Wird hochgeladen…",
+    "saved": "Video-Intro gespeichert",
+    "rerecord": "Neu aufnehmen",
+    "remove": "Entfernen",
+    "removed": "Video-Intro entfernt",
+    "cancel": "Abbrechen",
+    "cameraDenied": "Erlaube den Zugriff auf Kamera und Mikrofon, um ein Video aufzunehmen",
+    "tooLong": "Das Video darf höchstens 30 Sekunden lang sein",
+    "tooBig": "Das Video ist zu groß (max. 30 MB)",
+    "failed": "Das Video konnte nicht gespeichert werden. Versuche es erneut.",
+    "chooseFile": "Video auswählen"
   }
 }

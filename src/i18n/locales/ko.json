@@ -963,5 +963,26 @@
     "newQuestionPush": "새 질문이 왔어요! 💜 누군가 당신을 더 알고 싶어 합니다",
     "answerPush": "질문에 답변이 달렸어요! 🎉",
     "fakeProfileNote": "가짜 프로필이에요. 질문을 받을 수 없어요."
+  },
+  "videoIntro": {
+    "title": "영상 소개",
+    "subtitle": "선택 사항 — 최대 15초로 진짜 나를 보여주세요",
+    "record": "영상 녹화",
+    "startRecording": "녹화 시작",
+    "stop": "중지",
+    "recording": "녹화 중… {{s}}초",
+    "retake": "다시 찍기",
+    "save": "영상 저장",
+    "saving": "업로드 중…",
+    "saved": "영상 소개가 저장되었어요",
+    "rerecord": "다시 녹화",
+    "remove": "삭제",
+    "removed": "영상 소개가 삭제되었어요",
+    "cancel": "취소",
+    "cameraDenied": "영상을 녹화하려면 카메라와 마이크 접근을 허용해 주세요",
+    "tooLong": "영상은 30초 이하여야 해요",
+    "tooBig": "영상이 너무 커요 (최대 30MB)",
+    "failed": "영상을 저장하지 못했어요. 다시 시도해 주세요.",
+    "chooseFile": "영상 선택"
   }
 }

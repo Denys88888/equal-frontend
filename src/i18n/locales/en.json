@@ -970,5 +970,26 @@
     "newQuestionPush": "New question! 💜 Someone wants to know you better",
     "answerPush": "Your question got an answer! 🎉",
     "fakeProfileNote": "This is a fake profile — it can't receive questions."
+  },
+  "videoIntro": {
+    "title": "Video intro",
+    "subtitle": "Optional — up to 15 seconds so people can see the real you",
+    "record": "Record video",
+    "startRecording": "Start recording",
+    "stop": "Stop",
+    "recording": "Recording… {{s}}s",
+    "retake": "Retake",
+    "save": "Save video",
+    "saving": "Uploading…",
+    "saved": "Video intro saved",
+    "rerecord": "Re-record",
+    "remove": "Remove",
+    "removed": "Video intro removed",
+    "cancel": "Cancel",
+    "cameraDenied": "Allow camera and microphone access to record a video",
+    "tooLong": "The video must be 30 seconds or shorter",
+    "tooBig": "The video is too large (max 30 MB)",
+    "failed": "Couldn't save the video. Try again.",
+    "chooseFile": "Choose a video"
   }
 }

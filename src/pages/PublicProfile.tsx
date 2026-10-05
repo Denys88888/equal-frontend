@@ -7,6 +7,7 @@ import Layout from '@/components/Layout';
 import SkeletonLoader from '@/components/SkeletonLoader';
 import ReportDialog from '@/components/ReportDialog';
 import AskSection from '@/components/AskSection';
+import { videoPoster } from '@/lib/video';
 import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/hooks/useToast';
 import { api } from '@/api/client';
@@ -341,6 +342,30 @@ export default function PublicProfile() {
             <p className="text-base text-[var(--charcoal)] leading-relaxed" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.6 }}>
               {profile.bio}
             </p>
+          </motion.div>
+        )}
+
+        {/* Video intro */}
+        {profile.videoIntroUrl && (
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, delay: 0.03, ease: easeOutExpo }}
+            className="px-5 mt-5"
+          >
+            <h4 className="text-sm font-semibold text-[var(--charcoal)] opacity-60 mb-2" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              {t('videoIntro.title')}
+            </h4>
+            <div className="rounded-2xl overflow-hidden mx-auto" style={{ backgroundColor: '#000', aspectRatio: '3 / 4', maxHeight: 420 }}>
+              <video
+                src={profile.videoIntroUrl}
+                poster={videoPoster(profile.videoIntroUrl)}
+                controls
+                playsInline
+                preload="metadata"
+                className="w-full h-full object-contain"
+              />
+            </div>
           </motion.div>
         )}
 

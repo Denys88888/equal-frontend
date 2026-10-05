@@ -977,5 +977,26 @@
     "newQuestionPush": "¡Nueva pregunta! 💜 Alguien quiere conocerte mejor",
     "answerPush": "¡Tu pregunta tiene respuesta! 🎉",
     "fakeProfileNote": "Este es un perfil falso: no puede recibir preguntas."
+  },
+  "videoIntro": {
+    "title": "Video de presentación",
+    "subtitle": "Opcional: hasta 15 segundos para que te vean tal como eres",
+    "record": "Grabar video",
+    "startRecording": "Empezar a grabar",
+    "stop": "Detener",
+    "recording": "Grabando… {{s}} s",
+    "retake": "Repetir",
+    "save": "Guardar video",
+    "saving": "Subiendo…",
+    "saved": "Video de presentación guardado",
+    "rerecord": "Volver a grabar",
+    "remove": "Eliminar",
+    "removed": "Video de presentación eliminado",
+    "cancel": "Cancelar",
+    "cameraDenied": "Permite el acceso a la cámara y al micrófono para grabar un video",
+    "tooLong": "El video debe durar 30 segundos o menos",
+    "tooBig": "El video es demasiado grande (máx. 30 MB)",
+    "failed": "No se pudo guardar el video. Inténtalo de nuevo.",
+    "chooseFile": "Elegir un video"
   }
 }

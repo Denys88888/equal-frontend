@@ -970,5 +970,26 @@
     "newQuestionPush": "Új kérdés! 💜 Valaki jobban meg akar ismerni",
     "answerPush": "A kérdésedre válasz érkezett! 🎉",
     "fakeProfileNote": "Ez egy kamu profil – nem lehet neki kérdést feltenni."
+  },
+  "videoIntro": {
+    "title": "Bemutatkozó videó",
+    "subtitle": "Nem kötelező — legfeljebb 15 másodperc, hogy az igazi önmagadat lássák",
+    "record": "Videó felvétele",
+    "startRecording": "Felvétel indítása",
+    "stop": "Leállítás",
+    "recording": "Felvétel… {{s}} mp",
+    "retake": "Újra",
+    "save": "Videó mentése",
+    "saving": "Feltöltés…",
+    "saved": "Bemutatkozó videó mentve",
+    "rerecord": "Újrafelvétel",
+    "remove": "Eltávolítás",
+    "removed": "Bemutatkozó videó eltávolítva",
+    "cancel": "Mégse",
+    "cameraDenied": "A videó felvételéhez engedélyezd a kamera és a mikrofon használatát",
+    "tooLong": "A videó legfeljebb 30 másodperces lehet",
+    "tooBig": "A videó túl nagy (legfeljebb 30 MB)",
+    "failed": "Nem sikerült menteni a videót. Próbáld újra.",
+    "chooseFile": "Videó kiválasztása"
   }
 }

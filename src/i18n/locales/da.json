@@ -970,5 +970,26 @@
     "newQuestionPush": "Nyt spørgsmål! 💜 Nogen vil lære dig bedre at kende",
     "answerPush": "Dit spørgsmål har fået et svar! 🎉",
     "fakeProfileNote": "Dette er en falsk profil – den kan ikke modtage spørgsmål."
+  },
+  "videoIntro": {
+    "title": "Videopræsentation",
+    "subtitle": "Valgfrit – op til 15 sekunder, så andre kan se den ægte dig",
+    "record": "Optag video",
+    "startRecording": "Start optagelse",
+    "stop": "Stop",
+    "recording": "Optager… {{s}} s",
+    "retake": "Optag igen",
+    "save": "Gem video",
+    "saving": "Uploader…",
+    "saved": "Videopræsentationen er gemt",
+    "rerecord": "Optag på ny",
+    "remove": "Fjern",
+    "removed": "Videopræsentationen er fjernet",
+    "cancel": "Annuller",
+    "cameraDenied": "Giv adgang til kamera og mikrofon for at optage en video",
+    "tooLong": "Videoen må højst vare 30 sekunder",
+    "tooBig": "Videoen er for stor (maks. 30 MB)",
+    "failed": "Kunne ikke gemme videoen. Prøv igen.",
+    "chooseFile": "Vælg en video"
   }
 }

@@ -977,5 +977,26 @@
     "newQuestionPush": "Întrebare nouă! 💜 Cineva vrea să te cunoască mai bine",
     "answerPush": "Întrebarea ta a primit un răspuns! 🎉",
     "fakeProfileNote": "Acesta este un profil fals — nu poate primi întrebări."
+  },
+  "videoIntro": {
+    "title": "Video de prezentare",
+    "subtitle": "Opțional — până la 15 secunde, ca lumea să te vadă cum ești",
+    "record": "Înregistrează video",
+    "startRecording": "Pornește înregistrarea",
+    "stop": "Oprește",
+    "recording": "Se înregistrează… {{s}} s",
+    "retake": "Refă",
+    "save": "Salvează videoclipul",
+    "saving": "Se încarcă…",
+    "saved": "Video de prezentare salvat",
+    "rerecord": "Reînregistrează",
+    "remove": "Elimină",
+    "removed": "Video de prezentare eliminat",
+    "cancel": "Anulează",
+    "cameraDenied": "Permite accesul la cameră și microfon pentru a înregistra un video",
+    "tooLong": "Videoclipul trebuie să aibă cel mult 30 de secunde",
+    "tooBig": "Videoclipul este prea mare (max. 30 MB)",
+    "failed": "Videoclipul nu a putut fi salvat. Încearcă din nou.",
+    "chooseFile": "Alege un video"
   }
 }

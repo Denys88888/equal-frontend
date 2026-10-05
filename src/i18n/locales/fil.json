@@ -970,5 +970,26 @@
     "newQuestionPush": "Bagong tanong! 💜 May gustong makilala ka pa nang mas mabuti",
     "answerPush": "Nasagot na ang tanong mo! 🎉",
     "fakeProfileNote": "Pekeng profile ito — hindi ito makakatanggap ng mga tanong."
+  },
+  "videoIntro": {
+    "title": "Video intro",
+    "subtitle": "Opsyonal — hanggang 15 segundo para makita ka nila nang totoo",
+    "record": "Mag-record ng video",
+    "startRecording": "Simulan ang pag-record",
+    "stop": "Ihinto",
+    "recording": "Nagre-record… {{s}} s",
+    "retake": "Ulitin",
+    "save": "I-save ang video",
+    "saving": "Ina-upload…",
+    "saved": "Na-save ang video intro",
+    "rerecord": "I-record muli",
+    "remove": "Alisin",
+    "removed": "Naalis ang video intro",
+    "cancel": "Kanselahin",
+    "cameraDenied": "Payagan ang access sa camera at mikropono para makapag-record ng video",
+    "tooLong": "Dapat 30 segundo o mas maikli ang video",
+    "tooBig": "Masyadong malaki ang video (max 30 MB)",
+    "failed": "Hindi ma-save ang video. Subukang muli.",
+    "chooseFile": "Pumili ng video"
   }
 }

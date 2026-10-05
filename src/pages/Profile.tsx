@@ -31,6 +31,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Textarea } from '@/components/ui/textarea';
 import Layout from '@/components/Layout';
 import VoiceIntroRecorder from '@/components/VoiceIntroRecorder';
+import VideoIntroRecorder from '@/components/VideoIntroRecorder';
 import AskWidget from '@/components/AskWidget';
 import { useToast } from '@/hooks/useToast';
 import { useAuth } from '@/context/AuthContext';
@@ -309,6 +310,7 @@ export default function Profile() {
   const [showBadgeDetail, setShowBadgeDetail] = useState<string | null>(null);
   const [showTrustInfo, setShowTrustInfo] = useState(false);
   const [voiceIntroUrl, setVoiceIntroUrl] = useState<string | null>(null);
+  const [videoIntroUrl, setVideoIntroUrl] = useState<string | null>(null);
 
   // Photo upload — both the hero "edit photo" pencil and the "+" add-photo tile
   // used to have no onClick at all, so tapping them (the app's only real
@@ -390,6 +392,7 @@ export default function Profile() {
       setBio(mapped.bio);
       setEditBioText(mapped.bio);
       setVoiceIntroUrl((d as unknown as { voiceIntroUrl?: string | null }).voiceIntroUrl ?? null);
+      setVideoIntroUrl((d as unknown as { videoIntroUrl?: string | null }).videoIntroUrl ?? null);
     }).catch(() => {}).finally(() => setProfileLoaded(true));
   }, []);
 
@@ -819,6 +822,11 @@ export default function Profile() {
             existingUrl={voiceIntroUrl}
             onSaved={(url) => setVoiceIntroUrl(url)}
           />
+        </div>
+
+        {/* ─────────────── Video Intro ─────────────── */}
+        <div className="px-5 mt-4">
+          <VideoIntroRecorder existingUrl={videoIntroUrl} onChange={setVideoIntroUrl} />
         </div>
 
         {/* ─────────────── Spark Balance ─────────────── */}

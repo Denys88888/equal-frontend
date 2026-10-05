@@ -970,5 +970,26 @@
     "newQuestionPush": "Nieuwe vraag! 💜 Iemand wil je beter leren kennen",
     "answerPush": "Je vraag is beantwoord! 🎉",
     "fakeProfileNote": "Dit is een nepprofiel — het kan geen vragen ontvangen."
+  },
+  "videoIntro": {
+    "title": "Video-intro",
+    "subtitle": "Optioneel — tot 15 seconden, zodat mensen de echte jij zien",
+    "record": "Video opnemen",
+    "startRecording": "Opname starten",
+    "stop": "Stop",
+    "recording": "Opnemen… {{s}} s",
+    "retake": "Opnieuw",
+    "save": "Video opslaan",
+    "saving": "Uploaden…",
+    "saved": "Video-intro opgeslagen",
+    "rerecord": "Opnieuw opnemen",
+    "remove": "Verwijderen",
+    "removed": "Video-intro verwijderd",
+    "cancel": "Annuleren",
+    "cameraDenied": "Geef toegang tot camera en microfoon om een video op te nemen",
+    "tooLong": "De video mag maximaal 30 seconden duren",
+    "tooBig": "De video is te groot (max. 30 MB)",
+    "failed": "Kan de video niet opslaan. Probeer het opnieuw.",
+    "chooseFile": "Kies een video"
   }
 }

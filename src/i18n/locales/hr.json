@@ -977,5 +977,26 @@
     "newQuestionPush": "Novo pitanje! 💜 Netko te želi bolje upoznati",
     "answerPush": "Tvoje pitanje je dobilo odgovor! 🎉",
     "fakeProfileNote": "Ovo je lažni profil — ne može primati pitanja."
+  },
+  "videoIntro": {
+    "title": "Video predstavljanje",
+    "subtitle": "Neobavezno — do 15 sekundi da te drugi vide onakvim kakav jesi",
+    "record": "Snimi video",
+    "startRecording": "Počni snimanje",
+    "stop": "Zaustavi",
+    "recording": "Snimanje… {{s}} s",
+    "retake": "Snimi ponovno",
+    "save": "Spremi video",
+    "saving": "Prijenos…",
+    "saved": "Video predstavljanje spremljeno",
+    "rerecord": "Ponovno snimi",
+    "remove": "Ukloni",
+    "removed": "Video predstavljanje uklonjeno",
+    "cancel": "Odustani",
+    "cameraDenied": "Dopusti pristup kameri i mikrofonu za snimanje videa",
+    "tooLong": "Video smije trajati najviše 30 sekundi",
+    "tooBig": "Video je prevelik (najviše 30 MB)",
+    "failed": "Spremanje videa nije uspjelo. Pokušaj ponovno.",
+    "chooseFile": "Odaberi video"
   }
 }

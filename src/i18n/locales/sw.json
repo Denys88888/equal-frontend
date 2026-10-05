@@ -970,5 +970,26 @@
     "newQuestionPush": "Swali jipya! 💜 Mtu anataka kukujua vizuri zaidi",
     "answerPush": "Swali lako limejibiwa! 🎉",
     "fakeProfileNote": "Huu ni wasifu bandia — hauwezi kupokea maswali."
+  },
+  "videoIntro": {
+    "title": "Video ya utambulisho",
+    "subtitle": "Si lazima — hadi sekunde 15 ili watu wakuone ulivyo kweli",
+    "record": "Rekodi video",
+    "startRecording": "Anza kurekodi",
+    "stop": "Simamisha",
+    "recording": "Inarekodi… sek {{s}}",
+    "retake": "Rudia",
+    "save": "Hifadhi video",
+    "saving": "Inapakia…",
+    "saved": "Video ya utambulisho imehifadhiwa",
+    "rerecord": "Rekodi upya",
+    "remove": "Ondoa",
+    "removed": "Video ya utambulisho imeondolewa",
+    "cancel": "Ghairi",
+    "cameraDenied": "Ruhusu ufikiaji wa kamera na maikrofoni ili kurekodi video",
+    "tooLong": "Video lazima iwe sekunde 30 au chini",
+    "tooBig": "Video ni kubwa mno (kiwango cha juu MB 30)",
+    "failed": "Imeshindwa kuhifadhi video. Jaribu tena.",
+    "chooseFile": "Chagua video"
   }
 }

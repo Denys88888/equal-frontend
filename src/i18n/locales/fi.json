@@ -970,5 +970,26 @@
     "newQuestionPush": "Uusi kysymys! 💜 Joku haluaa tutustua sinuun paremmin",
     "answerPush": "Kysymykseesi on vastattu! 🎉",
     "fakeProfileNote": "Tämä on feikkiprofiili – sille ei voi esittää kysymyksiä."
+  },
+  "videoIntro": {
+    "title": "Videoesittely",
+    "subtitle": "Valinnainen – enintään 15 sekuntia, jotta muut näkevät aidon sinut",
+    "record": "Kuvaa video",
+    "startRecording": "Aloita tallennus",
+    "stop": "Lopeta",
+    "recording": "Tallennetaan… {{s}} s",
+    "retake": "Kuvaa uudelleen",
+    "save": "Tallenna video",
+    "saving": "Ladataan…",
+    "saved": "Videoesittely tallennettu",
+    "rerecord": "Tallenna uudelleen",
+    "remove": "Poista",
+    "removed": "Videoesittely poistettu",
+    "cancel": "Peruuta",
+    "cameraDenied": "Salli kameran ja mikrofonin käyttö videon tallentamista varten",
+    "tooLong": "Videon pituus saa olla enintään 30 sekuntia",
+    "tooBig": "Video on liian suuri (enintään 30 Mt)",
+    "failed": "Videon tallentaminen epäonnistui. Yritä uudelleen.",
+    "chooseFile": "Valitse video"
   }
 }

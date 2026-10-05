@@ -984,5 +984,26 @@
     "newQuestionPush": "Nowe pytanie! 💜 Ktoś chce Cię lepiej poznać",
     "answerPush": "Twoje pytanie ma odpowiedź! 🎉",
     "fakeProfileNote": "To fałszywy profil — nie można mu zadawać pytań."
+  },
+  "videoIntro": {
+    "title": "Wideo-wizytówka",
+    "subtitle": "Opcjonalnie — do 15 sekund, żeby inni zobaczyli prawdziwego ciebie",
+    "record": "Nagraj wideo",
+    "startRecording": "Rozpocznij nagrywanie",
+    "stop": "Stop",
+    "recording": "Nagrywanie… {{s}} s",
+    "retake": "Nagraj ponownie",
+    "save": "Zapisz wideo",
+    "saving": "Wysyłanie…",
+    "saved": "Wideo-wizytówka zapisana",
+    "rerecord": "Nagraj od nowa",
+    "remove": "Usuń",
+    "removed": "Wideo-wizytówka usunięta",
+    "cancel": "Anuluj",
+    "cameraDenied": "Zezwól na dostęp do kamery i mikrofonu, aby nagrać wideo",
+    "tooLong": "Wideo może trwać najwyżej 30 sekund",
+    "tooBig": "Wideo jest za duże (maks. 30 MB)",
+    "failed": "Nie udało się zapisać wideo. Spróbuj ponownie.",
+    "chooseFile": "Wybierz wideo"
   }
 }

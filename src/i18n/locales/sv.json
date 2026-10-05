@@ -970,5 +970,26 @@
     "newQuestionPush": "Ny fråga! 💜 Någon vill lära känna dig bättre",
     "answerPush": "Din fråga har fått ett svar! 🎉",
     "fakeProfileNote": "Det här är en fejkprofil – den kan inte ta emot frågor."
+  },
+  "videoIntro": {
+    "title": "Videopresentation",
+    "subtitle": "Valfritt – upp till 15 sekunder så att andra ser den riktiga dig",
+    "record": "Spela in video",
+    "startRecording": "Starta inspelning",
+    "stop": "Stopp",
+    "recording": "Spelar in… {{s}} s",
+    "retake": "Gör om",
+    "save": "Spara video",
+    "saving": "Laddar upp…",
+    "saved": "Videopresentationen sparades",
+    "rerecord": "Spela in igen",
+    "remove": "Ta bort",
+    "removed": "Videopresentationen togs bort",
+    "cancel": "Avbryt",
+    "cameraDenied": "Ge åtkomst till kamera och mikrofon för att spela in en video",
+    "tooLong": "Videon får vara högst 30 sekunder lång",
+    "tooBig": "Videon är för stor (max 30 MB)",
+    "failed": "Kunde inte spara videon. Försök igen.",
+    "chooseFile": "Välj en video"
   }
 }
