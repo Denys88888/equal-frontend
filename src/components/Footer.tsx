@@ -39,11 +39,11 @@ export default function Footer() {
         backdropFilter: 'blur(16px)',
         borderTop: '1px solid rgba(0,0,0,0.04)',
         boxShadow: '0 -4px 24px rgba(0,0,0,0.06)',
-        paddingBottom: 'max(env(safe-area-inset-bottom), 10px)',
-        height: 'calc(72px + max(env(safe-area-inset-bottom), 10px))',
+        paddingBottom: 'max(env(safe-area-inset-bottom), var(--tabbar-gap))',
+        height: 'calc(var(--tabbar-h) + max(env(safe-area-inset-bottom), var(--tabbar-gap)))',
       }}
     >
-      <div className="max-w-[430px] mx-auto h-[72px] flex items-center justify-around px-2">
+      <div className="max-w-[430px] mx-auto flex items-center justify-around px-2" style={{ height: 'var(--tabbar-h)' }}>
         {navItems.map((item, index) => {
           const isActive = location.pathname === item.path || location.pathname.startsWith(`${item.path}/`);
           const Icon = item.icon;

@@ -58,7 +58,7 @@ export default function Layout({
             // column — without this, the last ~80px of every page's content
             // (e.g. Profile's Settings row) renders underneath the tab bar
             // and its tap target is obscured/unreliable.
-            style={!shouldHideFooter ? { paddingBottom: 'calc(72px + max(env(safe-area-inset-bottom), 10px))' } : undefined}
+            style={!shouldHideFooter ? { paddingBottom: 'calc(var(--tabbar-h) + max(env(safe-area-inset-bottom), var(--tabbar-gap)))' } : undefined}
           >
             {children}
           </motion.main>

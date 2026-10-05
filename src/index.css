@@ -127,3 +127,16 @@
     touch-action: manipulation;
   }
 }
+
+/* Bottom tab bar. Android's Pi Browser ends the page above the system
+   navigation bar, which already separates the tabs from the screen edge, so
+   the extra gap meant for edge-to-edge screens made the bottom look padded
+   twice. The "android" class is set in main.tsx. */
+:root {
+  --tabbar-h: 72px;
+  --tabbar-gap: 10px;
+}
+html.android {
+  --tabbar-h: 64px;
+  --tabbar-gap: 0px;
+}

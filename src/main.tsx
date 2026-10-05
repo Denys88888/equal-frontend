@@ -20,6 +20,9 @@ if (document.readyState === 'loading') {
   initPiSdk();
 }
 
+// Android needs a slimmer bottom tab bar: see --tabbar-h in index.css.
+if (/Android/i.test(navigator.userAgent)) document.documentElement.classList.add('android');
+
 createRoot(document.getElementById('root')!).render(
   <HashRouter>
     <AuthProvider>
