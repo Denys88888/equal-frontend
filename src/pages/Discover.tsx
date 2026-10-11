@@ -114,8 +114,11 @@ function FilterSheet({
   matchCount: number;
 }) {
   const { t } = useTranslation();
+  // The sheet only had a max-height, so h-full resolved to "auto" and the
+  // scroll area below was never bounded: on a small iPhone the lower filters
+  // and the Apply button sat below the screen and nothing scrolled.
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col flex-1 min-h-0">
       {/* Handle */}
       <div className="flex justify-center pt-3 pb-5">
         <div className="w-10 h-1 rounded-full bg-[var(--linen-dark)]" />
@@ -126,7 +129,7 @@ function FilterSheet({
         {t('discover.filter')}
       </h2>
 
-      <div className="flex-1 overflow-y-auto px-6 space-y-6 pb-4">
+      <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-6 space-y-6 pb-4">
         {/* Distance */}
         <div>
           <div className="flex justify-between mb-3">
@@ -287,7 +290,7 @@ function FilterSheet({
       </div>
 
       {/* Footer */}
-      <div className="flex items-center gap-3 px-6 py-4 border-t" style={{ borderColor: 'var(--linen-dark)' }}>
+      <div className="flex-shrink-0 flex items-center gap-3 px-6 pt-4 border-t" style={{ borderColor: 'var(--linen-dark)', paddingBottom: 'calc(16px + env(safe-area-inset-bottom))' }}>
         <button
           onClick={onReset}
           className="flex-1 h-12 rounded-full flex items-center justify-center text-sm font-semibold text-[#BB83C9]"
@@ -1102,7 +1105,7 @@ export default function Discover() {
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] as [number, number, number, number] }}
-              className="absolute bottom-0 left-0 right-0 rounded-t-3xl bg-white dark:bg-[#22293B]"
+              className="absolute bottom-0 left-0 right-0 rounded-t-3xl bg-white dark:bg-[#22293B] flex flex-col overflow-hidden"
               style={{ maxHeight: '85vh' }}
             >
               <FilterSheet

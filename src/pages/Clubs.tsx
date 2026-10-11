@@ -829,7 +829,7 @@ function ClubDetail({
 
       {/* Create Post Bottom Sheet */}
       <Sheet open={showCreatePost} onOpenChange={setShowCreatePost}>
-        <SheetContent side="bottom" className="rounded-t-[24px] p-6 max-h-[80vh]" style={{ backgroundColor: 'var(--card-bg)' }}>
+        <SheetContent side="bottom" className="rounded-t-[24px] p-6 max-h-[80vh] overflow-y-auto overscroll-contain" style={{ backgroundColor: 'var(--card-bg)' }}>
           <SheetHeader>
             <SheetTitle className="text-xl font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
               {t('clubs.newPost')}
@@ -898,7 +898,7 @@ function ClubDetail({
               {t('clubs.comments', { defaultValue: 'Comments' })}
             </SheetTitle>
           </SheetHeader>
-          <div className="flex-1 overflow-y-auto px-6 flex flex-col gap-3">
+          <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-6 flex flex-col gap-3">
             {commentsLoading ? (
               <p className="text-sm py-6 text-center" style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }}>…</p>
             ) : comments.length === 0 ? (
