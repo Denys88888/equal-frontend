@@ -15,10 +15,6 @@ import {
   BellOff,
   User,
   CheckCheck,
-  Coffee,
-  Music,
-  Sparkles,
-  Rose,
   Image as ImageIcon,
   AlertCircle,
 } from 'lucide-react';
@@ -37,6 +33,9 @@ import { usePiPayment } from '@/hooks/usePiPayment';
 import { formatDayLabel, formatTime } from '@/lib/format';
 import UserAvatar from '@/components/UserAvatar';
 import { recordedAudioType, playableAudioUrl } from '@/lib/audio';
+import GiftAnimation from '@/components/GiftAnimation';
+import { GIFT_EMOJI, isGiftKind, type GiftKind } from '@/lib/gifts';
+import GiftCelebration from '@/components/GiftCelebration';
 
 // ── Types ────────────────────────────────────────────────
 
@@ -99,18 +98,6 @@ function TypingIndicator() {
       </div>
     </div>
   );
-}
-
-// ── GiftIcon Component ───────────────────────────────────
-
-function GiftIconComponent({ type, size = 36 }: { type: string; size?: number }) {
-  switch (type) {
-    case 'coffee': return <Coffee size={size} style={{ color: '#F0B84A' }} />;
-    case 'rose': return <Rose size={size} style={{ color: '#E86A6A' }} />;
-    case 'song': return <Music size={size} style={{ color: '#BB83C9' }} />;
-    case 'spark': return <Sparkles size={size} style={{ color: '#7DE0B3' }} />;
-    default: return <Gift size={size} style={{ color: '#F0B84A' }} />;
-  }
 }
 
 // ── Waveform Component ───────────────────────────────────
@@ -245,7 +232,6 @@ function VoicePlayer({ src, sent, fallbackDuration }: { src: string; sent: boole
 
 // ── ChatBubble ───────────────────────────────────────────
 
-const GIFT_EMOJI: Record<string, string> = { coffee: '\u2615', rose: '\ud83c\udf39', song: '\ud83c\udfb5', spark: '\u2728' };
 const GIFT_NAME_KEY: Record<string, string> = { coffee: 'chat.giftCoffee', rose: 'chat.giftRose', song: 'chat.giftSong', spark: 'chat.giftSpark' };
 
 function ChatBubble({ message, partnerName }: { message: Message; partnerName: string }) {
@@ -274,7 +260,7 @@ function ChatBubble({ message, partnerName }: { message: Message; partnerName: s
             animate={{ scale: [0.8, 1.2, 1] }}
             transition={{ duration: 0.4, ease: [0.34, 1.56, 0.64, 1] as [number, number, number, number] }}
           >
-            <GiftIconComponent type={message.giftType || 'coffee'} size={28} />
+            <GiftAnimation kind={isGiftKind(message.giftType) ? message.giftType : 'coffee'} size={64} />
           </motion.div>
           <p className="text-sm font-medium mt-1.5 text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
             {/* Built from who sent what, in the reader's language. The stored
@@ -283,7 +269,7 @@ function ChatBubble({ message, partnerName }: { message: Message; partnerName: s
             {message.giftType && GIFT_NAME_KEY[message.giftType]
               ? t(isSent ? 'chat.giftYouSent' : 'chat.giftTheySent', {
                   partner: partnerName,
-                  gift: `${t(GIFT_NAME_KEY[message.giftType])} ${GIFT_EMOJI[message.giftType]}`,
+                  gift: `${t(GIFT_NAME_KEY[message.giftType])} ${GIFT_EMOJI[message.giftType as GiftKind] ?? ''}`,
                 })
               : message.content}
           </p>
@@ -577,7 +563,7 @@ function GiftBottomSheet({
                       border: selected === i ? '1.5px solid #BB83C9' : '1.5px solid var(--linen-dark)',
                     }}
                   >
-                    <GiftIconComponent type={gift.icon} size={36} />
+                    <GiftAnimation kind={gift.icon as GiftKind} size={64} />
                     <span
                       className="text-base font-semibold mt-2"
                       style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: 'var(--charcoal)' }}
@@ -870,6 +856,14 @@ export default function Chat() {
     isVerified: false,
     sharedInterests: [] as string[],
   });
+  // Full-screen gift moment: the recipient sees it as the gift arrives, the
+  // sender once it is delivered.
+  const [celebration, setCelebration] = useState<{ gift: GiftKind; text: string } | null>(null);
+  const closeCelebration = useCallback(() => setCelebration(null), []);
+  const giftLabel = useCallback(
+    (g: GiftKind) => `${t(GIFT_NAME_KEY[g])} ${GIFT_EMOJI[g]}`,
+    [t],
+  );
   // Derived, not stored, so switching language re-renders them in it.
   const icebreakers = useMemo(
     () => buildIcebreakers(t, matchInfo.sharedInterests, matchInfo.matchName),
@@ -900,7 +894,13 @@ export default function Chat() {
           },
         ];
       });
-    }, [partnerId]),
+      if (msg.type === 'GIFT' && isGiftKind(msg.giftType)) {
+        setCelebration({
+          gift: msg.giftType,
+          text: t('chat.giftTheySent', { partner: matchInfo.matchName, gift: giftLabel(msg.giftType) }),
+        });
+      }
+    }, [partnerId, matchInfo.matchName, giftLabel, t]),
     useCallback(() => setIsTyping(true), []),
     useCallback(() => setIsTyping(false), []),
     useCallback((userId: string, isOnline: boolean) => {
@@ -1026,13 +1026,20 @@ export default function Chat() {
         setMessages((prev) =>
           prev.map((m) => (m.id === optimistic.id ? { ...m, id: saved.id ?? m.id } : m))
         );
-        showToast(t('chat.giftSent', { name: giftName }));
+        if (isGiftKind(giftType)) {
+          setCelebration({
+            gift: giftType,
+            text: t('chat.giftYouSent', { partner: matchInfo.matchName, gift: giftLabel(giftType) }),
+          });
+        } else {
+          showToast(t('chat.giftSent', { name: giftName }));
+        }
       } catch {
         setMessages((prev) => prev.filter((m) => m.id !== optimistic.id));
         showToast(t('chat.giftFailed', { defaultValue: 'Could not deliver gift \u2014 please contact support' }));
       }
     },
-    [matchId, matchInfo.matchName, showToast, t]
+    [matchId, matchInfo.matchName, showToast, t, giftLabel]
   );
 
   const photoInputRef = useRef<HTMLInputElement>(null);
@@ -1466,6 +1473,7 @@ export default function Chat() {
         </div>
 
         {/* ── Gift Bottom Sheet ── */}
+        <GiftCelebration gift={celebration?.gift ?? null} text={celebration?.text ?? ''} onDone={closeCelebration} />
         <GiftBottomSheet
           isOpen={showGiftSheet}
           onClose={() => setShowGiftSheet(false)}

@@ -998,6 +998,10 @@ export default function Settings() {
               <Code size={12} strokeWidth={2} />
               <span>{t('settings2.builtBy')}</span>
             </div>
+            {/* Attribution the gift animations' licence requires (public/gifts/LICENSE.txt). */}
+            <p className="mt-2 text-[10px] text-[var(--charcoal)] opacity-40 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              Gift animations: Noto Emoji Animation © Google, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer" className="underline">CC BY 4.0</a>
+            </p>
           </div>
         </DialogContent>
       </Dialog>
