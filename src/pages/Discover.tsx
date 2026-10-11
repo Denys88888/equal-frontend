@@ -13,6 +13,7 @@ import { sparksApi } from '@/api/sparks';
 import UserAvatar from '@/components/UserAvatar';
 import { getMe } from '@/api/users';
 import type { ProfileCard } from '@/api/types';
+import { appLocale } from '@/lib/format';
 
 // ── Types ──────────────────────────────────────────────
 
@@ -43,6 +44,17 @@ interface Filters {
   goals: string[];
   interests: string[];
 }
+
+/**
+ * Distance slider stops: fine near you, coarse far away — one linear 1–5000 km
+ * track would make everything under 100 km a few pixels wide.
+ */
+const DISTANCE_STEPS = [1, 5, 10, 25, 50, 100, 250, 500, 1000, 2500, 5000];
+const MAX_DISTANCE_KM = DISTANCE_STEPS[DISTANCE_STEPS.length - 1];
+const distanceStep = (km: number) => {
+  const i = DISTANCE_STEPS.findIndex((d) => d >= km);
+  return i === -1 ? DISTANCE_STEPS.length - 1 : i;
+};
 
 // ── Mock Data ──────────────────────────────────────────
 
@@ -134,23 +146,24 @@ function FilterSheet({
         <div>
           <div className="flex justify-between mb-3">
             <span className="text-sm font-medium text-[var(--charcoal)]">{t('discover.maxDistance')}</span>
-            <span className="text-sm font-medium text-[#BB83C9]">{t('discover.km', { d: filters.maxDistance })}</span>
+            <span className="text-sm font-medium text-[#BB83C9]">{t('discover.km', { d: filters.maxDistance.toLocaleString(appLocale()) })}</span>
           </div>
           <input
             type="range"
-            min={1}
-            max={100}
-            value={filters.maxDistance}
-            onChange={(e) => onChange({ ...filters, maxDistance: Number(e.target.value) })}
+            min={0}
+            max={DISTANCE_STEPS.length - 1}
+            step={1}
+            value={distanceStep(filters.maxDistance)}
+            onChange={(e) => onChange({ ...filters, maxDistance: DISTANCE_STEPS[Number(e.target.value)] })}
             className="w-full h-2 rounded-full appearance-none cursor-pointer"
             style={{
-              background: `linear-gradient(to right, #BB83C9 0%, #BB83C9 ${filters.maxDistance}%, var(--linen-dark) ${filters.maxDistance}%, var(--linen-dark) 100%)`,
+              background: `linear-gradient(to right, #BB83C9 0%, #BB83C9 ${(distanceStep(filters.maxDistance) / (DISTANCE_STEPS.length - 1)) * 100}%, var(--linen-dark) ${(distanceStep(filters.maxDistance) / (DISTANCE_STEPS.length - 1)) * 100}%, var(--linen-dark) 100%)`,
               accentColor: '#BB83C9',
             }}
           />
           <div className="flex justify-between mt-1">
             <span className="text-xs text-[var(--charcoal)]" style={{ opacity: 0.35 }}>{t('discover.km', { d: 1 })}</span>
-            <span className="text-xs text-[var(--charcoal)]" style={{ opacity: 0.35 }}>{t('discover.km', { d: 100 })}</span>
+            <span className="text-xs text-[var(--charcoal)]" style={{ opacity: 0.35 }}>{t('discover.km', { d: MAX_DISTANCE_KM.toLocaleString(appLocale()) })}</span>
           </div>
         </div>
 
@@ -818,7 +831,7 @@ export default function Discover() {
   const [lastSwiped, setLastSwiped] = useState<Profile | null>(null);
   const [sparkCount, setSparkCount] = useState(0);
   const [filters, setFilters] = useState<Filters>({
-    maxDistance: 50,
+    maxDistance: MAX_DISTANCE_KM,
     ageMin: 22,
     ageMax: 35,
     verifiedOnly: false,
@@ -836,7 +849,7 @@ export default function Discover() {
   useEffect(() => {
     let cancelled = false;
     Promise.all([
-      discoverApi.getProfiles({ maxDistance: 50 }),
+      discoverApi.getProfiles({ maxDistance: MAX_DISTANCE_KM }),
       sparksApi.getBalance(),
       getMe().then((me) => me.verifiedOnly === true).catch(() => false),
     ]).then(([data, sparks, verifiedOnly]) => {
@@ -874,7 +887,7 @@ export default function Discover() {
 
   const resetFilters = () => {
     setFilters({
-      maxDistance: 50,
+      maxDistance: MAX_DISTANCE_KM,
       ageMin: 22,
       ageMax: 35,
       verifiedOnly: defaultVerifiedOnly,
