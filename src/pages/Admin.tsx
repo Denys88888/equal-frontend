@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { useState, useCallback, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router';
+import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
+import { useNavigate, useSearchParams } from 'react-router';
 import { useAuth } from '@/context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -29,6 +29,10 @@ import {
   Gift,
   Ticket,
   Mail,
+  LayoutDashboard,
+  BadgeCheck,
+  Wrench,
+  ChevronRight,
 } from 'lucide-react';
 import Layout from '@/components/Layout';
 import LoadErrorNotice from '@/components/LoadErrorNotice';
@@ -350,10 +354,12 @@ function RecentRevenue() {
 
 // ── Reports Moderation ─────────────────────────────────
 
-function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) {
+function ReportsModeration({ showToast, onCount }: { showToast: (msg: string) => void; onCount?: (n: number) => void }) {
   const { t } = useTranslation();
   const [filter, setFilter] = useState<'All' | 'Pending' | 'Resolved'>('All');
   const [reports, setReports] = useState<Report[]>([]);
+  const pendingCount = reports.filter((r) => r.status === 'Pending').length;
+  useEffect(() => { onCount?.(pendingCount); }, [pendingCount, onCount]);
   // A moderation queue that looks empty because the fetch failed is worse than
   // an error: reports pile up unreviewed while the admin believes it's clear.
   const [loadFailed, setLoadFailed] = useState(false);
@@ -435,7 +441,7 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
                       <div className="flex-1 text-left">
                         <div className="flex items-center gap-2">
                           <span className="text-sm font-semibold text-[var(--charcoal)]">{report.reportedUser.name}</span>
-                          <span className="text-[10px] font-medium text-[var(--charcoal)]/30">{report.timestamp}</span>
+                          <span className="text-[10px] font-medium text-[var(--charcoal)]/30">{formatDate(report.timestamp, { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) || report.timestamp}</span>
                         </div>
                         <div className="flex items-center gap-2 mt-0.5">
                           <span className="flex items-center gap-1 text-xs" style={{ color: reasonCfg.color }}>
@@ -446,7 +452,7 @@ function ReportsModeration({ showToast }: { showToast: (msg: string) => void }) 
                             className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
                             style={{ backgroundColor: statusCfg.bg, color: statusCfg.color }}
                           >
-                            {report.status}
+                            {report.status === 'Pending' ? t('admin.pending') : t('admin.resolved')}
                           </span>
                         </div>
                       </div>
@@ -750,9 +756,11 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
 
 // ── Club Management ────────────────────────────────────
 
-function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
+function ClubManagement({ showToast, onCount }: { showToast: (msg: string) => void; onCount?: (n: number) => void }) {
   const { t } = useTranslation();
   const [clubs, setClubs] = useState<Club[]>([]);
+  const pendingCount = clubs.filter((c) => c.status === 'Pending Review').length;
+  useEffect(() => { onCount?.(pendingCount); }, [pendingCount, onCount]);
 
   useEffect(() => {
     getAdminClubs()
@@ -880,9 +888,11 @@ function ClubManagement({ showToast }: { showToast: (msg: string) => void }) {
 
 // ── Event Management ───────────────────────────────────
 
-function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
+function EventManagement({ showToast, onCount }: { showToast: (msg: string) => void; onCount?: (n: number) => void }) {
   const { t } = useTranslation();
   const [events, setEvents] = useState<AppEvent[]>([]);
+  const pendingCount = events.filter((e) => e.moderation === 'PENDING').length;
+  useEffect(() => { onCount?.(pendingCount); }, [pendingCount, onCount]);
   const [editingEvent, setEditingEvent] = useState<AppEvent | null>(null);
   const [editForm, setEditForm] = useState({ name: '', description: '', date: '', location: '', city: '', category: '', price: '', maxAttendees: '' });
   const [savingEdit, setSavingEdit] = useState(false);
@@ -1232,9 +1242,10 @@ function EventManagement({ showToast }: { showToast: (msg: string) => void }) {
 // UI ever rendered getPendingVerifications()/reviewVerification(), so every
 // submission queued forever with no way to actually review or approve it.
 
-function VerificationRequests({ showToast }: { showToast: (msg: string) => void }) {
+function VerificationRequests({ showToast, onCount }: { showToast: (msg: string) => void; onCount?: (n: number) => void }) {
   const { t } = useTranslation();
   const [requests, setRequests] = useState<PendingVerification[]>([]);
+  useEffect(() => { onCount?.(requests.length); }, [requests.length, onCount]);
   const [busyId, setBusyId] = useState<string | null>(null);
 
   // Same reasoning as the reports queue: "no pending requests" must mean it,
@@ -1544,6 +1555,50 @@ function ManualActions({ showToast }: { showToast: (msg: string) => void }) {
 
 // ── Main Admin Page ────────────────────────────────────
 
+type AdminTab = 'overview' | 'reports' | 'users' | 'clubs' | 'events' | 'verification' | 'tools';
+
+const ADMIN_TABS: { id: AdminTab; label: string; icon: typeof Users }[] = [
+  { id: 'overview', label: 'admin.tabOverview', icon: LayoutDashboard },
+  { id: 'reports', label: 'admin.tabReports', icon: Flag },
+  { id: 'users', label: 'admin.tabUsers', icon: Users },
+  { id: 'clubs', label: 'admin.tabClubs', icon: MessageSquare },
+  { id: 'events', label: 'admin.tabEvents', icon: Calendar },
+  { id: 'verification', label: 'admin.tabVerification', icon: BadgeCheck },
+  { id: 'tools', label: 'admin.tabTools', icon: Wrench },
+];
+
+/** What waits for a decision, one tap from the section that handles it. */
+function NeedsAttention({ counts, onOpen }: { counts: Partial<Record<AdminTab, number>>; onOpen: (tab: AdminTab) => void }) {
+  const { t } = useTranslation();
+  const items = ADMIN_TABS.filter(({ id }) => (counts[id] ?? 0) > 0);
+  return (
+    <div className="rounded-2xl p-4" style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
+      <h2 className="text-base font-semibold text-[var(--charcoal)] mb-2" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+        {t('admin.needsAttention')}
+      </h2>
+      {items.length === 0 ? (
+        <p className="text-sm text-[var(--charcoal)]/50 flex items-center gap-2">
+          <CheckCircle size={16} style={{ color: '#7DE0B3' }} />
+          {t('admin.allClear')}
+        </p>
+      ) : (
+        <div className="divide-y" style={{ borderColor: 'var(--linen-dark)' }}>
+          {items.map(({ id, label, icon: Icon }) => (
+            <button key={id} onClick={() => onOpen(id)} className="w-full flex items-center gap-3 py-2.5 text-left">
+              <Icon size={18} style={{ color: '#BB83C9' }} />
+              <span className="flex-1 text-sm text-[var(--charcoal)]">{t(label)}</span>
+              <span className="min-w-[22px] h-[22px] px-1.5 rounded-full text-xs font-semibold flex items-center justify-center text-white" style={{ backgroundColor: '#E86A6A' }}>
+                {counts[id]}
+              </span>
+              <ChevronRight size={16} className="text-[var(--charcoal)]/30" />
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Admin() {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -1551,6 +1606,23 @@ export default function Admin() {
   const [toastMessage, setToastMessage] = useState('');
   const [toastVisible, setToastVisible] = useState(false);
   const toastTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // The open section lives in the URL (?tab=), so reloading or going back
+  // returns to it.
+  const [searchParams, setSearchParams] = useSearchParams();
+  const requested = searchParams.get('tab');
+  const tab: AdminTab = ADMIN_TABS.some((x) => x.id === requested) ? (requested as AdminTab) : 'overview';
+  const selectTab = useCallback((id: AdminTab) => {
+    setSearchParams(id === 'overview' ? {} : { tab: id }, { replace: true });
+    window.scrollTo({ top: 0 });
+  }, [setSearchParams]);
+
+  // Items waiting for a decision, shown on the tabs and in the overview.
+  const [counts, setCounts] = useState<Partial<Record<AdminTab, number>>>({});
+  const onCount = useMemo(() => {
+    const set = (id: AdminTab) => (n: number) => setCounts((c) => (c[id] === n ? c : { ...c, [id]: n }));
+    return { reports: set('reports'), clubs: set('clubs'), events: set('events'), verification: set('verification') };
+  }, []);
 
   // Guard: only authenticated ADMINs may view this page
   useEffect(() => {
@@ -1583,43 +1655,56 @@ export default function Admin() {
     <Layout title={t('admin.panel')} showBack onBack={() => navigate('/profile')} rightAction={rightAction} hideFooter>
       <Toast message={toastMessage} visible={toastVisible} />
 
-      <div className="flex-1 px-5 pb-8 space-y-8" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-          className="pt-2"
-        >
-          <h1
-            className="text-2xl font-semibold text-[var(--charcoal)]"
-            style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-0.72px' }}
-          >
-            {t('admin.panel')}
-          </h1>
-          <p className="text-sm text-[var(--charcoal)]/40 mt-1">{t('admin.subtitle')}</p>
-        </motion.div>
+      {/* One section at a time. Everything used to be stacked on one long
+          page, so reaching events or verification meant scrolling past every
+          report and user. Visited sections stay mounted, so search text and
+          open dialogs survive switching. */}
+      <div className="sticky top-14 z-30 px-5 py-2" style={{ backgroundColor: 'var(--linen)' }}>
+        <div role="tablist" className="flex gap-2 overflow-x-auto -mx-5 px-5 scrollbar-hide">
+          {ADMIN_TABS.map(({ id, label, icon: Icon }) => {
+            const active = tab === id;
+            const count = counts[id] ?? 0;
+            return (
+              <button
+                key={id}
+                role="tab"
+                aria-selected={active}
+                onClick={() => selectTab(id)}
+                className="flex-shrink-0 h-9 px-3.5 rounded-full text-sm font-medium flex items-center gap-1.5 transition-colors"
+                style={{
+                  fontFamily: "'Outfit', system-ui, sans-serif",
+                  backgroundColor: active ? '#BB83C9' : 'var(--card-bg)',
+                  color: active ? '#fff' : 'var(--charcoal)',
+                  boxShadow: active ? '0 2px 10px rgba(187,131,201,0.35)' : '0 1px 4px rgba(0,0,0,0.04)',
+                }}
+              >
+                <Icon size={15} strokeWidth={2} />
+                {t(label)}
+                {count > 0 && (
+                  <span
+                    className="min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-semibold flex items-center justify-center"
+                    style={{ backgroundColor: active ? '#fff' : '#E86A6A', color: active ? '#BB83C9' : '#fff' }}
+                  >
+                    {count}
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
-        {/* Stats Cards */}
-        <StatsCards />
-
-        {/* Reports Moderation */}
-        <ReportsModeration showToast={showToast} />
-
-        {/* User Management */}
-        <UserManagement showToast={showToast} />
-
-        {/* Club Management */}
-        <ClubManagement showToast={showToast} />
-
-        {/* Event Management */}
-        <EventManagement showToast={showToast} />
-
-        {/* Verification Requests */}
-        <VerificationRequests showToast={showToast} />
-
-        {/* Manual Actions */}
-        <ManualActions showToast={showToast} />
+      <div className="flex-1 px-5 pt-3 pb-8 space-y-8">
+        <section hidden={tab !== 'overview'} className="space-y-6">
+          <NeedsAttention counts={counts} onOpen={selectTab} />
+          <StatsCards />
+        </section>
+        <section hidden={tab !== 'reports'}><ReportsModeration showToast={showToast} onCount={onCount.reports} /></section>
+        <section hidden={tab !== 'users'}><UserManagement showToast={showToast} /></section>
+        <section hidden={tab !== 'clubs'}><ClubManagement showToast={showToast} onCount={onCount.clubs} /></section>
+        <section hidden={tab !== 'events'}><EventManagement showToast={showToast} onCount={onCount.events} /></section>
+        <section hidden={tab !== 'verification'}><VerificationRequests showToast={showToast} onCount={onCount.verification} /></section>
+        <section hidden={tab !== 'tools'}><ManualActions showToast={showToast} /></section>
 
         {/* Bottom spacing */}
         <div className="h-4" />

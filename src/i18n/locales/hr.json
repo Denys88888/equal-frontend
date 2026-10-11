@@ -703,7 +703,16 @@
     "byAuthor": "autor: {{name}}",
     "edit": "Uredi",
     "feature": "Istakni",
-    "unfeature": "Ukloni isticanje"
+    "unfeature": "Ukloni isticanje",
+    "tabOverview": "Pregled",
+    "tabReports": "Prijave",
+    "tabUsers": "Korisnici",
+    "tabClubs": "Klubovi",
+    "tabEvents": "Događaji",
+    "tabVerification": "Provjera",
+    "tabTools": "Alati",
+    "needsAttention": "Treba pažnju",
+    "allClear": "Ništa ne čeka pregled"
   },
   "legal": {
     "termsTitle": "Uvjeti korištenja",

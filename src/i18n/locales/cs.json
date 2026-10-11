@@ -710,7 +710,16 @@
     "byAuthor": "autor: {{name}}",
     "edit": "Upravit",
     "feature": "Zvýraznit",
-    "unfeature": "Zrušit zvýraznění"
+    "unfeature": "Zrušit zvýraznění",
+    "tabOverview": "Přehled",
+    "tabReports": "Nahlášení",
+    "tabUsers": "Uživatelé",
+    "tabClubs": "Kluby",
+    "tabEvents": "Události",
+    "tabVerification": "Ověření",
+    "tabTools": "Nástroje",
+    "needsAttention": "Vyžaduje pozornost",
+    "allClear": "Nic nečeká na kontrolu"
   },
   "legal": {
     "termsTitle": "Podmínky služby",

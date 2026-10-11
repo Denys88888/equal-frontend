@@ -696,7 +696,16 @@
     "byAuthor": "by {{name}}",
     "edit": "Edit",
     "feature": "Feature",
-    "unfeature": "Unfeature"
+    "unfeature": "Unfeature",
+    "tabOverview": "Overview",
+    "tabReports": "Reports",
+    "tabUsers": "Users",
+    "tabClubs": "Clubs",
+    "tabEvents": "Events",
+    "tabVerification": "Verification",
+    "tabTools": "Tools",
+    "needsAttention": "Needs attention",
+    "allClear": "Nothing is waiting for review"
   },
   "legal": {
     "termsTitle": "Terms of Service",

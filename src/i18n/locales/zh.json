@@ -689,7 +689,16 @@
     "byAuthor": "创建者：{{name}}",
     "edit": "编辑",
     "feature": "设为精选",
-    "unfeature": "取消精选"
+    "unfeature": "取消精选",
+    "tabOverview": "概览",
+    "tabReports": "举报",
+    "tabUsers": "用户",
+    "tabClubs": "俱乐部",
+    "tabEvents": "活动",
+    "tabVerification": "认证",
+    "tabTools": "工具",
+    "needsAttention": "待处理",
+    "allClear": "没有待审核的内容"
   },
   "legal": {
     "termsTitle": "服务条款",

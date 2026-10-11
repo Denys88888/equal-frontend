@@ -696,7 +696,16 @@
     "byAuthor": "oluşturan: {{name}}",
     "edit": "Düzenle",
     "feature": "Öne çıkar",
-    "unfeature": "Öne çıkarmayı kaldır"
+    "unfeature": "Öne çıkarmayı kaldır",
+    "tabOverview": "Genel bakış",
+    "tabReports": "Şikayetler",
+    "tabUsers": "Kullanıcılar",
+    "tabClubs": "Kulüpler",
+    "tabEvents": "Etkinlikler",
+    "tabVerification": "Doğrulama",
+    "tabTools": "Araçlar",
+    "needsAttention": "İlgilenilmesi gerekenler",
+    "allClear": "İnceleme bekleyen bir şey yok"
   },
   "legal": {
     "termsTitle": "Kullanım Koşulları",

@@ -696,7 +696,16 @@
     "byAuthor": "توسط {{name}}",
     "edit": "ویرایش",
     "feature": "ویژه کردن",
-    "unfeature": "حذف از ویژه‌ها"
+    "unfeature": "حذف از ویژه‌ها",
+    "tabOverview": "نمای کلی",
+    "tabReports": "گزارش‌ها",
+    "tabUsers": "کاربران",
+    "tabClubs": "باشگاه‌ها",
+    "tabEvents": "رویدادها",
+    "tabVerification": "احراز هویت",
+    "tabTools": "ابزارها",
+    "needsAttention": "نیاز به رسیدگی",
+    "allClear": "چیزی در انتظار بررسی نیست"
   },
   "legal": {
     "termsTitle": "شرایط خدمات",

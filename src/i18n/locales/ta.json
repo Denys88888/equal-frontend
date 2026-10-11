@@ -696,7 +696,16 @@
     "byAuthor": "{{name}} உருவாக்கியது",
     "edit": "திருத்து",
     "feature": "சிறப்பிடு",
-    "unfeature": "சிறப்பிலிருந்து நீக்கு"
+    "unfeature": "சிறப்பிலிருந்து நீக்கு",
+    "tabOverview": "மேலோட்டம்",
+    "tabReports": "புகார்கள்",
+    "tabUsers": "பயனர்கள்",
+    "tabClubs": "கிளப்புகள்",
+    "tabEvents": "நிகழ்வுகள்",
+    "tabVerification": "சரிபார்ப்பு",
+    "tabTools": "கருவிகள்",
+    "needsAttention": "கவனம் தேவை",
+    "allClear": "மதிப்பாய்வுக்கு எதுவும் காத்திருக்கவில்லை"
   },
   "legal": {
     "termsTitle": "சேவை விதிமுறைகள்",

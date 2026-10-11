@@ -696,7 +696,16 @@
     "byAuthor": "tekijä: {{name}}",
     "edit": "Muokkaa",
     "feature": "Nosta esiin",
-    "unfeature": "Poista nosto"
+    "unfeature": "Poista nosto",
+    "tabOverview": "Yleiskatsaus",
+    "tabReports": "Ilmoitukset",
+    "tabUsers": "Käyttäjät",
+    "tabClubs": "Klubit",
+    "tabEvents": "Tapahtumat",
+    "tabVerification": "Vahvistus",
+    "tabTools": "Työkalut",
+    "needsAttention": "Vaatii huomiota",
+    "allClear": "Mikään ei odota tarkistusta"
   },
   "legal": {
     "termsTitle": "Käyttöehdot",

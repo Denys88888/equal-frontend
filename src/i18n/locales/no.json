@@ -696,7 +696,16 @@
     "byAuthor": "av {{name}}",
     "edit": "Rediger",
     "feature": "Fremhev",
-    "unfeature": "Fjern fremheving"
+    "unfeature": "Fjern fremheving",
+    "tabOverview": "Oversikt",
+    "tabReports": "Rapporter",
+    "tabUsers": "Brukere",
+    "tabClubs": "Klubber",
+    "tabEvents": "Arrangementer",
+    "tabVerification": "Verifisering",
+    "tabTools": "Verktøy",
+    "needsAttention": "Trenger oppmerksomhet",
+    "allClear": "Ingenting venter på gjennomgang"
   },
   "legal": {
     "termsTitle": "Vilkår for bruk",

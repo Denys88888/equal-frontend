@@ -696,7 +696,16 @@
     "byAuthor": "af {{name}}",
     "edit": "Rediger",
     "feature": "Fremhæv",
-    "unfeature": "Fjern fremhævning"
+    "unfeature": "Fjern fremhævning",
+    "tabOverview": "Overblik",
+    "tabReports": "Anmeldelser",
+    "tabUsers": "Brugere",
+    "tabClubs": "Klubber",
+    "tabEvents": "Begivenheder",
+    "tabVerification": "Verificering",
+    "tabTools": "Værktøjer",
+    "needsAttention": "Kræver opmærksomhed",
+    "allClear": "Intet venter på gennemgang"
   },
   "legal": {
     "termsTitle": "Servicevilkår",

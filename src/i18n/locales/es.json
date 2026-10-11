@@ -703,7 +703,16 @@
     "byAuthor": "por {{name}}",
     "edit": "Editar",
     "feature": "Destacar",
-    "unfeature": "Quitar destacado"
+    "unfeature": "Quitar destacado",
+    "tabOverview": "Resumen",
+    "tabReports": "Denuncias",
+    "tabUsers": "Usuarios",
+    "tabClubs": "Clubes",
+    "tabEvents": "Eventos",
+    "tabVerification": "Verificación",
+    "tabTools": "Herramientas",
+    "needsAttention": "Requiere atención",
+    "allClear": "No hay nada pendiente de revisión"
   },
   "legal": {
     "termsTitle": "Términos de servicio",

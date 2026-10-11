@@ -710,7 +710,16 @@
     "byAuthor": "автор: {{name}}",
     "edit": "Змінити",
     "feature": "В обране",
-    "unfeature": "Прибрати з обраного"
+    "unfeature": "Прибрати з обраного",
+    "tabOverview": "Огляд",
+    "tabReports": "Скарги",
+    "tabUsers": "Користувачі",
+    "tabClubs": "Клуби",
+    "tabEvents": "Події",
+    "tabVerification": "Верифікація",
+    "tabTools": "Інструменти",
+    "needsAttention": "Потребує уваги",
+    "allClear": "Усе перевірено, нічого не чекає рішення"
   },
   "legal": {
     "termsTitle": "Умови користування",

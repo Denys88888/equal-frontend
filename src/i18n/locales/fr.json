@@ -703,7 +703,16 @@
     "byAuthor": "par {{name}}",
     "edit": "Modifier",
     "feature": "Mettre en avant",
-    "unfeature": "Retirer de la une"
+    "unfeature": "Retirer de la une",
+    "tabOverview": "Aperçu",
+    "tabReports": "Signalements",
+    "tabUsers": "Utilisateurs",
+    "tabClubs": "Clubs",
+    "tabEvents": "Événements",
+    "tabVerification": "Vérification",
+    "tabTools": "Outils",
+    "needsAttention": "À traiter",
+    "allClear": "Rien n'attend de vérification"
   },
   "legal": {
     "termsTitle": "Conditions d'utilisation",

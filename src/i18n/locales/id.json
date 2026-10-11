@@ -689,7 +689,16 @@
     "byAuthor": "oleh {{name}}",
     "edit": "Edit",
     "feature": "Unggulkan",
-    "unfeature": "Batalkan unggulan"
+    "unfeature": "Batalkan unggulan",
+    "tabOverview": "Ringkasan",
+    "tabReports": "Laporan",
+    "tabUsers": "Pengguna",
+    "tabClubs": "Klub",
+    "tabEvents": "Acara",
+    "tabVerification": "Verifikasi",
+    "tabTools": "Alat",
+    "needsAttention": "Perlu perhatian",
+    "allClear": "Tidak ada yang menunggu ditinjau"
   },
   "legal": {
     "termsTitle": "Ketentuan Layanan",

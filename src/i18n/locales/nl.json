@@ -696,7 +696,16 @@
     "byAuthor": "door {{name}}",
     "edit": "Bewerken",
     "feature": "Uitlichten",
-    "unfeature": "Niet meer uitlichten"
+    "unfeature": "Niet meer uitlichten",
+    "tabOverview": "Overzicht",
+    "tabReports": "Meldingen",
+    "tabUsers": "Gebruikers",
+    "tabClubs": "Clubs",
+    "tabEvents": "Evenementen",
+    "tabVerification": "Verificatie",
+    "tabTools": "Hulpmiddelen",
+    "needsAttention": "Vraagt aandacht",
+    "allClear": "Niets wacht op beoordeling"
   },
   "legal": {
     "termsTitle": "Servicevoorwaarden",

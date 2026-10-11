@@ -710,7 +710,16 @@
     "byAuthor": "автор: {{name}}",
     "edit": "Изменить",
     "feature": "В избранное",
-    "unfeature": "Убрать из избранного"
+    "unfeature": "Убрать из избранного",
+    "tabOverview": "Обзор",
+    "tabReports": "Жалобы",
+    "tabUsers": "Пользователи",
+    "tabClubs": "Клубы",
+    "tabEvents": "События",
+    "tabVerification": "Верификация",
+    "tabTools": "Инструменты",
+    "needsAttention": "Требует внимания",
+    "allClear": "Всё проверено, ничего не ждёт решения"
   },
   "legal": {
     "termsTitle": "Условия использования",

@@ -703,7 +703,16 @@
     "byAuthor": "מאת {{name}}",
     "edit": "עריכה",
     "feature": "הצג כמומלץ",
-    "unfeature": "הסר מהמומלצים"
+    "unfeature": "הסר מהמומלצים",
+    "tabOverview": "סקירה",
+    "tabReports": "דיווחים",
+    "tabUsers": "משתמשים",
+    "tabClubs": "מועדונים",
+    "tabEvents": "אירועים",
+    "tabVerification": "אימות",
+    "tabTools": "כלים",
+    "needsAttention": "דורש טיפול",
+    "allClear": "אין פריטים שממתינים לבדיקה"
   },
   "legal": {
     "termsTitle": "תנאי שימוש",

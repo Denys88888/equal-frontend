@@ -696,7 +696,16 @@
     "byAuthor": "létrehozta: {{name}}",
     "edit": "Szerkesztés",
     "feature": "Kiemelés",
-    "unfeature": "Kiemelés megszüntetése"
+    "unfeature": "Kiemelés megszüntetése",
+    "tabOverview": "Áttekintés",
+    "tabReports": "Bejelentések",
+    "tabUsers": "Felhasználók",
+    "tabClubs": "Klubok",
+    "tabEvents": "Események",
+    "tabVerification": "Ellenőrzés",
+    "tabTools": "Eszközök",
+    "needsAttention": "Figyelmet igényel",
+    "allClear": "Semmi sem vár ellenőrzésre"
   },
   "legal": {
     "termsTitle": "Felhasználási feltételek",

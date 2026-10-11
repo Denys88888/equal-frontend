@@ -696,7 +696,16 @@
     "byAuthor": "av {{name}}",
     "edit": "Redigera",
     "feature": "Framhäv",
-    "unfeature": "Ta bort framhävning"
+    "unfeature": "Ta bort framhävning",
+    "tabOverview": "Översikt",
+    "tabReports": "Anmälningar",
+    "tabUsers": "Användare",
+    "tabClubs": "Klubbar",
+    "tabEvents": "Evenemang",
+    "tabVerification": "Verifiering",
+    "tabTools": "Verktyg",
+    "needsAttention": "Behöver åtgärdas",
+    "allClear": "Inget väntar på granskning"
   },
   "legal": {
     "termsTitle": "Användarvillkor",

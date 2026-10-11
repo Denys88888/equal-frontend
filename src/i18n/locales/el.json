@@ -696,7 +696,16 @@
     "byAuthor": "από {{name}}",
     "edit": "Επεξεργασία",
     "feature": "Προβολή",
-    "unfeature": "Κατάργηση προβολής"
+    "unfeature": "Κατάργηση προβολής",
+    "tabOverview": "Επισκόπηση",
+    "tabReports": "Αναφορές",
+    "tabUsers": "Χρήστες",
+    "tabClubs": "Λέσχες",
+    "tabEvents": "Εκδηλώσεις",
+    "tabVerification": "Επαλήθευση",
+    "tabTools": "Εργαλεία",
+    "needsAttention": "Χρειάζεται προσοχή",
+    "allClear": "Τίποτα δεν περιμένει έλεγχο"
   },
   "legal": {
     "termsTitle": "Όροι χρήσης",

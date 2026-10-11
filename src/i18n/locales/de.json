@@ -696,7 +696,16 @@
     "byAuthor": "von {{name}}",
     "edit": "Bearbeiten",
     "feature": "Hervorheben",
-    "unfeature": "Nicht mehr hervorheben"
+    "unfeature": "Nicht mehr hervorheben",
+    "tabOverview": "Übersicht",
+    "tabReports": "Meldungen",
+    "tabUsers": "Nutzer",
+    "tabClubs": "Clubs",
+    "tabEvents": "Events",
+    "tabVerification": "Verifizierung",
+    "tabTools": "Werkzeuge",
+    "needsAttention": "Braucht Aufmerksamkeit",
+    "allClear": "Nichts wartet auf Prüfung"
   },
   "legal": {
     "termsTitle": "Nutzungsbedingungen",

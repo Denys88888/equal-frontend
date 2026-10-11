@@ -689,7 +689,16 @@
     "byAuthor": "bởi {{name}}",
     "edit": "Chỉnh sửa",
     "feature": "Nổi bật",
-    "unfeature": "Bỏ nổi bật"
+    "unfeature": "Bỏ nổi bật",
+    "tabOverview": "Tổng quan",
+    "tabReports": "Báo cáo",
+    "tabUsers": "Người dùng",
+    "tabClubs": "Câu lạc bộ",
+    "tabEvents": "Sự kiện",
+    "tabVerification": "Xác minh",
+    "tabTools": "Công cụ",
+    "needsAttention": "Cần xử lý",
+    "allClear": "Không có gì đang chờ xem xét"
   },
   "legal": {
     "termsTitle": "Điều khoản dịch vụ",

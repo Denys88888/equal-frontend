@@ -710,7 +710,16 @@
     "byAuthor": "autor: {{name}}",
     "edit": "Edytuj",
     "feature": "Wyróżnij",
-    "unfeature": "Usuń wyróżnienie"
+    "unfeature": "Usuń wyróżnienie",
+    "tabOverview": "Przegląd",
+    "tabReports": "Zgłoszenia",
+    "tabUsers": "Użytkownicy",
+    "tabClubs": "Kluby",
+    "tabEvents": "Wydarzenia",
+    "tabVerification": "Weryfikacja",
+    "tabTools": "Narzędzia",
+    "needsAttention": "Wymaga uwagi",
+    "allClear": "Nic nie czeka na sprawdzenie"
   },
   "legal": {
     "termsTitle": "Regulamin",

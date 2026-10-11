@@ -689,7 +689,16 @@
     "byAuthor": "作成者：{{name}}",
     "edit": "編集",
     "feature": "注目に設定",
-    "unfeature": "注目を解除"
+    "unfeature": "注目を解除",
+    "tabOverview": "概要",
+    "tabReports": "通報",
+    "tabUsers": "ユーザー",
+    "tabClubs": "クラブ",
+    "tabEvents": "イベント",
+    "tabVerification": "本人確認",
+    "tabTools": "ツール",
+    "needsAttention": "要対応",
+    "allClear": "確認待ちはありません"
   },
   "legal": {
     "termsTitle": "利用規約",

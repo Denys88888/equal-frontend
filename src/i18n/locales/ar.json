@@ -724,7 +724,16 @@
     "byAuthor": "بواسطة {{name}}",
     "edit": "تعديل",
     "feature": "تمييز",
-    "unfeature": "إلغاء التمييز"
+    "unfeature": "إلغاء التمييز",
+    "tabOverview": "نظرة عامة",
+    "tabReports": "البلاغات",
+    "tabUsers": "المستخدمون",
+    "tabClubs": "الأندية",
+    "tabEvents": "الفعاليات",
+    "tabVerification": "التحقق",
+    "tabTools": "الأدوات",
+    "needsAttention": "يحتاج إلى متابعة",
+    "allClear": "لا شيء بانتظار المراجعة"
   },
   "legal": {
     "termsTitle": "شروط الخدمة",

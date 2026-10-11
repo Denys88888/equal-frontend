@@ -696,7 +696,16 @@
     "byAuthor": "{{name}} द्वारा",
     "edit": "संपादित करें",
     "feature": "फ़ीचर करें",
-    "unfeature": "फ़ीचर से हटाएँ"
+    "unfeature": "फ़ीचर से हटाएँ",
+    "tabOverview": "अवलोकन",
+    "tabReports": "रिपोर्ट",
+    "tabUsers": "उपयोगकर्ता",
+    "tabClubs": "क्लब",
+    "tabEvents": "इवेंट",
+    "tabVerification": "सत्यापन",
+    "tabTools": "टूल",
+    "needsAttention": "ध्यान चाहिए",
+    "allClear": "समीक्षा के लिए कुछ भी बाकी नहीं"
   },
   "legal": {
     "termsTitle": "सेवा की शर्तें",

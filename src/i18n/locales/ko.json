@@ -689,7 +689,16 @@
     "byAuthor": "만든 사람: {{name}}",
     "edit": "편집",
     "feature": "추천하기",
-    "unfeature": "추천 해제"
+    "unfeature": "추천 해제",
+    "tabOverview": "개요",
+    "tabReports": "신고",
+    "tabUsers": "사용자",
+    "tabClubs": "클럽",
+    "tabEvents": "이벤트",
+    "tabVerification": "인증",
+    "tabTools": "도구",
+    "needsAttention": "처리 필요",
+    "allClear": "검토 대기 중인 항목이 없어요"
   },
   "legal": {
     "termsTitle": "이용약관",

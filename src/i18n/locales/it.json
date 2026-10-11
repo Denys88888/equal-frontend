@@ -703,7 +703,16 @@
     "byAuthor": "di {{name}}",
     "edit": "Modifica",
     "feature": "Metti in evidenza",
-    "unfeature": "Togli dall'evidenza"
+    "unfeature": "Togli dall'evidenza",
+    "tabOverview": "Panoramica",
+    "tabReports": "Segnalazioni",
+    "tabUsers": "Utenti",
+    "tabClubs": "Club",
+    "tabEvents": "Eventi",
+    "tabVerification": "Verifica",
+    "tabTools": "Strumenti",
+    "needsAttention": "Da gestire",
+    "allClear": "Niente in attesa di revisione"
   },
   "legal": {
     "termsTitle": "Termini di servizio",

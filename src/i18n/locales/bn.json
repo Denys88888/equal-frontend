@@ -696,7 +696,16 @@
     "byAuthor": "{{name}}-এর তৈরি",
     "edit": "সম্পাদনা",
     "feature": "ফিচার করুন",
-    "unfeature": "ফিচার থেকে সরান"
+    "unfeature": "ফিচার থেকে সরান",
+    "tabOverview": "সংক্ষিপ্ত বিবরণ",
+    "tabReports": "রিপোর্ট",
+    "tabUsers": "ব্যবহারকারী",
+    "tabClubs": "ক্লাব",
+    "tabEvents": "ইভেন্ট",
+    "tabVerification": "যাচাই",
+    "tabTools": "টুল",
+    "needsAttention": "মনোযোগ দরকার",
+    "allClear": "পর্যালোচনার জন্য কিছু অপেক্ষায় নেই"
   },
   "legal": {
     "termsTitle": "পরিষেবার শর্তাবলী",

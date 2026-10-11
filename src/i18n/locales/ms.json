@@ -689,7 +689,16 @@
     "byAuthor": "oleh {{name}}",
     "edit": "Sunting",
     "feature": "Tonjolkan",
-    "unfeature": "Batalkan tonjolan"
+    "unfeature": "Batalkan tonjolan",
+    "tabOverview": "Gambaran",
+    "tabReports": "Laporan",
+    "tabUsers": "Pengguna",
+    "tabClubs": "Kelab",
+    "tabEvents": "Acara",
+    "tabVerification": "Pengesahan",
+    "tabTools": "Alatan",
+    "needsAttention": "Perlu perhatian",
+    "allClear": "Tiada apa-apa menunggu semakan"
   },
   "legal": {
     "termsTitle": "Terma Perkhidmatan",

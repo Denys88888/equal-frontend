@@ -703,7 +703,16 @@
     "byAuthor": "de {{name}}",
     "edit": "Editează",
     "feature": "Evidențiază",
-    "unfeature": "Elimină evidențierea"
+    "unfeature": "Elimină evidențierea",
+    "tabOverview": "Prezentare",
+    "tabReports": "Raportări",
+    "tabUsers": "Utilizatori",
+    "tabClubs": "Cluburi",
+    "tabEvents": "Evenimente",
+    "tabVerification": "Verificare",
+    "tabTools": "Instrumente",
+    "needsAttention": "Necesită atenție",
+    "allClear": "Nimic nu așteaptă verificare"
   },
   "legal": {
     "termsTitle": "Termeni de utilizare",

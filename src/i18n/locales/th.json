@@ -689,7 +689,16 @@
     "byAuthor": "โดย {{name}}",
     "edit": "แก้ไข",
     "feature": "แนะนำ",
-    "unfeature": "เลิกแนะนำ"
+    "unfeature": "เลิกแนะนำ",
+    "tabOverview": "ภาพรวม",
+    "tabReports": "รายงาน",
+    "tabUsers": "ผู้ใช้",
+    "tabClubs": "คลับ",
+    "tabEvents": "อีเวนต์",
+    "tabVerification": "การยืนยันตัวตน",
+    "tabTools": "เครื่องมือ",
+    "needsAttention": "ต้องดำเนินการ",
+    "allClear": "ไม่มีรายการรอตรวจสอบ"
   },
   "legal": {
     "termsTitle": "ข้อกำหนดในการให้บริการ",

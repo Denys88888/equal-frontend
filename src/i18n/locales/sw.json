@@ -696,7 +696,16 @@
     "byAuthor": "na {{name}}",
     "edit": "Hariri",
     "feature": "Angazia",
-    "unfeature": "Ondoa kuangazia"
+    "unfeature": "Ondoa kuangazia",
+    "tabOverview": "Muhtasari",
+    "tabReports": "Ripoti",
+    "tabUsers": "Watumiaji",
+    "tabClubs": "Vilabu",
+    "tabEvents": "Matukio",
+    "tabVerification": "Uthibitisho",
+    "tabTools": "Zana",
+    "needsAttention": "Inahitaji kushughulikiwa",
+    "allClear": "Hakuna kinachosubiri ukaguzi"
   },
   "legal": {
     "termsTitle": "Masharti ya Huduma",

@@ -696,7 +696,16 @@
     "byAuthor": "ni {{name}}",
     "edit": "I-edit",
     "feature": "I-feature",
-    "unfeature": "Alisin sa feature"
+    "unfeature": "Alisin sa feature",
+    "tabOverview": "Pangkalahatan",
+    "tabReports": "Mga ulat",
+    "tabUsers": "Mga user",
+    "tabClubs": "Mga club",
+    "tabEvents": "Mga event",
+    "tabVerification": "Beripikasyon",
+    "tabTools": "Mga tool",
+    "needsAttention": "Kailangang asikasuhin",
+    "allClear": "Walang naghihintay ng pagsusuri"
   },
   "legal": {
     "termsTitle": "Mga Tuntunin ng Serbisyo",
