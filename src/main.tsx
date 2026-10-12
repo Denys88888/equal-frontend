@@ -6,6 +6,7 @@ import { ToastProvider } from '@/components/ToastProvider'
 import { AuthProvider } from '@/context/AuthContext'
 import '@/i18n/config';
 import './index.css'
+import './styles/holo.css'
 import App from './App.tsx'
 
 // Initialize Pi SDK — call immediately if already loaded, otherwise wait for load

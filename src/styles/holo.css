@@ -1,0 +1,208 @@
+/*
+ * Holographic look — CSS only, so it stays smooth on older phones in Pi
+ * Browser (no WebGL). Positions that follow the finger / tilt are set from
+ * framer-motion values (useHoloTilt); everything here is the material.
+ */
+
+/* ── Card foil, glare, scanlines and iridescent ring ───────────────── */
+
+.holo-foil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background-image: repeating-linear-gradient(
+    115deg,
+    #ff8fc7 0%, #ffd36e 7%, #7de0b3 14%, #7bc4e8 21%, #bb83c9 28%, #ff8fc7 35%
+  );
+  background-size: 200% 200%;
+  mix-blend-mode: overlay;
+  opacity: 0.75;
+}
+
+.holo-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  mix-blend-mode: overlay;
+}
+
+.holo-scan {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 4px);
+  mix-blend-mode: overlay;
+  animation: holo-scan 7s linear infinite;
+}
+
+.holo-ring {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(from 0deg, #ff8fc7, #ffd36e, #7de0b3, #7bc4e8, #bb83c9, #ff8fc7);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: holo-hue 6s linear infinite;
+  opacity: 0.9;
+}
+
+@keyframes holo-scan {
+  to { background-position: 0 160px; }
+}
+
+@keyframes holo-hue {
+  to { filter: hue-rotate(360deg); }
+}
+
+/* ── Gradient text and buttons ─────────────────────────────────────── */
+
+.holo-text {
+  background: linear-gradient(90deg, #ffffff, #bb83c9, #7bc4e8, #7de0b3, #ffd36e, #ff8fc7, #ffffff);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: holo-shift 5s linear infinite;
+  filter: drop-shadow(0 0 14px rgba(187, 131, 201, 0.55));
+}
+
+.holo-button {
+  background: linear-gradient(110deg, #bb83c9, #7bc4e8, #7de0b3, #bb83c9);
+  background-size: 300% 100%;
+  animation: holo-shift 6s linear infinite;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25) inset, 0 8px 28px rgba(123, 196, 232, 0.35);
+}
+
+@keyframes holo-shift {
+  to { background-position: 300% 0; }
+}
+
+/* ── Match stage: aurora, stars, projector, 3D heart ───────────────── */
+
+.holo-stage-bg {
+  background: radial-gradient(120% 80% at 50% 0%, #2a1650 0%, #120c26 55%, #07060f 100%);
+}
+
+.holo-aurora {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  opacity: 0.55;
+  animation: holo-drift 14s ease-in-out infinite alternate;
+}
+
+@keyframes holo-drift {
+  0% { transform: translate3d(-8%, -4%, 0) scale(1); }
+  100% { transform: translate3d(10%, 6%, 0) scale(1.15); }
+}
+
+.holo-star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 9999px;
+  background: #fff;
+  box-shadow: 0 0 6px 1px rgba(123, 196, 232, 0.9);
+  animation: holo-twinkle 2.6s ease-in-out infinite;
+}
+
+@keyframes holo-twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.6); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+.holo-beam {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  width: 190px;
+  height: 170px;
+  transform: translateX(-50%);
+  clip-path: polygon(42% 100%, 58% 100%, 100% 0, 0 0);
+  background: linear-gradient(to top, rgba(123, 196, 232, 0.65), rgba(187, 131, 201, 0.18) 70%, transparent);
+  animation: holo-flicker 3.2s steps(1) infinite;
+}
+
+.holo-emitter {
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  width: 92px;
+  height: 22px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  border: 2px solid rgba(123, 196, 232, 0.9);
+  background: radial-gradient(ellipse at center, rgba(123, 196, 232, 0.55), rgba(18, 12, 38, 0.2) 70%);
+  box-shadow: 0 0 22px rgba(123, 196, 232, 0.8), 0 0 60px rgba(187, 131, 201, 0.45);
+}
+
+@keyframes holo-flicker {
+  0%, 100% { opacity: 1; }
+  47% { opacity: 0.82; }
+  48% { opacity: 1; }
+  73% { opacity: 0.9; }
+  74% { opacity: 1; }
+}
+
+.holo-heart-3d {
+  position: relative;
+  transform-style: preserve-3d;
+  /* Sways instead of spinning: side-on, an extruded heart is a thin sliver. */
+  animation: holo-sway 3.6s ease-in-out infinite alternate;
+}
+
+.holo-heart-layer {
+  position: absolute;
+  inset: 0;
+  backface-visibility: visible;
+}
+
+.holo-heart-float {
+  animation: holo-float 3.4s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes holo-sway {
+  from { transform: rotateY(-50deg) rotateX(6deg); }
+  to { transform: rotateY(50deg) rotateX(-4deg); }
+}
+
+@keyframes holo-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.holo-avatar-ring {
+  position: relative;
+  isolation: isolate;
+  border-radius: 9999px;
+  padding: 3px;
+  box-shadow: 0 0 24px rgba(123, 196, 232, 0.45);
+}
+
+/* The colour cycle runs on the ring only: a filter on the ring itself would
+   recolour the photo inside it too. */
+.holo-avatar-ring::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: conic-gradient(from 0deg, #ff8fc7, #ffd36e, #7de0b3, #7bc4e8, #bb83c9, #ff8fc7);
+  animation: holo-hue 6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .holo-scan, .holo-ring, .holo-text, .holo-button, .holo-aurora, .holo-star,
+  .holo-beam, .holo-heart-3d, .holo-heart-float, .holo-avatar-ring::before {
+    animation: none;
+  }
+  .holo-heart-3d { transform: rotateY(-25deg); }
+}

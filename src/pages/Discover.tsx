@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence, useMotionValue, useTransform, type PanInfo } from 'framer-motion';
 import { X, Heart, Star, MapPin, SlidersHorizontal, Shield, Circle, Sparkles, RotateCcw } from 'lucide-react';
@@ -14,6 +14,9 @@ import UserAvatar from '@/components/UserAvatar';
 import { getMe } from '@/api/users';
 import type { ProfileCard } from '@/api/types';
 import { appLocale } from '@/lib/format';
+import { useHoloTilt } from '@/hooks/useHoloTilt';
+import HoloLayers from '@/components/holo/HoloLayers';
+import HoloHeart from '@/components/holo/HoloHeart';
 
 // ── Types ──────────────────────────────────────────────
 
@@ -73,7 +76,7 @@ const GOAL_KEYS: Record<string, string> = {
 function triggerMatchCelebration() {
   const duration = 1200;
   const end = Date.now() + duration;
-  const colors = ['#BB83C9', '#7DE0B3', '#7BC4E8', '#FFD700'];
+  const colors = ['#BB83C9', '#7DE0B3', '#7BC4E8', '#FFD36E', '#FF8FC7', '#FFFFFF'];
 
   const frame = () => {
     confetti({
@@ -341,6 +344,7 @@ function SwipeCard({
   const likeOpacity = useTransform(x, [40, 100], [0, 1]);
   const nopeOpacity = useTransform(x, [-100, -40], [1, 0]);
   const sparkOpacity = useTransform(y, [-100, -60], [1, 0]);
+  const drag = useMemo(() => ({ x, y }), [x, y]);
 
   const handleDragEnd = (_: unknown, info: PanInfo) => {
     if (info.offset.x > 100) {
@@ -353,6 +357,9 @@ function SwipeCard({
   };
 
   const isTop = index === 0;
+  // Only the card in front is holographic: three stacked foils would cost
+  // battery for something mostly hidden.
+  const holo = useHoloTilt(isTop, drag);
   const scale = isTop ? 1 : index === 1 ? 0.95 : 0.90;
   const opacity = isTop ? 1 : index === 1 ? 0.6 : 0.3;
   const yOffset = isTop ? 0 : index === 1 ? 8 : 16;
@@ -370,6 +377,7 @@ function SwipeCard({
         width: '100%',
         height: '100%',
         touchAction: 'none',
+        perspective: 1000,
       }}
       drag={isTop ? true : false}
       dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
@@ -378,12 +386,15 @@ function SwipeCard({
       animate={!isTop ? { scale, opacity, y: yOffset } : undefined}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
     >
-      {/* Card */}
-      <div
+      {/* Card — tilts in 3D toward the light of its holographic foil */}
+      <motion.div
         className="w-full h-full rounded-3xl overflow-hidden relative"
+        onPointerMove={holo.onPointerMove}
         style={{
-          boxShadow: '0 12px 40px rgba(0,0,0,0.15)',
+          boxShadow: isTop ? '0 18px 50px rgba(123,196,232,0.25), 0 12px 40px rgba(0,0,0,0.18)' : '0 12px 40px rgba(0,0,0,0.15)',
           aspectRatio: '3/4',
+          rotateX: isTop ? holo.rotateX : 0,
+          rotateY: isTop ? holo.rotateY : 0,
         }}
       >
         {/* Photo — someone without one gets their initial on the app
@@ -416,6 +427,8 @@ function SwipeCard({
           className="absolute -top-5 -right-5 w-[100px] h-[100px] rounded-full"
           style={{ backgroundColor: 'rgba(187,131,201,0.1)', filter: 'blur(20px)' }}
         />
+
+        {isTop && <HoloLayers foilPosition={holo.foilPosition} foilMask={holo.foilMask} glare={holo.glare} />}
 
         {/* Stamps */}
         {isTop && (
@@ -533,7 +546,7 @@ function SwipeCard({
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
@@ -627,6 +640,13 @@ function ActionButtons({
 
 // ── Match Celebration Overlay ──────────────────────────
 
+// Fixed positions so the starfield doesn't jump between renders.
+const STARS = Array.from({ length: 26 }, (_, i) => ({
+  left: (i * 37 + 11) % 100,
+  top: (i * 53 + 7) % 62,
+  delay: (i % 7) * 0.37,
+}));
+
 function MatchOverlay({
   matchProfile,
   userPhoto,
@@ -646,40 +666,57 @@ function MatchOverlay({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="fixed inset-0 z-[300] flex flex-col items-center justify-center px-6"
-      style={{
-        background: 'radial-gradient(circle, rgba(187,131,201,0.4), rgba(125,224,179,0.3), rgba(247,244,238,0.4))',
-        backdropFilter: 'blur(8px)',
-      }}
+      transition={{ duration: 0.35 }}
+      className="fixed inset-0 z-[300] flex flex-col items-center justify-center px-6 overflow-hidden holo-stage-bg"
     >
-      {/* Photos */}
-      <div className="flex items-center justify-center mb-8">
+      {/* Aurora and stars */}
+      <div className="holo-aurora" style={{ width: 360, height: 360, top: -80, left: -120, background: 'radial-gradient(circle, rgba(187,131,201,0.7), transparent 65%)' }} />
+      <div className="holo-aurora" style={{ width: 320, height: 320, top: 120, right: -140, background: 'radial-gradient(circle, rgba(123,196,232,0.6), transparent 65%)', animationDelay: '-5s' }} />
+      <div className="holo-aurora" style={{ width: 300, height: 300, bottom: -120, left: 20, background: 'radial-gradient(circle, rgba(125,224,179,0.45), transparent 65%)', animationDelay: '-9s' }} />
+      {STARS.map((st, i) => (
+        <span key={i} className="holo-star" style={{ left: `${st.left}%`, top: `${st.top}%`, animationDelay: `${st.delay}s` }} />
+      ))}
+
+      {/* Projection: the two of you beside a holographic heart */}
+      <div className="relative w-full max-w-[380px] flex items-end justify-center mb-4" style={{ perspective: 800 }}>
         <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 20, delay: 0.1 }}
-          className="w-24 h-24 rounded-full overflow-hidden border-[3px] border-[#BB83C9] -mr-4 z-10"
+          initial={{ x: -60, opacity: 0, rotateY: 35 }}
+          animate={{ x: 0, opacity: 1, rotateY: 18 }}
+          transition={{ type: 'spring', stiffness: 160, damping: 18, delay: 0.15 }}
+          className="holo-avatar-ring w-20 h-20 mb-10 -mr-3 z-10 flex-shrink-0"
         >
-          <UserAvatar src={userPhoto} name={userName || t('discover.you')} className="text-3xl" />
+          <div className="w-full h-full rounded-full overflow-hidden" style={{ backgroundColor: '#120c26' }}>
+            <UserAvatar src={userPhoto} name={userName || t('discover.you')} className="text-2xl" />
+          </div>
         </motion.div>
+
         <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 20, delay: 0.2 }}
-          className="w-24 h-24 rounded-full overflow-hidden border-[3px] border-[#7DE0B3] -ml-4"
+          initial={{ scale: 0.3, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ type: 'spring', stiffness: 200, damping: 16, delay: 0.05 }}
         >
-          <UserAvatar src={matchProfile.photo} name={matchProfile.name} className="text-3xl" />
+          <HoloHeart size={140} />
+        </motion.div>
+
+        <motion.div
+          initial={{ x: 60, opacity: 0, rotateY: -35 }}
+          animate={{ x: 0, opacity: 1, rotateY: -18 }}
+          transition={{ type: 'spring', stiffness: 160, damping: 18, delay: 0.25 }}
+          className="holo-avatar-ring w-20 h-20 mb-10 -ml-3 z-10 flex-shrink-0"
+        >
+          <div className="w-full h-full rounded-full overflow-hidden" style={{ backgroundColor: '#120c26' }}>
+            <UserAvatar src={matchProfile.photo} name={matchProfile.name} className="text-2xl" />
+          </div>
         </motion.div>
       </div>
 
       {/* Title */}
       <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, delay: 0.3, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-        className="text-4xl font-bold text-[var(--charcoal)] mb-2 text-center"
-        style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-1.08px' }}
+        initial={{ opacity: 0, y: 20, scale: 0.9 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.35, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+        className="holo-text text-5xl font-bold mb-2 text-center"
+        style={{ fontFamily: "'Outfit', system-ui, sans-serif", letterSpacing: '-1.2px' }}
       >
         {t('discover.itsAMatch')}
       </motion.h2>
@@ -690,7 +727,7 @@ function MatchOverlay({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, delay: 0.5 }}
         className="text-base text-center mb-10"
-        style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}
+        style={{ color: 'rgba(255,255,255,0.72)' }}
       >
         {t('discover.likedEachOther', { name: matchProfile.name })}
       </motion.p>
@@ -700,22 +737,24 @@ function MatchOverlay({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, delay: 0.6 }}
-        className="w-full max-w-[340px] space-y-3"
+        className="relative w-full max-w-[340px] space-y-3"
       >
-        <button
+        <motion.button
+          whileTap={{ scale: 0.97 }}
           onClick={onMessage}
-          className="w-full h-14 rounded-full text-base font-semibold text-white"
-          style={{ backgroundColor: '#BB83C9', boxShadow: '0 4px 16px rgba(187,131,201,0.3)' }}
+          className="holo-button w-full h-14 rounded-full text-base font-semibold text-white"
+          style={{ fontFamily: "'Outfit', system-ui, sans-serif", textShadow: '0 1px 8px rgba(18,12,38,0.45)' }}
         >
           {t('discover.sendMessage')}
-        </button>
-        <button
+        </motion.button>
+        <motion.button
+          whileTap={{ scale: 0.97 }}
           onClick={onDismiss}
-          className="w-full h-12 rounded-full text-base font-semibold text-[var(--charcoal)]"
-          style={{ backgroundColor: 'rgba(var(--card-rgb), 0.72)', backdropFilter: 'blur(12px)', border: '1.5px solid rgba(var(--charcoal-rgb), 0.1)' }}
+          className="w-full h-12 rounded-full text-base font-semibold text-white"
+          style={{ backgroundColor: 'rgba(255,255,255,0.08)', backdropFilter: 'blur(12px)', border: '1.5px solid rgba(255,255,255,0.18)', fontFamily: "'Outfit', system-ui, sans-serif" }}
         >
           {t('discover.keepSwiping')}
-        </button>
+        </motion.button>
       </motion.div>
     </motion.div>
   );
