@@ -165,7 +165,16 @@
     "historyLoadFailed": "Mazungumzo haya hayakuweza kupakiwa.",
     "reportFailed": "Ripoti haikuweza kutumwa — tafadhali jaribu tena",
     "sendFailed": "Ujumbe haukuweza kutumwa",
-    "voiceUnavailable": "Haiwezi kuchezwa"
+    "voiceUnavailable": "Haiwezi kuchezwa",
+    "giftKiss": "Busu",
+    "giftKissDesc": "Salamu nyepesi ya kuchezea",
+    "giftHeart": "Moyo",
+    "giftHeartDesc": "Onyesha kwamba unampenda kweli",
+    "giftBouquet": "Shada la maua",
+    "giftBouquetDesc": "Ishara kubwa ya kimapenzi",
+    "giftDiamond": "Almasi",
+    "giftDiamondDesc": "Kwa mtu maalum kweli",
+    "giftRetryLater": "Malipo yamepokelewa — zawadi itafikishwa mara muunganisho utakaporudi"
   },
   "profile": {
     "edit": "Hariri Wasifu",
@@ -175,7 +184,9 @@
     "bio": "Wasifu",
     "interests": "Masuala ya Kibinafsi",
     "settings": "Mipangilio",
-    "trustScoreHow": "Alama ya Imani hutusaidia kukuonyesha kwa watu wanaokufaa. Kila mtu huanzia 50, uthibitishaji huongeza {{verified}}, na kila onyo la msimamizi hupunguza {{warning}}."
+    "trustScoreHow": "Alama ya Imani hutusaidia kukuonyesha kwa watu wanaokufaa. Kila mtu huanzia 50, uthibitishaji huongeza {{verified}}, na kila onyo la msimamizi hupunguza {{warning}}.",
+    "giftsReceived": "Zawadi",
+    "noGiftsYet": "Bado hakuna zawadi — zitaonekana hapa"
   },
   "settings": {
     "title": "Mipangilio",

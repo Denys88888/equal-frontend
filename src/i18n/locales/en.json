@@ -165,7 +165,16 @@
     "historyLoadFailed": "Couldn't load this conversation.",
     "reportFailed": "Could not send the report — please try again",
     "sendFailed": "Could not send message",
-    "voiceUnavailable": "Can't play"
+    "voiceUnavailable": "Can't play",
+    "giftKiss": "Kiss",
+    "giftKissDesc": "A light, playful hello",
+    "giftHeart": "Heart",
+    "giftHeartDesc": "Show you really like them",
+    "giftBouquet": "Bouquet",
+    "giftBouquetDesc": "A big romantic gesture",
+    "giftDiamond": "Diamond",
+    "giftDiamondDesc": "For someone truly special",
+    "giftRetryLater": "Payment received — the gift will be delivered as soon as the connection is back"
   },
   "profile": {
     "edit": "Edit Profile",
@@ -175,7 +184,9 @@
     "bio": "Bio",
     "interests": "Interests",
     "settings": "Settings",
-    "trustScoreHow": "Your Trust Score helps us show you to quality matches. Everyone starts at 50, getting verified adds {{verified}}, and each moderator warning takes {{warning}}."
+    "trustScoreHow": "Your Trust Score helps us show you to quality matches. Everyone starts at 50, getting verified adds {{verified}}, and each moderator warning takes {{warning}}.",
+    "giftsReceived": "Gifts",
+    "noGiftsYet": "No gifts yet — they'll show up here"
   },
   "settings": {
     "title": "Settings",

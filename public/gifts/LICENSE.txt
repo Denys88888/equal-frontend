@@ -1,9 +1,10 @@
-coffee.json, rose.json, song.json, spark.json
+spark.json, kiss.json, coffee.json, song.json, rose.json, heart.json, bouquet.json, diamond.json
 
 Noto Emoji Animation by Google
 https://googlefonts.github.io/noto-emoji-animation/
 Downloaded unmodified from https://fonts.gstatic.com/s/e/notoemoji/latest/<codepoint>/lottie.json
-(coffee = 2615, rose = 1f339, song = 1f3b6, spark = 2728) on 2026-10-11.
+(spark = 2728, kiss = 1f48b, coffee = 2615, song = 1f3b6, rose = 1f339,
+ heart = 1f496, bouquet = 1f490, diamond = 1f48e) on 2026-10-11/12.
 
 Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0):
 https://creativecommons.org/licenses/by/4.0/

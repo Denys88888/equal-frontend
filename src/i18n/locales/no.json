@@ -165,7 +165,16 @@
     "historyLoadFailed": "Kunne ikke laste inn samtalen.",
     "reportFailed": "Kunne ikke sende rapporten – prøv igjen",
     "sendFailed": "Kunne ikke sende meldingen",
-    "voiceUnavailable": "Kan ikke spilles av"
+    "voiceUnavailable": "Kan ikke spilles av",
+    "giftKiss": "Kyss",
+    "giftKissDesc": "En lett og leken hilsen",
+    "giftHeart": "Hjerte",
+    "giftHeartDesc": "Vis at du virkelig liker dem",
+    "giftBouquet": "Bukett",
+    "giftBouquetDesc": "En stor romantisk gest",
+    "giftDiamond": "Diamant",
+    "giftDiamondDesc": "For en helt spesiell person",
+    "giftRetryLater": "Betaling mottatt – gaven leveres så snart tilkoblingen er tilbake"
   },
   "profile": {
     "edit": "Rediger profil",
@@ -175,7 +184,9 @@
     "bio": "Om meg",
     "interests": "Interesser",
     "settings": "Innstillinger",
-    "trustScoreHow": "Tillitspoengene hjelper oss å vise deg til de rette. Alle starter på 50, verifisering gir {{verified}}, og hver advarsel fra en moderator koster {{warning}}."
+    "trustScoreHow": "Tillitspoengene hjelper oss å vise deg til de rette. Alle starter på 50, verifisering gir {{verified}}, og hver advarsel fra en moderator koster {{warning}}.",
+    "giftsReceived": "Gaver",
+    "noGiftsYet": "Ingen gaver ennå – de vises her"
   },
   "settings": {
     "title": "Innstillinger",

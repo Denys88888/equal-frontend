@@ -167,7 +167,16 @@
     "historyLoadFailed": "Impossibile caricare questa conversazione.",
     "reportFailed": "Impossibile inviare la segnalazione — riprova",
     "sendFailed": "Impossibile inviare il messaggio",
-    "voiceUnavailable": "Impossibile riprodurre"
+    "voiceUnavailable": "Impossibile riprodurre",
+    "giftKiss": "Bacio",
+    "giftKissDesc": "Un saluto leggero e giocoso",
+    "giftHeart": "Cuore",
+    "giftHeartDesc": "Mostra che ti piace davvero",
+    "giftBouquet": "Bouquet",
+    "giftBouquetDesc": "Un grande gesto romantico",
+    "giftDiamond": "Diamante",
+    "giftDiamondDesc": "Per qualcuno davvero speciale",
+    "giftRetryLater": "Pagamento ricevuto: il regalo verrà consegnato appena torna la connessione"
   },
   "profile": {
     "edit": "Modifica Profilo",
@@ -177,7 +186,9 @@
     "bio": "Bio",
     "interests": "Interessi",
     "settings": "Impostazioni",
-    "trustScoreHow": "Il tuo Punteggio di fiducia ci aiuta a mostrarti alle persone giuste. Tutti partono da 50, la verifica aggiunge {{verified}} e ogni avvertimento di un moderatore toglie {{warning}}."
+    "trustScoreHow": "Il tuo Punteggio di fiducia ci aiuta a mostrarti alle persone giuste. Tutti partono da 50, la verifica aggiunge {{verified}} e ogni avvertimento di un moderatore toglie {{warning}}.",
+    "giftsReceived": "Regali",
+    "noGiftsYet": "Ancora nessun regalo: compariranno qui"
   },
   "settings": {
     "title": "Impostazioni",

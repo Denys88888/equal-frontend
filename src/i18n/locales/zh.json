@@ -163,7 +163,16 @@
     "historyLoadFailed": "无法加载此对话。",
     "reportFailed": "无法提交举报，请重试",
     "sendFailed": "无法发送消息",
-    "voiceUnavailable": "无法播放"
+    "voiceUnavailable": "无法播放",
+    "giftKiss": "亲吻",
+    "giftKissDesc": "轻松俏皮的问候",
+    "giftHeart": "爱心",
+    "giftHeartDesc": "表达你真的很喜欢对方",
+    "giftBouquet": "花束",
+    "giftBouquetDesc": "一个浪漫的大心意",
+    "giftDiamond": "钻石",
+    "giftDiamondDesc": "送给真正特别的人",
+    "giftRetryLater": "已收到付款——网络恢复后礼物会立即送达"
   },
   "profile": {
     "edit": "编辑资料",
@@ -173,7 +182,9 @@
     "bio": "个人简介",
     "interests": "兴趣爱好",
     "settings": "设置",
-    "trustScoreHow": "信任分帮助我们把你推荐给合适的人。每个人都从 50 分开始，完成认证加 {{verified}} 分，每次被管理员警告扣 {{warning}} 分。"
+    "trustScoreHow": "信任分帮助我们把你推荐给合适的人。每个人都从 50 分开始，完成认证加 {{verified}} 分，每次被管理员警告扣 {{warning}} 分。",
+    "giftsReceived": "礼物",
+    "noGiftsYet": "还没有礼物——收到后会显示在这里"
   },
   "settings": {
     "title": "设置",

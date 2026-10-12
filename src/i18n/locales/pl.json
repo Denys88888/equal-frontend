@@ -169,7 +169,16 @@
     "historyLoadFailed": "Nie udało się wczytać tej rozmowy.",
     "reportFailed": "Nie udało się wysłać zgłoszenia — spróbuj ponownie",
     "sendFailed": "Nie udało się wysłać wiadomości",
-    "voiceUnavailable": "Nie można odtworzyć"
+    "voiceUnavailable": "Nie można odtworzyć",
+    "giftKiss": "Buziak",
+    "giftKissDesc": "Lekkie, zabawne cześć",
+    "giftHeart": "Serce",
+    "giftHeartDesc": "Pokaż, że naprawdę ci się podoba",
+    "giftBouquet": "Bukiet",
+    "giftBouquetDesc": "Wielki romantyczny gest",
+    "giftDiamond": "Diament",
+    "giftDiamondDesc": "Dla kogoś naprawdę wyjątkowego",
+    "giftRetryLater": "Płatność przyjęta — prezent zostanie dostarczony, gdy wróci połączenie"
   },
   "profile": {
     "edit": "Edytuj profil",
@@ -179,7 +188,9 @@
     "bio": "Opis",
     "interests": "Zainteresowania",
     "settings": "Ustawienia",
-    "trustScoreHow": "Wskaźnik zaufania pomaga nam pokazywać cię odpowiednim osobom. Każdy zaczyna od 50, weryfikacja dodaje {{verified}}, a każde ostrzeżenie moderatora odejmuje {{warning}}."
+    "trustScoreHow": "Wskaźnik zaufania pomaga nam pokazywać cię odpowiednim osobom. Każdy zaczyna od 50, weryfikacja dodaje {{verified}}, a każde ostrzeżenie moderatora odejmuje {{warning}}.",
+    "giftsReceived": "Prezenty",
+    "noGiftsYet": "Na razie brak prezentów — pojawią się tutaj"
   },
   "settings": {
     "title": "Ustawienia",

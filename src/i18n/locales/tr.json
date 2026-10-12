@@ -165,7 +165,16 @@
     "historyLoadFailed": "Bu sohbet yüklenemedi.",
     "reportFailed": "Şikâyet gönderilemedi — lütfen tekrar deneyin",
     "sendFailed": "Mesaj gönderilemedi",
-    "voiceUnavailable": "Oynatılamıyor"
+    "voiceUnavailable": "Oynatılamıyor",
+    "giftKiss": "Öpücük",
+    "giftKissDesc": "Hafif, oyunbaz bir merhaba",
+    "giftHeart": "Kalp",
+    "giftHeartDesc": "Gerçekten hoşlandığını göster",
+    "giftBouquet": "Buket",
+    "giftBouquetDesc": "Büyük bir romantik jest",
+    "giftDiamond": "Elmas",
+    "giftDiamondDesc": "Gerçekten özel biri için",
+    "giftRetryLater": "Ödeme alındı — bağlantı geri gelir gelmez hediye iletilecek"
   },
   "profile": {
     "edit": "Profili Düzenle",
@@ -175,7 +184,9 @@
     "bio": "Biyografi",
     "interests": "İlgi Alanları",
     "settings": "Ayarlar",
-    "trustScoreHow": "Güven Skoru seni uygun kişilere göstermemize yardımcı olur. Herkes 50 ile başlar, doğrulama {{verified}} ekler ve her moderatör uyarısı {{warning}} düşürür."
+    "trustScoreHow": "Güven Skoru seni uygun kişilere göstermemize yardımcı olur. Herkes 50 ile başlar, doğrulama {{verified}} ekler ve her moderatör uyarısı {{warning}} düşürür.",
+    "giftsReceived": "Hediyeler",
+    "noGiftsYet": "Henüz hediye yok — burada görünecek"
   },
   "settings": {
     "title": "Ayarlar",

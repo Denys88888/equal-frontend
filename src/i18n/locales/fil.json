@@ -165,7 +165,16 @@
     "historyLoadFailed": "Hindi ma-load ang usapang ito.",
     "reportFailed": "Hindi maipadala ang ulat — pakisubukang muli",
     "sendFailed": "Hindi maipadala ang mensahe",
-    "voiceUnavailable": "Hindi ma-play"
+    "voiceUnavailable": "Hindi ma-play",
+    "giftKiss": "Halik",
+    "giftKissDesc": "Isang magaan at pilyong hello",
+    "giftHeart": "Puso",
+    "giftHeartDesc": "Ipakitang gusto mo talaga siya",
+    "giftBouquet": "Bouquet",
+    "giftBouquetDesc": "Isang malaking romantikong kilos",
+    "giftDiamond": "Diyamante",
+    "giftDiamondDesc": "Para sa isang talagang espesyal",
+    "giftRetryLater": "Natanggap ang bayad — maihahatid ang regalo kapag bumalik ang koneksyon"
   },
   "profile": {
     "edit": "I-edit ang Profile",
@@ -175,7 +184,9 @@
     "bio": "Bio",
     "interests": "Mga Interes",
     "settings": "Mga Setting",
-    "trustScoreHow": "Tinutulungan kami ng iyong Marka ng Tiwala na maipakita ka sa tamang mga tao. Lahat ay nagsisimula sa 50, nagdadagdag ng {{verified}} ang pag-verify, at bawat babala ng moderator ay nagbabawas ng {{warning}}."
+    "trustScoreHow": "Tinutulungan kami ng iyong Marka ng Tiwala na maipakita ka sa tamang mga tao. Lahat ay nagsisimula sa 50, nagdadagdag ng {{verified}} ang pag-verify, at bawat babala ng moderator ay nagbabawas ng {{warning}}.",
+    "giftsReceived": "Mga regalo",
+    "noGiftsYet": "Wala pang regalo — lalabas sila rito"
   },
   "settings": {
     "title": "Mga Setting",

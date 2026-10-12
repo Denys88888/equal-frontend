@@ -167,7 +167,16 @@
     "historyLoadFailed": "Conversația nu a putut fi încărcată.",
     "reportFailed": "Raportul nu a putut fi trimis — încearcă din nou",
     "sendFailed": "Mesajul nu a putut fi trimis",
-    "voiceUnavailable": "Nu se poate reda"
+    "voiceUnavailable": "Nu se poate reda",
+    "giftKiss": "Sărut",
+    "giftKissDesc": "Un salut ușor și jucăuș",
+    "giftHeart": "Inimă",
+    "giftHeartDesc": "Arată că îți place cu adevărat",
+    "giftBouquet": "Buchet",
+    "giftBouquetDesc": "Un gest romantic mare",
+    "giftDiamond": "Diamant",
+    "giftDiamondDesc": "Pentru cineva cu adevărat special",
+    "giftRetryLater": "Plata a fost primită — cadoul va fi livrat imediat ce revine conexiunea"
   },
   "profile": {
     "edit": "Editează profilul",
@@ -177,7 +186,9 @@
     "bio": "Despre mine",
     "interests": "Interese",
     "settings": "Setări",
-    "trustScoreHow": "Scorul de încredere ne ajută să te arătăm persoanelor potrivite. Toată lumea începe de la 50, verificarea adaugă {{verified}}, iar fiecare avertisment de la un moderator scade {{warning}}."
+    "trustScoreHow": "Scorul de încredere ne ajută să te arătăm persoanelor potrivite. Toată lumea începe de la 50, verificarea adaugă {{verified}}, iar fiecare avertisment de la un moderator scade {{warning}}.",
+    "giftsReceived": "Cadouri",
+    "noGiftsYet": "Încă nu ai cadouri — vor apărea aici"
   },
   "settings": {
     "title": "Setări",

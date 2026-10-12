@@ -8,6 +8,7 @@ import SkeletonLoader from '@/components/SkeletonLoader';
 import ReportDialog from '@/components/ReportDialog';
 import AskSection from '@/components/AskSection';
 import { videoPoster } from '@/lib/video';
+import GiftShowcase from '@/components/GiftShowcase';
 import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/hooks/useToast';
 import { api } from '@/api/client';
@@ -368,6 +369,9 @@ export default function PublicProfile() {
             </div>
           </motion.div>
         )}
+
+        {/* Gifts received */}
+        <GiftShowcase counts={profile.giftsReceived} className="px-5 mt-5" />
 
         {/* Interests */}
         {profile.interests.length > 0 && (

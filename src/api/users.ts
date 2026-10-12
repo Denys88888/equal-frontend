@@ -8,6 +8,7 @@
 import { api } from './client';
 import { compressImage } from '@/lib/image';
 import { videoExtension } from '@/lib/video';
+import type { GiftKind } from '@/lib/gifts';
 import type {
   UserProfile,
   UserSettings,
@@ -199,6 +200,12 @@ export async function getVerificationStatus(): Promise<{
 // ───────────────────────────────────────────────────────────
 
 /** Profile badges earned from real activity, keyed by badge id. */
+/** Gifts received, by kind — the Profile showcase. */
+export async function getMyGifts(): Promise<Partial<Record<GiftKind, number>>> {
+  const { data } = await api.get<Partial<Record<GiftKind, number>>>('/users/me/gifts');
+  return data;
+}
+
 export async function getAchievements(): Promise<Record<string, boolean>> {
   const { data } = await api.get<Record<string, boolean>>('/users/me/achievements');
   return data;

@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { getMe, updateMe, uploadPhoto, deletePhoto, getAchievements } from '@/api/users';
+import { getMe, updateMe, uploadPhoto, deletePhoto, getAchievements, getMyGifts } from '@/api/users';
+import GiftShowcase from '@/components/GiftShowcase';
+import type { GiftKind } from '@/lib/gifts';
 import {
   Pencil,
   MapPin,
@@ -364,9 +366,11 @@ export default function Profile() {
   // name and age go.
   const [profileLoaded, setProfileLoaded] = useState(false);
   const [achievements, setAchievements] = useState<Record<string, boolean>>({});
+  const [gifts, setGifts] = useState<Partial<Record<GiftKind, number>> | null>(null);
 
   useEffect(() => {
     getAchievements().then(setAchievements).catch(() => {});
+    getMyGifts().then(setGifts).catch(() => {});
     getMe().then((d) => {
       // Nothing falls back to placeholder data: this is the user's own profile,
       // and showing someone else's name, photos or a verified badge they haven't
@@ -766,6 +770,13 @@ export default function Profile() {
             )}
           </div>
         </motion.div>
+
+        {/* ─────────────── Gifts Received ─────────────── */}
+        {gifts && (
+          <div className="px-5 mt-6">
+            <GiftShowcase counts={gifts} emptyHint />
+          </div>
+        )}
 
         {/* ─────────────── Badges Row ─────────────── */}
         <motion.div

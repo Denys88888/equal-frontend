@@ -34,7 +34,7 @@ import { formatDayLabel, formatTime } from '@/lib/format';
 import UserAvatar from '@/components/UserAvatar';
 import { recordedAudioType, playableAudioUrl } from '@/lib/audio';
 import GiftAnimation from '@/components/GiftAnimation';
-import { GIFT_EMOJI, isGiftKind, type GiftKind } from '@/lib/gifts';
+import { GIFTS, GIFT_EMOJI, giftInfo, isGiftKind, type GiftKind } from '@/lib/gifts';
 import GiftCelebration from '@/components/GiftCelebration';
 
 // ── Types ────────────────────────────────────────────────
@@ -48,7 +48,7 @@ interface Message {
   sender: 'me' | 'them';
   timestamp: Date;
   duration?: string;
-  giftType?: 'coffee' | 'rose' | 'song' | 'spark';
+  giftType?: GiftKind;
   giftPrice?: string;
   read?: boolean;
 }
@@ -128,6 +128,31 @@ const Waveform = React.memo(function Waveform({ isPlaying, sent }: { isPlaying: 
     </div>
   );
 });
+
+// ── Undelivered paid gifts ───────────────────────────────
+
+interface PendingGift { matchId: string; kind: GiftKind; content: string; piPaymentId: string }
+const PENDING_GIFTS_KEY = 'equal_pending_gifts';
+
+function loadPendingGifts(): PendingGift[] {
+  try {
+    const list = JSON.parse(localStorage.getItem(PENDING_GIFTS_KEY) || '[]');
+    return Array.isArray(list) ? list.filter((g) => g && isGiftKind(g.kind) && typeof g.piPaymentId === 'string') : [];
+  } catch {
+    return [];
+  }
+}
+function savePendingGift(gift: PendingGift) {
+  try {
+    const rest = loadPendingGifts().filter((g) => g.piPaymentId !== gift.piPaymentId);
+    localStorage.setItem(PENDING_GIFTS_KEY, JSON.stringify([...rest, gift]));
+  } catch { /* storage unavailable */ }
+}
+function removePendingGift(piPaymentId: string) {
+  try {
+    localStorage.setItem(PENDING_GIFTS_KEY, JSON.stringify(loadPendingGifts().filter((g) => g.piPaymentId !== piPaymentId)));
+  } catch { /* storage unavailable */ }
+}
 
 // ── VoicePlayer ──────────────────────────────────────────
 
@@ -232,7 +257,6 @@ function VoicePlayer({ src, sent, fallbackDuration }: { src: string; sent: boole
 
 // ── ChatBubble ───────────────────────────────────────────
 
-const GIFT_NAME_KEY: Record<string, string> = { coffee: 'chat.giftCoffee', rose: 'chat.giftRose', song: 'chat.giftSong', spark: 'chat.giftSpark' };
 
 function ChatBubble({ message, partnerName }: { message: Message; partnerName: string }) {
   const { t } = useTranslation();
@@ -266,10 +290,10 @@ function ChatBubble({ message, partnerName }: { message: Message; partnerName: s
             {/* Built from who sent what, in the reader's language. The stored
                 content is the sender's own sentence ("You sent Anna a rose"),
                 so the recipient used to read it as if they had sent it. */}
-            {message.giftType && GIFT_NAME_KEY[message.giftType]
+            {message.giftType && isGiftKind(message.giftType)
               ? t(isSent ? 'chat.giftYouSent' : 'chat.giftTheySent', {
                   partner: partnerName,
-                  gift: `${t(GIFT_NAME_KEY[message.giftType])} ${GIFT_EMOJI[message.giftType as GiftKind] ?? ''}`,
+                  gift: `${t(giftInfo(message.giftType).nameKey)} ${GIFT_EMOJI[message.giftType]}`,
                 })
               : message.content}
           </p>
@@ -479,12 +503,6 @@ function IcebreakerChips({ chips, onSend }: { chips: string[]; onSend: (text: st
 
 // ── GiftBottomSheet ──────────────────────────────────────
 
-const GIFT_OPTIONS = [
-  { name: 'Coffee', nameKey: 'chat.giftCoffee', icon: 'coffee', price: '1', description: 'chat.giftCoffeeDesc' },
-  { name: 'Rose', nameKey: 'chat.giftRose', icon: 'rose', price: '2', description: 'chat.giftRoseDesc' },
-  { name: 'Song', nameKey: 'chat.giftSong', icon: 'song', price: '1.5', description: 'chat.giftSongDesc' },
-  { name: 'Spark', nameKey: 'chat.giftSpark', icon: 'spark', price: 'Free', description: 'chat.giftSparkDesc' },
-];
 
 function GiftBottomSheet({
   isOpen,
@@ -494,7 +512,7 @@ function GiftBottomSheet({
 }: {
   isOpen: boolean;
   onClose: () => void;
-  onSendGift: (giftType: string, giftName: string) => void;
+  onSendGift: (kind: GiftKind, piPaymentId?: string) => void;
   matchName: string;
 }) {
   const { t } = useTranslation();
@@ -503,18 +521,20 @@ function GiftBottomSheet({
   const { initiatePayment, isProcessing } = usePiPayment();
 
   const handleSend = async () => {
-    const gift = GIFT_OPTIONS[selected];
-    const price = parseFloat(gift.price);
-    if (!isNaN(price) && price > 0) {
-      const result = await initiatePayment(price, `Gift: ${gift.name} to ${matchName}`, { gift: gift.icon });
+    const gift = GIFTS[selected];
+    let piPaymentId: string | undefined;
+    if (gift.price > 0) {
+      // The memo must start with "Gift:" — the server only redeems gift payments.
+      const result = await initiatePayment(gift.price, `Gift: ${gift.kind} to ${matchName}`, { gift: gift.kind });
       if (!result.success) {
         // A dropped error here meant the gift sheet just sat there after a
         // declined or cancelled payment, with nothing explaining why.
         if (result.error) showToast('error', result.error);
         return;
       }
+      piPaymentId = result.paymentId;
     }
-    onSendGift(gift.icon, gift.name);
+    onSendGift(gift.kind, piPaymentId);
     onClose();
     setSelected(0);
   };
@@ -552,7 +572,7 @@ function GiftBottomSheet({
               </h3>
 
               <div className="grid grid-cols-2 gap-3 mb-5">
-                {GIFT_OPTIONS.map((gift, i) => (
+                {GIFTS.map((gift, i) => (
                   <motion.button
                     key={i}
                     whileTap={{ scale: 0.97 }}
@@ -563,15 +583,15 @@ function GiftBottomSheet({
                       border: selected === i ? '1.5px solid #BB83C9' : '1.5px solid var(--linen-dark)',
                     }}
                   >
-                    <GiftAnimation kind={gift.icon as GiftKind} size={64} />
+                    <GiftAnimation kind={gift.kind} size={64} />
                     <span
                       className="text-base font-semibold mt-2"
                       style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: 'var(--charcoal)' }}
                     >
-                      {t(gift.nameKey, { defaultValue: gift.name })}
+                      {t(gift.nameKey)}
                     </span>
                     <div className="flex items-center gap-1 mt-1">
-                      {gift.price !== 'Free' && (
+                      {gift.price > 0 && (
                         <span
                           className="text-xs font-medium"
                           style={{ color: '#BB83C9', fontFamily: "'Outfit', system-ui, sans-serif" }}
@@ -579,7 +599,7 @@ function GiftBottomSheet({
                           {gift.price} π
                         </span>
                       )}
-                      {gift.price === 'Free' && (
+                      {gift.price === 0 && (
                         <span
                           className="text-xs font-medium"
                           style={{ color: '#7DE0B3', fontFamily: "'Outfit', system-ui, sans-serif" }}
@@ -592,7 +612,7 @@ function GiftBottomSheet({
                       className="text-xs mt-1 text-center"
                       style={{ color: 'rgba(var(--charcoal-rgb), 0.5)', fontFamily: "'Outfit', system-ui, sans-serif" }}
                     >
-                      {t(gift.description)}
+                      {t(gift.descKey)}
                     </span>
                   </motion.button>
                 ))}
@@ -620,7 +640,7 @@ function GiftBottomSheet({
                     {t('chat.processing')}
                   </div>
                 ) : (
-                  t('chat.sendGift', { gift: t(GIFT_OPTIONS[selected].nameKey, { defaultValue: GIFT_OPTIONS[selected].name }) })
+                  t('chat.sendGift', { gift: t(GIFTS[selected].nameKey) })
                 )}
               </motion.button>
             </div>
@@ -861,7 +881,7 @@ export default function Chat() {
   const [celebration, setCelebration] = useState<{ gift: GiftKind; text: string } | null>(null);
   const closeCelebration = useCallback(() => setCelebration(null), []);
   const giftLabel = useCallback(
-    (g: GiftKind) => `${t(GIFT_NAME_KEY[g])} ${GIFT_EMOJI[g]}`,
+    (g: GiftKind) => `${t(giftInfo(g).nameKey)} ${GIFT_EMOJI[g]}`,
     [t],
   );
   // Derived, not stored, so switching language re-renders them in it.
@@ -889,7 +909,7 @@ export default function Chat() {
             timestamp: new Date(msg.createdAt),
             read: false,
             ...(msg.giftType
-              ? { giftType: msg.giftType as 'coffee' | 'rose' | 'song' | 'spark' }
+              ? { giftType: msg.giftType as GiftKind }
               : {}),
           },
         ];
@@ -1005,42 +1025,87 @@ export default function Chat() {
     setMessages((prev) => [...prev, newMsg]);
   }, [matchId]);
 
+  // Delivers a gift. A paid one is only created once the server has checked
+  // the payment with Pi, so a transient failure (Pi or our server briefly
+  // unreachable) is retried, and a gift that still could not be delivered is
+  // kept on this phone and retried the next time this chat opens — the money
+  // has moved, so it must not be dropped.
+  const deliverGift = useCallback(async (kind: GiftKind, content: string, piPaymentId?: string) => {
+    if (!matchId) throw new Error('no match');
+    let lastErr: unknown;
+    for (const wait of [0, 1500, 4000]) {
+      if (wait) await new Promise((r) => setTimeout(r, wait));
+      try {
+        return await messagesApi.sendMessage(matchId, content, 'GIFT', kind, piPaymentId);
+      } catch (err) {
+        lastErr = err;
+        const status = (err as { status?: number })?.status ?? 0;
+        if (status >= 400 && status < 500) break;
+      }
+    }
+    throw lastErr;
+  }, [matchId]);
+
   const handleSendGift = useCallback(
-    async (giftType: string, giftName: string) => {
-      const content = t('chat.giftMsgContent', { partner: matchInfo.matchName, gift: `${giftName.toLowerCase()} ${giftType === 'coffee' ? '\u2615' : giftType === 'rose' ? '\ud83c\udf39' : giftType === 'song' ? '\ud83c\udfb5' : '\u2728'}` });
+    async (kind: GiftKind, piPaymentId?: string) => {
+      const content = t('chat.giftMsgContent', { partner: matchInfo.matchName, gift: giftLabel(kind) });
       const optimistic: Message = {
         id: `gift-${Date.now()}`,
         type: 'GIFT',
         content,
         sender: 'me',
         timestamp: new Date(),
-        giftType: giftType as 'coffee' | 'rose' | 'song' | 'spark',
+        giftType: kind,
         read: false,
       };
       setMessages((prev) => [...prev, optimistic]);
       if (!matchId) return;
       try {
-        // The Pi payment already went through \u2014 the gift must be persisted or the
-        // recipient never sees what was paid for.
-        const saved = await messagesApi.sendMessage(matchId, content, 'GIFT', giftType);
+        const saved = await deliverGift(kind, content, piPaymentId);
         setMessages((prev) =>
           prev.map((m) => (m.id === optimistic.id ? { ...m, id: saved.id ?? m.id } : m))
         );
-        if (isGiftKind(giftType)) {
-          setCelebration({
-            gift: giftType,
-            text: t('chat.giftYouSent', { partner: matchInfo.matchName, gift: giftLabel(giftType) }),
-          });
-        } else {
-          showToast(t('chat.giftSent', { name: giftName }));
-        }
-      } catch {
+        setCelebration({
+          gift: kind,
+          text: t('chat.giftYouSent', { partner: matchInfo.matchName, gift: giftLabel(kind) }),
+        });
+      } catch (err) {
         setMessages((prev) => prev.filter((m) => m.id !== optimistic.id));
-        showToast(t('chat.giftFailed', { defaultValue: 'Could not deliver gift \u2014 please contact support' }));
+        const status = (err as { status?: number })?.status ?? 0;
+        if (piPaymentId && !(status >= 400 && status < 500)) {
+          savePendingGift({ matchId, kind, content, piPaymentId });
+          showToast(t('chat.giftRetryLater'));
+        } else {
+          showToast(t('chat.giftFailed', { defaultValue: 'Could not deliver gift \u2014 please contact support' }));
+        }
       }
     },
-    [matchId, matchInfo.matchName, showToast, t, giftLabel]
+    [matchId, matchInfo.matchName, showToast, t, giftLabel, deliverGift]
   );
+
+  // Gifts paid for earlier but not delivered (see deliverGift) go out now.
+  useEffect(() => {
+    if (!matchId) return;
+    const pending = loadPendingGifts().filter((g) => g.matchId === matchId);
+    if (pending.length === 0) return;
+    let cancelled = false;
+    (async () => {
+      let delivered = false;
+      for (const g of pending) {
+        try {
+          await deliverGift(g.kind, g.content, g.piPaymentId);
+          removePendingGift(g.piPaymentId);
+          delivered = true;
+        } catch (err) {
+          const status = (err as { status?: number })?.status ?? 0;
+          // Refused for good (already used, not completed): stop retrying.
+          if (status >= 400 && status < 500) removePendingGift(g.piPaymentId);
+        }
+      }
+      if (delivered && !cancelled) setReloadKey((k) => k + 1);
+    })();
+    return () => { cancelled = true; };
+  }, [matchId, deliverGift]);
 
   const photoInputRef = useRef<HTMLInputElement>(null);
 

@@ -14,11 +14,14 @@ export const messagesApi = {
     content: string,
     type: 'TEXT' | 'VOICE' | 'IMAGE' | 'GIFT' | 'SYSTEM' = 'TEXT',
     giftType?: string,
+    /** Pi payment id of a paid gift — the server checks it with Pi before creating the gift. */
+    paymentId?: string,
   ): Promise<SendMessageResponse> => {
     const { data } = await api.post<SendMessageResponse>(`/matches/${matchId}/messages`, {
       content,
       type,
       ...(giftType ? { giftType } : {}),
+      ...(paymentId ? { paymentId } : {}),
     });
     return data;
   },

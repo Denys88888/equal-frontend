@@ -165,7 +165,16 @@
     "historyLoadFailed": "Samtalen kunne ikke indlæses.",
     "reportFailed": "Anmeldelsen kunne ikke sendes – prøv igen",
     "sendFailed": "Beskeden kunne ikke sendes",
-    "voiceUnavailable": "Kan ikke afspilles"
+    "voiceUnavailable": "Kan ikke afspilles",
+    "giftKiss": "Kys",
+    "giftKissDesc": "En let, legende hilsen",
+    "giftHeart": "Hjerte",
+    "giftHeartDesc": "Vis, at du virkelig kan lide dem",
+    "giftBouquet": "Buket",
+    "giftBouquetDesc": "En stor romantisk gestus",
+    "giftDiamond": "Diamant",
+    "giftDiamondDesc": "Til en helt særlig person",
+    "giftRetryLater": "Betaling modtaget – gaven leveres, så snart forbindelsen er tilbage"
   },
   "profile": {
     "edit": "Rediger profil",
@@ -175,7 +184,9 @@
     "bio": "Om mig",
     "interests": "Interesser",
     "settings": "Indstillinger",
-    "trustScoreHow": "Din tillidsscore hjælper os med at vise dig for de rigtige. Alle starter på 50, verificering giver {{verified}}, og hver advarsel fra en moderator koster {{warning}}."
+    "trustScoreHow": "Din tillidsscore hjælper os med at vise dig for de rigtige. Alle starter på 50, verificering giver {{verified}}, og hver advarsel fra en moderator koster {{warning}}.",
+    "giftsReceived": "Gaver",
+    "noGiftsYet": "Ingen gaver endnu – de vises her"
   },
   "settings": {
     "title": "Indstillinger",

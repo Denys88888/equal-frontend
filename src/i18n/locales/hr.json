@@ -167,7 +167,16 @@
     "historyLoadFailed": "Razgovor se nije mogao učitati.",
     "reportFailed": "Prijava se nije mogla poslati — pokušaj ponovno",
     "sendFailed": "Poruka se nije mogla poslati",
-    "voiceUnavailable": "Reprodukcija nije moguća"
+    "voiceUnavailable": "Reprodukcija nije moguća",
+    "giftKiss": "Poljubac",
+    "giftKissDesc": "Lagani, razigrani pozdrav",
+    "giftHeart": "Srce",
+    "giftHeartDesc": "Pokaži da ti se stvarno sviđa",
+    "giftBouquet": "Buket",
+    "giftBouquetDesc": "Velika romantična gesta",
+    "giftDiamond": "Dijamant",
+    "giftDiamondDesc": "Za nekoga stvarno posebnog",
+    "giftRetryLater": "Plaćanje primljeno — poklon će stići čim se veza vrati"
   },
   "profile": {
     "edit": "Uredi profil",
@@ -177,7 +186,9 @@
     "bio": "Biografija",
     "interests": "Interesi",
     "settings": "Postavke",
-    "trustScoreHow": "Rezultat povjerenja pomaže nam da te pokažemo pravim ljudima. Svi počinju s 50, verifikacija dodaje {{verified}}, a svako upozorenje moderatora oduzima {{warning}}."
+    "trustScoreHow": "Rezultat povjerenja pomaže nam da te pokažemo pravim ljudima. Svi počinju s 50, verifikacija dodaje {{verified}}, a svako upozorenje moderatora oduzima {{warning}}.",
+    "giftsReceived": "Pokloni",
+    "noGiftsYet": "Još nema poklona — pojavit će se ovdje"
   },
   "settings": {
     "title": "Postavke",

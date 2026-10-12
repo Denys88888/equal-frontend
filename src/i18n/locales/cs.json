@@ -169,7 +169,16 @@
     "historyLoadFailed": "Konverzaci se nepodařilo načíst.",
     "reportFailed": "Nahlášení se nepodařilo odeslat — zkus to znovu",
     "sendFailed": "Zprávu se nepodařilo odeslat",
-    "voiceUnavailable": "Nelze přehrát"
+    "voiceUnavailable": "Nelze přehrát",
+    "giftKiss": "Pusa",
+    "giftKissDesc": "Lehký, hravý pozdrav",
+    "giftHeart": "Srdce",
+    "giftHeartDesc": "Ukaž, že se ti opravdu líbí",
+    "giftBouquet": "Kytice",
+    "giftBouquetDesc": "Velké romantické gesto",
+    "giftDiamond": "Diamant",
+    "giftDiamondDesc": "Pro někoho opravdu výjimečného",
+    "giftRetryLater": "Platba přijata — dárek doručíme, jakmile se obnoví připojení"
   },
   "profile": {
     "edit": "Upravit profil",
@@ -179,7 +188,9 @@
     "bio": "O mně",
     "interests": "Zájmy",
     "settings": "Nastavení",
-    "trustScoreHow": "Skóre důvěry nám pomáhá ukazovat tě vhodným lidem. Všichni začínají na 50, ověření přidá {{verified}} a každé varování od moderátora ubere {{warning}}."
+    "trustScoreHow": "Skóre důvěry nám pomáhá ukazovat tě vhodným lidem. Všichni začínají na 50, ověření přidá {{verified}} a každé varování od moderátora ubere {{warning}}.",
+    "giftsReceived": "Dárky",
+    "noGiftsYet": "Zatím žádné dárky — objeví se tady"
   },
   "settings": {
     "title": "Nastavení",

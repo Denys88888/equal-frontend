@@ -163,7 +163,16 @@
     "historyLoadFailed": "이 대화를 불러오지 못했어요.",
     "reportFailed": "신고를 보내지 못했어요. 다시 시도해 주세요",
     "sendFailed": "메시지를 보내지 못했어요",
-    "voiceUnavailable": "재생할 수 없음"
+    "voiceUnavailable": "재생할 수 없음",
+    "giftKiss": "키스",
+    "giftKissDesc": "가볍고 장난스러운 인사",
+    "giftHeart": "하트",
+    "giftHeartDesc": "정말 좋아한다고 보여주세요",
+    "giftBouquet": "꽃다발",
+    "giftBouquetDesc": "로맨틱한 큰 마음",
+    "giftDiamond": "다이아몬드",
+    "giftDiamondDesc": "정말 특별한 사람에게",
+    "giftRetryLater": "결제가 완료됐어요. 연결이 돌아오면 바로 선물을 전달할게요"
   },
   "profile": {
     "edit": "프로필 수정",
@@ -173,7 +182,9 @@
     "bio": "자기소개",
     "interests": "관심사",
     "settings": "설정",
-    "trustScoreHow": "신뢰 점수는 당신을 잘 맞는 사람에게 보여 주는 데 쓰여요. 모두 50점에서 시작하고, 인증하면 {{verified}}점이 더해지며, 운영자 경고를 받을 때마다 {{warning}}점이 깎여요."
+    "trustScoreHow": "신뢰 점수는 당신을 잘 맞는 사람에게 보여 주는 데 쓰여요. 모두 50점에서 시작하고, 인증하면 {{verified}}점이 더해지며, 운영자 경고를 받을 때마다 {{warning}}점이 깎여요.",
+    "giftsReceived": "선물",
+    "noGiftsYet": "아직 선물이 없어요. 받으면 여기에 표시돼요"
   },
   "settings": {
     "title": "설정",

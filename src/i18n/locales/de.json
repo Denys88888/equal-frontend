@@ -165,7 +165,16 @@
     "historyLoadFailed": "Unterhaltung konnte nicht geladen werden.",
     "reportFailed": "Meldung konnte nicht gesendet werden – bitte versuche es erneut",
     "sendFailed": "Nachricht konnte nicht gesendet werden",
-    "voiceUnavailable": "Wiedergabe nicht möglich"
+    "voiceUnavailable": "Wiedergabe nicht möglich",
+    "giftKiss": "Kuss",
+    "giftKissDesc": "Ein leichtes, verspieltes Hallo",
+    "giftHeart": "Herz",
+    "giftHeartDesc": "Zeig, dass du sie wirklich magst",
+    "giftBouquet": "Blumenstrauß",
+    "giftBouquetDesc": "Eine große romantische Geste",
+    "giftDiamond": "Diamant",
+    "giftDiamondDesc": "Für jemand ganz Besonderen",
+    "giftRetryLater": "Zahlung erhalten — das Geschenk wird zugestellt, sobald die Verbindung wieder da ist"
   },
   "profile": {
     "edit": "Profil bearbeiten",
@@ -175,7 +184,9 @@
     "bio": "Bio",
     "interests": "Interessen",
     "settings": "Einstellungen",
-    "trustScoreHow": "Dein Vertrauensscore hilft uns, dich passenden Menschen zu zeigen. Alle starten bei 50, eine Verifizierung bringt {{verified}}, jede Verwarnung durch Moderatoren kostet {{warning}}."
+    "trustScoreHow": "Dein Vertrauensscore hilft uns, dich passenden Menschen zu zeigen. Alle starten bei 50, eine Verifizierung bringt {{verified}}, jede Verwarnung durch Moderatoren kostet {{warning}}.",
+    "giftsReceived": "Geschenke",
+    "noGiftsYet": "Noch keine Geschenke — sie erscheinen hier"
   },
   "settings": {
     "title": "Einstellungen",

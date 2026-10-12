@@ -163,7 +163,16 @@
     "historyLoadFailed": "Không thể tải cuộc trò chuyện này.",
     "reportFailed": "Không thể gửi báo cáo — vui lòng thử lại",
     "sendFailed": "Không thể gửi tin nhắn",
-    "voiceUnavailable": "Không thể phát"
+    "voiceUnavailable": "Không thể phát",
+    "giftKiss": "Nụ hôn",
+    "giftKissDesc": "Một lời chào nhẹ nhàng, tinh nghịch",
+    "giftHeart": "Trái tim",
+    "giftHeartDesc": "Cho thấy bạn thật sự thích họ",
+    "giftBouquet": "Bó hoa",
+    "giftBouquetDesc": "Một cử chỉ lãng mạn lớn",
+    "giftDiamond": "Kim cương",
+    "giftDiamondDesc": "Dành cho người thật đặc biệt",
+    "giftRetryLater": "Đã nhận thanh toán — quà sẽ được gửi ngay khi có kết nối trở lại"
   },
   "profile": {
     "edit": "Chỉnh sửa hồ sơ",
@@ -173,7 +182,9 @@
     "bio": "Giới thiệu",
     "interests": "Sở thích",
     "settings": "Cài đặt",
-    "trustScoreHow": "Điểm tin cậy giúp chúng tôi giới thiệu bạn với người phù hợp. Mọi người đều bắt đầu từ 50, xác minh cộng {{verified}} và mỗi cảnh cáo của người kiểm duyệt trừ {{warning}}."
+    "trustScoreHow": "Điểm tin cậy giúp chúng tôi giới thiệu bạn với người phù hợp. Mọi người đều bắt đầu từ 50, xác minh cộng {{verified}} và mỗi cảnh cáo của người kiểm duyệt trừ {{warning}}.",
+    "giftsReceived": "Quà tặng",
+    "noGiftsYet": "Chưa có quà — quà sẽ hiện ở đây"
   },
   "settings": {
     "title": "Cài đặt",

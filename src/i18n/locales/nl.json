@@ -165,7 +165,16 @@
     "historyLoadFailed": "Dit gesprek kon niet worden geladen.",
     "reportFailed": "Melding kon niet worden verstuurd — probeer het opnieuw",
     "sendFailed": "Bericht kon niet worden verstuurd",
-    "voiceUnavailable": "Kan niet afspelen"
+    "voiceUnavailable": "Kan niet afspelen",
+    "giftKiss": "Kus",
+    "giftKissDesc": "Een luchtige, speelse hallo",
+    "giftHeart": "Hart",
+    "giftHeartDesc": "Laat zien dat je ze echt leuk vindt",
+    "giftBouquet": "Boeket",
+    "giftBouquetDesc": "Een groot romantisch gebaar",
+    "giftDiamond": "Diamant",
+    "giftDiamondDesc": "Voor iemand heel bijzonders",
+    "giftRetryLater": "Betaling ontvangen — het cadeau wordt bezorgd zodra de verbinding terug is"
   },
   "profile": {
     "edit": "Profiel bewerken",
@@ -175,7 +184,9 @@
     "bio": "Bio",
     "interests": "Interesses",
     "settings": "Instellingen",
-    "trustScoreHow": "Je vertrouwensscore helpt ons je aan de juiste mensen te tonen. Iedereen begint op 50, verificatie levert {{verified}} op en elke waarschuwing van een moderator kost {{warning}}."
+    "trustScoreHow": "Je vertrouwensscore helpt ons je aan de juiste mensen te tonen. Iedereen begint op 50, verificatie levert {{verified}} op en elke waarschuwing van een moderator kost {{warning}}.",
+    "giftsReceived": "Cadeaus",
+    "noGiftsYet": "Nog geen cadeaus — ze verschijnen hier"
   },
   "settings": {
     "title": "Instellingen",

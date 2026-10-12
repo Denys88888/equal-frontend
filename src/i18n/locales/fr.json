@@ -167,7 +167,16 @@
     "historyLoadFailed": "Impossible de charger cette conversation.",
     "reportFailed": "Impossible d'envoyer le signalement — réessaie",
     "sendFailed": "Impossible d'envoyer le message",
-    "voiceUnavailable": "Lecture impossible"
+    "voiceUnavailable": "Lecture impossible",
+    "giftKiss": "Bisou",
+    "giftKissDesc": "Un bonjour léger et joueur",
+    "giftHeart": "Cœur",
+    "giftHeartDesc": "Montrez que vous l'appréciez vraiment",
+    "giftBouquet": "Bouquet",
+    "giftBouquetDesc": "Un grand geste romantique",
+    "giftDiamond": "Diamant",
+    "giftDiamondDesc": "Pour quelqu'un de vraiment spécial",
+    "giftRetryLater": "Paiement reçu — le cadeau sera livré dès le retour de la connexion"
   },
   "profile": {
     "edit": "Modifier le Profil",
@@ -177,7 +186,9 @@
     "bio": "Bio",
     "interests": "Centres d'intérêt",
     "settings": "Paramètres",
-    "trustScoreHow": "Ton score de confiance nous aide à te montrer aux bonnes personnes. Tout le monde commence à 50, la vérification ajoute {{verified}} et chaque avertissement d'un modérateur retire {{warning}}."
+    "trustScoreHow": "Ton score de confiance nous aide à te montrer aux bonnes personnes. Tout le monde commence à 50, la vérification ajoute {{verified}} et chaque avertissement d'un modérateur retire {{warning}}.",
+    "giftsReceived": "Cadeaux",
+    "noGiftsYet": "Pas encore de cadeaux — ils apparaîtront ici"
   },
   "settings": {
     "title": "Paramètres",

@@ -163,7 +163,16 @@
     "historyLoadFailed": "Percakapan ini tidak dapat dimuat.",
     "reportFailed": "Laporan tidak dapat dikirim — coba lagi",
     "sendFailed": "Pesan tidak dapat dikirim",
-    "voiceUnavailable": "Tidak dapat diputar"
+    "voiceUnavailable": "Tidak dapat diputar",
+    "giftKiss": "Ciuman",
+    "giftKissDesc": "Sapaan ringan yang menggoda",
+    "giftHeart": "Hati",
+    "giftHeartDesc": "Tunjukkan kamu benar-benar suka",
+    "giftBouquet": "Buket",
+    "giftBouquetDesc": "Gestur romantis yang besar",
+    "giftDiamond": "Berlian",
+    "giftDiamondDesc": "Untuk seseorang yang sangat istimewa",
+    "giftRetryLater": "Pembayaran diterima — hadiah akan dikirim begitu koneksi kembali"
   },
   "profile": {
     "edit": "Edit Profil",
@@ -173,7 +182,9 @@
     "bio": "Bio",
     "interests": "Minat",
     "settings": "Pengaturan",
-    "trustScoreHow": "Skor Kepercayaan membantu kami menampilkanmu ke orang yang tepat. Semua mulai dari 50, verifikasi menambah {{verified}}, dan setiap peringatan moderator mengurangi {{warning}}."
+    "trustScoreHow": "Skor Kepercayaan membantu kami menampilkanmu ke orang yang tepat. Semua mulai dari 50, verifikasi menambah {{verified}}, dan setiap peringatan moderator mengurangi {{warning}}.",
+    "giftsReceived": "Hadiah",
+    "noGiftsYet": "Belum ada hadiah — nanti muncul di sini"
   },
   "settings": {
     "title": "Pengaturan",

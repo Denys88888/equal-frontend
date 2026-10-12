@@ -167,7 +167,16 @@
     "historyLoadFailed": "Não foi possível carregar esta conversa.",
     "reportFailed": "Não foi possível enviar a denúncia — tente novamente",
     "sendFailed": "Não foi possível enviar a mensagem",
-    "voiceUnavailable": "Não é possível reproduzir"
+    "voiceUnavailable": "Não é possível reproduzir",
+    "giftKiss": "Beijo",
+    "giftKissDesc": "Um oi leve e divertido",
+    "giftHeart": "Coração",
+    "giftHeartDesc": "Mostre que gosta de verdade",
+    "giftBouquet": "Buquê",
+    "giftBouquetDesc": "Um grande gesto romântico",
+    "giftDiamond": "Diamante",
+    "giftDiamondDesc": "Para alguém realmente especial",
+    "giftRetryLater": "Pagamento recebido — o presente será entregue assim que a conexão voltar"
   },
   "profile": {
     "edit": "Editar Perfil",
@@ -177,7 +186,9 @@
     "bio": "Biografia",
     "interests": "Interesses",
     "settings": "Configurações",
-    "trustScoreHow": "Sua pontuação de confiança nos ajuda a mostrar você para as pessoas certas. Todos começam em 50, a verificação soma {{verified}} e cada advertência de um moderador tira {{warning}}."
+    "trustScoreHow": "Sua pontuação de confiança nos ajuda a mostrar você para as pessoas certas. Todos começam em 50, a verificação soma {{verified}} e cada advertência de um moderador tira {{warning}}.",
+    "giftsReceived": "Presentes",
+    "noGiftsYet": "Ainda sem presentes — eles aparecerão aqui"
   },
   "settings": {
     "title": "Configurações",

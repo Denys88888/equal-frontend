@@ -1,5 +1,6 @@
 import { api } from './client';
 import type { DiscoverResponse, SwipeResult, ProfileCard } from './types';
+import type { GiftKind } from '@/lib/gifts';
 
 export const discoverApi = {
   getProfiles: async (filters?: {
@@ -55,6 +56,8 @@ export interface PublicProfile {
   bio: string;
   /** Up to 15 s, converted to MP4 by the server; null when there is none. */
   videoIntroUrl?: string | null;
+  /** Gifts received, by kind (counts of server-verified gifts). */
+  giftsReceived?: Partial<Record<GiftKind, number>>;
   interests: string[];
   verified: boolean;
   /** Team-made fake profile — always shown with a "Fake" badge. */

@@ -165,7 +165,16 @@
     "historyLoadFailed": "Det gick inte att läsa in konversationen.",
     "reportFailed": "Det gick inte att skicka anmälan – försök igen",
     "sendFailed": "Det gick inte att skicka meddelandet",
-    "voiceUnavailable": "Kan inte spelas upp"
+    "voiceUnavailable": "Kan inte spelas upp",
+    "giftKiss": "Puss",
+    "giftKissDesc": "En lätt, lekfull hälsning",
+    "giftHeart": "Hjärta",
+    "giftHeartDesc": "Visa att du verkligen gillar dem",
+    "giftBouquet": "Bukett",
+    "giftBouquetDesc": "En stor romantisk gest",
+    "giftDiamond": "Diamant",
+    "giftDiamondDesc": "För någon riktigt speciell",
+    "giftRetryLater": "Betalningen är mottagen – gåvan levereras så fort anslutningen är tillbaka"
   },
   "profile": {
     "edit": "Redigera profil",
@@ -175,7 +184,9 @@
     "bio": "Presentation",
     "interests": "Intressen",
     "settings": "Inställningar",
-    "trustScoreHow": "Förtroendepoängen hjälper oss att visa dig för rätt personer. Alla börjar på 50, verifiering ger {{verified}} och varje varning från en moderator drar av {{warning}}."
+    "trustScoreHow": "Förtroendepoängen hjälper oss att visa dig för rätt personer. Alla börjar på 50, verifiering ger {{verified}} och varje varning från en moderator drar av {{warning}}.",
+    "giftsReceived": "Gåvor",
+    "noGiftsYet": "Inga gåvor än – de visas här"
   },
   "settings": {
     "title": "Inställningar",

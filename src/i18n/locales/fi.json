@@ -165,7 +165,16 @@
     "historyLoadFailed": "Keskustelua ei voitu ladata.",
     "reportFailed": "Ilmoitusta ei voitu lähettää – yritä uudelleen",
     "sendFailed": "Viestiä ei voitu lähettää",
-    "voiceUnavailable": "Toisto ei onnistu"
+    "voiceUnavailable": "Toisto ei onnistu",
+    "giftKiss": "Suukko",
+    "giftKissDesc": "Kevyt ja leikkisä tervehdys",
+    "giftHeart": "Sydän",
+    "giftHeartDesc": "Näytä, että pidät oikeasti",
+    "giftBouquet": "Kukkakimppu",
+    "giftBouquetDesc": "Suuri romanttinen ele",
+    "giftDiamond": "Timantti",
+    "giftDiamondDesc": "Jollekulle todella erityiselle",
+    "giftRetryLater": "Maksu vastaanotettu – lahja toimitetaan heti, kun yhteys palaa"
   },
   "profile": {
     "edit": "Muokkaa profiilia",
@@ -175,7 +184,9 @@
     "bio": "Esittely",
     "interests": "Kiinnostuksen kohteet",
     "settings": "Asetukset",
-    "trustScoreHow": "Luottamuspisteet auttavat meitä näyttämään sinut sopiville ihmisille. Kaikki aloittavat 50:stä, vahvistus lisää {{verified}} ja jokainen moderaattorin varoitus vähentää {{warning}}."
+    "trustScoreHow": "Luottamuspisteet auttavat meitä näyttämään sinut sopiville ihmisille. Kaikki aloittavat 50:stä, vahvistus lisää {{verified}} ja jokainen moderaattorin varoitus vähentää {{warning}}.",
+    "giftsReceived": "Lahjat",
+    "noGiftsYet": "Ei vielä lahjoja – ne näkyvät täällä"
   },
   "settings": {
     "title": "Asetukset",

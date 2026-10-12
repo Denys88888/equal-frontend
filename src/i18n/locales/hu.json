@@ -165,7 +165,16 @@
     "historyLoadFailed": "Nem sikerült betölteni a beszélgetést.",
     "reportFailed": "Nem sikerült elküldeni a bejelentést – próbáld újra",
     "sendFailed": "Nem sikerült elküldeni az üzenetet",
-    "voiceUnavailable": "Nem lejátszható"
+    "voiceUnavailable": "Nem lejátszható",
+    "giftKiss": "Puszi",
+    "giftKissDesc": "Egy könnyed, játékos szia",
+    "giftHeart": "Szív",
+    "giftHeartDesc": "Mutasd meg, hogy tényleg tetszik",
+    "giftBouquet": "Csokor",
+    "giftBouquetDesc": "Nagy romantikus gesztus",
+    "giftDiamond": "Gyémánt",
+    "giftDiamondDesc": "Valakinek, aki igazán különleges",
+    "giftRetryLater": "Fizetés megérkezett — az ajándékot a kapcsolat helyreállása után kézbesítjük"
   },
   "profile": {
     "edit": "Profil szerkesztése",
@@ -175,7 +184,9 @@
     "bio": "Bemutatkozás",
     "interests": "Érdeklődési körök",
     "settings": "Beállítások",
-    "trustScoreHow": "A bizalmi pontszám segít, hogy a hozzád illő emberek lássanak. Mindenki 50-ről indul, az ellenőrzés {{verified}} pontot ad, minden moderátori figyelmeztetés {{warning}} pontot von le."
+    "trustScoreHow": "A bizalmi pontszám segít, hogy a hozzád illő emberek lássanak. Mindenki 50-ről indul, az ellenőrzés {{verified}} pontot ad, minden moderátori figyelmeztetés {{warning}} pontot von le.",
+    "giftsReceived": "Ajándékok",
+    "noGiftsYet": "Még nincs ajándék — itt jelennek meg"
   },
   "settings": {
     "title": "Beállítások",

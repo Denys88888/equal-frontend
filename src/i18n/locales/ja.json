@@ -163,7 +163,16 @@
     "historyLoadFailed": "この会話を読み込めませんでした。",
     "reportFailed": "報告を送信できませんでした。もう一度お試しください",
     "sendFailed": "メッセージを送信できませんでした",
-    "voiceUnavailable": "再生できません"
+    "voiceUnavailable": "再生できません",
+    "giftKiss": "キス",
+    "giftKissDesc": "軽くて遊び心のあるあいさつ",
+    "giftHeart": "ハート",
+    "giftHeartDesc": "本当に好きだと伝えよう",
+    "giftBouquet": "花束",
+    "giftBouquetDesc": "大きなロマンチックな気持ち",
+    "giftDiamond": "ダイヤモンド",
+    "giftDiamondDesc": "本当に特別な人へ",
+    "giftRetryLater": "支払いを受け付けました。接続が戻りしだいギフトを届けます"
   },
   "profile": {
     "edit": "プロフィールを編集",
@@ -173,7 +182,9 @@
     "bio": "自己紹介",
     "interests": "興味・関心",
     "settings": "設定",
-    "trustScoreHow": "トラストスコアは、あなたを相性の良い人に表示するために使われます。全員50から始まり、本人確認で{{verified}}加算、モデレーターからの警告1回ごとに{{warning}}減点されます。"
+    "trustScoreHow": "トラストスコアは、あなたを相性の良い人に表示するために使われます。全員50から始まり、本人確認で{{verified}}加算、モデレーターからの警告1回ごとに{{warning}}減点されます。",
+    "giftsReceived": "ギフト",
+    "noGiftsYet": "まだギフトはありません。届くとここに表示されます"
   },
   "settings": {
     "title": "設定",

@@ -173,7 +173,16 @@
     "historyLoadFailed": "تعذّر تحميل هذه المحادثة.",
     "reportFailed": "تعذّر إرسال البلاغ — حاول مرة أخرى",
     "sendFailed": "تعذّر إرسال الرسالة",
-    "voiceUnavailable": "تعذّر التشغيل"
+    "voiceUnavailable": "تعذّر التشغيل",
+    "giftKiss": "قبلة",
+    "giftKissDesc": "تحية خفيفة ومرحة",
+    "giftHeart": "قلب",
+    "giftHeartDesc": "أظهر أنك معجب حقًا",
+    "giftBouquet": "باقة ورد",
+    "giftBouquetDesc": "لفتة رومانسية كبيرة",
+    "giftDiamond": "ماسة",
+    "giftDiamondDesc": "لشخص مميز حقًا",
+    "giftRetryLater": "تم استلام الدفع — سيتم تسليم الهدية فور عودة الاتصال"
   },
   "profile": {
     "edit": "تعديل الملف الشخصي",
@@ -183,7 +192,9 @@
     "bio": "نبذة",
     "interests": "الاهتمامات",
     "settings": "الإعدادات",
-    "trustScoreHow": "تساعدنا نقطة الثقة على إظهارك للأشخاص المناسبين. يبدأ الجميع من 50، ويضيف التحقق {{verified}}، ويخصم كل تحذير من المشرف {{warning}}."
+    "trustScoreHow": "تساعدنا نقطة الثقة على إظهارك للأشخاص المناسبين. يبدأ الجميع من 50، ويضيف التحقق {{verified}}، ويخصم كل تحذير من المشرف {{warning}}.",
+    "giftsReceived": "الهدايا",
+    "noGiftsYet": "لا توجد هدايا بعد — ستظهر هنا"
   },
   "settings": {
     "title": "الإعدادات",

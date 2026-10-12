@@ -167,7 +167,16 @@
     "historyLoadFailed": "לא ניתן היה לטעון את השיחה.",
     "reportFailed": "לא ניתן היה לשלוח את הדיווח — נסו שוב",
     "sendFailed": "לא ניתן היה לשלוח את ההודעה",
-    "voiceUnavailable": "לא ניתן להשמיע"
+    "voiceUnavailable": "לא ניתן להשמיע",
+    "giftKiss": "נשיקה",
+    "giftKissDesc": "שלום קליל ושובב",
+    "giftHeart": "לב",
+    "giftHeartDesc": "להראות שבאמת מתחבבים",
+    "giftBouquet": "זר פרחים",
+    "giftBouquetDesc": "מחווה רומנטית גדולה",
+    "giftDiamond": "יהלום",
+    "giftDiamondDesc": "למישהו מיוחד באמת",
+    "giftRetryLater": "התשלום התקבל — המתנה תימסר ברגע שהחיבור יחזור"
   },
   "profile": {
     "edit": "ערוך פרופיל",
@@ -177,7 +186,9 @@
     "bio": "ביוגרפיה",
     "interests": "תחומי עניין",
     "settings": "הגדרות",
-    "trustScoreHow": "ציון האמון עוזר לנו להציג אותך לאנשים המתאימים. כולם מתחילים מ-50, אימות מוסיף {{verified}} וכל אזהרה ממנהל מורידה {{warning}}."
+    "trustScoreHow": "ציון האמון עוזר לנו להציג אותך לאנשים המתאימים. כולם מתחילים מ-50, אימות מוסיף {{verified}} וכל אזהרה ממנהל מורידה {{warning}}.",
+    "giftsReceived": "מתנות",
+    "noGiftsYet": "עדיין אין מתנות — הן יופיעו כאן"
   },
   "settings": {
     "title": "הגדרות",
