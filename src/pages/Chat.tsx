@@ -148,6 +148,16 @@ function savePendingGift(gift: PendingGift) {
     localStorage.setItem(PENDING_GIFTS_KEY, JSON.stringify([...rest, gift]));
   } catch { /* storage unavailable */ }
 }
+/**
+ * Worth trying again: the network or our server failed, or Pi has not yet
+ * marked a just-completed payment as completed (its record lags our
+ * complete() call by a moment). Other refusals are final.
+ */
+function giftRetryable(err: unknown): boolean {
+  const { status = 0, message = '' } = (err ?? {}) as { status?: number; message?: string };
+  return !(status >= 400 && status < 500) || /not completed/i.test(message);
+}
+
 function removePendingGift(piPaymentId: string) {
   try {
     localStorage.setItem(PENDING_GIFTS_KEY, JSON.stringify(loadPendingGifts().filter((g) => g.piPaymentId !== piPaymentId)));
@@ -1033,14 +1043,13 @@ export default function Chat() {
   const deliverGift = useCallback(async (kind: GiftKind, content: string, piPaymentId?: string) => {
     if (!matchId) throw new Error('no match');
     let lastErr: unknown;
-    for (const wait of [0, 1500, 4000]) {
+    for (const wait of [0, 1500, 3000, 6000]) {
       if (wait) await new Promise((r) => setTimeout(r, wait));
       try {
         return await messagesApi.sendMessage(matchId, content, 'GIFT', kind, piPaymentId);
       } catch (err) {
         lastErr = err;
-        const status = (err as { status?: number })?.status ?? 0;
-        if (status >= 400 && status < 500) break;
+        if (!giftRetryable(err)) break;
       }
     }
     throw lastErr;
@@ -1071,8 +1080,7 @@ export default function Chat() {
         });
       } catch (err) {
         setMessages((prev) => prev.filter((m) => m.id !== optimistic.id));
-        const status = (err as { status?: number })?.status ?? 0;
-        if (piPaymentId && !(status >= 400 && status < 500)) {
+        if (piPaymentId && giftRetryable(err)) {
           savePendingGift({ matchId, kind, content, piPaymentId });
           showToast(t('chat.giftRetryLater'));
         } else {
@@ -1097,9 +1105,8 @@ export default function Chat() {
           removePendingGift(g.piPaymentId);
           delivered = true;
         } catch (err) {
-          const status = (err as { status?: number })?.status ?? 0;
-          // Refused for good (already used, not completed): stop retrying.
-          if (status >= 400 && status < 500) removePendingGift(g.piPaymentId);
+          // Refused for good (already used, not a gift payment): stop retrying.
+          if (!giftRetryable(err)) removePendingGift(g.piPaymentId);
         }
       }
       if (delivered && !cancelled) setReloadKey((k) => k + 1);

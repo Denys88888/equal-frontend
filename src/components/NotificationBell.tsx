@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -35,6 +36,10 @@ export default function NotificationBell() {
         )}
       </motion.button>
 
+      {/* Portalled to <body>: the navbar's blur and slide-in animation would
+          otherwise make "fixed" relative to the navbar, so the backdrop would
+          cover only the bar and the panel would be clipped to its width. */}
+      {createPortal(
       <AnimatePresence>
         {open && (
           <>
@@ -44,8 +49,11 @@ export default function NotificationBell() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="absolute right-0 top-12 z-50 w-80 rounded-2xl overflow-hidden shadow-lg"
-              style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 8px 32px rgba(0,0,0,0.12)' }}
+              // Fixed to the screen, not to the bell: the bell sits at the left
+              // edge, and a panel hung from its right side ran off the screen,
+              // so the notifications could not be read.
+              className="fixed left-3 right-3 z-50 mx-auto max-w-[420px] rounded-2xl overflow-hidden shadow-lg"
+              style={{ top: 'calc(env(safe-area-inset-top) + 64px)', backgroundColor: 'var(--card-bg)', boxShadow: '0 8px 32px rgba(0,0,0,0.12)' }}
             >
               <div className="flex items-center justify-between px-4 py-3 border-b" style={{ borderColor: 'rgba(0,0,0,0.06)' }}>
                 <span className="text-sm font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
@@ -97,7 +105,9 @@ export default function NotificationBell() {
             </motion.div>
           </>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+      document.body,
+      )}
     </div>
   );
 }
