@@ -1,0 +1,6 @@
+<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><meta name="robots" content="noindex">
+<style>body{margin:0;font:15px monospace;background:#fff}#p{position:fixed;left:0;right:0;bottom:0;height:env(safe-area-inset-bottom);background:rgba(255,0,0,.5)}#b{position:fixed;left:0;right:0;bottom:0;height:6px;background:blue}</style></head>
+<body><pre id="o" style="padding:8px;white-space:pre-wrap"></pre><div id="p"></div><div id="b"></div><script>
+function r(){var d=document.createElement('div');d.style.cssText='position:fixed;top:0;width:1px;height:env(safe-area-inset-bottom);padding-top:env(safe-area-inset-top)';document.body.appendChild(d);var cs=getComputedStyle(d);
+var v=window.visualViewport||{};var o={iw:innerWidth,ih:innerHeight,oh:outerHeight,sh:screen.height,sah:screen.availHeight,sw:screen.width,saw:screen.availWidth,dpr:devicePixelRatio,sx:window.screenX,sy:window.screenY,vvh:v.height,vvt:v.offsetTop,ch:document.documentElement.clientHeight,sab:cs.height,sat:cs.paddingTop,ua:navigator.userAgent};d.remove();document.getElementById('o').textContent=JSON.stringify(o,null,1);}
+r();addEventListener('resize',r);setTimeout(r,1500);</script></body></html>
