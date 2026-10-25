@@ -383,7 +383,7 @@ export default function VideoCall() {
             when the camera was switched off, and came back black. */}
         {callState !== 'ended' && (
           <div className="absolute z-20 rounded-2xl overflow-hidden"
-            style={{ width: 100, height: 140, bottom: 'calc(120px + env(safe-area-inset-bottom))', right: 16, border: '2px solid rgba(255,255,255,0.8)', boxShadow: '0 4px 20px rgba(0,0,0,0.3)', backgroundColor: '#1a1a1a' }}>
+            style={{ width: 100, height: 140, bottom: 'calc(120px + var(--safe-bottom))', right: 16, border: '2px solid rgba(255,255,255,0.8)', boxShadow: '0 4px 20px rgba(0,0,0,0.3)', backgroundColor: '#1a1a1a' }}>
             <video ref={localVideoRef} autoPlay playsInline muted className="w-full h-full object-cover" style={{ transform: 'scaleX(-1)' }} />
             {(isCameraOff || !hasVideo) && (
               <div className="absolute inset-0 flex items-center justify-center" style={{ backgroundColor: '#1a1a1a' }}>
@@ -396,7 +396,7 @@ export default function VideoCall() {
         {/* Controls */}
         {callState !== 'ended' && (
           <div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-center gap-6"
-            style={{ paddingBottom: 'calc(32px + env(safe-area-inset-bottom))' }}>
+            style={{ paddingBottom: 'calc(32px + var(--safe-bottom))' }}>
             <motion.button whileTap={{ scale: 0.9 }} transition={{ duration: 0.12 }} onClick={toggleMute}
               aria-label={isMuted ? t('video.unmute') : t('video.mute')}
               className="rounded-full flex items-center justify-center"

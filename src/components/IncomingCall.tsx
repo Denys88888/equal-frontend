@@ -93,7 +93,7 @@ export default function IncomingCall() {
           <div className="w-full max-w-[430px] flex flex-col items-center justify-between px-8"
             style={{
               paddingTop: 'calc(96px + env(safe-area-inset-top))',
-              paddingBottom: 'calc(56px + env(safe-area-inset-bottom))',
+              paddingBottom: 'calc(56px + var(--safe-bottom))',
               background: 'radial-gradient(circle at 50% 30%, rgba(187,131,201,0.25) 0%, transparent 60%)',
             }}>
             <div className="flex flex-col items-center text-center">

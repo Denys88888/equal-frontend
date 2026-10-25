@@ -70,7 +70,7 @@ function TrustFooter() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4, delay: 1.5 }}
       className="flex items-center justify-center gap-3 px-4 pb-4"
-      style={{ paddingBottom: 'calc(16px + env(safe-area-inset-bottom))' }}
+      style={{ paddingBottom: 'calc(16px + var(--safe-bottom))' }}
     >
       {items.map((item, index) => {
         const Icon = item.icon;

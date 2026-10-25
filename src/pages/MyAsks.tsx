@@ -67,7 +67,7 @@ function AnswerDialog({
           transition={{ duration: 0.28, ease: easeOutExpo }}
           onClick={(e) => e.stopPropagation()}
           className="w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl p-5"
-          style={{ backgroundColor: 'var(--card-bg)' }}
+          style={{ backgroundColor: 'var(--card-bg)', paddingBottom: 'calc(20px + var(--safe-bottom))' }}
         >
           <div className="flex items-start justify-between gap-3 mb-3">
             <h3

@@ -282,7 +282,7 @@ function PhotoLightbox({
           className="max-w-full max-h-full object-contain rounded-xl"
         />
       </div>
-      <div className="flex justify-center gap-2 p-6">
+      <div className="flex justify-center gap-2 p-6" style={{ paddingBottom: 'calc(24px + var(--safe-bottom))' }}>
         {photos.map((_, i) => (
           <button
             key={i}

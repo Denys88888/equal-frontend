@@ -306,7 +306,7 @@ function FilterSheet({
       </div>
 
       {/* Footer */}
-      <div className="flex-shrink-0 flex items-center gap-3 px-6 pt-4 border-t" style={{ borderColor: 'var(--linen-dark)', paddingBottom: 'calc(16px + env(safe-area-inset-bottom))' }}>
+      <div className="flex-shrink-0 flex items-center gap-3 px-6 pt-4 border-t" style={{ borderColor: 'var(--linen-dark)', paddingBottom: 'calc(16px + var(--safe-bottom))' }}>
         <button
           onClick={onReset}
           className="flex-1 h-12 rounded-full flex items-center justify-center text-sm font-semibold text-[#BB83C9]"

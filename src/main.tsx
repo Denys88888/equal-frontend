@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client'
 import { HashRouter } from 'react-router'
 import { ToastProvider } from '@/components/ToastProvider'
 import { AuthProvider } from '@/context/AuthContext'
+import { watchAndroidNavBar } from '@/lib/systemNav'
 import '@/i18n/config';
 import './index.css'
 import './styles/holo.css'
@@ -21,8 +22,12 @@ if (document.readyState === 'loading') {
   initPiSdk();
 }
 
-// Android needs a slimmer bottom tab bar: see --tabbar-h in index.css.
-if (/Android/i.test(navigator.userAgent)) document.documentElement.classList.add('android');
+// Android: a slimmer bottom tab bar (--tabbar-h in index.css), and room for
+// the system navigation bar where Pi Browser draws the page beneath it.
+if (/Android/i.test(navigator.userAgent)) {
+  document.documentElement.classList.add('android');
+  watchAndroidNavBar();
+}
 
 createRoot(document.getElementById('root')!).render(
   <HashRouter>

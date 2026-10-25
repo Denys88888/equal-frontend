@@ -568,7 +568,7 @@ function GiftBottomSheet({
             exit={{ y: '100%' }}
             transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] as [number, number, number, number] }}
             className="fixed bottom-0 left-0 right-0 z-[200] w-full max-w-[430px] mx-auto rounded-t-3xl overflow-y-auto"
-            style={{ backgroundColor: 'var(--card-bg)', maxHeight: '85vh' }}
+            style={{ backgroundColor: 'var(--card-bg)', maxHeight: '85vh', paddingBottom: 'var(--safe-bottom)' }}
           >
             <div className="flex justify-center pt-3 pb-2 sticky top-0" style={{ backgroundColor: 'var(--card-bg)' }}>
               <div className="w-10 h-1 rounded-full" style={{ backgroundColor: 'var(--linen-dark)' }} />
@@ -1430,7 +1430,7 @@ export default function Chat() {
           style={{
             backgroundColor: 'var(--card-bg)',
             borderTop: '1px solid rgba(var(--linen-rgb), 0.5)',
-            paddingBottom: 'env(safe-area-inset-bottom)',
+            paddingBottom: 'var(--safe-bottom)',
           }}
         >
           <div className="flex items-end gap-1.5 px-2 py-2">
