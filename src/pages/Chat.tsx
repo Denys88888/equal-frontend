@@ -858,7 +858,6 @@ export default function Chat() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { user } = useAuth();
-  const messagesEndRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -987,9 +986,11 @@ export default function Chat() {
     setToast((prev) => ({ ...prev, visible: false }));
   }, []);
 
-  // Auto-scroll to bottom
+  // Auto-scroll to bottom. The page itself scrolls, so go to its very end:
+  // scrolling the last bubble into view left the icebreakers and the message
+  // box below the screen edge.
   const scrollToBottom = useCallback(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
   }, []);
 
   useEffect(() => {
@@ -1406,8 +1407,6 @@ export default function Chat() {
               <TypingIndicator />
             </div>
           )}
-
-          <div ref={messagesEndRef} />
         </div>
 
         {/* ── Icebreakers ── */}
@@ -1424,9 +1423,9 @@ export default function Chat() {
           )}
         </AnimatePresence>
 
-        {/* ── Message Input ── */}
+        {/* ── Message Input (stays on screen while reading back) ── */}
         <div
-          className="flex-shrink-0 z-40"
+          className="flex-shrink-0 z-40 sticky bottom-0"
           style={{
             backgroundColor: 'var(--card-bg)',
             borderTop: '1px solid rgba(var(--linen-rgb), 0.5)',
