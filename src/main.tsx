@@ -5,6 +5,8 @@ import { HashRouter } from 'react-router'
 import { ToastProvider } from '@/components/ToastProvider'
 import { AuthProvider } from '@/context/AuthContext'
 import { watchAndroidNavBar } from '@/lib/systemNav'
+import { watchCrashes } from '@/lib/crashReport'
+import ErrorBoundary from '@/components/ErrorBoundary'
 import '@/i18n/config';
 import './index.css'
 import './styles/holo.css'
@@ -29,14 +31,20 @@ if (/Android/i.test(navigator.userAgent)) {
   watchAndroidNavBar();
 }
 
+watchCrashes();
+
+// The boundary inside App can't catch a crash in the providers around it;
+// without this one such a crash left a blank white page and nothing else.
 createRoot(document.getElementById('root')!).render(
-  <HashRouter>
-    <AuthProvider>
-      <ToastProvider>
-        <App />
-      </ToastProvider>
-    </AuthProvider>
-  </HashRouter>,
+  <ErrorBoundary>
+    <HashRouter>
+      <AuthProvider>
+        <ToastProvider>
+          <App />
+        </ToastProvider>
+      </AuthProvider>
+    </HashRouter>
+  </ErrorBoundary>,
 )
 
 if ('serviceWorker' in navigator) {

@@ -723,7 +723,13 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
               <DialogFooter className="flex-col gap-2 sm:flex-col">
                 <Button
                   className="w-full h-11 rounded-full font-semibold bg-[#BB83C9] text-white hover:bg-[#9A63A8]"
-                  onClick={() => navigate(`/profile/${selectedUser.id}`)}
+                  onClick={() => {
+                    // Close the dialog first: leaving the page with it open
+                    // left its scroll lock and pointer block on the next one.
+                    const id = selectedUser.id;
+                    setSelectedUser(null);
+                    navigate(`/profile/${id}`);
+                  }}
                 >
                   <Eye size={16} className="mr-2" />
                   {t('admin.viewProfile')}

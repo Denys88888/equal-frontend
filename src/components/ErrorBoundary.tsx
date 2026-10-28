@@ -2,6 +2,7 @@ import { Component, type ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { AlertTriangle, Home, RotateCw, ChevronDown, ChevronUp } from 'lucide-react';
 import i18n from '@/i18n';
+import { reportCrash } from '@/lib/crashReport';
 
 const easeOutExpo = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
@@ -27,6 +28,7 @@ export default class ErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     console.error('ErrorBoundary caught an error:', error, errorInfo);
+    reportCrash('render', error);
   }
 
   handleReload = () => {

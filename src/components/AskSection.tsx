@@ -166,7 +166,12 @@ export default function AskSection({
   };
 
   const remaining = MAX_LEN - content.length;
-  const canSubmit = content.trim().length >= MIN_LEN && !submitting && isAuthenticated;
+  const tooShort = content.trim().length < MIN_LEN;
+  // Tappable as soon as there is text: a too-short question used to just grey
+  // the button out, so "Привет)" looked like a send button that did nothing.
+  // Tapping now says how much more to write (handleSubmit), and the hint
+  // under the box says it before anyone taps.
+  const canSubmit = content.trim().length > 0 && !submitting && isAuthenticated;
 
   const submitLabel = () => {
     if (submitting) return t('ask.sending', { defaultValue: 'Sending…' });
@@ -217,7 +222,15 @@ export default function AskSection({
             className="w-full bg-transparent resize-none outline-none text-[15px] text-[var(--charcoal)] placeholder:opacity-40"
             style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
           />
-          <div className="flex items-center justify-end">
+          <div className="flex items-center justify-end gap-2">
+            {content.trim().length > 0 && tooShort && (
+              <span
+                className="mr-auto text-[11px] text-[var(--charcoal)] opacity-60"
+                style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
+              >
+                {t('ask.tooShort', { defaultValue: `Please write at least ${MIN_LEN} characters`, min: MIN_LEN })}
+              </span>
+            )}
             <span
               className="text-[11px] tabular-nums"
               style={{

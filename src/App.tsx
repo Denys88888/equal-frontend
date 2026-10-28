@@ -1,26 +1,27 @@
-import { lazy, Suspense, useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router'
 import ErrorBoundary from './components/ErrorBoundary'
 import CookieConsent from './components/CookieConsent'
 import IncomingCall from './components/IncomingCall'
+import { lazyPage } from './lib/lazyPage'
 
-const Welcome = lazy(() => import('./pages/Welcome'))
-const Onboarding = lazy(() => import('./pages/Onboarding'))
-const Discover = lazy(() => import('./pages/Discover'))
-const Matches = lazy(() => import('./pages/Matches'))
-const Chat = lazy(() => import('./pages/Chat'))
-const VideoCall = lazy(() => import('./pages/VideoCall'))
-const Profile = lazy(() => import('./pages/Profile'))
-const PublicProfile = lazy(() => import('./pages/PublicProfile'))
-const Settings = lazy(() => import('./pages/Settings'))
-const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
-const TermsOfService = lazy(() => import('./pages/TermsOfService'))
-const Clubs = lazy(() => import('./pages/Clubs'))
-const Events = lazy(() => import('./pages/Events'))
-const DailyMatch = lazy(() => import('./pages/DailyMatch'))
-const MyAsks = lazy(() => import('./pages/MyAsks'))
-const Admin = lazy(() => import('./pages/Admin'))
-const NotFound = lazy(() => import('./pages/NotFound'))
+const Welcome = lazyPage(() => import('./pages/Welcome'))
+const Onboarding = lazyPage(() => import('./pages/Onboarding'))
+const Discover = lazyPage(() => import('./pages/Discover'))
+const Matches = lazyPage(() => import('./pages/Matches'))
+const Chat = lazyPage(() => import('./pages/Chat'))
+const VideoCall = lazyPage(() => import('./pages/VideoCall'))
+const Profile = lazyPage(() => import('./pages/Profile'))
+const PublicProfile = lazyPage(() => import('./pages/PublicProfile'))
+const Settings = lazyPage(() => import('./pages/Settings'))
+const PrivacyPolicy = lazyPage(() => import('./pages/PrivacyPolicy'))
+const TermsOfService = lazyPage(() => import('./pages/TermsOfService'))
+const Clubs = lazyPage(() => import('./pages/Clubs'))
+const Events = lazyPage(() => import('./pages/Events'))
+const DailyMatch = lazyPage(() => import('./pages/DailyMatch'))
+const MyAsks = lazyPage(() => import('./pages/MyAsks'))
+const Admin = lazyPage(() => import('./pages/Admin'))
+const NotFound = lazyPage(() => import('./pages/NotFound'))
 
 const PageSpinner = () => (
   <div className="flex items-center justify-center min-h-screen">
