@@ -177,7 +177,9 @@
     "giftRetryLater": "支払いを受け付けました。接続が戻りしだいギフトを届けます",
     "unmuteNotifications": "通知をオンにする",
     "unmutedNotifs": "通知オン",
-    "muteFailed": "通知を変更できませんでした — もう一度お試しください"
+    "muteFailed": "通知を変更できませんでした — もう一度お試しください",
+    "sparkPrice": "スパーク1個 · 所持: {{n}}",
+    "sparkPriceShort": "スパーク1個"
   },
   "profile": {
     "edit": "プロフィールを編集",

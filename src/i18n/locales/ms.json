@@ -177,7 +177,9 @@
     "giftRetryLater": "Bayaran diterima — hadiah akan dihantar sebaik sambungan pulih",
     "unmuteNotifications": "Hidupkan pemberitahuan",
     "unmutedNotifs": "Pemberitahuan dihidupkan",
-    "muteFailed": "Tidak dapat menukar pemberitahuan — cuba lagi"
+    "muteFailed": "Tidak dapat menukar pemberitahuan — cuba lagi",
+    "sparkPrice": "1 Percikan · anda ada {{n}}",
+    "sparkPriceShort": "1 Percikan"
   },
   "profile": {
     "edit": "Edit Profil",

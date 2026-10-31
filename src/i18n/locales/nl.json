@@ -179,7 +179,9 @@
     "giftRetryLater": "Betaling ontvangen — het cadeau wordt bezorgd zodra de verbinding terug is",
     "unmuteNotifications": "Meldingen aanzetten",
     "unmutedNotifs": "Meldingen aan",
-    "muteFailed": "Meldingen konden niet worden gewijzigd — probeer het opnieuw"
+    "muteFailed": "Meldingen konden niet worden gewijzigd — probeer het opnieuw",
+    "sparkPrice": "1 Spark · je hebt er {{n}}",
+    "sparkPriceShort": "1 Spark"
   },
   "profile": {
     "edit": "Profiel bewerken",

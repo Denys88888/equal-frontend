@@ -181,7 +181,9 @@
     "giftRetryLater": "Plaćanje primljeno — poklon će stići čim se veza vrati",
     "unmuteNotifications": "Uključi obavijesti",
     "unmutedNotifs": "Obavijesti uključene",
-    "muteFailed": "Nije moguće promijeniti obavijesti — pokušaj ponovno"
+    "muteFailed": "Nije moguće promijeniti obavijesti — pokušaj ponovno",
+    "sparkPrice": "1 Iskra · imaš: {{n}}",
+    "sparkPriceShort": "1 Iskra"
   },
   "profile": {
     "edit": "Uredi profil",

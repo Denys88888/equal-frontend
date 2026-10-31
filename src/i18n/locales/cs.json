@@ -183,7 +183,9 @@
     "giftRetryLater": "Platba přijata — dárek doručíme, jakmile se obnoví připojení",
     "unmuteNotifications": "Zapnout oznámení",
     "unmutedNotifs": "Oznámení zapnuta",
-    "muteFailed": "Oznámení se nepodařilo změnit — zkus to znovu"
+    "muteFailed": "Oznámení se nepodařilo změnit — zkus to znovu",
+    "sparkPrice": "1 Jiskra · máš: {{n}}",
+    "sparkPriceShort": "1 Jiskra"
   },
   "profile": {
     "edit": "Upravit profil",

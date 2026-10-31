@@ -179,7 +179,9 @@
     "giftRetryLater": "Malipo yamepokelewa — zawadi itafikishwa mara muunganisho utakaporudi",
     "unmuteNotifications": "Washa arifa",
     "unmutedNotifs": "Arifa zimewashwa",
-    "muteFailed": "Imeshindwa kubadilisha arifa — jaribu tena"
+    "muteFailed": "Imeshindwa kubadilisha arifa — jaribu tena",
+    "sparkPrice": "Cheche 1 · una {{n}}",
+    "sparkPriceShort": "Cheche 1"
   },
   "profile": {
     "edit": "Hariri Wasifu",

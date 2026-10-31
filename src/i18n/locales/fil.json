@@ -179,7 +179,9 @@
     "giftRetryLater": "Natanggap ang bayad — maihahatid ang regalo kapag bumalik ang koneksyon",
     "unmuteNotifications": "I-on ang mga notification",
     "unmutedNotifs": "Naka-on ang mga notification",
-    "muteFailed": "Hindi mabago ang mga notification — subukan ulit"
+    "muteFailed": "Hindi mabago ang mga notification — subukan ulit",
+    "sparkPrice": "1 Spark · mayroon kang {{n}}",
+    "sparkPriceShort": "1 Spark"
   },
   "profile": {
     "edit": "I-edit ang Profile",

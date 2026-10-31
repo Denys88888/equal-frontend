@@ -179,7 +179,9 @@
     "giftRetryLater": "Ödeme alındı — bağlantı geri gelir gelmez hediye iletilecek",
     "unmuteNotifications": "Bildirimleri aç",
     "unmutedNotifs": "Bildirimler açık",
-    "muteFailed": "Bildirimler değiştirilemedi — tekrar dene"
+    "muteFailed": "Bildirimler değiştirilemedi — tekrar dene",
+    "sparkPrice": "1 Kıvılcım · sende {{n}} var",
+    "sparkPriceShort": "1 Kıvılcım"
   },
   "profile": {
     "edit": "Profili Düzenle",

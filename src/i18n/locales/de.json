@@ -179,7 +179,9 @@
     "giftRetryLater": "Zahlung erhalten — das Geschenk wird zugestellt, sobald die Verbindung wieder da ist",
     "unmuteNotifications": "Benachrichtigungen einschalten",
     "unmutedNotifs": "Benachrichtigungen an",
-    "muteFailed": "Benachrichtigungen konnten nicht geändert werden — versuch es erneut"
+    "muteFailed": "Benachrichtigungen konnten nicht geändert werden — versuch es erneut",
+    "sparkPrice": "1 Spark · du hast {{n}}",
+    "sparkPriceShort": "1 Spark"
   },
   "profile": {
     "edit": "Profil bearbeiten",

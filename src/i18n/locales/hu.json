@@ -179,7 +179,9 @@
     "giftRetryLater": "Fizetés megérkezett — az ajándékot a kapcsolat helyreállása után kézbesítjük",
     "unmuteNotifications": "Értesítések bekapcsolása",
     "unmutedNotifs": "Értesítések bekapcsolva",
-    "muteFailed": "Nem sikerült módosítani az értesítéseket — próbáld újra"
+    "muteFailed": "Nem sikerült módosítani az értesítéseket — próbáld újra",
+    "sparkPrice": "1 Szikra · neked van: {{n}}",
+    "sparkPriceShort": "1 Szikra"
   },
   "profile": {
     "edit": "Profil szerkesztése",

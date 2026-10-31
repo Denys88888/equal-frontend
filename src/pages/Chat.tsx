@@ -37,6 +37,7 @@ import { recordedAudioType, playableAudioUrl, preferredAudioMime } from '@/lib/a
 import GiftAnimation from '@/components/GiftAnimation';
 import { GIFTS, GIFT_EMOJI, giftInfo, isGiftKind, type GiftKind } from '@/lib/gifts';
 import GiftCelebration from '@/components/GiftCelebration';
+import { getSparksBalance } from '@/api/sparks';
 
 // ── Types ────────────────────────────────────────────────
 
@@ -530,9 +531,21 @@ function GiftBottomSheet({
   const { showToast } = useToast();
   const [selected, setSelected] = useState(0);
   const { initiatePayment, isProcessing } = usePiPayment();
+  // The Spark gift costs one of the sender's Sparks (checked again server-side).
+  const [sparks, setSparks] = useState<number | null>(null);
+  useEffect(() => {
+    if (!isOpen) return;
+    let cancelled = false;
+    getSparksBalance().then((b) => { if (!cancelled) setSparks(b.balance); }).catch(() => {});
+    return () => { cancelled = true; };
+  }, [isOpen]);
 
   const handleSend = async () => {
     const gift = GIFTS[selected];
+    if (gift.kind === 'spark' && sparks === 0) {
+      showToast('info', t('discover.noSparks', { defaultValue: 'No Sparks yet — earn them by verifying, completing your profile and posting in clubs' }));
+      return;
+    }
     let piPaymentId: string | undefined;
     if (gift.price > 0) {
       // The memo must start with "Gift:" — the server only redeems gift payments.
@@ -612,10 +625,12 @@ function GiftBottomSheet({
                       )}
                       {gift.price === 0 && (
                         <span
-                          className="text-xs font-medium"
-                          style={{ color: '#7DE0B3', fontFamily: "'Outfit', system-ui, sans-serif" }}
+                          className="text-xs font-medium text-center"
+                          style={{ color: sparks === 0 ? '#E86A6A' : '#7DE0B3', fontFamily: "'Outfit', system-ui, sans-serif" }}
                         >
-                          {t('chat.free')}
+                          {sparks === null
+                            ? t('chat.sparkPriceShort', { defaultValue: '1 Spark' })
+                            : t('chat.sparkPrice', { defaultValue: '1 Spark · you have {{n}}', n: sparks })}
                         </span>
                       )}
                     </div>
@@ -1095,6 +1110,8 @@ export default function Chat() {
         if (piPaymentId && giftRetryable(err)) {
           savePendingGift({ matchId, kind, content, piPaymentId });
           showToast(t('chat.giftRetryLater'));
+        } else if (/not enough sparks/i.test((err as { message?: string })?.message ?? '')) {
+          showToast(t('discover.noSparks', { defaultValue: 'No Sparks yet — earn them by verifying, completing your profile and posting in clubs' }));
         } else {
           showToast(t('chat.giftFailed', { defaultValue: 'Could not deliver gift \u2014 please contact support' }));
         }

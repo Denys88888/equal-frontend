@@ -181,7 +181,9 @@
     "giftRetryLater": "התשלום התקבל — המתנה תימסר ברגע שהחיבור יחזור",
     "unmuteNotifications": "הפעלת התראות",
     "unmutedNotifs": "ההתראות מופעלות",
-    "muteFailed": "לא ניתן לשנות את ההתראות — נסו שוב"
+    "muteFailed": "לא ניתן לשנות את ההתראות — נסו שוב",
+    "sparkPrice": "ניצוץ אחד · יש לך {{n}}",
+    "sparkPriceShort": "ניצוץ אחד"
   },
   "profile": {
     "edit": "ערוך פרופיל",

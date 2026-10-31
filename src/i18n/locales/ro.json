@@ -181,7 +181,9 @@
     "giftRetryLater": "Plata a fost primită — cadoul va fi livrat imediat ce revine conexiunea",
     "unmuteNotifications": "Activează notificările",
     "unmutedNotifs": "Notificări activate",
-    "muteFailed": "Notificările nu au putut fi schimbate — încearcă din nou"
+    "muteFailed": "Notificările nu au putut fi schimbate — încearcă din nou",
+    "sparkPrice": "1 Scânteie · ai: {{n}}",
+    "sparkPriceShort": "1 Scânteie"
   },
   "profile": {
     "edit": "Editează profilul",

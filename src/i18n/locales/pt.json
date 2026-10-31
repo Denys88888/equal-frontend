@@ -181,7 +181,9 @@
     "giftRetryLater": "Pagamento recebido — o presente será entregue assim que a conexão voltar",
     "unmuteNotifications": "Ativar notificações",
     "unmutedNotifs": "Notificações ativadas",
-    "muteFailed": "Não foi possível alterar as notificações — tente de novo"
+    "muteFailed": "Não foi possível alterar as notificações — tente de novo",
+    "sparkPrice": "1 Faísca · você tem {{n}}",
+    "sparkPriceShort": "1 Faísca"
   },
   "profile": {
     "edit": "Editar Perfil",

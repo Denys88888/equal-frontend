@@ -179,7 +179,9 @@
     "giftRetryLater": "Payment received — the gift will be delivered as soon as the connection is back",
     "unmuteNotifications": "Unmute Notifications",
     "unmutedNotifs": "Notifications on",
-    "muteFailed": "Couldn't change notifications — try again"
+    "muteFailed": "Couldn't change notifications — try again",
+    "sparkPrice": "1 Spark · you have {{n}}",
+    "sparkPriceShort": "1 Spark"
   },
   "profile": {
     "edit": "Edit Profile",

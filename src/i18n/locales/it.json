@@ -181,7 +181,9 @@
     "giftRetryLater": "Pagamento ricevuto: il regalo verrà consegnato appena torna la connessione",
     "unmuteNotifications": "Riattiva le notifiche",
     "unmutedNotifs": "Notifiche attive",
-    "muteFailed": "Impossibile cambiare le notifiche — riprova"
+    "muteFailed": "Impossibile cambiare le notifiche — riprova",
+    "sparkPrice": "1 Scintilla · ne hai {{n}}",
+    "sparkPriceShort": "1 Scintilla"
   },
   "profile": {
     "edit": "Modifica Profilo",

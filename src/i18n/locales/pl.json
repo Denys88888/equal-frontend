@@ -183,7 +183,9 @@
     "giftRetryLater": "Płatność przyjęta — prezent zostanie dostarczony, gdy wróci połączenie",
     "unmuteNotifications": "Włącz powiadomienia",
     "unmutedNotifs": "Powiadomienia włączone",
-    "muteFailed": "Nie udało się zmienić powiadomień — spróbuj ponownie"
+    "muteFailed": "Nie udało się zmienić powiadomień — spróbuj ponownie",
+    "sparkPrice": "1 Iskra · masz: {{n}}",
+    "sparkPriceShort": "1 Iskra"
   },
   "profile": {
     "edit": "Edytuj profil",

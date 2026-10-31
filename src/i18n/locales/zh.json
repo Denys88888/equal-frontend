@@ -177,7 +177,9 @@
     "giftRetryLater": "已收到付款——网络恢复后礼物会立即送达",
     "unmuteNotifications": "开启通知",
     "unmutedNotifs": "通知已开启",
-    "muteFailed": "无法更改通知 — 请重试"
+    "muteFailed": "无法更改通知 — 请重试",
+    "sparkPrice": "1 个火花 · 你有 {{n}} 个",
+    "sparkPriceShort": "1 个火花"
   },
   "profile": {
     "edit": "编辑资料",

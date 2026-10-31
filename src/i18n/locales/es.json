@@ -181,7 +181,9 @@
     "giftRetryLater": "Pago recibido: el regalo se entregará en cuanto vuelva la conexión",
     "unmuteNotifications": "Activar notificaciones",
     "unmutedNotifs": "Notificaciones activadas",
-    "muteFailed": "No se pudieron cambiar las notificaciones — inténtalo de nuevo"
+    "muteFailed": "No se pudieron cambiar las notificaciones — inténtalo de nuevo",
+    "sparkPrice": "1 Chispa · tienes {{n}}",
+    "sparkPriceShort": "1 Chispa"
   },
   "profile": {
     "edit": "Editar Perfil",

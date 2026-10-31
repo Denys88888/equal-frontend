@@ -177,7 +177,9 @@
     "giftRetryLater": "결제가 완료됐어요. 연결이 돌아오면 바로 선물을 전달할게요",
     "unmuteNotifications": "알림 켜기",
     "unmutedNotifs": "알림 켜짐",
-    "muteFailed": "알림을 변경할 수 없어요 — 다시 시도해 주세요"
+    "muteFailed": "알림을 변경할 수 없어요 — 다시 시도해 주세요",
+    "sparkPrice": "스파크 1개 · 보유: {{n}}",
+    "sparkPriceShort": "스파크 1개"
   },
   "profile": {
     "edit": "프로필 수정",

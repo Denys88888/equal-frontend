@@ -179,7 +179,9 @@
     "giftRetryLater": "Maksu vastaanotettu – lahja toimitetaan heti, kun yhteys palaa",
     "unmuteNotifications": "Ota ilmoitukset käyttöön",
     "unmutedNotifs": "Ilmoitukset päällä",
-    "muteFailed": "Ilmoituksia ei voitu muuttaa — yritä uudelleen"
+    "muteFailed": "Ilmoituksia ei voitu muuttaa — yritä uudelleen",
+    "sparkPrice": "1 Kipinä · sinulla on {{n}}",
+    "sparkPriceShort": "1 Kipinä"
   },
   "profile": {
     "edit": "Muokkaa profiilia",

@@ -179,7 +179,9 @@
     "giftRetryLater": "Betaling modtaget – gaven leveres, så snart forbindelsen er tilbage",
     "unmuteNotifications": "Slå notifikationer til",
     "unmutedNotifs": "Notifikationer slået til",
-    "muteFailed": "Kunne ikke ændre notifikationer — prøv igen"
+    "muteFailed": "Kunne ikke ændre notifikationer — prøv igen",
+    "sparkPrice": "1 Gnist · du har {{n}}",
+    "sparkPriceShort": "1 Gnist"
   },
   "profile": {
     "edit": "Rediger profil",

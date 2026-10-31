@@ -181,7 +181,9 @@
     "giftRetryLater": "Paiement reçu — le cadeau sera livré dès le retour de la connexion",
     "unmuteNotifications": "Réactiver les notifications",
     "unmutedNotifs": "Notifications activées",
-    "muteFailed": "Impossible de modifier les notifications — réessaie"
+    "muteFailed": "Impossible de modifier les notifications — réessaie",
+    "sparkPrice": "1 Étincelle · tu en as {{n}}",
+    "sparkPriceShort": "1 Étincelle"
   },
   "profile": {
     "edit": "Modifier le Profil",

@@ -179,7 +179,9 @@
     "giftRetryLater": "Betalningen är mottagen – gåvan levereras så fort anslutningen är tillbaka",
     "unmuteNotifications": "Slå på aviseringar",
     "unmutedNotifs": "Aviseringar på",
-    "muteFailed": "Kunde inte ändra aviseringar — försök igen"
+    "muteFailed": "Kunde inte ändra aviseringar — försök igen",
+    "sparkPrice": "1 Gnista · du har {{n}}",
+    "sparkPriceShort": "1 Gnista"
   },
   "profile": {
     "edit": "Redigera profil",

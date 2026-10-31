@@ -177,7 +177,9 @@
     "giftRetryLater": "Đã nhận thanh toán — quà sẽ được gửi ngay khi có kết nối trở lại",
     "unmuteNotifications": "Bật thông báo",
     "unmutedNotifs": "Đã bật thông báo",
-    "muteFailed": "Không thể thay đổi thông báo — hãy thử lại"
+    "muteFailed": "Không thể thay đổi thông báo — hãy thử lại",
+    "sparkPrice": "1 Tia lửa · bạn có {{n}}",
+    "sparkPriceShort": "1 Tia lửa"
   },
   "profile": {
     "edit": "Chỉnh sửa hồ sơ",

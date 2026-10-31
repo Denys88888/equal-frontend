@@ -179,7 +179,9 @@
     "giftRetryLater": "Betaling mottatt – gaven leveres så snart tilkoblingen er tilbake",
     "unmuteNotifications": "Slå på varsler",
     "unmutedNotifs": "Varsler på",
-    "muteFailed": "Kunne ikke endre varsler — prøv igjen"
+    "muteFailed": "Kunne ikke endre varsler — prøv igjen",
+    "sparkPrice": "1 Gnist · du har {{n}}",
+    "sparkPriceShort": "1 Gnist"
   },
   "profile": {
     "edit": "Rediger profil",
