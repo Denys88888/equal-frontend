@@ -541,7 +541,7 @@ function SwipeCard({
                 className="px-2.5 py-0.5 rounded-full text-xs font-medium text-white"
                 style={{ backgroundColor: 'rgba(255,255,255,0.15)' }}
               >
-                {interest}
+                {t(`onboarding.int_${interest.toLowerCase()}`, { defaultValue: interest })}
               </span>
             ))}
           </div>
@@ -568,6 +568,7 @@ function ActionButtons({
   canUndo: boolean;
   sparkCount: number;
 }) {
+  const { t } = useTranslation();
   return (
     <div className="flex items-center justify-center gap-5">
       {/* Undo last swipe */}
@@ -576,6 +577,7 @@ function ActionButtons({
         transition={{ type: 'spring', stiffness: 400, damping: 20 }}
         onClick={onUndo}
         disabled={!canUndo}
+        aria-label={t('discover.undo')}
         className="w-12 h-12 rounded-full flex items-center justify-center"
         style={{
           backgroundColor: 'var(--card-bg)',
@@ -591,6 +593,7 @@ function ActionButtons({
         whileTap={{ scale: 0.88 }}
         transition={{ type: 'spring', stiffness: 400, damping: 20 }}
         onClick={onDislike}
+        aria-label={t('discover.dislike')}
         className="w-14 h-14 rounded-full flex items-center justify-center"
         style={{
           backgroundColor: 'var(--card-bg)',
@@ -605,6 +608,7 @@ function ActionButtons({
         whileTap={{ scale: 0.88 }}
         transition={{ type: 'spring', stiffness: 400, damping: 20 }}
         onClick={onLike}
+        aria-label={t('discover.like')}
         className="w-16 h-16 rounded-full flex items-center justify-center"
         style={{
           backgroundColor: 'var(--card-bg)',
@@ -619,6 +623,7 @@ function ActionButtons({
         whileTap={{ scale: 0.88 }}
         transition={{ type: 'spring', stiffness: 400, damping: 20 }}
         onClick={onSpark}
+        aria-label={t('discover.spark')}
         className="w-14 h-14 rounded-full flex items-center justify-center relative"
         style={{
           backgroundColor: 'var(--card-bg)',
@@ -762,7 +767,7 @@ function MatchOverlay({
 
 // ── Empty State ────────────────────────────────────────
 
-function EmptyState({ onOpenFilters }: { onOpenFilters: () => void }) {
+function EmptyState({ onOpenFilters, onUndo }: { onOpenFilters: () => void; onUndo?: () => void }) {
   const { t } = useTranslation();
   return (
     <motion.div
@@ -790,6 +795,18 @@ function EmptyState({ onOpenFilters }: { onOpenFilters: () => void }) {
       >
         {t('discover.adjustFilters')}
       </button>
+      {/* The action row (and its undo) goes away with the last card, which left
+          the last swipe of the deck impossible to take back. */}
+      {onUndo && (
+        <button
+          onClick={onUndo}
+          className="w-full max-w-[280px] h-12 rounded-full text-sm font-semibold flex items-center justify-center gap-2"
+          style={{ color: '#F0B84A' }}
+        >
+          <RotateCcw size={18} strokeWidth={2.5} />
+          {t('discover.undo')}
+        </button>
+      )}
     </motion.div>
   );
 }
@@ -833,7 +850,7 @@ function CompatibilityCard({ profile, onLike }: { profile: Profile; onLike: () =
         )}
         <div className="flex flex-wrap gap-1">
           {profile.interests.slice(0, 3).map((i) => (
-            <span key={i} className="px-2 py-0.5 rounded-full text-[10px] font-medium" style={{ backgroundColor: 'var(--linen-dark)', color: 'var(--charcoal)' }}>{i}</span>
+            <span key={i} className="px-2 py-0.5 rounded-full text-[10px] font-medium" style={{ backgroundColor: 'var(--linen-dark)', color: 'var(--charcoal)' }}>{t(`onboarding.int_${i.toLowerCase()}`, { defaultValue: i })}</span>
           ))}
         </div>
       </div>
@@ -959,7 +976,7 @@ export default function Discover() {
       if (result.isMatch) {
         triggerMatchCelebration();
         setMatchProfile(current);
-        setMatchId(result.matchId ?? current.id);
+        setMatchId(result.matchId ?? null);
       }
     } catch (e: unknown) {
       // Roll the optimistic spark back — the server rejected the spend
@@ -995,7 +1012,29 @@ export default function Discover() {
   const handleLike = () => handleSwipe('right');
   const handleDislike = () => handleSwipe('left');
   const handleSpark = () => {
+    // Used to do nothing at all with 0 Sparks — a dead button.
     if (sparkCount > 0) handleSwipe('up');
+    else showToast('info', t('discover.noSparks', { defaultValue: 'No Sparks yet — earn them by verifying, completing your profile and posting in clubs' }));
+  };
+
+  // The compatibility list's heart used to skip the server entirely and show
+  // "It's a match!" for anyone, then open a chat that did not exist.
+  const handleCompatLike = async (target: Profile) => {
+    try {
+      const result = await discoverApi.swipeAction(target.id, 'like');
+      setAllProfiles((prev) => prev.filter((p) => p.id !== target.id));
+      setProfiles((prev) => prev.filter((p) => p.id !== target.id));
+      if (result.isMatch && result.matchId) {
+        triggerMatchCelebration();
+        setMatchProfile(target);
+        setMatchId(result.matchId);
+      } else {
+        showToast('success', t('discover.likeSent', { defaultValue: "Liked! If it's mutual, you'll match" }));
+      }
+    } catch (e: unknown) {
+      console.error('[discover] like failed:', e);
+      showToast('error', t('discover.swipeFailed', { defaultValue: 'Could not save that — try again' }));
+    }
   };
 
   // Dismiss bottom sheet on overlay tap
@@ -1053,6 +1092,7 @@ export default function Discover() {
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={() => setShowFilters(true)}
+          aria-label={t('discover.filter')}
           className="absolute top-16 right-4 z-30 w-10 h-10 rounded-full flex items-center justify-center"
           style={{ backgroundColor: 'rgba(var(--card-rgb), 0.72)', backdropFilter: 'blur(12px)', boxShadow: '0 2px 12px rgba(0,0,0,0.08)' }}
         >
@@ -1089,7 +1129,7 @@ export default function Discover() {
                   </AnimatePresence>
                 </div>
               ) : (
-                <EmptyState onOpenFilters={() => setShowFilters(true)} />
+                <EmptyState onOpenFilters={() => setShowFilters(true)} onUndo={lastSwiped ? handleUndo : undefined} />
               )}
             </div>
 
@@ -1118,10 +1158,7 @@ export default function Discover() {
                 <CompatibilityCard
                   key={profile.id}
                   profile={profile}
-                  onLike={() => {
-                    setMatchProfile(profile);
-                    triggerMatchCelebration();
-                  }}
+                  onLike={() => { void handleCompatLike(profile); }}
                 />
               ))}
             </div>
@@ -1181,10 +1218,11 @@ export default function Discover() {
             userName={userName}
             onDismiss={() => { setMatchProfile(null); setMatchId(null); }}
             onMessage={() => {
-              const id = matchId ?? matchProfile.id;
+              // A user id is not a chat: without a match id go to the list.
+              const id = matchId;
               setMatchProfile(null);
               setMatchId(null);
-              navigate(`/chat/${id}`);
+              navigate(id ? `/chat/${id}` : '/matches');
             }}
           />
         )}

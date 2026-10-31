@@ -79,7 +79,9 @@
     "alreadyLiked": "Zaten beğenildi",
     "you": "Siz",
     "swipeFailed": "Kaydedilemedi — tekrar deneyin",
-    "fakeBadge": "Sahte"
+    "fakeBadge": "Sahte",
+    "noSparks": "Henüz Kıvılcımın yok — doğrulama, tamamlanmış profil ve kulüp gönderileriyle kazan",
+    "likeSent": "Beğenildi! Karşılıklıysa eşleşeceksiniz"
   },
   "matches": {
     "title": "Eşleşmeler",
@@ -174,7 +176,10 @@
     "giftBouquetDesc": "Büyük bir romantik jest",
     "giftDiamond": "Elmas",
     "giftDiamondDesc": "Gerçekten özel biri için",
-    "giftRetryLater": "Ödeme alındı — bağlantı geri gelir gelmez hediye iletilecek"
+    "giftRetryLater": "Ödeme alındı — bağlantı geri gelir gelmez hediye iletilecek",
+    "unmuteNotifications": "Bildirimleri aç",
+    "unmutedNotifs": "Bildirimler açık",
+    "muteFailed": "Bildirimler değiştirilemedi — tekrar dene"
   },
   "profile": {
     "edit": "Profili Düzenle",
@@ -381,7 +386,8 @@
     "posts_one": "{{count}} gönderi",
     "members_other": "{{count}} üye",
     "posts_other": "{{count}} gönderi",
-    "category": "Kategori"
+    "category": "Kategori",
+    "club_cat_misc": "Diğer"
   },
   "events": {
     "title": "Etkinlikler",
@@ -454,7 +460,10 @@
     "noSavedDesc": "İlgilendiğiniz etkinliklerdeki yıldıza dokunarak onları buraya kaydedin.",
     "ended": "Bu etkinlik sona erdi",
     "feedbackFailed": "Geri bildiriminiz gönderilemedi — lütfen tekrar deneyin",
-    "thanksFeedbackSaved": "Geri bildiriminiz için teşekkürler!"
+    "thanksFeedbackSaved": "Geri bildiriminiz için teşekkürler!",
+    "rsvpFailed": "Katılımın kaydedilemedi — tekrar dene",
+    "cat_party": "Parti",
+    "cat_community": "Topluluk"
   },
   "video": {
     "connecting": "Bağlanıyor...",
@@ -768,7 +777,9 @@
     "markAllRead": "Tümünü okundu işaretle",
     "empty": "Henüz bildirim yok",
     "newMatchTitle": "Eşleştiniz! 💜",
-    "newMatchBody": "Yeni bir bağlantın var — selam ver!"
+    "newMatchBody": "Yeni bir bağlantın var — selam ver!",
+    "newMessageTitle": "{{name}} kişisinden yeni mesaj",
+    "newMediaBody": "Görmek için sohbeti aç"
   },
   "error": {
     "title": "Bir şeyler ters gitti",
@@ -889,7 +900,8 @@
     "extraSaved": "Ödemen kaydedildi — ekstra eşleşmeyi daha sonra tekrar ödemeden al.",
     "claimExtra": "Ödenmiş ekstra eşleşmeni al",
     "arrivesToday": "Yeni eşleşmen bugün {{time}} saatinde geliyor",
-    "voiceIntroOptional": "İsteğe bağlı — eşleşmelerinin dinleyebileceği 10 saniyelik bir merhaba"
+    "voiceIntroOptional": "İsteğe bağlı — eşleşmelerinin dinleyebileceği 10 saniyelik bir merhaba",
+    "playFailed": "Bu kayıt bu cihazda oynatılamıyor"
   },
   "truthOrDare": {
     "truth": {
@@ -949,7 +961,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "{{total}} soru · {{answered}} cevap",
+    "counts": "Sorular: {{total}} · Yanıtlar: {{answered}}",
     "askButton": "Soru sor",
     "myAsks": "Sorularım",
     "placeholder": "Ne öğrenmek istersin?",
@@ -989,7 +1001,12 @@
     "ogDescription": "{{answered}} soru cevaplandı. Ne öğrenmek istersin?",
     "newQuestionPush": "Yeni soru! 💜 Biri seni daha yakından tanımak istiyor",
     "answerPush": "Sorun cevaplandı! 🎉",
-    "fakeProfileNote": "Bu sahte bir profil — soru alamaz."
+    "fakeProfileNote": "Bu sahte bir profil — soru alamaz.",
+    "sentTab": "Gönderilenler",
+    "toName": "Alıcı: {{name}}",
+    "waiting": "Yanıt bekleniyor",
+    "declined": "Reddedildi",
+    "noSent": "Henüz kimseye soru sormadın."
   },
   "videoIntro": {
     "title": "Video tanıtım",

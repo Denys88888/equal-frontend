@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Mic, Play, Save, RotateCcw, Square } from 'lucide-react';
 import { uploadVoiceIntro } from '@/api/dailyMatch';
 import { useToast } from '@/hooks/useToast';
-import { recordedAudioType, playableAudioUrl } from '@/lib/audio';
+import { recordedAudioType, playableAudioUrl, preferredAudioMime } from '@/lib/audio';
 
 /** Fixed clip length, per spec. */
 const CLIP_MS = 10_000;
@@ -77,10 +77,7 @@ export default function VoiceIntroRecorder({
     }
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      // Opus in WebM is what the spec asks for; Safari only offers mp4, so fall
-      // back rather than throwing and leaving the user with a dead button.
-      const preferred = 'audio/webm;codecs=opus';
-      const mimeType = MediaRecorder.isTypeSupported(preferred) ? preferred : '';
+      const mimeType = preferredAudioMime();
       const rec = new MediaRecorder(stream, mimeType ? { mimeType } : undefined);
       recorderRef.current = rec;
       chunksRef.current = [];
@@ -211,7 +208,11 @@ export default function VoiceIntroRecorder({
         {blob && !recording && !autoSave && (
           <>
             <button
-              onClick={() => audioRef.current?.play()}
+              onClick={() => {
+                audioRef.current?.play().catch(() => {
+                  showToast('error', t('dailyMatch.playFailed', { defaultValue: "This recording can't be played on this device" }));
+                });
+              }}
               className="flex-1 h-11 rounded-full text-sm font-semibold flex items-center justify-center gap-2 border-[1.5px]"
               style={{ borderColor: 'var(--linen-dark)', color: 'var(--charcoal)' }}
             >

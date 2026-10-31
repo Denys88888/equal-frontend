@@ -21,6 +21,15 @@ export interface MatchNewEvent {
   withUserId: string;
 }
 
+/** A message in one of the user's chats, sent to their own room (the bell). */
+export interface MessageNotifyEvent {
+  matchId: string;
+  senderName: string;
+  type: 'TEXT' | 'VOICE' | 'IMAGE' | 'GIFT' | 'SYSTEM';
+  giftType?: string | null;
+  preview: string | null;
+}
+
 // Singleton socket shared across the app so all hooks share one connection.
 // It used to be replaced whenever it was not connected *yet*, so every hook
 // mounting during the first handshake opened another socket, and listeners
@@ -91,13 +100,16 @@ export function useSocket(
   return { sendTypingStart, sendTypingStop };
 }
 
-/** Used app-wide (e.g. AuthProvider) — joins user room and listens for match:new */
+/** Used app-wide (e.g. AuthProvider) — joins user room and listens for match:new and message:notify */
 export function useUserSocket(
   userId: string | undefined,
   onMatchNew?: (event: MatchNewEvent) => void,
+  onMessageNotify?: (event: MessageNotifyEvent) => void,
 ) {
   const onMatchRef = useRef(onMatchNew);
   onMatchRef.current = onMatchNew;
+  const onNotifyRef = useRef(onMessageNotify);
+  useEffect(() => { onNotifyRef.current = onMessageNotify; });
 
   useEffect(() => {
     if (!userId) return;
@@ -109,10 +121,13 @@ export function useUserSocket(
 
     const onMatch = (event: MatchNewEvent) => onMatchRef.current?.(event);
     socket.on('match:new', onMatch);
+    const onNotify = (event: MessageNotifyEvent) => onNotifyRef.current?.(event);
+    socket.on('message:notify', onNotify);
 
     return () => {
       socket.off('connect', onConnect);
       socket.off('match:new', onMatch);
+      socket.off('message:notify', onNotify);
     };
   }, [userId]);
 }

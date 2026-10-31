@@ -87,7 +87,9 @@
     "alreadyLiked": "سبق أن أُعجبت به",
     "you": "أنت",
     "swipeFailed": "تعذّر الحفظ — حاول مرة أخرى",
-    "fakeBadge": "وهمي"
+    "fakeBadge": "وهمي",
+    "noSparks": "لا توجد شرارات بعد — اكسبها بالتحقق وإكمال ملفك والنشر في الأندية",
+    "likeSent": "تم الإعجاب! إذا كان متبادلاً سيحدث تطابق"
   },
   "matches": {
     "title": "التطابقات",
@@ -182,7 +184,10 @@
     "giftBouquetDesc": "لفتة رومانسية كبيرة",
     "giftDiamond": "ماسة",
     "giftDiamondDesc": "لشخص مميز حقًا",
-    "giftRetryLater": "تم استلام الدفع — سيتم تسليم الهدية فور عودة الاتصال"
+    "giftRetryLater": "تم استلام الدفع — سيتم تسليم الهدية فور عودة الاتصال",
+    "unmuteNotifications": "تشغيل الإشعارات",
+    "unmutedNotifs": "الإشعارات مفعّلة",
+    "muteFailed": "تعذّر تغيير الإشعارات — حاول مرة أخرى"
   },
   "profile": {
     "edit": "تعديل الملف الشخصي",
@@ -397,7 +402,8 @@
     "posts_many": "{{count}} منشورًا",
     "members_other": "{{count}} عضو",
     "posts_other": "{{count}} منشور",
-    "category": "الفئة"
+    "category": "الفئة",
+    "club_cat_misc": "أخرى"
   },
   "events": {
     "title": "الفعاليات",
@@ -478,7 +484,10 @@
     "noSavedDesc": "اضغط على أيقونة النجمة في الفعاليات التي تهمك لحفظها هنا.",
     "ended": "انتهت هذه الفعالية",
     "feedbackFailed": "تعذّر إرسال ملاحظاتك — حاول مرة أخرى",
-    "thanksFeedbackSaved": "شكرًا على ملاحظاتك!"
+    "thanksFeedbackSaved": "شكرًا على ملاحظاتك!",
+    "rsvpFailed": "تعذّر حفظ حضورك — حاول مرة أخرى",
+    "cat_party": "حفلة",
+    "cat_community": "مجتمع"
   },
   "video": {
     "connecting": "جارٍ الاتصال...",
@@ -796,7 +805,9 @@
     "markAllRead": "تعليم الكل كمقروء",
     "empty": "لا توجد إشعارات بعد",
     "newMatchTitle": "إنه توافق! 💜",
-    "newMatchBody": "لديك تعارف جديد — ألقِ التحية!"
+    "newMatchBody": "لديك تعارف جديد — ألقِ التحية!",
+    "newMessageTitle": "رسالة جديدة من {{name}}",
+    "newMediaBody": "افتح المحادثة لرؤيتها"
   },
   "error": {
     "title": "حدث خطأ ما",
@@ -917,7 +928,8 @@
     "extraSaved": "تم حفظ دفعتك — احصل على التوافق الإضافي لاحقًا دون الدفع مجددًا.",
     "claimExtra": "احصل على توافقك الإضافي المدفوع",
     "arrivesToday": "توافقك الجديد يصل اليوم في {{time}}",
-    "voiceIntroOptional": "اختياري — تحية مدتها 10 ثوانٍ يستمع إليها من تتوافق معهم"
+    "voiceIntroOptional": "اختياري — تحية مدتها 10 ثوانٍ يستمع إليها من تتوافق معهم",
+    "playFailed": "لا يمكن تشغيل هذا التسجيل على هذا الجهاز"
   },
   "truthOrDare": {
     "truth": {
@@ -977,7 +989,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "{{total}} سؤالًا · {{answered}} إجابة",
+    "counts": "الأسئلة: {{total}} · الإجابات: {{answered}}",
     "askButton": "اطرح سؤالًا",
     "myAsks": "أسئلتي",
     "placeholder": "ماذا تودّ أن تعرف؟",
@@ -1017,7 +1029,12 @@
     "ogDescription": "تمت الإجابة عن {{answered}} سؤالًا. ماذا تودّ أن تعرف؟",
     "newQuestionPush": "سؤال جديد! 💜 أحدهم يريد التعرّف عليك أكثر",
     "answerPush": "تمت الإجابة عن سؤالك! 🎉",
-    "fakeProfileNote": "هذا ملف وهمي — لا يمكنه تلقي الأسئلة."
+    "fakeProfileNote": "هذا ملف وهمي — لا يمكنه تلقي الأسئلة.",
+    "sentTab": "المرسلة",
+    "toName": "إلى {{name}}",
+    "waiting": "بانتظار الإجابة",
+    "declined": "مرفوض",
+    "noSent": "لم تسأل أحداً بعد."
   },
   "videoIntro": {
     "title": "فيديو تعريفي",

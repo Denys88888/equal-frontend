@@ -77,7 +77,9 @@
     "alreadyLiked": "Đã thích rồi",
     "you": "Bạn",
     "swipeFailed": "Không thể lưu — hãy thử lại",
-    "fakeBadge": "Giả"
+    "fakeBadge": "Giả",
+    "noSparks": "Chưa có Tia lửa — nhận được khi xác minh, hoàn thiện hồ sơ và đăng bài trong câu lạc bộ",
+    "likeSent": "Đã thích! Nếu cả hai cùng thích, sẽ thành match"
   },
   "matches": {
     "title": "Ghép đôi",
@@ -172,7 +174,10 @@
     "giftBouquetDesc": "Một cử chỉ lãng mạn lớn",
     "giftDiamond": "Kim cương",
     "giftDiamondDesc": "Dành cho người thật đặc biệt",
-    "giftRetryLater": "Đã nhận thanh toán — quà sẽ được gửi ngay khi có kết nối trở lại"
+    "giftRetryLater": "Đã nhận thanh toán — quà sẽ được gửi ngay khi có kết nối trở lại",
+    "unmuteNotifications": "Bật thông báo",
+    "unmutedNotifs": "Đã bật thông báo",
+    "muteFailed": "Không thể thay đổi thông báo — hãy thử lại"
   },
   "profile": {
     "edit": "Chỉnh sửa hồ sơ",
@@ -377,7 +382,8 @@
     "posts": "{{count}} bài đăng",
     "members_other": "{{count}} thành viên",
     "posts_other": "{{count}} bài đăng",
-    "category": "Danh mục"
+    "category": "Danh mục",
+    "club_cat_misc": "Khác"
   },
   "events": {
     "title": "Sự kiện",
@@ -448,7 +454,10 @@
     "noSavedDesc": "Chạm vào biểu tượng ngôi sao trên các sự kiện bạn quan tâm để lưu chúng tại đây.",
     "ended": "Sự kiện này đã kết thúc",
     "feedbackFailed": "Không thể gửi phản hồi — vui lòng thử lại",
-    "thanksFeedbackSaved": "Cảm ơn phản hồi của bạn!"
+    "thanksFeedbackSaved": "Cảm ơn phản hồi của bạn!",
+    "rsvpFailed": "Không thể lưu đăng ký tham gia — hãy thử lại",
+    "cat_party": "Tiệc",
+    "cat_community": "Cộng đồng"
   },
   "video": {
     "connecting": "Đang kết nối...",
@@ -761,7 +770,9 @@
     "markAllRead": "Đánh dấu tất cả đã đọc",
     "empty": "Chưa có thông báo nào",
     "newMatchTitle": "Ghép đôi thành công! 💜",
-    "newMatchBody": "Bạn có một kết nối mới — hãy chào hỏi nhé!"
+    "newMatchBody": "Bạn có một kết nối mới — hãy chào hỏi nhé!",
+    "newMessageTitle": "Tin nhắn mới từ {{name}}",
+    "newMediaBody": "Mở cuộc trò chuyện để xem"
   },
   "error": {
     "title": "Đã xảy ra lỗi",
@@ -882,7 +893,8 @@
     "extraSaved": "Khoản thanh toán đã được lưu — hãy nhận ghép đôi thêm sau mà không phải trả lại.",
     "claimExtra": "Nhận ghép đôi thêm đã thanh toán",
     "arrivesToday": "Ghép đôi mới của bạn sẽ đến vào {{time}} hôm nay",
-    "voiceIntroOptional": "Không bắt buộc — lời chào 10 giây để người ghép đôi nghe"
+    "voiceIntroOptional": "Không bắt buộc — lời chào 10 giây để người ghép đôi nghe",
+    "playFailed": "Không thể phát bản ghi này trên thiết bị này"
   },
   "truthOrDare": {
     "truth": {
@@ -942,7 +954,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "{{total}} câu hỏi · {{answered}} câu trả lời",
+    "counts": "Câu hỏi: {{total}} · Câu trả lời: {{answered}}",
     "askButton": "Đặt câu hỏi",
     "myAsks": "Câu hỏi của tôi",
     "placeholder": "Bạn muốn biết điều gì?",
@@ -982,7 +994,12 @@
     "ogDescription": "Đã trả lời {{answered}} câu hỏi. Bạn muốn biết gì?",
     "newQuestionPush": "Câu hỏi mới! 💜 Ai đó muốn hiểu bạn hơn",
     "answerPush": "Câu hỏi của bạn đã có trả lời! 🎉",
-    "fakeProfileNote": "Đây là hồ sơ giả — không thể nhận câu hỏi."
+    "fakeProfileNote": "Đây là hồ sơ giả — không thể nhận câu hỏi.",
+    "sentTab": "Đã gửi",
+    "toName": "Gửi {{name}}",
+    "waiting": "Đang chờ trả lời",
+    "declined": "Bị từ chối",
+    "noSent": "Bạn chưa hỏi ai điều gì."
   },
   "videoIntro": {
     "title": "Video giới thiệu",

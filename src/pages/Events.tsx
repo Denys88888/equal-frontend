@@ -731,13 +731,19 @@ export default function Events() {
     });
     try {
       await rsvp(eventId, wasGoing ? 'not_going' : 'going');
-    } catch {
+      // "N people going" kept the old number after an RSVP.
+      setAllEvents((prev) => prev.map((e) => (
+        e.id === eventId ? { ...e, attendeeCount: Math.max(0, e.attendeeCount + (wasGoing ? -1 : 1)) } : e
+      )));
+    } catch (e: unknown) {
       // Server refused (full, or payment not registered) — undo the optimistic RSVP
       setGoingEvents((prev) => {
         const next = new Set(prev);
         if (wasGoing) next.add(eventId); else next.delete(eventId);
         return next;
       });
+      // It used to just un-tick with no word of why.
+      showToast('error', e instanceof Error ? e.message : t('events.rsvpFailed', { defaultValue: "Couldn't save your RSVP — try again" }));
     }
   };
 

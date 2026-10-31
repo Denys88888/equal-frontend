@@ -21,7 +21,7 @@ import { TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/api/client';
 import { authApi, usersApi } from '@/api';
 import { resolveIncompletePayment } from '@/api/resolveIncompletePayment';
 import type { User, UserProfile } from '@/api/types';
-import { useUserSocket, type MatchNewEvent } from '@/hooks/useSocket';
+import { useUserSocket, type MatchNewEvent, type MessageNotifyEvent } from '@/hooks/useSocket';
 import { usePushSubscription } from '@/hooks/usePushSubscription';
 import { useNotifications, type AppNotification } from '@/hooks/useNotifications';
 import { useMatchPrefsSync } from '@/hooks/useMatchPrefsSync';
@@ -296,7 +296,21 @@ export function AuthProvider({ children }: AuthProviderProps) {
   };
 
   // Subscribe to user-level socket room for real-time match notifications
-  useUserSocket(user?.id, onMatchNew);
+  // The bell used to hear only about new matches; messages and gifts never
+  // reached it. Not for the chat that is open — that one shows them itself.
+  const onMessageNotify = useCallback((event: MessageNotifyEvent) => {
+    if (window.location.hash.startsWith(`#/chat/${event.matchId}`)) return;
+    addNotification({
+      title: t('notifications.newMessageTitle', { defaultValue: 'New message from {{name}}', name: event.senderName }),
+      body: event.type === 'GIFT'
+        ? t('chat.giftPreview', { defaultValue: 'Sent a gift' })
+        : event.preview ?? t('notifications.newMediaBody', { defaultValue: 'Open the chat to see it' }),
+      type: 'message',
+      url: `/chat/${event.matchId}`,
+    });
+  }, [addNotification, t]);
+
+  useUserSocket(user?.id, onMatchNew, onMessageNotify);
   // Subscribe to web push notifications after login
   usePushSubscription(user?.id);
   // Seed Daily Match language/timezone from the device once per signed-in user

@@ -81,7 +81,9 @@
     "alreadyLiked": "Déjà liké",
     "you": "Vous",
     "swipeFailed": "Impossible d'enregistrer — réessaie",
-    "fakeBadge": "Faux"
+    "fakeBadge": "Faux",
+    "noSparks": "Pas encore d'Étincelles — gagne-les en te vérifiant, en complétant ton profil et en publiant dans les clubs",
+    "likeSent": "Like envoyé ! Si c'est réciproque, ce sera un match"
   },
   "matches": {
     "title": "Matchs",
@@ -176,7 +178,10 @@
     "giftBouquetDesc": "Un grand geste romantique",
     "giftDiamond": "Diamant",
     "giftDiamondDesc": "Pour quelqu'un de vraiment spécial",
-    "giftRetryLater": "Paiement reçu — le cadeau sera livré dès le retour de la connexion"
+    "giftRetryLater": "Paiement reçu — le cadeau sera livré dès le retour de la connexion",
+    "unmuteNotifications": "Réactiver les notifications",
+    "unmutedNotifs": "Notifications activées",
+    "muteFailed": "Impossible de modifier les notifications — réessaie"
   },
   "profile": {
     "edit": "Modifier le Profil",
@@ -385,7 +390,8 @@
     "posts_many": "{{count}} de publications",
     "members_other": "{{count}} membres",
     "posts_other": "{{count}} publications",
-    "category": "Catégorie"
+    "category": "Catégorie",
+    "club_cat_misc": "Autre"
   },
   "events": {
     "title": "Événements",
@@ -460,7 +466,10 @@
     "noSavedDesc": "Touchez l’étoile sur les événements qui vous intéressent pour les enregistrer ici.",
     "ended": "Cet événement est terminé",
     "feedbackFailed": "Impossible d'envoyer ton avis — réessaie",
-    "thanksFeedbackSaved": "Merci pour ton avis !"
+    "thanksFeedbackSaved": "Merci pour ton avis !",
+    "rsvpFailed": "Impossible d'enregistrer ta participation — réessaie",
+    "cat_party": "Fête",
+    "cat_community": "Communauté"
   },
   "video": {
     "connecting": "Connexion...",
@@ -775,7 +784,9 @@
     "markAllRead": "Tout marquer comme lu",
     "empty": "Aucune notification pour l'instant",
     "newMatchTitle": "C'est un match ! 💜",
-    "newMatchBody": "Tu as une nouvelle connexion — dis bonjour !"
+    "newMatchBody": "Tu as une nouvelle connexion — dis bonjour !",
+    "newMessageTitle": "Nouveau message de {{name}}",
+    "newMediaBody": "Ouvre la discussion pour le voir"
   },
   "error": {
     "title": "Une erreur s'est produite",
@@ -896,7 +907,8 @@
     "extraSaved": "Ton paiement est conservé — récupère le match supplémentaire plus tard sans repayer.",
     "claimExtra": "Récupérer ton match supplémentaire payé",
     "arrivesToday": "Ton nouveau match arrive aujourd'hui à {{time}}",
-    "voiceIntroOptional": "Facultatif — un bonjour de 10 secondes que tes matchs peuvent écouter"
+    "voiceIntroOptional": "Facultatif — un bonjour de 10 secondes que tes matchs peuvent écouter",
+    "playFailed": "Cet enregistrement ne peut pas être lu sur cet appareil"
   },
   "truthOrDare": {
     "truth": {
@@ -956,7 +968,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "{{total}} questions · {{answered}} réponses",
+    "counts": "Questions : {{total}} · Réponses : {{answered}}",
     "askButton": "Poser une question",
     "myAsks": "Mes questions",
     "placeholder": "Que voudrais-tu savoir ?",
@@ -996,7 +1008,12 @@
     "ogDescription": "{{answered}} questions répondues. Que voudrais-tu savoir ?",
     "newQuestionPush": "Nouvelle question ! 💜 Quelqu'un veut mieux te connaître",
     "answerPush": "Ta question a une réponse ! 🎉",
-    "fakeProfileNote": "Ceci est un faux profil — il ne peut pas recevoir de questions."
+    "fakeProfileNote": "Ceci est un faux profil — il ne peut pas recevoir de questions.",
+    "sentTab": "Envoyées",
+    "toName": "À {{name}}",
+    "waiting": "En attente de réponse",
+    "declined": "Refusée",
+    "noSent": "Tu n'as encore posé aucune question."
   },
   "videoIntro": {
     "title": "Vidéo de présentation",

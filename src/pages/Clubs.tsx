@@ -1,12 +1,13 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate, useSearchParams } from 'react-router';
 import {
   getClubs, createClub, joinClub, leaveClub, createPost, getPosts, togglePostLike, getClubMessages, sendClubMessage,
   getMembers, getComments, createComment, deletePost, deleteComment, type ClubPostComment,
 } from '@/api/clubs';
 import { useClubSocket, type IncomingClubMessage } from '@/hooks/useSocket';
 import { useAuth } from '@/context/AuthContext';
+import { CLUB_CATEGORIES, normalizeClubCategory, clubCategoryKey } from '@/lib/clubCategories';
 import { useToast } from '@/hooks/useToast';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -102,6 +103,7 @@ const categoryGradients: Record<string, string> = {
   Gaming: 'linear-gradient(135deg, #9A63A8, #BB83C9)',
   Fitness: 'linear-gradient(135deg, #5BC492, #7DE0B3)',
   Art: 'linear-gradient(135deg, #F0B84A, #E8A0D0)',
+  Other: 'linear-gradient(135deg, #BB83C9, #7DE0B3)',
 };
 
 const categoryIcons: Record<string, React.ReactNode> = {
@@ -119,7 +121,8 @@ const categoryIcons: Record<string, React.ReactNode> = {
   Other: <Users size={24} color="#fff" />,
 };
 
-const categories = ['Sports', 'Movies', 'Tech', 'Travel', 'Cooking', 'Music', 'Reading', 'Gaming', 'Fitness', 'Art'];
+const categories = CLUB_CATEGORIES;
+const normalizeCategory = normalizeClubCategory;
 
 /* ------------------------------------------------------------------ */
 /*  AVATAR COMPONENT                                                   */
@@ -168,14 +171,14 @@ function MyClubCard({ club, onClick }: { club: Club; onClick: () => void }) {
         className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0"
         style={{ background: club.gradient }}
       >
-        {categoryIcons[club.icon] || <Users size={24} color="#fff" />}
+        {categoryIcons[club.category] || <Users size={24} color="#fff" />}
       </div>
       <div className="flex-1 min-w-0">
         <h3 className="text-lg font-semibold text-[var(--charcoal)] truncate" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
           {club.name}
         </h3>
         <p className="text-xs uppercase tracking-wider" style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }}>
-          {t(`clubs.club_cat_${club.category.toLowerCase()}`, { defaultValue: club.category })}
+          {t(clubCategoryKey(club.category), { defaultValue: club.category })}
         </p>
         <p className="text-sm truncate" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>
           {club.latestPostPreview}
@@ -213,7 +216,7 @@ function DiscoverClubCard({ club, onClick, onJoin }: { club: Club; onClick: () =
         className="w-12 h-12 rounded-full flex items-center justify-center"
         style={{ background: club.gradient }}
       >
-        {categoryIcons[club.icon] || <Users size={20} color="#fff" />}
+        {categoryIcons[club.category] || <Users size={20} color="#fff" />}
       </div>
       <p className="text-sm font-semibold text-[var(--charcoal)] line-clamp-2 leading-tight" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
         {club.name}
@@ -457,8 +460,12 @@ function ClubDetail({
       // Club chat used to live only in this component's state — messages were
       // lost on reload and no other member ever saw them.
       const saved = await sendClubMessage(club.id, text);
+      // The socket echo of this message can arrive before this response; drop
+      // it, or the message shows twice.
       setChatMessages((prev) =>
-        prev.map((m) => (m.id === optimistic.id ? { ...m, id: saved.id } : m))
+        prev
+          .filter((m) => m.id !== saved.id)
+          .map((m) => (m.id === optimistic.id ? { ...m, id: saved.id } : m))
       );
     } catch {
       setChatMessages((prev) => prev.filter((m) => m.id !== optimistic.id));
@@ -622,7 +629,7 @@ function ClubDetail({
             className="w-16 h-16 rounded-full flex items-center justify-center border-4"
             style={{ background: club.gradient, borderColor: 'var(--linen)' }}
           >
-            {categoryIcons[club.icon] || <Users size={28} color="#fff" />}
+            {categoryIcons[club.category] || <Users size={28} color="#fff" />}
           </div>
         </div>
       </div>
@@ -721,19 +728,23 @@ function ClubDetail({
               )}
 
               <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-3">
-                {chatMessages.map((msg) => (
-                  <div key={msg.id} className={`flex gap-2 ${msg.authorId === 'me' ? 'flex-row-reverse' : ''}`}>
-                    {msg.authorId !== 'me' && <AvatarCircle initials={msg.authorAvatar} size={28} />}
-                    <div className={`max-w-[75%] ${msg.authorId === 'me' ? 'items-end' : ''}`}>
-                      {msg.authorId !== 'me' && (
+                {chatMessages.map((msg) => {
+                  // Messages carry real user ids; comparing with 'me' put every
+                  // message, your own included, on the left as someone else's.
+                  const mine = msg.authorId === 'me' || msg.authorId === user?.id;
+                  return (
+                  <div key={msg.id} className={`flex gap-2 ${mine ? 'flex-row-reverse' : ''}`}>
+                    {!mine && <AvatarCircle initials={msg.authorAvatar} size={28} />}
+                    <div className={`max-w-[75%] ${mine ? 'items-end' : ''}`}>
+                      {!mine && (
                         <span className="text-[11px] font-medium ml-1" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>{msg.authorName}</span>
                       )}
                       <div
                         className="rounded-[18px] px-4 py-2.5 text-sm leading-relaxed"
                         style={{
-                          backgroundColor: msg.authorId === 'me' ? '#BB83C9' : 'rgba(var(--linen-rgb), 0.6)',
-                          color: msg.authorId === 'me' ? '#fff' : 'var(--charcoal)',
-                          borderRadius: msg.authorId === 'me' ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
+                          backgroundColor: mine ? '#BB83C9' : 'rgba(var(--linen-rgb), 0.6)',
+                          color: mine ? '#fff' : 'var(--charcoal)',
+                          borderRadius: mine ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
                         }}
                       >
                         {msg.content}
@@ -743,7 +754,8 @@ function ClubDetail({
                       </span>
                     </div>
                   </div>
-                ))}
+                  );
+                })}
                 <div ref={chatEndRef} />
               </div>
 
@@ -974,9 +986,9 @@ export default function Clubs() {
           id: c.id,
           name: c.name,
           description: c.description ?? '',
-          category: c.category ?? 'Other',
+          category: normalizeCategory(c.category),
           icon: c.icon ?? '🌟',
-          gradient: categoryGradients[c.category as keyof typeof categoryGradients] ?? 'from-purple-400 to-pink-400',
+          gradient: categoryGradients[normalizeCategory(c.category)],
           memberCount: (c as unknown as { memberCount?: number }).memberCount ?? 0,
           joined: (c as unknown as { isJoined?: boolean }).isJoined ?? false,
           status: (c as unknown as { status?: 'PENDING' | 'ACTIVE' }).status ?? 'ACTIVE',
@@ -990,7 +1002,21 @@ export default function Clubs() {
       })
       .finally(() => setClubsLoading(false));
   }, [showToast, t]);
-  const [selectedClub, setSelectedClub] = useState<Club | null>(null);
+  // The open club lives in the URL (?club=id). As component state it was not a
+  // history entry, so Android's back button left Clubs instead of closing it.
+  const [searchParams, setSearchParams] = useSearchParams();
+  const openClubId = searchParams.get('club');
+  const selectedClub = openClubId ? clubs.find((c) => c.id === openClubId) ?? null : null;
+  const location = useLocation();
+  const navigateClubs = useNavigate();
+  const setSelectedClub = (club: Club | null) => {
+    if (club) setSearchParams({ club: club.id });
+    // Opened straight from a link there is nothing to go back to — just close.
+    else if (openClubId) {
+      if (location.key === 'default') setSearchParams({}, { replace: true });
+      else navigateClubs(-1);
+    }
+  };
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [createName, setCreateName] = useState('');
   const [createDesc, setCreateDesc] = useState('');
@@ -1028,7 +1054,7 @@ export default function Clubs() {
         id: created.id,
         name: created.name,
         description: created.description ?? '',
-        category: created.category ?? createCategory,
+        category: normalizeCategory(created.category ?? createCategory),
         icon: created.icon ?? '🌟',
         gradient: categoryGradients[createCategory] || categoryGradients.Other,
         memberCount: 1,
@@ -1149,7 +1175,7 @@ export default function Clubs() {
                     {[0,1,2].map(i => <div key={i} className="h-28 rounded-2xl bg-[rgba(var(--charcoal-rgb),0.06)] animate-pulse" />)}
                   </div>
                 ) : null}
-                {!clubsLoading && categories.map((category) => {
+                {!clubsLoading && [...categories, 'Other'].map((category) => {
                   const catClubs = clubs.filter((c) => c.category === category);
                   if (catClubs.length === 0) return null;
                   return (
@@ -1159,7 +1185,7 @@ export default function Clubs() {
                           left for the button to reveal — it never did anything. */}
                       <div className="px-5 py-3">
                         <h4 className="text-base font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-                          {t(`clubs.club_cat_${category.toLowerCase()}`, { defaultValue: category })}
+                          {t(clubCategoryKey(category), { defaultValue: category })}
                         </h4>
                       </div>
                       <div className="flex gap-3 px-5 overflow-x-auto pb-2">
@@ -1242,7 +1268,7 @@ export default function Clubs() {
                         color: createCategory === cat ? '#fff' : 'var(--charcoal)',
                       }}
                     >
-                      {t(`clubs.club_cat_${cat.toLowerCase()}`, { defaultValue: cat })}
+                      {t(clubCategoryKey(cat), { defaultValue: cat })}
                     </button>
                   ))}
                 </div>

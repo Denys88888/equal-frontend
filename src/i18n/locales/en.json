@@ -79,7 +79,9 @@
     "alreadyLiked": "Already liked",
     "you": "You",
     "swipeFailed": "Could not save that — try again",
-    "fakeBadge": "Fake"
+    "fakeBadge": "Fake",
+    "noSparks": "No Sparks yet — earn them by verifying, completing your profile and posting in clubs",
+    "likeSent": "Liked! If it's mutual, you'll match"
   },
   "matches": {
     "title": "Matches",
@@ -174,7 +176,10 @@
     "giftBouquetDesc": "A big romantic gesture",
     "giftDiamond": "Diamond",
     "giftDiamondDesc": "For someone truly special",
-    "giftRetryLater": "Payment received — the gift will be delivered as soon as the connection is back"
+    "giftRetryLater": "Payment received — the gift will be delivered as soon as the connection is back",
+    "unmuteNotifications": "Unmute Notifications",
+    "unmutedNotifs": "Notifications on",
+    "muteFailed": "Couldn't change notifications — try again"
   },
   "profile": {
     "edit": "Edit Profile",
@@ -381,7 +386,8 @@
     "posts_one": "{{count}} post",
     "members_other": "{{count}} members",
     "posts_other": "{{count}} posts",
-    "category": "Category"
+    "category": "Category",
+    "club_cat_misc": "Other"
   },
   "events": {
     "title": "Events",
@@ -454,7 +460,10 @@
     "noSavedDesc": "Tap the star icon on events you're interested in to save them here.",
     "ended": "This event has ended",
     "feedbackFailed": "Could not send your feedback — please try again",
-    "thanksFeedbackSaved": "Thanks for your feedback!"
+    "thanksFeedbackSaved": "Thanks for your feedback!",
+    "rsvpFailed": "Couldn't save your RSVP — try again",
+    "cat_party": "Party",
+    "cat_community": "Community"
   },
   "video": {
     "connecting": "Connecting...",
@@ -768,7 +777,9 @@
     "markAllRead": "Mark all read",
     "empty": "No notifications yet",
     "newMatchTitle": "It's a match! 💜",
-    "newMatchBody": "You have a new connection — say hello!"
+    "newMatchBody": "You have a new connection — say hello!",
+    "newMessageTitle": "New message from {{name}}",
+    "newMediaBody": "Open the chat to see it"
   },
   "error": {
     "title": "Something went wrong",
@@ -889,7 +900,8 @@
     "extraSaved": "Your payment is saved — claim the extra match later without paying again.",
     "claimExtra": "Get your paid extra match",
     "arrivesToday": "Your new match arrives today at {{time}}",
-    "voiceIntroOptional": "Optional — a 10-second hello your matches can listen to"
+    "voiceIntroOptional": "Optional — a 10-second hello your matches can listen to",
+    "playFailed": "This recording can't be played on this device"
   },
   "truthOrDare": {
     "truth": {
@@ -949,7 +961,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "{{total}} questions · {{answered}} answers",
+    "counts": "Questions: {{total}} · Answers: {{answered}}",
     "askButton": "Ask a question",
     "myAsks": "My questions",
     "placeholder": "What would you like to know?",
@@ -989,7 +1001,12 @@
     "ogDescription": "{{answered}} questions answered. What would you like to know?",
     "newQuestionPush": "New question! 💜 Someone wants to know you better",
     "answerPush": "Your question got an answer! 🎉",
-    "fakeProfileNote": "This is a fake profile — it can't receive questions."
+    "fakeProfileNote": "This is a fake profile — it can't receive questions.",
+    "sentTab": "Sent",
+    "toName": "To {{name}}",
+    "waiting": "Waiting for an answer",
+    "declined": "Declined",
+    "noSent": "You haven't asked anyone yet."
   },
   "videoIntro": {
     "title": "Video intro",

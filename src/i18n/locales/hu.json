@@ -79,7 +79,9 @@
     "alreadyLiked": "Már kedvelted",
     "you": "Te",
     "swipeFailed": "Nem sikerült menteni – próbáld újra",
-    "fakeBadge": "Kamu"
+    "fakeBadge": "Kamu",
+    "noSparks": "Még nincs Szikrád — kapsz ellenőrzésért, kitöltött profilért és klubbejegyzésekért",
+    "likeSent": "Lájkolva! Ha kölcsönös, match lesz"
   },
   "matches": {
     "title": "Egyezések",
@@ -174,7 +176,10 @@
     "giftBouquetDesc": "Nagy romantikus gesztus",
     "giftDiamond": "Gyémánt",
     "giftDiamondDesc": "Valakinek, aki igazán különleges",
-    "giftRetryLater": "Fizetés megérkezett — az ajándékot a kapcsolat helyreállása után kézbesítjük"
+    "giftRetryLater": "Fizetés megérkezett — az ajándékot a kapcsolat helyreállása után kézbesítjük",
+    "unmuteNotifications": "Értesítések bekapcsolása",
+    "unmutedNotifs": "Értesítések bekapcsolva",
+    "muteFailed": "Nem sikerült módosítani az értesítéseket — próbáld újra"
   },
   "profile": {
     "edit": "Profil szerkesztése",
@@ -381,7 +386,8 @@
     "posts_one": "{{count}} bejegyzés",
     "members_other": "{{count}} tag",
     "posts_other": "{{count}} bejegyzés",
-    "category": "Kategória"
+    "category": "Kategória",
+    "club_cat_misc": "Egyéb"
   },
   "events": {
     "title": "Események",
@@ -454,7 +460,10 @@
     "noSavedDesc": "Koppints a csillagra az érdeklő eseményeknél, hogy ide mentsd őket.",
     "ended": "Ez az esemény már véget ért",
     "feedbackFailed": "Nem sikerült elküldeni a visszajelzést – próbáld újra",
-    "thanksFeedbackSaved": "Köszönjük a visszajelzést!"
+    "thanksFeedbackSaved": "Köszönjük a visszajelzést!",
+    "rsvpFailed": "Nem sikerült menteni a részvételt — próbáld újra",
+    "cat_party": "Buli",
+    "cat_community": "Közösség"
   },
   "video": {
     "connecting": "Csatlakozás...",
@@ -768,7 +777,9 @@
     "markAllRead": "Összes megjelölése olvasottként",
     "empty": "Még nincsenek értesítések",
     "newMatchTitle": "Ez egy találat! 💜",
-    "newMatchBody": "Van egy új kapcsolatod — köszönj rá!"
+    "newMatchBody": "Van egy új kapcsolatod — köszönj rá!",
+    "newMessageTitle": "Új üzenet tőle: {{name}}",
+    "newMediaBody": "Nyisd meg a csevegést a megtekintéshez"
   },
   "error": {
     "title": "Valami hiba történt",
@@ -889,7 +900,8 @@
     "extraSaved": "A fizetésed megmaradt – az extra találatot később, újabb fizetés nélkül is megkaphatod.",
     "claimExtra": "Kifizetett extra találat átvétele",
     "arrivesToday": "Az új találatod ma {{time}}-kor érkezik",
-    "voiceIntroOptional": "Nem kötelező – 10 másodperces köszönés a találataidnak"
+    "voiceIntroOptional": "Nem kötelező – 10 másodperces köszönés a találataidnak",
+    "playFailed": "Ez a felvétel nem játszható le ezen az eszközön"
   },
   "truthOrDare": {
     "truth": {
@@ -949,7 +961,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "{{total}} kérdés · {{answered}} válasz",
+    "counts": "Kérdések: {{total}} · Válaszok: {{answered}}",
     "askButton": "Kérdés feltevése",
     "myAsks": "Kérdéseim",
     "placeholder": "Mit szeretnél tudni?",
@@ -989,7 +1001,12 @@
     "ogDescription": "{{answered}} kérdés megválaszolva. Mit szeretnél tudni?",
     "newQuestionPush": "Új kérdés! 💜 Valaki jobban meg akar ismerni",
     "answerPush": "A kérdésedre válasz érkezett! 🎉",
-    "fakeProfileNote": "Ez egy kamu profil – nem lehet neki kérdést feltenni."
+    "fakeProfileNote": "Ez egy kamu profil – nem lehet neki kérdést feltenni.",
+    "sentTab": "Elküldött",
+    "toName": "Címzett: {{name}}",
+    "waiting": "Válaszra vár",
+    "declined": "Elutasítva",
+    "noSent": "Még senkinek sem tettél fel kérdést."
   },
   "videoIntro": {
     "title": "Bemutatkozó videó",

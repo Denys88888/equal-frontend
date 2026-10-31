@@ -7,14 +7,14 @@ import Layout from '@/components/Layout';
 import SkeletonLoader from '@/components/SkeletonLoader';
 import { useToast } from '@/hooks/useToast';
 import { useAuth } from '@/context/AuthContext';
-import { askApi, type AskItem } from '@/api/ask';
+import { askApi, type AskItem, type SentAskItem } from '@/api/ask';
 import { formatDate } from '@/lib/format';
 
 const easeOutExpo = [0.16, 1, 0.3, 1] as [number, number, number, number];
 const ACCENT = '#BB83C9';
 const MAX_ANSWER = 1000;
 
-type Tab = 'inbox' | 'answered';
+type Tab = 'inbox' | 'answered' | 'sent';
 
 /** Answer composer. Kept in-file — it is meaningless outside this screen. */
 function AnswerDialog({
@@ -148,15 +148,19 @@ export default function MyAsks() {
   const [tab, setTab] = useState<Tab>('inbox');
   const [inbox, setInbox] = useState<AskItem[]>([]);
   const [answered, setAnswered] = useState<AskItem[]>([]);
+  // Questions this user asked. /ask/sent existed but nothing showed it, so a
+  // paid question's answer could only be found on the other person's profile.
+  const [sent, setSent] = useState<SentAskItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [answering, setAnswering] = useState<AskItem | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
     try {
-      const [i, a] = await Promise.all([askApi.getInbox(), askApi.getAnswered()]);
+      const [i, a, s] = await Promise.all([askApi.getInbox(), askApi.getAnswered(), askApi.getSent()]);
       setInbox(i);
       setAnswered(a);
+      setSent(s);
     } catch {
       // Empty state covers the failure — no error screen for an empty inbox.
     } finally {
@@ -194,7 +198,7 @@ export default function MyAsks() {
       <div className="flex-1 overflow-y-auto pb-8">
         {/* Tabs */}
         <div className="flex gap-2 px-5 pt-3">
-          {(['inbox', 'answered'] as Tab[]).map((key) => (
+          {(['inbox', 'answered', 'sent'] as Tab[]).map((key) => (
             <button
               key={key}
               onClick={() => setTab(key)}
@@ -207,7 +211,9 @@ export default function MyAsks() {
             >
               {key === 'inbox'
                 ? `${t('ask.inbox', { defaultValue: 'Incoming' })}${inbox.length ? ` (${inbox.length})` : ''}`
-                : t('ask.answeredTab', { defaultValue: 'Answered' })}
+                : key === 'answered'
+                  ? t('ask.answeredTab', { defaultValue: 'Answered' })
+                  : t('ask.sentTab', { defaultValue: 'Sent' })}
             </button>
           ))}
         </div>
@@ -216,6 +222,55 @@ export default function MyAsks() {
           <div className="px-5 pt-4">
             <SkeletonLoader variant="card" />
           </div>
+        ) : tab === 'sent' ? (
+          sent.length === 0 ? (
+            <p
+              className="text-sm text-center text-[var(--charcoal)] opacity-50 px-8 py-12"
+              style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
+            >
+              {t('ask.noSent', { defaultValue: "You haven't asked anyone yet." })}
+            </p>
+          ) : (
+            <div className="px-5 mt-4 space-y-3">
+              {sent.map((q) => (
+                <div
+                  key={q.id}
+                  className="rounded-2xl p-4"
+                  style={{ backgroundColor: 'var(--card-bg)', border: '1px solid var(--linen-dark)' }}
+                >
+                  <div className="flex items-center gap-2 mb-1.5">
+                    {q.isUrgent && <Flame size={12} style={{ color: '#E8944A' }} />}
+                    <button
+                      onClick={() => navigate(`/profile/${q.target.id}`)}
+                      className="text-[11px] text-[var(--charcoal)] opacity-60 font-semibold"
+                      style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
+                    >
+                      {t('ask.toName', { defaultValue: 'To {{name}}', name: q.target.name })}
+                    </button>
+                    <span className="text-[11px] text-[var(--charcoal)] opacity-50" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                      · {formatDate(q.createdAt)}
+                    </span>
+                  </div>
+                  <p className="text-[15px] text-[var(--charcoal)] leading-snug" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                    {q.content}
+                  </p>
+                  {q.answer ? (
+                    <div className="mt-3 rounded-2xl rounded-tl-md px-4 py-3" style={{ backgroundColor: 'rgba(187,131,201,0.12)' }}>
+                      <p className="text-[15px] text-[var(--charcoal)] leading-relaxed" style={{ fontFamily: "'Outfit', system-ui, sans-serif", lineHeight: 1.55 }}>
+                        {q.answer}
+                      </p>
+                    </div>
+                  ) : (
+                    <p className="mt-2 text-xs font-medium" style={{ color: q.status === 'REJECTED' ? '#E86A6A' : 'rgba(var(--charcoal-rgb), 0.5)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
+                      {q.status === 'REJECTED'
+                        ? t('ask.declined', { defaultValue: 'Declined' })
+                        : t('ask.waiting', { defaultValue: 'Waiting for an answer' })}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          )
         ) : list.length === 0 ? (
           <p
             className="text-sm text-center text-[var(--charcoal)] opacity-50 px-8 py-12"

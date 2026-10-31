@@ -79,7 +79,9 @@
     "alreadyLiked": "Al leuk gevonden",
     "you": "Jij",
     "swipeFailed": "Opslaan mislukt — probeer het opnieuw",
-    "fakeBadge": "Nep"
+    "fakeBadge": "Nep",
+    "noSparks": "Nog geen Sparks — verdien ze door je te verifiëren, je profiel aan te vullen en in clubs te posten",
+    "likeSent": "Geliket! Als het wederzijds is, heb je een match"
   },
   "matches": {
     "title": "Matches",
@@ -174,7 +176,10 @@
     "giftBouquetDesc": "Een groot romantisch gebaar",
     "giftDiamond": "Diamant",
     "giftDiamondDesc": "Voor iemand heel bijzonders",
-    "giftRetryLater": "Betaling ontvangen — het cadeau wordt bezorgd zodra de verbinding terug is"
+    "giftRetryLater": "Betaling ontvangen — het cadeau wordt bezorgd zodra de verbinding terug is",
+    "unmuteNotifications": "Meldingen aanzetten",
+    "unmutedNotifs": "Meldingen aan",
+    "muteFailed": "Meldingen konden niet worden gewijzigd — probeer het opnieuw"
   },
   "profile": {
     "edit": "Profiel bewerken",
@@ -381,7 +386,8 @@
     "posts_one": "{{count}} bericht",
     "members_other": "{{count}} leden",
     "posts_other": "{{count}} berichten",
-    "category": "Categorie"
+    "category": "Categorie",
+    "club_cat_misc": "Overig"
   },
   "events": {
     "title": "Evenementen",
@@ -454,7 +460,10 @@
     "noSavedDesc": "Tik op de ster bij evenementen die je interessant vindt om ze hier op te slaan.",
     "ended": "Dit evenement is afgelopen",
     "feedbackFailed": "Je feedback kon niet worden verstuurd — probeer het opnieuw",
-    "thanksFeedbackSaved": "Bedankt voor je feedback!"
+    "thanksFeedbackSaved": "Bedankt voor je feedback!",
+    "rsvpFailed": "Je aanmelding kon niet worden opgeslagen — probeer het opnieuw",
+    "cat_party": "Feest",
+    "cat_community": "Community"
   },
   "video": {
     "connecting": "Verbinden...",
@@ -768,7 +777,9 @@
     "markAllRead": "Alles als gelezen markeren",
     "empty": "Nog geen meldingen",
     "newMatchTitle": "Het is een match! 💜",
-    "newMatchBody": "Je hebt een nieuw contact — zeg hallo!"
+    "newMatchBody": "Je hebt een nieuw contact — zeg hallo!",
+    "newMessageTitle": "Nieuw bericht van {{name}}",
+    "newMediaBody": "Open de chat om het te zien"
   },
   "error": {
     "title": "Er ging iets mis",
@@ -889,7 +900,8 @@
     "extraSaved": "Je betaling is bewaard — haal de extra match later op zonder opnieuw te betalen.",
     "claimExtra": "Haal je betaalde extra match op",
     "arrivesToday": "Je nieuwe match komt vandaag om {{time}}",
-    "voiceIntroOptional": "Optioneel — een hallo van 10 seconden voor je matches"
+    "voiceIntroOptional": "Optioneel — een hallo van 10 seconden voor je matches",
+    "playFailed": "Deze opname kan op dit apparaat niet worden afgespeeld"
   },
   "truthOrDare": {
     "truth": {
@@ -949,7 +961,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "{{total}} vragen · {{answered}} antwoorden",
+    "counts": "Vragen: {{total}} · Antwoorden: {{answered}}",
     "askButton": "Stel een vraag",
     "myAsks": "Mijn vragen",
     "placeholder": "Wat wil je weten?",
@@ -989,7 +1001,12 @@
     "ogDescription": "{{answered}} vragen beantwoord. Wat wil je weten?",
     "newQuestionPush": "Nieuwe vraag! 💜 Iemand wil je beter leren kennen",
     "answerPush": "Je vraag is beantwoord! 🎉",
-    "fakeProfileNote": "Dit is een nepprofiel — het kan geen vragen ontvangen."
+    "fakeProfileNote": "Dit is een nepprofiel — het kan geen vragen ontvangen.",
+    "sentTab": "Verzonden",
+    "toName": "Aan {{name}}",
+    "waiting": "Wacht op antwoord",
+    "declined": "Afgewezen",
+    "noSent": "Je hebt nog niemand iets gevraagd."
   },
   "videoIntro": {
     "title": "Video-intro",

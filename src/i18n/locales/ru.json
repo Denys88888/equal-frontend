@@ -83,7 +83,9 @@
     "alreadyLiked": "Уже понравилось",
     "you": "Вы",
     "swipeFailed": "Не удалось сохранить — попробуйте ещё раз",
-    "fakeBadge": "Фейк"
+    "fakeBadge": "Фейк",
+    "noSparks": "Искр пока нет — их дают за верификацию, заполненный профиль и посты в клубах",
+    "likeSent": "Лайк отправлен! Если это взаимно, будет мэтч"
   },
   "matches": {
     "title": "Мэтчи",
@@ -178,7 +180,10 @@
     "giftBouquetDesc": "Большой романтический жест",
     "giftDiamond": "Бриллиант",
     "giftDiamondDesc": "Для по-настоящему особенного человека",
-    "giftRetryLater": "Оплата прошла — подарок доставим, как только восстановится связь"
+    "giftRetryLater": "Оплата прошла — подарок доставим, как только восстановится связь",
+    "unmuteNotifications": "Включить уведомления",
+    "unmutedNotifs": "Уведомления включены",
+    "muteFailed": "Не удалось изменить уведомления — попробуй ещё раз"
   },
   "profile": {
     "edit": "Редактировать",
@@ -389,7 +394,8 @@
     "posts_many": "{{count}} постов",
     "members_other": "{{count}} участника",
     "posts_other": "{{count}} поста",
-    "category": "Категория"
+    "category": "Категория",
+    "club_cat_misc": "Другое"
   },
   "events": {
     "title": "События",
@@ -466,7 +472,10 @@
     "noSavedDesc": "Нажмите на звёздочку у интересных событий, чтобы сохранить их здесь.",
     "ended": "Событие уже прошло",
     "feedbackFailed": "Не удалось отправить отзыв — попробуйте ещё раз",
-    "thanksFeedbackSaved": "Спасибо за отзыв!"
+    "thanksFeedbackSaved": "Спасибо за отзыв!",
+    "rsvpFailed": "Не удалось записаться — попробуй ещё раз",
+    "cat_party": "Вечеринка",
+    "cat_community": "Сообщество"
   },
   "video": {
     "connecting": "Соединение...",
@@ -782,7 +791,9 @@
     "markAllRead": "Отметить все",
     "empty": "Уведомлений пока нет",
     "newMatchTitle": "Это мэтч! 💜",
-    "newMatchBody": "У вас новое совпадение — поздоровайтесь!"
+    "newMatchBody": "У вас новое совпадение — поздоровайтесь!",
+    "newMessageTitle": "Новое сообщение от {{name}}",
+    "newMediaBody": "Открой чат, чтобы посмотреть"
   },
   "error": {
     "title": "Что-то пошло не так",
@@ -815,27 +826,27 @@
   },
   "dailyMatch": {
     "title": "Совпадение дня",
-    "yourMatchToday": "Твой match сегодня",
+    "yourMatchToday": "Твой мэтч на сегодня",
     "startChat": "Начать чат",
     "skip": "Пропустить",
-    "skipConfirmTitle": "Пропустить этот match?",
-    "skipConfirmBody": "Новый match будет завтра. Этот уже не вернётся.",
+    "skipConfirmTitle": "Пропустить этот мэтч?",
+    "skipConfirmBody": "Новый мэтч будет завтра. Этот уже не вернётся.",
     "skipConfirmYes": "Да, пропустить",
     "cancel": "Отмена",
     "listenVoice": "Слушать голос",
     "timeLeft": "Осталось",
-    "expiredTitle": "Match истёк",
-    "expiredBody": "Новый match завтра в {{time}}",
-    "rejectedTitle": "Ты пропустил(а) этот match",
-    "rejectedBody": "Новый match будет завтра",
+    "expiredTitle": "Мэтч истёк",
+    "expiredBody": "Новый мэтч завтра в {{time}}",
+    "rejectedTitle": "Ты пропустил(а) этот мэтч",
+    "rejectedBody": "Новый мэтч будет завтра",
     "extraMatch": "Дополнительное совпадение ({{price}} Pi)",
     "mutualTitle": "Чат разблокирован!",
     "mutualBody": "Вы оба написали — чат открыт навсегда",
-    "noMatchTitle": "Пока нет match",
-    "noMatchBody": "Твой следующий Daily Match придёт в {{time}}",
+    "noMatchTitle": "Пока нет мэтча",
+    "noMatchBody": "Следующее «Совпадение дня» придёт в {{time}}",
     "typeMessage": "Напиши сообщение…",
     "send": "Отправить",
-    "textOnly": "В чате Daily Match только текст",
+    "textOnly": "В чате «Совпадения дня» только текст",
     "icebreakerLabel": "Ледокол для разговора",
     "yourAnswer": "Твой ответ",
     "waitingForPartner": "Ожидаем ответ…",
@@ -855,9 +866,9 @@
     "voiceSaved": "Голосовое интро сохранено",
     "voiceFailed": "Не удалось сохранить голосовое интро",
     "vibeTitle": "Какой у тебя настрой сегодня?",
-    "vibeSaved": "Сегодня ты в настроении «{{vibe}}». Жди Daily Match в {{time}}!",
+    "vibeSaved": "Сегодня ты в настроении «{{vibe}}». Жди «Совпадение дня» в {{time}}!",
     "vibeChange": "Изменить вайб",
-    "matchTime": "Время Daily Match",
+    "matchTime": "Время «Совпадения дня»",
     "languages": "Языки",
     "reputation": "Репутация",
     "vibes": {
@@ -902,8 +913,9 @@
     "extraFailed": "Сейчас никого нет — попробуйте позже",
     "extraSaved": "Оплата сохранена — получи дополнительное совпадение позже, без повторной оплаты.",
     "claimExtra": "Получить оплаченное совпадение",
-    "arrivesToday": "Новый match сегодня в {{time}}",
-    "voiceIntroOptional": "Необязательно — 10-секундное приветствие для твоих мэтчей"
+    "arrivesToday": "Новый мэтч сегодня в {{time}}",
+    "voiceIntroOptional": "Необязательно — 10-секундное приветствие для твоих мэтчей",
+    "playFailed": "Эту запись нельзя воспроизвести на этом устройстве"
   },
   "truthOrDare": {
     "truth": {
@@ -963,7 +975,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "{{total}} вопросов · {{answered}} ответов",
+    "counts": "Вопросов: {{total}} · Ответов: {{answered}}",
     "askButton": "Задать вопрос",
     "myAsks": "Мои вопросы",
     "placeholder": "Что тебя интересует?",
@@ -1003,7 +1015,12 @@
     "ogDescription": "Отвечено вопросов: {{answered}}. Что тебя интересует?",
     "newQuestionPush": "Новый вопрос! 💜 Кто-то хочет узнать тебя поближе",
     "answerPush": "На твой вопрос ответили! 🎉",
-    "fakeProfileNote": "Это фейковый профиль — ему нельзя задавать вопросы."
+    "fakeProfileNote": "Это фейковый профиль — ему нельзя задавать вопросы.",
+    "sentTab": "Отправленные",
+    "toName": "Для {{name}}",
+    "waiting": "Ждёт ответа",
+    "declined": "Отклонён",
+    "noSent": "Ты ещё никому не задавал(а) вопросов."
   },
   "videoIntro": {
     "title": "Видеовизитка",

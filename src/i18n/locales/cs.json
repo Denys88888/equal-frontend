@@ -83,7 +83,9 @@
     "alreadyLiked": "Už jsi dal(a) lajk",
     "you": "Ty",
     "swipeFailed": "Nepodařilo se uložit — zkus to znovu",
-    "fakeBadge": "Falešný"
+    "fakeBadge": "Falešný",
+    "noSparks": "Zatím nemáš žádné Jiskry — získáš je za ověření, vyplněný profil a příspěvky v klubech",
+    "likeSent": "Lajk odeslán! Pokud je to vzájemné, bude match"
   },
   "matches": {
     "title": "Shody",
@@ -178,7 +180,10 @@
     "giftBouquetDesc": "Velké romantické gesto",
     "giftDiamond": "Diamant",
     "giftDiamondDesc": "Pro někoho opravdu výjimečného",
-    "giftRetryLater": "Platba přijata — dárek doručíme, jakmile se obnoví připojení"
+    "giftRetryLater": "Platba přijata — dárek doručíme, jakmile se obnoví připojení",
+    "unmuteNotifications": "Zapnout oznámení",
+    "unmutedNotifs": "Oznámení zapnuta",
+    "muteFailed": "Oznámení se nepodařilo změnit — zkus to znovu"
   },
   "profile": {
     "edit": "Upravit profil",
@@ -389,7 +394,8 @@
     "posts_many": "{{count}} příspěvku",
     "members_other": "{{count}} členů",
     "posts_other": "{{count}} příspěvků",
-    "category": "Kategorie"
+    "category": "Kategorie",
+    "club_cat_misc": "Ostatní"
   },
   "events": {
     "title": "Události",
@@ -466,7 +472,10 @@
     "noSavedDesc": "Klepni na hvězdičku u událostí, které tě zajímají, a ulož si je sem.",
     "ended": "Tato událost už skončila",
     "feedbackFailed": "Zpětnou vazbu se nepodařilo odeslat — zkus to znovu",
-    "thanksFeedbackSaved": "Díky za zpětnou vazbu!"
+    "thanksFeedbackSaved": "Díky za zpětnou vazbu!",
+    "rsvpFailed": "Účast se nepodařilo uložit — zkus to znovu",
+    "cat_party": "Párty",
+    "cat_community": "Komunita"
   },
   "video": {
     "connecting": "Připojuje se...",
@@ -782,7 +791,9 @@
     "markAllRead": "Označit vše jako přečtené",
     "empty": "Zatím žádná oznámení",
     "newMatchTitle": "Je to shoda! 💜",
-    "newMatchBody": "Máš nové seznámení — pozdrav!"
+    "newMatchBody": "Máš nové seznámení — pozdrav!",
+    "newMessageTitle": "Nová zpráva od {{name}}",
+    "newMediaBody": "Otevři chat a podívej se"
   },
   "error": {
     "title": "Něco se pokazilo",
@@ -903,7 +914,8 @@
     "extraSaved": "Platba je uložená — shodu navíc si vyzvedni později bez další platby.",
     "claimExtra": "Vyzvednout zaplacenou shodu navíc",
     "arrivesToday": "Tvá nová shoda přijde dnes v {{time}}",
-    "voiceIntroOptional": "Nepovinné — 10sekundový pozdrav pro tvé shody"
+    "voiceIntroOptional": "Nepovinné — 10sekundový pozdrav pro tvé shody",
+    "playFailed": "Tento záznam nelze na tomto zařízení přehrát"
   },
   "truthOrDare": {
     "truth": {
@@ -963,7 +975,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "Otázek: {{total}} · odpovědí: {{answered}}",
+    "counts": "Otázky: {{total}} · Odpovědi: {{answered}}",
     "askButton": "Položit otázku",
     "myAsks": "Moje otázky",
     "placeholder": "Co by ses chtěl(a) dozvědět?",
@@ -1003,7 +1015,12 @@
     "ogDescription": "Zodpovězeno {{answered}} otázek. Co by ses chtěl(a) dozvědět?",
     "newQuestionPush": "Nová otázka! 💜 Někdo tě chce lépe poznat",
     "answerPush": "Tvoje otázka má odpověď! 🎉",
-    "fakeProfileNote": "Toto je falešný profil — nelze mu klást otázky."
+    "fakeProfileNote": "Toto je falešný profil — nelze mu klást otázky.",
+    "sentTab": "Odeslané",
+    "toName": "Pro {{name}}",
+    "waiting": "Čeká na odpověď",
+    "declined": "Odmítnuto",
+    "noSent": "Zatím ses nikoho na nic nezeptal(a)."
   },
   "videoIntro": {
     "title": "Videovizitka",

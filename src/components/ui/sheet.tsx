@@ -72,6 +72,12 @@ function SheetContent({
         {...props}
       >
         {children}
+        {/* Room for Android's navigation bar / the iPhone home indicator, which
+            sat over the post button and comment box (--safe-bottom, index.css).
+            -mt-4 cancels the gap-4 the spacer would otherwise add. */}
+        {side === "bottom" && (
+          <div aria-hidden className="shrink-0 -mt-4" style={{ height: "var(--safe-bottom)" }} />
+        )}
         {showCloseButton && (
           <SheetPrimitive.Close className="ring-offset-background focus-visible:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:ring-offset-2 focus:outline-hidden disabled:pointer-events-none">
             <XIcon className="size-4" />

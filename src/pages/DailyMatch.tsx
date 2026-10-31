@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import {
@@ -45,6 +46,7 @@ function celebrate() {
 }
 
 export default function DailyMatchPage() {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const { user } = useAuth();
   const { showToast } = useToast();
@@ -296,7 +298,7 @@ export default function DailyMatchPage() {
 
   if (loading) {
     return (
-      <Layout title={t('dailyMatch.title', { defaultValue: 'Daily Match' })} showNotifications>
+      <Layout title={t('dailyMatch.title', { defaultValue: 'Daily Match' })} showNotifications showBack onBack={() => navigate('/matches')}>
         <div className="px-5 pt-5"><SkeletonLoader variant="card" /></div>
       </Layout>
     );
@@ -316,7 +318,7 @@ export default function DailyMatchPage() {
   const extraBlocked = !!extraStatus && !extraStatus.hasCredit && !extraStatus.available;
 
   return (
-    <Layout title={t('dailyMatch.title', { defaultValue: 'Daily Match' })} showNotifications>
+    <Layout title={t('dailyMatch.title', { defaultValue: 'Daily Match' })} showNotifications showBack onBack={() => navigate('/matches')}>
       <div className="flex-1 overflow-y-auto px-5 pt-4 pb-6 space-y-4">
         {/* Optional: offered to people who haven't recorded one yet. */}
         {hasVoiceIntro === false && (
@@ -504,6 +506,7 @@ function MatchCard({
   onSkip: () => void;
 }) {
   const { t } = useTranslation();
+  const { showToast } = useToast();
   const p = match.partner;
 
   return (
@@ -559,7 +562,11 @@ function MatchCard({
         {p.voiceIntroUrl && (
           <>
             <button
-              onClick={() => audioRef.current?.play()}
+              onClick={() => {
+                audioRef.current?.play().catch(() => {
+                  showToast('error', t('dailyMatch.playFailed', { defaultValue: "This recording can't be played on this device" }));
+                });
+              }}
               className="w-full mt-3 h-11 rounded-full text-sm font-semibold flex items-center justify-center gap-2 border-[1.5px]"
               style={{ borderColor: 'var(--linen-dark)', color: 'var(--charcoal)' }}
             >

@@ -145,6 +145,8 @@ export interface Message {
 
 export interface MessagesResponse {
   messages: Message[];
+  /** The caller muted this conversation (no push for its messages). */
+  muted?: boolean;
   hasMore: boolean;
   partnerId?: string;
   matchName: string;

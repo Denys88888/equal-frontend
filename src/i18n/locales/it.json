@@ -81,7 +81,9 @@
     "alreadyLiked": "Già piaciuto",
     "you": "Tu",
     "swipeFailed": "Impossibile salvare — riprova",
-    "fakeBadge": "Falso"
+    "fakeBadge": "Falso",
+    "noSparks": "Ancora nessuna Scintilla — guadagnale verificandoti, completando il profilo e pubblicando nei club",
+    "likeSent": "Like inviato! Se è reciproco, sarà un match"
   },
   "matches": {
     "title": "Match",
@@ -176,7 +178,10 @@
     "giftBouquetDesc": "Un grande gesto romantico",
     "giftDiamond": "Diamante",
     "giftDiamondDesc": "Per qualcuno davvero speciale",
-    "giftRetryLater": "Pagamento ricevuto: il regalo verrà consegnato appena torna la connessione"
+    "giftRetryLater": "Pagamento ricevuto: il regalo verrà consegnato appena torna la connessione",
+    "unmuteNotifications": "Riattiva le notifiche",
+    "unmutedNotifs": "Notifiche attive",
+    "muteFailed": "Impossibile cambiare le notifiche — riprova"
   },
   "profile": {
     "edit": "Modifica Profilo",
@@ -385,7 +390,8 @@
     "posts_many": "{{count}} di post",
     "members_other": "{{count}} membri",
     "posts_other": "{{count}} post",
-    "category": "Categoria"
+    "category": "Categoria",
+    "club_cat_misc": "Altro"
   },
   "events": {
     "title": "Eventi",
@@ -460,7 +466,10 @@
     "noSavedDesc": "Tocca la stella sugli eventi che ti interessano per salvarli qui.",
     "ended": "Questo evento è terminato",
     "feedbackFailed": "Impossibile inviare il tuo feedback — riprova",
-    "thanksFeedbackSaved": "Grazie per il tuo feedback!"
+    "thanksFeedbackSaved": "Grazie per il tuo feedback!",
+    "rsvpFailed": "Impossibile salvare la partecipazione — riprova",
+    "cat_party": "Festa",
+    "cat_community": "Community"
   },
   "video": {
     "connecting": "Connessione...",
@@ -775,7 +784,9 @@
     "markAllRead": "Segna tutto come letto",
     "empty": "Ancora nessuna notifica",
     "newMatchTitle": "È un match! 💜",
-    "newMatchBody": "Hai un nuovo contatto — saluta!"
+    "newMatchBody": "Hai un nuovo contatto — saluta!",
+    "newMessageTitle": "Nuovo messaggio da {{name}}",
+    "newMediaBody": "Apri la chat per vederlo"
   },
   "error": {
     "title": "Qualcosa è andato storto",
@@ -896,7 +907,8 @@
     "extraSaved": "Il pagamento è salvato — ritira il match extra più tardi senza pagare di nuovo.",
     "claimExtra": "Ritira il tuo match extra pagato",
     "arrivesToday": "Il tuo nuovo match arriva oggi alle {{time}}",
-    "voiceIntroOptional": "Facoltativo — un saluto di 10 secondi che i tuoi match possono ascoltare"
+    "voiceIntroOptional": "Facoltativo — un saluto di 10 secondi che i tuoi match possono ascoltare",
+    "playFailed": "Questa registrazione non può essere riprodotta su questo dispositivo"
   },
   "truthOrDare": {
     "truth": {
@@ -956,7 +968,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "{{total}} domande · {{answered}} risposte",
+    "counts": "Domande: {{total}} · Risposte: {{answered}}",
     "askButton": "Fai una domanda",
     "myAsks": "Le mie domande",
     "placeholder": "Cosa vorresti sapere?",
@@ -996,7 +1008,12 @@
     "ogDescription": "{{answered}} domande con risposta. Cosa vorresti sapere?",
     "newQuestionPush": "Nuova domanda! 💜 Qualcuno vuole conoscerti meglio",
     "answerPush": "La tua domanda ha ricevuto una risposta! 🎉",
-    "fakeProfileNote": "Questo è un profilo falso: non può ricevere domande."
+    "fakeProfileNote": "Questo è un profilo falso: non può ricevere domande.",
+    "sentTab": "Inviate",
+    "toName": "A {{name}}",
+    "waiting": "In attesa di risposta",
+    "declined": "Rifiutata",
+    "noSent": "Non hai ancora fatto domande a nessuno."
   },
   "videoIntro": {
     "title": "Video di presentazione",

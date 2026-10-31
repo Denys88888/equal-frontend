@@ -12,6 +12,7 @@ import {
   Pause,
   UserX,
   Flag,
+  Bell,
   BellOff,
   User,
   CheckCheck,
@@ -32,7 +33,7 @@ import { useAuth } from '@/context/AuthContext';
 import { usePiPayment } from '@/hooks/usePiPayment';
 import { formatDayLabel, formatTime } from '@/lib/format';
 import UserAvatar from '@/components/UserAvatar';
-import { recordedAudioType, playableAudioUrl } from '@/lib/audio';
+import { recordedAudioType, playableAudioUrl, preferredAudioMime } from '@/lib/audio';
 import GiftAnimation from '@/components/GiftAnimation';
 import { GIFTS, GIFT_EMOJI, giftInfo, isGiftKind, type GiftKind } from '@/lib/gifts';
 import GiftCelebration from '@/components/GiftCelebration';
@@ -736,6 +737,7 @@ function ChatDropdownMenu({
   isOpen,
   onClose,
   onViewProfile,
+  muted,
   onMute,
   onBlock,
   onReport,
@@ -743,6 +745,7 @@ function ChatDropdownMenu({
   isOpen: boolean;
   onClose: () => void;
   onViewProfile: () => void;
+  muted: boolean;
   onMute: () => void;
   onBlock: () => void;
   onReport: () => void;
@@ -784,9 +787,9 @@ function ChatDropdownMenu({
               onClick={() => { onMute(); onClose(); }}
               className="flex items-center gap-3 w-full px-4 py-3 text-left hover:bg-[var(--linen)] transition-colors"
             >
-              <BellOff size={18} style={{ color: 'var(--charcoal)' }} />
+              {muted ? <Bell size={18} style={{ color: 'var(--charcoal)' }} /> : <BellOff size={18} style={{ color: 'var(--charcoal)' }} />}
               <span className="text-sm font-medium" style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: 'var(--charcoal)' }}>
-                {t('chat.muteNotifications')}
+                {muted ? t('chat.unmuteNotifications', { defaultValue: 'Unmute notifications' }) : t('chat.muteNotifications')}
               </span>
             </button>
             <button
@@ -878,6 +881,7 @@ export default function Chat() {
   // Bumped by Retry to re-run the loader effect.
   const [reloadKey, setReloadKey] = useState(0);
   const [partnerId, setPartnerId] = useState<string | null>(null);
+  const [muted, setMuted] = useState(false);
   const [matchInfo, setMatchInfo] = useState({
     matchName: '',
     matchAvatar: '',
@@ -956,6 +960,7 @@ export default function Chat() {
         setMessages(converted);
         setShowIcebreakers(converted.length < 5);
         if (data.partnerId) setPartnerId(data.partnerId);
+        setMuted(!!data.muted);
         setMatchInfo({
           matchName: data.matchName || '',
           matchAvatar: data.matchAvatar || '',
@@ -1014,11 +1019,17 @@ export default function Chat() {
     try {
       if (matchId) {
         const msg = await messagesApi.sendMessage(matchId, trimmed, 'TEXT');
+        // Always ours, and stamped even if the server answers with a bare row:
+        // without this a just-sent text showed on the partner's side under an
+        // empty date until the chat was reopened.
+        const sentAt = msg.timestamp ?? (msg as { createdAt?: string }).createdAt;
         const converted: Message = {
           ...msg,
-          timestamp: new Date(msg.timestamp),
+          sender: 'me',
+          timestamp: sentAt ? new Date(sentAt) : new Date(),
         };
-        setMessages((prev) => [...prev, converted]);
+        // The socket echo of this same message may already be in the list.
+        setMessages((prev) => [...prev.filter((m) => m.id !== converted.id), converted]);
         return;
       }
     } catch {
@@ -1169,7 +1180,8 @@ export default function Chat() {
     }
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const rec = new MediaRecorder(stream);
+      const mimeType = preferredAudioMime();
+      const rec = new MediaRecorder(stream, mimeType ? { mimeType } : undefined);
       chunksRef.current = [];
       cancelledRef.current = false;
       recordStartRef.current = Date.now();
@@ -1234,7 +1246,18 @@ export default function Chat() {
   // Used to navigate to your own /profile — before PublicProfile existed
   // there was nowhere else to send it, but now it should show the partner.
   const handleViewProfile = () => { if (partnerId) navigate(`/profile/${partnerId}`); };
-  const handleMute = () => showToast(t('chat.mutedNotifs'));
+  // Used to only show "Notifications muted" while pushes kept coming.
+  const handleMute = async () => {
+    if (!matchId) return;
+    const next = !muted;
+    try {
+      await api.patch(`/matches/${matchId}/mute`, { muted: next });
+      setMuted(next);
+      showToast(next ? t('chat.mutedNotifs') : t('chat.unmutedNotifs', { defaultValue: 'Notifications on' }));
+    } catch (e: unknown) {
+      showGlobalToast('error', e instanceof Error ? e.message : t('chat.muteFailed', { defaultValue: "Couldn't change notifications — try again" }));
+    }
+  };
   // Block and report confirm only after the server actually accepted. Telling
   // someone they blocked a person who can still message them is worse than an
   // error message — these are the two actions where a fake success is unsafe.
@@ -1253,7 +1276,7 @@ export default function Chat() {
     if (!partnerId) return;
     try {
       await api.post(`/users/${partnerId}/report`, { reason, description });
-      showGlobalToast('success', 'Report submitted. We\'ll review it shortly.');
+      showGlobalToast('success', t('chat.reportSubmitted', { defaultValue: "Report submitted. We'll review it shortly." }));
     } catch (e: unknown) {
       showGlobalToast('error', e instanceof Error ? e.message : t('chat.reportFailed', { defaultValue: 'Could not send the report — please try again' }));
     }
@@ -1349,6 +1372,7 @@ export default function Chat() {
                 isOpen={dropdownOpen}
                 onClose={() => setDropdownOpen(false)}
                 onViewProfile={handleViewProfile}
+                muted={muted}
                 onMute={handleMute}
                 onBlock={handleBlock}
                 onReport={handleReport}

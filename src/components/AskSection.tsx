@@ -126,6 +126,9 @@ export default function AskSection({
       setIsAnonymous(false);
       showToast('success', t('ask.sent', { defaultValue: 'Question sent! You’ll be notified when it’s answered.' }));
       void loadFeed();
+      // The free question is spent now: re-quote, or the box keeps promising
+      // "your free question for today" and the button shows no price.
+      askApi.getQuote(targetIdOrUsername, { isAnonymous: false, isUrgent: false }).then(setQuote).catch(() => {});
     } catch (e: unknown) {
       showToast('error', e instanceof Error ? e.message : String(e));
     } finally {

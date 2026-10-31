@@ -356,9 +356,9 @@ export default function Settings() {
         {/* ───────── Profile ───────── */}
         <SectionLabel text={t('settings2.profileSection')} />
         <div className="space-y-2">
-          <SettingRow icon={User} iconColor="#BB83C9" label={t('settings2.editProfile')} onClick={() => navigate('/profile')} />
-          <SettingRow icon={Camera} iconColor="#7BC4E8" label={t('settings2.photos')} detail={photoCount != null ? `${photoCount}/9` : ''} onClick={() => navigate('/profile')} />
-          <SettingRow icon={Shield} iconColor="#7DE0B3" label={t('settings2.trustScore')} detail={trustScore != null ? `${trustScore}/100` : ''} onClick={() => navigate('/profile')} />
+          <SettingRow icon={User} iconColor="#BB83C9" label={t('settings2.editProfile')} onClick={() => navigate('/profile', { state: { focus: 'edit' } })} />
+          <SettingRow icon={Camera} iconColor="#7BC4E8" label={t('settings2.photos')} detail={photoCount != null ? `${photoCount}/9` : ''} onClick={() => navigate('/profile', { state: { focus: 'photos' } })} />
+          <SettingRow icon={Shield} iconColor="#7DE0B3" label={t('settings2.trustScore')} detail={trustScore != null ? `${trustScore}/100` : ''} onClick={() => navigate('/profile', { state: { focus: 'trust' } })} />
         </div>
 
         {/* ───────── Admin ───────── */}
@@ -618,7 +618,7 @@ export default function Settings() {
 
       {/* ── Blocked Users Bottom Sheet ── */}
       <Dialog open={showBlockedUsers} onOpenChange={setShowBlockedUsers}>
-        <DialogContent className="rounded-t-[24px] rounded-b-none max-w-[430px] bg-white dark:bg-[#22293B] border-0 p-0 gap-0" style={{ top: 'auto', bottom: 0, position: 'fixed', maxHeight: '70vh' }}>
+        <DialogContent className="rounded-t-[24px] rounded-b-none max-w-[430px] bg-white dark:bg-[#22293B] border-0 p-0 gap-0" style={{ top: 'auto', bottom: 0, position: 'fixed', maxHeight: '70vh', paddingBottom: 'var(--safe-bottom)' }}>
           {/* Handle */}
           <div className="flex justify-center pt-3 pb-2">
             <div className="w-10 h-1 rounded-full bg-[var(--linen-dark)]" />

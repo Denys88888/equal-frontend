@@ -81,7 +81,9 @@
     "alreadyLiked": "Ya te gustó",
     "you": "Tú",
     "swipeFailed": "No se pudo guardar; inténtalo de nuevo",
-    "fakeBadge": "Falso"
+    "fakeBadge": "Falso",
+    "noSparks": "Aún no tienes Chispas — gánalas verificándote, completando tu perfil y publicando en clubes",
+    "likeSent": "¡Like enviado! Si es mutuo, habrá match"
   },
   "matches": {
     "title": "Coincidencias",
@@ -176,7 +178,10 @@
     "giftBouquetDesc": "Un gran gesto romántico",
     "giftDiamond": "Diamante",
     "giftDiamondDesc": "Para alguien realmente especial",
-    "giftRetryLater": "Pago recibido: el regalo se entregará en cuanto vuelva la conexión"
+    "giftRetryLater": "Pago recibido: el regalo se entregará en cuanto vuelva la conexión",
+    "unmuteNotifications": "Activar notificaciones",
+    "unmutedNotifs": "Notificaciones activadas",
+    "muteFailed": "No se pudieron cambiar las notificaciones — inténtalo de nuevo"
   },
   "profile": {
     "edit": "Editar Perfil",
@@ -385,7 +390,8 @@
     "posts_many": "{{count}} de publicaciones",
     "members_other": "{{count}} miembros",
     "posts_other": "{{count}} publicaciones",
-    "category": "Categoría"
+    "category": "Categoría",
+    "club_cat_misc": "Otro"
   },
   "events": {
     "title": "Eventos",
@@ -460,7 +466,10 @@
     "noSavedDesc": "Toca la estrella en los eventos que te interesen para guardarlos aquí.",
     "ended": "Este evento ya terminó",
     "feedbackFailed": "No se pudo enviar tu opinión; inténtalo de nuevo",
-    "thanksFeedbackSaved": "¡Gracias por tu opinión!"
+    "thanksFeedbackSaved": "¡Gracias por tu opinión!",
+    "rsvpFailed": "No se pudo guardar tu asistencia — inténtalo de nuevo",
+    "cat_party": "Fiesta",
+    "cat_community": "Comunidad"
   },
   "video": {
     "connecting": "Conectando...",
@@ -775,7 +784,9 @@
     "markAllRead": "Marcar todo como leído",
     "empty": "Sin notificaciones aún",
     "newMatchTitle": "¡Es una coincidencia! 💜",
-    "newMatchBody": "Tienes una nueva conexión: ¡salúdala!"
+    "newMatchBody": "Tienes una nueva conexión: ¡salúdala!",
+    "newMessageTitle": "Nuevo mensaje de {{name}}",
+    "newMediaBody": "Abre el chat para verlo"
   },
   "error": {
     "title": "Algo salió mal",
@@ -896,7 +907,8 @@
     "extraSaved": "Tu pago está guardado: reclama la coincidencia extra más tarde sin volver a pagar.",
     "claimExtra": "Obtener tu coincidencia extra pagada",
     "arrivesToday": "Tu nueva coincidencia llega hoy a las {{time}}",
-    "voiceIntroOptional": "Opcional: un saludo de 10 segundos que tus coincidencias pueden escuchar"
+    "voiceIntroOptional": "Opcional: un saludo de 10 segundos que tus coincidencias pueden escuchar",
+    "playFailed": "Esta grabación no se puede reproducir en este dispositivo"
   },
   "truthOrDare": {
     "truth": {
@@ -956,7 +968,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "{{total}} preguntas · {{answered}} respuestas",
+    "counts": "Preguntas: {{total}} · Respuestas: {{answered}}",
     "askButton": "Hacer una pregunta",
     "myAsks": "Mis preguntas",
     "placeholder": "¿Qué te gustaría saber?",
@@ -996,7 +1008,12 @@
     "ogDescription": "{{answered}} preguntas respondidas. ¿Qué te gustaría saber?",
     "newQuestionPush": "¡Nueva pregunta! 💜 Alguien quiere conocerte mejor",
     "answerPush": "¡Tu pregunta tiene respuesta! 🎉",
-    "fakeProfileNote": "Este es un perfil falso: no puede recibir preguntas."
+    "fakeProfileNote": "Este es un perfil falso: no puede recibir preguntas.",
+    "sentTab": "Enviadas",
+    "toName": "Para {{name}}",
+    "waiting": "Esperando respuesta",
+    "declined": "Rechazada",
+    "noSent": "Aún no le has preguntado nada a nadie."
   },
   "videoIntro": {
     "title": "Video de presentación",

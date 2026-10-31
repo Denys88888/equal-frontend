@@ -19,6 +19,7 @@ import { updateMe, uploadPhoto } from '@/api/users';
 import { useAuth } from '@/context/AuthContext';
 import VoiceIntroRecorder from '@/components/VoiceIntroRecorder';
 import VideoIntroRecorder from '@/components/VideoIntroRecorder';
+import { INTERESTS, interestKey } from '@/lib/interests';
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
 /* ------------------------------------------------------------------ */
@@ -74,13 +75,6 @@ const QUESTIONS = [
 const BIO_PROMPTS = ['onboarding.p1', 'onboarding.p2', 'onboarding.p3', 'onboarding.p4'];
 
 // Stored values stay English (backend matching); labels are translated at render
-const INTERESTS = [
-  'Sports', 'Movies', 'Tech', 'Travel', 'Cooking', 'Music',
-  'Reading', 'Gaming', 'Fitness', 'Art', 'Photography', 'Hiking',
-  'Dancing', 'Yoga', 'Podcasts', 'Startups', 'Crypto', 'Philosophy',
-  'Foodie', 'Wine',
-];
-const interestKey = (interest: string) => `onboarding.int_${interest.toLowerCase()}`;
 
 const GOALS = [
   { id: 'serious', label: 'onboarding.goalSerious', desc: 'onboarding.goalSeriousDesc', icon: Heart, color: '#BB83C9' },

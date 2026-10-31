@@ -143,9 +143,13 @@ export default function Welcome() {
         throw new Error(t('welcome.errPiBrowser'));
       }
 
-      // Race Pi.authenticate() against a 45-second timeout
+      // Race Pi.authenticate() against a 45-second timeout. The SDK gives up on
+      // its own only after 120 s; that late rejection, after we have already
+      // shown the timeout, used to surface as an unhandled error.
+      const authAttempt = window.Pi.authenticate(['username', 'payments'], resolveIncompletePayment);
+      authAttempt.catch(() => {});
       const authResult = await Promise.race([
-        window.Pi.authenticate(['username', 'payments'], resolveIncompletePayment),
+        authAttempt,
         new Promise<never>((_, reject) =>
           setTimeout(() => reject(new Error(t('welcome.errTimeout'))), 45000)
         ),

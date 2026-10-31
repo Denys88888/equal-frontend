@@ -77,7 +77,9 @@
     "alreadyLiked": "Sudah disukai",
     "you": "Kamu",
     "swipeFailed": "Gagal menyimpan — coba lagi",
-    "fakeBadge": "Palsu"
+    "fakeBadge": "Palsu",
+    "noSparks": "Belum ada Spark — dapatkan dengan verifikasi, melengkapi profil, dan memposting di klub",
+    "likeSent": "Disukai! Jika saling suka, kalian akan match"
   },
   "matches": {
     "title": "Kecocokan",
@@ -172,7 +174,10 @@
     "giftBouquetDesc": "Gestur romantis yang besar",
     "giftDiamond": "Berlian",
     "giftDiamondDesc": "Untuk seseorang yang sangat istimewa",
-    "giftRetryLater": "Pembayaran diterima — hadiah akan dikirim begitu koneksi kembali"
+    "giftRetryLater": "Pembayaran diterima — hadiah akan dikirim begitu koneksi kembali",
+    "unmuteNotifications": "Aktifkan notifikasi",
+    "unmutedNotifs": "Notifikasi aktif",
+    "muteFailed": "Tidak dapat mengubah notifikasi — coba lagi"
   },
   "profile": {
     "edit": "Edit Profil",
@@ -377,7 +382,8 @@
     "posts": "{{count}} postingan",
     "members_other": "{{count}} anggota",
     "posts_other": "{{count}} postingan",
-    "category": "Kategori"
+    "category": "Kategori",
+    "club_cat_misc": "Lainnya"
   },
   "events": {
     "title": "Acara",
@@ -448,7 +454,10 @@
     "noSavedDesc": "Ketuk ikon bintang pada acara yang kamu minati untuk menyimpannya di sini.",
     "ended": "Acara ini sudah berakhir",
     "feedbackFailed": "Masukanmu tidak dapat dikirim — coba lagi",
-    "thanksFeedbackSaved": "Terima kasih atas masukanmu!"
+    "thanksFeedbackSaved": "Terima kasih atas masukanmu!",
+    "rsvpFailed": "Tidak dapat menyimpan kehadiranmu — coba lagi",
+    "cat_party": "Pesta",
+    "cat_community": "Komunitas"
   },
   "video": {
     "connecting": "Menghubungkan...",
@@ -761,7 +770,9 @@
     "markAllRead": "Tandai semua dibaca",
     "empty": "Belum ada notifikasi",
     "newMatchTitle": "Kalian cocok! 💜",
-    "newMatchBody": "Kamu punya koneksi baru — sapa dia!"
+    "newMatchBody": "Kamu punya koneksi baru — sapa dia!",
+    "newMessageTitle": "Pesan baru dari {{name}}",
+    "newMediaBody": "Buka obrolan untuk melihatnya"
   },
   "error": {
     "title": "Terjadi kesalahan",
@@ -882,7 +893,8 @@
     "extraSaved": "Pembayaranmu tersimpan — ambil kecocokan tambahan nanti tanpa membayar lagi.",
     "claimExtra": "Ambil kecocokan tambahan yang sudah dibayar",
     "arrivesToday": "Kecocokan barumu datang hari ini pukul {{time}}",
-    "voiceIntroOptional": "Opsional — sapaan 10 detik yang bisa didengar kecocokanmu"
+    "voiceIntroOptional": "Opsional — sapaan 10 detik yang bisa didengar kecocokanmu",
+    "playFailed": "Rekaman ini tidak dapat diputar di perangkat ini"
   },
   "truthOrDare": {
     "truth": {
@@ -942,7 +954,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "{{total}} pertanyaan · {{answered}} jawaban",
+    "counts": "Pertanyaan: {{total}} · Jawaban: {{answered}}",
     "askButton": "Ajukan pertanyaan",
     "myAsks": "Pertanyaan saya",
     "placeholder": "Apa yang ingin kamu tahu?",
@@ -982,7 +994,12 @@
     "ogDescription": "{{answered}} pertanyaan dijawab. Apa yang ingin kamu tahu?",
     "newQuestionPush": "Pertanyaan baru! 💜 Seseorang ingin mengenalmu",
     "answerPush": "Pertanyaanmu sudah dijawab! 🎉",
-    "fakeProfileNote": "Ini profil palsu — tidak bisa menerima pertanyaan."
+    "fakeProfileNote": "Ini profil palsu — tidak bisa menerima pertanyaan.",
+    "sentTab": "Terkirim",
+    "toName": "Untuk {{name}}",
+    "waiting": "Menunggu jawaban",
+    "declined": "Ditolak",
+    "noSent": "Kamu belum bertanya kepada siapa pun."
   },
   "videoIntro": {
     "title": "Video perkenalan",

@@ -73,6 +73,7 @@ import {
 } from '@/components/ui/select';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { formatDate } from '@/lib/format';
+import { clubCategoryKey } from '@/lib/clubCategories';
 
 // ── Types ──────────────────────────────────────────────
 
@@ -137,6 +138,16 @@ const REASON_CONFIG: Record<string, { label: string; color: string; icon: typeof
   'fake profile': { label: 'admin.reasonFake', color: '#BB83C9', icon: UserX },
   'inappropriate content': { label: 'admin.reasonInappropriate', color: '#E86A6A', icon: Flag },
 };
+const OTHER_REASON = { label: 'report.other', color: 'rgba(var(--charcoal-rgb), 0.6)', icon: Flag };
+
+/**
+ * Reports store the reporter's English reason as the dialog wrote it ("Spam",
+ * "Fake Profile", "Other"). The lookup was by exact lowercase key, so the very
+ * first real report crashed the whole admin panel on `undefined.icon`.
+ */
+function reasonConfig(reason: string | null | undefined) {
+  return REASON_CONFIG[(reason ?? '').toLowerCase()] ?? OTHER_REASON;
+}
 
 const STATUS_CONFIG: Record<string, { color: string; bg: string }> = {
   Pending: { color: '#F0B84A', bg: 'rgba(240,184,74,0.15)' },
@@ -422,9 +433,9 @@ function ReportsModeration({ showToast, onCount }: { showToast: (msg: string) =>
           {loadFailed && <LoadErrorNotice onRetry={() => setReloadKey((k) => k + 1)} />}
           <Accordion type="multiple" className="space-y-2">
             {filtered.map((report) => {
-              const reasonCfg = REASON_CONFIG[report.reason];
+              const reasonCfg = reasonConfig(report.reason);
               const ReasonIcon = reasonCfg.icon;
-              const statusCfg = STATUS_CONFIG[report.status];
+              const statusCfg = STATUS_CONFIG[report.status] ?? STATUS_CONFIG.Pending;
               return (
                 <AccordionItem
                   key={report.id}
@@ -834,7 +845,7 @@ function ClubManagement({ showToast, onCount }: { showToast: (msg: string) => vo
             <div className="flex items-start justify-between mb-2">
               <div>
                 <h3 className="text-sm font-semibold text-[var(--charcoal)]">{club.name}</h3>
-                <p className="text-xs text-[var(--charcoal)]/40 mt-0.5">{t(`clubs.club_cat_${club.category.toLowerCase()}`, { defaultValue: club.category })}{club.createdBy ? <> &middot; {t('admin.byAuthor', { name: club.createdBy })}</> : null}</p>
+                <p className="text-xs text-[var(--charcoal)]/40 mt-0.5">{t(clubCategoryKey(club.category), { defaultValue: club.category })}{club.createdBy ? <> &middot; {t('admin.byAuthor', { name: club.createdBy })}</> : null}</p>
               </div>
               {club.status === 'Pending Review' ? (
                 <Badge className="bg-[rgba(240,184,74,0.15)] text-[#F0B84A] hover:bg-[rgba(240,184,74,0.15)] text-[10px]">{t('admin.pending')}</Badge>
@@ -1092,7 +1103,7 @@ function EventManagement({ showToast, onCount }: { showToast: (msg: string) => v
                   className="text-[10px] font-semibold px-2 py-0.5 rounded-full flex-shrink-0"
                   style={{ backgroundColor: st.bg, color: st.color }}
                 >
-                  {evt.status}
+                  {t(`admin.${evt.status.toLowerCase()}`, { defaultValue: evt.status })}
                 </span>
               </div>
 

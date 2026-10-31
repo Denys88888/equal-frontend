@@ -52,16 +52,18 @@ export default function CookieConsent() {
                   {t('common.cookieText')}{' '}
                   <button onClick={() => { setVisible(false); navigate('/privacy'); }} className="underline font-medium" style={{ color: '#BB83C9' }}>{t('common.privacyPolicy')}</button>.
                 </p>
-                <div className="flex gap-2">
+                {/* Both buttons keep their whole label: "Только обязательные"
+                    used to squeeze "Принять все" into a two-line pill. */}
+                <div className="flex flex-wrap gap-2">
                   <motion.button whileTap={{ scale: 0.95 }}
                     onClick={accept}
-                    className="flex-1 h-9 rounded-full text-sm font-semibold text-white"
+                    className="flex-1 min-w-fit whitespace-nowrap h-9 px-4 rounded-full text-sm font-semibold text-white"
                     style={{ backgroundColor: '#BB83C9', fontFamily: "'Outfit', system-ui, sans-serif" }}>
                     {t('common.cookieAccept')}
                   </motion.button>
                   <motion.button whileTap={{ scale: 0.95 }}
                     onClick={decline}
-                    className="h-9 px-4 rounded-full text-sm font-semibold"
+                    className="flex-1 min-w-fit whitespace-nowrap h-9 px-4 rounded-full text-sm font-semibold"
                     style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.5)', color: 'var(--charcoal)', fontFamily: "'Outfit', system-ui, sans-serif" }}>
                     {t('common.cookieEssential')}
                   </motion.button>

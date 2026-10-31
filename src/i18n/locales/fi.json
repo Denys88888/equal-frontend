@@ -79,7 +79,9 @@
     "alreadyLiked": "Jo tykätty",
     "you": "Sinä",
     "swipeFailed": "Tallennus epäonnistui – yritä uudelleen",
-    "fakeBadge": "Feikki"
+    "fakeBadge": "Feikki",
+    "noSparks": "Ei vielä Kipinöitä — ansaitse niitä vahvistamalla tilisi, täydentämällä profiilisi ja julkaisemalla klubeissa",
+    "likeSent": "Tykätty! Jos se on molemminpuolista, syntyy match"
   },
   "matches": {
     "title": "Osumat",
@@ -174,7 +176,10 @@
     "giftBouquetDesc": "Suuri romanttinen ele",
     "giftDiamond": "Timantti",
     "giftDiamondDesc": "Jollekulle todella erityiselle",
-    "giftRetryLater": "Maksu vastaanotettu – lahja toimitetaan heti, kun yhteys palaa"
+    "giftRetryLater": "Maksu vastaanotettu – lahja toimitetaan heti, kun yhteys palaa",
+    "unmuteNotifications": "Ota ilmoitukset käyttöön",
+    "unmutedNotifs": "Ilmoitukset päällä",
+    "muteFailed": "Ilmoituksia ei voitu muuttaa — yritä uudelleen"
   },
   "profile": {
     "edit": "Muokkaa profiilia",
@@ -381,7 +386,8 @@
     "posts_one": "{{count}} julkaisu",
     "members_other": "{{count}} jäsentä",
     "posts_other": "{{count}} julkaisua",
-    "category": "Kategoria"
+    "category": "Kategoria",
+    "club_cat_misc": "Muu"
   },
   "events": {
     "title": "Tapahtumat",
@@ -454,7 +460,10 @@
     "noSavedDesc": "Napauta kiinnostavien tapahtumien tähteä tallentaaksesi ne tänne.",
     "ended": "Tapahtuma on päättynyt",
     "feedbackFailed": "Palautetta ei voitu lähettää – yritä uudelleen",
-    "thanksFeedbackSaved": "Kiitos palautteestasi!"
+    "thanksFeedbackSaved": "Kiitos palautteestasi!",
+    "rsvpFailed": "Osallistumista ei voitu tallentaa — yritä uudelleen",
+    "cat_party": "Juhlat",
+    "cat_community": "Yhteisö"
   },
   "video": {
     "connecting": "Yhdistetään...",
@@ -768,7 +777,9 @@
     "markAllRead": "Merkitse kaikki luetuiksi",
     "empty": "Ei vielä ilmoituksia",
     "newMatchTitle": "Se on osuma! 💜",
-    "newMatchBody": "Sinulla on uusi yhteys — sano moi!"
+    "newMatchBody": "Sinulla on uusi yhteys — sano moi!",
+    "newMessageTitle": "Uusi viesti käyttäjältä {{name}}",
+    "newMediaBody": "Avaa keskustelu nähdäksesi sen"
   },
   "error": {
     "title": "Jokin meni pieleen",
@@ -889,7 +900,8 @@
     "extraSaved": "Maksusi on tallessa – lunasta lisäosuma myöhemmin maksamatta uudelleen.",
     "claimExtra": "Lunasta maksettu lisäosuma",
     "arrivesToday": "Uusi osumasi saapuu tänään klo {{time}}",
-    "voiceIntroOptional": "Valinnainen – 10 sekunnin tervehdys, jonka osumasi voivat kuunnella"
+    "voiceIntroOptional": "Valinnainen – 10 sekunnin tervehdys, jonka osumasi voivat kuunnella",
+    "playFailed": "Tätä tallennetta ei voi toistaa tällä laitteella"
   },
   "truthOrDare": {
     "truth": {
@@ -949,7 +961,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "{{total}} kysymystä · {{answered}} vastausta",
+    "counts": "Kysymykset: {{total}} · Vastaukset: {{answered}}",
     "askButton": "Esitä kysymys",
     "myAsks": "Omat kysymykseni",
     "placeholder": "Mitä haluaisit tietää?",
@@ -989,7 +1001,12 @@
     "ogDescription": "{{answered}} kysymykseen vastattu. Mitä haluaisit tietää?",
     "newQuestionPush": "Uusi kysymys! 💜 Joku haluaa tutustua sinuun paremmin",
     "answerPush": "Kysymykseesi on vastattu! 🎉",
-    "fakeProfileNote": "Tämä on feikkiprofiili – sille ei voi esittää kysymyksiä."
+    "fakeProfileNote": "Tämä on feikkiprofiili – sille ei voi esittää kysymyksiä.",
+    "sentTab": "Lähetetyt",
+    "toName": "Vastaanottaja: {{name}}",
+    "waiting": "Odottaa vastausta",
+    "declined": "Hylätty",
+    "noSent": "Et ole vielä kysynyt keneltäkään mitään."
   },
   "videoIntro": {
     "title": "Videoesittely",

@@ -79,7 +79,9 @@
     "alreadyLiked": "Redan gillad",
     "you": "Du",
     "swipeFailed": "Det gick inte att spara – försök igen",
-    "fakeBadge": "Fejk"
+    "fakeBadge": "Fejk",
+    "noSparks": "Inga Gnistor än — tjäna dem genom att verifiera dig, fylla i profilen och posta i klubbar",
+    "likeSent": "Gillad! Om det är ömsesidigt blir det en match"
   },
   "matches": {
     "title": "Matchningar",
@@ -174,7 +176,10 @@
     "giftBouquetDesc": "En stor romantisk gest",
     "giftDiamond": "Diamant",
     "giftDiamondDesc": "För någon riktigt speciell",
-    "giftRetryLater": "Betalningen är mottagen – gåvan levereras så fort anslutningen är tillbaka"
+    "giftRetryLater": "Betalningen är mottagen – gåvan levereras så fort anslutningen är tillbaka",
+    "unmuteNotifications": "Slå på aviseringar",
+    "unmutedNotifs": "Aviseringar på",
+    "muteFailed": "Kunde inte ändra aviseringar — försök igen"
   },
   "profile": {
     "edit": "Redigera profil",
@@ -381,7 +386,8 @@
     "posts_one": "{{count}} inlägg",
     "members_other": "{{count}} medlemmar",
     "posts_other": "{{count}} inlägg",
-    "category": "Kategori"
+    "category": "Kategori",
+    "club_cat_misc": "Övrigt"
   },
   "events": {
     "title": "Evenemang",
@@ -454,7 +460,10 @@
     "noSavedDesc": "Tryck på stjärnan på evenemang som intresserar dig för att spara dem här.",
     "ended": "Evenemanget är över",
     "feedbackFailed": "Det gick inte att skicka din feedback – försök igen",
-    "thanksFeedbackSaved": "Tack för din feedback!"
+    "thanksFeedbackSaved": "Tack för din feedback!",
+    "rsvpFailed": "Kunde inte spara din anmälan — försök igen",
+    "cat_party": "Fest",
+    "cat_community": "Gemenskap"
   },
   "video": {
     "connecting": "Ansluter...",
@@ -768,7 +777,9 @@
     "markAllRead": "Markera alla som lästa",
     "empty": "Inga aviseringar än",
     "newMatchTitle": "Det är en matchning! 💜",
-    "newMatchBody": "Du har en ny kontakt — säg hej!"
+    "newMatchBody": "Du har en ny kontakt — säg hej!",
+    "newMessageTitle": "Nytt meddelande från {{name}}",
+    "newMediaBody": "Öppna chatten för att se det"
   },
   "error": {
     "title": "Något gick fel",
@@ -889,7 +900,8 @@
     "extraSaved": "Din betalning är sparad – hämta den extra matchningen senare utan att betala igen.",
     "claimExtra": "Hämta din betalda extra matchning",
     "arrivesToday": "Din nya matchning kommer i dag kl. {{time}}",
-    "voiceIntroOptional": "Valfritt – ett 10-sekunders hej som dina matchningar kan lyssna på"
+    "voiceIntroOptional": "Valfritt – ett 10-sekunders hej som dina matchningar kan lyssna på",
+    "playFailed": "Den här inspelningen kan inte spelas upp på den här enheten"
   },
   "truthOrDare": {
     "truth": {
@@ -949,7 +961,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "{{total}} frågor · {{answered}} svar",
+    "counts": "Frågor: {{total}} · Svar: {{answered}}",
     "askButton": "Ställ en fråga",
     "myAsks": "Mina frågor",
     "placeholder": "Vad vill du veta?",
@@ -989,7 +1001,12 @@
     "ogDescription": "{{answered}} frågor besvarade. Vad vill du veta?",
     "newQuestionPush": "Ny fråga! 💜 Någon vill lära känna dig bättre",
     "answerPush": "Din fråga har fått ett svar! 🎉",
-    "fakeProfileNote": "Det här är en fejkprofil – den kan inte ta emot frågor."
+    "fakeProfileNote": "Det här är en fejkprofil – den kan inte ta emot frågor.",
+    "sentTab": "Skickade",
+    "toName": "Till {{name}}",
+    "waiting": "Väntar på svar",
+    "declined": "Avböjd",
+    "noSent": "Du har inte frågat någon något än."
   },
   "videoIntro": {
     "title": "Videopresentation",

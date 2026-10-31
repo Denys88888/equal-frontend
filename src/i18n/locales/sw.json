@@ -79,7 +79,9 @@
     "alreadyLiked": "Tayari umependa",
     "you": "Wewe",
     "swipeFailed": "Imeshindwa kuhifadhi — jaribu tena",
-    "fakeBadge": "Bandia"
+    "fakeBadge": "Bandia",
+    "noSparks": "Bado huna Cheche — zipate kwa kuthibitisha, kukamilisha wasifu na kuchapisha kwenye vilabu",
+    "likeSent": "Umependa! Ikiwa ni pande zote mbili, mtaunganishwa"
   },
   "matches": {
     "title": "Linganifu",
@@ -174,7 +176,10 @@
     "giftBouquetDesc": "Ishara kubwa ya kimapenzi",
     "giftDiamond": "Almasi",
     "giftDiamondDesc": "Kwa mtu maalum kweli",
-    "giftRetryLater": "Malipo yamepokelewa — zawadi itafikishwa mara muunganisho utakaporudi"
+    "giftRetryLater": "Malipo yamepokelewa — zawadi itafikishwa mara muunganisho utakaporudi",
+    "unmuteNotifications": "Washa arifa",
+    "unmutedNotifs": "Arifa zimewashwa",
+    "muteFailed": "Imeshindwa kubadilisha arifa — jaribu tena"
   },
   "profile": {
     "edit": "Hariri Wasifu",
@@ -381,7 +386,8 @@
     "posts_one": "chapisho {{count}}",
     "members_other": "wanachama {{count}}",
     "posts_other": "machapisho {{count}}",
-    "category": "Kategoria"
+    "category": "Kategoria",
+    "club_cat_misc": "Nyingine"
   },
   "events": {
     "title": "Matukio",
@@ -454,7 +460,10 @@
     "noSavedDesc": "Gusa aikoni ya nyota kwenye matukio yanayokuvutia ili kuyahifadhi hapa.",
     "ended": "Tukio hili limekwisha",
     "feedbackFailed": "Maoni yako hayakuweza kutumwa — tafadhali jaribu tena",
-    "thanksFeedbackSaved": "Asante kwa maoni yako!"
+    "thanksFeedbackSaved": "Asante kwa maoni yako!",
+    "rsvpFailed": "Imeshindwa kuhifadhi mahudhurio yako — jaribu tena",
+    "cat_party": "Sherehe",
+    "cat_community": "Jumuiya"
   },
   "video": {
     "connecting": "Inaunganisha...",
@@ -768,7 +777,9 @@
     "markAllRead": "Weka alama zote kama zimesomwa",
     "empty": "Bado hakuna arifa",
     "newMatchTitle": "Hii ni mechi! 💜",
-    "newMatchBody": "Una uhusiano mpya — salimu!"
+    "newMatchBody": "Una uhusiano mpya — salimu!",
+    "newMessageTitle": "Ujumbe mpya kutoka kwa {{name}}",
+    "newMediaBody": "Fungua gumzo ili kuona"
   },
   "error": {
     "title": "Kuna Hitilafu",
@@ -889,7 +900,8 @@
     "extraSaved": "Malipo yako yamehifadhiwa — pata mechi ya ziada baadaye bila kulipa tena.",
     "claimExtra": "Pata mechi yako ya ziada uliyolipia",
     "arrivesToday": "Mechi yako mpya inafika leo saa {{time}}",
-    "voiceIntroOptional": "Si lazima — salamu ya sekunde 10 ambayo mechi zako wanaweza kusikiliza"
+    "voiceIntroOptional": "Si lazima — salamu ya sekunde 10 ambayo mechi zako wanaweza kusikiliza",
+    "playFailed": "Rekodi hii haiwezi kuchezwa kwenye kifaa hiki"
   },
   "truthOrDare": {
     "truth": {
@@ -949,7 +961,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "maswali {{total}} · majibu {{answered}}",
+    "counts": "Maswali: {{total}} · Majibu: {{answered}}",
     "askButton": "Uliza swali",
     "myAsks": "Maswali Yangu",
     "placeholder": "Ungependa kujua nini?",
@@ -989,7 +1001,12 @@
     "ogDescription": "Maswali {{answered}} yamejibiwa. Ungependa kujua nini?",
     "newQuestionPush": "Swali jipya! 💜 Mtu anataka kukujua vizuri zaidi",
     "answerPush": "Swali lako limejibiwa! 🎉",
-    "fakeProfileNote": "Huu ni wasifu bandia — hauwezi kupokea maswali."
+    "fakeProfileNote": "Huu ni wasifu bandia — hauwezi kupokea maswali.",
+    "sentTab": "Zilizotumwa",
+    "toName": "Kwa {{name}}",
+    "waiting": "Inasubiri jibu",
+    "declined": "Imekataliwa",
+    "noSent": "Bado hujamuuliza mtu yeyote."
   },
   "videoIntro": {
     "title": "Video ya utambulisho",

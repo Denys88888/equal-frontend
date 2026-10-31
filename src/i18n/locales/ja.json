@@ -77,7 +77,9 @@
     "alreadyLiked": "すでにいいね済みです",
     "you": "あなた",
     "swipeFailed": "保存できませんでした。もう一度お試しください",
-    "fakeBadge": "架空"
+    "fakeBadge": "架空",
+    "noSparks": "スパークはまだありません — 認証、プロフィールの完成、クラブへの投稿で獲得できます",
+    "likeSent": "いいねしました！お互いならマッチします"
   },
   "matches": {
     "title": "マッチ一覧",
@@ -172,7 +174,10 @@
     "giftBouquetDesc": "大きなロマンチックな気持ち",
     "giftDiamond": "ダイヤモンド",
     "giftDiamondDesc": "本当に特別な人へ",
-    "giftRetryLater": "支払いを受け付けました。接続が戻りしだいギフトを届けます"
+    "giftRetryLater": "支払いを受け付けました。接続が戻りしだいギフトを届けます",
+    "unmuteNotifications": "通知をオンにする",
+    "unmutedNotifs": "通知オン",
+    "muteFailed": "通知を変更できませんでした — もう一度お試しください"
   },
   "profile": {
     "edit": "プロフィールを編集",
@@ -377,7 +382,8 @@
     "posts": "{{count}}件の投稿",
     "members_other": "{{count}}人のメンバー",
     "posts_other": "{{count}}件の投稿",
-    "category": "カテゴリー"
+    "category": "カテゴリー",
+    "club_cat_misc": "その他"
   },
   "events": {
     "title": "イベント",
@@ -448,7 +454,10 @@
     "noSavedDesc": "気になるイベントの星アイコンをタップすると、ここに保存されます。",
     "ended": "このイベントは終了しました",
     "feedbackFailed": "フィードバックを送信できませんでした。もう一度お試しください",
-    "thanksFeedbackSaved": "フィードバックありがとうございます！"
+    "thanksFeedbackSaved": "フィードバックありがとうございます！",
+    "rsvpFailed": "参加登録を保存できませんでした — もう一度お試しください",
+    "cat_party": "パーティー",
+    "cat_community": "コミュニティ"
   },
   "video": {
     "connecting": "接続中...",
@@ -761,7 +770,9 @@
     "markAllRead": "すべて既読にする",
     "empty": "通知はまだありません",
     "newMatchTitle": "マッチしました！ 💜",
-    "newMatchBody": "新しいご縁ができました。あいさつしてみましょう！"
+    "newMatchBody": "新しいご縁ができました。あいさつしてみましょう！",
+    "newMessageTitle": "{{name}}さんから新しいメッセージ",
+    "newMediaBody": "チャットを開いて確認"
   },
   "error": {
     "title": "問題が発生しました",
@@ -882,7 +893,8 @@
     "extraSaved": "お支払いは保存されています。追加マッチは後から再度支払うことなく受け取れます。",
     "claimExtra": "支払い済みの追加マッチを受け取る",
     "arrivesToday": "新しいマッチは今日{{time}}に届きます",
-    "voiceIntroOptional": "任意 — マッチ相手が聞ける10秒のあいさつ"
+    "voiceIntroOptional": "任意 — マッチ相手が聞ける10秒のあいさつ",
+    "playFailed": "この録音はこの端末では再生できません"
   },
   "truthOrDare": {
     "truth": {
@@ -942,7 +954,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "質問{{total}}件 · 回答{{answered}}件",
+    "counts": "質問: {{total}} · 回答: {{answered}}",
     "askButton": "質問する",
     "myAsks": "自分の質問",
     "placeholder": "何が知りたいですか？",
@@ -982,7 +994,12 @@
     "ogDescription": "{{answered}}件の質問に回答済み。何が知りたいですか？",
     "newQuestionPush": "新しい質問！ 💜 あなたをもっと知りたい人がいます",
     "answerPush": "あなたの質問に回答がつきました！ 🎉",
-    "fakeProfileNote": "これは架空のプロフィールです。質問は送れません。"
+    "fakeProfileNote": "これは架空のプロフィールです。質問は送れません。",
+    "sentTab": "送信済み",
+    "toName": "{{name}}さんへ",
+    "waiting": "回答待ち",
+    "declined": "辞退されました",
+    "noSent": "まだ誰にも質問していません。"
   },
   "videoIntro": {
     "title": "自己紹介動画",

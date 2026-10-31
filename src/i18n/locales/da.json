@@ -79,7 +79,9 @@
     "alreadyLiked": "Allerede liket",
     "you": "Dig",
     "swipeFailed": "Kunne ikke gemmes – prøv igen",
-    "fakeBadge": "Falsk"
+    "fakeBadge": "Falsk",
+    "noSparks": "Ingen Gnister endnu — få dem ved at blive verificeret, udfylde din profil og poste i klubber",
+    "likeSent": "Liket! Hvis det er gensidigt, bliver det et match"
   },
   "matches": {
     "title": "Match",
@@ -174,7 +176,10 @@
     "giftBouquetDesc": "En stor romantisk gestus",
     "giftDiamond": "Diamant",
     "giftDiamondDesc": "Til en helt særlig person",
-    "giftRetryLater": "Betaling modtaget – gaven leveres, så snart forbindelsen er tilbage"
+    "giftRetryLater": "Betaling modtaget – gaven leveres, så snart forbindelsen er tilbage",
+    "unmuteNotifications": "Slå notifikationer til",
+    "unmutedNotifs": "Notifikationer slået til",
+    "muteFailed": "Kunne ikke ændre notifikationer — prøv igen"
   },
   "profile": {
     "edit": "Rediger profil",
@@ -381,7 +386,8 @@
     "posts_one": "{{count}} opslag",
     "members_other": "{{count}} medlemmer",
     "posts_other": "{{count}} opslag",
-    "category": "Kategori"
+    "category": "Kategori",
+    "club_cat_misc": "Andet"
   },
   "events": {
     "title": "Begivenheder",
@@ -454,7 +460,10 @@
     "noSavedDesc": "Tryk på stjernen ved begivenheder, du er interesseret i, for at gemme dem her.",
     "ended": "Begivenheden er slut",
     "feedbackFailed": "Din feedback kunne ikke sendes – prøv igen",
-    "thanksFeedbackSaved": "Tak for din feedback!"
+    "thanksFeedbackSaved": "Tak for din feedback!",
+    "rsvpFailed": "Kunne ikke gemme din tilmelding — prøv igen",
+    "cat_party": "Fest",
+    "cat_community": "Fællesskab"
   },
   "video": {
     "connecting": "Forbinder...",
@@ -768,7 +777,9 @@
     "markAllRead": "Markér alle som læst",
     "empty": "Ingen notifikationer endnu",
     "newMatchTitle": "Det er et match! 💜",
-    "newMatchBody": "Du har en ny forbindelse — sig hej!"
+    "newMatchBody": "Du har en ny forbindelse — sig hej!",
+    "newMessageTitle": "Ny besked fra {{name}}",
+    "newMediaBody": "Åbn chatten for at se den"
   },
   "error": {
     "title": "Noget gik galt",
@@ -889,7 +900,8 @@
     "extraSaved": "Din betaling er gemt – hent det ekstra match senere uden at betale igen.",
     "claimExtra": "Hent dit betalte ekstra match",
     "arrivesToday": "Dit nye match kommer i dag kl. {{time}}",
-    "voiceIntroOptional": "Valgfrit – et 10-sekunders hej, dine matches kan lytte til"
+    "voiceIntroOptional": "Valgfrit – et 10-sekunders hej, dine matches kan lytte til",
+    "playFailed": "Denne optagelse kan ikke afspilles på denne enhed"
   },
   "truthOrDare": {
     "truth": {
@@ -949,7 +961,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "{{total}} spørgsmål · {{answered}} svar",
+    "counts": "Spørgsmål: {{total}} · Svar: {{answered}}",
     "askButton": "Stil et spørgsmål",
     "myAsks": "Mine spørgsmål",
     "placeholder": "Hvad vil du gerne vide?",
@@ -989,7 +1001,12 @@
     "ogDescription": "{{answered}} spørgsmål besvaret. Hvad vil du gerne vide?",
     "newQuestionPush": "Nyt spørgsmål! 💜 Nogen vil lære dig bedre at kende",
     "answerPush": "Dit spørgsmål har fået et svar! 🎉",
-    "fakeProfileNote": "Dette er en falsk profil – den kan ikke modtage spørgsmål."
+    "fakeProfileNote": "Dette er en falsk profil – den kan ikke modtage spørgsmål.",
+    "sentTab": "Sendt",
+    "toName": "Til {{name}}",
+    "waiting": "Venter på svar",
+    "declined": "Afvist",
+    "noSent": "Du har ikke spurgt nogen om noget endnu."
   },
   "videoIntro": {
     "title": "Videopræsentation",

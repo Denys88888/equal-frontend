@@ -45,7 +45,9 @@ export default function Footer() {
     >
       <div className="max-w-[430px] mx-auto flex items-center justify-around px-2" style={{ height: 'var(--tabbar-h)' }}>
         {navItems.map((item, index) => {
-          const isActive = location.pathname === item.path || location.pathname.startsWith(`${item.path}/`);
+          // /profile/:id is someone else's profile, not the Profile tab.
+          const isActive = location.pathname === item.path
+            || (item.path !== '/profile' && location.pathname.startsWith(`${item.path}/`));
           const Icon = item.icon;
           const isTapped = tapIndex === index;
 

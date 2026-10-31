@@ -10,6 +10,17 @@ export function recordedAudioType(recorderMime: string | undefined): string {
   return type.replace(/^video\//i, 'audio/');
 }
 
+/**
+ * The container to record voice in. iPhones on iOS 18.4+ say they can record
+ * WebM but cannot play it back, so a WebM clip could not even be previewed on
+ * the phone that made it ("The operation is not supported"). MP4/AAC plays on
+ * both platforms, so it wins wherever the browser can record it.
+ */
+export function preferredAudioMime(): string {
+  if (typeof MediaRecorder === 'undefined' || typeof MediaRecorder.isTypeSupported !== 'function') return '';
+  return ['audio/mp4', 'audio/webm;codecs=opus', 'audio/webm'].find((type) => MediaRecorder.isTypeSupported(type)) ?? '';
+}
+
 /** File extension matching a recorded clip's container. */
 export function audioExtension(type: string): string {
   return type.includes('mp4') ? 'm4a' : type.includes('ogg') ? 'ogg' : 'webm';

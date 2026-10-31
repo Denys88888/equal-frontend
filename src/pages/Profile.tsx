@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getMe, updateMe, uploadPhoto, deletePhoto, getAchievements, getMyGifts } from '@/api/users';
 import GiftShowcase from '@/components/GiftShowcase';
@@ -37,6 +37,7 @@ import VideoIntroRecorder from '@/components/VideoIntroRecorder';
 import AskWidget from '@/components/AskWidget';
 import { useToast } from '@/hooks/useToast';
 import { useAuth } from '@/context/AuthContext';
+import { INTERESTS, interestKey } from '@/lib/interests';
 
 /* ───────────────────── Fallback User Data ───────────────────── */
 
@@ -308,6 +309,10 @@ export default function Profile() {
   const [bio, setBio] = useState('');
   const [showBioEdit, setShowBioEdit] = useState(false);
   const [editBioText, setEditBioText] = useState('');
+  // Interests had a pencil that was only a picture: after onboarding there was
+  // no way to change them at all.
+  const [showInterestsEdit, setShowInterestsEdit] = useState(false);
+  const [editInterests, setEditInterests] = useState<string[]>([]);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [showBadgeDetail, setShowBadgeDetail] = useState<string | null>(null);
   const [showTrustInfo, setShowTrustInfo] = useState(false);
@@ -365,6 +370,25 @@ export default function Profile() {
   // Until /users/me answers, the hero showed "?" and a lone ", " where the
   // name and age go.
   const [profileLoaded, setProfileLoaded] = useState(false);
+
+  // Settings' "Edit profile", "Photos" and "Trust score" all used to land on the
+  // top of this page and leave the user to find the right control.
+  const location = useLocation();
+  const focus = (location.state as { focus?: 'edit' | 'photos' | 'trust' } | null)?.focus;
+  useEffect(() => {
+    if (!profileLoaded || !focus) return;
+    const timer = setTimeout(() => {
+      if (focus === 'edit') {
+        setEditBioText(bio);
+        setShowBioEdit(true);
+      } else {
+        document.getElementById(focus === 'photos' ? 'profile-photos' : 'profile-trust')
+          ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      navigate('.', { replace: true, state: null });
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [profileLoaded, focus, bio, navigate]);
   const [achievements, setAchievements] = useState<Record<string, boolean>>({});
   const [gifts, setGifts] = useState<Partial<Record<GiftKind, number>> | null>(null);
 
@@ -419,6 +443,19 @@ export default function Profile() {
   };
   const goalInfo = goalConfig[goalLabel] || goalConfig['Not sure yet'];
   const GoalIcon = goalInfo.icon;
+
+  const handleSaveInterests = async () => {
+    const previous = user.interests;
+    const next = editInterests;
+    setUser((prev) => ({ ...prev, interests: next }));
+    setShowInterestsEdit(false);
+    try {
+      await updateMe({ interests: next });
+    } catch (e: unknown) {
+      setUser((prev) => ({ ...prev, interests: previous }));
+      showToast('error', e instanceof Error ? e.message : t('profile2.bioSaveFailed', { defaultValue: 'Could not save — please try again' }));
+    }
+  };
 
   const handleSaveBio = async () => {
     const previous = bio;
@@ -539,7 +576,8 @@ export default function Profile() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: easeOutExpo, delay: 0.1 }}
-          className="relative -mt-5 mx-0 bg-white dark:bg-[#22293B] rounded-t-[24px] p-6 z-10"
+          id="profile-trust"
+          className="scroll-mt-20 relative -mt-5 mx-0 bg-white dark:bg-[#22293B] rounded-t-[24px] p-6 z-10"
           style={{ boxShadow: '0 -8px 32px rgba(0,0,0,0.08)' }}
         >
           <div className="flex items-center justify-between mb-5">
@@ -663,7 +701,13 @@ export default function Profile() {
               <h4 className="text-base font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                 {t('profile.interests')}
               </h4>
-              <Pencil size={16} className="text-[#BB83C9] opacity-50" strokeWidth={2} />
+              <motion.button
+                whileTap={{ scale: 0.9 }}
+                aria-label={t('profile.interests')}
+                onClick={() => { setEditInterests(user.interests); setShowInterestsEdit(true); }}
+              >
+                <Pencil size={16} className="text-[#BB83C9]" strokeWidth={2} />
+              </motion.button>
             </div>
             <div className="flex flex-wrap gap-2">
               {user.interests.map((interest) => (
@@ -701,7 +745,8 @@ export default function Profile() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.4, ease: easeOutExpo }}
-          className="px-5 mt-6"
+          id="profile-photos"
+          className="px-5 mt-6 scroll-mt-20"
         >
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
@@ -905,6 +950,55 @@ export default function Profile() {
               onClick={handleSaveBio}
               className="flex-1 h-12 rounded-full bg-[#BB83C9] text-white text-base font-semibold"
               style={{ boxShadow: '0 4px 16px rgba(187,131,201,0.3)', fontFamily: "'Outfit', system-ui, sans-serif" }}
+            >
+              {t('common.save')}
+            </motion.button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* ─────────────── Interests ─────────────── */}
+      <Dialog open={showInterestsEdit} onOpenChange={setShowInterestsEdit}>
+        <DialogContent className="rounded-[20px] max-w-[360px] bg-white dark:bg-[#22293B] border-0" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
+          <DialogHeader>
+            <DialogTitle className="text-xl font-semibold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
+              {t('profile.interests')}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="flex flex-wrap gap-2 mt-2 max-h-[50vh] overflow-y-auto">
+            {INTERESTS.map((interest) => {
+              const on = editInterests.includes(interest);
+              return (
+                <button
+                  key={interest}
+                  onClick={() => setEditInterests((prev) => (on ? prev.filter((i) => i !== interest) : [...prev, interest]))}
+                  className="px-3.5 py-1.5 rounded-full text-sm font-medium"
+                  style={{
+                    backgroundColor: on ? '#BB83C9' : 'var(--linen-dark)',
+                    color: on ? '#fff' : 'var(--charcoal)',
+                    fontFamily: "'Outfit', system-ui, sans-serif",
+                  }}
+                >
+                  {t(interestKey(interest), { defaultValue: interest })}
+                </button>
+              );
+            })}
+          </div>
+          <div className="flex gap-3 mt-4">
+            <motion.button
+              whileTap={{ scale: 0.97 }}
+              onClick={() => setShowInterestsEdit(false)}
+              className="flex-1 h-12 rounded-full border border-[rgba(var(--charcoal-rgb), 0.1)] bg-[rgba(var(--card-rgb), 0.72)] text-base font-semibold text-[var(--charcoal)]"
+              style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
+            >
+              {t('profile2.cancel')}
+            </motion.button>
+            <motion.button
+              whileTap={{ scale: 0.97 }}
+              onClick={handleSaveInterests}
+              disabled={editInterests.length === 0}
+              className="flex-1 h-12 rounded-full bg-[#BB83C9] text-white text-base font-semibold"
+              style={{ boxShadow: '0 4px 16px rgba(187,131,201,0.3)', fontFamily: "'Outfit', system-ui, sans-serif", opacity: editInterests.length === 0 ? 0.5 : 1 }}
             >
               {t('common.save')}
             </motion.button>

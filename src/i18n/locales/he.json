@@ -81,7 +81,9 @@
     "alreadyLiked": "כבר סימנת לייק",
     "you": "את/ה",
     "swipeFailed": "השמירה נכשלה — נסו שוב",
-    "fakeBadge": "מזויף"
+    "fakeBadge": "מזויף",
+    "noSparks": "אין עדיין ניצוצות — אפשר להרוויח אותם באימות, בהשלמת הפרופיל ובפרסום במועדונים",
+    "likeSent": "לייק נשלח! אם זה הדדי, יהיה מאץ'"
   },
   "matches": {
     "title": "התאמות",
@@ -176,7 +178,10 @@
     "giftBouquetDesc": "מחווה רומנטית גדולה",
     "giftDiamond": "יהלום",
     "giftDiamondDesc": "למישהו מיוחד באמת",
-    "giftRetryLater": "התשלום התקבל — המתנה תימסר ברגע שהחיבור יחזור"
+    "giftRetryLater": "התשלום התקבל — המתנה תימסר ברגע שהחיבור יחזור",
+    "unmuteNotifications": "הפעלת התראות",
+    "unmutedNotifs": "ההתראות מופעלות",
+    "muteFailed": "לא ניתן לשנות את ההתראות — נסו שוב"
   },
   "profile": {
     "edit": "ערוך פרופיל",
@@ -385,7 +390,8 @@
     "posts_two": "{{count}} פוסטים",
     "members_other": "{{count}} חברים",
     "posts_other": "{{count}} פוסטים",
-    "category": "קטגוריה"
+    "category": "קטגוריה",
+    "club_cat_misc": "אחר"
   },
   "events": {
     "title": "אירועים",
@@ -460,7 +466,10 @@
     "noSavedDesc": "הקש/י על סמל הכוכב באירועים שמעניינים אותך כדי לשמור אותם כאן.",
     "ended": "האירוע הזה הסתיים",
     "feedbackFailed": "לא ניתן היה לשלוח את המשוב — נסו שוב",
-    "thanksFeedbackSaved": "תודה על המשוב!"
+    "thanksFeedbackSaved": "תודה על המשוב!",
+    "rsvpFailed": "לא ניתן לשמור את ההרשמה — נסו שוב",
+    "cat_party": "מסיבה",
+    "cat_community": "קהילה"
   },
   "video": {
     "connecting": "מתחבר...",
@@ -775,7 +784,9 @@
     "markAllRead": "סמן הכול כנקרא",
     "empty": "אין עדיין התראות",
     "newMatchTitle": "זו התאמה! 💜",
-    "newMatchBody": "יש לך קשר חדש — אמור שלום!"
+    "newMatchBody": "יש לך קשר חדש — אמור שלום!",
+    "newMessageTitle": "הודעה חדשה מ-{{name}}",
+    "newMediaBody": "פתחו את הצ'אט כדי לראות"
   },
   "error": {
     "title": "משהו השתבש",
@@ -896,7 +907,8 @@
     "extraSaved": "התשלום שלך נשמר — קבלו את ההתאמה הנוספת מאוחר יותר בלי לשלם שוב.",
     "claimExtra": "קבלת ההתאמה הנוספת ששילמת עליה",
     "arrivesToday": "ההתאמה החדשה שלך מגיעה היום בשעה {{time}}",
-    "voiceIntroOptional": "אופציונלי — ברכה של 10 שניות שההתאמות שלך יוכלו לשמוע"
+    "voiceIntroOptional": "אופציונלי — ברכה של 10 שניות שההתאמות שלך יוכלו לשמוע",
+    "playFailed": "לא ניתן להשמיע את ההקלטה הזו במכשיר הזה"
   },
   "truthOrDare": {
     "truth": {
@@ -956,7 +968,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "{{total}} שאלות · {{answered}} תשובות",
+    "counts": "שאלות: {{total}} · תשובות: {{answered}}",
     "askButton": "שאל שאלה",
     "myAsks": "השאלות שלי",
     "placeholder": "מה תרצה לדעת?",
@@ -996,7 +1008,12 @@
     "ogDescription": "{{answered}} שאלות נענו. מה תרצה לדעת?",
     "newQuestionPush": "שאלה חדשה! 💜 מישהו רוצה להכיר אותך טוב יותר",
     "answerPush": "השאלה שלך נענתה! 🎉",
-    "fakeProfileNote": "זה פרופיל מזויף — אי אפשר לשלוח אליו שאלות."
+    "fakeProfileNote": "זה פרופיל מזויף — אי אפשר לשלוח אליו שאלות.",
+    "sentTab": "נשלחו",
+    "toName": "אל {{name}}",
+    "waiting": "ממתין לתשובה",
+    "declined": "נדחתה",
+    "noSent": "עוד לא שאלת אף אחד שום דבר."
   },
   "videoIntro": {
     "title": "סרטון היכרות",

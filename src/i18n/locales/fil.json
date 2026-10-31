@@ -79,7 +79,9 @@
     "alreadyLiked": "Na-like na",
     "you": "Ikaw",
     "swipeFailed": "Hindi ma-save — subukang muli",
-    "fakeBadge": "Peke"
+    "fakeBadge": "Peke",
+    "noSparks": "Wala ka pang Sparks — kunin ito sa pag-verify, pagkumpleto ng profile at pag-post sa mga club",
+    "likeSent": "Na-like! Kung mutual, magiging match kayo"
   },
   "matches": {
     "title": "Mga Pares",
@@ -174,7 +176,10 @@
     "giftBouquetDesc": "Isang malaking romantikong kilos",
     "giftDiamond": "Diyamante",
     "giftDiamondDesc": "Para sa isang talagang espesyal",
-    "giftRetryLater": "Natanggap ang bayad — maihahatid ang regalo kapag bumalik ang koneksyon"
+    "giftRetryLater": "Natanggap ang bayad — maihahatid ang regalo kapag bumalik ang koneksyon",
+    "unmuteNotifications": "I-on ang mga notification",
+    "unmutedNotifs": "Naka-on ang mga notification",
+    "muteFailed": "Hindi mabago ang mga notification — subukan ulit"
   },
   "profile": {
     "edit": "I-edit ang Profile",
@@ -381,7 +386,8 @@
     "posts_one": "{{count}} post",
     "members_other": "{{count}} miyembro",
     "posts_other": "{{count}} post",
-    "category": "Kategorya"
+    "category": "Kategorya",
+    "club_cat_misc": "Iba pa"
   },
   "events": {
     "title": "Mga Event",
@@ -454,7 +460,10 @@
     "noSavedDesc": "I-tap ang star icon sa mga event na interesado ka para i-save ang mga ito rito.",
     "ended": "Tapos na ang event na ito",
     "feedbackFailed": "Hindi maipadala ang iyong feedback — pakisubukang muli",
-    "thanksFeedbackSaved": "Salamat sa iyong feedback!"
+    "thanksFeedbackSaved": "Salamat sa iyong feedback!",
+    "rsvpFailed": "Hindi ma-save ang pagdalo mo — subukan ulit",
+    "cat_party": "Party",
+    "cat_community": "Komunidad"
   },
   "video": {
     "connecting": "Kumokonekta...",
@@ -768,7 +777,9 @@
     "markAllRead": "Markahang basa na lahat",
     "empty": "Wala pang notification",
     "newMatchTitle": "Match kayo! 💜",
-    "newMatchBody": "May bagong koneksyon ka — kumustahin!"
+    "newMatchBody": "May bagong koneksyon ka — kumustahin!",
+    "newMessageTitle": "Bagong mensahe mula kay {{name}}",
+    "newMediaBody": "Buksan ang chat para makita"
   },
   "error": {
     "title": "May Nagkamali",
@@ -889,7 +900,8 @@
     "extraSaved": "Nai-save ang iyong bayad — kunin ang extra na match mamaya nang hindi na muling nagbabayad.",
     "claimExtra": "Kunin ang bayad mong extra na match",
     "arrivesToday": "Darating ang bagong match mo ngayon ng {{time}}",
-    "voiceIntroOptional": "Opsyonal — 10-segundong pagbati na maririnig ng mga match mo"
+    "voiceIntroOptional": "Opsyonal — 10-segundong pagbati na maririnig ng mga match mo",
+    "playFailed": "Hindi ma-play ang recording na ito sa device na ito"
   },
   "truthOrDare": {
     "truth": {
@@ -949,7 +961,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "{{total}} tanong · {{answered}} sagot",
+    "counts": "Mga tanong: {{total}} · Mga sagot: {{answered}}",
     "askButton": "Magtanong",
     "myAsks": "Mga Tanong Ko",
     "placeholder": "Ano ang gusto mong malaman?",
@@ -989,7 +1001,12 @@
     "ogDescription": "{{answered}} tanong ang nasagot. Ano ang gusto mong malaman?",
     "newQuestionPush": "Bagong tanong! 💜 May gustong makilala ka pa nang mas mabuti",
     "answerPush": "Nasagot na ang tanong mo! 🎉",
-    "fakeProfileNote": "Pekeng profile ito — hindi ito makakatanggap ng mga tanong."
+    "fakeProfileNote": "Pekeng profile ito — hindi ito makakatanggap ng mga tanong.",
+    "sentTab": "Naipadala",
+    "toName": "Para kay {{name}}",
+    "waiting": "Naghihintay ng sagot",
+    "declined": "Tinanggihan",
+    "noSent": "Wala ka pang tinanong kahit sino."
   },
   "videoIntro": {
     "title": "Video intro",

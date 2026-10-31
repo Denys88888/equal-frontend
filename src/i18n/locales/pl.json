@@ -83,7 +83,9 @@
     "alreadyLiked": "Już polubione",
     "you": "Ty",
     "swipeFailed": "Nie udało się zapisać — spróbuj ponownie",
-    "fakeBadge": "Fałszywy"
+    "fakeBadge": "Fałszywy",
+    "noSparks": "Nie masz jeszcze Iskier — zdobędziesz je za weryfikację, uzupełniony profil i posty w klubach",
+    "likeSent": "Polubiono! Jeśli to wzajemne, będzie dopasowanie"
   },
   "matches": {
     "title": "Pary",
@@ -178,7 +180,10 @@
     "giftBouquetDesc": "Wielki romantyczny gest",
     "giftDiamond": "Diament",
     "giftDiamondDesc": "Dla kogoś naprawdę wyjątkowego",
-    "giftRetryLater": "Płatność przyjęta — prezent zostanie dostarczony, gdy wróci połączenie"
+    "giftRetryLater": "Płatność przyjęta — prezent zostanie dostarczony, gdy wróci połączenie",
+    "unmuteNotifications": "Włącz powiadomienia",
+    "unmutedNotifs": "Powiadomienia włączone",
+    "muteFailed": "Nie udało się zmienić powiadomień — spróbuj ponownie"
   },
   "profile": {
     "edit": "Edytuj profil",
@@ -389,7 +394,8 @@
     "posts_many": "{{count}} postów",
     "members_other": "{{count}} członka",
     "posts_other": "{{count}} posta",
-    "category": "Kategoria"
+    "category": "Kategoria",
+    "club_cat_misc": "Inne"
   },
   "events": {
     "title": "Wydarzenia",
@@ -466,7 +472,10 @@
     "noSavedDesc": "Stuknij gwiazdkę przy wydarzeniach, które cię interesują, aby zapisać je tutaj.",
     "ended": "To wydarzenie już się odbyło",
     "feedbackFailed": "Nie udało się wysłać opinii — spróbuj ponownie",
-    "thanksFeedbackSaved": "Dzięki za opinię!"
+    "thanksFeedbackSaved": "Dzięki za opinię!",
+    "rsvpFailed": "Nie udało się zapisać — spróbuj ponownie",
+    "cat_party": "Impreza",
+    "cat_community": "Społeczność"
   },
   "video": {
     "connecting": "Łączenie...",
@@ -782,7 +791,9 @@
     "markAllRead": "Oznacz wszystkie jako przeczytane",
     "empty": "Brak powiadomień",
     "newMatchTitle": "To dopasowanie! 💜",
-    "newMatchBody": "Masz nową znajomość — przywitaj się!"
+    "newMatchBody": "Masz nową znajomość — przywitaj się!",
+    "newMessageTitle": "Nowa wiadomość od {{name}}",
+    "newMediaBody": "Otwórz czat, aby zobaczyć"
   },
   "error": {
     "title": "Coś poszło nie tak",
@@ -903,7 +914,8 @@
     "extraSaved": "Płatność jest zapisana — odbierz dodatkowe dopasowanie później, bez ponownej opłaty.",
     "claimExtra": "Odbierz opłacone dopasowanie",
     "arrivesToday": "Nowe dopasowanie pojawi się dziś o {{time}}",
-    "voiceIntroOptional": "Opcjonalnie — 10-sekundowe powitanie dla twoich dopasowań"
+    "voiceIntroOptional": "Opcjonalnie — 10-sekundowe powitanie dla twoich dopasowań",
+    "playFailed": "Tego nagrania nie można odtworzyć na tym urządzeniu"
   },
   "truthOrDare": {
     "truth": {
@@ -963,7 +975,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "{{total}} pytań · {{answered}} odpowiedzi",
+    "counts": "Pytania: {{total}} · Odpowiedzi: {{answered}}",
     "askButton": "Zadaj pytanie",
     "myAsks": "Moje pytania",
     "placeholder": "Co chcesz wiedzieć?",
@@ -1003,7 +1015,12 @@
     "ogDescription": "Odpowiedzi: {{answered}}. Co chcesz wiedzieć?",
     "newQuestionPush": "Nowe pytanie! 💜 Ktoś chce Cię lepiej poznać",
     "answerPush": "Twoje pytanie ma odpowiedź! 🎉",
-    "fakeProfileNote": "To fałszywy profil — nie można mu zadawać pytań."
+    "fakeProfileNote": "To fałszywy profil — nie można mu zadawać pytań.",
+    "sentTab": "Wysłane",
+    "toName": "Do {{name}}",
+    "waiting": "Czeka na odpowiedź",
+    "declined": "Odrzucone",
+    "noSent": "Jeszcze nikogo o nic nie zapytałeś(-aś)."
   },
   "videoIntro": {
     "title": "Wideo-wizytówka",

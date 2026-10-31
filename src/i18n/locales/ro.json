@@ -81,7 +81,9 @@
     "alreadyLiked": "Deja apreciat",
     "you": "Tu",
     "swipeFailed": "Nu s-a putut salva — încearcă din nou",
-    "fakeBadge": "Fals"
+    "fakeBadge": "Fals",
+    "noSparks": "Încă nu ai Scântei — le câștigi prin verificare, profil complet și postări în cluburi",
+    "likeSent": "Like trimis! Dacă e reciproc, va fi match"
   },
   "matches": {
     "title": "Potriviri",
@@ -176,7 +178,10 @@
     "giftBouquetDesc": "Un gest romantic mare",
     "giftDiamond": "Diamant",
     "giftDiamondDesc": "Pentru cineva cu adevărat special",
-    "giftRetryLater": "Plata a fost primită — cadoul va fi livrat imediat ce revine conexiunea"
+    "giftRetryLater": "Plata a fost primită — cadoul va fi livrat imediat ce revine conexiunea",
+    "unmuteNotifications": "Activează notificările",
+    "unmutedNotifs": "Notificări activate",
+    "muteFailed": "Notificările nu au putut fi schimbate — încearcă din nou"
   },
   "profile": {
     "edit": "Editează profilul",
@@ -385,7 +390,8 @@
     "posts_few": "{{count}} postări",
     "members_other": "{{count}} de membri",
     "posts_other": "{{count}} de postări",
-    "category": "Categorie"
+    "category": "Categorie",
+    "club_cat_misc": "Altele"
   },
   "events": {
     "title": "Evenimente",
@@ -460,7 +466,10 @@
     "noSavedDesc": "Atinge steaua de la evenimentele care te interesează pentru a le salva aici.",
     "ended": "Acest eveniment s-a încheiat",
     "feedbackFailed": "Părerea ta nu a putut fi trimisă — încearcă din nou",
-    "thanksFeedbackSaved": "Mulțumim pentru părere!"
+    "thanksFeedbackSaved": "Mulțumim pentru părere!",
+    "rsvpFailed": "Participarea nu a putut fi salvată — încearcă din nou",
+    "cat_party": "Petrecere",
+    "cat_community": "Comunitate"
   },
   "video": {
     "connecting": "Se conectează...",
@@ -775,7 +784,9 @@
     "markAllRead": "Marchează toate ca citite",
     "empty": "Nicio notificare încă",
     "newMatchTitle": "Este o potrivire! 💜",
-    "newMatchBody": "Ai o nouă conexiune — salută-o!"
+    "newMatchBody": "Ai o nouă conexiune — salută-o!",
+    "newMessageTitle": "Mesaj nou de la {{name}}",
+    "newMediaBody": "Deschide chatul ca să-l vezi"
   },
   "error": {
     "title": "Ceva nu a mers bine",
@@ -896,7 +907,8 @@
     "extraSaved": "Plata ta e păstrată — revendică potrivirea suplimentară mai târziu, fără să plătești din nou.",
     "claimExtra": "Revendică potrivirea suplimentară plătită",
     "arrivesToday": "Noua ta potrivire sosește azi la {{time}}",
-    "voiceIntroOptional": "Opțional — un salut de 10 secunde pe care potrivirile tale îl pot asculta"
+    "voiceIntroOptional": "Opțional — un salut de 10 secunde pe care potrivirile tale îl pot asculta",
+    "playFailed": "Această înregistrare nu poate fi redată pe acest dispozitiv"
   },
   "truthOrDare": {
     "truth": {
@@ -956,7 +968,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "{{total}} întrebări · {{answered}} răspunsuri",
+    "counts": "Întrebări: {{total}} · Răspunsuri: {{answered}}",
     "askButton": "Pune o întrebare",
     "myAsks": "Întrebările mele",
     "placeholder": "Ce ai vrea să afli?",
@@ -996,7 +1008,12 @@
     "ogDescription": "{{answered}} întrebări cu răspuns. Ce ai vrea să afli?",
     "newQuestionPush": "Întrebare nouă! 💜 Cineva vrea să te cunoască mai bine",
     "answerPush": "Întrebarea ta a primit un răspuns! 🎉",
-    "fakeProfileNote": "Acesta este un profil fals — nu poate primi întrebări."
+    "fakeProfileNote": "Acesta este un profil fals — nu poate primi întrebări.",
+    "sentTab": "Trimise",
+    "toName": "Pentru {{name}}",
+    "waiting": "Așteaptă răspuns",
+    "declined": "Refuzată",
+    "noSent": "Încă nu ai întrebat pe nimeni nimic."
   },
   "videoIntro": {
     "title": "Video de prezentare",

@@ -77,7 +77,9 @@
     "alreadyLiked": "已经喜欢过了",
     "you": "你",
     "swipeFailed": "无法保存，请重试",
-    "fakeBadge": "虚假"
+    "fakeBadge": "虚假",
+    "noSparks": "还没有火花 — 完成认证、完善资料并在俱乐部发帖即可获得",
+    "likeSent": "已点赞！如果是双向的，你们就会配对"
   },
   "matches": {
     "title": "配对",
@@ -172,7 +174,10 @@
     "giftBouquetDesc": "一个浪漫的大心意",
     "giftDiamond": "钻石",
     "giftDiamondDesc": "送给真正特别的人",
-    "giftRetryLater": "已收到付款——网络恢复后礼物会立即送达"
+    "giftRetryLater": "已收到付款——网络恢复后礼物会立即送达",
+    "unmuteNotifications": "开启通知",
+    "unmutedNotifs": "通知已开启",
+    "muteFailed": "无法更改通知 — 请重试"
   },
   "profile": {
     "edit": "编辑资料",
@@ -377,7 +382,8 @@
     "posts": "{{count}} 条帖子",
     "members_other": "{{count}} 位成员",
     "posts_other": "{{count}} 条帖子",
-    "category": "类别"
+    "category": "类别",
+    "club_cat_misc": "其他"
   },
   "events": {
     "title": "活动",
@@ -448,7 +454,10 @@
     "noSavedDesc": "点击你感兴趣的活动上的星标，即可将其保存在这里。",
     "ended": "此活动已结束",
     "feedbackFailed": "无法提交你的反馈，请重试",
-    "thanksFeedbackSaved": "感谢你的反馈！"
+    "thanksFeedbackSaved": "感谢你的反馈！",
+    "rsvpFailed": "无法保存报名 — 请重试",
+    "cat_party": "派对",
+    "cat_community": "社区"
   },
   "video": {
     "connecting": "连接中...",
@@ -761,7 +770,9 @@
     "markAllRead": "全部标为已读",
     "empty": "还没有通知",
     "newMatchTitle": "配对成功！💜",
-    "newMatchBody": "你有一位新的连接——去打个招呼吧！"
+    "newMatchBody": "你有一位新的连接——去打个招呼吧！",
+    "newMessageTitle": "来自 {{name}} 的新消息",
+    "newMediaBody": "打开聊天查看"
   },
   "error": {
     "title": "出错了",
@@ -882,7 +893,8 @@
     "extraSaved": "你的付款已保留——稍后可直接领取额外配对，无需再次付款。",
     "claimExtra": "领取已付费的额外配对",
     "arrivesToday": "你的新配对将于今天 {{time}} 到来",
-    "voiceIntroOptional": "可选——一段 10 秒的问候，让你的配对听到你的声音"
+    "voiceIntroOptional": "可选——一段 10 秒的问候，让你的配对听到你的声音",
+    "playFailed": "此录音无法在此设备上播放"
   },
   "truthOrDare": {
     "truth": {
@@ -942,7 +954,7 @@
   },
   "ask": {
     "title": "Equal Ask",
-    "counts": "{{total}} 个提问 · {{answered}} 个回答",
+    "counts": "问题：{{total}} · 回答：{{answered}}",
     "askButton": "提个问题",
     "myAsks": "我的提问",
     "placeholder": "你想知道什么？",
@@ -982,7 +994,12 @@
     "ogDescription": "已回答 {{answered}} 个提问。你想知道什么？",
     "newQuestionPush": "新提问！💜 有人想更了解你",
     "answerPush": "你的提问有回答了！🎉",
-    "fakeProfileNote": "这是虚假资料，无法接收提问。"
+    "fakeProfileNote": "这是虚假资料，无法接收提问。",
+    "sentTab": "已发送",
+    "toName": "发给 {{name}}",
+    "waiting": "等待回答",
+    "declined": "已拒绝",
+    "noSent": "你还没有向任何人提问。"
   },
   "videoIntro": {
     "title": "视频介绍",
