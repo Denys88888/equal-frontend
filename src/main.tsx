@@ -6,6 +6,7 @@ import { ToastProvider } from '@/components/ToastProvider'
 import { AuthProvider } from '@/context/AuthContext'
 import { watchAndroidNavBar } from '@/lib/systemNav'
 import { watchCrashes } from '@/lib/crashReport'
+import { watchIosKeyboard } from '@/lib/keyboard'
 import ErrorBoundary from '@/components/ErrorBoundary'
 import '@/i18n/config';
 import './index.css'
@@ -32,6 +33,8 @@ if (/Android/i.test(navigator.userAgent)) {
 }
 
 watchCrashes();
+// iPhone: a page left scrolled past its end (blank screen) after the keyboard closes.
+watchIosKeyboard();
 
 // Old WebViews (before Chrome 84) ignore gap on flex containers; index.css
 // has margin fallbacks under html.no-flexgap. Measured, not guessed.

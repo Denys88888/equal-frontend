@@ -35,6 +35,7 @@ import Layout from '@/components/Layout';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { formatListStamp, formatTime } from '@/lib/format';
+import { IS_IOS, useKeepKeyboardOpen } from '@/lib/keyboard';
 
 /* ------------------------------------------------------------------ */
 /*  TYPES                                                              */
@@ -372,6 +373,8 @@ function ClubDetail({
   const [commentInput, setCommentInput] = useState('');
   const [commentsLoading, setCommentsLoading] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
+  const chatInputRef = useRef<HTMLInputElement>(null);
+  const sendKeepsKeyboard = useKeepKeyboardOpen(chatInputRef);
 
   const goToProfile = (userId: string) => navigate(`/profile/${userId}`);
 
@@ -616,7 +619,8 @@ function ClubDetail({
   }, []));
 
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    // Not animated on iOS, see lib/keyboard.
+    chatEndRef.current?.scrollIntoView({ behavior: IS_IOS ? 'auto' : 'smooth', block: 'end' });
   }, [chatMessages]);
 
   return (
@@ -777,6 +781,7 @@ function ClubDetail({
               {/* Chat Input */}
               <div className="p-3 flex items-center gap-2 border-t" style={{ borderColor: 'var(--linen-dark)' }}>
                 <input
+                  ref={chatInputRef}
                   type="text"
                   value={chatInput}
                   onChange={(e) => setChatInput(e.target.value)}
@@ -787,7 +792,12 @@ function ClubDetail({
                 />
                 <motion.button
                   whileTap={{ scale: 0.9 }}
-                  onClick={handleSendMessage}
+                  onPointerDown={sendKeepsKeyboard.onPointerDown}
+                  onMouseDown={sendKeepsKeyboard.onMouseDown}
+                  onClick={() => {
+                    handleSendMessage();
+                    sendKeepsKeyboard.refocus();
+                  }}
                   className="w-10 h-10 rounded-full flex items-center justify-center"
                   style={{ backgroundColor: '#BB83C9' }}
                 >

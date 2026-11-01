@@ -38,6 +38,7 @@ import GiftAnimation from '@/components/GiftAnimation';
 import { GIFTS, GIFT_EMOJI, giftInfo, isGiftKind, type GiftKind } from '@/lib/gifts';
 import GiftCelebration from '@/components/GiftCelebration';
 import { getSparksBalance } from '@/api/sparks';
+import { IS_IOS, useKeepKeyboardOpen, scrollPageToEnd } from '@/lib/keyboard';
 
 // ── Types ────────────────────────────────────────────────
 
@@ -184,7 +185,7 @@ function formatClip(seconds: number) {
 // Every voice bubble used to open its own media player up front to read the
 // clip's length. On iPhone each <audio> is a separate media engine, so a long
 // chat full of voice notes cost a lot of memory before anything was played.
-const IOS = typeof navigator !== 'undefined' && /iPhone|iPad|iPod/i.test(navigator.userAgent);
+const IOS = IS_IOS;
 
 function VoicePlayer({ src, sent, fallbackDuration }: { src: string; sent: boolean; fallbackDuration?: string }) {
   const { t } = useTranslation();
@@ -1013,10 +1014,11 @@ export default function Chat() {
 
   // Auto-scroll to bottom. The page itself scrolls, so go to its very end:
   // scrolling the last bubble into view left the icebreakers and the message
-  // box below the screen edge.
+  // box below the screen edge. (See lib/keyboard for why not animated on iOS.)
   const scrollToBottom = useCallback(() => {
-    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    scrollPageToEnd();
   }, []);
+  const sendKeepsKeyboard = useKeepKeyboardOpen(textareaRef);
 
   useEffect(() => {
     scrollToBottom();
@@ -1565,7 +1567,12 @@ export default function Chat() {
                   exit={{ scale: 0, opacity: 0 }}
                   whileTap={{ scale: 0.85 }}
                   transition={{ duration: 0.15 }}
-                  onClick={() => handleSendMessage(inputText)}
+                  onPointerDown={sendKeepsKeyboard.onPointerDown}
+                  onMouseDown={sendKeepsKeyboard.onMouseDown}
+                  onClick={() => {
+                    handleSendMessage(inputText);
+                    sendKeepsKeyboard.refocus();
+                  }}
                   className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 mb-0.5"
                   style={{ backgroundColor: '#BB83C9' }}
                 >
