@@ -621,7 +621,10 @@
     "scoreVerifiedDone": "Verifisert",
     "scoreWarnings": "Advarsler",
     "scoreWarningsDesc": "Per advarsel",
-    "taskClubPost": "Innlegg i en klubb (opptil 5 om dagen)"
+    "taskClubPost": "Innlegg i en klubb (opptil 5 om dagen)",
+    "makeMain": "Gjør til hovedbilde",
+    "addPhoto": "Legg til",
+    "makeMainFailed": "Kunne ikke endre hovedbildet — prøv igjen"
   },
   "admin": {
     "panel": "Adminpanel",
@@ -727,7 +730,8 @@
     "tabVerification": "Verifisering",
     "tabTools": "Verktøy",
     "needsAttention": "Trenger oppmerksomhet",
-    "allClear": "Ingenting venter på gjennomgang"
+    "allClear": "Ingenting venter på gjennomgang",
+    "banConfirm": "Trykk igjen for å utestenge"
   },
   "legal": {
     "termsTitle": "Vilkår for bruk",

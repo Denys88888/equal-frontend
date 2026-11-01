@@ -635,7 +635,10 @@
     "scoreVerifiedDone": "Zweryfikowano",
     "scoreWarnings": "Ostrzeżenia",
     "scoreWarningsDesc": "Za każde ostrzeżenie",
-    "taskClubPost": "Post w klubie (do 5 dziennie)"
+    "taskClubPost": "Post w klubie (do 5 dziennie)",
+    "makeMain": "Ustaw jako główne",
+    "addPhoto": "Dodaj",
+    "makeMainFailed": "Nie udało się zmienić głównego zdjęcia — spróbuj ponownie"
   },
   "admin": {
     "panel": "Panel administratora",
@@ -741,7 +744,8 @@
     "tabVerification": "Weryfikacja",
     "tabTools": "Narzędzia",
     "needsAttention": "Wymaga uwagi",
-    "allClear": "Nic nie czeka na sprawdzenie"
+    "allClear": "Nic nie czeka na sprawdzenie",
+    "banConfirm": "Kliknij ponownie, aby zbanować"
   },
   "legal": {
     "termsTitle": "Regulamin",

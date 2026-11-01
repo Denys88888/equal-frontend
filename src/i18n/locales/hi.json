@@ -621,7 +621,10 @@
     "scoreVerifiedDone": "सत्यापित",
     "scoreWarnings": "चेतावनियाँ",
     "scoreWarningsDesc": "हर चेतावनी पर",
-    "taskClubPost": "किसी क्लब में पोस्ट करें (दिन में 5 तक)"
+    "taskClubPost": "किसी क्लब में पोस्ट करें (दिन में 5 तक)",
+    "makeMain": "मुख्य फ़ोटो बनाएँ",
+    "addPhoto": "जोड़ें",
+    "makeMainFailed": "मुख्य फ़ोटो बदली नहीं जा सकी — फिर कोशिश करें"
   },
   "admin": {
     "panel": "एडमिन पैनल",
@@ -727,7 +730,8 @@
     "tabVerification": "सत्यापन",
     "tabTools": "टूल",
     "needsAttention": "ध्यान चाहिए",
-    "allClear": "समीक्षा के लिए कुछ भी बाकी नहीं"
+    "allClear": "समीक्षा के लिए कुछ भी बाकी नहीं",
+    "banConfirm": "प्रतिबंधित करने के लिए फिर से टैप करें"
   },
   "legal": {
     "termsTitle": "सेवा की शर्तें",

@@ -621,7 +621,10 @@
     "scoreVerifiedDone": "Doğrulandı",
     "scoreWarnings": "Uyarılar",
     "scoreWarningsDesc": "Uyarı başına",
-    "taskClubPost": "Kulüpte paylaşım yap (günde en fazla 5)"
+    "taskClubPost": "Kulüpte paylaşım yap (günde en fazla 5)",
+    "makeMain": "Ana fotoğraf yap",
+    "addPhoto": "Ekle",
+    "makeMainFailed": "Ana fotoğraf değiştirilemedi — tekrar dene"
   },
   "admin": {
     "panel": "Yönetim paneli",
@@ -727,7 +730,8 @@
     "tabVerification": "Doğrulama",
     "tabTools": "Araçlar",
     "needsAttention": "İlgilenilmesi gerekenler",
-    "allClear": "İnceleme bekleyen bir şey yok"
+    "allClear": "İnceleme bekleyen bir şey yok",
+    "banConfirm": "Yasaklamak için tekrar dokun"
   },
   "legal": {
     "termsTitle": "Kullanım Koşulları",

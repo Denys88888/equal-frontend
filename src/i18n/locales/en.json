@@ -621,7 +621,10 @@
     "scoreVerifiedDone": "Verified",
     "scoreWarnings": "Warnings",
     "scoreWarningsDesc": "Per moderator warning",
-    "taskClubPost": "Post in a club (up to 5 a day)"
+    "taskClubPost": "Post in a club (up to 5 a day)",
+    "makeMain": "Make main photo",
+    "addPhoto": "Add",
+    "makeMainFailed": "Couldn't change the main photo — try again"
   },
   "admin": {
     "panel": "Admin Panel",
@@ -727,7 +730,8 @@
     "tabVerification": "Verification",
     "tabTools": "Tools",
     "needsAttention": "Needs attention",
-    "allClear": "Nothing is waiting for review"
+    "allClear": "Nothing is waiting for review",
+    "banConfirm": "Tap again to ban"
   },
   "legal": {
     "termsTitle": "Terms of Service",

@@ -14,6 +14,9 @@ import { useToast } from '@/hooks/useToast';
 import { api } from '@/api/client';
 import { getPublicProfile, discoverApi, type PublicProfile as PublicProfileData } from '@/api/discover';
 
+// index.html's <title>, read once at load before any page changes it.
+const APP_TITLE = typeof document !== 'undefined' ? document.title : 'Equal';
+
 const easeOutExpo = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
 /** Block/Report menu — reachable from clubs pre-match, so this screen needs
@@ -87,7 +90,7 @@ export default function PublicProfile() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { showToast } = useToast();
-  const { isAuthenticated, isLoading: authLoading } = useAuth();
+  const { isAuthenticated, isLoading: authLoading, user: authUser } = useAuth();
 
   const [profile, setProfile] = useState<PublicProfileData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -123,7 +126,10 @@ export default function PublicProfile() {
   useEffect(() => {
     const displayName = profile?.name ?? askTarget?.name;
     if (!displayName) return;
-    const prevTitle = document.title;
+    // The effect re-runs as the profile and counts load, so the title it saw
+    // could already be this page's own; restoring that left "Ask Vlad
+    // anything" on every screen after. The app's own title is restored instead.
+    const prevTitle = APP_TITLE;
     document.title = t('ask.ogTitle', { defaultValue: `Ask ${displayName} anything on Equal`, name: displayName });
 
     const setMeta = (attr: 'property' | 'name', key: string, value: string) => {
@@ -150,10 +156,12 @@ export default function PublicProfile() {
 
   const handleCopyLink = async () => {
     const url = `${window.location.origin}/#/u/${encodeURIComponent(handle)}`;
-    const text = t('ask.shareText', {
-      defaultValue: `Ask me anything, anonymously 💜 ${url}`,
-      url,
-    });
+    // "Ask me anything" is the owner's own invitation. Copying someone else's
+    // link used it too, so the text spoke in the wrong person's voice.
+    const own = !!authUser && authUser.id === profile?.id;
+    const text = own
+      ? t('ask.shareText', { defaultValue: `Ask me anything, anonymously 💜 ${url}`, url })
+      : `${t('ask.ogTitle', { defaultValue: `Ask ${profile?.name ?? ''} anything on Equal`, name: profile?.name ?? '' })} ${url}`;
     try {
       await navigator.clipboard.writeText(text);
       showToast('success', t('ask.linkCopied', { defaultValue: 'Link copied!' }));

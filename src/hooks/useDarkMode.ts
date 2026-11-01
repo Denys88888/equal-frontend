@@ -10,11 +10,6 @@ interface UseDarkModeReturn {
   setTheme: (mode: ThemeMode) => void;
 }
 
-function getSystemPreference(): ThemeMode {
-  if (typeof window === 'undefined') return 'light';
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-}
-
 function getStoredTheme(): ThemeMode | null {
   if (typeof window === 'undefined') return null;
   try {
@@ -37,10 +32,10 @@ function applyTheme(mode: ThemeMode): void {
 }
 
 export function useDarkMode(): UseDarkModeReturn {
-  const [isDark, setIsDark] = useState<boolean>(() => {
-    const stored = getStoredTheme();
-    return stored === 'dark' || (stored === null && getSystemPreference() === 'dark');
-  });
+  // Only an explicit choice counts. Following the phone's dark setting here
+  // switched the app dark the moment Settings opened — and only there, since
+  // nothing else applied it — then wrote that guess down as the user's choice.
+  const [isDark, setIsDark] = useState<boolean>(() => getStoredTheme() === 'dark');
 
   useEffect(() => {
     const mode = isDark ? 'dark' : 'light';

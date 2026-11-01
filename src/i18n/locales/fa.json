@@ -621,7 +621,10 @@
     "scoreVerifiedDone": "تأییدشده",
     "scoreWarnings": "اخطارها",
     "scoreWarningsDesc": "به ازای هر اخطار",
-    "taskClubPost": "پست در باشگاه (حداکثر ۵ بار در روز)"
+    "taskClubPost": "پست در باشگاه (حداکثر ۵ بار در روز)",
+    "makeMain": "تنظیم به‌عنوان عکس اصلی",
+    "addPhoto": "افزودن",
+    "makeMainFailed": "تغییر عکس اصلی ممکن نشد — دوباره امتحان کن"
   },
   "admin": {
     "panel": "پنل مدیریت",
@@ -727,7 +730,8 @@
     "tabVerification": "احراز هویت",
     "tabTools": "ابزارها",
     "needsAttention": "نیاز به رسیدگی",
-    "allClear": "چیزی در انتظار بررسی نیست"
+    "allClear": "چیزی در انتظار بررسی نیست",
+    "banConfirm": "برای مسدود کردن دوباره بزن"
   },
   "legal": {
     "termsTitle": "شرایط خدمات",

@@ -614,7 +614,10 @@
     "scoreVerifiedDone": "確認済み",
     "scoreWarnings": "警告",
     "scoreWarningsDesc": "警告1回ごと",
-    "taskClubPost": "クラブに投稿（1日5回まで）"
+    "taskClubPost": "クラブに投稿（1日5回まで）",
+    "makeMain": "メイン写真にする",
+    "addPhoto": "追加",
+    "makeMainFailed": "メイン写真を変更できませんでした — もう一度お試しください"
   },
   "admin": {
     "panel": "管理パネル",
@@ -720,7 +723,8 @@
     "tabVerification": "本人確認",
     "tabTools": "ツール",
     "needsAttention": "要対応",
-    "allClear": "確認待ちはありません"
+    "allClear": "確認待ちはありません",
+    "banConfirm": "もう一度タップしてBAN"
   },
   "legal": {
     "termsTitle": "利用規約",

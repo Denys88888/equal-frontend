@@ -33,6 +33,12 @@ if (/Android/i.test(navigator.userAgent)) {
 
 watchCrashes();
 
+// The dark theme was applied only by the toggle on the Settings screen, so a
+// reload on any other screen came back light. Apply the saved choice first.
+try {
+  if (localStorage.getItem('equal-theme') === 'dark') document.documentElement.classList.add('dark');
+} catch { /* storage unavailable */ }
+
 // The boundary inside App can't catch a crash in the providers around it;
 // without this one such a crash left a blank white page and nothing else.
 createRoot(document.getElementById('root')!).render(

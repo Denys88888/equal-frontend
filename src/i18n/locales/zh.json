@@ -614,7 +614,10 @@
     "scoreVerifiedDone": "已认证",
     "scoreWarnings": "警告",
     "scoreWarningsDesc": "每次警告",
-    "taskClubPost": "在俱乐部发帖（每天最多 5 次）"
+    "taskClubPost": "在俱乐部发帖（每天最多 5 次）",
+    "makeMain": "设为主照片",
+    "addPhoto": "添加",
+    "makeMainFailed": "无法更换主照片 — 请重试"
   },
   "admin": {
     "panel": "管理面板",
@@ -720,7 +723,8 @@
     "tabVerification": "认证",
     "tabTools": "工具",
     "needsAttention": "待处理",
-    "allClear": "没有待审核的内容"
+    "allClear": "没有待审核的内容",
+    "banConfirm": "再点一次即可封禁"
   },
   "legal": {
     "termsTitle": "服务条款",

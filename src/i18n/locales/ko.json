@@ -614,7 +614,10 @@
     "scoreVerifiedDone": "인증됨",
     "scoreWarnings": "경고",
     "scoreWarningsDesc": "경고 1회당",
-    "taskClubPost": "클럽에 게시하기 (하루 최대 5회)"
+    "taskClubPost": "클럽에 게시하기 (하루 최대 5회)",
+    "makeMain": "대표 사진으로 설정",
+    "addPhoto": "추가",
+    "makeMainFailed": "대표 사진을 변경할 수 없어요 — 다시 시도해 주세요"
   },
   "admin": {
     "panel": "관리자 패널",
@@ -720,7 +723,8 @@
     "tabVerification": "인증",
     "tabTools": "도구",
     "needsAttention": "처리 필요",
-    "allClear": "검토 대기 중인 항목이 없어요"
+    "allClear": "검토 대기 중인 항목이 없어요",
+    "banConfirm": "한 번 더 누르면 차단돼요"
   },
   "legal": {
     "termsTitle": "이용약관",

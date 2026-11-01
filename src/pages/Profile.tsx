@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { getMe, updateMe, uploadPhoto, deletePhoto, getAchievements, getMyGifts } from '@/api/users';
+import { getMe, updateMe, uploadPhoto, deletePhoto, reorderPhotos, getAchievements, getMyGifts } from '@/api/users';
 import GiftShowcase from '@/components/GiftShowcase';
 import type { GiftKind } from '@/lib/gifts';
 import {
@@ -250,10 +250,13 @@ function PhotoLightbox({
   photos,
   initialIndex,
   onClose,
+  onMakeMain,
 }: {
   photos: string[];
   initialIndex: number;
   onClose: () => void;
+  /** Only on your own profile. */
+  onMakeMain?: (index: number) => void;
 }) {
   const [current, setCurrent] = useState(initialIndex);
   const { t } = useTranslation();
@@ -276,6 +279,19 @@ function PhotoLightbox({
         </span>
         <div className="w-10" />
       </div>
+      {/* The first photo is the main one; there was no way to promote another
+          one short of uploading it again. */}
+      {onMakeMain && current > 0 && (
+        <div className="flex justify-center -mt-2">
+          <button
+            onClick={(e) => { e.stopPropagation(); onMakeMain(current); onClose(); }}
+            className="px-4 h-9 rounded-full text-sm font-semibold text-white"
+            style={{ backgroundColor: '#BB83C9', fontFamily: "'Outfit', system-ui, sans-serif" }}
+          >
+            {t('profile2.makeMain', { defaultValue: 'Make main photo' })}
+          </button>
+        </div>
+      )}
       <div className="flex-1 flex items-center justify-center px-4" onClick={(e) => e.stopPropagation()}>
         <img
           src={photos[current]}
@@ -352,6 +368,18 @@ export default function Profile() {
       showToast('error', t('profile2.photoUploadFailed', { defaultValue: 'Could not upload photo' }));
     } finally {
       setPhotoUploading(false);
+    }
+  };
+
+  const handleMakeMain = async (index: number) => {
+    const snapshot = user.photos;
+    const next = [snapshot[index], ...snapshot.filter((_, i) => i !== index)];
+    setUser((prev) => ({ ...prev, photos: next }));
+    try {
+      await reorderPhotos(next.map((p) => p.id));
+    } catch {
+      setUser((prev) => ({ ...prev, photos: snapshot }));
+      showToast('error', t('profile2.makeMainFailed', { defaultValue: "Couldn't change the main photo — try again" }));
     }
   };
 
@@ -763,7 +791,8 @@ export default function Profile() {
               className="text-base font-semibold text-[#BB83C9]"
               style={{ fontFamily: "'Outfit', system-ui, sans-serif", opacity: photoUploading || user.photos.length >= 9 ? 0.5 : 1 }}
             >
-              {t('profile.edit')}
+              {/* It adds a photo; it used to be labelled "Edit". */}
+              {t('profile2.addPhoto', { defaultValue: 'Add' })}
             </button>
           </div>
           <input
@@ -1069,6 +1098,7 @@ export default function Profile() {
             photos={user.photos.map((p) => p.url)}
             initialIndex={lightboxIndex}
             onClose={() => setLightboxIndex(null)}
+            onMakeMain={handleMakeMain}
           />
         )}
       </AnimatePresence>

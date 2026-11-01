@@ -621,7 +621,10 @@
     "scoreVerifiedDone": "Vahvistettu",
     "scoreWarnings": "Varoitukset",
     "scoreWarningsDesc": "Per varoitus",
-    "taskClubPost": "Julkaise klubissa (enintään 5 päivässä)"
+    "taskClubPost": "Julkaise klubissa (enintään 5 päivässä)",
+    "makeMain": "Aseta pääkuvaksi",
+    "addPhoto": "Lisää",
+    "makeMainFailed": "Pääkuvaa ei voitu vaihtaa — yritä uudelleen"
   },
   "admin": {
     "panel": "Ylläpitopaneeli",
@@ -727,7 +730,8 @@
     "tabVerification": "Vahvistus",
     "tabTools": "Työkalut",
     "needsAttention": "Vaatii huomiota",
-    "allClear": "Mikään ei odota tarkistusta"
+    "allClear": "Mikään ei odota tarkistusta",
+    "banConfirm": "Napauta uudelleen estääksesi"
   },
   "legal": {
     "termsTitle": "Käyttöehdot",

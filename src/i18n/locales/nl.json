@@ -621,7 +621,10 @@
     "scoreVerifiedDone": "Geverifieerd",
     "scoreWarnings": "Waarschuwingen",
     "scoreWarningsDesc": "Per waarschuwing",
-    "taskClubPost": "Post in een club (tot 5 per dag)"
+    "taskClubPost": "Post in een club (tot 5 per dag)",
+    "makeMain": "Als hoofdfoto instellen",
+    "addPhoto": "Toevoegen",
+    "makeMainFailed": "Hoofdfoto kon niet worden gewijzigd — probeer het opnieuw"
   },
   "admin": {
     "panel": "Beheerpaneel",
@@ -727,7 +730,8 @@
     "tabVerification": "Verificatie",
     "tabTools": "Hulpmiddelen",
     "needsAttention": "Vraagt aandacht",
-    "allClear": "Niets wacht op beoordeling"
+    "allClear": "Niets wacht op beoordeling",
+    "banConfirm": "Tik nogmaals om te bannen"
   },
   "legal": {
     "termsTitle": "Servicevoorwaarden",

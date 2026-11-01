@@ -614,7 +614,10 @@
     "scoreVerifiedDone": "Đã xác minh",
     "scoreWarnings": "Cảnh cáo",
     "scoreWarningsDesc": "Mỗi cảnh cáo",
-    "taskClubPost": "Đăng bài trong câu lạc bộ (tối đa 5 lần/ngày)"
+    "taskClubPost": "Đăng bài trong câu lạc bộ (tối đa 5 lần/ngày)",
+    "makeMain": "Đặt làm ảnh chính",
+    "addPhoto": "Thêm",
+    "makeMainFailed": "Không thể đổi ảnh chính — hãy thử lại"
   },
   "admin": {
     "panel": "Bảng quản trị",
@@ -720,7 +723,8 @@
     "tabVerification": "Xác minh",
     "tabTools": "Công cụ",
     "needsAttention": "Cần xử lý",
-    "allClear": "Không có gì đang chờ xem xét"
+    "allClear": "Không có gì đang chờ xem xét",
+    "banConfirm": "Nhấn lần nữa để cấm"
   },
   "legal": {
     "termsTitle": "Điều khoản dịch vụ",

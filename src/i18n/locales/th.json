@@ -614,7 +614,10 @@
     "scoreVerifiedDone": "ยืนยันแล้ว",
     "scoreWarnings": "การเตือน",
     "scoreWarningsDesc": "ต่อการเตือนหนึ่งครั้ง",
-    "taskClubPost": "โพสต์ในคลับ (สูงสุด 5 ครั้งต่อวัน)"
+    "taskClubPost": "โพสต์ในคลับ (สูงสุด 5 ครั้งต่อวัน)",
+    "makeMain": "ตั้งเป็นรูปหลัก",
+    "addPhoto": "เพิ่ม",
+    "makeMainFailed": "เปลี่ยนรูปหลักไม่สำเร็จ — ลองอีกครั้ง"
   },
   "admin": {
     "panel": "แผงผู้ดูแลระบบ",
@@ -720,7 +723,8 @@
     "tabVerification": "การยืนยันตัวตน",
     "tabTools": "เครื่องมือ",
     "needsAttention": "ต้องดำเนินการ",
-    "allClear": "ไม่มีรายการรอตรวจสอบ"
+    "allClear": "ไม่มีรายการรอตรวจสอบ",
+    "banConfirm": "แตะอีกครั้งเพื่อแบน"
   },
   "legal": {
     "termsTitle": "ข้อกำหนดในการให้บริการ",

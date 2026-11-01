@@ -621,7 +621,10 @@
     "scoreVerifiedDone": "যাচাইকৃত",
     "scoreWarnings": "সতর্কতা",
     "scoreWarningsDesc": "প্রতি সতর্কতায়",
-    "taskClubPost": "ক্লাবে পোস্ট করুন (দিনে সর্বোচ্চ ৫টি)"
+    "taskClubPost": "ক্লাবে পোস্ট করুন (দিনে সর্বোচ্চ ৫টি)",
+    "makeMain": "প্রধান ছবি করুন",
+    "addPhoto": "যোগ করুন",
+    "makeMainFailed": "প্রধান ছবি পরিবর্তন করা যায়নি — আবার চেষ্টা করুন"
   },
   "admin": {
     "panel": "অ্যাডমিন প্যানেল",
@@ -727,7 +730,8 @@
     "tabVerification": "যাচাই",
     "tabTools": "টুল",
     "needsAttention": "মনোযোগ দরকার",
-    "allClear": "পর্যালোচনার জন্য কিছু অপেক্ষায় নেই"
+    "allClear": "পর্যালোচনার জন্য কিছু অপেক্ষায় নেই",
+    "banConfirm": "নিষিদ্ধ করতে আবার ট্যাপ করুন"
   },
   "legal": {
     "termsTitle": "পরিষেবার শর্তাবলী",

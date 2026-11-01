@@ -621,7 +621,10 @@
     "scoreVerifiedDone": "Verifiziert",
     "scoreWarnings": "Verwarnungen",
     "scoreWarningsDesc": "Pro Verwarnung",
-    "taskClubPost": "Beitrag in einem Club (bis zu 5 pro Tag)"
+    "taskClubPost": "Beitrag in einem Club (bis zu 5 pro Tag)",
+    "makeMain": "Als Hauptfoto festlegen",
+    "addPhoto": "Hinzufügen",
+    "makeMainFailed": "Hauptfoto konnte nicht geändert werden — versuch es erneut"
   },
   "admin": {
     "panel": "Admin-Panel",
@@ -727,7 +730,8 @@
     "tabVerification": "Verifizierung",
     "tabTools": "Werkzeuge",
     "needsAttention": "Braucht Aufmerksamkeit",
-    "allClear": "Nichts wartet auf Prüfung"
+    "allClear": "Nichts wartet auf Prüfung",
+    "banConfirm": "Zum Sperren erneut tippen"
   },
   "legal": {
     "termsTitle": "Nutzungsbedingungen",

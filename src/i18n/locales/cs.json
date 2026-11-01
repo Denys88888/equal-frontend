@@ -635,7 +635,10 @@
     "scoreVerifiedDone": "Ověřeno",
     "scoreWarnings": "Varování",
     "scoreWarningsDesc": "Za každé varování",
-    "taskClubPost": "Příspěvek v klubu (až 5 denně)"
+    "taskClubPost": "Příspěvek v klubu (až 5 denně)",
+    "makeMain": "Nastavit jako hlavní",
+    "addPhoto": "Přidat",
+    "makeMainFailed": "Hlavní fotku se nepodařilo změnit — zkus to znovu"
   },
   "admin": {
     "panel": "Panel správce",
@@ -741,7 +744,8 @@
     "tabVerification": "Ověření",
     "tabTools": "Nástroje",
     "needsAttention": "Vyžaduje pozornost",
-    "allClear": "Nic nečeká na kontrolu"
+    "allClear": "Nic nečeká na kontrolu",
+    "banConfirm": "Klepni znovu pro zablokování"
   },
   "legal": {
     "termsTitle": "Podmínky služby",

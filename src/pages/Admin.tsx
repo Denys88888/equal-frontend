@@ -542,6 +542,19 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
     u.name.toLowerCase().includes(search.toLowerCase())
   );
 
+  // Banning took a single tap on a button right under "View profile" — easy
+  // to hit by accident on a real person. The first tap now only arms it.
+  const [banArmed, setBanArmed] = useState<string | null>(null);
+  const handleBanTap = (userId: string) => {
+    if (banArmed === userId) {
+      setBanArmed(null);
+      void handleBanUser(userId);
+      return;
+    }
+    setBanArmed(userId);
+    setTimeout(() => setBanArmed((cur) => (cur === userId ? null : cur)), 4000);
+  };
+
   const handleBanUser = async (userId: string) => {
     const snapshot = users;
     setUsers((prev) => prev.map((u) => (u.id === userId ? { ...u, status: 'Banned' as const } : u)));
@@ -748,10 +761,12 @@ function UserManagement({ showToast }: { showToast: (msg: string) => void }) {
                 {selectedUser.status !== 'Banned' ? (
                   <Button
                     className="w-full h-11 rounded-full font-semibold bg-[#E86A6A] text-white hover:bg-[#E86A6A]/90"
-                    onClick={() => handleBanUser(selectedUser.id)}
+                    onClick={() => handleBanTap(selectedUser.id)}
                   >
                     <Ban size={16} className="mr-2" />
-                    {t('admin.banUser')}
+                    {banArmed === selectedUser.id
+                      ? t('admin.banConfirm', { defaultValue: 'Tap again to ban' })
+                      : t('admin.banUser')}
                   </Button>
                 ) : (
                   <Button

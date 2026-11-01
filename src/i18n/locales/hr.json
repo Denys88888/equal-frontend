@@ -628,7 +628,10 @@
     "scoreVerifiedDone": "Verificirano",
     "scoreWarnings": "Upozorenja",
     "scoreWarningsDesc": "Po upozorenju",
-    "taskClubPost": "Objava u klubu (do 5 dnevno)"
+    "taskClubPost": "Objava u klubu (do 5 dnevno)",
+    "makeMain": "Postavi kao glavnu",
+    "addPhoto": "Dodaj",
+    "makeMainFailed": "Glavnu fotografiju nije moguće promijeniti — pokušaj ponovno"
   },
   "admin": {
     "panel": "Admin panel",
@@ -734,7 +737,8 @@
     "tabVerification": "Provjera",
     "tabTools": "Alati",
     "needsAttention": "Treba pažnju",
-    "allClear": "Ništa ne čeka pregled"
+    "allClear": "Ništa ne čeka pregled",
+    "banConfirm": "Dodirni ponovno za zabranu"
   },
   "legal": {
     "termsTitle": "Uvjeti korištenja",

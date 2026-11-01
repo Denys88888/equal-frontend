@@ -628,7 +628,10 @@
     "scoreVerifiedDone": "Verificat",
     "scoreWarnings": "Avertismente",
     "scoreWarningsDesc": "Per avertisment",
-    "taskClubPost": "Postează într-un club (până la 5 pe zi)"
+    "taskClubPost": "Postează într-un club (până la 5 pe zi)",
+    "makeMain": "Setează ca principală",
+    "addPhoto": "Adaugă",
+    "makeMainFailed": "Fotografia principală nu a putut fi schimbată — încearcă din nou"
   },
   "admin": {
     "panel": "Panou de administrare",
@@ -734,7 +737,8 @@
     "tabVerification": "Verificare",
     "tabTools": "Instrumente",
     "needsAttention": "Necesită atenție",
-    "allClear": "Nimic nu așteaptă verificare"
+    "allClear": "Nimic nu așteaptă verificare",
+    "banConfirm": "Atinge din nou pentru a bana"
   },
   "legal": {
     "termsTitle": "Termeni de utilizare",

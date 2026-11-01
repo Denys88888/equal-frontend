@@ -628,7 +628,10 @@
     "scoreVerifiedDone": "מאומת",
     "scoreWarnings": "אזהרות",
     "scoreWarningsDesc": "לכל אזהרה",
-    "taskClubPost": "פרסום במועדון (עד 5 ביום)"
+    "taskClubPost": "פרסום במועדון (עד 5 ביום)",
+    "makeMain": "הגדרה כתמונה ראשית",
+    "addPhoto": "הוספה",
+    "makeMainFailed": "לא ניתן לשנות את התמונה הראשית — נסו שוב"
   },
   "admin": {
     "panel": "פאנל ניהול",
@@ -734,7 +737,8 @@
     "tabVerification": "אימות",
     "tabTools": "כלים",
     "needsAttention": "דורש טיפול",
-    "allClear": "אין פריטים שממתינים לבדיקה"
+    "allClear": "אין פריטים שממתינים לבדיקה",
+    "banConfirm": "הקישו שוב כדי לחסום"
   },
   "legal": {
     "termsTitle": "תנאי שימוש",

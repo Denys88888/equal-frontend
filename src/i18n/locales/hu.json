@@ -621,7 +621,10 @@
     "scoreVerifiedDone": "Ellenőrizve",
     "scoreWarnings": "Figyelmeztetések",
     "scoreWarningsDesc": "Figyelmeztetésenként",
-    "taskClubPost": "Bejegyzés egy klubban (naponta legfeljebb 5)"
+    "taskClubPost": "Bejegyzés egy klubban (naponta legfeljebb 5)",
+    "makeMain": "Legyen ez a fő fotó",
+    "addPhoto": "Hozzáadás",
+    "makeMainFailed": "Nem sikerült módosítani a fő fotót — próbáld újra"
   },
   "admin": {
     "panel": "Admin panel",
@@ -727,7 +730,8 @@
     "tabVerification": "Ellenőrzés",
     "tabTools": "Eszközök",
     "needsAttention": "Figyelmet igényel",
-    "allClear": "Semmi sem vár ellenőrzésre"
+    "allClear": "Semmi sem vár ellenőrzésre",
+    "banConfirm": "Koppints újra a tiltáshoz"
   },
   "legal": {
     "termsTitle": "Felhasználási feltételek",

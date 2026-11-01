@@ -649,7 +649,10 @@
     "scoreVerifiedDone": "تم التحقق",
     "scoreWarnings": "التحذيرات",
     "scoreWarningsDesc": "لكل تحذير",
-    "taskClubPost": "انشر في نادٍ (حتى 5 مرات يوميًا)"
+    "taskClubPost": "انشر في نادٍ (حتى 5 مرات يوميًا)",
+    "makeMain": "اجعلها الصورة الرئيسية",
+    "addPhoto": "إضافة",
+    "makeMainFailed": "تعذّر تغيير الصورة الرئيسية — حاول مرة أخرى"
   },
   "admin": {
     "panel": "لوحة الإدارة",
@@ -755,7 +758,8 @@
     "tabVerification": "التحقق",
     "tabTools": "الأدوات",
     "needsAttention": "يحتاج إلى متابعة",
-    "allClear": "لا شيء بانتظار المراجعة"
+    "allClear": "لا شيء بانتظار المراجعة",
+    "banConfirm": "اضغط مرة أخرى للحظر"
   },
   "legal": {
     "termsTitle": "شروط الخدمة",

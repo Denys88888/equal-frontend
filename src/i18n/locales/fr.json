@@ -628,7 +628,10 @@
     "scoreVerifiedDone": "Vérifié",
     "scoreWarnings": "Avertissements",
     "scoreWarningsDesc": "Par avertissement",
-    "taskClubPost": "Publie dans un club (jusqu'à 5 par jour)"
+    "taskClubPost": "Publie dans un club (jusqu'à 5 par jour)",
+    "makeMain": "Définir comme photo principale",
+    "addPhoto": "Ajouter",
+    "makeMainFailed": "Impossible de changer la photo principale — réessaie"
   },
   "admin": {
     "panel": "Panneau admin",
@@ -734,7 +737,8 @@
     "tabVerification": "Vérification",
     "tabTools": "Outils",
     "needsAttention": "À traiter",
-    "allClear": "Rien n'attend de vérification"
+    "allClear": "Rien n'attend de vérification",
+    "banConfirm": "Touche à nouveau pour bannir"
   },
   "legal": {
     "termsTitle": "Conditions d'utilisation",

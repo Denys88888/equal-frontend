@@ -621,7 +621,10 @@
     "scoreVerifiedDone": "Na-verify",
     "scoreWarnings": "Mga babala",
     "scoreWarningsDesc": "Bawat babala",
-    "taskClubPost": "Mag-post sa isang club (hanggang 5 bawat araw)"
+    "taskClubPost": "Mag-post sa isang club (hanggang 5 bawat araw)",
+    "makeMain": "Gawing pangunahing larawan",
+    "addPhoto": "Idagdag",
+    "makeMainFailed": "Hindi mapalitan ang pangunahing larawan — subukan ulit"
   },
   "admin": {
     "panel": "Admin Panel",
@@ -727,7 +730,8 @@
     "tabVerification": "Beripikasyon",
     "tabTools": "Mga tool",
     "needsAttention": "Kailangang asikasuhin",
-    "allClear": "Walang naghihintay ng pagsusuri"
+    "allClear": "Walang naghihintay ng pagsusuri",
+    "banConfirm": "I-tap ulit para i-ban"
   },
   "legal": {
     "termsTitle": "Mga Tuntunin ng Serbisyo",

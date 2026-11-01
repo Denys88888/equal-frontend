@@ -614,7 +614,10 @@
     "scoreVerifiedDone": "Terverifikasi",
     "scoreWarnings": "Peringatan",
     "scoreWarningsDesc": "Per peringatan",
-    "taskClubPost": "Posting di klub (maks. 5 per hari)"
+    "taskClubPost": "Posting di klub (maks. 5 per hari)",
+    "makeMain": "Jadikan foto utama",
+    "addPhoto": "Tambah",
+    "makeMainFailed": "Tidak dapat mengubah foto utama — coba lagi"
   },
   "admin": {
     "panel": "Panel admin",
@@ -720,7 +723,8 @@
     "tabVerification": "Verifikasi",
     "tabTools": "Alat",
     "needsAttention": "Perlu perhatian",
-    "allClear": "Tidak ada yang menunggu ditinjau"
+    "allClear": "Tidak ada yang menunggu ditinjau",
+    "banConfirm": "Ketuk lagi untuk memblokir"
   },
   "legal": {
     "termsTitle": "Ketentuan Layanan",

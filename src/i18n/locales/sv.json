@@ -621,7 +621,10 @@
     "scoreVerifiedDone": "Verifierad",
     "scoreWarnings": "Varningar",
     "scoreWarningsDesc": "Per varning",
-    "taskClubPost": "Gör ett inlägg i en klubb (upp till 5 per dag)"
+    "taskClubPost": "Gör ett inlägg i en klubb (upp till 5 per dag)",
+    "makeMain": "Gör till huvudbild",
+    "addPhoto": "Lägg till",
+    "makeMainFailed": "Kunde inte byta huvudbild — försök igen"
   },
   "admin": {
     "panel": "Adminpanel",
@@ -727,7 +730,8 @@
     "tabVerification": "Verifiering",
     "tabTools": "Verktyg",
     "needsAttention": "Behöver åtgärdas",
-    "allClear": "Inget väntar på granskning"
+    "allClear": "Inget väntar på granskning",
+    "banConfirm": "Tryck igen för att stänga av"
   },
   "legal": {
     "termsTitle": "Användarvillkor",

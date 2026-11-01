@@ -621,7 +621,10 @@
     "scoreVerifiedDone": "Imethibitishwa",
     "scoreWarnings": "Maonyo",
     "scoreWarningsDesc": "Kwa kila onyo",
-    "taskClubPost": "Chapisha kwenye klabu (hadi mara 5 kwa siku)"
+    "taskClubPost": "Chapisha kwenye klabu (hadi mara 5 kwa siku)",
+    "makeMain": "Fanya kuwa picha kuu",
+    "addPhoto": "Ongeza",
+    "makeMainFailed": "Imeshindwa kubadilisha picha kuu — jaribu tena"
   },
   "admin": {
     "panel": "Kidhibiti cha Msimamizi",
@@ -727,7 +730,8 @@
     "tabVerification": "Uthibitisho",
     "tabTools": "Zana",
     "needsAttention": "Inahitaji kushughulikiwa",
-    "allClear": "Hakuna kinachosubiri ukaguzi"
+    "allClear": "Hakuna kinachosubiri ukaguzi",
+    "banConfirm": "Gusa tena ili kumzuia"
   },
   "legal": {
     "termsTitle": "Masharti ya Huduma",

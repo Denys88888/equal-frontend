@@ -614,7 +614,10 @@
     "scoreVerifiedDone": "Disahkan",
     "scoreWarnings": "Amaran",
     "scoreWarningsDesc": "Bagi setiap amaran",
-    "taskClubPost": "Siarkan dalam kelab (sehingga 5 sehari)"
+    "taskClubPost": "Siarkan dalam kelab (sehingga 5 sehari)",
+    "makeMain": "Jadikan foto utama",
+    "addPhoto": "Tambah",
+    "makeMainFailed": "Tidak dapat menukar foto utama — cuba lagi"
   },
   "admin": {
     "panel": "Panel Pentadbir",
@@ -720,7 +723,8 @@
     "tabVerification": "Pengesahan",
     "tabTools": "Alatan",
     "needsAttention": "Perlu perhatian",
-    "allClear": "Tiada apa-apa menunggu semakan"
+    "allClear": "Tiada apa-apa menunggu semakan",
+    "banConfirm": "Ketik sekali lagi untuk mengharamkan"
   },
   "legal": {
     "termsTitle": "Terma Perkhidmatan",
