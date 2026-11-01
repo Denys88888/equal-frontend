@@ -8,7 +8,7 @@ import { watchAndroidNavBar } from '@/lib/systemNav'
 import { watchCrashes } from '@/lib/crashReport'
 import { watchIosKeyboard } from '@/lib/keyboard'
 import ErrorBoundary from '@/components/ErrorBoundary'
-import '@/i18n/config';
+import { i18nReady } from '@/i18n/config';
 import './index.css'
 import './styles/holo.css'
 import App from './App.tsx'
@@ -56,7 +56,7 @@ try {
 
 // The boundary inside App can't catch a crash in the providers around it;
 // without this one such a crash left a blank white page and nothing else.
-createRoot(document.getElementById('root')!).render(
+const renderApp = () => createRoot(document.getElementById('root')!).render(
   <ErrorBoundary>
     <HashRouter>
       <AuthProvider>
@@ -67,6 +67,11 @@ createRoot(document.getElementById('root')!).render(
     </HashRouter>
   </ErrorBoundary>,
 )
+
+// Draw the first screen in the user's language, which is now a separate small
+// file (i18n/config.ts). On a very slow connection don't wait more than a few
+// seconds for it: English first then, switched as soon as the file arrives.
+Promise.race([i18nReady, new Promise((resolve) => setTimeout(resolve, 4000))]).then(renderApp, renderApp)
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
