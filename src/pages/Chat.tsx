@@ -181,6 +181,11 @@ function formatClip(seconds: number) {
  * there was no audio element at all, so every voice message, sent or
  * received, played silence.
  */
+// Every voice bubble used to open its own media player up front to read the
+// clip's length. On iPhone each <audio> is a separate media engine, so a long
+// chat full of voice notes cost a lot of memory before anything was played.
+const IOS = typeof navigator !== 'undefined' && /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
 function VoicePlayer({ src, sent, fallbackDuration }: { src: string; sent: boolean; fallbackDuration?: string }) {
   const { t } = useTranslation();
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -223,7 +228,7 @@ function VoicePlayer({ src, sent, fallbackDuration }: { src: string; sent: boole
       <audio
         ref={audioRef}
         src={src}
-        preload="metadata"
+        preload={IOS ? 'none' : 'metadata'}
         onLoadedMetadata={(e) => { if (known(e.currentTarget.duration)) setDuration(e.currentTarget.duration); }}
         onDurationChange={(e) => { if (known(e.currentTarget.duration)) setDuration(e.currentTarget.duration); }}
         onTimeUpdate={(e) => setPosition(e.currentTarget.currentTime)}

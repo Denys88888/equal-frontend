@@ -28,10 +28,21 @@ const reducedMotion = () =>
  * one of them running.
  */
 export default function GiftAnimation({ kind, size = 56 }: { kind: GiftKind; size?: number }) {
-  const { ref: viewRef, inView } = useInView({ rootMargin: '120px' });
   const boxRef = useRef<HTMLDivElement>(null);
   const animRef = useRef<AnimationItem | null>(null);
   const [ready, setReady] = useState(false);
+  // Off screen the player is destroyed, not paused: a paused animation keeps
+  // its whole SVG tree, and a chat with many gifts piled them up — too much
+  // for an iPhone's web view. It is rebuilt when the gift scrolls back in.
+  const { ref: viewRef, inView } = useInView({
+    rootMargin: '120px',
+    onChange: (visible) => {
+      if (visible || !animRef.current) return;
+      animRef.current.destroy();
+      animRef.current = null;
+      setReady(false);
+    },
+  });
 
   useEffect(() => {
     if (!inView || animRef.current) return;
@@ -57,12 +68,7 @@ export default function GiftAnimation({ kind, size = 56 }: { kind: GiftKind; siz
     return () => { cancelled = true; };
   }, [inView, kind]);
 
-  useEffect(() => {
-    const anim = animRef.current;
-    if (!anim || reducedMotion()) return;
-    if (inView) anim.play();
-    else anim.pause();
-  }, [inView]);
+
 
   useEffect(() => () => {
     animRef.current?.destroy();
