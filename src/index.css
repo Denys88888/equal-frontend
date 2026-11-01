@@ -265,3 +265,10 @@ html.no-flexgap .flex.gap-7:not(.flex-col) > svg:only-child,
 html.no-flexgap .inline-flex.gap-7:not(.flex-col) > svg:only-child { margin-right: 1.75rem; }
 html[dir='rtl'].no-flexgap .flex.gap-7:not(.flex-col) > svg:only-child,
 html[dir='rtl'].no-flexgap .inline-flex.gap-7:not(.flex-col) > svg:only-child { margin-right: 0; margin-left: 1.75rem; }
+/* Before :focus-visible (Chrome 86) a tapped button kept the system focus
+   ring — a yellow box around tabs and icons. These are touch-only phones. */
+html.no-flexgap button:focus,
+html.no-flexgap [role='button']:focus,
+html.no-flexgap a:focus {
+  outline: none;
+}
