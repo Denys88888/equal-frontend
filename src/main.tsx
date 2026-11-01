@@ -33,6 +33,18 @@ if (/Android/i.test(navigator.userAgent)) {
 
 watchCrashes();
 
+// Old WebViews (before Chrome 84) ignore gap on flex containers; index.css
+// has margin fallbacks under html.no-flexgap. Measured, not guessed.
+try {
+  const probe = document.createElement('div');
+  probe.style.cssText = 'display:flex;flex-direction:column;row-gap:1px;position:absolute;visibility:hidden';
+  probe.appendChild(document.createElement('div'));
+  probe.appendChild(document.createElement('div'));
+  document.body.appendChild(probe);
+  if (probe.scrollHeight !== 1) document.documentElement.classList.add('no-flexgap');
+  probe.remove();
+} catch { /* leave layout as is */ }
+
 // The dark theme was applied only by the toggle on the Settings screen, so a
 // reload on any other screen came back light. Apply the saved choice first.
 try {

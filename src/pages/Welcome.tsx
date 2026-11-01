@@ -69,14 +69,14 @@ function TrustFooter() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4, delay: 1.5 }}
-      className="flex items-center justify-center gap-3 px-4 pb-4"
+      className="flex items-center justify-center px-4 pb-4"
       style={{ paddingBottom: 'calc(16px + var(--safe-bottom))' }}
     >
       {items.map((item, index) => {
         const Icon = item.icon;
         return (
-          <div key={index} className="flex items-center gap-1">
-            <Icon size={14} style={{ color: 'rgba(var(--charcoal-rgb), 0.35)' }} strokeWidth={2} />
+          <div key={index} className="flex items-center mx-1.5">
+            <Icon size={14} className="mr-1" style={{ color: 'rgba(var(--charcoal-rgb), 0.35)' }} strokeWidth={2} />
             <span
               className="text-xs font-medium whitespace-nowrap"
               style={{
@@ -213,11 +213,14 @@ export default function Welcome() {
         </motion.div>
 
         {/* Headline */}
-        <div className="px-5 mt-8 flex flex-wrap justify-center gap-x-2 gap-y-0">
+        {/* Word spacing by margin, not flex gap: WebView 83 and older (still on
+            phones without Google Play updates) ignore gap, and the headline
+            read "Youraffectionhasno price". */}
+        <div className="px-5 mt-8 flex flex-wrap justify-center">
           {headlineWords.map((word, i) => (
             <motion.span key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: easeOutExpo, delay: 0.7 + i * 0.08 }}
-              className="text-4xl font-bold text-[var(--charcoal)] text-center"
+              className="text-4xl font-bold text-[var(--charcoal)] text-center mx-1"
               style={{ fontFamily: "'Outfit', system-ui, sans-serif", fontSize: 36, lineHeight: 1.05, letterSpacing: '-1.08px' }}>
               {word}
             </motion.span>

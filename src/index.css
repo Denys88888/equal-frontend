@@ -3,6 +3,16 @@
 @tailwind utilities;
 
 @layer base {
+  /* Tailwind's preflight clears button backgrounds inside :where(), which
+     WebViews older than Chrome 88 (phones that no longer get WebView updates)
+     don't understand: the whole rule is dropped and every button got the grey
+     system background. A plain element selector works everywhere and is
+     still weaker than any bg-* utility. */
+  button {
+    background-color: transparent;
+    background-image: none;
+  }
+
   :root {
     --background: 40 23% 95%;
     --foreground: 0 0% 14%;
@@ -145,3 +155,71 @@ html.android {
   --tabbar-h: 64px;
   --tabbar-gap: 0px;
 }
+
+/* Flex gap fallback. WebViews before Chrome 84 (phones that stopped getting
+   WebView updates) ignore `gap` on flex containers, so words, icons and
+   buttons ran into each other ("Messages(3)", "My ClubsDiscover"). main.tsx
+   adds html.no-flexgap only there; these margins then stand in for gap.
+   Children pushed aside with ml-auto/mx-auto keep their auto margin. */
+html.no-flexgap .flex.gap-0\.5:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto),
+html.no-flexgap .inline-flex.gap-0\.5:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto) { margin-left: 0.125rem; }
+html[dir='rtl'].no-flexgap .flex.gap-0\.5:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto),
+html[dir='rtl'].no-flexgap .inline-flex.gap-0\.5:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto) { margin-left: 0; margin-right: 0.125rem; }
+html.no-flexgap .flex-col.gap-0\.5 > :not(:first-child):not(.mt-auto):not(.my-auto) { margin-top: 0.125rem; }
+html.no-flexgap .flex-wrap.gap-0\.5 > * { margin-right: 0.125rem; margin-bottom: 0.125rem; }
+html.no-flexgap .flex.gap-1:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto),
+html.no-flexgap .inline-flex.gap-1:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto) { margin-left: 0.25rem; }
+html[dir='rtl'].no-flexgap .flex.gap-1:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto),
+html[dir='rtl'].no-flexgap .inline-flex.gap-1:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto) { margin-left: 0; margin-right: 0.25rem; }
+html.no-flexgap .flex-col.gap-1 > :not(:first-child):not(.mt-auto):not(.my-auto) { margin-top: 0.25rem; }
+html.no-flexgap .flex-wrap.gap-1 > * { margin-right: 0.25rem; margin-bottom: 0.25rem; }
+html.no-flexgap .flex.gap-1\.5:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto),
+html.no-flexgap .inline-flex.gap-1\.5:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto) { margin-left: 0.375rem; }
+html[dir='rtl'].no-flexgap .flex.gap-1\.5:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto),
+html[dir='rtl'].no-flexgap .inline-flex.gap-1\.5:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto) { margin-left: 0; margin-right: 0.375rem; }
+html.no-flexgap .flex-col.gap-1\.5 > :not(:first-child):not(.mt-auto):not(.my-auto) { margin-top: 0.375rem; }
+html.no-flexgap .flex-wrap.gap-1\.5 > * { margin-right: 0.375rem; margin-bottom: 0.375rem; }
+html.no-flexgap .flex.gap-2:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto),
+html.no-flexgap .inline-flex.gap-2:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto) { margin-left: 0.5rem; }
+html[dir='rtl'].no-flexgap .flex.gap-2:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto),
+html[dir='rtl'].no-flexgap .inline-flex.gap-2:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto) { margin-left: 0; margin-right: 0.5rem; }
+html.no-flexgap .flex-col.gap-2 > :not(:first-child):not(.mt-auto):not(.my-auto) { margin-top: 0.5rem; }
+html.no-flexgap .flex-wrap.gap-2 > * { margin-right: 0.5rem; margin-bottom: 0.5rem; }
+html.no-flexgap .flex.gap-2\.5:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto),
+html.no-flexgap .inline-flex.gap-2\.5:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto) { margin-left: 0.625rem; }
+html[dir='rtl'].no-flexgap .flex.gap-2\.5:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto),
+html[dir='rtl'].no-flexgap .inline-flex.gap-2\.5:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto) { margin-left: 0; margin-right: 0.625rem; }
+html.no-flexgap .flex-col.gap-2\.5 > :not(:first-child):not(.mt-auto):not(.my-auto) { margin-top: 0.625rem; }
+html.no-flexgap .flex-wrap.gap-2\.5 > * { margin-right: 0.625rem; margin-bottom: 0.625rem; }
+html.no-flexgap .flex.gap-3:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto),
+html.no-flexgap .inline-flex.gap-3:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto) { margin-left: 0.75rem; }
+html[dir='rtl'].no-flexgap .flex.gap-3:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto),
+html[dir='rtl'].no-flexgap .inline-flex.gap-3:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto) { margin-left: 0; margin-right: 0.75rem; }
+html.no-flexgap .flex-col.gap-3 > :not(:first-child):not(.mt-auto):not(.my-auto) { margin-top: 0.75rem; }
+html.no-flexgap .flex-wrap.gap-3 > * { margin-right: 0.75rem; margin-bottom: 0.75rem; }
+html.no-flexgap .flex.gap-4:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto),
+html.no-flexgap .inline-flex.gap-4:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto) { margin-left: 1rem; }
+html[dir='rtl'].no-flexgap .flex.gap-4:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto),
+html[dir='rtl'].no-flexgap .inline-flex.gap-4:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto) { margin-left: 0; margin-right: 1rem; }
+html.no-flexgap .flex-col.gap-4 > :not(:first-child):not(.mt-auto):not(.my-auto) { margin-top: 1rem; }
+html.no-flexgap .flex-wrap.gap-4 > * { margin-right: 1rem; margin-bottom: 1rem; }
+html.no-flexgap .flex.gap-5:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto),
+html.no-flexgap .inline-flex.gap-5:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto) { margin-left: 1.25rem; }
+html[dir='rtl'].no-flexgap .flex.gap-5:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto),
+html[dir='rtl'].no-flexgap .inline-flex.gap-5:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto) { margin-left: 0; margin-right: 1.25rem; }
+html.no-flexgap .flex-col.gap-5 > :not(:first-child):not(.mt-auto):not(.my-auto) { margin-top: 1.25rem; }
+html.no-flexgap .flex-wrap.gap-5 > * { margin-right: 1.25rem; margin-bottom: 1.25rem; }
+html.no-flexgap .flex.gap-6:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto),
+html.no-flexgap .inline-flex.gap-6:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto) { margin-left: 1.5rem; }
+html[dir='rtl'].no-flexgap .flex.gap-6:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto),
+html[dir='rtl'].no-flexgap .inline-flex.gap-6:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto) { margin-left: 0; margin-right: 1.5rem; }
+html.no-flexgap .flex-col.gap-6 > :not(:first-child):not(.mt-auto):not(.my-auto) { margin-top: 1.5rem; }
+html.no-flexgap .flex-wrap.gap-6 > * { margin-right: 1.5rem; margin-bottom: 1.5rem; }
+html.no-flexgap .flex.gap-7:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto),
+html.no-flexgap .inline-flex.gap-7:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto) { margin-left: 1.75rem; }
+html[dir='rtl'].no-flexgap .flex.gap-7:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto),
+html[dir='rtl'].no-flexgap .inline-flex.gap-7:not(.flex-col):not(.flex-wrap) > :not(:first-child):not(.ml-auto):not(.mx-auto) { margin-left: 0; margin-right: 1.75rem; }
+html.no-flexgap .flex-col.gap-7 > :not(:first-child):not(.mt-auto):not(.my-auto) { margin-top: 1.75rem; }
+html.no-flexgap .flex-wrap.gap-7 > * { margin-right: 1.75rem; margin-bottom: 1.75rem; }
+html.no-flexgap .flex.gap-x-3:not(.flex-col) > :not(:first-child) { margin-left: 0.75rem; }
+html.no-flexgap .flex-wrap.gap-y-0\.5 > * { margin-bottom: 0.125rem; }
