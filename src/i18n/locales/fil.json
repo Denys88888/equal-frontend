@@ -268,7 +268,7 @@
     "p4": "Ang pinakamagandang paraan para mapasaya ako ay...",
     "yourBio": "BIO MO",
     "bioPlaceholder": "Sabihin sa mga tao kung sino ka...",
-    "bioBoost": "Ang pagdagdag ng bio ay nagpapatriple sa mga match mo",
+    "bioBoost": "Ilang linya tungkol sa iyo ang tutulong sa iba na magsimula ng usapan",
     "yourInterests": "MGA INTERES MO",
     "pick3": "Pumili ng hindi bababa sa 3. Ito ang batayan ng mga match mo.",
     "selectMore": "Pumili ng hindi bababa sa {{count}} pa",
@@ -389,7 +389,8 @@
     "members_other": "{{count}} miyembro",
     "posts_other": "{{count}} post",
     "category": "Kategorya",
-    "club_cat_misc": "Iba pa"
+    "club_cat_misc": "Iba pa",
+    "deleteConfirm": "I-tap ulit para burahin"
   },
   "events": {
     "title": "Mga Event",
@@ -907,7 +908,8 @@
     "claimExtra": "Kunin ang bayad mong extra na match",
     "arrivesToday": "Darating ang bagong match mo ngayon ng {{time}}",
     "voiceIntroOptional": "Opsyonal — 10-segundong pagbati na maririnig ng mga match mo",
-    "playFailed": "Hindi ma-play ang recording na ito sa device na ito"
+    "playFailed": "Hindi ma-play ang recording na ito sa device na ito",
+    "vibeToday": "Ngayon, nasa mood ka ng «{{vibe}}»."
   },
   "truthOrDare": {
     "truth": {

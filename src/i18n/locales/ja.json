@@ -266,7 +266,7 @@
     "p4": "私の心をつかむいちばんの方法は...",
     "yourBio": "自己紹介",
     "bioPlaceholder": "あなたがどんな人か伝えましょう...",
-    "bioBoost": "自己紹介を書くとマッチが3倍に増えます",
+    "bioBoost": "自己紹介が数行あると、会話のきっかけになります",
     "yourInterests": "あなたの興味",
     "pick3": "3つ以上選んでください。マッチの土台になります。",
     "selectMore": "あと{{count}}つ以上選んでください",
@@ -385,7 +385,8 @@
     "members_other": "{{count}}人のメンバー",
     "posts_other": "{{count}}件の投稿",
     "category": "カテゴリー",
-    "club_cat_misc": "その他"
+    "club_cat_misc": "その他",
+    "deleteConfirm": "もう一度タップで削除"
   },
   "events": {
     "title": "イベント",
@@ -900,7 +901,8 @@
     "claimExtra": "支払い済みの追加マッチを受け取る",
     "arrivesToday": "新しいマッチは今日{{time}}に届きます",
     "voiceIntroOptional": "任意 — マッチ相手が聞ける10秒のあいさつ",
-    "playFailed": "この録音はこの端末では再生できません"
+    "playFailed": "この録音はこの端末では再生できません",
+    "vibeToday": "今日の気分は「{{vibe}}」。"
   },
   "truthOrDare": {
     "truth": {

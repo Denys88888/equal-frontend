@@ -268,7 +268,7 @@
     "p4": "Gönlümü kazanmanın en iyi yolu...",
     "yourBio": "HAKKINDA",
     "bioPlaceholder": "İnsanlara nasıl biri olduğunu anlat...",
-    "bioBoost": "Biyografi eklemek eşleşmelerini 3 katına çıkarır",
+    "bioBoost": "Kendin hakkında birkaç satır, sohbet başlatmayı kolaylaştırır",
     "yourInterests": "İLGİ ALANLARIN",
     "pick3": "En az 3 tane seç. Eşleşmelerinin temelini oluşturur.",
     "selectMore": "En az {{count}} tane daha seç",
@@ -389,7 +389,8 @@
     "members_other": "{{count}} üye",
     "posts_other": "{{count}} gönderi",
     "category": "Kategori",
-    "club_cat_misc": "Diğer"
+    "club_cat_misc": "Diğer",
+    "deleteConfirm": "Silmek için tekrar dokun"
   },
   "events": {
     "title": "Etkinlikler",
@@ -907,7 +908,8 @@
     "claimExtra": "Ödenmiş ekstra eşleşmeni al",
     "arrivesToday": "Yeni eşleşmen bugün {{time}} saatinde geliyor",
     "voiceIntroOptional": "İsteğe bağlı — eşleşmelerinin dinleyebileceği 10 saniyelik bir merhaba",
-    "playFailed": "Bu kayıt bu cihazda oynatılamıyor"
+    "playFailed": "Bu kayıt bu cihazda oynatılamıyor",
+    "vibeToday": "Bugün «{{vibe}}» modundasın."
   },
   "truthOrDare": {
     "truth": {

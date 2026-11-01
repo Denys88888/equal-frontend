@@ -268,7 +268,7 @@
     "p4": "Njia bora ya kunivutia ni...",
     "yourBio": "WASIFU WAKO",
     "bioPlaceholder": "Waambie watu ulivyo...",
-    "bioBoost": "Kuongeza wasifu kunazidisha mechi zako mara 3",
+    "bioBoost": "Mistari michache kukuhusu huwapa wengine cha kuanzisha mazungumzo",
     "yourInterests": "MAPENDELEO YAKO",
     "pick3": "Chagua angalau 3. Ndiyo msingi wa mechi zako.",
     "selectMore": "Chagua angalau {{count}} zaidi",
@@ -389,7 +389,8 @@
     "members_other": "wanachama {{count}}",
     "posts_other": "machapisho {{count}}",
     "category": "Kategoria",
-    "club_cat_misc": "Nyingine"
+    "club_cat_misc": "Nyingine",
+    "deleteConfirm": "Gusa tena ili kufuta"
   },
   "events": {
     "title": "Matukio",
@@ -907,7 +908,8 @@
     "claimExtra": "Pata mechi yako ya ziada uliyolipia",
     "arrivesToday": "Mechi yako mpya inafika leo saa {{time}}",
     "voiceIntroOptional": "Si lazima — salamu ya sekunde 10 ambayo mechi zako wanaweza kusikiliza",
-    "playFailed": "Rekodi hii haiwezi kuchezwa kwenye kifaa hiki"
+    "playFailed": "Rekodi hii haiwezi kuchezwa kwenye kifaa hiki",
+    "vibeToday": "Leo uko katika hali ya «{{vibe}}»."
   },
   "truthOrDare": {
     "truth": {

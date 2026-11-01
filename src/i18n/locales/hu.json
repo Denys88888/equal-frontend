@@ -268,7 +268,7 @@
     "p4": "A legjobb módja, hogy megnyerj...",
     "yourBio": "A BEMUTATKOZÁSOD",
     "bioPlaceholder": "Mondd el másoknak, milyen vagy...",
-    "bioBoost": "A bemutatkozás hozzáadása háromszorosára növeli a találataidat",
+    "bioBoost": "Néhány sor magadról segít másoknak beszélgetést kezdeni",
     "yourInterests": "AZ ÉRDEKLŐDÉSI KÖRÖD",
     "pick3": "Válassz legalább 3-at. Ezek adják a találataid alapját.",
     "selectMore": "Válassz még legalább {{count}}-et",
@@ -389,7 +389,8 @@
     "members_other": "{{count}} tag",
     "posts_other": "{{count}} bejegyzés",
     "category": "Kategória",
-    "club_cat_misc": "Egyéb"
+    "club_cat_misc": "Egyéb",
+    "deleteConfirm": "Koppints újra a törléshez"
   },
   "events": {
     "title": "Események",
@@ -907,7 +908,8 @@
     "claimExtra": "Kifizetett extra találat átvétele",
     "arrivesToday": "Az új találatod ma {{time}}-kor érkezik",
     "voiceIntroOptional": "Nem kötelező – 10 másodperces köszönés a találataidnak",
-    "playFailed": "Ez a felvétel nem játszható le ezen az eszközön"
+    "playFailed": "Ez a felvétel nem játszható le ezen az eszközön",
+    "vibeToday": "Ma „{{vibe}}” hangulatban vagy."
   },
   "truthOrDare": {
     "truth": {

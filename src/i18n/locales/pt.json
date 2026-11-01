@@ -270,7 +270,7 @@
     "p4": "A melhor forma de me conquistar é...",
     "yourBio": "A SUA BIO",
     "bioPlaceholder": "Conte às pessoas o que te define...",
-    "bioBoost": "Adicionar uma bio aumenta os seus matches por 3×",
+    "bioBoost": "Algumas linhas sobre você dão assunto para começar a conversa",
     "yourInterests": "OS SEUS INTERESSES",
     "pick3": "Escolha pelo menos 3. Estes impulsionam os seus matches.",
     "selectMore": "Selecione pelo menos {{count}} mais",
@@ -393,7 +393,8 @@
     "members_other": "{{count}} membros",
     "posts_other": "{{count}} publicações",
     "category": "Categoria",
-    "club_cat_misc": "Outro"
+    "club_cat_misc": "Outro",
+    "deleteConfirm": "Toque novamente para excluir"
   },
   "events": {
     "title": "Eventos",
@@ -914,7 +915,8 @@
     "claimExtra": "Pegar sua combinação extra paga",
     "arrivesToday": "Sua nova combinação chega hoje às {{time}}",
     "voiceIntroOptional": "Opcional — um oi de 10 segundos que suas combinações podem ouvir",
-    "playFailed": "Esta gravação não pode ser reproduzida neste dispositivo"
+    "playFailed": "Esta gravação não pode ser reproduzida neste dispositivo",
+    "vibeToday": "Hoje você está no clima «{{vibe}}»."
   },
   "truthOrDare": {
     "truth": {

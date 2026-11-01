@@ -268,7 +268,7 @@
     "p4": "Den beste måten å vinne meg på er...",
     "yourBio": "PRESENTASJONEN DIN",
     "bioPlaceholder": "Fortell andre hvem du er...",
-    "bioBoost": "En presentasjon tredobler treffene dine",
+    "bioBoost": "Noen linjer om deg gir andre noe å starte en samtale med",
     "yourInterests": "INTERESSENE DINE",
     "pick3": "Velg minst 3. De danner grunnlaget for treffene dine.",
     "selectMore": "Velg minst {{count}} til",
@@ -389,7 +389,8 @@
     "members_other": "{{count}} medlemmer",
     "posts_other": "{{count}} innlegg",
     "category": "Kategori",
-    "club_cat_misc": "Annet"
+    "club_cat_misc": "Annet",
+    "deleteConfirm": "Trykk igjen for å slette"
   },
   "events": {
     "title": "Arrangementer",
@@ -907,7 +908,8 @@
     "claimExtra": "Hent det betalte ekstra treffet",
     "arrivesToday": "Det nye treffet ditt kommer i dag kl. {{time}}",
     "voiceIntroOptional": "Valgfritt – et 10-sekunders hei som treffene dine kan høre",
-    "playFailed": "Dette opptaket kan ikke spilles av på denne enheten"
+    "playFailed": "Dette opptaket kan ikke spilles av på denne enheten",
+    "vibeToday": "I dag er du i humør for «{{vibe}}»."
   },
   "truthOrDare": {
     "truth": {

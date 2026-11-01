@@ -266,7 +266,7 @@
     "p4": "Cara terbaik untuk memikat saya ialah...",
     "yourBio": "BIO ANDA",
     "bioPlaceholder": "Beritahu orang tentang diri anda...",
-    "bioBoost": "Menambah bio meningkatkan padanan anda 3 kali ganda",
+    "bioBoost": "Beberapa baris tentang diri anda memudahkan orang memulakan perbualan",
     "yourInterests": "MINAT ANDA",
     "pick3": "Pilih sekurang-kurangnya 3. Ia menjadi asas padanan anda.",
     "selectMore": "Pilih sekurang-kurangnya {{count}} lagi",
@@ -385,7 +385,8 @@
     "members_other": "{{count}} ahli",
     "posts_other": "{{count}} hantaran",
     "category": "Kategori",
-    "club_cat_misc": "Lain-lain"
+    "club_cat_misc": "Lain-lain",
+    "deleteConfirm": "Ketik sekali lagi untuk memadam"
   },
   "events": {
     "title": "Acara",
@@ -900,7 +901,8 @@
     "claimExtra": "Tuntut padanan tambahan yang telah dibayar",
     "arrivesToday": "Padanan baharu anda tiba hari ini pada {{time}}",
     "voiceIntroOptional": "Pilihan — ucapan 10 saat untuk padanan anda",
-    "playFailed": "Rakaman ini tidak boleh dimainkan pada peranti ini"
+    "playFailed": "Rakaman ini tidak boleh dimainkan pada peranti ini",
+    "vibeToday": "Hari ini mood anda «{{vibe}}»."
   },
   "truthOrDare": {
     "truth": {

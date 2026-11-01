@@ -268,7 +268,7 @@
     "p4": "Den bedste måde at vinde mig på er...",
     "yourBio": "DIN PROFILTEKST",
     "bioPlaceholder": "Fortæl andre, hvem du er...",
-    "bioBoost": "En profiltekst tredobler dine match",
+    "bioBoost": "Et par linjer om dig giver andre noget at starte en samtale med",
     "yourInterests": "DINE INTERESSER",
     "pick3": "Vælg mindst 3. De danner grundlaget for dine match.",
     "selectMore": "Vælg mindst {{count}} mere",
@@ -389,7 +389,8 @@
     "members_other": "{{count}} medlemmer",
     "posts_other": "{{count}} opslag",
     "category": "Kategori",
-    "club_cat_misc": "Andet"
+    "club_cat_misc": "Andet",
+    "deleteConfirm": "Tryk igen for at slette"
   },
   "events": {
     "title": "Begivenheder",
@@ -907,7 +908,8 @@
     "claimExtra": "Hent dit betalte ekstra match",
     "arrivesToday": "Dit nye match kommer i dag kl. {{time}}",
     "voiceIntroOptional": "Valgfrit – et 10-sekunders hej, dine matches kan lytte til",
-    "playFailed": "Denne optagelse kan ikke afspilles på denne enhed"
+    "playFailed": "Denne optagelse kan ikke afspilles på denne enhed",
+    "vibeToday": "I dag er du i humør til „{{vibe}}“."
   },
   "truthOrDare": {
     "truth": {

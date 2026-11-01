@@ -268,7 +268,7 @@
     "p4": "Der beste Weg, mich zu überzeugen, ist...",
     "yourBio": "DEINE BIO",
     "bioPlaceholder": "Erzähl den Leuten, was dich ausmacht...",
-    "bioBoost": "Eine Bio hinzufügen erhöht deine Matches um das 3-fache",
+    "bioBoost": "Ein paar Zeilen über dich machen es leichter, ein Gespräch zu beginnen",
     "yourInterests": "DEINE INTERESSEN",
     "pick3": "Wähle mindestens 3. Diese bestimmen deine Matches.",
     "selectMore": "Wähle mindestens {{count}} weitere",
@@ -389,7 +389,8 @@
     "members_other": "{{count}} Mitglieder",
     "posts_other": "{{count}} Beiträge",
     "category": "Kategorie",
-    "club_cat_misc": "Sonstiges"
+    "club_cat_misc": "Sonstiges",
+    "deleteConfirm": "Zum Löschen erneut tippen"
   },
   "events": {
     "title": "Veranstaltungen",
@@ -907,7 +908,8 @@
     "claimExtra": "Bezahltes Extra-Match abholen",
     "arrivesToday": "Dein neues Match kommt heute um {{time}}",
     "voiceIntroOptional": "Optional – ein 10-Sekunden-Hallo, das deine Matches hören können",
-    "playFailed": "Diese Aufnahme kann auf diesem Gerät nicht abgespielt werden"
+    "playFailed": "Diese Aufnahme kann auf diesem Gerät nicht abgespielt werden",
+    "vibeToday": "Heute bist du in „{{vibe}}“-Stimmung."
   },
   "truthOrDare": {
     "truth": {

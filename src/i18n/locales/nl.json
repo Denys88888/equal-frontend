@@ -268,7 +268,7 @@
     "p4": "De beste manier om mij te winnen is...",
     "yourBio": "JOUW BIO",
     "bioPlaceholder": "Vertel anderen wie je bent...",
-    "bioBoost": "Een bio toevoegen verdrievoudigt je matches",
+    "bioBoost": "Een paar regels over jezelf geven anderen iets om een gesprek mee te beginnen",
     "yourInterests": "JOUW INTERESSES",
     "pick3": "Kies er minstens 3. Ze vormen de basis van je matches.",
     "selectMore": "Selecteer er nog minstens {{count}}",
@@ -389,7 +389,8 @@
     "members_other": "{{count}} leden",
     "posts_other": "{{count}} berichten",
     "category": "Categorie",
-    "club_cat_misc": "Overig"
+    "club_cat_misc": "Overig",
+    "deleteConfirm": "Tik nogmaals om te verwijderen"
   },
   "events": {
     "title": "Evenementen",
@@ -907,7 +908,8 @@
     "claimExtra": "Haal je betaalde extra match op",
     "arrivesToday": "Je nieuwe match komt vandaag om {{time}}",
     "voiceIntroOptional": "Optioneel — een hallo van 10 seconden voor je matches",
-    "playFailed": "Deze opname kan op dit apparaat niet worden afgespeeld"
+    "playFailed": "Deze opname kan op dit apparaat niet worden afgespeeld",
+    "vibeToday": "Vandaag ben je in de stemming voor „{{vibe}}”."
   },
   "truthOrDare": {
     "truth": {

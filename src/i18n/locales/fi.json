@@ -268,7 +268,7 @@
     "p4": "Paras tapa voittaa minut puolelleen on...",
     "yourBio": "ESITTELYSI",
     "bioPlaceholder": "Kerro muille, millainen olet...",
-    "bioBoost": "Esittelyn lisääminen kolminkertaistaa osumasi",
+    "bioBoost": "Pari riviä itsestäsi antaa muille aiheen aloittaa keskustelu",
     "yourInterests": "KIINNOSTUKSEN KOHTEESI",
     "pick3": "Valitse vähintään 3. Ne ovat osumiesi perusta.",
     "selectMore": "Valitse vielä vähintään {{count}}",
@@ -389,7 +389,8 @@
     "members_other": "{{count}} jäsentä",
     "posts_other": "{{count}} julkaisua",
     "category": "Kategoria",
-    "club_cat_misc": "Muu"
+    "club_cat_misc": "Muu",
+    "deleteConfirm": "Poista napauttamalla uudelleen"
   },
   "events": {
     "title": "Tapahtumat",
@@ -907,7 +908,8 @@
     "claimExtra": "Lunasta maksettu lisäosuma",
     "arrivesToday": "Uusi osumasi saapuu tänään klo {{time}}",
     "voiceIntroOptional": "Valinnainen – 10 sekunnin tervehdys, jonka osumasi voivat kuunnella",
-    "playFailed": "Tätä tallennetta ei voi toistaa tällä laitteella"
+    "playFailed": "Tätä tallennetta ei voi toistaa tällä laitteella",
+    "vibeToday": "Tänään tunnelmasi on ”{{vibe}}”."
   },
   "truthOrDare": {
     "truth": {

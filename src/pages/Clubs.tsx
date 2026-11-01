@@ -250,7 +250,7 @@ function DiscoverClubCard({ club, onClick, onJoin }: { club: Club; onClick: () =
 /*  POST CARD                                                          */
 /* ------------------------------------------------------------------ */
 
-function PostCard({ post, onLike, onMeet, onComment, onDelete }: { post: Post; onLike: () => void; onMeet?: () => void; onComment: () => void; onDelete?: () => void }) {
+function PostCard({ post, onLike, onMeet, onComment, onDelete, deleteArmed }: { post: Post; onLike: () => void; onMeet?: () => void; onComment: () => void; onDelete?: () => void; deleteArmed?: boolean }) {
   const { t } = useTranslation();
   const [animating, setAnimating] = useState(false);
 
@@ -288,7 +288,7 @@ function PostCard({ post, onLike, onMeet, onComment, onDelete }: { post: Post; o
             the author, not by moderation. */}
         {onDelete && (
           <button onClick={onDelete} className="p-1.5 -m-1.5 flex-shrink-0">
-            <Trash2 size={16} style={{ color: 'rgba(var(--charcoal-rgb), 0.3)' }} />
+            <Trash2 size={16} style={{ color: deleteArmed ? '#E86A6A' : 'rgba(var(--charcoal-rgb), 0.3)' }} />
           </button>
         )}
       </div>
@@ -418,6 +418,20 @@ function ClubDetail({
     } catch {
       setCommentInput(text);
     }
+  };
+
+  // A post or comment went with one tap on a small bin icon, no way back.
+  // The first tap now arms it (the bin turns red); the second deletes.
+  const [armedDelete, setArmedDelete] = useState<string | null>(null);
+  const confirmDelete = (id: string, remove: () => void) => {
+    if (armedDelete === id) {
+      setArmedDelete(null);
+      remove();
+      return;
+    }
+    setArmedDelete(id);
+    showToast('info', t('clubs.deleteConfirm', { defaultValue: 'Tap again to delete' }));
+    setTimeout(() => setArmedDelete((cur) => (cur === id ? null : cur)), 4000);
   };
 
   const handleDeletePost = async (postId: string) => {
@@ -696,7 +710,8 @@ function ClubDetail({
                   // No "Meet" on your own posts — it opened your own profile as a stranger's.
                   onMeet={post.authorId === user?.id ? undefined : () => goToProfile(post.authorId)}
                   onComment={() => openComments(post.id)}
-                  onDelete={post.authorId === user?.id || isAdmin ? () => handleDeletePost(post.id) : undefined}
+                  onDelete={post.authorId === user?.id || isAdmin ? () => confirmDelete(post.id, () => handleDeletePost(post.id)) : undefined}
+                  deleteArmed={armedDelete === post.id}
                 />
               ))}
               {posts.length === 0 && (
@@ -931,8 +946,8 @@ function ClubDetail({
                     <p className="text-sm text-[var(--charcoal)]" style={{ opacity: 0.85 }}>{c.content}</p>
                   </div>
                   {(c.authorId === user?.id || isAdmin) && (
-                    <button onClick={() => handleDeleteComment(c.id)} className="p-1.5 -m-1.5 flex-shrink-0 self-start">
-                      <Trash2 size={14} style={{ color: 'rgba(var(--charcoal-rgb), 0.3)' }} />
+                    <button onClick={() => confirmDelete(c.id, () => handleDeleteComment(c.id))} className="p-1.5 -m-1.5 flex-shrink-0 self-start">
+                      <Trash2 size={14} style={{ color: armedDelete === c.id ? '#E86A6A' : 'rgba(var(--charcoal-rgb), 0.3)' }} />
                     </button>
                   )}
                 </div>

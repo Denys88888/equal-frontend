@@ -270,7 +270,7 @@
     "p4": "Najbolji način da me osvojiš je...",
     "yourBio": "TVOJ OPIS",
     "bioPlaceholder": "Reci drugima kakav/kakva si...",
-    "bioBoost": "Dodavanje opisa utrostručuje tvoja podudaranja",
+    "bioBoost": "Nekoliko redaka o sebi olakšava drugima da započnu razgovor",
     "yourInterests": "TVOJI INTERESI",
     "pick3": "Odaberi barem 3. Oni su temelj tvojih podudaranja.",
     "selectMore": "Odaberi još barem {{count}}",
@@ -393,7 +393,8 @@
     "members_other": "{{count}} članova",
     "posts_other": "{{count}} objava",
     "category": "Kategorija",
-    "club_cat_misc": "Ostalo"
+    "club_cat_misc": "Ostalo",
+    "deleteConfirm": "Dodirni ponovno za brisanje"
   },
   "events": {
     "title": "Događanja",
@@ -914,7 +915,8 @@
     "claimExtra": "Preuzmi plaćeno dodatno podudaranje",
     "arrivesToday": "Tvoje novo podudaranje stiže danas u {{time}}",
     "voiceIntroOptional": "Neobavezno — pozdrav od 10 sekundi za tvoja podudaranja",
-    "playFailed": "Ovu snimku nije moguće reproducirati na ovom uređaju"
+    "playFailed": "Ovu snimku nije moguće reproducirati na ovom uređaju",
+    "vibeToday": "Danas si raspoložen(a) za „{{vibe}}”."
   },
   "truthOrDare": {
     "truth": {

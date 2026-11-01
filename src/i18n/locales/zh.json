@@ -266,7 +266,7 @@
     "p4": "赢得我好感的最佳方式是...",
     "yourBio": "你的简介",
     "bioPlaceholder": "告诉大家你是个怎样的人...",
-    "bioBoost": "填写简介可让配对数提升 3 倍",
+    "bioBoost": "写几句自我介绍，别人更容易和你搭话",
     "yourInterests": "你的兴趣",
     "pick3": "至少选 3 项。它们是配对的核心依据。",
     "selectMore": "还需再选至少 {{count}} 项",
@@ -385,7 +385,8 @@
     "members_other": "{{count}} 位成员",
     "posts_other": "{{count}} 条帖子",
     "category": "类别",
-    "club_cat_misc": "其他"
+    "club_cat_misc": "其他",
+    "deleteConfirm": "再点一次即可删除"
   },
   "events": {
     "title": "活动",
@@ -900,7 +901,8 @@
     "claimExtra": "领取已付费的额外配对",
     "arrivesToday": "你的新配对将于今天 {{time}} 到来",
     "voiceIntroOptional": "可选——一段 10 秒的问候，让你的配对听到你的声音",
-    "playFailed": "此录音无法在此设备上播放"
+    "playFailed": "此录音无法在此设备上播放",
+    "vibeToday": "今天你的心情是「{{vibe}}」。"
   },
   "truthOrDare": {
     "truth": {

@@ -19,11 +19,14 @@ export default function VibeCheck({
   matchTime,
   onSelect,
   saving,
+  matchHere,
 }: {
   current: Vibe | null;
   matchTime: string;
   onSelect: (vibe: Vibe) => void;
   saving?: boolean;
+  /** Today's match is already here: don't tell them to wait for it. */
+  matchHere?: boolean;
 }) {
   const { t } = useTranslation();
 
@@ -34,11 +37,16 @@ export default function VibeCheck({
         style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
       >
         <p className="text-sm text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
-          {t('dailyMatch.vibeSaved', {
-            vibe: t(`dailyMatch.vibes.${current}`, { defaultValue: current }),
-            time: matchTime,
-            defaultValue: `Today you're in the mood for ${current}. Your Daily Match arrives at ${matchTime}!`,
-          })}
+          {matchHere
+            ? t('dailyMatch.vibeToday', {
+              vibe: t(`dailyMatch.vibes.${current}`, { defaultValue: current }),
+              defaultValue: `Today you're in the mood for “${current}”.`,
+            })
+            : t('dailyMatch.vibeSaved', {
+              vibe: t(`dailyMatch.vibes.${current}`, { defaultValue: current }),
+              time: matchTime,
+              defaultValue: `Today you're in the mood for ${current}. Your Daily Match arrives at ${matchTime}!`,
+            })}
         </p>
         <button
           onClick={() => onSelect(current)}

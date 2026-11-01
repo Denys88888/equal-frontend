@@ -268,7 +268,7 @@
     "p4": "The best way to win me over is...",
     "yourBio": "YOUR BIO",
     "bioPlaceholder": "Tell people what you're about...",
-    "bioBoost": "Adding a bio increases your matches by 3×",
+    "bioBoost": "A few lines about you give people something to start a conversation with",
     "yourInterests": "YOUR INTERESTS",
     "pick3": "Pick at least 3. These power your matches.",
     "selectMore": "Select at least {{count}} more",
@@ -389,7 +389,8 @@
     "members_other": "{{count}} members",
     "posts_other": "{{count}} posts",
     "category": "Category",
-    "club_cat_misc": "Other"
+    "club_cat_misc": "Other",
+    "deleteConfirm": "Tap again to delete"
   },
   "events": {
     "title": "Events",
@@ -907,7 +908,8 @@
     "claimExtra": "Get your paid extra match",
     "arrivesToday": "Your new match arrives today at {{time}}",
     "voiceIntroOptional": "Optional — a 10-second hello your matches can listen to",
-    "playFailed": "This recording can't be played on this device"
+    "playFailed": "This recording can't be played on this device",
+    "vibeToday": "Today you're in the mood for “{{vibe}}”."
   },
   "truthOrDare": {
     "truth": {

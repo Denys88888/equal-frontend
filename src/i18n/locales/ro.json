@@ -270,7 +270,7 @@
     "p4": "Cel mai bun mod de a mă cuceri este...",
     "yourBio": "DESCRIEREA TA",
     "bioPlaceholder": "Spune-le celorlalți cum ești...",
-    "bioBoost": "Adăugarea unei descrieri triplează potrivirile tale",
+    "bioBoost": "Câteva rânduri despre tine le dau altora un subiect de conversație",
     "yourInterests": "INTERESELE TALE",
     "pick3": "Alege cel puțin 3. Ele stau la baza potrivirilor tale.",
     "selectMore": "Mai alege cel puțin {{count}}",
@@ -393,7 +393,8 @@
     "members_other": "{{count}} de membri",
     "posts_other": "{{count}} de postări",
     "category": "Categorie",
-    "club_cat_misc": "Altele"
+    "club_cat_misc": "Altele",
+    "deleteConfirm": "Atinge din nou pentru a șterge"
   },
   "events": {
     "title": "Evenimente",
@@ -914,7 +915,8 @@
     "claimExtra": "Revendică potrivirea suplimentară plătită",
     "arrivesToday": "Noua ta potrivire sosește azi la {{time}}",
     "voiceIntroOptional": "Opțional — un salut de 10 secunde pe care potrivirile tale îl pot asculta",
-    "playFailed": "Această înregistrare nu poate fi redată pe acest dispozitiv"
+    "playFailed": "Această înregistrare nu poate fi redată pe acest dispozitiv",
+    "vibeToday": "Azi ești în starea „{{vibe}}”."
   },
   "truthOrDare": {
     "truth": {

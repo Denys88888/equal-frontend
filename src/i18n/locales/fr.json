@@ -270,7 +270,7 @@
     "p4": "La meilleure façon de me séduire c'est...",
     "yourBio": "VOTRE BIO",
     "bioPlaceholder": "Dites aux gens ce qui vous passionne...",
-    "bioBoost": "Ajouter une bio multiplie vos matches par 3",
+    "bioBoost": "Quelques lignes sur toi donnent de quoi lancer la conversation",
     "yourInterests": "VOS INTÉRÊTS",
     "pick3": "Choisissez au moins 3. Ils alimentent vos matches.",
     "selectMore": "Sélectionnez au moins {{count}} de plus",
@@ -393,7 +393,8 @@
     "members_other": "{{count}} membres",
     "posts_other": "{{count}} publications",
     "category": "Catégorie",
-    "club_cat_misc": "Autre"
+    "club_cat_misc": "Autre",
+    "deleteConfirm": "Touche à nouveau pour supprimer"
   },
   "events": {
     "title": "Événements",
@@ -914,7 +915,8 @@
     "claimExtra": "Récupérer ton match supplémentaire payé",
     "arrivesToday": "Ton nouveau match arrive aujourd'hui à {{time}}",
     "voiceIntroOptional": "Facultatif — un bonjour de 10 secondes que tes matchs peuvent écouter",
-    "playFailed": "Cet enregistrement ne peut pas être lu sur cet appareil"
+    "playFailed": "Cet enregistrement ne peut pas être lu sur cet appareil",
+    "vibeToday": "Aujourd'hui, tu es d'humeur « {{vibe}} »."
   },
   "truthOrDare": {
     "truth": {

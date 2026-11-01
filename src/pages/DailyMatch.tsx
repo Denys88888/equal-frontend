@@ -325,7 +325,7 @@ export default function DailyMatchPage() {
           <VoiceIntroRecorder onSaved={() => { setHasVoiceIntro(true); load(); }} />
         )}
 
-        <VibeCheck current={vibe} matchTime={matchTime} onSelect={handleVibe} saving={savingVibe} />
+        <VibeCheck current={vibe} matchTime={matchTime} onSelect={handleVibe} saving={savingVibe} matchHere={!isTerminal} />
 
         {isTerminal && (
           <div

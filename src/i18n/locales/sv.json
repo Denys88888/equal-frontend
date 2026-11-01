@@ -268,7 +268,7 @@
     "p4": "Bästa sättet att vinna mig är...",
     "yourBio": "DIN PRESENTATION",
     "bioPlaceholder": "Berätta för andra vem du är...",
-    "bioBoost": "En presentation tredubblar dina matchningar",
+    "bioBoost": "Några rader om dig ger andra något att börja prata om",
     "yourInterests": "DINA INTRESSEN",
     "pick3": "Välj minst 3. De ligger till grund för dina matchningar.",
     "selectMore": "Välj minst {{count}} till",
@@ -389,7 +389,8 @@
     "members_other": "{{count}} medlemmar",
     "posts_other": "{{count}} inlägg",
     "category": "Kategori",
-    "club_cat_misc": "Övrigt"
+    "club_cat_misc": "Övrigt",
+    "deleteConfirm": "Tryck igen för att radera"
   },
   "events": {
     "title": "Evenemang",
@@ -907,7 +908,8 @@
     "claimExtra": "Hämta din betalda extra matchning",
     "arrivesToday": "Din nya matchning kommer i dag kl. {{time}}",
     "voiceIntroOptional": "Valfritt – ett 10-sekunders hej som dina matchningar kan lyssna på",
-    "playFailed": "Den här inspelningen kan inte spelas upp på den här enheten"
+    "playFailed": "Den här inspelningen kan inte spelas upp på den här enheten",
+    "vibeToday": "I dag är du på humör för ”{{vibe}}”."
   },
   "truthOrDare": {
     "truth": {

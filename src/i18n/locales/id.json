@@ -266,7 +266,7 @@
     "p4": "Cara terbaik memikatku adalah...",
     "yourBio": "BIO KAMU",
     "bioPlaceholder": "Ceritakan dirimu kepada orang lain...",
-    "bioBoost": "Menambahkan bio melipatgandakan kecocokanmu 3×",
+    "bioBoost": "Beberapa kalimat tentang dirimu memudahkan orang memulai obrolan",
     "yourInterests": "MINATMU",
     "pick3": "Pilih minimal 3. Ini yang menggerakkan kecocokanmu.",
     "selectMore": "Pilih minimal {{count}} lagi",
@@ -385,7 +385,8 @@
     "members_other": "{{count}} anggota",
     "posts_other": "{{count}} postingan",
     "category": "Kategori",
-    "club_cat_misc": "Lainnya"
+    "club_cat_misc": "Lainnya",
+    "deleteConfirm": "Ketuk lagi untuk menghapus"
   },
   "events": {
     "title": "Acara",
@@ -900,7 +901,8 @@
     "claimExtra": "Ambil kecocokan tambahan yang sudah dibayar",
     "arrivesToday": "Kecocokan barumu datang hari ini pukul {{time}}",
     "voiceIntroOptional": "Opsional — sapaan 10 detik yang bisa didengar kecocokanmu",
-    "playFailed": "Rekaman ini tidak dapat diputar di perangkat ini"
+    "playFailed": "Rekaman ini tidak dapat diputar di perangkat ini",
+    "vibeToday": "Hari ini suasana hatimu «{{vibe}}»."
   },
   "truthOrDare": {
     "truth": {

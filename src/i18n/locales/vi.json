@@ -266,7 +266,7 @@
     "p4": "Cách tốt nhất để chinh phục tôi là...",
     "yourBio": "GIỚI THIỆU CỦA BẠN",
     "bioPlaceholder": "Kể cho mọi người biết bạn là ai...",
-    "bioBoost": "Thêm phần giới thiệu giúp ghép đôi tăng gấp 3 lần",
+    "bioBoost": "Vài dòng về bạn giúp người khác dễ bắt chuyện hơn",
     "yourInterests": "SỞ THÍCH CỦA BẠN",
     "pick3": "Chọn ít nhất 3. Đây là nền tảng cho ghép đôi của bạn.",
     "selectMore": "Chọn thêm ít nhất {{count}}",
@@ -385,7 +385,8 @@
     "members_other": "{{count}} thành viên",
     "posts_other": "{{count}} bài đăng",
     "category": "Danh mục",
-    "club_cat_misc": "Khác"
+    "club_cat_misc": "Khác",
+    "deleteConfirm": "Nhấn lần nữa để xóa"
   },
   "events": {
     "title": "Sự kiện",
@@ -900,7 +901,8 @@
     "claimExtra": "Nhận ghép đôi thêm đã thanh toán",
     "arrivesToday": "Ghép đôi mới của bạn sẽ đến vào {{time}} hôm nay",
     "voiceIntroOptional": "Không bắt buộc — lời chào 10 giây để người ghép đôi nghe",
-    "playFailed": "Không thể phát bản ghi này trên thiết bị này"
+    "playFailed": "Không thể phát bản ghi này trên thiết bị này",
+    "vibeToday": "Hôm nay bạn đang có tâm trạng «{{vibe}}»."
   },
   "truthOrDare": {
     "truth": {

@@ -272,7 +272,7 @@
     "p4": "Najlepszy sposób, by mnie zdobyć, to...",
     "yourBio": "TWÓJ OPIS",
     "bioPlaceholder": "Opowiedz innym, jaki(-a) jesteś...",
-    "bioBoost": "Dodanie opisu zwiększa liczbę dopasowań 3-krotnie",
+    "bioBoost": "Kilka zdań o sobie — i łatwiej zacząć rozmowę",
     "yourInterests": "TWOJE ZAINTERESOWANIA",
     "pick3": "Wybierz co najmniej 3. To one napędzają Twoje dopasowania.",
     "selectMore": "Wybierz jeszcze co najmniej {{count}}",
@@ -397,7 +397,8 @@
     "members_other": "{{count}} członka",
     "posts_other": "{{count}} posta",
     "category": "Kategoria",
-    "club_cat_misc": "Inne"
+    "club_cat_misc": "Inne",
+    "deleteConfirm": "Kliknij ponownie, aby usunąć"
   },
   "events": {
     "title": "Wydarzenia",
@@ -921,7 +922,8 @@
     "claimExtra": "Odbierz opłacone dopasowanie",
     "arrivesToday": "Nowe dopasowanie pojawi się dziś o {{time}}",
     "voiceIntroOptional": "Opcjonalnie — 10-sekundowe powitanie dla twoich dopasowań",
-    "playFailed": "Tego nagrania nie można odtworzyć na tym urządzeniu"
+    "playFailed": "Tego nagrania nie można odtworzyć na tym urządzeniu",
+    "vibeToday": "Dziś masz nastrój „{{vibe}}”."
   },
   "truthOrDare": {
     "truth": {

@@ -272,7 +272,7 @@
     "p4": "Nejlepší způsob, jak si mě získat, je...",
     "yourBio": "TVŮJ POPIS",
     "bioPlaceholder": "Řekni ostatním, jaký(á) jsi...",
-    "bioBoost": "Doplnění popisu ztrojnásobí tvé shody",
+    "bioBoost": "Pár řádků o tobě usnadní ostatním začít konverzaci",
     "yourInterests": "TVOJE ZÁJMY",
     "pick3": "Vyber alespoň 3. Tvoří základ tvých shod.",
     "selectMore": "Vyber ještě alespoň {{count}}",
@@ -397,7 +397,8 @@
     "members_other": "{{count}} členů",
     "posts_other": "{{count}} příspěvků",
     "category": "Kategorie",
-    "club_cat_misc": "Ostatní"
+    "club_cat_misc": "Ostatní",
+    "deleteConfirm": "Klepni znovu pro smazání"
   },
   "events": {
     "title": "Události",
@@ -921,7 +922,8 @@
     "claimExtra": "Vyzvednout zaplacenou shodu navíc",
     "arrivesToday": "Tvá nová shoda přijde dnes v {{time}}",
     "voiceIntroOptional": "Nepovinné — 10sekundový pozdrav pro tvé shody",
-    "playFailed": "Tento záznam nelze na tomto zařízení přehrát"
+    "playFailed": "Tento záznam nelze na tomto zařízení přehrát",
+    "vibeToday": "Dnes máš náladu „{{vibe}}“."
   },
   "truthOrDare": {
     "truth": {
