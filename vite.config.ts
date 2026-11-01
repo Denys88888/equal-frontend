@@ -16,6 +16,12 @@ export default defineConfig({
     },
   },
   build: {
+    // Pi Browser runs on the phone's system WebView, and phones that stopped
+    // getting WebView updates still use WebView 83 and older. With Vite's
+    // default target (current browsers) syntax like `??=` shipped as is, and
+    // on those phones Profile and Chat failed to load at all ("Unexpected
+    // token '='"). esbuild lowers the syntax to what they understand.
+    target: ['es2018', 'chrome64', 'safari12'],
     rollupOptions: {
       output: {
         manualChunks: {
