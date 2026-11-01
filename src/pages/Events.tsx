@@ -375,7 +375,10 @@ function EventDetailSheet({
             <div className="p-4 flex items-center justify-between">
               <div>
                 <p className="text-sm font-semibold text-[var(--charcoal)]">{event.venue}</p>
-                <p className="text-xs" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>{event.location}</p>
+                {/* Usually the same text as the venue: it read three times. */}
+                {event.location && event.location !== event.venue && (
+                  <p className="text-xs" style={{ color: 'rgba(var(--charcoal-rgb), 0.5)' }}>{event.location}</p>
+                )}
               </div>
               <span className="text-sm font-semibold text-[#BB83C9]">{t('events.getDirections')}</span>
             </div>
@@ -790,9 +793,12 @@ export default function Events() {
               <h1 className="text-2xl font-bold text-[var(--charcoal)]" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
                 {activeTab === 'upcoming' ? t('events.upcomingEvents') : activeTab === 'interested' ? t('events.interestedEvents') : t('events.pastEvents')}
               </h1>
-              <p className="text-sm mt-1" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>
-                {t('events.nearYou', { count: filteredEvents.length })}
-              </p>
+              {/* "N upcoming events" — it showed under "Past events" too. */}
+              {activeTab === 'upcoming' && (
+                <p className="text-sm mt-1" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>
+                  {t('events.nearYou', { count: filteredEvents.length })}
+                </p>
+              )}
             </div>
           </div>
 

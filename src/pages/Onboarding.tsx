@@ -1172,12 +1172,7 @@ function StepGoals({
         minHeight: '50vh',
       }}
     >
-      <div className="text-center mb-2">
-        <p className="text-base" style={{ color: 'rgba(var(--charcoal-rgb), 0.6)' }}>
-          {t('onboarding.sub5')}
-        </p>
-      </div>
-
+      {/* The step header above already says this; it was shown twice. */}
       {/* Goal cards grid */}
       <div className="grid grid-cols-2 gap-3 w-full">
         {GOALS.map((goal, index) => {
