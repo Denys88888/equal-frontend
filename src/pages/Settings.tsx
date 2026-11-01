@@ -176,6 +176,7 @@ function ToggleRow({
         <Switch
           checked={checked}
           onCheckedChange={onCheckedChange}
+          aria-label={label}
           className="data-[state=checked]:bg-[#BB83C9]"
         />
       </div>

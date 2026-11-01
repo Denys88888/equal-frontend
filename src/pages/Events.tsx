@@ -864,7 +864,10 @@ export default function Events() {
 
                 {/* Events List */}
                 <div className="flex flex-col gap-3">
-                  {filteredEvents.filter((e) => !e.featured).map((event, index) => (
+                  {/* Leave out exactly the event shown above. Hiding every
+                      featured one dropped a second featured event from the page,
+                      and the fallback hero (first upcoming) appeared twice. */}
+                  {filteredEvents.filter((e) => e.id !== featuredEvent?.id).map((event, index) => (
                     <motion.div
                       key={event.id}
                       initial={{ opacity: 0, y: 12 }}

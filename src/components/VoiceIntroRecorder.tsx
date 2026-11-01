@@ -166,7 +166,7 @@ export default function VoiceIntroRecorder({
 
       {recording && (
         <p className="text-center text-sm font-semibold text-[#E86A6A] mb-3">
-          {t('dailyMatch.recording', { defaultValue: 'Recording…' })} {secondsLeft}s
+          {t('dailyMatch.recording', { defaultValue: 'Recording…' })} 0:{String(secondsLeft).padStart(2, '0')}
         </p>
       )}
 
