@@ -46,6 +46,7 @@ export default function VideoIntroRecorder({
   const tickRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const stopRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
+  const galleryRef = useRef<HTMLInputElement>(null);
 
   const stopStream = () => {
     streamRef.current?.getTracks().forEach((tr) => tr.stop());
@@ -77,10 +78,16 @@ export default function VideoIntroRecorder({
     && !!navigator.mediaDevices?.getUserMedia
     && typeof MediaRecorder !== 'undefined';
 
+  // When the 15-second limit stops a recording, "Save" appears exactly where
+  // "Stop" was — a tap meant for Stop then saved the clip. Save ignores taps
+  // for a moment after the review appears.
+  const [saveArmed, setSaveArmed] = useState(true);
   const showClip = (blob: Blob) => {
     setClip(blob);
     setPreviewUrl(URL.createObjectURL(blob));
     setPhase('review');
+    setSaveArmed(false);
+    setTimeout(() => setSaveArmed(true), 700);
   };
 
   const openCamera = async () => {
@@ -266,6 +273,15 @@ export default function VideoIntroRecorder({
                 <Trash2 size={16} />
               </button>
             )}
+            {/* The file input below has capture="user", which on Android opens
+                the camera — there was no way to use a video already on the
+                phone. This one opens the gallery. */}
+            {canRecord && (
+              <button onClick={() => galleryRef.current?.click()} aria-label={t('videoIntro.chooseFile')}
+                className="w-11 h-11 rounded-full flex items-center justify-center border-[1.5px]" style={outline}>
+                <Upload size={16} />
+              </button>
+            )}
           </>
         )}
 
@@ -285,7 +301,7 @@ export default function VideoIntroRecorder({
 
         {(phase === 'review' || phase === 'saving') && (
           <>
-            <button onClick={save} disabled={phase === 'saving'} className={`flex-1 ${pill}`}
+            <button onClick={save} disabled={phase === 'saving' || !saveArmed} className={`flex-1 ${pill}`}
               style={{ backgroundColor: '#7DE0B3', color: 'var(--charcoal)', opacity: phase === 'saving' ? 0.6 : 1 }}>
               <Save size={16} />
               {phase === 'saving' ? t('videoIntro.saving') : t('videoIntro.save')}
@@ -299,6 +315,7 @@ export default function VideoIntroRecorder({
       </div>
 
       <input ref={fileRef} type="file" accept="video/*" capture="user" className="hidden" onChange={onFilePicked} />
+      <input ref={galleryRef} type="file" accept="video/*" className="hidden" onChange={onFilePicked} />
     </div>
   );
 }
