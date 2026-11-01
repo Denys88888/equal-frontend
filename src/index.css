@@ -223,3 +223,45 @@ html.no-flexgap .flex-col.gap-7 > :not(:first-child):not(.mt-auto):not(.my-auto)
 html.no-flexgap .flex-wrap.gap-7 > * { margin-right: 1.75rem; margin-bottom: 1.75rem; }
 html.no-flexgap .flex.gap-x-3:not(.flex-col) > :not(:first-child) { margin-left: 0.75rem; }
 html.no-flexgap .flex-wrap.gap-y-0\.5 > * { margin-bottom: 0.125rem; }
+/* An icon next to plain text ("⧉ Copy email") is the container's only element
+   child — the text is a text node, which the rules above can't reach. */
+html.no-flexgap .flex.gap-0\.5:not(.flex-col) > svg:only-child,
+html.no-flexgap .inline-flex.gap-0\.5:not(.flex-col) > svg:only-child { margin-right: 0.125rem; }
+html[dir='rtl'].no-flexgap .flex.gap-0\.5:not(.flex-col) > svg:only-child,
+html[dir='rtl'].no-flexgap .inline-flex.gap-0\.5:not(.flex-col) > svg:only-child { margin-right: 0; margin-left: 0.125rem; }
+html.no-flexgap .flex.gap-1:not(.flex-col) > svg:only-child,
+html.no-flexgap .inline-flex.gap-1:not(.flex-col) > svg:only-child { margin-right: 0.25rem; }
+html[dir='rtl'].no-flexgap .flex.gap-1:not(.flex-col) > svg:only-child,
+html[dir='rtl'].no-flexgap .inline-flex.gap-1:not(.flex-col) > svg:only-child { margin-right: 0; margin-left: 0.25rem; }
+html.no-flexgap .flex.gap-1\.5:not(.flex-col) > svg:only-child,
+html.no-flexgap .inline-flex.gap-1\.5:not(.flex-col) > svg:only-child { margin-right: 0.375rem; }
+html[dir='rtl'].no-flexgap .flex.gap-1\.5:not(.flex-col) > svg:only-child,
+html[dir='rtl'].no-flexgap .inline-flex.gap-1\.5:not(.flex-col) > svg:only-child { margin-right: 0; margin-left: 0.375rem; }
+html.no-flexgap .flex.gap-2:not(.flex-col) > svg:only-child,
+html.no-flexgap .inline-flex.gap-2:not(.flex-col) > svg:only-child { margin-right: 0.5rem; }
+html[dir='rtl'].no-flexgap .flex.gap-2:not(.flex-col) > svg:only-child,
+html[dir='rtl'].no-flexgap .inline-flex.gap-2:not(.flex-col) > svg:only-child { margin-right: 0; margin-left: 0.5rem; }
+html.no-flexgap .flex.gap-2\.5:not(.flex-col) > svg:only-child,
+html.no-flexgap .inline-flex.gap-2\.5:not(.flex-col) > svg:only-child { margin-right: 0.625rem; }
+html[dir='rtl'].no-flexgap .flex.gap-2\.5:not(.flex-col) > svg:only-child,
+html[dir='rtl'].no-flexgap .inline-flex.gap-2\.5:not(.flex-col) > svg:only-child { margin-right: 0; margin-left: 0.625rem; }
+html.no-flexgap .flex.gap-3:not(.flex-col) > svg:only-child,
+html.no-flexgap .inline-flex.gap-3:not(.flex-col) > svg:only-child { margin-right: 0.75rem; }
+html[dir='rtl'].no-flexgap .flex.gap-3:not(.flex-col) > svg:only-child,
+html[dir='rtl'].no-flexgap .inline-flex.gap-3:not(.flex-col) > svg:only-child { margin-right: 0; margin-left: 0.75rem; }
+html.no-flexgap .flex.gap-4:not(.flex-col) > svg:only-child,
+html.no-flexgap .inline-flex.gap-4:not(.flex-col) > svg:only-child { margin-right: 1rem; }
+html[dir='rtl'].no-flexgap .flex.gap-4:not(.flex-col) > svg:only-child,
+html[dir='rtl'].no-flexgap .inline-flex.gap-4:not(.flex-col) > svg:only-child { margin-right: 0; margin-left: 1rem; }
+html.no-flexgap .flex.gap-5:not(.flex-col) > svg:only-child,
+html.no-flexgap .inline-flex.gap-5:not(.flex-col) > svg:only-child { margin-right: 1.25rem; }
+html[dir='rtl'].no-flexgap .flex.gap-5:not(.flex-col) > svg:only-child,
+html[dir='rtl'].no-flexgap .inline-flex.gap-5:not(.flex-col) > svg:only-child { margin-right: 0; margin-left: 1.25rem; }
+html.no-flexgap .flex.gap-6:not(.flex-col) > svg:only-child,
+html.no-flexgap .inline-flex.gap-6:not(.flex-col) > svg:only-child { margin-right: 1.5rem; }
+html[dir='rtl'].no-flexgap .flex.gap-6:not(.flex-col) > svg:only-child,
+html[dir='rtl'].no-flexgap .inline-flex.gap-6:not(.flex-col) > svg:only-child { margin-right: 0; margin-left: 1.5rem; }
+html.no-flexgap .flex.gap-7:not(.flex-col) > svg:only-child,
+html.no-flexgap .inline-flex.gap-7:not(.flex-col) > svg:only-child { margin-right: 1.75rem; }
+html[dir='rtl'].no-flexgap .flex.gap-7:not(.flex-col) > svg:only-child,
+html[dir='rtl'].no-flexgap .inline-flex.gap-7:not(.flex-col) > svg:only-child { margin-right: 0; margin-left: 1.75rem; }
