@@ -706,6 +706,30 @@ function ClubDetail({
               exit={{ opacity: 0 }}
               className="p-4 flex flex-col gap-3"
             >
+              {/* Posting (and a photo in particular) used to hide behind the
+                  round "+" alone — members asked where to add a photo. */}
+              {joined && (
+                <div
+                  className="rounded-[20px] p-3 flex items-center gap-2"
+                  style={{ backgroundColor: 'var(--card-bg)', boxShadow: '0 1px 8px rgba(0,0,0,0.03)' }}
+                >
+                  <button
+                    onClick={() => setShowCreatePost(true)}
+                    className="flex-1 min-w-0 text-left px-4 py-2.5 rounded-full text-sm truncate"
+                    style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.4)', color: 'rgba(var(--charcoal-rgb), 0.5)' }}
+                  >
+                    {t('clubs.sharePost')}
+                  </button>
+                  <button
+                    onClick={() => postImageInputRef.current?.click()}
+                    className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-full text-sm font-semibold flex-shrink-0"
+                    style={{ backgroundColor: 'rgba(187,131,201,0.14)', color: '#BB83C9' }}
+                  >
+                    <Camera size={18} />
+                    {t('clubs.photo')}
+                  </button>
+                </div>
+              )}
               {posts.map((post) => (
                 <PostCard
                   key={post.id}
@@ -864,6 +888,23 @@ function ClubDetail({
         </motion.button>
       )}
 
+      {/* Outside the sheet: the photo button in the feed opens the picker
+          before the sheet exists, and the sheet opens with the photo in it. */}
+      <input
+        ref={postImageInputRef}
+        type="file"
+        accept="image/*"
+        className="hidden"
+        onChange={(e) => {
+          const file = e.target.files?.[0];
+          e.target.value = '';
+          if (!file) return;
+          setPostImage(file);
+          setPostImagePreview(URL.createObjectURL(file));
+          setShowCreatePost(true);
+        }}
+      />
+
       {/* Create Post Bottom Sheet */}
       <Sheet open={showCreatePost} onOpenChange={setShowCreatePost}>
         <SheetContent side="bottom" className="rounded-t-[24px] p-6 max-h-[80vh] overflow-y-auto overscroll-contain" style={{ backgroundColor: 'var(--card-bg)' }}>
@@ -892,27 +933,14 @@ function ClubDetail({
                 </button>
               </div>
             )}
-            <input
-              ref={postImageInputRef}
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={(e) => {
-                const file = e.target.files?.[0];
-                e.target.value = '';
-                if (!file) return;
-                setPostImage(file);
-                setPostImagePreview(URL.createObjectURL(file));
-              }}
-            />
             <div className="flex items-center justify-between mt-4">
               <button
                 onClick={() => postImageInputRef.current?.click()}
                 className="flex items-center gap-2 px-4 py-2 rounded-full"
-                style={{ backgroundColor: 'rgba(var(--linen-rgb), 0.4)' }}
+                style={{ backgroundColor: 'rgba(187,131,201,0.14)' }}
               >
-                <Camera size={18} style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }} />
-                <span className="text-xs font-medium" style={{ color: 'rgba(var(--charcoal-rgb), 0.4)' }}>{t('clubs.photo')}</span>
+                <Camera size={18} style={{ color: '#BB83C9' }} />
+                <span className="text-xs font-semibold" style={{ color: '#BB83C9' }}>{t('clubs.photo')}</span>
               </button>
               <button
                 onClick={handleCreatePost}
