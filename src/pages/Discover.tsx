@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router';
-import { motion, AnimatePresence, useMotionValue, useTransform, type PanInfo } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useTransform, animate as fmAnimate, type PanInfo } from 'framer-motion';
 import { X, Heart, Star, MapPin, SlidersHorizontal, Shield, Circle, Sparkles, RotateCcw } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useTranslation } from 'react-i18next';
@@ -332,10 +332,12 @@ function SwipeCard({
   profile,
   index,
   onSwipe,
+  triggerExit,
 }: {
   profile: Profile;
   index: number;
   onSwipe: (direction: 'left' | 'right' | 'up') => void;
+  triggerExit?: { dir: 'left' | 'right' | 'up'; id: number };
 }) {
   const { t } = useTranslation();
   const x = useMotionValue(0);
@@ -355,6 +357,22 @@ function SwipeCard({
       onSwipe('up');
     }
   };
+
+  // Programmatic exit when triggered by action buttons (not drag)
+  useEffect(() => {
+    if (!triggerExit || index !== 0) return;
+    const { dir } = triggerExit;
+    const targetX = dir === 'right' ? 480 : dir === 'left' ? -480 : 0;
+    const targetY = dir === 'up' ? -480 : 0;
+    const targetRotate = dir === 'right' ? 20 : dir === 'left' ? -20 : 0;
+    const ease = [0.4, 0, 0.8, 1] as [number, number, number, number];
+    fmAnimate(x, targetX, { duration: 0.32, ease });
+    fmAnimate(y, targetY, { duration: 0.32, ease });
+    fmAnimate(rotate, targetRotate, { duration: 0.32, ease });
+    const timer = setTimeout(() => onSwipe(dir), 320);
+    return () => clearTimeout(timer);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [triggerExit?.id]);
 
   const isTop = index === 0;
   // Only the card in front is holographic: three stacked foils would cost
@@ -405,6 +423,8 @@ function SwipeCard({
             alt={profile.name}
             className="w-full h-full object-cover"
             draggable={false}
+            loading="lazy"
+            decoding="async"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #BB83C9 0%, #7DE0B3 100%)' }}>
@@ -581,8 +601,8 @@ function ActionButtons({
         className="w-12 h-12 rounded-full flex items-center justify-center"
         style={{
           backgroundColor: 'var(--card-bg)',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
-          opacity: canUndo ? 1 : 0.4,
+          boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
+          opacity: canUndo ? 1 : 0.35,
         }}
       >
         <RotateCcw size={20} strokeWidth={2.5} style={{ color: '#F0B84A' }} />
@@ -590,51 +610,56 @@ function ActionButtons({
 
       {/* Dislike */}
       <motion.button
-        whileTap={{ scale: 0.88 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+        whileTap={{ scale: 0.85 }}
+        transition={{ type: 'spring', stiffness: 500, damping: 18 }}
         onClick={onDislike}
         aria-label={t('discover.dislike')}
         className="w-14 h-14 rounded-full flex items-center justify-center"
         style={{
-          backgroundColor: 'var(--card-bg)',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+          background: 'linear-gradient(145deg, #ff8a8a 0%, #E86A6A 100%)',
+          boxShadow: '0 6px 24px rgba(232,106,106,0.45), 0 2px 8px rgba(0,0,0,0.1)',
         }}
       >
-        <X size={24} strokeWidth={2.5} style={{ color: '#E86A6A' }} />
+        <X size={24} strokeWidth={2.5} className="text-white" />
       </motion.button>
 
       {/* Like */}
       <motion.button
-        whileTap={{ scale: 0.88 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+        whileTap={{ scale: 0.85 }}
+        transition={{ type: 'spring', stiffness: 500, damping: 18 }}
         onClick={onLike}
         aria-label={t('discover.like')}
         className="w-16 h-16 rounded-full flex items-center justify-center"
         style={{
-          backgroundColor: 'var(--card-bg)',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.12)',
+          background: 'linear-gradient(145deg, #D4A8DE 0%, #BB83C9 60%, #9A63A8 100%)',
+          boxShadow: '0 8px 28px rgba(187,131,201,0.55), 0 2px 8px rgba(0,0,0,0.1)',
         }}
       >
-        <Heart size={28} strokeWidth={2.5} style={{ color: '#BB83C9' }} />
+        <Heart size={28} strokeWidth={2} fill="white" className="text-white" />
       </motion.button>
 
       {/* Spark */}
       <motion.button
-        whileTap={{ scale: 0.88 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+        whileTap={{ scale: 0.85 }}
+        transition={{ type: 'spring', stiffness: 500, damping: 18 }}
         onClick={onSpark}
         aria-label={t('discover.spark')}
         className="w-14 h-14 rounded-full flex items-center justify-center relative"
         style={{
-          backgroundColor: 'var(--card-bg)',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+          background: sparkCount > 0
+            ? 'linear-gradient(145deg, #A8EBCC 0%, #7DE0B3 60%, #5BC492 100%)'
+            : 'var(--card-bg)',
+          boxShadow: sparkCount > 0
+            ? '0 6px 24px rgba(125,224,179,0.45), 0 2px 8px rgba(0,0,0,0.1)'
+            : '0 4px 16px rgba(0,0,0,0.08)',
           opacity: sparkCount > 0 ? 1 : 0.5,
+          transition: 'background 0.3s ease, box-shadow 0.3s ease',
         }}
       >
-        <Star size={24} strokeWidth={2.5} style={{ color: '#7DE0B3' }} />
+        <Star size={24} strokeWidth={2} fill={sparkCount > 0 ? 'white' : 'none'} style={{ color: sparkCount > 0 ? 'white' : '#7DE0B3' }} />
         <span
           className="absolute -top-1.5 -right-2 min-w-[18px] h-[18px] rounded-full flex items-center justify-center text-[10px] font-semibold text-white px-1"
-          style={{ backgroundColor: sparkCount > 0 ? '#7DE0B3' : 'var(--linen-dark)' }}
+          style={{ backgroundColor: sparkCount > 0 ? '#5BC492' : 'var(--linen-dark)', color: sparkCount > 0 ? 'white' : 'var(--charcoal)' }}
         >
           {sparkCount}
         </span>
@@ -779,8 +804,8 @@ function EmptyState({ onOpenFilters, onUndo }: { onOpenFilters: () => void; onUn
         background: 'radial-gradient(circle at 30% 30%, rgba(187,131,201,0.35), transparent 60%), radial-gradient(circle at 70% 70%, rgba(125,224,179,0.3), transparent 60%)',
       }}
     >
-      <div className="w-40 h-40 mb-6 flex items-center justify-center">
-        <Sparkles size={80} style={{ color: '#BB83C9', opacity: 0.4 }} />
+      <div className="w-40 h-40 mb-6 flex items-center justify-center animate-float">
+        <Sparkles size={80} style={{ color: '#BB83C9', opacity: 0.55 }} />
       </div>
       <h2 className="text-xl font-semibold text-[var(--charcoal)] mb-2 text-center" style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}>
         {t('discover.noOneNew')}
@@ -886,6 +911,8 @@ export default function Discover() {
   const [matchId, setMatchId] = useState<string | null>(null);
   const [lastSwiped, setLastSwiped] = useState<Profile | null>(null);
   const [sparkCount, setSparkCount] = useState(0);
+  const [topCardExit, setTopCardExit] = useState<{ dir: 'left' | 'right' | 'up'; id: number } | undefined>(undefined);
+  const exitIdRef = useRef(0);
   const [filters, setFilters] = useState<Filters>({
     maxDistance: MAX_DISTANCE_KM,
     ageMin: 22,
@@ -959,6 +986,11 @@ export default function Discover() {
   const handleSwipe = useCallback(async (direction: 'left' | 'right' | 'up') => {
     if (profiles.length === 0) return;
 
+    // Haptic: double-pulse for a like/spark, single short buzz for dislike
+    if (typeof navigator.vibrate === 'function') {
+      navigator.vibrate(direction === 'left' ? [25] : [30, 20, 50]);
+    }
+
     const current = profiles[0];
 
     // Sparks are consumed server-side by the swipe itself — spending separately
@@ -1009,11 +1041,15 @@ export default function Discover() {
     }
   }, [lastSwiped]);
 
-  const handleLike = () => handleSwipe('right');
-  const handleDislike = () => handleSwipe('left');
+  const triggerCardExit = useCallback((dir: 'left' | 'right' | 'up') => {
+    setTopCardExit({ dir, id: ++exitIdRef.current });
+  }, []);
+
+  const handleLike = () => triggerCardExit('right');
+  const handleDislike = () => triggerCardExit('left');
   const handleSpark = () => {
     // Used to do nothing at all with 0 Sparks — a dead button.
-    if (sparkCount > 0) handleSwipe('up');
+    if (sparkCount > 0) triggerCardExit('up');
     else showToast('info', t('discover.noSparks', { defaultValue: 'No Sparks yet — earn them by verifying, completing your profile and posting in clubs' }));
   };
 
@@ -1124,6 +1160,7 @@ export default function Discover() {
                         profile={profile}
                         index={index}
                         onSwipe={handleSwipe}
+                        triggerExit={index === 0 ? topCardExit : undefined}
                       />
                     ))}
                   </AnimatePresence>

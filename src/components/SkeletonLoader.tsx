@@ -7,16 +7,20 @@ interface SkeletonLoaderProps {
   className?: string;
 }
 
+const shimmerStyle: React.CSSProperties = {
+  background: 'linear-gradient(90deg, var(--linen-dark) 25%, rgba(255,255,255,0.55) 50%, var(--linen-dark) 75%)',
+  backgroundSize: '200% 100%',
+  animation: 'shimmer 1.5s linear infinite',
+};
+
 const SkeletonLoader = memo(function SkeletonLoader({
   variant,
   count = 3,
   className = '',
 }: SkeletonLoaderProps) {
   const { t } = useTranslation();
-  const baseClasses = 'animate-pulse rounded-xl';
-  const baseStyle: React.CSSProperties = {
-    backgroundColor: 'var(--linen-dark, #E8E2D8)',
-  };
+  const baseClasses = 'rounded-xl';
+  const baseStyle: React.CSSProperties = shimmerStyle;
 
   if (variant === 'card') {
     return (
